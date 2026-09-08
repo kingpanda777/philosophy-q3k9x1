@@ -159,14 +159,6 @@ body{
   background:var(--card-2);border:1px solid var(--line);border-left:3px solid var(--accent);
   border-radius:12px;padding:15px;white-space:pre-wrap;
 }
-.unverified{
-  font-size:12.5px;line-height:1.85;margin:-4px 0 14px;color:var(--muted);
-  border:1px dashed var(--line);border-radius:12px;padding:13px 15px;
-}
-.unverified b{
-  display:block;font-weight:400;font-size:11px;letter-spacing:.04em;
-  margin:0 0 6px;opacity:.85;
-}
 .more{
   appearance:none;width:100%;cursor:pointer;font-family:inherit;font-size:13px;
   background:none;color:var(--accent);border:1px solid var(--line);
@@ -440,14 +432,9 @@ function quizView(){
     h += `<p class="verdict ${ok?"ok":"ng"}">${ok?"正解":"不正解"}</p>
       <p class="explain">${esc(q.explanation)}</p>`;
     if(q.detail){
-      if(quiz.detailOpen){
-        h += `<div class="detail">${esc(q.detail)}</div>`;
-        if(q.source.unverified){
-          h += `<div class="unverified"><b>確認できていない点</b>${esc(q.source.unverified)}</div>`;
-        }
-      }else{
-        h += `<button class="more" data-more="1">もっと詳しく</button>`;
-      }
+      h += quiz.detailOpen
+        ? `<div class="detail">${esc(q.detail)}</div>`
+        : `<button class="more" data-more="1">もっと詳しく</button>`;
     }else{
       const w = store.wants[q.id] ? "on" : "";
       h += `<button class="more want ${w}" data-want="${q.id}">${w ? "書き足す問題に入れた" : "詳しい解説がほしい"}</button>`;
