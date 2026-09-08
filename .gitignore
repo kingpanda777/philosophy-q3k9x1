@@ -1,0 +1,7 @@
+# 作業用バックアップ。ローカルには残すが GitHub には上げない。
+_old_backups/
+
+# Windows / エディタが勝手に作るファイル
+Thumbs.db
+desktop.ini
+.DS_Store
