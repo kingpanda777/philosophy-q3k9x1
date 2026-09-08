@@ -99,14 +99,14 @@ if (judged.length) {
   const by = k => judged.filter(q => q.source.choicesOk === k);
   const ids = k => by(k).map(q => q.id).join(" ");
   console.log("===== 四択の成立状況（choicesOk）=====");
-  console.log("（争点を踏まえても、いま四択として成立しているか。値は現在の状態を表し、履歴は note に書く）");
+  console.log("（争点を踏まえても四択として成立するか。検証時に判定する）");
   console.log("");
   console.log(`  判定済み ${judged.length}問 / 検証済み ${verified + flagged}問`);
   console.log("");
   console.log(`  ok      ${String(by("ok").length).padStart(3)}問  争点があっても成立する`);
-  console.log(`  fragile ${String(by("fragile").length).padStart(3)}問  成立しているが編集禁止（選択肢に触れると壊れる）`);
+  console.log(`  fragile ${String(by("fragile").length).padStart(3)}問  条件付きで成立。編集で崩れる`);
   if (by("fragile").length) console.log(`             ${ids("fragile")}`);
-  console.log(`  broken  ${String(by("broken").length).padStart(3)}問  いま四択として成立していない（直したら ok に変える）`);
+  console.log(`  broken  ${String(by("broken").length).padStart(3)}問  成立していなかった（修正済み）`);
   if (by("broken").length) console.log(`             ${ids("broken")}`);
   const noNote = judged.filter(q => !q.source.note);
   if (noNote.length) {
