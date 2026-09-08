@@ -393,45 +393,6 @@ q325（ドゥルーズとガタリの協働）は別種で、**係争中なの�
 **編集禁止であること**を note に必ず書く。
 2026年9月8日に9問すべてを点検し、q325 以外の8問へ型の明示と編集禁止の一文を補った。
 
-## source.unverified は note の写し（表示用）
-
-**2026年9月8日に新設。** note の `確認できていない点:` の中身だけを取り出して持つフィールド。
-**index.html が detail の下に表示するために使う。**
-
-```
-note:       "設問へ: … 事実の確認: … 確認できていない点: サルトルがキルケゴールを
-             実存主義の先駆として明示的に位置づけた文言。"
-unverified: "サルトルがキルケゴールを実存主義の先駆として明示的に位置づけた文言。"
-```
-
-**note が一次記録で、unverified はその写しである。** 順序を逆にしないこと。
-調べたことは全部 note に書く。unverified はそこから機械的に取り出した表示用の複製にすぎない。
-note を直したら unverified も直す。unverified だけを直しても記録は更新されない。
-
-**なぜ実行時に note をパースしないのか。** note のラベルは40種あり、しかも
-`nonsense:` `femme:` `sagt:`（引用文中のコロン）のようにラベルでないコロンも混じる。
-表示のたびに文字列を切り出すと、ラベルが増えたときに黙って壊れる。
-**抽出は一度きりの作業として済ませ、表示側はフィールドを読むだけにする。**
-
-**新しい問題を追加するときは、note と unverified の両方に書く。**
-未確認事項がない問題には `unverified` を付けない（フィールドごと無し）。
-現在 137問が持ち、338問は持っていない。
-
-```
-node -e "
-const fs=require('fs');
-const {QUESTIONS}=new Function(fs.readFileSync('questions.js','utf8')+';return {QUESTIONS};')();
-const MARK='確認できていない点:';
-QUESTIONS.forEach(q=>{
-  const n=q.source.note||'', u=q.source.unverified;
-  const has=n.indexOf(MARK)>=0;
-  if(has && u===undefined) console.log(q.id+': note にあるが unverified が無い');
-  if(!has && u!==undefined) console.log(q.id+': unverified があるが note に無い');
-  if(has && u && !n.includes(u)) console.log(q.id+': unverified が note と一致しない');
-});
-"
-```
-
 ## note の書き方
 
 地の文で書く。タグは付けない。読者は人間。
