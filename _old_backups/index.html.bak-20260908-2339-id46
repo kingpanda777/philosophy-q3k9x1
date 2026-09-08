@@ -146,6 +146,7 @@ body{
   background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;
 }
 .src{display:inline-block;font-size:11px;padding:4px 10px;border:1px solid var(--line);border-radius:8px;color:var(--muted)}
+.src.flagged{border-color:var(--brass);color:var(--brass)}
 .src.book{border-color:var(--ok);color:var(--ok)}
 .flagbtn{
   appearance:none;background:none;border:0;padding:10px 0;margin-left:12px;cursor:pointer;
@@ -427,7 +428,7 @@ function quizView(){
 
   if(quiz.answered){
     const ok = it.picked === q.answer;
-    const kindCls = q.source.kind === "book" ? "book" : "";
+    const kindCls = q.source.kind === "ai_flagged" ? "flagged" : q.source.kind === "book" ? "book" : "";
     const on = store.flags[q.id] ? "on" : "";
     h += `<p class="verdict ${ok?"ok":"ng"}">${ok?"正解":"不正解"}</p>
       <p class="explain">${esc(q.explanation)}</p>`;
