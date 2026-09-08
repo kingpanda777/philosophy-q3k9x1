@@ -1,6 +1,9 @@
 # 作業用バックアップ。ローカルには残すが GitHub には上げない。
 _old_backups/
 
+# 作業中の .bak も GitHub には上げない（_old_backups へ移す前の状態）
+*.bak-*
+
 # Windows / エディタが勝手に作るファイル
 Thumbs.db
 desktop.ini
