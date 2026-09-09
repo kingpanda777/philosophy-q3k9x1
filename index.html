@@ -18,6 +18,7 @@
   --brass:#C9A227;
   --ok:#3FB950;
   --ng:#E5534B;
+  --uv-head:#B6C0CB;
   --display:"Hiragino Sans","Yu Gothic","Noto Sans JP",system-ui,sans-serif;
   --gothic:"Hiragino Sans","Yu Gothic","Noto Sans JP",system-ui,sans-serif;
 }
@@ -91,6 +92,25 @@ body{
   background:var(--accent-dim);border-radius:8px;padding:3px 9px;line-height:1.6;
 }
 
+/* ---------- お気に入り ---------- */
+.row-wrap{position:relative}
+.row-wrap .row{padding-right:56px}
+.fav{
+  position:absolute;top:0;right:0;appearance:none;background:none;border:0;padding:0;
+  width:52px;height:52px;cursor:pointer;font-size:19px;line-height:1;color:#46515F;
+}
+.fav.on{color:var(--brass)}
+.fav:focus-visible{outline:2px solid var(--accent);outline-offset:-5px;border-radius:14px}
+.favbar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 4px}
+.favchip{
+  appearance:none;cursor:pointer;font-family:inherit;font-size:13.5px;
+  background:var(--card);color:var(--ink);
+  border:1px solid var(--line);border-left:2px solid var(--brass);
+  padding:10px 13px;border-radius:10px;line-height:1.5;
+}
+.favchip span{margin-left:8px;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.favchip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
 /* ---------- 用語の見取り図 ---------- */
 .back{
   appearance:none;background:none;border:0;padding:16px 0 10px;cursor:pointer;
@@ -117,7 +137,14 @@ body{
 .btn[disabled]{opacity:.4;cursor:default}
 
 /* ---------- 出題 ---------- */
-.q-bar{display:flex;justify-content:space-between;align-items:center;padding:18px 0 10px;font-size:12px;color:var(--muted)}
+.q-bar{display:flex;align-items:center;gap:12px;padding:8px 0 10px;font-size:12px;color:var(--muted)}
+.q-title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.quitbtn{
+  appearance:none;background:none;border:0;flex:none;cursor:pointer;font-family:inherit;
+  font-size:12px;color:var(--muted);padding:10px 12px 10px 0;
+  text-decoration:underline;text-underline-offset:3px;
+}
+.quitbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .q-bar b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
 .gauge{height:4px;background:var(--card);border-radius:99px;margin-bottom:20px;overflow:hidden}
 .gauge span{display:block;height:4px;background:var(--accent);transition:width .25s ease}
@@ -164,8 +191,8 @@ body{
   border:1px dashed var(--line);border-radius:12px;padding:13px 15px;
 }
 .unverified b{
-  display:block;font-weight:400;font-size:11px;letter-spacing:.04em;
-  margin:0 0 6px;opacity:.85;
+  display:block;font-weight:500;font-size:12.5px;letter-spacing:.02em;
+  margin:0 0 7px;color:var(--uv-head);opacity:1;
 }
 .more{
   appearance:none;width:100%;cursor:pointer;font-family:inherit;font-size:13px;
@@ -231,7 +258,7 @@ body{
 
 /* ========== 保存まわり ========== */
 const KEY = "philo-quiz-v1";
-const blank = { results:{}, flags:{}, wants:{}, limit:10 };
+const blank = { results:{}, flags:{}, wants:{}, favs:{}, limit:10 };
 let store = load();
 
 function load(){
@@ -239,7 +266,7 @@ function load(){
     const raw = localStorage.getItem(KEY);
     if(!raw) return structuredClone(blank);
     const p = JSON.parse(raw);
-    return { results: p.results || {}, flags: p.flags || {}, wants: p.wants || {}, limit: p.limit || 10 };
+    return { results: p.results || {}, flags: p.flags || {}, wants: p.wants || {}, favs: p.favs || {}, limit: p.limit || 10 };
   }catch(e){ return structuredClone(blank); }
 }
 function save(){
@@ -306,12 +333,21 @@ function homeView(){
   if(view.tab === "philosophers"){
     const card = p => {
       const n = byPhilosopher(p.name).length;
-      return `<button class="row" data-philosopher="${esc(p.name)}" ${n?"":"disabled"}>
+      const on = !!store.favs[p.name];
+      const star = n ? `<button class="fav${on?" on":""}" data-fav="${esc(p.name)}" aria-pressed="${on}" aria-label="${esc(p.name)}をお気に入りに${on?"入れている":"入れる"}">★</button>` : "";
+      return `<div class="row-wrap"><button class="row" data-philosopher="${esc(p.name)}" ${n?"":"disabled"}>
         <span class="row-head"><span class="row-name">${esc(p.name)}</span><span class="row-years">${esc(p.years)}</span></span>
         <span class="row-note">${esc(p.note)}</span>
         <span class="row-meta">${n ? n+"問" : "問題はまだありません"}</span>
-      </button>`;
+      </button>${star}</div>`;
     };
+    const favs = PHILOSOPHERS.filter(p => store.favs[p.name] && byPhilosopher(p.name).length);
+    if(favs.length){
+      h += `<h2 class="grp">★ お気に入り<span>${favs.length}人</span></h2><div class="favbar">` +
+        favs.map(p => `<button class="favchip" data-philosopher="${esc(p.name)}">${esc(p.name)}<span>${byPhilosopher(p.name).length}問</span></button>`).join("") +
+        `</div>`;
+    }
+
     const cur = view.school || "";
     h += `<div class="chips"><button class="chip" data-school="" aria-pressed="${!cur}">すべて</button>` +
       SCHOOLS.map(s => `<button class="chip" data-school="${esc(s)}" aria-pressed="${cur===s}">${esc(s)}</button>`).join("") +
@@ -375,7 +411,7 @@ function logView(){
     ? wants.map(q => `<div class="mini">${esc(q.question)}<span>${esc(q.id)}</span></div>`).join("")
     : `<p class="empty">まだありません。出題中に印をつけると、詳説を書き足す候補としてここに残ります。</p>`;
 
-  h += `<button class="danger" data-reset="1">記録をすべて消す</button>`;
+  h += `<button class="danger" data-reset="1">解答の記録をすべて消す</button>`;
   return h;
 }
 
@@ -418,7 +454,7 @@ function quizView(){
   const tags = [q.philosophers.join("／"), q.terms.join("・")].filter(Boolean).join("　|　");
   const pct = (quiz.i + (quiz.answered?1:0)) / quiz.items.length * 100;
 
-  let h = `<div class="q-bar"><span>${esc(quiz.title)}${it.dug ? "　深掘り" : ""}</span><b>${quiz.i+1} / ${quiz.items.length}</b></div>
+  let h = `<div class="q-bar"><button class="quitbtn" data-quit="1">やめる</button><span class="q-title">${esc(quiz.title)}${it.dug ? "　深掘り" : ""}</span><b>${quiz.i+1} / ${quiz.items.length}</b></div>
     <div class="gauge"><span style="width:${pct}%"></span></div>
     <p class="q-tags">${esc(tags)}</p>
     <p class="q-text">${esc(q.question)}</p>`;
@@ -495,11 +531,26 @@ app.addEventListener("click", e => {
   if(d.tab){ view = { name:"home", tab:d.tab }; return render(); }
   if(d.limit !== undefined){ store.limit = Number(d.limit); save(); return render(); }
   if(d.school !== undefined){ view = { name:"home", tab:"philosophers", school:d.school || null }; return render(); }
+  if(d.fav){
+    const y = window.scrollY;                    // ★を押しただけで先頭へ飛ばさない
+    if(store.favs[d.fav]) delete store.favs[d.fav];
+    else store.favs[d.fav] = true;
+    save(); render(); window.scrollTo(0, y);
+    return;
+  }
   if(d.philosopher){ lastSchool = view.school || null; return startQuiz(byPhilosopher(d.philosopher), d.philosopher, true); }
   if(d.term){ view = { name:"term", term:d.term }; return render(); }
   if(d.termStart){ return startQuiz(byTerm(d.termStart), d.termStart, true); }
   if(d.back || d.home){ view = { name:"home", tab: d.home ? (view.tab || "philosophers") : "terms", school: lastSchool }; return render(); }
 
+  if(d.quit){
+    const done = quiz.items.filter(it => it.picked !== null).length;
+    // 0問なら確認しない。誤タップで始めた直後がこれにあたる
+    if(done && !confirm("出題をやめて一覧にもどります。ここまでの解答は記録に残ります。")) return;
+    quiz = null;
+    view = { name:"home", tab:"philosophers", school:lastSchool };
+    return render();
+  }
   if(d.pick !== undefined && !quiz.answered){
     const it = quiz.items[quiz.i];
     it.picked = it.order[Number(d.pick)];
@@ -543,8 +594,9 @@ app.addEventListener("click", e => {
     return startQuiz(list, "間違えた問題");
   }
   if(d.reset){
-    if(confirm("解いた記録と印をすべて消します。よろしいですか。")){
-      store = structuredClone(blank); save();
+    if(confirm("解いた記録と、問題につけた印をすべて消します。お気に入りは残ります。よろしいですか。")){
+      const favs = store.favs;                   // お気に入りは設定なので消さない
+      store = structuredClone(blank); store.favs = favs; save();
       view = { name:"home", tab:"log" }; render();
     }
   }
