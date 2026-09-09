@@ -247,7 +247,7 @@ const QUESTIONS = [
   },
   {
     id: "q004",
-    philosophers: ["アリストテレス"], terms: [], type: "single",
+    philosophers: ["アリストテレス"], terms: ["実体","イデア"], type: "single",
     question: "アリストテレスの形相と質料の関係として最も適切なものは？",
     choices: [
       "形相は天上界にあり、質料は地上界にあって、両者は決して交わらない",
@@ -498,7 +498,7 @@ const QUESTIONS = [
   },
   {
     id: "q017",
-    philosophers: ["ロック"], terms: [], type: "single",
+    philosophers: ["ロック"], terms: ["自然状態","社会契約"], type: "single",
     question: "ロックが所有権の根拠としたものは？",
     choices: [
       "国家による法的な承認",
@@ -631,7 +631,7 @@ const QUESTIONS = [
   },
   {
     id: "q024",
-    philosophers: ["ヒューム"], terms: [], type: "single",
+    philosophers: ["ヒューム"], terms: ["実体","因果"], type: "single",
     question: "ヒュームの自我についての考えとして最も適切なものは？",
     choices: [
       "自我は疑いえない出発点であり、思考の主体として実在する",
@@ -689,7 +689,7 @@ const QUESTIONS = [
   },
   {
     id: "q027",
-    philosophers: ["カント"], terms: [], type: "single",
+    philosophers: ["カント"], terms: ["理性","因果"], type: "single",
     question: "カントの物自体と現象の区別として最も適切なものは？",
     choices: [
       "現象は錯覚であり、物自体だけが実在する",
