@@ -4,6 +4,9 @@ _old_backups/
 # 作業中の .bak も GitHub には上げない（_old_backups へ移す前の状態）
 *.bak-*
 
+# 点検用の一時ファイル
+detailonly.json
+
 # Windows / エディタが勝手に作るファイル
 Thumbs.db
 desktop.ini
