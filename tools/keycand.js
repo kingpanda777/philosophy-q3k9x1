@@ -20,15 +20,31 @@ const src=fs.readFileSync(path.join(__dirname,'..','questions.js'),'utf8');
 const {QUESTIONS}=(new Function(src+'\nreturn {QUESTIONS};'))();
 const kt=JSON.parse(fs.readFileSync(path.join(__dirname,'..','keyterms.json'),'utf8'));
 
-const TERMS=[];
+const ALL=[];
 Object.entries(kt).forEach(([p,v])=>{ if(p==='_meta')return;
-  (v['鍵語']||[]).forEach(t=>TERMS.push({ph:p, w:t['語'], atk:t['扱い']||'未設定'})); });
+  (v['鍵語']||[]).forEach(t=>ALL.push({ph:p, w:t['語'], atk:t['扱い']||'未設定',
+                                       off:t['タグ付け対象']===false})); });
+
+// 規則1：TERMS と重なる語はタグ付けの候補から外す（表示は概念側で行う）
+const TERMS=ALL.filter(t=>!t.off);
+const WORDS=[...new Set(TERMS.map(t=>t.w))];
+// 規則2：他の鍵語の部分文字列になっている語は、長いほうに含まれない出現だけを拾う
+const LONGER={};
+WORDS.forEach(w=>{ LONGER[w]=WORDS.filter(o=>o!==w&&o.includes(w)); });
+const count=(t,w)=>t.split(w).length-1;
+function standalone(text,w){
+  const c=count(text,w);
+  if(!c) return 0;
+  let inLong=0;
+  LONGER[w].forEach(L=>{ inLong+=count(text,L)*count(L,w); });
+  return c-inLong;
+}
 
 // 由来を決める：狭いほうから順に見て、最初に現れた場所を由来とする
 function origin(q,w){
-  if((q.question+q.choices.join('')).includes(w)) return 1;
-  if(q.explanation.includes(w)) return 2;
-  if(q.detail.includes(w)) return 3;
+  if(standalone(q.question+q.choices.join(''),w)>0) return 1;
+  if(standalone(q.explanation,w)>0) return 2;
+  if(standalone(q.detail,w)>0) return 3;
   return 0;
 }
 const rows=[];
