@@ -192,6 +192,7 @@ const QUESTIONS = [
   {
     id: "q001",
     philosophers: ["プラトン"], terms: ["イデア"], type: "single",
+    keys: ["アナムネーシス", "想起", "唯名論", "想起説"],
     question: "プラトンのイデアの説明として最も適切なものは？",
     choices: [
       "感覚でとらえられる個々の事物から、人間が便宜的に作り出した名前にすぎない",
@@ -214,6 +215,7 @@ const QUESTIONS = [
   {
     id: "q002",
     philosophers: ["プラトン"], terms: ["イデア"], type: "single",
+    keys: ["洞窟の比喩", "洞窟", "善のイデア", "線分"],
     question: "『国家』の洞窟の比喩で、洞窟の壁に映る影が表しているものは？",
     choices: [
       "洞窟の外にあるイデアそのものの姿",
@@ -233,6 +235,7 @@ const QUESTIONS = [
   {
     id: "q003",
     philosophers: ["アリストテレス"], terms: ["実体", "存在"], type: "single",
+    keys: ["形相"],
     question: "アリストテレスが第一実体と呼んだものは？",
     choices: [
       "「人間」や「動物」のような普遍的な種や類",
@@ -251,6 +254,7 @@ const QUESTIONS = [
   {
     id: "q004",
     philosophers: ["アリストテレス"], terms: ["実体","イデア"], type: "single",
+    keys: ["形相", "質料", "四原因説", "可能態", "現実態"],
     question: "アリストテレスの形相と質料の関係として最も適切なものは？",
     choices: [
       "形相は天上界にあり、質料は地上界にあって、両者は決して交わらない",
@@ -270,6 +274,7 @@ const QUESTIONS = [
   {
     id: "q005",
     philosophers: ["プラトン", "アリストテレス"], terms: ["イデア", "実体"], type: "compare",
+    keys: ["形相", "第三人間論"],
     question: "プラトンとアリストテレスの違いとして最も適切なものは？",
     choices: [
       "プラトンは真実在を個物から離れて置き、アリストテレスは個物に内在する形相とした",
@@ -289,6 +294,7 @@ const QUESTIONS = [
   {
     id: "q006",
     philosophers: ["デカルト"], terms: ["理性"], type: "single",
+    keys: ["方法的懐疑", "コギト", "欺く神"],
     question: "デカルトの方法的懐疑の目的として最も適切なものは？",
     choices: [
       "何も知りえないという結論に至り、判断を保留すること",
@@ -313,6 +319,7 @@ const QUESTIONS = [
   {
     id: "q007",
     philosophers: ["デカルト"], terms: ["実体"], type: "single",
+    keys: ["松果腺", "モナド"],
     question: "デカルトの実体観として最も適切なものは？",
     choices: [
       "実体はただひとつであり、それが神である",
@@ -332,6 +339,7 @@ const QUESTIONS = [
   {
     id: "q008",
     philosophers: ["スピノザ"], terms: ["実体", "神", "存在"], type: "single",
+    keys: ["神即自然", "様態"],
     question: "スピノザの実体についての考えとして最も適切なものは？",
     choices: [
       "実体は無数にあり、たがいに独立している",
@@ -350,6 +358,7 @@ const QUESTIONS = [
   {
     id: "q009",
     philosophers: ["スピノザ"], terms: ["実体", "自由"], type: "single",
+    keys: ["属性", "思惟", "心身平行論"],
     question: "スピノザにおいて、人間の精神と身体はどう位置づけられるか？",
     choices: [
       "精神と身体はそれぞれ独立した二つの実体である",
@@ -369,6 +378,7 @@ const QUESTIONS = [
   {
     id: "q010",
     philosophers: ["デカルト", "スピノザ", "ライプニッツ"], terms: ["実体", "存在"], type: "compare",
+    keys: ["モナド"],
     question: "実体の数について、三者の立場の組み合わせとして正しいものは？",
     choices: [
       "デカルト＝一つ／スピノザ＝二つ／ライプニッツ＝無数",
@@ -392,6 +402,7 @@ const QUESTIONS = [
   {
     id: "q011",
     philosophers: ["ライプニッツ"], terms: ["実体"], type: "single",
+    keys: ["モナド", "予定調和"],
     question: "ライプニッツのモナドの説明として最も適切なものは？",
     choices: [
       "物質を構成する最小の粒子であって、原子と同じもの",
@@ -411,6 +422,7 @@ const QUESTIONS = [
   {
     id: "q012",
     philosophers: ["ライプニッツ"], terms: ["神"], type: "single",
+    keys: ["可能世界", "弁神論", "十分理由律"],
     question: "ライプニッツの「最善世界」の考え方として最も適切なものは？",
     choices: [
       "この世界には悪がまったく存在しないので最善である",
@@ -430,6 +442,7 @@ const QUESTIONS = [
   {
     id: "q013",
     philosophers: ["スピノザ", "ライプニッツ"], terms: ["神"], type: "compare",
+    keys: ["可能世界", "十分理由律"],
     question: "スピノザとライプニッツの神の捉え方の違いとして最も適切なものは？",
     choices: [
       "スピノザの神は自然そのものであり選択をしないが、ライプニッツの神は可能な世界から選ぶ知性である",
@@ -449,6 +462,7 @@ const QUESTIONS = [
   {
     id: "q014",
     philosophers: ["ホッブズ"], terms: ["自然状態"], type: "single",
+    keys: ["自己保存", "万人の万人に対する戦争"],
     question: "ホッブズの描く自然状態として最も適切なものは？",
     choices: [
       "人々が自然法に従い、おおむね平和に暮らしている状態",
@@ -468,6 +482,7 @@ const QUESTIONS = [
   {
     id: "q015",
     philosophers: ["ホッブズ"], terms: ["社会契約"], type: "single",
+    keys: ["主権者", "自然権", "信託", "一般意志", "自己保存", "リヴァイアサン", "主権"],
     question: "ホッブズの社会契約において、人々は何をするか？",
     choices: [
       "自然権を主権者に譲り渡し、以後その命令に従う",
@@ -487,6 +502,7 @@ const QUESTIONS = [
   {
     id: "q016",
     philosophers: ["ロック"], terms: ["自然状態"], type: "single",
+    keys: ["万人の万人に対する戦争"],
     question: "ロックの描く自然状態として最も適切なものは？",
     choices: [
       "万人の万人に対する戦争が絶えず続いている状態",
@@ -506,6 +522,7 @@ const QUESTIONS = [
   {
     id: "q017",
     philosophers: ["ロック"], terms: ["自然状態","社会契約"], type: "single",
+    keys: ["労働混合"],
     question: "ロックが所有権の根拠としたものは？",
     choices: [
       "国家が法によって承認することではじめて所有が成り立つということ",
@@ -525,6 +542,7 @@ const QUESTIONS = [
   {
     id: "q018",
     philosophers: ["ロック"], terms: ["社会契約"], type: "single",
+    keys: ["信託", "一般意志", "抵抗権"],
     question: "ロックにおける政府と人民の関係として最も適切なものは？",
     choices: [
       "人民は権利を全面的に譲渡し、取り戻すことはできない",
@@ -544,6 +562,7 @@ const QUESTIONS = [
   {
     id: "q019",
     philosophers: ["ホッブズ", "ロック"], terms: ["社会契約"], type: "compare",
+    keys: ["自己保存", "抵抗権", "信託", "主権"],
     question: "ホッブズとロックの社会契約論の違いとして最も適切なものは？",
     choices: [
       "ホッブズは権利の譲渡を説き抵抗を原則認めないが、ロックは信託と捉え抵抗権を認める",
@@ -563,6 +582,7 @@ const QUESTIONS = [
   {
     id: "q020",
     philosophers: ["ルソー"], terms: ["自然状態"], type: "single",
+    keys: ["憐れみ", "自然人", "自己愛"],
     question: "ルソーの描く自然状態として最も適切なものは？",
     choices: [
       "万人が互いに争い合っている戦争の状態",
@@ -582,6 +602,7 @@ const QUESTIONS = [
   {
     id: "q021",
     philosophers: ["ルソー"], terms: ["社会契約", "自由"], type: "single",
+    keys: ["一般意志", "全体意志", "特殊意志", "立法者"],
     question: "ルソーの一般意志の説明として最も適切なものは？",
     choices: [
       "個々人の意志を単純に足し合わせた多数派の意見",
@@ -601,6 +622,7 @@ const QUESTIONS = [
   {
     id: "q022",
     philosophers: ["ホッブズ", "ロック", "ルソー"], terms: ["自然状態"], type: "compare",
+    keys: ["憐れみ"],
     question: "自然状態の描き方の組み合わせとして正しいものは？",
     choices: [
       "ホッブズ＝戦争状態／ロック＝自然法の下の自由と不便／ルソー＝孤立した自足と憐れみ",
@@ -620,6 +642,7 @@ const QUESTIONS = [
   {
     id: "q023",
     philosophers: ["ヒューム"], terms: ["因果"], type: "single",
+    keys: ["因果批判", "恒常的連接", "帰納"],
     question: "ヒュームの因果についての考えとして最も適切なものは？",
     choices: [
       "原因と結果を結ぶ必然的な力を、私たちは直接知覚している",
@@ -639,6 +662,7 @@ const QUESTIONS = [
   {
     id: "q024",
     philosophers: ["ヒューム"], terms: ["実体","因果"], type: "single",
+    keys: ["コギト", "束説"],
     question: "ヒュームの自我についての考えとして最も適切なものは？",
     choices: [
       "自我は疑いえない出発点であり、思考の主体として実在する",
@@ -658,6 +682,7 @@ const QUESTIONS = [
   {
     id: "q025",
     philosophers: ["カント"], terms: ["因果"], type: "single",
+    keys: ["因果批判", "カテゴリー", "物自体", "コペルニクス的転回"],
     question: "カントが「独断のまどろみから覚まされた」と述べたのは誰の議論によるか、またその要点は？",
     choices: [
       "ヒュームの因果論。因果の必然性が経験からは出てこないと示された点",
@@ -680,6 +705,7 @@ const QUESTIONS = [
   {
     id: "q026",
     philosophers: ["ヒューム", "カント"], terms: ["因果"], type: "compare",
+    keys: ["帰納", "反証主義"],
     question: "因果についてのヒュームとカントの違いとして最も適切なものは？",
     choices: [
       "ヒュームは因果を経験に由来する習慣とし、カントは経験を成り立たせる認識の形式とした",
@@ -699,6 +725,7 @@ const QUESTIONS = [
   {
     id: "q027",
     philosophers: ["カント"], terms: ["理性","因果"], type: "single",
+    keys: ["物自体", "カテゴリー"],
     question: "カントの物自体と現象の区別として最も適切なものは？",
     choices: [
       "現象は錯覚にすぎず、物自体だけが実在する",
@@ -718,6 +745,7 @@ const QUESTIONS = [
   {
     id: "q028",
     philosophers: ["カント"], terms: ["理性"], type: "single",
+    keys: ["定言命法", "目的の王国"],
     question: "カントの定言命法の説明として最も適切なものは？",
     choices: [
       "幸福になりたければこうせよ、という形で条件つきに命じるもの",
@@ -737,6 +765,7 @@ const QUESTIONS = [
   {
     id: "q029",
     philosophers: ["ヘーゲル"], terms: ["弁証法"], type: "single",
+    keys: ["止揚", "主人と奴隷", "承認をめぐる闘争"],
     question: "ヘーゲルの止揚（アウフヘーベン）の説明として最も適切なものは？",
     choices: [
       "対立する二つのうち、正しいほうを選んで誤ったほうを捨てること",
@@ -780,6 +809,7 @@ const QUESTIONS = [
   {
     id: "q031",
     philosophers: ["ヘーゲル"], terms: ["理性"], type: "single",
+    keys: ["理性の狡知"],
     question: "ヘーゲルの「理性の狡知」が意味するものとして最も適切なものは？",
     choices: [
       "理性が人を欺いて、誤った判断のほうへ導いてしまうこと",
@@ -800,6 +830,7 @@ const QUESTIONS = [
   {
     id: "q032",
     philosophers: ["カント", "ヘーゲル"], terms: ["理性"], type: "compare",
+    keys: ["物自体"],
     question: "カントとヘーゲルの違いとして最も適切なものは？",
     choices: [
       "カントは認識に物自体という限界を設けたが、ヘーゲルは限界の設定自体を批判した",
@@ -838,6 +869,7 @@ const QUESTIONS = [
   {
     id: "q034",
     philosophers: ["ベンサム"], terms: ["功利主義"], type: "single",
+    keys: ["功利原理", "最大多数"],
     question: "ベンサムの功利原理の説明として最も適切なものは？",
     choices: [
       "行為の正しさは、その行為の動機が善いかどうかによって決まる",
@@ -857,6 +889,7 @@ const QUESTIONS = [
   {
     id: "q035",
     philosophers: ["ベンサム"], terms: ["功利主義", "幸福"], type: "single",
+    keys: ["快楽計算"],
     question: "ベンサムの快楽計算（功利計算）の特徴として最も適切なものは？",
     choices: [
       "快楽には質の高低があり、高級な快楽を優先して計算する",
@@ -876,6 +909,7 @@ const QUESTIONS = [
   {
     id: "q036",
     philosophers: ["ベンサム"], terms: ["功利主義", "社会契約"], type: "single",
+    keys: ["パノプティコン"],
     question: "ベンサムが自然権についてとった立場として最も適切なものは？",
     choices: [
       "自然権は人間に生まれつき備わる、誰にも侵せない権利である",
@@ -917,6 +951,7 @@ const QUESTIONS = [
   {
     id: "q038",
     philosophers: ["カント", "ベンサム"], terms: ["功利主義", "理性"], type: "compare",
+    keys: ["徳倫理"],
     question: "道徳の評価基準について、カントとベンサムの違いとして最も適切なものは？",
     choices: [
       "カントは行為がもたらす結果を、ベンサムは意志のあり方や行為の原則を基準にした",
@@ -936,6 +971,7 @@ const QUESTIONS = [
   {
     id: "q039",
     philosophers: ["ホッブズ"], terms: ["自由"], type: "single",
+    keys: ["一般意志", "消極的自由"],
     question: "ホッブズが定義した自由として最も適切なものは？",
     choices: [
       "理性が情念を支配している状態",
@@ -1008,6 +1044,7 @@ const QUESTIONS = [
   {
     id: "q042",
     philosophers: ["ヘーゲル"], terms: ["自由", "理性"], type: "single",
+    keys: ["唯物史観"],
     question: "ヘーゲルが世界史をどのようなものとして捉えたか、最も適切なものは？",
     choices: [
       "偶然の出来事が連なるだけで、そこに法則や方向はない",
@@ -1032,6 +1069,7 @@ const QUESTIONS = [
   {
     id: "q043",
     philosophers: ["ホッブズ", "ルソー", "カント"], terms: ["自由"], type: "compare",
+    keys: ["一般意志", "消極的自由", "積極的自由"],
     question: "自由の捉え方の組み合わせとして正しいものは？",
     choices: [
       "ホッブズ＝外的障害の不在／ルソー＝一般意志への参加／カント＝自ら立てた法則への服従",
@@ -1051,6 +1089,7 @@ const QUESTIONS = [
   {
     id: "q044",
     philosophers: ["プラトン"], terms: ["理性"], type: "single",
+    keys: ["魂の三分"],
     question: "プラトンの魂の三分説と国家の三階層の対応として正しいものは？",
     choices: [
       "理性・気概・欲望が、統治者・防衛者・生産者に対応する",
@@ -1075,6 +1114,7 @@ const QUESTIONS = [
   {
     id: "q045",
     philosophers: ["アリストテレス"], terms: ["幸福"], type: "single",
+    keys: ["エウダイモニア", "中庸", "観想", "徳倫理"],
     question: "アリストテレスの幸福（エウダイモニア）として最も適切なものは？",
     choices: [
       "快楽が苦痛を上回っている心の状態であること",
@@ -1098,6 +1138,7 @@ const QUESTIONS = [
   {
     id: "q046",
     philosophers: ["アリストテレス", "ベンサム"], terms: ["幸福", "功利主義"], type: "compare",
+    keys: ["エウダイモニア", "快苦"],
     question: "幸福の捉え方について、アリストテレスとベンサムの違いとして最も適切なものは？",
     choices: [
       "アリストテレスは徳に基づく活動として、ベンサムは快楽の量として捉えた",
@@ -1121,6 +1162,7 @@ const QUESTIONS = [
   {
     id: "q047",
     philosophers: ["デカルト", "ロック"], terms: ["理性"], type: "compare",
+    keys: ["生得観念", "タブラ・ラサ"],
     question: "生得観念をめぐるデカルトとロックの違いとして最も適切なものは？",
     choices: [
       "デカルトは生得観念を認め、ロックは心を白紙とみて観念は経験に由来するとした",
@@ -1140,6 +1182,7 @@ const QUESTIONS = [
   {
     id: "q048",
     philosophers: ["ロック"], terms: ["実体"], type: "single",
+    keys: ["一次性質", "知覚されること"],
     question: "ロックが実体についてとった立場として最も適切なものは？",
     choices: [
       "実体の本性は理性によって明晰に認識できるとした",
@@ -1163,6 +1206,7 @@ const QUESTIONS = [
   {
     id: "q049",
     philosophers: ["ヒューム"], terms: ["理性"], type: "single",
+    keys: ["是と当為", "自然主義的誤謬"],
     question: "ヒュームの「理性は情念の奴隷である」という主張の意味として最も適切なものは？",
     choices: [
       "理性は情念より劣った能力なので、用いるべきではない",
@@ -1186,6 +1230,7 @@ const QUESTIONS = [
   {
     id: "q050",
     philosophers: ["ホッブズ", "ロック", "ルソー"], terms: ["社会契約", "自由"], type: "compare",
+    keys: ["主権者", "信託"],
     question: "社会契約によって権利がどこへ向かうかの組み合わせとして正しいものは？",
     choices: [
       "ホッブズ＝主権者へ譲渡／ロック＝政府へ信託／ルソー＝共同体全体へ譲渡",
@@ -1209,6 +1254,7 @@ const QUESTIONS = [
   {
     id: "q051",
     philosophers: ["バーリン"], terms: ["自由"], type: "single",
+    keys: ["消極的自由", "積極的自由"],
     question: "バーリンの「二つの自由概念」の区別として最も適切なものは？",
     choices: [
       "経済的な自由と政治的な自由とを分けるための区別",
@@ -1232,6 +1278,7 @@ const QUESTIONS = [
   {
     id: "q052",
     philosophers: ["バーリン"], terms: ["自由", "正義"], type: "single",
+    keys: ["価値多元主義"],
     question: "バーリンの価値多元主義の説明として最も適切なものは？",
     choices: [
       "どの価値観も等しく正しいので、優劣を論じることはできない",
@@ -1255,6 +1302,7 @@ const QUESTIONS = [
   {
     id: "q053",
     philosophers: ["バーリン"], terms: ["理性"], type: "single",
+    keys: ["ハリネズミ", "価値多元主義"],
     question: "バーリンが「ハリネズミと狐」で用いた区別として最も適切なものは？",
     choices: [
       "理想主義者と現実主義者という、態度による区別",
@@ -1277,6 +1325,7 @@ const QUESTIONS = [
   {
     id: "q054",
     philosophers: ["バーリン", "ベンサム"], terms: ["自由", "功利主義"], type: "compare",
+    keys: ["快苦"],
     question: "価値の扱い方について、バーリンとベンサムの違いとして最も適切なものは？",
     choices: [
       "ベンサムは快苦という単一の尺度に還元し、バーリンは複数の価値は還元できないとした",
@@ -1300,6 +1349,7 @@ const QUESTIONS = [
   {
     id: "q055",
     philosophers: ["バーリン", "ルソー"], terms: ["自由"], type: "single",
+    keys: ["消極的自由", "積極的自由", "一般意志"],
     question: "ルソーの自由論に対するバーリンの評価として最も適切なものは？",
     choices: [
       "消極的自由を代表する理論であるとして高く評価した",
@@ -1323,6 +1373,7 @@ const QUESTIONS = [
   {
     id: "q056",
     philosophers: ["プラトン"], terms: ["イデア", "理性"], type: "single",
+    keys: ["想起説", "アナムネーシス", "想起"],
     question: "プラトンの想起説（アナムネーシス）として最も適切なものは？",
     choices: [
       "知識は感覚経験を積み重ねることで新たに獲得される",
@@ -1364,6 +1415,7 @@ const QUESTIONS = [
   {
     id: "q058",
     philosophers: ["ホッブズ"], terms: ["自然状態", "自由"], type: "single",
+    keys: ["自己保存", "自然権", "主権"],
     question: "ホッブズにおける自然権と自然法の関係として最も適切なものは？",
     choices: [
       "自然権も自然法も、ともに人を拘束する義務であり、破れば罰を受ける点で違いはないとされる",
@@ -1388,6 +1440,7 @@ const QUESTIONS = [
   {
     id: "q059",
     philosophers: ["デカルト"], terms: ["神", "存在"], type: "single",
+    keys: ["明晰判明", "コギト"],
     question: "デカルトが神の存在証明を必要とした理由として最も適切なものは？",
     choices: [
       "信仰を理性によって裏づけ、教会の教義を擁護するため",
@@ -1411,6 +1464,7 @@ const QUESTIONS = [
   {
     id: "q060",
     philosophers: ["スピノザ"], terms: ["自由", "幸福"], type: "single",
+    keys: ["コナトゥス", "自己保存", "主権"],
     question: "スピノザのコナトゥスの説明として最も適切なものは？",
     choices: [
       "神が世界に与えた究極の目的のこと",
@@ -1457,6 +1511,7 @@ const QUESTIONS = [
   {
     id: "q062",
     philosophers: ["ライプニッツ"], terms: ["神", "理性"], type: "single",
+    keys: ["十分理由律", "不可識別者"],
     question: "ライプニッツの十分理由律の説明として最も適切なものは？",
     choices: [
       "すべての命題は矛盾律だけで真偽を決められるとする",
@@ -1480,6 +1535,7 @@ const QUESTIONS = [
   {
     id: "q063",
     philosophers: ["ヒューム"], terms: ["因果"], type: "single",
+    keys: ["印象と観念"],
     question: "ヒュームの印象と観念の区別として最も適切なものは？",
     choices: [
       "印象は生得的なもので、観念は経験から来るものである",
@@ -1503,6 +1559,7 @@ const QUESTIONS = [
   {
     id: "q064",
     philosophers: ["ルソー"], terms: ["自然状態", "自由"], type: "single",
+    keys: ["自己愛"],
     question: "ルソーの自己愛と利己心の区別として最も適切なものは？",
     choices: [
       "自己愛は克服すべき悪徳であり、利己心は活力を生む美徳であるという区別",
@@ -1525,6 +1582,7 @@ const QUESTIONS = [
   {
     id: "q065",
     philosophers: ["カント"], terms: ["理性"], type: "single",
+    keys: ["アンチノミー"],
     question: "カントのアンチノミー（二律背反）の説明として最も適切なものは？",
     choices: [
       "経験による観察が理論と食い違ってしまう現象",
@@ -1570,6 +1628,7 @@ const QUESTIONS = [
   {
     id: "q067",
     philosophers: ["ヘーゲル"], terms: ["弁証法", "自由"], type: "single",
+    keys: ["主人と奴隷", "承認をめぐる闘争"],
     question: "ヘーゲルの主人と奴隷の弁証法として最も適切なものは？",
     choices: [
       "奴隷が反乱を起こして主人を打倒する過程を描いたもの",
@@ -1592,6 +1651,7 @@ const QUESTIONS = [
   {
     id: "q068",
     philosophers: ["ヘーゲル"], terms: ["自由", "正義"], type: "single",
+    keys: ["人倫"],
     question: "ヘーゲルの人倫の三段階として正しいものは？",
     choices: [
       "家族・市民社会・国家",
@@ -1660,6 +1720,7 @@ const QUESTIONS = [
   {
     id: "q071",
     philosophers: ["プラトン"], terms: ["イデア"], type: "single",
+    keys: ["カタルシス"],
     question: "『国家』でプラトンが詩人を追放すべきとした理由として最も適切なものは？",
     choices: [
       "詩は感情を解放して魂を浄化するため、統治に必要な節度を失わせるから",
@@ -1704,6 +1765,7 @@ const QUESTIONS = [
   {
     id: "q073",
     philosophers: ["アリストテレス"], terms: ["因果"], type: "single",
+    keys: ["形相", "質料", "四原因説", "可能態", "現実態"],
     question: "アリストテレスの四原因説の組み合わせとして正しいものは？",
     choices: [
       "質料因・形相因・可能態・現実態",
@@ -1727,6 +1789,7 @@ const QUESTIONS = [
   {
     id: "q074",
     philosophers: ["アリストテレス"], terms: ["正義", "自然状態"], type: "single",
+    keys: ["ポリス的動物", "負荷なき自己"],
     question: "アリストテレスが人間を「ポリス的動物」と呼んだ意味として最も適切なものは？",
     choices: [
       "人間は本来孤立して生きているが、安全のために契約を結んで社会を作る",
@@ -1746,6 +1809,7 @@ const QUESTIONS = [
   {
     id: "q075",
     philosophers: ["ホッブズ"], terms: ["社会契約"], type: "single",
+    keys: ["主権", "主権者"],
     question: "ホッブズが主権について主張したこととして最も適切なものは？",
     choices: [
       "主権は立法・行政・司法に分けて相互に抑制させるべきである",
@@ -1792,6 +1856,7 @@ const QUESTIONS = [
   {
     id: "q077",
     philosophers: ["デカルト"], terms: ["理性"], type: "single",
+    keys: ["明晰判明"],
     question: "デカルトの言う明晰かつ判明な認識として最も適切なものは？",
     choices: [
       "多くの人が同意しており、伝統によっても長く認められてきた認識",
@@ -1814,6 +1879,7 @@ const QUESTIONS = [
   {
     id: "q078",
     philosophers: ["スピノザ"], terms: ["自由", "神"], type: "single",
+    keys: ["主権者", "寛容"],
     question: "『神学政治論』でスピノザが主張したこととして最も適切なものは？",
     choices: [
       "聖書は神の言葉として一字一句が字義通りに真であり、理性による吟味を超えている",
@@ -1837,6 +1903,7 @@ const QUESTIONS = [
   {
     id: "q079",
     philosophers: ["ロック"], terms: ["自由"], type: "single",
+    keys: ["寛容"],
     question: "ロックの『寛容についての書簡』の主張として最も適切なものは？",
     choices: [
       "国家はすべての信仰と無信仰を等しく扱い、いかなる例外も設けるべきではない",
@@ -1859,6 +1926,7 @@ const QUESTIONS = [
   {
     id: "q080",
     philosophers: ["ライプニッツ"], terms: ["理性"], type: "single",
+    keys: ["微小表象", "モナド"],
     question: "ライプニッツの微小表象（微小知覚）の説明として最も適切なものは？",
     choices: [
       "意識されない微小な知覚が無数にあり、集まって意識される知覚になる",
@@ -1905,6 +1973,7 @@ const QUESTIONS = [
   {
     id: "q082",
     philosophers: ["ヒューム"], terms: ["理性", "正義"], type: "single",
+    keys: ["共感"],
     question: "ヒュームの道徳論として最も適切なものは？",
     choices: [
       "道徳的な性質は行為そのものに客観的に備わっており、理性によって発見される",
@@ -1966,6 +2035,7 @@ const QUESTIONS = [
   {
     id: "q085",
     philosophers: ["カント"], terms: ["理性", "因果"], type: "single",
+    keys: ["物自体", "アプリオリ", "カテゴリー"],
     question: "カントの「内容なき思想は空虚であり、概念なき直観は盲目である」という言葉の意味として最も適切なものは？",
     choices: [
       "感性は概念を与え、悟性は直観を与えるので、両者は互いに補い合う",
@@ -2004,6 +2074,7 @@ const QUESTIONS = [
   {
     id: "q087",
     philosophers: ["バーリン"], terms: ["自由", "理性"], type: "single",
+    keys: ["価値多元主義"],
     question: "バーリンが歴史における必然性の主張を批判した理由として最も適切なものは？",
     choices: [
       "歴史には法則がまったく存在せず、すべては偶然だから",
@@ -2050,6 +2121,7 @@ const QUESTIONS = [
   {
     id: "q089",
     philosophers: ["スピノザ", "ロック"], terms: ["自由", "神"], type: "compare",
+    keys: ["寛容"],
     question: "寛容についてのスピノザとロックの違いとして最も適切なものは？",
     choices: [
       "スピノザは寛容を国家の目的から導いたが、ロックは国家と教会の役割の区別から導いた",
@@ -2096,6 +2168,7 @@ const QUESTIONS = [
   {
     id: "q091",
     philosophers: ["プラトン"], terms: ["イデア", "理性"], type: "single",
+    keys: ["線分", "善のイデア", "洞窟の比喩", "洞窟"],
     question: "『国家』の線分の比喩が示す認識の四段階として正しいものは？",
     choices: [
       "感覚・記憶・経験・技術という、経験の積み重ねによる段階",
@@ -2115,6 +2188,7 @@ const QUESTIONS = [
   {
     id: "q092",
     philosophers: ["プラトン"], terms: ["イデア", "正義"], type: "single",
+    keys: ["哲人統治", "善のイデア", "開かれた社会"],
     question: "プラトンの哲人統治の主張として最も適切なものは？",
     choices: [
       "最も徳の高い多数者が集まって議論し、合議によって統治すべきである",
@@ -2138,6 +2212,7 @@ const QUESTIONS = [
   {
     id: "q093",
     philosophers: ["プラトン"], terms: ["イデア"], type: "single",
+    keys: ["第三人間論"],
     question: "対話篇『パルメニデス』におけるイデア論の扱いとして最も適切なものは？",
     choices: [
       "イデア論が完成された形で提示され、あらゆる反論に答えている",
@@ -2160,6 +2235,7 @@ const QUESTIONS = [
   {
     id: "q094",
     philosophers: ["アリストテレス"], terms: ["理性"], type: "single",
+    keys: ["三段論法"],
     question: "アリストテレスが創始した三段論法の特徴として最も適切なものは？",
     choices: [
       "個々の事例を集めて一般法則を導き出す推論の形式である",
@@ -2182,6 +2258,7 @@ const QUESTIONS = [
   {
     id: "q095",
     philosophers: ["アリストテレス"], terms: ["神", "因果", "存在"], type: "single",
+    keys: ["形相", "不動の動者"],
     question: "アリストテレスの不動の動者の説明として最も適切なものは？",
     choices: [
       "世界を無から創造し、人間に啓示を与える人格的な神である",
@@ -2226,6 +2303,7 @@ const QUESTIONS = [
   {
     id: "q097",
     philosophers: ["デカルト"], terms: ["実体"], type: "single",
+    keys: ["松果腺"],
     question: "デカルトが心身の関係についてとった立場として最も適切なものは？",
     choices: [
       "精神と身体は並行して進むだけで、たがいに作用することはない",
@@ -2248,6 +2326,7 @@ const QUESTIONS = [
   {
     id: "q098",
     philosophers: ["スピノザ"], terms: ["理性", "自由"], type: "single",
+    keys: ["知的愛", "第三種"],
     question: "スピノザの三種の認識として正しいものは？",
     choices: [
       "感性・悟性・理性という三つの能力にもとづく段階",
@@ -2271,6 +2350,7 @@ const QUESTIONS = [
   {
     id: "q099",
     philosophers: ["ライプニッツ"], terms: ["実体", "理性"], type: "single",
+    keys: ["不可識別者", "十分理由律"],
     question: "ライプニッツの不可識別者同一の原理として最も適切なものは？",
     choices: [
       "同一のものは、あらゆる性質を共有しているとする",
@@ -2317,6 +2397,7 @@ const QUESTIONS = [
   {
     id: "q101",
     philosophers: ["ヒューム"], terms: ["因果", "理性"], type: "single",
+    keys: ["帰納", "反証"],
     question: "ヒュームが提起した帰納の問題として最も適切なものは？",
     choices: [
       "帰納は演繹より確実性が低いが、確率計算によって正当化できる",
@@ -2409,6 +2490,7 @@ const QUESTIONS = [
   {
     id: "q105",
     philosophers: ["カント"], terms: ["正義", "理性"], type: "single",
+    keys: ["定言命法", "他者危害原則"],
     question: "カントの定言命法の人間性の定式として最も適切なものは？",
     choices: [
       "人格をけっして手段として扱ってはならないこと",
@@ -2428,6 +2510,7 @@ const QUESTIONS = [
   {
     id: "q106",
     philosophers: ["カント"], terms: ["理性", "幸福"], type: "single",
+    keys: ["判断力", "崇高"],
     question: "カントの『判断力批判』における美の説明として最も適切なものは？",
     choices: [
       "美とは対象がもたらす快楽の量が多いことである",
@@ -2450,6 +2533,7 @@ const QUESTIONS = [
   {
     id: "q107",
     philosophers: ["ヘーゲル"], terms: ["弁証法", "理性"], type: "single",
+    keys: ["絶対精神", "人倫"],
     question: "ヘーゲルの絶対精神の三つの段階として正しいものは？",
     choices: [
       "家族・市民社会・国家",
@@ -2473,6 +2557,7 @@ const QUESTIONS = [
   {
     id: "q108",
     philosophers: ["バーリン"], terms: ["理性", "自由"], type: "single",
+    keys: ["価値多元主義"],
     question: "バーリンが反啓蒙の思想家たちに注目した理由として最も適切なものは？",
     choices: [
       "啓蒙の理性主義を全面的に否定し、伝統への回帰を主張するため",
@@ -2496,6 +2581,7 @@ const QUESTIONS = [
   {
     id: "q109",
     philosophers: ["プラトン", "スピノザ"], terms: ["理性"], type: "compare",
+    keys: ["様態", "第三種"],
     question: "認識の段階づけについて、プラトンとスピノザの違いとして最も適切なものは？",
     choices: [
       "プラトンはイデアへ上昇する道筋を、スピノザは神を通して本質へ至る道筋を描いた",
@@ -2519,6 +2605,7 @@ const QUESTIONS = [
   {
     id: "q110",
     philosophers: ["カント", "バーリン"], terms: ["理性", "自由"], type: "compare",
+    keys: ["重なり合う合意"],
     question: "理性への信頼について、カントとバーリンの違いとして最も適切なものは？",
     choices: [
       "カントは理性が普遍的な道徳法則を示すとし、バーリンは理性による調停を認めなかった",
@@ -2565,6 +2652,7 @@ const QUESTIONS = [
   {
     id: "q112",
     philosophers: ["ミル"], terms: ["自由"], type: "single",
+    keys: ["他者危害原則"],
     question: "ミルの他者危害原則として最も適切なものは？",
     choices: [
       "他人に危害を加えない限り干渉してはならず、本人の利益は理由にならない",
@@ -2632,6 +2720,7 @@ const QUESTIONS = [
   {
     id: "q115",
     philosophers: ["ミル"], terms: ["自由", "幸福"], type: "single",
+    keys: ["個性"],
     question: "ミルが個性を重視した理由として最も適切なものは？",
     choices: [
       "個性は伝統的な慣習を守っていくために必要だから",
@@ -2678,6 +2767,7 @@ const QUESTIONS = [
   {
     id: "q117",
     philosophers: ["ミル"], terms: ["功利主義", "理性"], type: "single",
+    keys: ["功利原理", "自然主義的誤謬"],
     question: "ミルによる功利原理の「証明」に対して向けられた代表的な批判として最も適切なものは？",
     choices: [
       "望ましいという語を、望まれているという事実から導いている",
@@ -2724,6 +2814,7 @@ const QUESTIONS = [
   {
     id: "q119",
     philosophers: ["ベンサム", "ミル"], terms: ["功利主義", "幸福"], type: "compare",
+    keys: ["功利原理"],
     question: "功利主義について、ベンサムとミルの違いとして最も適切なものは？",
     choices: [
       "ベンサムは快楽を量として扱ったが、ミルは快楽に質の差を認めた",
@@ -2746,6 +2837,7 @@ const QUESTIONS = [
   {
     id: "q120",
     philosophers: ["ルソー", "ミル"], terms: ["自由", "社会契約"], type: "compare",
+    keys: ["一般意志"],
     question: "民主的な社会における個人について、ルソーとミルの違いとして最も適切なものは？",
     choices: [
       "ルソーは一般意志への参加に自由を見たが、ミルは干渉されない領域の確保を求めた",
@@ -2765,6 +2857,7 @@ const QUESTIONS = [
   {
     id: "q121",
     philosophers: ["ミル", "バーリン"], terms: ["自由"], type: "compare",
+    keys: ["消極的自由", "積極的自由"],
     question: "自由の捉え方について、ミルとバーリンの関係として最も適切なものは？",
     choices: [
       "バーリンはミルを、積極的自由の代表格として厳しく批判した",
@@ -2788,6 +2881,7 @@ const QUESTIONS = [
   {
     id: "q122",
     philosophers: ["カント", "ミル"], terms: ["理性", "正義"], type: "compare",
+    keys: ["他者危害原則"],
     question: "行為への介入の基準について、カントとミルの違いとして最も適切なものは？",
     choices: [
       "カントは原則の普遍化が可能かを問い、ミルは他人への危害の有無を問うた",
@@ -2811,6 +2905,7 @@ const QUESTIONS = [
   {
     id: "q123",
     philosophers: ["ショーペンハウアー"], terms: ["意志", "理性"], type: "single",
+    keys: ["表象", "意志と表象", "物自体", "個体化"],
     question: "ショーペンハウアーの「意志と表象としての世界」の主張として最も適切なものは？",
     choices: [
       "世界の本体は理性的な精神であり、歴史のうちに自らを展開していく",
@@ -2834,6 +2929,7 @@ const QUESTIONS = [
   {
     id: "q124",
     philosophers: ["ショーペンハウアー"], terms: ["意志", "幸福"], type: "single",
+    keys: ["同情", "一般意志"],
     question: "ショーペンハウアーが説いた苦悩からの解放の道として最も適切なものは？",
     choices: [
       "理性によって情念を統御し、必然性のほうを認識すること",
@@ -2857,6 +2953,7 @@ const QUESTIONS = [
   {
     id: "q125",
     philosophers: ["ショーペンハウアー", "カント"], terms: ["理性", "意志"], type: "compare",
+    keys: ["物自体", "表象"],
     question: "物自体の扱いについて、カントとショーペンハウアーの違いとして最も適切なものは？",
     choices: [
       "カントは物自体を認識できないものとして残したが、ショーペンハウアーはそれを意志と同定した",
@@ -2879,6 +2976,7 @@ const QUESTIONS = [
   {
     id: "q126",
     philosophers: ["ショーペンハウアー", "カント"], terms: ["正義", "理性"], type: "compare",
+    keys: ["同情", "個体化", "表象"],
     question: "道徳の基礎について、カントとショーペンハウアーの違いとして最も適切なものは？",
     choices: [
       "カントは他者への同情を、ショーペンハウアーは理性が命じる義務を基礎に置いた",
@@ -2902,6 +3000,7 @@ const QUESTIONS = [
   {
     id: "q127",
     philosophers: ["キルケゴール"], terms: ["実存"], type: "single",
+    keys: ["実存の三段階", "単独者", "絶望", "あれか"],
     question: "キルケゴールの実存の三段階として正しいものは？",
     choices: [
       "感性的段階・悟性的段階・理性的段階",
@@ -2925,6 +3024,7 @@ const QUESTIONS = [
   {
     id: "q128",
     philosophers: ["キルケゴール"], terms: ["実存"], type: "single",
+    keys: ["絶望"],
     question: "『死に至る病』における絶望の説明として最も適切なものは？",
     choices: [
       "死に至る病とは肉体の病であり、絶望はその症状にすぎない",
@@ -2947,6 +3047,7 @@ const QUESTIONS = [
   {
     id: "q129",
     philosophers: ["キルケゴール", "ヘーゲル"], terms: ["実存", "理性"], type: "single",
+    keys: ["あれか"],
     question: "キルケゴールのヘーゲル批判として最も適切なものは？",
     choices: [
       "ヘーゲルの体系は歴史を扱っておらず、現実から遊離しているという批判",
@@ -2970,6 +3071,7 @@ const QUESTIONS = [
   {
     id: "q130",
     philosophers: ["キルケゴール"], terms: ["実存", "神", "正義"], type: "single",
+    keys: ["単独者", "人倫"],
     question: "『おそれとおののき』で論じられる倫理的なものの目的論的停止として最も適切なものは？",
     choices: [
       "倫理は宗教より上位にあるため、信仰は倫理の枠内に収まらねばならない",
@@ -2992,6 +3094,7 @@ const QUESTIONS = [
   {
     id: "q131",
     philosophers: ["フォイエルバッハ"], terms: ["神", "疎外"], type: "single",
+    keys: ["投影", "人間学", "絶対精神"],
     question: "フォイエルバッハの宗教論として最も適切なものは？",
     choices: [
       "神は人間が理性によって到達することのできる最高の実在である",
@@ -3014,6 +3117,7 @@ const QUESTIONS = [
   {
     id: "q132",
     philosophers: ["マルクス"], terms: ["弁証法", "自由"], type: "single",
+    keys: ["上部構造", "唯物史観"],
     question: "マルクスの唯物史観の説明として最も適切なものは？",
     choices: [
       "歴史は自由の意識が進展していく過程であり、精神が自らを実現していく",
@@ -3079,6 +3183,7 @@ const QUESTIONS = [
   {
     id: "q135",
     philosophers: ["ニーチェ"], terms: ["神"], type: "single",
+    keys: ["神は死んだ", "投影", "投影説"],
     question: "ニーチェの「神は死んだ」という言葉の意味として最も適切なものは？",
     choices: [
       "宗教は科学によって論駁され、無神論が正しいと証明されたということ",
@@ -3098,6 +3203,7 @@ const QUESTIONS = [
   {
     id: "q136",
     philosophers: ["ニーチェ"], terms: ["意志"], type: "single",
+    keys: ["力への意志"],
     question: "ニーチェの力への意志として最も適切なものは？",
     choices: [
       "他人を支配し、政治的な権力を握ろうとする欲求",
@@ -3121,6 +3227,7 @@ const QUESTIONS = [
   {
     id: "q137",
     philosophers: ["ニーチェ"], terms: ["正義", "幸福"], type: "single",
+    keys: ["ルサンチマン", "共感", "系譜学", "奴隷道徳"],
     question: "『道徳の系譜』におけるルサンチマンと道徳の関係として最も適切なものは？",
     choices: [
       "道徳は理性が普遍的に導き出すものであり、歴史とは無関係である",
@@ -3145,6 +3252,7 @@ const QUESTIONS = [
   {
     id: "q138",
     philosophers: ["ニーチェ"], terms: ["実存", "幸福"], type: "single",
+    keys: ["永劫回帰"],
     question: "ニーチェの永劫回帰の思想として最も適切なものは？",
     choices: [
       "歴史は循環しており、同じ出来事が繰り返されるという宇宙論的な事実の主張にとどまる",
@@ -3167,6 +3275,7 @@ const QUESTIONS = [
   {
     id: "q139",
     philosophers: ["ヘーゲル", "マルクス"], terms: ["弁証法"], type: "compare",
+    keys: ["唯物史観"],
     question: "弁証法について、ヘーゲルとマルクスの違いとして最も適切なものは？",
     choices: [
       "ヘーゲルは物質的な生産の矛盾の運動として捉え、マルクスは理念の自己展開として捉え直した",
@@ -3189,6 +3298,7 @@ const QUESTIONS = [
   {
     id: "q140",
     philosophers: ["ショーペンハウアー", "ニーチェ"], terms: ["意志"], type: "compare",
+    keys: ["永劫回帰"],
     question: "意志の扱いについて、ショーペンハウアーとニーチェの違いとして最も適切なものは？",
     choices: [
       "ショーペンハウアーは意志の否定に救済を見たが、ニーチェは意志と生を肯定した",
@@ -3212,6 +3322,7 @@ const QUESTIONS = [
   {
     id: "q141",
     philosophers: ["フォイエルバッハ", "マルクス", "ニーチェ"], terms: ["神", "疎外"], type: "compare",
+    keys: ["投影", "ルサンチマン", "人間学"],
     question: "宗教批判の組み合わせとして正しいものは？",
     choices: [
       "フォイエルバッハ＝本質の投影／マルクス＝現実への抗議／ニーチェ＝ルサンチマン",
@@ -3258,6 +3369,7 @@ const QUESTIONS = [
   {
     id: "q143",
     philosophers: ["ヘーゲル", "キルケゴール", "マルクス"], terms: ["弁証法", "実存"], type: "compare",
+    keys: ["単独者"],
     question: "ヘーゲルへの応答の組み合わせとして正しいものは？",
     choices: [
       "キルケゴール＝単独者の実存を対置／マルクス＝物質的生産へ動力を移す",
@@ -3281,6 +3393,7 @@ const QUESTIONS = [
   {
     id: "q144",
     philosophers: ["ロールズ"], terms: ["正義", "社会契約"], type: "single",
+    keys: ["無知のヴェール", "原初状態", "公正としての正義"],
     question: "ロールズの原初状態と無知のヴェールの説明として最も適切なものは？",
     choices: [
       "歴史上の未開社会を想定し、そこで実際に結ばれた契約を再現する試み",
@@ -3304,6 +3417,7 @@ const QUESTIONS = [
   {
     id: "q145",
     philosophers: ["ロールズ"], terms: ["正義", "自由"], type: "single",
+    keys: ["格差原理"],
     question: "ロールズの正義の二原理と、その優先順位として最も適切なものは？",
     choices: [
       "格差原理が第一に、平等な基本的自由が第二に置かれ、必要なら自由が制限される",
@@ -3327,6 +3441,7 @@ const QUESTIONS = [
   {
     id: "q146",
     philosophers: ["ロールズ"], terms: ["正義"], type: "single",
+    keys: ["格差原理"],
     question: "ロールズの格差原理として最も適切なものは？",
     choices: [
       "あらゆる不平等を撤廃し、完全な平等を実現すべきである",
@@ -3350,6 +3465,7 @@ const QUESTIONS = [
   {
     id: "q147",
     philosophers: ["ロールズ"], terms: ["正義", "理性"], type: "single",
+    keys: ["反照的均衡"],
     question: "ロールズの反照的均衡として最も適切なものは？",
     choices: [
       "原理を先に確立し、そこからすべての個別判断を演繹すること",
@@ -3372,6 +3488,7 @@ const QUESTIONS = [
   {
     id: "q148",
     philosophers: ["ロールズ"], terms: ["正義", "自由"], type: "single",
+    keys: ["重なり合う合意"],
     question: "『政治的リベラリズム』でロールズが提示した重なり合う合意として最も適切なものは？",
     choices: [
       "すべての市民が同一の世界観をもつように教育すべきだという主張",
@@ -3394,6 +3511,7 @@ const QUESTIONS = [
   {
     id: "q149",
     philosophers: ["ベンサム", "ミル", "ロールズ"], terms: ["正義", "功利主義"], type: "single",
+    keys: ["無知のヴェール"],
     question: "功利主義に対するロールズの根本的な批判として最も適切なものは？",
     choices: [
       "快楽を数量として測定する方法が確立していないという技術的な批判",
@@ -3417,6 +3535,7 @@ const QUESTIONS = [
   {
     id: "q150",
     philosophers: ["カント", "ロールズ"], terms: ["正義", "理性"], type: "compare",
+    keys: ["原初状態"],
     question: "カントとロールズの関係として最も適切なものは？",
     choices: [
       "ロールズは、自ら原理を選ぶという構造を原初状態という手続きに具体化した",
@@ -3436,6 +3555,7 @@ const QUESTIONS = [
   {
     id: "q151",
     philosophers: ["ノージック"], terms: ["正義"], type: "single",
+    keys: ["権原理論", "最小国家"],
     question: "ノージックの権原理論として最も適切なものは？",
     choices: [
       "分配の結果が一定の型に沿っているかどうかで正義を判定する",
@@ -3459,6 +3579,7 @@ const QUESTIONS = [
   {
     id: "q152",
     philosophers: ["ロールズ", "ノージック"], terms: ["正義", "自由"], type: "compare",
+    keys: ["最小国家", "格差原理"],
     question: "ロールズとノージックの対立点として最も適切なものは？",
     choices: [
       "ロールズは分配の結果を問い、ノージックは取得と移転の手続きを問うた",
@@ -3482,6 +3603,7 @@ const QUESTIONS = [
   {
     id: "q153",
     philosophers: ["サンデル"], terms: ["正義", "自由"], type: "single",
+    keys: ["負荷なき自己", "格差原理", "原初状態"],
     question: "サンデルによるロールズ批判の要点として最も適切なものは？",
     choices: [
       "ロールズの格差原理では再分配が不十分であるという批判",
@@ -3504,6 +3626,7 @@ const QUESTIONS = [
   {
     id: "q154",
     philosophers: ["フロイト"], terms: ["無意識"], type: "single",
+    keys: ["抑圧", "夢", "自由連想", "反証"],
     question: "フロイトの無意識の説明として最も適切なものは？",
     choices: [
       "ふだんは思い出せないが、努力すれば意識に上ってくる記憶の総体",
@@ -3527,6 +3650,7 @@ const QUESTIONS = [
   {
     id: "q155",
     philosophers: ["フロイト"], terms: ["無意識", "欲望"], type: "single",
+    keys: ["超自我", "想像界", "象徴界", "現実界", "欲動", "系譜学", "エディプス"],
     question: "フロイトの第二局所論における三つの審級として正しいものは？",
     choices: [
       "意識・前意識・無意識",
@@ -3549,6 +3673,7 @@ const QUESTIONS = [
   {
     id: "q156",
     philosophers: ["フロイト"], terms: ["無意識", "欲望"], type: "single",
+    keys: ["夢", "自由連想"],
     question: "フロイトの夢についての考えとして最も適切なものは？",
     choices: [
       "夢は日中の出来事が眠りのなかで無秩序に再生されたものにすぎない",
@@ -3568,6 +3693,7 @@ const QUESTIONS = [
   {
     id: "q157",
     philosophers: ["フロイト"], terms: ["無意識", "幸福"], type: "single",
+    keys: ["欲動", "超自我", "抑圧"],
     question: "『文化への不満』におけるフロイトの見方として最も適切なものは？",
     choices: [
       "文明の進歩によって人間は着実に幸福になっていくものである",
@@ -3591,6 +3717,7 @@ const QUESTIONS = [
   {
     id: "q158",
     philosophers: ["ニーチェ", "フロイト"], terms: ["無意識", "意志"], type: "single",
+    keys: ["夢"],
     question: "ニーチェとフロイトに共通する手つきとして最も適切なものは？",
     choices: [
       "意識に現れる理由をそのまま受け取らず、背後の力へ遡る点",
@@ -3614,6 +3741,7 @@ const QUESTIONS = [
   {
     id: "q159",
     philosophers: ["ラカン"], terms: ["無意識"], type: "single",
+    keys: ["鏡像段階", "超自我", "象徴界", "想像界"],
     question: "ラカンの鏡像段階の説明として最も適切なものは？",
     choices: [
       "幼児が鏡を見て他人と自分を区別できるようになる、認知発達上の一段階",
@@ -3636,6 +3764,7 @@ const QUESTIONS = [
   {
     id: "q160",
     philosophers: ["ラカン"], terms: ["無意識", "言語"], type: "single",
+    keys: ["夢", "シニフィアン", "シニフィエ"],
     question: "ラカンの「無意識は言語のように構造化されている」という主張として最も適切なものは？",
     choices: [
       "無意識のなかには言葉になっていない感情だけが渦巻いているという主張",
@@ -3658,6 +3787,7 @@ const QUESTIONS = [
   {
     id: "q161",
     philosophers: ["ラカン"], terms: ["無意識", "言語"], type: "single",
+    keys: ["象徴界", "想像界", "現実界", "父の名", "大文字の他者"],
     question: "ラカンの想像界・象徴界・現実界の説明として最も適切なものは？",
     choices: [
       "想像界は空想の世界、象徴界は言語の世界、現実界は客観的な物理的世界を指す",
@@ -3681,6 +3811,7 @@ const QUESTIONS = [
   {
     id: "q162",
     philosophers: ["ラカン"], terms: ["欲望", "無意識"], type: "single",
+    keys: ["欲望は他者", "対象a"],
     question: "ラカンの「人間の欲望は他者の欲望である」という言葉として最も適切なものは？",
     choices: [
       "人は他人が持っているものを羨んで欲しがるという、単純な模倣の指摘",
@@ -3700,6 +3831,7 @@ const QUESTIONS = [
   {
     id: "q163",
     philosophers: ["フロイト", "ラカン"], terms: ["無意識", "言語"], type: "compare",
+    keys: ["欲動"],
     question: "フロイトとラカンの関係として最も適切なものは？",
     choices: [
       "ラカンはフロイトの理論を否定し、意識の心理学へと回帰した",
@@ -3723,6 +3855,7 @@ const QUESTIONS = [
   {
     id: "q164",
     philosophers: ["フッサール"], terms: ["理性"], type: "single",
+    keys: ["志向性", "欲動", "ノエシス", "ノエマ"],
     question: "フッサールの志向性の説明として最も適切なものは？",
     choices: [
       "意識は何かをしようとする意図をもっているということ",
@@ -3745,6 +3878,7 @@ const QUESTIONS = [
   {
     id: "q165",
     philosophers: ["フッサール"], terms: ["理性"], type: "single",
+    keys: ["エポケー", "現象学的還元", "事象そのもの"],
     question: "フッサールの現象学的還元（エポケー）として最も適切なものは？",
     choices: [
       "外界は実在しないと主張して、独我論の立場をとること",
@@ -3769,6 +3903,7 @@ const QUESTIONS = [
   {
     id: "q166",
     philosophers: ["フッサール"], terms: ["理性"], type: "single",
+    keys: ["心理主義"],
     question: "フッサールが『論理学研究』で行った心理主義批判として最も適切なものは？",
     choices: [
       "論理法則は心理学に還元できるという主張への批判",
@@ -3791,6 +3926,7 @@ const QUESTIONS = [
   {
     id: "q167",
     philosophers: ["フッサール"], terms: ["理性", "身体"], type: "single",
+    keys: ["生活世界"],
     question: "フッサール後期の生活世界という概念として最も適切なものは？",
     choices: [
       "科学によって精密に記述されている客観的な世界のこと",
@@ -3813,6 +3949,7 @@ const QUESTIONS = [
   {
     id: "q168",
     philosophers: ["フッサール"], terms: ["他者"], type: "single",
+    keys: ["現存在"],
     question: "『デカルト的省察』でフッサールが取り組んだ他我の問題として最も適切なものは？",
     choices: [
       "他人の心は原理的に知りえないので、他者の存在を否定するほかないという結論",
@@ -3836,6 +3973,7 @@ const QUESTIONS = [
   {
     id: "q169",
     philosophers: ["ハイデガー"], terms: ["実存", "存在"], type: "single",
+    keys: ["存在論的差異", "現存在"],
     question: "ハイデガーの存在論的差異として最も適切なものは？",
     choices: [
       "現に存在するものと存在しないものとの区別",
@@ -3882,6 +4020,7 @@ const QUESTIONS = [
   {
     id: "q171",
     philosophers: ["ハイデガー"], terms: ["実存", "他者"], type: "single",
+    keys: ["頽落", "世人", "現存在"],
     question: "ハイデガーの「ひと（世人）」と頽落についての説明として最も適切なものは？",
     choices: [
       "大衆社会を批判し、教養ある少数者による指導を求める議論",
@@ -3901,6 +4040,7 @@ const QUESTIONS = [
   {
     id: "q172",
     philosophers: ["ハイデガー"], terms: ["実存", "時間"], type: "single",
+    keys: ["死へ", "現存在"],
     question: "ハイデガーの死への存在として最も適切なものは？",
     choices: [
       "死を恐れずに受け入れる心構えを説いた倫理的な教え",
@@ -3945,6 +4085,7 @@ const QUESTIONS = [
   {
     id: "q174",
     philosophers: ["フッサール", "ハイデガー"], terms: ["実存", "理性"], type: "compare",
+    keys: ["現存在"],
     question: "フッサールとハイデガーの違いとして最も適切なものは？",
     choices: [
       "フッサールは意識の記述から、ハイデガーは世界のうちの現存在の分析から出発した",
@@ -3968,6 +4109,7 @@ const QUESTIONS = [
   {
     id: "q175",
     philosophers: ["メルロ＝ポンティ"], terms: ["身体"], type: "single",
+    keys: ["生きられた", "両義性", "身体図式"],
     question: "メルロ＝ポンティの生きられた身体という考え方として最も適切なものは？",
     choices: [
       "身体は精神が操作する物体であり、生理学によって完全に記述できる",
@@ -3990,6 +4132,7 @@ const QUESTIONS = [
   {
     id: "q176",
     philosophers: ["メルロ＝ポンティ"], terms: ["身体", "理性"], type: "single",
+    keys: ["生活世界", "両義性"],
     question: "メルロ＝ポンティの知覚についての考えとして最も適切なものは？",
     choices: [
       "知覚は感覚データを受け取り、それを判断によって組み立てた結果である",
@@ -4035,6 +4178,7 @@ const QUESTIONS = [
   {
     id: "q178",
     philosophers: ["サルトル"], terms: ["実存", "自由"], type: "single",
+    keys: ["実存は本質に先立つ", "自己欺瞞", "自由の刑"],
     question: "サルトルの「実存は本質に先立つ」という主張として最も適切なものは？",
     choices: [
       "人間には生まれつき定まった本性があり、それに従って生きるべきである",
@@ -4057,6 +4201,7 @@ const QUESTIONS = [
   {
     id: "q179",
     philosophers: ["サルトル"], terms: ["他者"], type: "single",
+    keys: ["まなざし", "承認をめぐる闘争"],
     question: "サルトルのまなざしの分析として最も適切なものは？",
     choices: [
       "他者は私が推論によってその存在を証明すべき対象である",
@@ -4122,6 +4267,7 @@ const QUESTIONS = [
   {
     id: "q182",
     philosophers: ["ボーヴォワール"], terms: ["他者", "正義"], type: "single",
+    keys: ["女に生まれるのではない", "実存は本質に先立つ"],
     question: "ボーヴォワールの「人は女に生まれるのではない、女になる」という言葉として最も適切なものは？",
     choices: [
       "生物学的な性差はいっさい存在しないという主張",
@@ -4141,6 +4287,7 @@ const QUESTIONS = [
   {
     id: "q183",
     philosophers: ["ヘーゲル", "サルトル", "ボーヴォワール"], terms: ["他者"], type: "compare",
+    keys: ["承認をめぐる闘争", "まなざし"],
     question: "他者との関係についての三者の議論の組み合わせとして正しいものは？",
     choices: [
       "ヘーゲル＝承認をめぐる闘争／サルトル＝まなざしの対象化／ボーヴォワール＝他者の位置",
@@ -4164,6 +4311,7 @@ const QUESTIONS = [
   {
     id: "q184",
     philosophers: ["デカルト", "フッサール"], terms: ["理性"], type: "compare",
+    keys: ["方法的懐疑", "現象学的還元", "コギト"],
     question: "方法的懐疑と現象学的還元について、デカルトとフッサールの関係として最も適切なものは？",
     choices: [
       "フッサールはデカルトの方法を継承しつつ、思惟実体を残した点を批判した",
@@ -4183,6 +4331,7 @@ const QUESTIONS = [
   {
     id: "q185",
     philosophers: ["ハイデガー"], terms: ["実存", "存在"], type: "single",
+    keys: ["現存在", "被投性"],
     question: "ハイデガーの現存在（ダーザイン）として最も適切なものは？",
     choices: [
       "人間という生物種を生物学的に規定するための概念",
@@ -4206,6 +4355,7 @@ const QUESTIONS = [
   {
     id: "q186",
     philosophers: ["ハイデガー"], terms: ["実存", "身体", "存在"], type: "single",
+    keys: ["世界内存在", "現存在", "被投性", "気遣い", "頽落", "生きられた"],
     question: "ハイデガーの世界内存在として最も適切なものは？",
     choices: [
       "人間が空間としての世界の内部に物体として位置しているということ",
@@ -4228,6 +4378,7 @@ const QUESTIONS = [
   {
     id: "q187",
     philosophers: ["ソシュール"], terms: ["言語", "構造"], type: "single",
+    keys: ["恣意性", "シニフィアン", "シニフィエ"],
     question: "ソシュールの記号の恣意性として最も適切なものは？",
     choices: [
       "話し手が言葉の意味を自由に決められるということ",
@@ -4251,6 +4402,7 @@ const QUESTIONS = [
   {
     id: "q188",
     philosophers: ["ソシュール"], terms: ["言語", "差異", "構造"], type: "single",
+    keys: ["差異の体系", "言語的価値"],
     question: "ソシュールの「言語には差異しかない」という主張として最も適切なものは？",
     choices: [
       "言語ごとに文法が違うので、翻訳は不可能だということ",
@@ -4273,6 +4425,7 @@ const QUESTIONS = [
   {
     id: "q189",
     philosophers: ["ソシュール"], terms: ["言語", "構造"], type: "single",
+    keys: ["ラング", "パロール", "共時態"],
     question: "ソシュールのラングとパロールの区別として最も適切なものは？",
     choices: [
       "ラングは書き言葉、パロールは話し言葉を指すこと",
@@ -4296,6 +4449,7 @@ const QUESTIONS = [
   {
     id: "q190",
     philosophers: ["レヴィ＝ストロース"], terms: ["構造"], type: "single",
+    keys: ["親族"],
     question: "レヴィ＝ストロースの構造人類学の方法として最も適切なものは？",
     choices: [
       "未開社会の風習を、その社会の人々の意図や説明に即して理解すること",
@@ -4319,6 +4473,7 @@ const QUESTIONS = [
   {
     id: "q191",
     philosophers: ["レヴィ＝ストロース"], terms: ["構造", "理性"], type: "single",
+    keys: ["野生の思考", "ブリコラージュ"],
     question: "『野生の思考』におけるブリコラージュとして最も適切なものは？",
     choices: [
       "未開社会の人々が論理的思考をもたず、思いつきで行動することの比喩",
@@ -4365,6 +4520,7 @@ const QUESTIONS = [
   {
     id: "q193",
     philosophers: ["フーコー"], terms: ["構造", "理性"], type: "single",
+    keys: ["エピステーメー", "考古学"],
     question: "『言葉と物』におけるエピステーメーとして最も適切なものは？",
     choices: [
       "ある時代の人々が共有していた思想内容や世界観のこと",
@@ -4387,6 +4543,7 @@ const QUESTIONS = [
   {
     id: "q194",
     philosophers: ["フーコー"], terms: ["権力", "身体"], type: "single",
+    keys: ["規律権力", "パノプティコン"],
     question: "『監獄の誕生』におけるフーコーの規律権力の分析として最も適切なものは？",
     choices: [
       "権力は身体に苦痛を加えて見せることで支配を維持するという指摘",
@@ -4409,6 +4566,7 @@ const QUESTIONS = [
   {
     id: "q195",
     philosophers: ["フーコー"], terms: ["権力"], type: "single",
+    keys: ["言説"],
     question: "フーコーの権力についての考えとして最も適切なものは？",
     choices: [
       "権力は国家や支配階級が所有し、上から下へ行使する抑圧的な力である",
@@ -4431,6 +4589,7 @@ const QUESTIONS = [
   {
     id: "q196",
     philosophers: ["フーコー"], terms: ["権力", "身体"], type: "single",
+    keys: ["生権力", "規律権力", "剥き出しの生"],
     question: "フーコーの生権力（生政治）として最も適切なものは？",
     choices: [
       "生命を奪う権利としての、死をもたらす側の権力",
@@ -4453,6 +4612,7 @@ const QUESTIONS = [
   {
     id: "q197",
     philosophers: ["ベンサム", "フーコー"], terms: ["権力", "功利主義"], type: "compare",
+    keys: ["パノプティコン"],
     question: "パノプティコンについて、ベンサムとフーコーの扱いの違いとして最も適切なものは？",
     choices: [
       "ベンサムは合理的な施設として構想し、フーコーは権力が主体を作る様式として読み替えた",
@@ -4476,6 +4636,7 @@ const QUESTIONS = [
   {
     id: "q198",
     philosophers: ["ニーチェ", "フーコー"], terms: ["権力", "正義"], type: "compare",
+    keys: ["系譜学", "ルサンチマン", "自己への配慮"],
     question: "系譜学という方法について、ニーチェとフーコーの関係として最も適切なものは？",
     choices: [
       "フーコーはニーチェの系譜学を批判し、価値の起源を問う手法を退けた",
@@ -4500,6 +4661,7 @@ const QUESTIONS = [
   {
     id: "q199",
     philosophers: ["デリダ"], terms: ["差異", "言語"], type: "single",
+    keys: ["脱構築"],
     question: "デリダの脱構築として最も適切なものは？",
     choices: [
       "伝統的な思想を破壊して、無に帰してしまうこと",
@@ -4523,6 +4685,7 @@ const QUESTIONS = [
   {
     id: "q200",
     philosophers: ["デリダ"], terms: ["言語", "差異"], type: "single",
+    keys: ["音声中心主義", "現前", "エクリチュール"],
     question: "デリダの音声中心主義（ロゴス中心主義）批判として最も適切なものは？",
     choices: [
       "話し言葉よりも書き言葉のほうが優れているという主張",
@@ -4546,6 +4709,7 @@ const QUESTIONS = [
   {
     id: "q201",
     philosophers: ["デリダ"], terms: ["差異", "言語", "時間"], type: "single",
+    keys: ["差延", "現前の形而上学", "現前", "痕跡"],
     question: "デリダの差延（ディフェランス）として最も適切なものは？",
     choices: [
       "言語における意味の違いを指すための一般的な語",
@@ -4568,6 +4732,7 @@ const QUESTIONS = [
   {
     id: "q202",
     philosophers: ["フッサール", "デリダ"], terms: ["言語", "理性"], type: "single",
+    keys: ["現前"],
     question: "フッサールに対するデリダの批判として最も適切なものは？",
     choices: [
       "フッサールが経験を軽視し、論理のみを扱ったという批判",
@@ -4591,6 +4756,7 @@ const QUESTIONS = [
   {
     id: "q203",
     philosophers: ["ドゥルーズ"], terms: ["差異"], type: "single",
+    keys: ["永劫回帰"],
     question: "『差異と反復』におけるドゥルーズの主張として最も適切なものは？",
     choices: [
       "差異とは、あらかじめ存在する同一の何かどうしを比べたときに生じる二次的なものである",
@@ -4613,6 +4779,7 @@ const QUESTIONS = [
   {
     id: "q204",
     philosophers: ["ドゥルーズ", "ガタリ"], terms: ["構造", "差異"], type: "single",
+    keys: ["リゾーム", "エディプス"],
     question: "ドゥルーズとガタリのリゾームという概念として最も適切なものは？",
     choices: [
       "幹から枝へと階層的に分岐していく、秩序ある組織の比喩",
@@ -4636,6 +4803,7 @@ const QUESTIONS = [
   {
     id: "q205",
     philosophers: ["ラカン", "ドゥルーズ"], terms: ["欲望"], type: "compare",
+    keys: ["コナトゥス", "力への意志", "エディプス"],
     question: "欲望の捉え方について、ラカンとドゥルーズの違いとして最も適切なものは？",
     choices: [
       "ラカンは欲望を欠如として捉え、ドゥルーズは生産的な力として捉えた",
@@ -4660,6 +4828,7 @@ const QUESTIONS = [
   {
     id: "q206",
     philosophers: ["ドゥルーズ", "ガタリ"], terms: ["理性", "差異"], type: "single",
+    keys: ["概念の創造"],
     question: "『哲学とは何か』におけるドゥルーズとガタリの規定として最も適切なものは？",
     choices: [
       "哲学とは、真理について正しい命題を発見する営みである",
@@ -4682,6 +4851,7 @@ const QUESTIONS = [
   {
     id: "q207",
     philosophers: ["ソクラテス"], terms: ["理性"], type: "single",
+    keys: ["無知の知", "問答"],
     question: "ソクラテスのいわゆる「無知の知」として最も適切なものは？",
     choices: [
       "人間は何も知りえないので、判断を保留すべきであるという懐疑論",
@@ -4701,6 +4871,7 @@ const QUESTIONS = [
   {
     id: "q208",
     philosophers: ["ソクラテス"], terms: ["理性"], type: "single",
+    keys: ["産婆術"],
     question: "ソクラテスの産婆術（助産術）として最も適切なものは？",
     choices: [
       "自分の知識を体系的に講義して相手に伝える方法のこと",
@@ -4747,6 +4918,7 @@ const QUESTIONS = [
   {
     id: "q210",
     philosophers: ["ソクラテス"], terms: ["正義", "自由"], type: "single",
+    keys: ["魂への配慮"],
     question: "ソクラテスが脱獄を拒んだ理由について、『クリトン』の記述に即した理解として最も適切なものは？",
     choices: [
       "「悪法も法なり」と述べ、いかなる法にも従うべきだと主張したため",
@@ -4789,6 +4961,7 @@ const QUESTIONS = [
   {
     id: "q212",
     philosophers: ["マルクス"], terms: ["疎外", "権力"], type: "single",
+    keys: ["剰余価値"],
     question: "『資本論』における剰余価値の説明として最も適切なものは？",
     choices: [
       "資本家が商品を安く買って高く売ることによって得る差額のこと",
@@ -4812,6 +4985,7 @@ const QUESTIONS = [
   {
     id: "q213",
     philosophers: ["マルクス"], terms: ["疎外", "構造"], type: "single",
+    keys: ["物神性", "物象化"],
     question: "マルクスの商品の物神性（フェティシズム）として最も適切なものは？",
     choices: [
       "人々が高価な商品を過度に崇拝する消費社会の風潮のこと",
@@ -4835,6 +5009,7 @@ const QUESTIONS = [
   {
     id: "q214",
     philosophers: ["マルクス"], terms: ["権力", "弁証法"], type: "single",
+    keys: ["階級闘争"],
     question: "『共産党宣言』の冒頭で示される歴史観として最も適切なものは？",
     choices: [
       "これまでのあらゆる社会の歴史は、偉大な個人の事績の歴史である",
@@ -4856,6 +5031,7 @@ const QUESTIONS = [
   {
     id: "q215",
     philosophers: ["マルクス"], terms: ["疎外", "理性"], type: "single",
+    keys: ["イデオロギー", "ヘゲモニー", "呼びかけ"],
     question: "マルクスのイデオロギー論として最も適切なものは？",
     choices: [
       "政治的な主義主張の体系一般を指す中立的な概念",
@@ -4879,6 +5055,7 @@ const QUESTIONS = [
   {
     id: "q216",
     philosophers: ["サルトル"], terms: ["実存", "存在"], type: "single",
+    keys: ["対自", "即自"],
     question: "サルトルの即自存在と対自存在の区別として最も適切なものは？",
     choices: [
       "即自は物質、対自は精神を指し、両者は独立した二つの実体である",
@@ -4901,6 +5078,7 @@ const QUESTIONS = [
   {
     id: "q217",
     philosophers: ["サルトル"], terms: ["実存", "自由"], type: "single",
+    keys: ["自己欺瞞", "抑圧"],
     question: "サルトルの自己欺瞞（悪しき信仰）として最も適切なものは？",
     choices: [
       "他人を欺こうとして意図的に嘘をつきつづけること",
@@ -4923,6 +5101,7 @@ const QUESTIONS = [
   {
     id: "q218",
     philosophers: ["サルトル"], terms: ["実存", "他者", "自由"], type: "single",
+    keys: ["アンガジュマン"],
     question: "サルトルのアンガジュマンとして最も適切なものは？",
     choices: [
       "政治的な党派に所属して活動すること一般を指す語",
@@ -4947,6 +5126,7 @@ const QUESTIONS = [
   {
     id: "q219",
     philosophers: ["フロイト"], terms: ["無意識", "欲望"], type: "single",
+    keys: ["エディプス", "超自我", "抑圧", "父の名"],
     question: "フロイトのエディプス・コンプレックスとして最も適切なものは？",
     choices: [
       "子どもが親に反抗するようになる思春期の心理的傾向",
@@ -4971,6 +5151,7 @@ const QUESTIONS = [
   {
     id: "q220",
     philosophers: ["フロイト"], terms: ["無意識"], type: "single",
+    keys: ["抑圧", "転移", "自由連想"],
     question: "フロイトの抑圧と転移についての説明として最も適切なものは？",
     choices: [
       "抑圧とは意識的に感情を我慢すること、転移とは都合の悪い話題を別のものへ移してしまうことである",
@@ -4994,6 +5175,7 @@ const QUESTIONS = [
   {
     id: "q221",
     philosophers: ["フロイト"], terms: ["無意識", "意志"], type: "single",
+    keys: ["欲動", "夢"],
     question: "フロイトが後期に導入した死の欲動として最も適切なものは？",
     choices: [
       "死への恐怖が人間の行動を根本的に規定しているという主張",
@@ -5017,6 +5199,7 @@ const QUESTIONS = [
   {
     id: "q222",
     philosophers: ["カント"], terms: ["理性", "因果"], type: "single",
+    keys: ["カテゴリー", "因果批判", "アンチノミー"],
     question: "カントのカテゴリー（悟性の純粋概念）として最も適切なものは？",
     choices: [
       "経験を重ねるうちに帰納的に形成される一般概念のこと",
@@ -5039,6 +5222,7 @@ const QUESTIONS = [
   {
     id: "q223",
     philosophers: ["カント"], terms: ["理性", "因果"], type: "single",
+    keys: ["コペルニクス的転回", "物自体", "アプリオリ", "カテゴリー"],
     question: "カントのコペルニクス的転回として最も適切なものは？",
     choices: [
       "天文学の成果を哲学に応用し、人間を宇宙の中心から降ろしたこと",
@@ -5061,6 +5245,7 @@ const QUESTIONS = [
   {
     id: "q224",
     philosophers: ["カント"], terms: ["理性"], type: "single",
+    keys: ["アプリオリ", "ドグマ"],
     question: "カントのアプリオリな総合判断として最も適切なものは？",
     choices: [
       "主語の概念のうちにすでに含まれている内容を取り出す判断であり、経験を必要としない",
@@ -5084,6 +5269,7 @@ const QUESTIONS = [
   {
     id: "q225",
     philosophers: ["ニーチェ"], terms: ["実存", "意志"], type: "single",
+    keys: ["超人", "永劫回帰"],
     question: "ニーチェの超人（ユーバーメンシュ）として最も適切なものは？",
     choices: [
       "生物学的に優れた人種や、身体的に強靭な人間を指すこと",
@@ -5107,6 +5293,7 @@ const QUESTIONS = [
   {
     id: "q226",
     philosophers: ["ニーチェ"], terms: ["意志", "幸福"], type: "single",
+    keys: ["個体化"],
     question: "『悲劇の誕生』におけるアポロン的なものとディオニュソス的なものの対比として最も適切なものは？",
     choices: [
       "理性と感情の対比であり、前者を称揚して後者を退けたもの",
@@ -5130,6 +5317,7 @@ const QUESTIONS = [
   {
     id: "q227",
     philosophers: ["ニーチェ"], terms: ["理性", "差異"], type: "single",
+    keys: ["遠近法", "系譜学"],
     question: "ニーチェの遠近法主義（パースペクティヴィズム）として最も適切なものは？",
     choices: [
       "事実は存在せず、あらゆる主張は等しく妥当だという相対主義",
@@ -5150,6 +5338,7 @@ const QUESTIONS = [
   {
     id: "q228",
     philosophers: ["キルケゴール"], terms: ["実存", "他者"], type: "single",
+    keys: ["単独者", "水平化"],
     question: "キルケゴールの単独者と水平化についての考えとして最も適切なものは？",
     choices: [
       "人は孤立を避け、共同体のうちで生きるべきだという主張",
@@ -5174,6 +5363,7 @@ const QUESTIONS = [
   {
     id: "q229",
     philosophers: ["キルケゴール"], terms: ["実存", "自由"], type: "single",
+    keys: ["自由のめまい", "飛躍"],
     question: "『不安の概念』における不安として最も適切なものは？",
     choices: [
       "特定の危険な対象に対して生じる恐れのこと",
@@ -5197,6 +5387,7 @@ const QUESTIONS = [
   {
     id: "q230",
     philosophers: ["ショーペンハウアー"], terms: ["意志", "理性"], type: "single",
+    keys: ["表象", "個体化", "同情"],
     question: "ショーペンハウアーの個体化の原理として最も適切なものは？",
     choices: [
       "個々の人間が自分らしさを確立していく心理的な過程のこと",
@@ -5242,6 +5433,7 @@ const QUESTIONS = [
   {
     id: "q232",
     philosophers: ["デリダ", "ラカン"], terms: ["言語", "差異"], type: "single",
+    keys: ["エクリチュール", "差延"],
     question: "『絵葉書』などで展開されるデリダの郵便的な思考として最も適切なものは？",
     choices: [
       "通信技術の発達が思考のあり方を変えるという、メディア論的な主張",
@@ -5261,6 +5453,7 @@ const QUESTIONS = [
   {
     id: "q233",
     philosophers: ["デリダ", "ルソー"], terms: ["言語", "差異"], type: "single",
+    keys: ["代補", "脱構築"],
     question: "デリダの代補（サプルマン）という概念として最も適切なものは？",
     choices: [
       "不足を補うために外から付け加えられる、二次的で偶然的なもの",
@@ -5284,6 +5477,7 @@ const QUESTIONS = [
   {
     id: "q234",
     philosophers: ["デリダ"], terms: ["言語", "差異"], type: "single",
+    keys: ["脱構築"],
     question: "デリダの「テクストの外はない」という言葉について、より正確な理解として最も適切なものは？",
     choices: [
       "現実は存在せず、あるのは言葉だけだという観念論的な主張",
@@ -5303,6 +5497,7 @@ const QUESTIONS = [
   {
     id: "q235",
     philosophers: ["デカルト"], terms: ["理性", "実体"], type: "single",
+    keys: ["コギト", "欺く神", "三段論法"],
     question: "デカルトのコギト（我思う、ゆえに我あり）として最も適切なものは？",
     choices: [
       "考えることが人間の本質であり、思考をやめれば人間ではなくなるという主張",
@@ -5326,6 +5521,7 @@ const QUESTIONS = [
   {
     id: "q236",
     philosophers: ["ロック"], terms: ["理性"], type: "single",
+    keys: ["タブラ・ラサ"],
     question: "ロックのタブラ・ラサ（白紙）としての心の説明として最も適切なものは？",
     choices: [
       "心は生まれつき何の傾向ももたず、教育によって完全に決定されるという主張",
@@ -5350,6 +5546,7 @@ const QUESTIONS = [
   {
     id: "q237",
     philosophers: ["ロック"], terms: ["実体", "身体"], type: "single",
+    keys: ["一次性質"],
     question: "ロックの一次性質と二次性質の区別として最も適切なものは？",
     choices: [
       "一次性質は重要な性質、二次性質は付随的な性質という重要度の区別",
@@ -5374,6 +5571,7 @@ const QUESTIONS = [
   {
     id: "q238",
     philosophers: ["アリストテレス"], terms: ["幸福", "正義"], type: "single",
+    keys: ["中庸"],
     question: "アリストテレスの中庸として最も適切なものは？",
     choices: [
       "何事も控えめにして、極端な行為を避けるべきだという処世訓",
@@ -5397,6 +5595,7 @@ const QUESTIONS = [
   {
     id: "q239",
     philosophers: ["アリストテレス"], terms: ["因果"], type: "single",
+    keys: ["形相", "質料", "可能態", "現実態", "四原因説"],
     question: "アリストテレスの可能態（デュナミス）と現実態（エネルゲイア）として最も適切なものは？",
     choices: [
       "起こりうることと実際に起きたことという、確率的な区別",
@@ -5443,6 +5642,7 @@ const QUESTIONS = [
   {
     id: "q241",
     philosophers: ["ルソー"], terms: ["自然状態", "正義"], type: "single",
+    keys: ["自己愛"],
     question: "『人間不平等起源論』における不平等の起源についてのルソーの説明として最も適切なものは？",
     choices: [
       "人間には生まれつき能力の差があり、それがそのまま社会的な不平等になった",
@@ -5466,6 +5666,7 @@ const QUESTIONS = [
   {
     id: "q242",
     philosophers: ["ルソー"], terms: ["社会契約", "自由"], type: "single",
+    keys: ["一般意志"],
     question: "ルソーが代表制を否定した理由として最も適切なものは？",
     choices: [
       "代表を選ぶ選挙が買収によって歪められるから",
@@ -5489,6 +5690,7 @@ const QUESTIONS = [
   {
     id: "q243",
     philosophers: ["ドゥルーズ", "ガタリ"], terms: ["身体", "欲望"], type: "single",
+    keys: ["器官なき身体"],
     question: "ドゥルーズとガタリの器官なき身体として最も適切なものは？",
     choices: [
       "身体を否定し、精神のみの存在を目指すという主張",
@@ -5512,6 +5714,7 @@ const QUESTIONS = [
   {
     id: "q244",
     philosophers: ["ドゥルーズ", "ガタリ", "マルクス"], terms: ["構造", "権力"], type: "single",
+    keys: ["脱領土化"],
     question: "ドゥルーズとガタリの脱領土化として最も適切なものは？",
     choices: [
       "国家が領土を放棄することを指す地政学のうえでの概念",
@@ -5535,6 +5738,7 @@ const QUESTIONS = [
   {
     id: "q245",
     philosophers: ["ドゥルーズ", "スピノザ"], terms: ["実体", "神", "存在"], type: "single",
+    keys: ["内在の平面", "概念の創造"],
     question: "ドゥルーズがスピノザを高く評価した理由として最も適切なものは？",
     choices: [
       "スピノザが神の存在を、厳密に証明してみせたから",
@@ -5581,6 +5785,7 @@ const QUESTIONS = [
   {
     id: "q247",
     philosophers: ["フーコー"], terms: ["構造", "言語"], type: "single",
+    keys: ["言説"],
     question: "フーコーの言説（ディスクール）分析として最も適切なものは？",
     choices: [
       "誰が何を主張したかを思想家ごとに整理する方法",
@@ -5604,6 +5809,7 @@ const QUESTIONS = [
   {
     id: "q248",
     philosophers: ["フーコー"], terms: ["正義", "身体"], type: "single",
+    keys: ["自己への配慮"],
     question: "後期フーコーの自己への配慮という主題として最も適切なものは？",
     choices: [
       "自分の利益を優先すべきだという個人主義の擁護のこと",
@@ -5626,6 +5832,7 @@ const QUESTIONS = [
   {
     id: "q249",
     philosophers: ["レヴィ＝ストロース"], terms: ["構造", "他者"], type: "single",
+    keys: ["親族"],
     question: "『親族の基本構造』におけるインセスト・タブーの位置づけとして最も適切なものは？",
     choices: [
       "近親交配による遺伝的な不利益を避けるための、生物学的に説明できる規則",
@@ -5649,6 +5856,7 @@ const QUESTIONS = [
   {
     id: "q250",
     philosophers: ["レヴィ＝ストロース"], terms: ["構造", "言語"], type: "single",
+    keys: ["神話素"],
     question: "レヴィ＝ストロースの神話の構造分析として最も適切なものは？",
     choices: [
       "神話の物語の筋を要約し、その道徳的な教訓を読み取る方法",
@@ -5672,6 +5880,7 @@ const QUESTIONS = [
   {
     id: "q251",
     philosophers: ["メルロ＝ポンティ"], terms: ["身体", "他者"], type: "single",
+    keys: ["肉（シェール）"],
     question: "後期メルロ＝ポンティの肉（シェール）という概念として最も適切なものは？",
     choices: [
       "身体の物質的な組織を指すための生理学的な用語",
@@ -5695,6 +5904,7 @@ const QUESTIONS = [
   {
     id: "q252",
     philosophers: ["ノージック", "ベンサム"], terms: ["幸福", "功利主義"], type: "single",
+    keys: ["経験機械", "快苦"],
     question: "ノージックの経験機械という思考実験の狙いとして最も適切なものは？",
     choices: [
       "技術の発展によって仮想現実が実現することを予言すること",
@@ -5718,6 +5928,7 @@ const QUESTIONS = [
   {
     id: "q253",
     philosophers: ["ボーヴォワール"], terms: ["自由", "他者"], type: "single",
+    keys: ["対自"],
     question: "ボーヴォワールの内在と超越という区別として最も適切なものは？",
     choices: [
       "精神の内側の世界と外側の世界とを分ける、認識論的な区別のこと",
@@ -5741,6 +5952,7 @@ const QUESTIONS = [
   {
     id: "q254",
     philosophers: ["ハイデガー"], terms: ["時間", "実存", "存在"], type: "single",
+    keys: ["現存在"],
     question: "ハイデガーの時間性についての考えとして最も適切なものは？",
     choices: [
       "時間は過去から現在を経て未来へ流れる、今の連続である",
@@ -5764,6 +5976,7 @@ const QUESTIONS = [
   {
     id: "q255",
     philosophers: ["ハイデガー"], terms: ["理性", "言語", "存在"], type: "single",
+    keys: ["アレーテイア"],
     question: "ハイデガーの真理についての考え（アレーテイア）として最も適切なものは？",
     choices: [
       "真理とは命題が事実と一致していることである",
@@ -5787,6 +6000,7 @@ const QUESTIONS = [
   {
     id: "q256",
     philosophers: ["フッサール"], terms: ["理性"], type: "single",
+    keys: ["ノエシス", "ノエマ", "現象学的還元"],
     question: "フッサールのノエシスとノエマの区別として最も適切なものは？",
     choices: [
       "意識の作用の側と、意味づけられた対象の側という二つの相",
@@ -5809,6 +6023,7 @@ const QUESTIONS = [
   {
     id: "q257",
     philosophers: ["パルメニデス"], terms: ["存在", "理性"], type: "single",
+    keys: ["万物の尺度", "臆見", "一者"],
     question: "パルメニデスの主張として最も適切なものは？",
     choices: [
       "万物は絶えず変化しており、同じものに二度出会うことはない",
@@ -5833,6 +6048,7 @@ const QUESTIONS = [
   {
     id: "q258",
     philosophers: ["ヘラクレイトス", "パルメニデス"], terms: ["存在", "差異"], type: "compare",
+    keys: ["ロゴス", "対立物"],
     question: "ヘラクレイトスとパルメニデスの対立として最も適切なものは？",
     choices: [
       "ヘラクレイトスは変化と対立を世界のあり方とし、パルメニデスは不変の存在を説く",
@@ -5852,6 +6068,7 @@ const QUESTIONS = [
   {
     id: "q259",
     philosophers: ["アリストテレス"], terms: ["存在", "理性"], type: "single",
+    keys: ["存在忘却"],
     question: "アリストテレスが第一哲学と呼んだ学の対象として最も適切なものは？",
     choices: [
       "自然界に生じる運動と変化を扱う学問のこと",
@@ -5871,6 +6088,7 @@ const QUESTIONS = [
   {
     id: "q260",
     philosophers: ["アクィナス"], terms: ["存在", "神"], type: "single",
+    keys: ["恩寵は自然"],
     question: "アクィナスの存在と本質の区別として最も適切なものは？",
     choices: [
       "すべてのものにおいて、何であるかということと、あるということは一致している",
@@ -5894,6 +6112,7 @@ const QUESTIONS = [
   {
     id: "q261",
     philosophers: ["アクィナス"], terms: ["神", "因果"], type: "single",
+    keys: ["五つの道", "不動の動者", "存在論的証明"],
     question: "アクィナスの五つの道（神の存在証明）の特徴として最も適切なものは？",
     choices: [
       "神という完全な存在の概念から、その存在を論理的に導き出す証明である",
@@ -5917,6 +6136,7 @@ const QUESTIONS = [
   {
     id: "q262",
     philosophers: ["カント", "アクィナス"], terms: ["存在", "神"], type: "single",
+    keys: ["存在論的証明"],
     question: "カントの「存在は実在的な述語ではない」という主張として最も適切なものは？",
     choices: [
       "存在するかどうかは経験によって確かめるほかないので、哲学の対象にならないという主張",
@@ -5939,6 +6159,7 @@ const QUESTIONS = [
   {
     id: "q263",
     philosophers: ["ハイデガー", "ライプニッツ"], terms: ["存在", "理性"], type: "single",
+    keys: ["存在忘却", "十分理由律"],
     question: "ハイデガーが形而上学の根本の問いとして掲げた問いとして最も適切なものは？",
     choices: [
       "人間はいったいどのようにして生きるべきであるのか",
@@ -5962,6 +6183,7 @@ const QUESTIONS = [
   {
     id: "q264",
     philosophers: ["アリストテレス", "ハイデガー"], terms: ["存在"], type: "compare",
+    keys: ["存在忘却", "存在論的差異"],
     question: "存在への問いについて、アリストテレスとハイデガーの関係として最も適切なものは？",
     choices: [
       "ハイデガーはアリストテレスの存在論を全面的に否定し、まったく新しい問いを立てた",
@@ -5986,6 +6208,7 @@ const QUESTIONS = [
   {
     id: "q265",
     philosophers: ["ソシュール"], terms: ["言語", "構造", "時間"], type: "single",
+    keys: ["共時態"],
     question: "ソシュールの共時態と通時態の区別として最も適切なものは？",
     choices: [
       "共時態は話し言葉の研究、通時態は書き言葉の研究を指す",
@@ -6009,6 +6232,7 @@ const QUESTIONS = [
   {
     id: "q266",
     philosophers: ["ソシュール"], terms: ["言語"], type: "single",
+    keys: ["シニフィアン", "恣意性"],
     question: "ソシュールの記号の線条性として最も適切なものは？",
     choices: [
       "記号は一本の直線のように単純な構造をもつということ",
@@ -6032,6 +6256,7 @@ const QUESTIONS = [
   {
     id: "q267",
     philosophers: ["ソシュール"], terms: ["言語", "構造"], type: "single",
+    keys: ["恣意性"],
     question: "ソシュールが論じた記号の不易性と可易性として最も適切なものは？",
     choices: [
       "言語には変化しない核と変化する周辺があるということ",
@@ -6055,6 +6280,7 @@ const QUESTIONS = [
   {
     id: "q268",
     philosophers: ["プロタゴラス"], terms: ["理性", "差異"], type: "single",
+    keys: ["万物の尺度"],
     question: "プロタゴラスの「人間は万物の尺度である」という言葉として最も適切なものは？",
     choices: [
       "人間が自然界を支配し、利用する権利をもつという主張",
@@ -6074,6 +6300,7 @@ const QUESTIONS = [
   {
     id: "q269",
     philosophers: ["プロタゴラス"], terms: ["神"], type: "single",
+    keys: ["投影", "投影説"],
     question: "プロタゴラスが神々について述べたこととして最も適切なものは？",
     choices: [
       "神々は存在しないと断定して、無神論をはっきり明言した",
@@ -6097,6 +6324,7 @@ const QUESTIONS = [
   {
     id: "q270",
     philosophers: ["ゴルギアス", "パルメニデス"], terms: ["存在", "言語"], type: "single",
+    keys: ["弁論術", "説得"],
     question: "ゴルギアスの『非存在について』で提示される三つの主張として正しいものは？",
     choices: [
       "何も存在しない。存在しても知ることはできない。知りえても伝えられない",
@@ -6116,6 +6344,7 @@ const QUESTIONS = [
   {
     id: "q271",
     philosophers: ["プロタゴラス", "ゴルギアス"], terms: ["自然状態", "正義"], type: "single",
+    keys: ["ノモス", "ピュシス"],
     question: "ソフィストたちが論じたノモスとピュシスの対立として最も適切なものは？",
     choices: [
       "都市に住む者と農村に住む者との、生活様式をめぐる対立",
@@ -6158,6 +6387,7 @@ const QUESTIONS = [
   {
     id: "q273",
     philosophers: ["プロタゴラス", "ゴルギアス"], terms: ["言語", "権力"], type: "single",
+    keys: ["説得"],
     question: "ソフィストの再評価について、現在の一般的な見方として最も適切なものは？",
     choices: [
       "彼らは真理を軽んじた詭弁家であり、哲学史における意義はないとされている",
@@ -6177,6 +6407,7 @@ const QUESTIONS = [
   {
     id: "q274",
     philosophers: ["プロタゴラス", "ニーチェ"], terms: ["理性", "差異"], type: "compare",
+    keys: ["相対主義"],
     question: "相対主義的な主張について、プロタゴラスとニーチェの共通点として最も適切なものは？",
     choices: [
       "ともに、真理は視点や条件を離れて成り立つものではないと考えた点",
@@ -6196,6 +6427,7 @@ const QUESTIONS = [
   {
     id: "q275",
     philosophers: ["アウグスティヌス"], terms: ["時間", "存在"], type: "single",
+    keys: ["心の緊張"],
     question: "『告白』におけるアウグスティヌスの時間論として最も適切なものは？",
     choices: [
       "時間は宇宙を満たす容器のようなものであり、そのなかで出来事が起こる",
@@ -6218,6 +6450,7 @@ const QUESTIONS = [
   {
     id: "q276",
     philosophers: ["アウグスティヌス"], terms: ["神"], type: "single",
+    keys: ["弁神論"],
     question: "アウグスティヌスの悪についての考えとして最も適切なものは？",
     choices: [
       "悪は善と並ぶ独立した原理であり、世界は両者の闘争の場である",
@@ -6241,6 +6474,7 @@ const QUESTIONS = [
   {
     id: "q277",
     philosophers: ["アウグスティヌス"], terms: ["自由", "神"], type: "single",
+    keys: ["原罪", "自由意志"],
     question: "ペラギウス論争におけるアウグスティヌスの立場として最も適切なものは？",
     choices: [
       "人間は自らの意志と努力によって罪を避け、救いに到達することができる",
@@ -6264,6 +6498,7 @@ const QUESTIONS = [
   {
     id: "q278",
     philosophers: ["アウグスティヌス"], terms: ["正義", "権力"], type: "single",
+    keys: ["神の国"],
     question: "『神の国』における二つの国という枠組みとして最も適切なものは？",
     choices: [
       "教会という組織と、世俗の国家という制度を指し、前者が後者を支配すべきだという主張",
@@ -6287,6 +6522,7 @@ const QUESTIONS = [
   {
     id: "q279",
     philosophers: ["アウグスティヌス", "デカルト"], terms: ["理性", "存在"], type: "compare",
+    keys: ["コギト", "方法的懐疑", "神の国", "照明"],
     question: "アウグスティヌスとデカルトの関係として最も適切なものは？",
     choices: [
       "アウグスティヌスの、欺かれているなら私は存在するという一節がコギトの先駆とされる",
@@ -6306,6 +6542,7 @@ const QUESTIONS = [
   {
     id: "q280",
     philosophers: ["アンセルムス"], terms: ["存在", "神"], type: "single",
+    keys: ["存在論的証明", "五つの道"],
     question: "アンセルムスのいわゆる存在論的証明の論法として最も適切なものは？",
     choices: [
       "世界に秩序があることから、それを設計した知性の存在を推論する",
@@ -6329,6 +6566,7 @@ const QUESTIONS = [
   {
     id: "q281",
     philosophers: ["アンセルムス"], terms: ["神", "理性"], type: "single",
+    keys: ["信仰と理性"],
     question: "アンセルムスの「知解を求める信仰」という構えとして最も適切なものは？",
     choices: [
       "理性によって信仰の内容を証明してから信じるべきだという主張",
@@ -6352,6 +6590,7 @@ const QUESTIONS = [
   {
     id: "q282",
     philosophers: ["オッカム"], terms: ["理性"], type: "single",
+    keys: ["剃刀"],
     question: "いわゆるオッカムの剃刀として最も適切なものは？",
     choices: [
       "説明はできるだけ簡潔な言葉で書くべきだという文章上の指針",
@@ -6371,6 +6610,7 @@ const QUESTIONS = [
   {
     id: "q283",
     philosophers: ["オッカム"], terms: ["実体", "言語"], type: "single",
+    keys: ["唯名論", "普遍論争", "形相"],
     question: "普遍論争におけるオッカムの唯名論として最も適切なものは？",
     choices: [
       "普遍は個物に先立って実在し、個物はその似姿である",
@@ -6394,6 +6634,7 @@ const QUESTIONS = [
   {
     id: "q284",
     philosophers: ["オッカム"], terms: ["神", "意志"], type: "single",
+    keys: ["絶対的能力"],
     question: "オッカムの神の絶対的能力という考え方として最も適切なものは？",
     choices: [
       "神は論理的に矛盾することも含めて、あらゆることをなしうる",
@@ -6419,6 +6660,7 @@ const QUESTIONS = [
   {
     id: "q285",
     philosophers: ["アクィナス"], terms: ["正義", "自然状態"], type: "single",
+    keys: ["分有", "主権者"],
     question: "アクィナスの自然法についての考えとして最も適切なものは？",
     choices: [
       "法とは主権者が定めた命令のことであり、それ以外に法はない",
@@ -6442,6 +6684,7 @@ const QUESTIONS = [
   {
     id: "q286",
     philosophers: ["アクィナス"], terms: ["神", "言語"], type: "single",
+    keys: ["類比"],
     question: "アクィナスの類比という考え方として最も適切なものは？",
     choices: [
       "神について語る言葉は、人間について語る場合とまったく同じ意味で用いられる",
@@ -6465,6 +6708,7 @@ const QUESTIONS = [
   {
     id: "q287",
     philosophers: ["アンセルムス", "アクィナス"], terms: ["存在", "神"], type: "compare",
+    keys: ["存在論的証明"],
     question: "神の存在証明について、アンセルムスとアクィナスの違いとして最も適切なものは？",
     choices: [
       "アンセルムスは神の概念から、アクィナスは経験の事実から出発する証明を用いた",
@@ -6484,6 +6728,7 @@ const QUESTIONS = [
   {
     id: "q288",
     philosophers: ["プラトン", "アリストテレス", "オッカム"], terms: ["イデア", "実体"], type: "compare",
+    keys: ["普遍論争"],
     question: "普遍をめぐる立場の組み合わせとして正しいものは？",
     choices: [
       "プラトン＝個物に先立って実在／アリストテレス＝個物のうちに／オッカム＝名辞",
@@ -6507,6 +6752,7 @@ const QUESTIONS = [
   {
     id: "q289",
     philosophers: ["アウグスティヌス", "ハイデガー"], terms: ["時間", "存在"], type: "compare",
+    keys: ["現存在", "心の緊張"],
     question: "時間について、アウグスティヌスとハイデガーの関係として最も適切なものは？",
     choices: [
       "ハイデガーは時間を客観的な物理量として捉え、アウグスティヌスの心理的な分析を退けた",
@@ -6530,6 +6776,7 @@ const QUESTIONS = [
   {
     id: "q290",
     philosophers: ["アクィナス", "ホッブズ"], terms: ["正義", "自然状態"], type: "compare",
+    keys: ["分有", "自己保存", "主権者", "人定法", "主権"],
     question: "自然法について、アクィナスとホッブズの違いとして最も適切なものは？",
     choices: [
       "アクィナスは自然法を神の理性への分有として捉え、ホッブズは自己保存から理性が導く規則として捉えた",
@@ -6554,6 +6801,7 @@ const QUESTIONS = [
   {
     id: "q291",
     philosophers: ["オッカム", "アクィナス"], terms: ["神", "理性"], type: "compare",
+    keys: ["恩寵は自然"],
     question: "信仰と理性の関係について、アクィナスとオッカムの違いとして最も適切なものは？",
     choices: [
       "アクィナスは理性と信仰を接続し、オッカムは神学と哲学を分離する方向へ進んだ",
@@ -6597,6 +6845,7 @@ const QUESTIONS = [
   {
     id: "q293",
     philosophers: ["フレーゲ"], terms: ["意味", "言語"], type: "single",
+    keys: ["意義", "明けの明星", "固有名", "固定指示子", "記述説"],
     question: "フレーゲの意義と意味（ジン／ベドイトゥング）の区別として最も適切なものは？",
     choices: [
       "意義は話し手が込めた気持ち、意味は辞書に載っている定義のこと",
@@ -6620,6 +6869,7 @@ const QUESTIONS = [
   {
     id: "q294",
     philosophers: ["フレーゲ", "アリストテレス"], terms: ["理性", "言語"], type: "single",
+    keys: ["三段論法", "概念記法", "心理主義"],
     question: "フレーゲが『概念記法』で成し遂げたこととして最も適切なものは？",
     choices: [
       "アリストテレスの三段論法を整理し、より覚えやすい形に体系化した",
@@ -6642,6 +6892,7 @@ const QUESTIONS = [
   {
     id: "q295",
     philosophers: ["ラッセル"], terms: ["言語", "意味"], type: "single",
+    keys: ["固有名"],
     question: "ラッセルの記述の理論として最も適切なものは？",
     choices: [
       "指示対象をもたない表現を含む文は無意味であるという主張",
@@ -6664,6 +6915,7 @@ const QUESTIONS = [
   {
     id: "q296",
     philosophers: ["ラッセル", "フレーゲ"], terms: ["理性", "科学"], type: "single",
+    keys: ["タイプ理論"],
     question: "ラッセルのパラドックスとして最も適切なものは？",
     choices: [
       "すべての規則には例外があるという主張自体も例外をもつという逆説",
@@ -6687,6 +6939,7 @@ const QUESTIONS = [
   {
     id: "q297",
     philosophers: ["ムーア", "ミル"], terms: ["正義", "理性"], type: "single",
+    keys: ["自然主義的誤謬", "開かれた問い"],
     question: "ムーアの自然主義的誤謬として最も適切なものは？",
     choices: [
       "自然界の事実に反する主張をしてしまうことの誤り",
@@ -6711,6 +6964,7 @@ const QUESTIONS = [
   {
     id: "q298",
     philosophers: ["ムーア"], terms: ["理性", "存在"], type: "single",
+    keys: ["常識", "蝶番"],
     question: "ムーアの外界の存在の証明として知られる議論の要点はどれか？",
     choices: [
       "外界の存在は観念論的に構成されたものであり、証明できないと論じた",
@@ -6734,6 +6988,7 @@ const QUESTIONS = [
   {
     id: "q299",
     philosophers: ["ウィトゲンシュタイン"], terms: ["言語", "意味"], type: "single",
+    keys: ["写像理論"],
     question: "『論理哲学論考』における写像理論として最も適切なものは？",
     choices: [
       "言語は世界を写す鏡であり、語の一つ一つが物に対応している",
@@ -6756,6 +7011,7 @@ const QUESTIONS = [
   {
     id: "q300",
     philosophers: ["ウィトゲンシュタイン"], terms: ["言語", "意味"], type: "single",
+    keys: ["言語ゲーム"],
     question: "『哲学探究』における言語ゲームという考え方として最も適切なものは？",
     choices: [
       "言語の使用は遊戯にすぎず、真剣に扱う必要はないという主張",
@@ -6779,6 +7035,7 @@ const QUESTIONS = [
   {
     id: "q301",
     philosophers: ["ウィトゲンシュタイン"], terms: ["言語", "差異"], type: "single",
+    keys: ["家族的類似", "唯名論"],
     question: "ウィトゲンシュタインの家族的類似として最も適切なものは？",
     choices: [
       "ある語で呼ばれるものには共通する本質が必ず存在するという主張",
@@ -6802,6 +7059,7 @@ const QUESTIONS = [
   {
     id: "q302",
     philosophers: ["ウィトゲンシュタイン"], terms: ["言語", "他者"], type: "single",
+    keys: ["私的言語"],
     question: "ウィトゲンシュタインの私的言語論として最も適切なものは？",
     choices: [
       "心のうちで感覚に名前を付け、自分だけに理解できる言語は成り立たない",
@@ -6847,6 +7105,7 @@ const QUESTIONS = [
   {
     id: "q304",
     philosophers: ["クワイン", "カント"], terms: ["理性", "科学"], type: "single",
+    keys: ["ドグマ", "帰納", "パラダイム", "通約不可能", "全体論"],
     question: "クワインの「経験主義の二つのドグマ」で批判された二つの前提として正しいものは？",
     choices: [
       "帰納法の正当性と、因果関係の必然性という二つの前提",
@@ -6869,6 +7128,7 @@ const QUESTIONS = [
   {
     id: "q305",
     philosophers: ["クワイン"], terms: ["言語", "意味"], type: "single",
+    keys: ["翻訳の不確定性"],
     question: "クワインの翻訳の不確定性として最も適切なものは？",
     choices: [
       "言語ごとに語彙が違うため、完全に正確な翻訳はできないという実務上の指摘",
@@ -6891,6 +7151,7 @@ const QUESTIONS = [
   {
     id: "q306",
     philosophers: ["クリプキ", "ラッセル"], terms: ["言語", "意味"], type: "single",
+    keys: ["固有名", "固定指示子", "可能世界", "記述説"],
     question: "クリプキの固定指示子という考え方として最も適切なものは？",
     choices: [
       "固有名は、それに結びついた記述の束によって指示対象を決めている",
@@ -6915,6 +7176,7 @@ const QUESTIONS = [
   {
     id: "q307",
     philosophers: ["クリプキ", "カント"], terms: ["理性", "科学"], type: "single",
+    keys: ["アプリオリ"],
     question: "クリプキが論じたアポステリオリな必然性の例として最も適切なものは？",
     choices: [
       "独身者は結婚していないという命題",
@@ -6938,6 +7200,7 @@ const QUESTIONS = [
   {
     id: "q308",
     philosophers: ["ポパー", "ヒューム"], terms: ["科学", "因果"], type: "single",
+    keys: ["反証可能性", "反証", "帰納", "全体論"],
     question: "ポパーの反証可能性として最も適切なものは？",
     choices: [
       "理論は多くの観察によって確証されるほど科学的であるという基準",
@@ -6960,6 +7223,7 @@ const QUESTIONS = [
   {
     id: "q309",
     philosophers: ["ポパー", "プラトン", "ヘーゲル"], terms: ["権力", "自由"], type: "single",
+    keys: ["開かれた社会", "反証主義", "漸次的社会工学"],
     question: "ポパーの『開かれた社会とその敵』における主張として最も適切なものは？",
     choices: [
       "理想の社会像を描き、それに向けて社会を全面的に設計すべきである",
@@ -6984,6 +7248,7 @@ const QUESTIONS = [
   {
     id: "q310",
     philosophers: ["クーン"], terms: ["科学", "構造"], type: "single",
+    keys: ["パラダイム", "通常科学", "科学革命", "反証", "異常", "反証主義"],
     question: "クーンのパラダイムと科学革命の説明として最も適切なものは？",
     choices: [
       "科学は観察と検証を積み重ねることで直線的に進歩する",
@@ -7007,6 +7272,7 @@ const QUESTIONS = [
   {
     id: "q311",
     philosophers: ["クーン", "ポパー"], terms: ["科学", "意味"], type: "single",
+    keys: ["パラダイム", "通約不可能"],
     question: "クーンの通約不可能性として最も適切なものは？",
     choices: [
       "異なるパラダイムに属する理論どうしは、用語の意味も評価の基準も変わってしまうため、共通の物差しで単純に優劣を比較することができないという主張",
@@ -7026,6 +7292,7 @@ const QUESTIONS = [
   {
     id: "q312",
     philosophers: ["フレーゲ", "フッサール"], terms: ["理性", "意味"], type: "single",
+    keys: ["心理主義"],
     question: "心理主義批判について、フレーゲとフッサールの関係として最も適切なものは？",
     choices: [
       "ともに論理法則を心理に還元する立場を批判し、客観性を擁護した",
@@ -7050,6 +7317,7 @@ const QUESTIONS = [
   {
     id: "q313",
     philosophers: ["ポパー", "クーン"], terms: ["科学"], type: "compare",
+    keys: ["反証", "通常科学"],
     question: "科学の進み方について、ポパーとクーンの違いとして最も適切なものは？",
     choices: [
       "ポパーは反証を試みるべきだと論じ、クーンはパズル解きとして進むと描いた",
@@ -7074,6 +7342,7 @@ const QUESTIONS = [
   {
     id: "q314",
     philosophers: ["パース"], terms: ["意味", "科学"], type: "single",
+    keys: ["格率"],
     question: "パースのプラグマティズムの格率として最も適切なものは？",
     choices: [
       "役に立つ信念こそが真であるのだという主張",
@@ -7096,6 +7365,7 @@ const QUESTIONS = [
   {
     id: "q315",
     philosophers: ["パース", "ソシュール"], terms: ["言語", "意味"], type: "compare",
+    keys: ["恣意性", "解釈項", "シニフィアン", "シニフィエ"],
     question: "記号のモデルについて、ソシュールとパースの違いとして最も適切なものは？",
     choices: [
       "ソシュールは記号表現と記号内容の二項、パースは解釈項を含む三項で捉えた",
@@ -7120,6 +7390,7 @@ const QUESTIONS = [
   {
     id: "q316",
     philosophers: ["パース"], terms: ["理性", "科学"], type: "single",
+    keys: ["アブダクション"],
     question: "パースが演繹と帰納に加えて位置づけたアブダクションとして最も適切なものは？",
     choices: [
       "多くの事例から一般法則を導き出していく推論のこと",
@@ -7143,6 +7414,7 @@ const QUESTIONS = [
   {
     id: "q317",
     philosophers: ["ジェイムズ", "パース"], terms: ["意味", "科学"], type: "single",
+    keys: ["アプリオリ", "格率"],
     question: "ジェイムズの真理についての考えとして最も適切なものは？",
     choices: [
       "真理は観念と事実の対応であり、観念とは独立に成立している",
@@ -7166,6 +7438,7 @@ const QUESTIONS = [
   {
     id: "q318",
     philosophers: ["デューイ"], terms: ["理性", "正義"], type: "single",
+    keys: ["道具主義", "問題状況"],
     question: "デューイの民主主義についての考えとして最も適切なものは？",
     choices: [
       "民主主義とは多数決によって代表を選ぶ統治の形式である",
@@ -7190,6 +7463,7 @@ const QUESTIONS = [
   {
     id: "q319",
     philosophers: ["バルト"], terms: ["言語", "権力"], type: "single",
+    keys: ["神話作用", "イデオロギー", "シニフィアン"],
     question: "バルトの『神話作用』における神話として最も適切なものは？",
     choices: [
       "古代から語り伝えられてきた神々の物語のこと",
@@ -7213,6 +7487,7 @@ const QUESTIONS = [
   {
     id: "q320",
     philosophers: ["バルト"], terms: ["言語", "意味"], type: "single",
+    keys: ["作者の死", "テクスト"],
     question: "バルトの「作者の死」という主張として最も適切なものは？",
     choices: [
       "作者の伝記を調べなければテクストは理解できないという主張",
@@ -7235,6 +7510,7 @@ const QUESTIONS = [
   {
     id: "q321",
     philosophers: ["クリステヴァ", "バルト"], terms: ["言語", "差異"], type: "single",
+    keys: ["テクスト", "間テクスト性", "作者の死"],
     question: "クリステヴァの間テクスト性として最も適切なものは？",
     choices: [
       "作品が他の作品から受けた影響を実証的に跡づける研究の方法",
@@ -7258,6 +7534,7 @@ const QUESTIONS = [
   {
     id: "q322",
     philosophers: ["クリステヴァ"], terms: ["身体", "他者"], type: "single",
+    keys: ["アブジェクシオン", "抑圧"],
     question: "クリステヴァのアブジェクシオン（おぞましきもの）として最も適切なものは？",
     choices: [
       "道徳的に非難されるべき行為に対する嫌悪感のこと",
@@ -7282,6 +7559,7 @@ const QUESTIONS = [
   {
     id: "q323",
     philosophers: ["ガタリ"], terms: ["無意識", "権力"], type: "single",
+    keys: ["横断性", "分裂分析"],
     question: "ガタリが実践した制度論的精神療法と横断性として最も適切なものは？",
     choices: [
       "医師と患者の役割を明確に分け、治療の効率を高める方法",
@@ -7307,6 +7585,7 @@ const QUESTIONS = [
   {
     id: "q324",
     philosophers: ["ガタリ"], terms: ["構造", "権力"], type: "single",
+    keys: ["エコロジー"],
     question: "ガタリの『三つのエコロジー』における三つの領域として正しいものは？",
     choices: [
       "大気・水・土壌という、自然環境の三つの領域",
@@ -7353,6 +7632,7 @@ const QUESTIONS = [
   {
     id: "q326",
     philosophers: ["バタイユ"], terms: ["欲望", "幸福"], type: "single",
+    keys: ["蕩尽", "ポトラッチ"],
     question: "バタイユの『呪われた部分』における普遍経済の考え方として最も適切なものは？",
     choices: [
       "資源が希少であることを前提に、いかに効率よく配分するかを考える経済学",
@@ -7378,6 +7658,7 @@ const QUESTIONS = [
   {
     id: "q327",
     philosophers: ["バタイユ"], terms: ["欲望", "身体"], type: "single",
+    keys: ["エロティシズム", "至高性", "侵犯"],
     question: "バタイユのエロティシズムについての考えとして最も適切なものは？",
     choices: [
       "性的な快楽を追求しようとする態度一般を指す語",
@@ -7401,6 +7682,7 @@ const QUESTIONS = [
   {
     id: "q328",
     philosophers: ["バタイユ", "ヘーゲル"], terms: ["弁証法", "存在"], type: "single",
+    keys: ["エロティシズム", "一般経済"],
     question: "ヘーゲルに対するバタイユの態度として最も適切なものは？",
     choices: [
       "ヘーゲルの体系を全面的に受け入れ、そのまま継承した",
@@ -7426,6 +7708,7 @@ const QUESTIONS = [
   {
     id: "q329",
     philosophers: ["リオタール"], terms: ["理性", "科学"], type: "single",
+    keys: ["大きな物語", "ポストモダン", "言語ゲーム", "討議"],
     question: "リオタールの『ポストモダンの条件』における大きな物語への不信として最も適切なものは？",
     choices: [
       "物語形式の文学が読まれなくなったという文化の状況についての指摘",
@@ -7450,6 +7733,7 @@ const QUESTIONS = [
   {
     id: "q330",
     philosophers: ["リオタール"], terms: ["言語", "正義"], type: "single",
+    keys: ["抗争"],
     question: "リオタールの『文の抗争』における抗争（ディフェラン）として最も適切なものは？",
     choices: [
       "利害の対立から生じてくる紛争そのものを指す語",
@@ -7473,6 +7757,7 @@ const QUESTIONS = [
   {
     id: "q331",
     philosophers: ["リオタール", "カント"], terms: ["理性", "差異"], type: "single",
+    keys: ["崇高", "抗争"],
     question: "リオタールが崇高という概念に注目した理由として最も適切なものは？",
     choices: [
       "美しいものへの感性をもっと育てるべきだと考えたから",
@@ -7495,6 +7780,7 @@ const QUESTIONS = [
   {
     id: "q332",
     philosophers: ["リオタール", "マルクス", "フロイト"], terms: ["欲望", "疎外"], type: "single",
+    keys: ["階級闘争"],
     question: "リオタールの『リビドー経済』の立場として最も適切なものは？",
     choices: [
       "マルクス主義の理論を精緻化し、階級闘争の科学を完成させようとした",
@@ -7514,6 +7800,7 @@ const QUESTIONS = [
   {
     id: "q333",
     philosophers: ["バルト", "フーコー"], terms: ["言語", "権力"], type: "compare",
+    keys: ["言説"],
     question: "作者という審級について、バルトとフーコーの議論の関係として最も適切なものは？",
     choices: [
       "バルトは意味の場を読者へ移し、フーコーは作者を言説を管理する機能とした",
@@ -7539,6 +7826,7 @@ const QUESTIONS = [
   {
     id: "q334",
     philosophers: ["バタイユ", "デリダ"], terms: ["差異", "存在"], type: "compare",
+    keys: ["脱構築", "一般経済"],
     question: "バタイユとデリダの関係として最も適切なものは？",
     choices: [
       "デリダはバタイユを厳しく批判して、その思想を全面的に退けた",
@@ -7563,6 +7851,7 @@ const QUESTIONS = [
   {
     id: "q335",
     philosophers: ["ウィトゲンシュタイン", "リオタール"], terms: ["言語", "正義"], type: "compare",
+    keys: ["崇高"],
     question: "語りえないものの扱いについて、ウィトゲンシュタインとリオタールの違いとして最も適切なものは？",
     choices: [
       "ウィトゲンシュタインは沈黙せよと述べ、リオタールは語りえない被害に言葉を見出そうとした",
@@ -7582,6 +7871,7 @@ const QUESTIONS = [
   {
     id: "q336",
     philosophers: ["パース", "ジェイムズ", "デューイ"], terms: ["意味", "科学"], type: "compare",
+    keys: ["記号論"],
     question: "プラグマティズムの三者の力点の違いとして最も適切なものは？",
     choices: [
       "パース＝探究の共同体／ジェイムズ＝個人の経験／デューイ＝道具的思考と民主主義",
@@ -7606,6 +7896,7 @@ const QUESTIONS = [
   {
     id: "q337",
     philosophers: ["クリステヴァ", "ラカン"], terms: ["言語", "身体"], type: "compare",
+    keys: ["アブジェクシオン"],
     question: "言語の秩序について、ラカンとクリステヴァの違いとして最も適切なものは？",
     choices: [
       "ラカンは象徴の秩序への参入を主体の成立とし、クリステヴァはリズムや声を立てた",
@@ -7629,6 +7920,7 @@ const QUESTIONS = [
   {
     id: "q338",
     philosophers: ["デュルケーム"], terms: ["構造", "権力"], type: "single",
+    keys: ["社会的事実"],
     question: "デュルケームの社会的事実として最も適切なものは？",
     choices: [
       "個人の心理を集計したものが社会であり、社会現象は心理学に還元できる",
@@ -7649,6 +7941,7 @@ const QUESTIONS = [
   {
     id: "q339",
     philosophers: ["デュルケーム"], terms: ["構造", "幸福"], type: "single",
+    keys: ["アノミー"],
     question: "『自殺論』におけるアノミーとして最も適切なものは？",
     choices: [
       "貧困によって生活の手段が絶たれ、暮らしが破綻した状態のこと",
@@ -7674,6 +7967,7 @@ const QUESTIONS = [
   {
     id: "q340",
     philosophers: ["デュルケーム"], terms: ["神", "構造"], type: "single",
+    keys: ["投影説", "投影", "集合表象"],
     question: "『宗教生活の原初形態』におけるデュルケームの結論として最も適切なものは？",
     choices: [
       "宗教は自然現象への恐怖から生まれた誤った説明である",
@@ -7699,6 +7993,7 @@ const QUESTIONS = [
   {
     id: "q341",
     philosophers: ["ウェーバー", "デュルケーム"], terms: ["構造", "意味"], type: "single",
+    keys: ["理念型"],
     question: "ウェーバーの理解社会学の方法として最も適切なものは？",
     choices: [
       "社会現象を、個人の外にある拘束力として外側から観察する",
@@ -7722,6 +8017,7 @@ const QUESTIONS = [
   {
     id: "q342",
     philosophers: ["ウェーバー"], terms: ["神", "幸福"], type: "single",
+    keys: ["プロテスタンティズム", "上部構造"],
     question: "『プロテスタンティズムの倫理と資本主義の精神』の論旨として最も適切なものは？",
     choices: [
       "資本主義が発達した結果、プロテスタントの倫理が生まれた",
@@ -7745,6 +8041,7 @@ const QUESTIONS = [
   {
     id: "q343",
     philosophers: ["ウェーバー"], terms: ["理性", "権力"], type: "single",
+    keys: ["合理化", "官僚制", "鉄の檻"],
     question: "ウェーバーの合理化と脱魔術化についての診断として最も適切なものは？",
     choices: [
       "合理化の進展によって人間は自由になり、幸福が増大していく",
@@ -7768,6 +8065,7 @@ const QUESTIONS = [
   {
     id: "q344",
     philosophers: ["ウェーバー"], terms: ["権力", "正義"], type: "single",
+    keys: ["心情倫理", "責任倫理"],
     question: "『職業としての政治』における心情倫理と責任倫理の区別として最も適切なものは？",
     choices: [
       "心情倫理は動機の純粋さを、責任倫理は結果の引き受けを求める",
@@ -7791,6 +8089,7 @@ const QUESTIONS = [
   {
     id: "q345",
     philosophers: ["ブルデュー"], terms: ["構造", "身体"], type: "single",
+    keys: ["ハビトゥス", "文化資本"],
     question: "ブルデューのハビトゥスとして最も適切なものは？",
     choices: [
       "個人がその都度意識的に選択する行動方針のこと",
@@ -7814,6 +8113,7 @@ const QUESTIONS = [
   {
     id: "q346",
     philosophers: ["ブルデュー"], terms: ["権力", "幸福"], type: "single",
+    keys: ["ディスタンクシオン", "象徴的暴力"],
     question: "『ディスタンクシオン』におけるブルデューの趣味についての分析として最も適切なものは？",
     choices: [
       "趣味は個人の自由な選好であり、社会的な要因とは無関係である",
@@ -7838,6 +8138,7 @@ const QUESTIONS = [
   {
     id: "q347",
     philosophers: ["ゴフマン"], terms: ["他者", "身体"], type: "single",
+    keys: ["ドラマトゥルギー", "スティグマ"],
     question: "ゴフマンのドラマトゥルギーという視角として最も適切なものは？",
     choices: [
       "人間関係は演技にすぎず、真実の自己は存在しないという主張",
@@ -7861,6 +8162,7 @@ const QUESTIONS = [
   {
     id: "q348",
     philosophers: ["ゴフマン", "フーコー"], terms: ["権力", "身体"], type: "compare",
+    keys: ["規律権力"],
     question: "施設における人間の扱いについて、ゴフマンとフーコーの関係として最も適切なものは？",
     choices: [
       "ゴフマンは自己の剥奪を参与観察から記述し、フーコーは規律権力を歴史から示した",
@@ -7885,6 +8187,7 @@ const QUESTIONS = [
   {
     id: "q349",
     philosophers: ["バトラー", "ボーヴォワール"], terms: ["身体", "言語"], type: "single",
+    keys: ["パフォーマティヴ", "ジェンダー"],
     question: "バトラーのジェンダーのパフォーマティヴィティとして最も適切なものは？",
     choices: [
       "ジェンダーは各人が毎朝自由に選んで着替えられる衣装のようなものだという主張",
@@ -7909,6 +8212,7 @@ const QUESTIONS = [
   {
     id: "q350",
     philosophers: ["バトラー"], terms: ["正義", "他者"], type: "single",
+    keys: ["顔", "ジェンダー"],
     question: "後期バトラーの生のあやうさをめぐる議論として最も適切なものは？",
     choices: [
       "人間は誰しも死を免れないという実存的な事実の指摘",
@@ -7933,6 +8237,7 @@ const QUESTIONS = [
   {
     id: "q351",
     philosophers: ["レヴィナス", "ハイデガー"], terms: ["他者", "存在"], type: "single",
+    keys: ["無限"],
     question: "レヴィナスの「倫理こそ第一哲学である」という主張として最も適切なものは？",
     choices: [
       "哲学は道徳的な教えを説くべきものだという主張",
@@ -7956,6 +8261,7 @@ const QUESTIONS = [
   {
     id: "q352",
     philosophers: ["レヴィナス"], terms: ["他者", "正義"], type: "single",
+    keys: ["顔", "非対称性", "無限"],
     question: "レヴィナスの顔という概念として最も適切なものは？",
     choices: [
       "他者の外見や表情から、その内面を読み取ることができるという主張",
@@ -7978,6 +8284,7 @@ const QUESTIONS = [
   {
     id: "q353",
     philosophers: ["レヴィナス", "サルトル"], terms: ["他者"], type: "compare",
+    keys: ["まなざし", "顔", "非対称性", "承認をめぐる闘争"],
     question: "他者との関係について、サルトルとレヴィナスの違いとして最も適切なものは？",
     choices: [
       "サルトルはまなざしを脅威として、レヴィナスは顔を呼びかけとして描いた",
@@ -8002,6 +8309,7 @@ const QUESTIONS = [
   {
     id: "q354",
     philosophers: ["マリオン", "フッサール"], terms: ["存在", "贈与"], type: "single",
+    keys: ["飽和", "偶像", "聖像", "神学的転回"],
     question: "マリオンの与えられ性という概念として最も適切なものは？",
     choices: [
       "神が世界を人間に与えたのだという神学のうえでの主張",
@@ -8026,6 +8334,7 @@ const QUESTIONS = [
   {
     id: "q355",
     philosophers: ["マリオン", "デリダ"], terms: ["贈与", "他者"], type: "compare",
+    keys: ["蕩尽"],
     question: "贈与をめぐるデリダとマリオンの議論として最も適切なものは？",
     choices: [
       "デリダは贈与が認識された瞬間に交換になると論じ、マリオンは三項の括弧入れを考えた",
@@ -8050,6 +8359,7 @@ const QUESTIONS = [
   {
     id: "q356",
     philosophers: ["デュルケーム", "ウェーバー"], terms: ["構造", "意味"], type: "compare",
+    keys: ["社会的事実", "ハビトゥス"],
     question: "社会学の方法について、デュルケームとウェーバーの違いとして最も適切なものは？",
     choices: [
       "デュルケームは社会的事実を外側から、ウェーバーは主観的な意味から捉えた",
@@ -8073,6 +8383,7 @@ const QUESTIONS = [
   {
     id: "q357",
     philosophers: ["ブルデュー", "マルクス"], terms: ["権力", "疎外"], type: "compare",
+    keys: ["文化資本", "ハビトゥス", "象徴的暴力", "再生産"],
     question: "支配の分析について、ブルデューとマルクスの違いとして最も適切なものは？",
     choices: [
       "マルクスは文化資本を軸にし、ブルデューは経済的な資本と階級関係を導入した",
@@ -8097,6 +8408,7 @@ const QUESTIONS = [
   {
     id: "q358",
     philosophers: ["マキャヴェリ"], terms: ["権力", "正義"], type: "single",
+    keys: ["力量", "運命", "共和政"],
     question: "『君主論』におけるマキャヴェリの方法上の立場として最も適切なものは？",
     choices: [
       "君主は徳を積み、道徳的に善い人物であるべきだと説いた",
@@ -8121,6 +8433,7 @@ const QUESTIONS = [
   {
     id: "q359",
     philosophers: ["マキャヴェリ", "アクィナス"], terms: ["権力", "正義"], type: "compare",
+    keys: ["人定法", "責任倫理", "共和政"],
     question: "政治と道徳の関係について、アクィナスとマキャヴェリの違いとして最も適切なものは？",
     choices: [
       "アクィナスは政治を道徳的秩序に位置づけ、マキャヴェリは道徳から切り離した",
@@ -8145,6 +8458,7 @@ const QUESTIONS = [
   {
     id: "q360",
     philosophers: ["バークリー"], terms: ["実体", "存在"], type: "single",
+    keys: ["知覚されること"],
     question: "バークリーの「存在するとは知覚されることである」という主張として最も適切なものは？",
     choices: [
       "人間が見ていないものは消滅してしまうのだという主張",
@@ -8168,6 +8482,7 @@ const QUESTIONS = [
   {
     id: "q361",
     philosophers: ["ロック", "バークリー", "ヒューム"], terms: ["実体", "存在"], type: "compare",
+    keys: ["カテゴリー"],
     question: "実体をめぐる経験論の展開の組み合わせとして正しいものは？",
     choices: [
       "ロック＝支え手は不可知／バークリー＝物質的実体を否定／ヒューム＝知覚の束",
@@ -8191,6 +8506,7 @@ const QUESTIONS = [
   {
     id: "q362",
     philosophers: ["アダム・スミス", "ヒューム"], terms: ["他者", "正義"], type: "single",
+    keys: ["共感", "公平な観察者"],
     question: "『道徳感情論』におけるスミスの共感と公平な観察者として最も適切なものは？",
     choices: [
       "人は他人の感情をそのまま感じ取ることができ、それが道徳の基礎になる",
@@ -8216,6 +8532,7 @@ const QUESTIONS = [
   {
     id: "q363",
     philosophers: ["アダム・スミス", "ベンサム"], terms: ["功利主義", "幸福"], type: "compare",
+    keys: ["快苦", "公平な観察者", "共感"],
     question: "スミスとベンサムの違いとして最も適切なものは？",
     choices: [
       "スミスは共感と公平な観察者から、ベンサムは快苦の計算から道徳を捉えた",
@@ -8239,6 +8556,7 @@ const QUESTIONS = [
   {
     id: "q364",
     philosophers: ["フィヒテ", "カント"], terms: ["理性", "自由"], type: "single",
+    keys: ["物自体", "知識学", "非我"],
     question: "フィヒテの知識学における出発点として最も適切なものは？",
     choices: [
       "感覚経験によって与えられる素材のほうから出発する",
@@ -8263,6 +8581,7 @@ const QUESTIONS = [
   {
     id: "q365",
     philosophers: ["ベルクソン", "カント"], terms: ["時間", "意志"], type: "single",
+    keys: ["純粋持続", "持続の直観"],
     question: "ベルクソンの持続（デュレ）として最も適切なものは？",
     choices: [
       "時計で測ることのできる客観的な時間の経過のこと",
@@ -8287,6 +8606,7 @@ const QUESTIONS = [
   {
     id: "q366",
     philosophers: ["ベルクソン"], terms: ["意志", "科学"], type: "single",
+    keys: ["エラン"],
     question: "『創造的進化』におけるエラン・ヴィタール（生の躍動）として最も適切なものは？",
     choices: [
       "生物が環境に適応して生き延びていく能力のこと",
@@ -8310,6 +8630,7 @@ const QUESTIONS = [
   {
     id: "q367",
     philosophers: ["アーレント"], terms: ["自由", "正義"], type: "single",
+    keys: ["労働・仕事・活動", "労働と仕事", "公共の領域", "死へ", "複数性", "出生", "全体主義"],
     question: "『人間の条件』における労働・仕事・活動の区別として最も適切なものは？",
     choices: [
       "労働は肉体を使う仕事、仕事は頭脳を使う仕事、活動は余暇の過ごし方を指す",
@@ -8332,6 +8653,7 @@ const QUESTIONS = [
   {
     id: "q368",
     philosophers: ["アーレント"], terms: ["権力", "正義"], type: "single",
+    keys: ["凡庸"],
     question: "アーレントの悪の陳腐さという言葉として最も適切なものは？",
     choices: [
       "悪は日常のありふれた出来事であり、深刻に扱う必要はないという主張",
@@ -8351,6 +8673,7 @@ const QUESTIONS = [
   {
     id: "q369",
     philosophers: ["アーレント", "ハイデガー"], terms: ["実存", "自由"], type: "compare",
+    keys: ["死へ", "出生", "現存在", "複数性", "全体主義"],
     question: "アーレントとハイデガーの関係として最も適切なものは？",
     choices: [
       "アーレントはハイデガーの弟子だが、死ではなく出生から人間を捉え直した",
@@ -8374,6 +8697,7 @@ const QUESTIONS = [
   {
     id: "q370",
     philosophers: ["シュミット"], terms: ["権力", "存在"], type: "single",
+    keys: ["例外状態", "主権者", "友と敵"],
     question: "シュミットの「主権者とは例外状態について決断する者である」という定義として最も適切なものは？",
     choices: [
       "主権者とは法によって定められた権限を行使する者であるという法実証主義的な定義",
@@ -8397,6 +8721,7 @@ const QUESTIONS = [
   {
     id: "q371",
     philosophers: ["アガンベン", "フーコー", "シュミット"], terms: ["権力", "身体"], type: "single",
+    keys: ["剥き出しの生", "ホモ・サケル", "生権力", "例外状態"],
     question: "アガンベンの剥き出しの生という概念として最も適切なものは？",
     choices: [
       "最低限の生活さえ保障されない貧困の状態のこと",
@@ -8421,6 +8746,7 @@ const QUESTIONS = [
   {
     id: "q372",
     philosophers: ["アドルノ"], terms: ["理性", "権力"], type: "single",
+    keys: ["啓蒙の弁証法", "管理社会", "文化産業"],
     question: "『啓蒙の弁証法』におけるアドルノとホルクハイマーの主張として最も適切なものは？",
     choices: [
       "啓蒙は神話を克服し、人類を着実に解放してきたとする",
@@ -8445,6 +8771,7 @@ const QUESTIONS = [
   {
     id: "q373",
     philosophers: ["アドルノ", "ヘーゲル"], terms: ["弁証法", "差異"], type: "single",
+    keys: ["否定弁証法", "同一性思考", "アウシュヴィッツ"],
     question: "アドルノの否定弁証法として最も適切なものは？",
     choices: [
       "対立を統合してより高い段階へ進むという運動を、より徹底した形で完成させる試み",
@@ -8468,6 +8795,7 @@ const QUESTIONS = [
   {
     id: "q374",
     philosophers: ["ハーバーマス", "ウェーバー"], terms: ["理性", "言語"], type: "single",
+    keys: ["合理化", "鉄の檻", "生活世界"],
     question: "ハーバーマスのコミュニケーション的合理性として最も適切なものは？",
     choices: [
       "目的を効率よく達成するための手段を選ぶ合理性のこと",
@@ -8492,6 +8820,7 @@ const QUESTIONS = [
   {
     id: "q375",
     philosophers: ["ハーバーマス"], terms: ["権力", "正義"], type: "single",
+    keys: ["公共性"],
     question: "ハーバーマスの公共性の構造転換における診断として最も適切なものは？",
     choices: [
       "公共圏は近代を通じて一貫して拡大し、成熟してきたとする",
@@ -8516,6 +8845,7 @@ const QUESTIONS = [
   {
     id: "q376",
     philosophers: ["ハーバーマス", "リオタール"], terms: ["理性", "言語"], type: "compare",
+    keys: ["討議", "言語ゲーム", "ポストモダン", "抗争"],
     question: "近代をどう扱うかについて、ハーバーマスとリオタールの対立として最も適切なものは？",
     choices: [
       "ハーバーマスは討議による合意の可能性を擁護し、リオタールはそれ自体を疑った",
@@ -8540,6 +8870,7 @@ const QUESTIONS = [
   {
     id: "q377",
     philosophers: ["アドルノ", "ハーバーマス"], terms: ["理性", "権力"], type: "compare",
+    keys: ["討議", "承認をめぐる闘争"],
     question: "フランクフルト学派の世代間の違いとして最も適切なものは？",
     choices: [
       "アドルノらは理性が支配に転化したと診断し、ハーバーマスは相互了解の相を見出した",
@@ -8564,6 +8895,7 @@ const QUESTIONS = [
   {
     id: "q378",
     philosophers: ["ヘラクレイトス"], terms: ["差異", "理性"], type: "single",
+    keys: ["ロゴス"],
     question: "ヘラクレイトスのロゴスとして最も適切なものは？",
     choices: [
       "人間が言葉によって世界を秩序づける営みのこと",
@@ -8589,6 +8921,7 @@ const QUESTIONS = [
   {
     id: "q379",
     philosophers: ["ヘラクレイトス"], terms: ["差異", "時間"], type: "single",
+    keys: ["万物流転"],
     question: "ヘラクレイトスのものとして伝えられる「同じ川に二度入ることはできない」という言葉の理解として最も適切なものは？",
     choices: [
       "川はいつも同じ姿を保っているという安定性の指摘",
@@ -8654,6 +8987,7 @@ const QUESTIONS = [
   {
     id: "q382",
     philosophers: ["アリストテレス"], terms: ["正義", "幸福"], type: "single",
+    keys: ["徳倫理"],
     question: "現代の徳倫理学の主張として最も適切なものは？",
     choices: [
       "行為の正しさを判定する規則を精緻に体系化すべきだという主張",
@@ -8678,6 +9012,7 @@ const QUESTIONS = [
   {
     id: "q383",
     philosophers: ["デカルト", "スピノザ", "ライプニッツ"], terms: ["実体", "存在"], type: "compare",
+    keys: ["モナド"],
     question: "一元論・二元論・多元論という区分について、正しい組み合わせはどれか？",
     choices: [
       "デカルト＝二元論／スピノザ＝一元論／ライプニッツ＝多元論",
@@ -8748,6 +9083,7 @@ const QUESTIONS = [
   {
     id: "q386",
     philosophers: ["デカルト", "アリストテレス"], terms: ["因果", "科学"], type: "single",
+    keys: ["エラン"],
     question: "近代の機械論的自然観として最も適切なものは？",
     choices: [
       "自然は生きた有機体であり、内から目的に向かって成長するという見方",
@@ -8771,6 +9107,7 @@ const QUESTIONS = [
   {
     id: "q387",
     philosophers: ["ホネット", "ヘーゲル"], terms: ["他者", "正義"], type: "single",
+    keys: ["承認をめぐる闘争", "侮辱", "再分配"],
     question: "ホネットの承認をめぐる闘争という枠組みとして最も適切なものは？",
     choices: [
       "経済的な資源の分配こそが正義の中心的な問題であるという主張",
@@ -8795,6 +9132,7 @@ const QUESTIONS = [
   {
     id: "q388",
     philosophers: ["ホネット", "ロールズ"], terms: ["正義", "他者"], type: "compare",
+    keys: ["基本財", "再分配"],
     question: "正義の問題設定について、ロールズとホネットの違いとして最も適切なものは？",
     choices: [
       "ロールズは基本財の分配を中心に据え、ホネットは承認の否認を出発点にした",
@@ -8818,6 +9156,7 @@ const QUESTIONS = [
   {
     id: "q389",
     philosophers: ["グラムシ", "マルクス"], terms: ["権力", "疎外"], type: "single",
+    keys: ["ヘゲモニー", "上部構造", "陣地戦"],
     question: "グラムシのヘゲモニーという概念として最も適切なものは？",
     choices: [
       "軍事力によって他国を支配することを指す国際政治の用語",
@@ -8841,6 +9180,7 @@ const QUESTIONS = [
   {
     id: "q390",
     philosophers: ["アルチュセール", "マルクス"], terms: ["疎外", "構造"], type: "single",
+    keys: ["イデオロギー", "呼びかけ", "イデオロギー装置"],
     question: "アルチュセールのイデオロギー論として最も適切なものは？",
     choices: [
       "イデオロギーは虚偽の意識であり、正しい知識によって払拭できる",
@@ -8864,6 +9204,7 @@ const QUESTIONS = [
   {
     id: "q391",
     philosophers: ["シンガー", "ベンサム"], terms: ["功利主義", "正義"], type: "single",
+    keys: ["種差別"],
     question: "シンガーの種差別という概念として最も適切なものは？",
     choices: [
       "生物種の多様性を守るべきだという環境保護の主張",
@@ -8887,6 +9228,7 @@ const QUESTIONS = [
   {
     id: "q392",
     philosophers: ["ウィトゲンシュタイン", "バトラー"], terms: ["言語", "意味"], type: "single",
+    keys: ["言語ゲーム", "パフォーマティヴ"],
     question: "オースティンが提示した言語行為論の発想として最も適切なものは？",
     choices: [
       "言語の役割は事実を記述して真偽を問われることに尽きる",
@@ -8911,6 +9253,7 @@ const QUESTIONS = [
   {
     id: "q393",
     philosophers: ["マルクス", "アルチュセール"], terms: ["疎外", "構造"], type: "single",
+    keys: ["物神性"],
     question: "初期マルクスと後期マルクスの関係をめぐる論争として最も適切なものは？",
     choices: [
       "疎外論と経済学は連続するという読みと、切断があるという読みの対立",
@@ -8958,6 +9301,7 @@ const QUESTIONS = [
   {
     id: "q395",
     philosophers: ["メルロ＝ポンティ", "ボーヴォワール"], terms: ["身体", "実存"], type: "single",
+    keys: ["両義性", "明晰判明"],
     question: "メルロ＝ポンティやボーヴォワールが用いる両義性という語として最も適切なものは？",
     choices: [
       "どちらとも解釈できてはっきりしないという、避けるべき曖昧さのこと",
@@ -8977,6 +9321,7 @@ const QUESTIONS = [
   {
     id: "q396",
     philosophers: ["デリダ", "バルト"], terms: ["言語", "差異"], type: "single",
+    keys: ["エクリチュール"],
     question: "デリダが用いるエクリチュールという語として最も適切なものは？",
     choices: [
       "手書きの文字による表記の技術そのもののこと",
@@ -8996,6 +9341,7 @@ const QUESTIONS = [
   {
     id: "q397",
     philosophers: ["ウィトゲンシュタイン", "クワイン"], terms: ["科学", "意味"], type: "single",
+    keys: ["反証", "語りえぬ"],
     question: "論理実証主義の中心的な主張として最も適切なものは？",
     choices: [
       "検証できない言明は無意味であり、形而上学がその典型だとする立場",
@@ -9019,6 +9365,7 @@ const QUESTIONS = [
   {
     id: "q398",
     philosophers: ["ヒューム"], terms: ["因果", "科学"], type: "single",
+    keys: ["因果批判", "帰納", "反証"],
     question: "ヒュームの因果批判が後世に与えた影響として最も適切なものは？",
     choices: [
       "因果という概念が科学から完全に排除される結果になった",
@@ -9042,6 +9389,7 @@ const QUESTIONS = [
   {
     id: "q399",
     philosophers: ["フッサール", "サルトル", "レヴィナス"], terms: ["他者"], type: "compare",
+    keys: ["まなざし", "顔", "現存在"],
     question: "他者をめぐる現象学の展開の組み合わせとして正しいものは？",
     choices: [
       "フッサール＝意識からの構成／サルトル＝まなざしの対象化／レヴィナス＝顔の呼びかけ",
@@ -9065,6 +9413,7 @@ const QUESTIONS = [
   {
     id: "q400",
     philosophers: ["アドルノ", "ホネット", "ハーバーマス"], terms: ["理性", "権力"], type: "compare",
+    keys: ["討議", "承認をめぐる闘争"],
     question: "フランクフルト学派の三世代の力点の組み合わせとして正しいものは？",
     choices: [
       "アドルノ＝理性の支配への転化／ハーバーマス＝討議的な合理性／ホネット＝承認をめぐる闘争",
@@ -9089,6 +9438,7 @@ const QUESTIONS = [
   {
     id: "q401",
     philosophers: ["アンスコム", "カント"], terms: ["正義", "理性"], type: "single",
+    keys: ["現代道徳哲学", "徳倫理"],
     question: "アンスコムが「現代道徳哲学」で行った批判として最も適切なものは？",
     choices: [
       "近代の道徳哲学は宗教的すぎるので、世俗化を進めるべきだという批判",
@@ -9136,6 +9486,7 @@ const QUESTIONS = [
   {
     id: "q403",
     philosophers: ["テイラー", "ホネット"], terms: ["他者", "正義"], type: "single",
+    keys: ["承認の政治", "強い評価"],
     question: "テイラーの承認の政治という議論として最も適切なものは？",
     choices: [
       "すべての市民を同じ規則のもとで平等に扱えば十分であり、差異を考慮すべきではないという主張",
@@ -9160,6 +9511,7 @@ const QUESTIONS = [
   {
     id: "q404",
     philosophers: ["モース"], terms: ["贈与", "他者"], type: "single",
+    keys: ["返礼義務", "全体的社会的事実", "ポトラッチ"],
     question: "モースの『贈与論』における三つの義務として正しいものは？",
     choices: [
       "与える義務、受け取る義務、返す義務",
@@ -9184,6 +9536,7 @@ const QUESTIONS = [
   {
     id: "q405",
     philosophers: ["モース", "バタイユ", "デリダ", "マリオン"], terms: ["贈与"], type: "compare",
+    keys: ["蕩尽", "返礼義務"],
     question: "贈与をめぐる議論の展開の組み合わせとして正しいものは？",
     choices: [
       "モース＝返礼義務を伴う交換／バタイユ＝蕩尽／デリダ＝不可能／マリオン＝括弧入れ",
@@ -9208,6 +9561,7 @@ const QUESTIONS = [
   {
     id: "q406",
     philosophers: ["プラトン", "アリストテレス"], terms: ["イデア", "存在"], type: "single",
+    keys: ["第三人間論", "形相"],
     question: "第三人間論と呼ばれる議論として最も適切なものは？",
     choices: [
       "人間には身体と精神のほかに第三の要素があるという主張",
@@ -9231,6 +9585,7 @@ const QUESTIONS = [
   {
     id: "q407",
     philosophers: ["スピノザ", "ライプニッツ"], terms: ["身体", "実体"], type: "single",
+    keys: ["心身平行論", "属性", "予定調和"],
     question: "スピノザの心身平行論と、ライプニッツの予定調和の違いとして最も適切なものは？",
     choices: [
       "スピノザは唯一の実体の二つの属性とし、ライプニッツは無数の実体を神が調和させたとした",
@@ -9254,6 +9609,7 @@ const QUESTIONS = [
   {
     id: "q408",
     philosophers: ["ライプニッツ", "カント"], terms: ["神", "正義"], type: "single",
+    keys: ["弁神論"],
     question: "弁神論と呼ばれる議論として最も適切なものは？",
     choices: [
       "神が存在することを論理的に証明しようとする議論",
@@ -9279,6 +9635,7 @@ const QUESTIONS = [
   {
     id: "q409",
     philosophers: ["クリプキ", "ライプニッツ"], terms: ["存在", "理性"], type: "single",
+    keys: ["可能世界"],
     question: "様相論理と可能世界という枠組みとして最も適切なものは？",
     choices: [
       "現実とは別に、物理的に存在する複数の宇宙を想定する理論",
@@ -9302,6 +9659,7 @@ const QUESTIONS = [
   {
     id: "q410",
     philosophers: ["フレーゲ"], terms: ["意味", "言語"], type: "single",
+    keys: ["文脈原理", "意義", "心理主義"],
     question: "フレーゲの文脈原理として最も適切なものは？",
     choices: [
       "語の意味は、それが用いられる社会的な状況によって決まるという原理",
@@ -9325,6 +9683,7 @@ const QUESTIONS = [
   {
     id: "q411",
     philosophers: ["ラッセル", "ウィトゲンシュタイン"], terms: ["存在", "言語"], type: "single",
+    keys: ["論理的原子論", "写像理論"],
     question: "ラッセルの論理的原子論として最も適切なものは？",
     choices: [
       "物質が原子から構成されているという物理学の理論を哲学に応用したもの",
@@ -9394,6 +9753,7 @@ const QUESTIONS = [
   {
     id: "q414",
     philosophers: ["クリプキ", "ウィトゲンシュタイン"], terms: ["言語", "意味"], type: "single",
+    keys: ["規則遵守", "私的言語"],
     question: "クリプキが定式化した規則遵守のパラドックスとして最も適切なものは？",
     choices: [
       "規則には必ず例外があるので、完全な規則は作れないという指摘",
@@ -9417,6 +9777,7 @@ const QUESTIONS = [
   {
     id: "q415",
     philosophers: ["クワイン"], terms: ["存在", "言語"], type: "single",
+    keys: ["剃刀", "全体論"],
     question: "クワインの「存在するとは変項の値であることである」という定式として最も適切なものは？",
     choices: [
       "変化するものだけが存在するという存在論的な主張",
@@ -9441,6 +9802,7 @@ const QUESTIONS = [
   {
     id: "q416",
     philosophers: ["ウィトゲンシュタイン", "ムーア"], terms: ["理性", "科学"], type: "single",
+    keys: ["蝶番"],
     question: "後期ウィトゲンシュタインの『確実性の問題』における蝶番という考え方として最も適切なものは？",
     choices: [
       "すべての信念は同じ資格をもち、等しく疑いうるという主張",
@@ -9464,6 +9826,7 @@ const QUESTIONS = [
   {
     id: "q417",
     philosophers: ["フレーゲ", "ラッセル", "クリプキ"], terms: ["言語", "意味"], type: "compare",
+    keys: ["意義", "固有名", "固定指示子", "記述説"],
     question: "固有名の働きをめぐる立場の組み合わせとして正しいものは？",
     choices: [
       "フレーゲ＝意義／ラッセル＝隠れた記述／クリプキ＝固定指示子",
@@ -9484,6 +9847,7 @@ const QUESTIONS = [
   {
     id: "q418",
     philosophers: ["ポパー"], terms: ["科学", "理性"], type: "single",
+    keys: ["三つの世界", "反証主義", "反証"],
     question: "ポパーの三つの世界という構想として最も適切なものは？",
     choices: [
       "過去・現在・未来という、時間についての三区分",
@@ -9507,6 +9871,7 @@ const QUESTIONS = [
   {
     id: "q419",
     philosophers: ["クーン", "ポパー"], terms: ["科学", "意味"], type: "single",
+    keys: ["反証主義", "反証", "パラダイム", "通約不可能"],
     question: "観察の理論負荷性として最も適切なものは？",
     choices: [
       "観察には必ず測定誤差が伴うという実験上の指摘",
@@ -9526,6 +9891,7 @@ const QUESTIONS = [
   {
     id: "q420",
     philosophers: ["ジェイムズ"], terms: ["理性", "身体"], type: "single",
+    keys: ["意識の流れ", "欲動", "純粋経験"],
     question: "ジェイムズの意識の流れという捉え方として最も適切なものは？",
     choices: [
       "意識は独立した観念が鎖のように連なったものであるという見方",
@@ -9573,6 +9939,7 @@ const QUESTIONS = [
   {
     id: "q422",
     philosophers: ["デューイ"], terms: ["科学", "理性"], type: "single",
+    keys: ["探究の理論", "問題状況", "経験の再構成"],
     question: "デューイの探究の理論として最も適切なものは？",
     choices: [
       "探究とは、あらかじめ存在する真理を発見する過程である",
@@ -9621,6 +9988,7 @@ const QUESTIONS = [
   {
     id: "q424",
     philosophers: ["アンスコム", "マッキンタイア", "テイラー"], terms: ["正義", "実存"], type: "compare",
+    keys: ["物語的自己", "徳倫理", "承認の政治", "強い評価"],
     question: "徳倫理学と共同体主義の系譜の組み合わせとして正しいものは？",
     choices: [
       "アンスコム＝義務概念への批判／マッキンタイア＝物語的自己／テイラー＝強い評価",
@@ -9646,6 +10014,7 @@ const QUESTIONS = [
   {
     id: "q425",
     philosophers: ["ブルデュー", "マルクス"], terms: ["権力", "構造"], type: "single",
+    keys: ["文化資本", "再生産"],
     question: "ブルデューが区別した資本の諸形態として最も適切なものは？",
     choices: [
       "経済資本のみが実質的な資源であり、他は比喩にすぎない",
@@ -9668,6 +10037,7 @@ const QUESTIONS = [
   {
     id: "q426",
     philosophers: ["ブルデュー"], terms: ["権力", "身体"], type: "single",
+    keys: ["文化資本"],
     question: "ブルデューの文化資本の三つの形態として正しいものは？",
     choices: [
       "身体化された形態、客体化された形態、制度化された形態",
@@ -9690,6 +10060,7 @@ const QUESTIONS = [
   {
     id: "q427",
     philosophers: ["ブルデュー", "グラムシ"], terms: ["権力", "疎外"], type: "single",
+    keys: ["象徴的暴力", "ヘゲモニー"],
     question: "ブルデューの象徴的暴力として最も適切なものは？",
     choices: [
       "言葉によってなされる暴言や侮辱そのものを指す語",
@@ -9713,6 +10084,7 @@ const QUESTIONS = [
   {
     id: "q428",
     philosophers: ["ブルデュー"], terms: ["構造", "理性"], type: "single",
+    keys: ["実践感覚"],
     question: "ブルデューの実践感覚と、彼が自らの学問に課した再帰性として最も適切なものは？",
     choices: [
       "実践は規則に従って行われるので、規則を記述しさえすれば説明は完了する",
@@ -9736,6 +10108,7 @@ const QUESTIONS = [
   {
     id: "q429",
     philosophers: ["レヴィナス", "ハイデガー"], terms: ["存在", "実存"], type: "single",
+    keys: ["イリヤ"],
     question: "レヴィナスのイリヤ（ある）という概念として最も適切なものは？",
     choices: [
       "存在するものが豊かに与えられているという肯定的な経験",
@@ -9760,6 +10133,7 @@ const QUESTIONS = [
   {
     id: "q430",
     philosophers: ["レヴィナス"], terms: ["他者", "正義"], type: "single",
+    keys: ["代理", "人質", "無知のヴェール", "非対称性", "無限", "共感"],
     question: "レヴィナスの代理という概念として最も適切なものは？",
     choices: [
       "他者の役割を一時的に引き受けて代行してみせること",
@@ -9783,6 +10157,7 @@ const QUESTIONS = [
   {
     id: "q431",
     philosophers: ["レヴィナス", "ロールズ"], terms: ["他者", "正義"], type: "single",
+    keys: ["顔", "無知のヴェール", "無限"],
     question: "レヴィナスにおける第三者の登場がもつ意味として最も適切なものは？",
     choices: [
       "二者関係の親密さが失われるので、第三者は排除されるべきだとされる",
@@ -9806,6 +10181,7 @@ const QUESTIONS = [
   {
     id: "q432",
     philosophers: ["レヴィナス", "デカルト"], terms: ["他者", "存在"], type: "single",
+    keys: ["方法的懐疑", "心身二元論", "無限"],
     question: "レヴィナスがデカルトの無限の観念に注目した理由として最も適切なものは？",
     choices: [
       "神の存在証明として有効なものだと考えたから",
@@ -9828,6 +10204,7 @@ const QUESTIONS = [
   {
     id: "q433",
     philosophers: ["ベルクソン"], terms: ["時間", "身体"], type: "single",
+    keys: ["純粋記憶", "記憶の円錐"],
     question: "『物質と記憶』におけるベルクソンの記憶についての考えとして最も適切なものは？",
     choices: [
       "記憶はすべて脳に貯蔵されており、脳が損傷すれば記憶そのものが消える",
@@ -9852,6 +10229,7 @@ const QUESTIONS = [
   {
     id: "q434",
     philosophers: ["ベルクソン"], terms: ["幸福", "身体"], type: "single",
+    keys: ["笑い"],
     question: "ベルクソンの『笑い』における笑いの説明として最も適切なものは？",
     choices: [
       "笑いは緊張が解けたときに生じる生理的な反応である",
@@ -9876,6 +10254,7 @@ const QUESTIONS = [
   {
     id: "q435",
     philosophers: ["ベルクソン"], terms: ["理性", "科学"], type: "single",
+    keys: ["持続の直観"],
     question: "ベルクソンの知性と直観の区別として最も適切なものは？",
     choices: [
       "知性は男性的、直観は女性的な能力であるという区別",
@@ -9898,6 +10277,7 @@ const QUESTIONS = [
   {
     id: "q436",
     philosophers: ["ベルクソン", "ポパー"], terms: ["自由", "正義"], type: "single",
+    keys: ["開かれた社会"],
     question: "『道徳と宗教の二源泉』における閉じた道徳と開いた道徳の区別として最も適切なものは？",
     choices: [
       "古い時代の道徳と現代の道徳という、時代のうえでの区分",
@@ -9917,6 +10297,7 @@ const QUESTIONS = [
   {
     id: "q437",
     philosophers: ["マリオン", "カント"], terms: ["存在", "身体"], type: "single",
+    keys: ["飽和", "神学的転回"],
     question: "マリオンの飽和した現象として最も適切なものは？",
     choices: [
       "情報量が多すぎて理解できなくなる現象のこと",
@@ -9940,6 +10321,7 @@ const QUESTIONS = [
   {
     id: "q438",
     philosophers: ["マリオン", "ハイデガー"], terms: ["神", "存在"], type: "single",
+    keys: ["偶像", "聖像"],
     question: "マリオンの偶像と聖像（イコン）の区別として最も適切なものは？",
     choices: [
       "宗教美術における様式の違いを指すための美術史上の区別",
@@ -9964,6 +10346,7 @@ const QUESTIONS = [
   {
     id: "q439",
     philosophers: ["マリオン"], terms: ["贈与", "欲望"], type: "single",
+    keys: ["コギト"],
     question: "マリオンの愛についての現象学として最も適切なものは？",
     choices: [
       "愛は感情であり、哲学の対象にはならないという立場",
@@ -9987,6 +10370,7 @@ const QUESTIONS = [
   {
     id: "q440",
     philosophers: ["アーレント"], terms: ["権力", "他者"], type: "single",
+    keys: ["全体主義", "複数性"],
     question: "『全体主義の起原』における全体的支配の条件として最も適切なものは？",
     choices: [
       "強力な独裁者がもつ個人的な資質こそが決定的である",
@@ -10011,6 +10395,7 @@ const QUESTIONS = [
   {
     id: "q441",
     philosophers: ["アーレント", "カント"], terms: ["正義", "理性"], type: "single",
+    keys: ["判断力"],
     question: "アーレントが晩年に関心を向けた判断力という主題として最も適切なものは？",
     choices: [
       "法律を正しく適用していく裁判官がもつ能力のこと",
@@ -10034,6 +10419,7 @@ const QUESTIONS = [
   {
     id: "q442",
     philosophers: ["マキャヴェリ"], terms: ["権力", "自由"], type: "single",
+    keys: ["力量", "運命", "フォルトゥーナ"],
     question: "マキャヴェリのヴィルトゥとフォルトゥーナとして最も適切なものは？",
     choices: [
       "ヴィルトゥは道徳的な徳、フォルトゥーナは幸福のこと",
@@ -10057,6 +10443,7 @@ const QUESTIONS = [
   {
     id: "q443",
     philosophers: ["バークリー", "ロック"], terms: ["言語", "実体"], type: "single",
+    keys: ["抽象観念", "唯名論", "家族的類似"],
     question: "バークリーの抽象観念批判として最も適切なものは？",
     choices: [
       "抽象的な議論は難解なので避けるべきだという主張",
@@ -10081,6 +10468,7 @@ const QUESTIONS = [
   {
     id: "q444",
     philosophers: ["アダム・スミス"], terms: ["功利主義", "権力"], type: "single",
+    keys: ["見えざる手", "分業"],
     question: "『国富論』における分業と見えざる手についての説明として最も適切なものは？",
     choices: [
       "各人が自己の利益を追求すれば、社会全体の利益が促進される",
@@ -10104,6 +10492,7 @@ const QUESTIONS = [
   {
     id: "q445",
     philosophers: ["フィヒテ", "ヘーゲル"], terms: ["他者", "自由"], type: "single",
+    keys: ["知識学"],
     question: "フィヒテの相互承認についての議論として最も適切なものは？",
     choices: [
       "自我は単独で自らを定立するので、他者は不要である",
@@ -10127,6 +10516,7 @@ const QUESTIONS = [
   {
     id: "q446",
     philosophers: ["グラムシ"], terms: ["権力", "理性"], type: "single",
+    keys: ["有機的知識人", "ヘゲモニー"],
     question: "グラムシの有機的知識人という概念として最も適切なものは？",
     choices: [
       "大学などに所属している専門的な研究者のこと",
@@ -10173,6 +10563,7 @@ const QUESTIONS = [
   {
     id: "q448",
     philosophers: ["ゴフマン"], terms: ["他者", "身体"], type: "single",
+    keys: ["スティグマ"],
     question: "ゴフマンのスティグマについての分析として最も適切なものは？",
     choices: [
       "特定の属性そのものが本質的に汚点であるという指摘",
@@ -10197,6 +10588,7 @@ const QUESTIONS = [
   {
     id: "q449",
     philosophers: ["アガンベン", "シュミット"], terms: ["権力", "正義"], type: "single",
+    keys: ["例外状態"],
     question: "アガンベンの例外状態についての議論として最も適切なものは？",
     choices: [
       "緊急事態は例外的な事態であり、法秩序への影響は一時的なものにとどまる",
@@ -10221,6 +10613,7 @@ const QUESTIONS = [
   {
     id: "q450",
     philosophers: ["ブルデュー", "レヴィナス", "ベルクソン"], terms: ["構造", "他者"], type: "compare",
+    keys: ["再生産", "顔"],
     question: "フランスの思想における三者の関心の違いとして最も適切なものは？",
     choices: [
       "ブルデュー＝支配の再生産／レヴィナス＝顔の責任／ベルクソン＝持続と生命",
@@ -10244,6 +10637,7 @@ const QUESTIONS = [
   {
     id: "q451",
     philosophers: ["フォイエルバッハ"], terms: ["神", "他者"], type: "single",
+    keys: ["類的存在", "投影", "投影説"],
     question: "フォイエルバッハの類的存在という概念として最も適切なものは？",
     choices: [
       "人間は動物の一種にすぎないのだという生物学的な規定",
@@ -10268,6 +10662,7 @@ const QUESTIONS = [
   {
     id: "q452",
     philosophers: ["フォイエルバッハ", "ヘーゲル"], terms: ["神", "疎外"], type: "single",
+    keys: ["絶対精神"],
     question: "ヘーゲル左派におけるフォイエルバッハの位置として最も適切なものは？",
     choices: [
       "ヘーゲルの体系を忠実に継承し、そのまま体系化した",
@@ -10292,6 +10687,7 @@ const QUESTIONS = [
   {
     id: "q453",
     philosophers: ["フォイエルバッハ", "ニーチェ", "フロイト"], terms: ["神", "無意識"], type: "single",
+    keys: ["投影", "投影説", "系譜学"],
     question: "宗教批判の系譜において、フォイエルバッハの位置として最も適切なものは？",
     choices: [
       "宗教を科学的に論駁しようとした最初の人物である",
@@ -10316,6 +10712,7 @@ const QUESTIONS = [
   {
     id: "q454",
     philosophers: ["サンデル"], terms: ["正義", "幸福"], type: "single",
+    keys: ["能力主義"],
     question: "サンデルの市場の道徳的限界という議論として最も適切なものは？",
     choices: [
       "市場は非効率なので国家が統制すべきだという主張",
@@ -10362,6 +10759,7 @@ const QUESTIONS = [
   {
     id: "q456",
     philosophers: ["サンデル", "ノージック", "ロールズ"], terms: ["正義", "幸福"], type: "compare",
+    keys: ["能力主義"],
     question: "才能と成功の扱いについて、三者の立場の組み合わせとして正しいものは？",
     choices: [
       "ロールズ＝才能は道徳的に恣意的なので共有資産として扱う／ノージック＝正しく取得したものは本人のもの／サンデル＝運の要素を認めることで能力主義の傲慢を退ける",
@@ -10384,6 +10782,7 @@ const QUESTIONS = [
   {
     id: "q457",
     philosophers: ["フィヒテ"], terms: ["理性", "自由"], type: "single",
+    keys: ["非我", "知識学", "物自体", "事行"],
     question: "フィヒテの知識学における三つの原則として正しいものは？",
     choices: [
       "自我が自我を定立し、非我が反定立され、互いに制限しあう",
@@ -10407,6 +10806,7 @@ const QUESTIONS = [
   {
     id: "q458",
     philosophers: ["フィヒテ"], terms: ["自由", "権力"], type: "single",
+    keys: ["知識学"],
     question: "『ドイツ国民に告ぐ』についての説明として最も適切なものは？",
     choices: [
       "ナポレオン占領下のベルリンで行われた、国民教育による再生を説く連続講演",
@@ -10426,6 +10826,7 @@ const QUESTIONS = [
   {
     id: "q459",
     philosophers: ["フィヒテ", "カント", "ヘーゲル"], terms: ["理性", "存在"], type: "compare",
+    keys: ["物自体", "非我"],
     question: "ドイツ観念論の展開において、三者の位置の組み合わせとして正しいものは？",
     choices: [
       "カント＝限界として残す／フィヒテ＝退けて自我から／ヘーゲル＝限界の設定を批判",
@@ -10450,6 +10851,7 @@ const QUESTIONS = [
   {
     id: "q460",
     philosophers: ["アガンベン", "アリストテレス"], terms: ["身体", "権力"], type: "single",
+    keys: ["生政治", "剥き出しの生"],
     question: "アガンベンが用いるゾーエーとビオスの区別として最も適切なものは？",
     choices: [
       "肉体と精神を分ける、二元論にもとづいた区別のこと",
@@ -10469,6 +10871,7 @@ const QUESTIONS = [
   {
     id: "q461",
     philosophers: ["アガンベン"], terms: ["他者", "言語"], type: "single",
+    keys: ["抗争"],
     question: "『アウシュヴィッツの残りのもの』におけるアガンベンの証言をめぐる議論として最も適切なものは？",
     choices: [
       "生存者の証言があれば、出来事は十分に伝えられる",
@@ -10488,6 +10891,7 @@ const QUESTIONS = [
   {
     id: "q462",
     philosophers: ["アガンベン", "アリストテレス"], terms: ["意志", "自由"], type: "single",
+    keys: ["可能態", "現実態"],
     question: "アガンベンが論じる潜勢力という概念として最も適切なものは？",
     choices: [
       "まだ実現していない能力が、いずれ必ず現実化するという楽観的な見通し",
@@ -10507,6 +10911,7 @@ const QUESTIONS = [
   {
     id: "q463",
     philosophers: ["アルチュセール", "マルクス", "フロイト"], terms: ["構造", "疎外"], type: "single",
+    keys: ["上部構造", "重層的決定", "夢"],
     question: "アルチュセールの重層的決定という概念として最も適切なものは？",
     choices: [
       "経済が最終的にすべてを決定するという単純な因果の主張",
@@ -10530,6 +10935,7 @@ const QUESTIONS = [
   {
     id: "q464",
     philosophers: ["アルチュセール"], terms: ["言語", "理性"], type: "single",
+    keys: ["徴候的読解"],
     question: "アルチュセールの徴候的読解として最も適切なものは？",
     choices: [
       "テキストに書かれている内容を忠実に要約する読み方",
@@ -10554,6 +10960,7 @@ const QUESTIONS = [
   {
     id: "q465",
     philosophers: ["アルチュセール", "バトラー"], terms: ["構造", "権力"], type: "compare",
+    keys: ["呼びかけ", "パフォーマティヴ", "ジェンダー", "引用可能性"],
     question: "呼びかけによる主体の成立について、アルチュセールとバトラーの関係として最も適切なものは？",
     choices: [
       "アルチュセールは呼びかけによる主体の成立を論じ、バトラーは反復の失敗に抵抗を見た",
@@ -10578,6 +10985,7 @@ const QUESTIONS = [
   {
     id: "q466",
     philosophers: ["シンガー", "ベンサム", "ミル"], terms: ["功利主義", "幸福"], type: "single",
+    keys: ["快苦", "道徳的地位"],
     question: "シンガーが長く採用していた選好功利主義として最も適切なものは？",
     choices: [
       "快楽の量を計算して最大化しようとする立場のこと",
@@ -10624,6 +11032,7 @@ const QUESTIONS = [
   {
     id: "q468",
     philosophers: ["アンスコム"], terms: ["理性", "意志"], type: "single",
+    keys: ["意図的行為", "二重結果", "実践的知識"],
     question: "アンスコムの『インテンション』における意図的行為の分析として最も適切なものは？",
     choices: [
       "意図とは行為に先立って心のうちに存在している出来事である",
@@ -10648,6 +11057,7 @@ const QUESTIONS = [
   {
     id: "q469",
     philosophers: ["アンスコム", "カント", "ベンサム"], terms: ["正義", "権力"], type: "single",
+    keys: ["二重結果"],
     question: "アンスコムが原子爆弾の投下について論じた立場として最も適切なものは？",
     choices: [
       "戦争の早期終結に貢献したので正当化されるという立場",
@@ -10694,6 +11104,7 @@ const QUESTIONS = [
   {
     id: "q471",
     philosophers: ["マッキンタイア"], terms: ["実存", "正義"], type: "single",
+    keys: ["物語的自己"],
     question: "マッキンタイアの物語的自己という考え方として最も適切なものは？",
     choices: [
       "人生は虚構にすぎず、事実とは無関係だという主張",
@@ -10741,6 +11152,7 @@ const QUESTIONS = [
   {
     id: "q473",
     philosophers: ["モース", "ブルデュー"], terms: ["贈与", "権力"], type: "compare",
+    keys: ["実践感覚"],
     question: "贈与の分析について、モースとブルデューの違いとして最も適切なものは？",
     choices: [
       "モースは贈与を義務の体系として記述し、ブルデューは時間の隔たりに注目した",
@@ -10764,6 +11176,7 @@ const QUESTIONS = [
   {
     id: "q474",
     philosophers: ["モース", "レヴィ＝ストロース"], terms: ["贈与", "構造"], type: "single",
+    keys: ["全体的社会的事実", "親族", "社会的事実"],
     question: "モースの全体的社会的事実という方法上の主張として最も適切なものは？",
     choices: [
       "社会現象は経済的な要因によって最終的に説明されるという主張",
@@ -10788,6 +11201,7 @@ const QUESTIONS = [
   {
     id: "q475",
     philosophers: ["ホネット", "アドルノ"], terms: ["他者", "権力"], type: "single",
+    keys: ["侮辱", "否定弁証法", "再分配"],
     question: "ホネットが批判理論の基礎を承認に求めた理由として最も適切なものは？",
     choices: [
       "承認は心理学の概念であり、社会理論には適さないと考えたから",
@@ -10811,6 +11225,7 @@ const QUESTIONS = [
   {
     id: "q476",
     philosophers: ["シュミット"], terms: ["権力","他者"], type: "single",
+    keys: ["友と敵", "討議"],
     question: "シュミットの『政治的なものの概念』における友と敵の区別として最も適切なものは？",
     choices: [
       "政治は善悪の区別に基づき、正しい側が誤った側を退ける営みである",
@@ -10833,6 +11248,7 @@ const QUESTIONS = [
   {
     id: "q477",
     philosophers: ["ゴフマン"], terms: ["意味","他者"], type: "single",
+    keys: ["フレーム", "再生産"],
     question: "ゴフマンの『フレーム分析』における枠組みという考え方として最も適切なものは？",
     choices: [
       "人は枠組みを通して出来事を意味づけており、枠が変われば別の出来事になる",
@@ -10855,6 +11271,7 @@ const QUESTIONS = [
   {
     id: "q478",
     philosophers: ["グラムシ"], terms: ["権力","構造"], type: "single",
+    keys: ["陣地戦", "市民社会", "ヘゲモニー"],
     question: "グラムシの陣地戦と機動戦の区別として最も適切なものは？",
     choices: [
       "経済的な矛盾が極限に達すれば体制は自壊するので、危機を待てばよい",
