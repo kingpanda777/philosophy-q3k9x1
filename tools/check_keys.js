@@ -71,7 +71,7 @@ QUESTIONS.forEach(q => {
   if (a !== b) diff.push(`${q.id} q.keys=${a} draft=${b}`);
 });
 const draftOnly = Object.keys(draft).filter(id => !QUESTIONS.some(q => q.id === id));
-ok(diff.length === 0, `478問すべてで中身と順序が一致`, diff.slice(0, 5).join(" / "));
+ok(diff.length === 0, `${QUESTIONS.length}問すべてで中身と順序が一致`, diff.slice(0, 5).join(" / "));
 ok(draftOnly.length === 0, `draft にあって questions.js にない id がない`, draftOnly.join("、"));
 const nDraft = Object.values(draft).reduce((a, b) => a + b.length, 0);
 const nKeys = QUESTIONS.reduce((a, q) => a + (q.keys || []).length, 0);
