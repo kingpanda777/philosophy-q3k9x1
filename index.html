@@ -439,28 +439,50 @@ function homeView(){
         </button>`;
       }).join("");
     } else {
-      const qy = keyQuery.trim();
-      const rows = qy ? KEY_ROWS.filter(r => r.name.includes(qy)) : KEY_ROWS;
+      /* 入力欄は一度だけ書き出し、以後は作り直さない。
+         作り直すと日本語入力の変換途中の状態が壊れ、濁点も漢字変換も入らなくなる。
+         絞り込みは #kcount と #keylist の中身だけを差し替えて行う。 */
       h += `<input class="ksearch" id="keysearch" type="search" inputmode="search"
               placeholder="鍵語をさがす（例：現存在、ハビトゥス）" value="${esc(keyQuery)}"
-              aria-label="鍵語をさがす">`;
-      h += `<p class="kcount">${qy ? rows.length + "語（" + esc(qy) + "）" : KEY_ROWS.length + "語　問題数の多い順"}</p>`;
-      h += rows.length
-        ? rows.map(r => {
-            const who = [...new Set(r.qs.flatMap(q => q.philosophers))];
-            const whoLabel = who.length > 2 ? who.slice(0,2).join("・") + " ほか" + (who.length-2) + "人" : who.join("・");
-            const badge = r.kind === "concept" ? `<span class="kbadge">概念へ</span>` : "";
-            return `<button class="krow" data-key="${esc(r.name)}" data-kind="${r.kind}">
-              <span class="krow-name">${esc(r.name)}</span>${badge}
-              <span class="krow-who">${esc(whoLabel)}</span>
-              <span class="krow-n">${r.qs.length}問</span>
-            </button>`;
-          }).join("")
-        : `<p class="empty">「${esc(qy)}」に当たる鍵語はありません。</p>`;
+              autocomplete="off" autocapitalize="off" spellcheck="false"
+              aria-label="鍵語をさがす" aria-controls="keylist">`;
+      h += `<p class="kcount" id="kcount">${keyCountText()}</p>`;
+      h += `<div id="keylist">${keyListHTML()}</div>`;
     }
   }
   else h += logView();
   return h;
+}
+
+/* ========== 鍵語の一覧（検索で差し替える部分だけ） ========== */
+function keyRowsNow(){
+  const qy = keyQuery.trim();
+  return qy ? KEY_ROWS.filter(r => r.name.includes(qy)) : KEY_ROWS;
+}
+function keyCountText(){
+  const qy = keyQuery.trim();
+  return qy ? keyRowsNow().length + "語（" + esc(qy) + "）" : KEY_ROWS.length + "語　問題数の多い順";
+}
+function keyListHTML(){
+  const qy = keyQuery.trim();
+  const rows = keyRowsNow();
+  if(!rows.length) return `<p class="empty">「${esc(qy)}」に当たる鍵語はありません。</p>`;
+  return rows.map(r => {
+    const who = [...new Set(r.qs.flatMap(q => q.philosophers))];
+    const whoLabel = who.length > 2 ? who.slice(0,2).join("・") + " ほか" + (who.length-2) + "人" : who.join("・");
+    const badge = r.kind === "concept" ? `<span class="kbadge">概念へ</span>` : "";
+    return `<button class="krow" data-key="${esc(r.name)}" data-kind="${r.kind}">
+      <span class="krow-name">${esc(r.name)}</span>${badge}
+      <span class="krow-who">${esc(whoLabel)}</span>
+      <span class="krow-n">${r.qs.length}問</span>
+    </button>`;
+  }).join("");
+}
+function refreshKeyList(){
+  const c = document.getElementById("kcount");
+  const l = document.getElementById("keylist");
+  if(c) c.innerHTML = keyCountText();
+  if(l) l.innerHTML = keyListHTML();
 }
 
 /* ========== 記録 ========== */
@@ -697,17 +719,29 @@ app.addEventListener("click", e => {
   }
 });
 
-/* 鍵語の検索。app.innerHTML を作り直すので、入力欄の焦点とカーソル位置を戻す */
+/* 鍵語の検索。
+   入力欄には触らず、一覧の中身だけを差し替える。
+   画面を作り直すと入力欄ごと作り直されてしまい、日本語入力の変換途中の状態が
+   毎回壊れる。濁点・半濁点が入らない、漢字に変換できない、という不具合になる。
+
+   変換中（compositionstart 〜 compositionend）は絞り込みを止める。
+   「は」→「ば」のような途中の文字で一覧が空になるのを避けるため。
+   変換が確定したら compositionend で絞り込み直す。 */
+let composing = false;
+app.addEventListener("compositionstart", e => {
+  if(e.target.id === "keysearch") composing = true;
+});
+app.addEventListener("compositionend", e => {
+  if(e.target.id !== "keysearch") return;
+  composing = false;
+  keyQuery = e.target.value;
+  refreshKeyList();
+});
 app.addEventListener("input", e => {
   if(e.target.id !== "keysearch") return;
-  const el = e.target;
-  const pos = el.selectionStart;
-  keyQuery = el.value;
-  const y = window.scrollY;
-  render(true);
-  const next = document.getElementById("keysearch");
-  if(next){ next.focus(); try{ next.setSelectionRange(pos, pos); }catch(err){} }
-  window.scrollTo(0, y);
+  keyQuery = e.target.value;
+  if(composing) return;            // 変換中は一覧を動かさない
+  refreshKeyList();
 });
 
 render();
