@@ -10,6 +10,12 @@
      - 解説では繰り返し使っているのに、一度も出題していない語
        ※「存在」が抜けていたのと同じ種類の抜けを見つけるための項目
      - 解説にも設問文にも出るのに TERMS に無い語（用語一覧に足す候補）
+     - 鍵語（keys）のカバー率と密度
+
+   用語は二つのレジストリに分かれている（「用語タブの2分割」の設計）。
+     TERMS（概念から）… 同じ語でも使う人によって中身が変わる語。q.terms で引く
+     keys （鍵語から）… 特定の思想家に強く結びついた語。q.keys で引く
+   keyterms.json は台帳であって配信データではないので、このスクリプトも読まない。
    =========================================================== */
 
 "use strict";
@@ -46,8 +52,8 @@ list.forEach(p => {
   }
 });
 
-/* ---------- 2. 用語タグの密度 ---------- */
-console.log("\n===== 用語タグごとの問題数 =====\n");
+/* ---------- 2. 用語タグの密度（概念から／鍵語から）---------- */
+console.log("\n===== 用語タグごとの問題数（概念から・TERMS）=====\n");
 TERMS.map(t => ({
   name: t.name,
   n: QUESTIONS.filter(q => q.terms.includes(t.name)).length,
@@ -58,6 +64,52 @@ TERMS.map(t => ({
     const mark = t.n < 5 ? "  ← 薄い" : "";
     console.log(`  ${t.name.padEnd(6, "　")} ${String(t.n).padStart(3)}問 / ${t.who}人${mark}`);
   });
+
+/* 鍵語は q.keys から引く。keyterms.json は読まない（台帳であって配信データではない） */
+const keyIndex = new Map();
+QUESTIONS.forEach(q => (q.keys || []).forEach(k => {
+  if (!keyIndex.has(k)) keyIndex.set(k, []);
+  keyIndex.get(k).push(q);
+}));
+const withKeys = QUESTIONS.filter(q => q.keys && q.keys.length);
+const totalKeys = withKeys.reduce((a, q) => a + q.keys.length, 0);
+const soloKeys = [...keyIndex.values()].filter(v => v.length === 1).length;
+const termNames = new Set(TERMS.map(t => t.name));
+const collide = [...keyIndex.keys()].filter(k => termNames.has(k));
+
+console.log("\n===== 鍵語のカバー率（鍵語から・keys）=====\n");
+console.log(`  keys のある問題　　${String(withKeys.length).padStart(3)}問 / ${QUESTIONS.length}問` +
+            `（${(withKeys.length / QUESTIONS.length * 100).toFixed(1)}%）`);
+console.log(`  異なり鍵語　　　　 ${String(keyIndex.size).padStart(3)}語　延べ ${totalKeys}件` +
+            `　1問あたり平均 ${(totalKeys / withKeys.length).toFixed(2)}件`);
+console.log(`  1問だけの鍵語　　　${String(soloKeys).padStart(3)}語` +
+            `　鍵語を選ぶとその1問が出る。設計どおりで、減らす必要はない`);
+console.log(`  TERMS と同名の鍵語 ${String(collide.length).padStart(3)}語` +
+            (collide.length ? "  ← 規則1の対象。" + collide.join("、")
+                            : "　規則1で候補から外しているので0が正しい"));
+
+if (target) {
+  const mine = [...keyIndex.entries()]
+    .filter(([, qs]) => qs.some(q => q.philosophers.some(n => n.includes(target))))
+    .sort((a, b) => b[1].length - a[1].length);
+  console.log(`\n  「${target}」に関わる鍵語 ${mine.length}語`);
+  mine.forEach(([k, qs]) => console.log(`    ${k.padEnd(10, "　")} ${String(qs.length).padStart(2)}問  ` +
+                                        qs.map(q => q.id).join(" ")));
+  console.log("");
+} else {
+  console.log("\n  問題数の多い鍵語（上位15語）");
+  [...keyIndex.entries()].sort((a, b) => b[1].length - a[1].length).slice(0, 15)
+    .forEach(([k, qs]) => {
+      const who = [...new Set(qs.flatMap(q => q.philosophers))].length;
+      console.log(`    ${k.padEnd(10, "　")} ${String(qs.length).padStart(2)}問 / ${who}人`);
+    });
+  const noKeys = QUESTIONS.filter(q => !q.keys || !q.keys.length).map(q => q.id);
+  console.log(`\n  keys のない${noKeys.length}問（「概念から」「哲学者から」では到達できる）`);
+  for (let i = 0; i < noKeys.length; i += 14) {
+    console.log("    " + noKeys.slice(i, i + 14).join(", "));
+  }
+  console.log("\n  （人物ごとの鍵語を見るには  node coverage.js 人物名）");
+}
 
 /* ---------- 3. 出題されていない語の検出 ---------- */
 console.log("\n===== 解説で繰り返し使っているのに出題していない語 =====");
@@ -85,23 +137,30 @@ const push = w => count.set(w, (count.get(w) || 0) + 1);
   .slice(0, 50)
   .forEach(([w, c]) => console.log(`  ${String(c).padStart(3)}回  ${w}`));
 
-/* ---------- 4. TERMS に登録されていない概念 ---------- */
+/* ---------- 4. どちらのレジストリにも無い概念 ---------- */
 /*
    第3節との違い。
    第3節は「設問文・選択肢に一度も出ない語」を探す。だから中心概念ほど
    設問文に出てしまい、検出できない（「真理」「経験」「認識」が漏れる）。
-   この節は逆に、設問文にも問われている語に限って TERMS に無いものを出す。
+   この節は逆に、設問文にも問われている語に限って、どちらのレジストリにも
+   無いものを出す。
+
+   レジストリは二つある（「用語タブの2分割」の設計）。
+   TERMS に無くても keys に入っていれば「鍵語から」で到達できるので、
+   用語一覧に足す候補ではない。だから両方を除外に使う。
+   TERMS だけで判定していた頃は、鍵語として登録済みの語が候補に紛れていた。
 
    一般語（経験、自然、歴史…）を落とすのに使うのは「集中度」である。
    概念は特定の学派に偏って現れ、一般語は全学派に散る。
    最も多い学派が全体の40%以上を占める語だけを残す。
 */
 console.log("");
-console.log("===== 解説にも設問文にも出るのに TERMS に無い語 =====");
+console.log("===== 解説にも設問文にも出るのに、TERMS にも keys にも無い語 =====");
 console.log("（用語一覧に足す候補。5〜25問くらいが絞り込みとして働く範囲）");
 console.log("");
 
-const regSet = new Set(TERMS.map(t => t.name));
+const regSet = new Set(TERMS.map(t => t.name));   // 概念から
+const keySet = new Set(keyIndex.keys());          // 鍵語から（第2節で作った索引）
 const schoolOf = {};
 PHILOSOPHERS.forEach(p => schoolOf[p.name] = p.school);
 
@@ -126,6 +185,7 @@ QUESTIONS.forEach(q => {
 const questionText = QUESTIONS.map(q => q.question).join("\n");
 
 const cands = [];
+let byKey = 0;                        // 他の条件は通ったが、鍵語として登録済みだったもの
 for (const [w, qs] of seenIn) {
   if (qs.length < 5) continue;                                   // 5問未満は一覧に出す意味がない
   if (regSet.has(w) || stop.has(w) || general.has(w)) continue;
@@ -139,6 +199,8 @@ for (const [w, qs] of seenIn) {
   if (!tot) continue;
   const share = ent[0][1] / tot;
   if (share < 0.4) continue;                                     // 全学派に散る語は一般語とみなす
+  // ここまで残った語だけを数える。先に弾くと、他の条件でも落ちる語まで数に入ってしまう
+  if (keySet.has(w)) { byKey++; continue; }                      // 「鍵語から」で到達できるので候補ではない
   cands.push({ w: w, n: qs.length, school: ent[0][0], share: Math.round(share * 100) });
 }
 cands.sort((a, b) => a.n - b.n).forEach(c => {
@@ -147,7 +209,9 @@ cands.sort((a, b) => a.n - b.n).forEach(c => {
               String(c.share).padStart(3) + "%が " + c.school + mark);
 });
 console.log("");
-console.log("  候補 " + cands.length + "語（登録済み " + TERMS.length + "語）");
+console.log("  候補 " + cands.length + "語");
+console.log("  （登録済み: TERMS " + TERMS.length + "語 ／ 鍵語 " + keySet.size + "語）");
+console.log("  ← ほかに " + byKey + "語が、鍵語として登録済みのため候補から外れた");
 console.log("");
 
 /* ---------- 5. 全体 ---------- */
