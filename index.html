@@ -276,6 +276,24 @@ body{
 .score small{font-size:18px;color:var(--muted);margin-left:6px;font-weight:400}
 .score-note{margin:2px 0 24px;font-size:13px;color:var(--muted);text-align:center}
 
+/* ---------- 全問一周 ---------- */
+.cycbtn{
+  appearance:none;display:block;width:100%;text-align:left;cursor:pointer;font-family:inherit;color:inherit;
+  background:var(--card);border:1px solid var(--line);border-left:2px solid var(--brass);
+  border-radius:12px;padding:12px 14px;margin:0 0 14px;
+}
+.cycbtn b{font-family:var(--display);font-size:15px;font-weight:600}
+.cycbtn span{display:block;font-size:11.5px;color:var(--muted);margin-top:3px}
+.cycbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrongrow{
+  display:block;width:100%;text-align:left;cursor:pointer;font-family:inherit;color:inherit;
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:13px 15px;margin-bottom:8px;font-size:13.5px;line-height:1.7;
+}
+.wrongrow span{display:block;font-size:11.5px;color:var(--muted);margin-top:4px}
+.wrongrow[aria-expanded="true"]{border-color:var(--accent);border-bottom-left-radius:0;border-bottom-right-radius:0;margin-bottom:0}
+.wrongrow:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
 /* ---------- 記録 ---------- */
 .stat{
   display:flex;gap:10px;background:var(--card);border:1px solid var(--line);
@@ -571,8 +589,177 @@ function related(q, exclude){
   return scored.slice(0,3);
 }
 
+/* ========== 全問一周 ==========
+   全問を一度ずつ解くモード。既存の出題画面をそのまま使い、
+   「いま何問目か」と「間違えた id」だけを別に持つ。
+
+   保存は既存の philo-quiz-v1 とは別のキーにしてある。
+   記録を消しても一周の途中が消えないようにするため。形は次のとおり。
+
+     philo-cycle-v1 = {
+       order : ["q123", ...]   出題順。開始時にシャッフルして固定する
+       pos   : 0               次に出す位置。1問答えるたびに書き戻す
+       wrong : ["q..."]        この周で間違えた id
+       mode  : "all" | "wrong" 全問の周か、間違えた問題だけの周か
+       round : 1               間違えた問題だけの周を重ねた回数
+       done  : false           この周を解き終えたか
+     }
+
+   order を固定するのは、途中でやめても同じ続きから戻れるようにするため。
+   後から問題が増えたら、続きから再開するときに末尾へシャッフルして足す。 */
+const CKEY = "philo-cycle-v1";
+const QMAP = new Map(QUESTIONS.map(q => [q.id, q]));
+let cyc = loadCycle();
+let cycOpen = {};             // 終了画面で解説を開いている id
+
+function loadCycle(){
+  try{
+    const raw = localStorage.getItem(CKEY);
+    if(!raw) return null;
+    const p = JSON.parse(raw);
+    if(!p || !Array.isArray(p.order)) return null;
+    const order = p.order.filter(id => QMAP.has(id));   // 消えた問題は落とす
+    if(!order.length) return null;
+    return {
+      order,
+      pos  : Math.max(0, Math.min(Number(p.pos) || 0, order.length)),
+      wrong: Array.isArray(p.wrong) ? p.wrong.filter(id => QMAP.has(id)) : [],
+      mode : p.mode === "wrong" ? "wrong" : "all",
+      round: Number(p.round) || 1,
+      done : !!p.done
+    };
+  }catch(e){ return null; }
+}
+function saveCycle(){
+  try{
+    if(cyc) localStorage.setItem(CKEY, JSON.stringify(cyc));
+    else localStorage.removeItem(CKEY);
+  }catch(e){ /* 保存できなくても出題は続行する */ }
+}
+function cycleTitle(c){
+  const x = c || cyc;
+  return x.mode === "wrong" ? "間違えた問題だけ・" + x.round + "周目" : "全問一周";
+}
+
+/* 後から足された問題を末尾に入れる。作問が続くので必須。
+   間違えた問題だけの周には足さない。その周の対象はもう決まっているため。 */
+function fillNew(){
+  if(!cyc || cyc.mode !== "all" || cyc.done) return 0;
+  const have = new Set(cyc.order);
+  const add = shuffle(QUESTIONS.map(q => q.id).filter(id => !have.has(id)));
+  if(add.length){ cyc.order = cyc.order.concat(add); saveCycle(); }
+  return add.length;
+}
+
+function cycleNew(mode, ids){
+  const prev = cyc;
+  cyc = {
+    order: shuffle(ids), pos:0, wrong:[], mode,
+    round: mode === "wrong" ? ((prev && prev.round) || 1) + 1 : 1,
+    done : false
+  };
+  cycOpen = {};
+  saveCycle();
+  cycleRun();
+}
+
+/* 残りを既存の出題画面に流し込む。items は order の並びのまま作り、
+   それぞれに order 上の位置（cyc）を持たせる。深掘りで問題が割り込んでも
+   「何問目か」がずれないようにするための番号である。 */
+function cycleRun(){
+  if(!cyc) return;
+  const items = [];
+  for(let i = cyc.pos; i < cyc.order.length; i++){
+    const q = QMAP.get(cyc.order[i]);
+    if(!q) continue;
+    items.push({ q, order: shuffle(q.choices.map((c,j) => j)), picked:null, cyc:i });
+  }
+  if(!items.length){ cyc.done = true; saveCycle(); view = { name:"cycresult" }; return render(); }
+  quiz = { title:cycleTitle(), items, i:0, answered:false, detailOpen:false, digOpen:false, cycle:true };
+  view = { name:"quiz" };
+  render();
+}
+
+/* 1問答えるごとに呼ぶ。ここで保存するので、途中でやめても続きから戻れる */
+function cycleAnswered(it){
+  if(!cyc || it.dug) return;
+  cyc.pos = it.cyc + 1;
+  const bad = it.picked !== it.q.answer;
+  const at  = cyc.wrong.indexOf(it.q.id);
+  if(bad && at < 0) cyc.wrong.push(it.q.id);
+  if(!bad && at >= 0) cyc.wrong.splice(at, 1);   // 深掘りで戻って正解した場合
+  if(cyc.pos >= cyc.order.length) cyc.done = true;
+  saveCycle();
+}
+
+/* トップ画面の入口。タブは増やさず、タブの下に置く */
+function cycHomeHTML(){
+  let sub;
+  if(!cyc) sub = QUESTIONS.length + "問を一度ずつ。1問ごとに保存されます";
+  else if(cyc.done) sub = cycleTitle() + "を解き終えています　結果を見る";
+  else sub = cycleTitle() + "の途中　残り" + (cyc.order.length - cyc.pos) + "問";
+  return `<button class="cycbtn" data-cyc="open"><b>全問一周</b><span>${esc(sub)}</span></button>`;
+}
+
+function cycStartView(){
+  let h = `<button class="back" data-home="1">一覧にもどる</button>
+    <h2 class="term-title">全問一周</h2>`;
+  if(!cyc){
+    h += `<p class="term-note">${QUESTIONS.length}問を一度ずつ解きます。順番は始めるときに決まり、
+      途中でやめても、次は同じ順序の続きから始まります。1回の出題数の設定はこのモードでは使いません。</p>
+      <button class="btn" data-cyc="new">始める</button>`;
+    return h;
+  }
+  const rest = cyc.order.length - cyc.pos;
+  h += `<p class="term-note">${esc(cycleTitle())}　${cyc.order.length}問のうち ${cyc.pos}問まで解いています。
+    この周で間違えたのは ${cyc.wrong.length}問です。</p>
+    <button class="btn" data-cyc="resume">続きから（残り${rest}問）</button>
+    <button class="btn ghost" data-cyc="new">最初から</button>`;
+  return h;
+}
+
+/* 一周の終了画面。quiz ではなく保存した cyc から作る。
+   リロードしたあとでも同じ画面に戻れるようにするため。 */
+function cycResultView(){
+  if(!cyc){ view = { name:"home", tab:"philosophers" }; return homeView(); }
+  const n  = cyc.order.length;
+  const ng = cyc.wrong.slice();
+  const ok = n - ng.length;
+  const rate = n ? Math.round(ok / n * 100) : 0;
+
+  let h = `<div class="score">${rate}<small>%</small></div>
+    <p class="score-note">${esc(cycleTitle())}　${n}問中 ${ok}問 正解</p>`;
+
+  if(ng.length){
+    h += `<h2 class="sec-title">間違えた問題　${ng.length}問</h2>`;
+    h += ng.map(id => {
+      const q = QMAP.get(id);
+      if(!q) return "";
+      const open = !!cycOpen[id];
+      let s = `<button class="wrongrow" data-cycq="${esc(id)}" aria-expanded="${open}">${esc(q.question)}
+        <span>${esc(q.philosophers.join("／"))}${open ? "" : "　押すと解説"}</span></button>`;
+      if(open){
+        s += `<p class="explain">${esc(q.explanation)}</p>`;
+        if(q.detail) s += `<div class="detail">${esc(q.detail)}</div>`;
+        if(q.source && q.source.unverified){
+          s += `<div class="unverified"><b>確認できていない点</b>${esc(q.source.unverified)}</div>`;
+        }
+      }
+      return s;
+    }).join("");
+    h += `<div class="foot"><button class="btn" data-cyc="wrong">間違えた${ng.length}問だけでもう一周</button>
+      <button class="btn ghost" data-cyc="new">全問で最初から</button></div>`;
+  }else{
+    h += `<p class="empty">間違いはありません。</p>
+      <div class="foot"><button class="btn" data-cyc="new">全問で最初から</button>
+      <button class="btn ghost" data-home="1">一覧にもどる</button></div>`;
+  }
+  return h;
+}
+
 function render(keepScroll){
-  const f = { home:homeView, term:termView, quiz:quizView, result:resultView }[view.name];
+  const f = { home:homeView, term:termView, quiz:quizView, result:resultView,
+              cycstart:cycStartView, cycresult:cycResultView }[view.name];
   app.innerHTML = f();
   if(!keepScroll) window.scrollTo(0,0);
 }
@@ -582,6 +769,7 @@ function homeView(){
   const tabs = [["philosophers","哲学者から"],["terms","用語から"],["log","記録"]];
   let h = '<div class="tabs" role="tablist">' + tabs.map(([k,l]) =>
     `<button class="tab" role="tab" aria-selected="${view.tab===k}" data-tab="${k}">${l}</button>`).join("") + "</div>";
+  h += cycHomeHTML();
 
   if(view.tab !== "log"){
     const opts = [[10,"10問"],[20,"20問"],[0,"全部"]];
@@ -813,9 +1001,14 @@ function quizView(){
   const it = quiz.items[quiz.i];
   const q = it.q;
   const tags = [q.philosophers.join("／"), q.terms.join("・")].filter(Boolean).join("　|　");
-  const pct = (quiz.i + (quiz.answered?1:0)) / quiz.items.length * 100;
+  /* 全問一周のときは「いま order の何番目か」を出す。
+     深掘りで割り込んだ問題は、割り込まれた問題と同じ番号のままにする */
+  const cy  = quiz.cycle && cyc;
+  const num = cy ? it.cyc + 1 : quiz.i + 1;
+  const den = cy ? cyc.order.length : quiz.items.length;
+  const pct = (num - (quiz.answered ? 0 : 1)) / den * 100;
 
-  let h = `<div class="q-bar"><button class="quitbtn" data-quit="1">やめる</button><span class="q-title">${esc(quiz.title)}${it.dug ? "　深掘り" : ""}</span><b>${quiz.i+1} / ${quiz.items.length}</b></div>
+  let h = `<div class="q-bar"><button class="quitbtn" data-quit="1">やめる</button><span class="q-title">${esc(quiz.title)}${it.dug ? "　深掘り" : ""}</span><b>${num} / ${den}</b></div>
     <div class="gauge"><span style="width:${pct}%"></span></div>
     <p class="q-tags">${esc(tags)}</p>
     <p class="q-text">${esc(q.question)}</p>`;
@@ -849,7 +1042,11 @@ function quizView(){
       const w = store.wants[q.id] ? "on" : "";
       h += `<button class="more want ${w}" data-want="${q.id}">${w ? "書き足す問題に入れた" : "詳しい解説がほしい"}</button>`;
     }
-    const seen = new Set(quiz.items.map(x => x.q.id));
+    /* 全問一周では items に全問が入っているので、それを全部除くと深掘りが空になる。
+       すでに答えた問題だけを除く */
+    const seen = quiz.cycle
+      ? new Set(quiz.items.filter(x => x.picked !== null).map(x => x.q.id))
+      : new Set(quiz.items.map(x => x.q.id));
     const rel = related(q, seen);
     if(rel.length){
       h += quiz.digOpen
@@ -908,6 +1105,26 @@ app.addEventListener("click", e => {
     lastSub = "key";
     return startQuiz(byKey(d.key), d.key, true);
   }
+  if(d.cyc){
+    if(d.cyc === "open"){
+      fillNew();                                  // 増えた問題を末尾に足す
+      view = { name: (cyc && cyc.done) ? "cycresult" : "cycstart" };
+      return render();
+    }
+    if(d.cyc === "new")    return cycleNew("all", QUESTIONS.map(q => q.id));
+    if(d.cyc === "resume"){ fillNew(); return cycleRun(); }
+    if(d.cyc === "wrong"){
+      const ids = cyc ? cyc.wrong.slice() : [];
+      if(ids.length) return cycleNew("wrong", ids);
+      return;
+    }
+  }
+  if(d.cycq){                                     // 終了画面で解説を開く／閉じる
+    cycOpen[d.cycq] = !cycOpen[d.cycq];
+    const y = window.scrollY;
+    render(true); window.scrollTo(0, y);
+    return;
+  }
   if(d.limit !== undefined){ store.limit = Number(d.limit); save(); return render(); }
   if(d.school !== undefined){ view = { name:"home", tab:"philosophers", school:d.school || null }; return render(); }
   if(d.fav){
@@ -940,6 +1157,7 @@ app.addEventListener("click", e => {
     it.picked = it.order[Number(d.pick)];
     quiz.answered = true;
     record(it.q.id, it.picked === it.q.answer);
+    if(quiz.cycle) cycleAnswered(it);      // 1問ごとに一周の進捗を保存する
     return render();
   }
   if(d.more){ quiz.detailOpen = true; return render(); }
@@ -948,7 +1166,7 @@ app.addEventListener("click", e => {
     const q = QUESTIONS.find(x => x.id === d.dig);
     if(!q) return;
     const order = shuffle(q.choices.map((c,i) => i));
-    quiz.items.splice(quiz.i + 1, 0, { q, order, picked:null, dug:true });
+    quiz.items.splice(quiz.i + 1, 0, { q, order, picked:null, dug:true, cyc:quiz.items[quiz.i].cyc });
     quiz.i++; quiz.answered = false; quiz.detailOpen = false; quiz.digOpen = false;
     view = { name:"quiz" };
     return render();
@@ -960,7 +1178,7 @@ app.addEventListener("click", e => {
   }
   if(d.next){
     if(quiz.i + 1 < quiz.items.length){ quiz.i++; quiz.answered = false; quiz.detailOpen = false; quiz.digOpen = false; view = { name:"quiz" }; }
-    else view = { name:"result" };
+    else view = { name: quiz.cycle ? "cycresult" : "result" };
     return render();
   }
   if(d.flag){
