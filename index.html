@@ -74,6 +74,40 @@ body{
 .tab[aria-selected="true"]{background:var(--accent-dim);color:var(--ink);border-color:var(--accent)}
 .tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
+/* ---------- 副タブ（概念から／鍵語から）---------- */
+.subtabs{display:flex;gap:6px;margin:0 0 12px}
+.subtab{
+  appearance:none;flex:1;cursor:pointer;font-family:inherit;font-size:12.5px;
+  background:none;color:var(--muted);border:1px solid var(--line);
+  padding:8px 6px;border-radius:99px;
+}
+.subtab[aria-selected="true"]{background:var(--card-2);color:var(--ink);border-color:var(--accent)}
+.subtab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ---------- 鍵語の検索と一覧 ---------- */
+.ksearch{
+  width:100%;appearance:none;font-family:inherit;font-size:16px;
+  background:var(--card);color:var(--ink);border:1px solid var(--line);
+  border-radius:12px;padding:11px 13px;margin:0 0 6px;
+}
+.ksearch::placeholder{color:var(--muted)}
+.ksearch:focus{outline:2px solid var(--accent);outline-offset:2px;border-color:var(--accent)}
+.kcount{margin:0 0 10px;font-size:11.5px;color:var(--muted)}
+.krow{
+  display:flex;align-items:baseline;gap:9px;width:100%;text-align:left;cursor:pointer;
+  font-family:inherit;color:inherit;background:var(--card);
+  border:1px solid var(--line);border-radius:11px;
+  padding:11px 13px;margin-bottom:6px;
+}
+.krow:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.krow-name{font-family:var(--display);font-size:15.5px;font-weight:600;flex:0 0 auto}
+.krow-who{font-size:11.5px;color:var(--muted);flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.krow-n{font-size:11.5px;color:var(--muted);flex:0 0 auto;font-variant-numeric:tabular-nums}
+.kbadge{
+  font-size:10.5px;color:var(--accent);background:var(--accent-dim);
+  border-radius:6px;padding:2px 6px;flex:0 0 auto;
+}
+
 /* ---------- 一覧 ---------- */
 .row{
   display:block;width:100%;text-align:left;cursor:pointer;font-family:inherit;color:inherit;
@@ -284,12 +318,40 @@ function record(id, ok){
 /* ========== 画面の状態 ========== */
 let view = { name:"home", tab:"philosophers", school:null };
 let lastSchool = null;
+let lastSub = "concept";   // 用語タブの副タブ。一覧にもどったときに戻す先
+let keyQuery = "";         // 鍵語の検索欄に入っている文字
 let quiz = null;
 
 const app = document.getElementById("app");
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const byPhilosopher = n => QUESTIONS.filter(q => q.philosophers.includes(n));
 const byTerm = n => QUESTIONS.filter(q => q.terms.includes(n));
+
+/* 鍵語の索引。keyterms.json は読まない（台帳であって配信データではない）。
+   一覧も出題も q.keys だけから作る。 */
+const KEY_INDEX = (() => {
+  const m = new Map();
+  QUESTIONS.forEach(q => (q.keys || []).forEach(k => {
+    if(!m.has(k)) m.set(k, []);
+    m.get(k).push(q);
+  }));
+  return m;
+})();
+const byKey = k => KEY_INDEX.get(k) || [];
+
+/* 規則1。TERMS と重なる12語は keys のタグ付けから外してあるので q.keys には現れない。
+   鍵語の一覧には出すが、押すと「概念から」の見取り図へ飛ばす（data-kind="concept"）。
+   その人物の鍵語一覧から中心概念が欠けて見えるのを避けるための扱い。
+   keyterms.json で「タグ付け対象: false」にしてある語と同じもの。台帳は読まないので
+   ここに写してある。台帳側で増減したら、この行も直すこと。 */
+const CONCEPT_ALSO_KEY = ["イデア","他者","因果","差異","弁証法","承認","時間","無意識","疎外","自然法","自然状態","贈与"];
+
+/* 鍵語タブに並べる行。問題数の多い順、同数なら五十音順 */
+const KEY_ROWS = (() => {
+  const rows = [...KEY_INDEX.entries()].map(([name, qs]) => ({ name, kind:"key", qs }));
+  CONCEPT_ALSO_KEY.forEach(name => { if(TERMS.some(t => t.name === name)) rows.push({ name, kind:"concept", qs:byTerm(name) }); });
+  return rows.sort((a,b) => b.qs.length - a.qs.length || a.name.localeCompare(b.name, "ja"));
+})();
 const shuffle = a => { const x = a.slice(); for(let i=x.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [x[i],x[j]]=[x[j],x[i]]; } return x; };
 
 function related(q, exclude){
@@ -312,10 +374,10 @@ function related(q, exclude){
   return scored.slice(0,3);
 }
 
-function render(){
+function render(keepScroll){
   const f = { home:homeView, term:termView, quiz:quizView, result:resultView }[view.name];
   app.innerHTML = f();
-  window.scrollTo(0,0);
+  if(!keepScroll) window.scrollTo(0,0);
 }
 
 /* ========== ホーム ========== */
@@ -360,16 +422,42 @@ function homeView(){
     });
   }
   else if(view.tab === "terms"){
-    h += TERMS.map(t => {
-      const qs = byTerm(t.name);
-      const who = [...new Set(qs.flatMap(q => q.philosophers))];
-      return `<button class="row" data-term="${esc(t.name)}" ${qs.length?"":"disabled"}>
-        <span class="row-head"><span class="row-name">${esc(t.name)}</span></span>
-        <span class="row-note">${esc(t.note)}</span>
-        <span class="row-users">${who.length ? esc(who.join("／")) : "—"}</span>
-        <span class="row-meta">${qs.length ? qs.length+"問" : "問題はまだありません"}</span>
-      </button>`;
-    }).join("");
+    const sub = view.sub || "concept";
+    const subs = [["concept","概念から"],["key","鍵語から"]];
+    h += `<div class="subtabs" role="tablist">` + subs.map(([k,l]) =>
+      `<button class="subtab" role="tab" aria-selected="${sub===k}" data-sub="${k}">${l}</button>`).join("") + `</div>`;
+
+    if(sub === "concept"){
+      h += TERMS.map(t => {
+        const qs = byTerm(t.name);
+        const who = [...new Set(qs.flatMap(q => q.philosophers))];
+        return `<button class="row" data-term="${esc(t.name)}" ${qs.length?"":"disabled"}>
+          <span class="row-head"><span class="row-name">${esc(t.name)}</span></span>
+          <span class="row-note">${esc(t.note)}</span>
+          <span class="row-users">${who.length ? esc(who.join("／")) : "—"}</span>
+          <span class="row-meta">${qs.length ? qs.length+"問" : "問題はまだありません"}</span>
+        </button>`;
+      }).join("");
+    } else {
+      const qy = keyQuery.trim();
+      const rows = qy ? KEY_ROWS.filter(r => r.name.includes(qy)) : KEY_ROWS;
+      h += `<input class="ksearch" id="keysearch" type="search" inputmode="search"
+              placeholder="鍵語をさがす（例：現存在、ハビトゥス）" value="${esc(keyQuery)}"
+              aria-label="鍵語をさがす">`;
+      h += `<p class="kcount">${qy ? rows.length + "語（" + esc(qy) + "）" : KEY_ROWS.length + "語　問題数の多い順"}</p>`;
+      h += rows.length
+        ? rows.map(r => {
+            const who = [...new Set(r.qs.flatMap(q => q.philosophers))];
+            const whoLabel = who.length > 2 ? who.slice(0,2).join("・") + " ほか" + (who.length-2) + "人" : who.join("・");
+            const badge = r.kind === "concept" ? `<span class="kbadge">概念へ</span>` : "";
+            return `<button class="krow" data-key="${esc(r.name)}" data-kind="${r.kind}">
+              <span class="krow-name">${esc(r.name)}</span>${badge}
+              <span class="krow-who">${esc(whoLabel)}</span>
+              <span class="krow-n">${r.qs.length}問</span>
+            </button>`;
+          }).join("")
+        : `<p class="empty">「${esc(qy)}」に当たる鍵語はありません。</p>`;
+    }
   }
   else h += logView();
   return h;
@@ -528,7 +616,14 @@ app.addEventListener("click", e => {
   if(!el || el.disabled) return;
   const d = el.dataset;
 
-  if(d.tab){ view = { name:"home", tab:d.tab }; return render(); }
+  if(d.tab){ view = { name:"home", tab:d.tab, sub:lastSub }; return render(); }
+  if(d.sub){ lastSub = d.sub; view = { name:"home", tab:"terms", sub:d.sub }; keyQuery = ""; return render(); }
+  if(d.key){
+    // 規則1。TERMS と重なる10語は概念側の見取り図へ送る。出題も概念側の集合になる
+    if(d.kind === "concept"){ lastSub = "key"; view = { name:"term", term:d.key }; return render(); }
+    lastSub = "key";
+    return startQuiz(byKey(d.key), d.key, true);
+  }
   if(d.limit !== undefined){ store.limit = Number(d.limit); save(); return render(); }
   if(d.school !== undefined){ view = { name:"home", tab:"philosophers", school:d.school || null }; return render(); }
   if(d.fav){
@@ -541,14 +636,14 @@ app.addEventListener("click", e => {
   if(d.philosopher){ lastSchool = view.school || null; return startQuiz(byPhilosopher(d.philosopher), d.philosopher, true); }
   if(d.term){ view = { name:"term", term:d.term }; return render(); }
   if(d.termStart){ return startQuiz(byTerm(d.termStart), d.termStart, true); }
-  if(d.back || d.home){ view = { name:"home", tab: d.home ? (view.tab || "philosophers") : "terms", school: lastSchool }; return render(); }
+  if(d.back || d.home){ view = { name:"home", tab: d.home ? (view.tab || "philosophers") : "terms", sub:lastSub, school: lastSchool }; return render(); }
 
   if(d.quit){
     const done = quiz.items.filter(it => it.picked !== null).length;
     // 0問なら確認しない。誤タップで始めた直後がこれにあたる
     if(done && !confirm("出題をやめて一覧にもどります。ここまでの解答は記録に残ります。")) return;
     quiz = null;
-    view = { name:"home", tab:"philosophers", school:lastSchool };
+    view = { name:"home", tab:"philosophers", sub:lastSub, school:lastSchool };
     return render();
   }
   if(d.pick !== undefined && !quiz.answered){
@@ -600,6 +695,19 @@ app.addEventListener("click", e => {
       view = { name:"home", tab:"log" }; render();
     }
   }
+});
+
+/* 鍵語の検索。app.innerHTML を作り直すので、入力欄の焦点とカーソル位置を戻す */
+app.addEventListener("input", e => {
+  if(e.target.id !== "keysearch") return;
+  const el = e.target;
+  const pos = el.selectionStart;
+  keyQuery = el.value;
+  const y = window.scrollY;
+  render(true);
+  const next = document.getElementById("keysearch");
+  if(next){ next.focus(); try{ next.setSelectionRange(pos, pos); }catch(err){} }
+  window.scrollTo(0, y);
 });
 
 render();
