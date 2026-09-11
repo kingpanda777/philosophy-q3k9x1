@@ -501,7 +501,7 @@ const QUESTIONS = [
   },
   {
     id: "q016",
-    philosophers: ["ロック"], terms: ["自然状態"], type: "single",
+    philosophers: ["ロック"], terms: ["自然状態", "自然法"], type: "single",
     keys: ["万人の万人に対する戦争"],
     question: "ロックの描く自然状態として最も適切なものは？",
     choices: [
@@ -1414,7 +1414,7 @@ const QUESTIONS = [
   },
   {
     id: "q058",
-    philosophers: ["ホッブズ"], terms: ["自然状態", "自由"], type: "single",
+    philosophers: ["ホッブズ"], terms: ["自然状態", "自由", "自然法"], type: "single",
     keys: ["自己保存", "自然権", "主権"],
     question: "ホッブズにおける自然権と自然法の関係として最も適切なものは？",
     choices: [
@@ -1627,7 +1627,7 @@ const QUESTIONS = [
   },
   {
     id: "q067",
-    philosophers: ["ヘーゲル"], terms: ["弁証法", "自由"], type: "single",
+    philosophers: ["ヘーゲル"], terms: ["弁証法", "自由", "承認"], type: "single",
     keys: ["主人と奴隷", "承認をめぐる闘争"],
     question: "ヘーゲルの主人と奴隷の弁証法として最も適切なものは？",
     choices: [
@@ -6659,7 +6659,7 @@ const QUESTIONS = [
   },
   {
     id: "q285",
-    philosophers: ["アクィナス"], terms: ["正義", "自然状態"], type: "single",
+    philosophers: ["アクィナス"], terms: ["正義", "自然状態", "自然法"], type: "single",
     keys: ["分有", "主権者"],
     question: "アクィナスの自然法についての考えとして最も適切なものは？",
     choices: [
@@ -6775,7 +6775,7 @@ const QUESTIONS = [
   },
   {
     id: "q290",
-    philosophers: ["アクィナス", "ホッブズ"], terms: ["正義", "自然状態"], type: "compare",
+    philosophers: ["アクィナス", "ホッブズ"], terms: ["正義", "自然状態", "自然法"], type: "compare",
     keys: ["分有", "自己保存", "主権者", "人定法", "主権"],
     question: "自然法について、アクィナスとホッブズの違いとして最も適切なものは？",
     choices: [
@@ -9106,7 +9106,7 @@ const QUESTIONS = [
   },
   {
     id: "q387",
-    philosophers: ["ホネット", "ヘーゲル"], terms: ["他者", "正義"], type: "single",
+    philosophers: ["ホネット", "ヘーゲル"], terms: ["他者", "正義", "承認"], type: "single",
     keys: ["承認をめぐる闘争", "侮辱", "再分配"],
     question: "ホネットの承認をめぐる闘争という枠組みとして最も適切なものは？",
     choices: [
@@ -9131,7 +9131,7 @@ const QUESTIONS = [
   },
   {
     id: "q388",
-    philosophers: ["ホネット", "ロールズ"], terms: ["正義", "他者"], type: "compare",
+    philosophers: ["ホネット", "ロールズ"], terms: ["正義", "他者", "承認"], type: "compare",
     keys: ["基本財", "再分配"],
     question: "正義の問題設定について、ロールズとホネットの違いとして最も適切なものは？",
     choices: [
@@ -9485,7 +9485,7 @@ const QUESTIONS = [
   },
   {
     id: "q403",
-    philosophers: ["テイラー", "ホネット"], terms: ["他者", "正義"], type: "single",
+    philosophers: ["テイラー", "ホネット"], terms: ["他者", "正義", "承認"], type: "single",
     keys: ["承認の政治", "強い評価"],
     question: "テイラーの承認の政治という議論として最も適切なものは？",
     choices: [
@@ -10491,7 +10491,7 @@ const QUESTIONS = [
   },
   {
     id: "q445",
-    philosophers: ["フィヒテ", "ヘーゲル"], terms: ["他者", "自由"], type: "single",
+    philosophers: ["フィヒテ", "ヘーゲル"], terms: ["他者", "自由", "承認"], type: "single",
     keys: ["知識学"],
     question: "フィヒテの相互承認についての議論として最も適切なものは？",
     choices: [
@@ -11200,7 +11200,7 @@ const QUESTIONS = [
   },
   {
     id: "q475",
-    philosophers: ["ホネット", "アドルノ"], terms: ["他者", "権力"], type: "single",
+    philosophers: ["ホネット", "アドルノ"], terms: ["他者", "権力", "承認"], type: "single",
     keys: ["侮辱", "否定弁証法", "再分配"],
     question: "ホネットが批判理論の基礎を承認に求めた理由として最も適切なものは？",
     choices: [
