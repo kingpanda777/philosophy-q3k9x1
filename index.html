@@ -200,9 +200,12 @@ body{
   text-decoration:underline;text-underline-offset:3px;
 }
 .quitbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.q-bar b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
-.gauge{height:4px;background:var(--card);border-radius:99px;margin-bottom:20px;overflow:hidden}
-.gauge span{display:block;height:4px;background:var(--accent);transition:width .25s ease}
+.q-bar b{
+  font-weight:600;font-size:17px;color:var(--ink);
+  font-variant-numeric:tabular-nums;letter-spacing:.01em;line-height:1.2;
+}
+.gauge{height:5px;background:var(--card);border-radius:99px;margin-bottom:20px;overflow:hidden}
+.gauge span{display:block;height:5px;background:var(--accent);transition:width .25s ease}
 .q-tags{font-size:11.5px;color:var(--muted);margin-bottom:10px}
 .q-text{
   font-family:var(--display);font-size:18px;font-weight:600;line-height:1.75;margin:0 0 18px;
