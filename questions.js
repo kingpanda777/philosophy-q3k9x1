@@ -1520,6 +1520,7 @@ const QUESTIONS = [
   {
     id: "q061",
     philosophers: ["ロック"], terms: ["実体"], type: "single",
+    keys: ["人格同一性"],
     question: "ロックの人格同一性についての考えとして最も適切なものは？",
     choices: [
       "同じ身体がずっと続いているかどうかによって決まる",
@@ -1775,6 +1776,7 @@ const QUESTIONS = [
   {
     id: "q072",
     philosophers: ["プラトン"], terms: ["イデア"], type: "single",
+    keys: ["エロス"],
     question: "『饗宴』で語られるエロスの説明として最も適切なものは？",
     choices: [
       "エロスは完全で美しい神であり、それ自体が美を所有している",
@@ -2025,6 +2027,7 @@ const QUESTIONS = [
   {
     id: "q083",
     philosophers: ["ルソー"], terms: ["自由"], type: "single",
+    keys: ["消極教育"],
     question: "ルソーが『エミール』で説いた消極教育として最も適切なものは？",
     choices: [
       "幼いうちから古典や道徳の教えを繰り返し教え込み、正しい習慣を形成する",
@@ -4030,6 +4033,7 @@ const QUESTIONS = [
   {
     id: "q170",
     philosophers: ["ハイデガー"], terms: ["実存", "身体"], type: "single",
+    keys: ["道具的存在"],
     question: "ハイデガーの道具的存在（手許存在）についての分析として最も適切なものは？",
     choices: [
       "道具はまず観察の対象として認識され、そのうえで使用されるようになる",
@@ -4095,6 +4099,7 @@ const QUESTIONS = [
   {
     id: "q173",
     philosophers: ["ハイデガー"], terms: ["実存", "言語"], type: "single",
+    keys: ["総駆り立て体制"],
     question: "後期ハイデガーの技術論における総駆り立て体制（ゲシュテル）として最も適切なものは？",
     choices: [
       "機械が人間の仕事を奪っていくという産業社会への批判",
@@ -4927,6 +4932,7 @@ const QUESTIONS = [
   {
     id: "q209",
     philosophers: ["ソクラテス"], terms: ["正義", "理性"], type: "single",
+    keys: ["徳は知"],
     question: "ソクラテスの知徳合一の考え方として最も適切なものは？",
     choices: [
       "徳を積むことによって知識が得られるという主張",
@@ -5442,6 +5448,7 @@ const QUESTIONS = [
   {
     id: "q231",
     philosophers: ["ショーペンハウアー"], terms: ["意志", "幸福"], type: "single",
+    keys: ["意志と表象"],
     question: "ショーペンハウアーの芸術論において、音楽が特別な位置を与えられる理由として最も適切なものは？",
     choices: [
       "音楽が最も多くの人に理解されやすい芸術だから",
@@ -5651,6 +5658,7 @@ const QUESTIONS = [
   {
     id: "q240",
     philosophers: ["アリストテレス"], terms: ["正義", "他者"], type: "single",
+    keys: ["友愛"],
     question: "アリストテレスの友愛（フィリア）についての説明として最も適切なものは？",
     choices: [
       "友愛は感情にすぎないため、倫理学の対象にはならない",
@@ -9739,6 +9747,7 @@ const QUESTIONS = [
   {
     id: "q412",
     philosophers: ["ラッセル", "フレーゲ"], terms: ["理性", "科学"], type: "single",
+    keys: ["論理主義"],
     question: "論理主義と呼ばれる数学の基礎づけの計画として最も適切なものは？",
     choices: [
       "数学は経験の一般化から生じるのだという経験主義の立場",
@@ -10573,6 +10582,7 @@ const QUESTIONS = [
   {
     id: "q447",
     philosophers: ["シンガー", "ミル"], terms: ["正義", "功利主義"], type: "single",
+    keys: ["効果的な利他主義"],
     question: "シンガーの飢餓と援助をめぐる議論として最も適切なものは？",
     choices: [
       "援助は慈善であって、義務ではないという主張",
