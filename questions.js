@@ -13434,7 +13434,7 @@ const QUESTIONS = [
   {
     id: "q568",
     philosophers: ["サール"], terms: ["構造","意味"], type: "single",
-    keys: ["集合的志向性"],
+    keys: ["集合的志向性","制度的事実"],
     question: "サールの集合的志向性として最も適切なものは？",
     choices: [
       "我々が一緒に何かをしているという構えが、貨幣や国家を成り立たせている",
