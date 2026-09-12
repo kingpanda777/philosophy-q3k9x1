@@ -7,6 +7,7 @@
    鍵語は四つの場所に散っている。ひとつ直して他を忘れると、
    一覧に古い名前が残る、読みが引けずに並びが崩れる、といった形で壊れる。
    改名・統合・語の追加をしたら、必ずこれを通すこと。
+   項目5だけは鍵語と関係なく、本文に妙な文字が混ざっていないかを見る。
 
      keyterms.json          … 台帳。語・読み・タグ付け対象
      questions.js の q.keys … 配信データ。鍵語タブの一覧と出題はここから作る
@@ -104,6 +105,75 @@ ok(onlyLedger.length === 0 && onlyHtml.length === 0,
     onlyHtml.length ? "index.html だけ: " + onlyHtml.join("、") : ""].filter(Boolean).join(" / "));
 const offInKeys = a1.filter(w => used.includes(w));
 ok(offInKeys.length === 0, `対象外の語が q.keys に混ざっていない`, offInKeys.join("、"));
+
+/* ---------- 5. 本文に混ざってはいけない文字 ----------
+   書いている途中で、キリル文字やハングルが一文字だけ紛れ込むことが実際に起きた。
+   画面では日本語に見えるので目視では見つからない。全文を機械で通す。
+
+   通す範囲: question / choices / explanation / detail / source.note / source.refs
+   通す文字: ひらがな・カタカナ・漢字・全角記号・英数・半角記号・全角英数・ギリシア文字
+             （ギリシア文字は原語の併記に使うことがあるので許す） */
+console.log("\n===== 5. 本文に妙な文字が混ざっていないか =====\n");
+
+const ALLOWED = new RegExp(
+  "[" +
+  "\\u0020-\\u007E" +          // 半角の英数と記号
+  "\\u00A0-\\u00FF" +          // ラテン1補助（é など）
+  "\\u0100-\\u024F" +          // ラテン拡張（ō など、翻字に使う）
+  "\\u0370-\\u03FF" +          // ギリシア文字
+  "\\u1E00-\\u1EFF" +          // ラテン拡張追加
+  "\\u1F00-\\u1FFF" +          // ギリシア文字拡張（気息記号つき。原語の併記に使う）
+  "\\u2000-\\u206F" +          // 一般句読点（— … ‘ ’ “ ” など）
+  "\\u2460-\\u24FF" +          // 囲み英数字（①②③）
+  "\\u2100-\\u21FF" +          // 文字様記号と矢印
+  "\\u2200-\\u22FF" +          // 数学記号
+  "\\u2500-\\u257F" +          // 罫線
+  "\\u25A0-\\u25FF" +          // 幾何学模様
+  "\\u3000-\\u303F" +          // 全角の句読点と括弧
+  "\\u3040-\\u309F" +          // ひらがな
+  "\\u30A0-\\u30FF" +          // カタカナ
+  "\\u3400-\\u4DBF" +          // 漢字拡張A
+  "\\u4E00-\\u9FFF" +          // 漢字
+  "\\uF900-\\uFAFF" +          // 互換漢字
+  "\\uFF00-\\uFFEF" +          // 全角の英数と記号、半角カナ
+  "\\n" +
+  "]"
+);
+
+const strangeName = c => {
+  const n = c.codePointAt(0);
+  if (n >= 0x0400 && n <= 0x04FF) return "キリル";
+  if (n >= 0xAC00 && n <= 0xD7AF) return "ハングル";
+  if (n >= 0x1100 && n <= 0x11FF) return "ハングル字母";
+  if (n >= 0x0600 && n <= 0x06FF) return "アラビア";
+  if (n >= 0x0590 && n <= 0x05FF) return "ヘブライ";
+  if (n >= 0x0E00 && n <= 0x0E7F) return "タイ";
+  if (n >= 0x0900 && n <= 0x097F) return "デーヴァナーガリー";
+  if (n >= 0x1F300 && n <= 0x1FAFF) return "絵文字";
+  return "不明";
+};
+
+const strange = [];
+QUESTIONS.forEach(q => {
+  const fields = [["question", q.question], ["explanation", q.explanation], ["detail", q.detail]];
+  (q.choices || []).forEach((c, i) => fields.push(["choices[" + i + "]", c]));
+  if (q.source) {
+    if (q.source.note) fields.push(["source.note", q.source.note]);
+    if (q.source.unverified) fields.push(["source.unverified", q.source.unverified]);
+    (q.source.refs || []).forEach((r, i) => fields.push(["source.refs[" + i + "]", r]));
+  }
+  fields.forEach(([where, text]) => {
+    if (!text) return;
+    [...text].forEach((ch, pos) => {
+      if (ALLOWED.test(ch)) return;
+      const cp = ch.codePointAt(0).toString(16).toUpperCase().padStart(4, "0");
+      strange.push(`${q.id} ${where} ${pos}文字目 「${ch}」 U+${cp}（${strangeName(ch)}）`);
+    });
+  });
+});
+ok(strange.length === 0,
+   `${QUESTIONS.length}問の全文字を通した`,
+   strange.length ? strange.slice(0, 20).join(" / ") + (strange.length > 20 ? ` ほか${strange.length - 20}件` : "") : "");
 
 console.log("");
 if (bad) { console.log(`===== ${bad}件が通らなかった =====\n`); process.exit(1); }
