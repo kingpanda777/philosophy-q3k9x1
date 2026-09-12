@@ -223,7 +223,8 @@ const TERMS = [
   { name: "動物", 　　　    note: "精神をもたない機械か、苦しみうるがゆえに配慮すべきものか" },
   { name: "資本", 　　　    note: "労働から剰余を生む経済の運動か、趣味や学歴として受け継がれるものか" },
   { name: "象徴", 　　　    note: "言語と法の秩序か、支配を見えなくする資本か" },
-  { name: "技術", 　　　    note: "すべてを資源として立てる枠組みか、複製が開く解放の可能性か" }
+  { name: "技術", 　　　    note: "すべてを資源として立てる枠組みか、複製が開く解放の可能性か" },
+  { name: "規則", 　　　    note: "従うとはどういうことかが問われるものか、制度を成り立たせるものか" }
 ];
 
 const QUESTIONS = [
@@ -5830,7 +5831,7 @@ const QUESTIONS = [
   },
   {
     id: "q247",
-    philosophers: ["フーコー"], terms: ["構造", "言語"], type: "single",
+    philosophers: ["フーコー"], terms: ["構造", "言語","規則"], type: "single",
     keys: ["言説"],
     question: "フーコーの言説（ディスクール）分析として最も適切なものは？",
     choices: [
@@ -5877,7 +5878,7 @@ const QUESTIONS = [
   },
   {
     id: "q249",
-    philosophers: ["レヴィ＝ストロース"], terms: ["構造", "他者"], type: "single",
+    philosophers: ["レヴィ＝ストロース"], terms: ["構造", "他者","規則"], type: "single",
     keys: ["親族"],
     question: "『親族の基本構造』におけるインセスト・タブーの位置づけとして最も適切なものは？",
     choices: [
@@ -9799,7 +9800,7 @@ const QUESTIONS = [
   },
   {
     id: "q414",
-    philosophers: ["クリプキ", "ウィトゲンシュタイン"], terms: ["言語", "意味"], type: "single",
+    philosophers: ["クリプキ", "ウィトゲンシュタイン"], terms: ["言語", "意味","規則"], type: "single",
     keys: ["規則遵守", "私的言語"],
     question: "クリプキが定式化した規則遵守のパラドックスとして最も適切なものは？",
     choices: [
@@ -11613,7 +11614,7 @@ const QUESTIONS = [
   },
   {
     id: "q490",
-    philosophers: ["チョムスキー"], terms: ["言語"], type: "single",
+    philosophers: ["チョムスキー"], terms: ["言語","規則"], type: "single",
     keys: ["生成文法","普遍文法","深層構造と表層構造"],
     question: "チョムスキーの生成文法と普遍文法として最も適切なものは？",
     choices: [
@@ -11638,7 +11639,7 @@ const QUESTIONS = [
   },
   {
     id: "q491",
-    philosophers: ["チョムスキー"], terms: ["言語","理性"], type: "single",
+    philosophers: ["チョムスキー"], terms: ["言語","理性","規則"], type: "single",
     keys: ["刺激の貧困"],
     question: "チョムスキーの刺激の貧困として最も適切なものは？",
     choices: [
@@ -12720,7 +12721,7 @@ const QUESTIONS = [
   },
   {
     id: "q537",
-    philosophers: ["ケルゼン"], terms: ["正義"], type: "single",
+    philosophers: ["ケルゼン"], terms: ["正義","規則"], type: "single",
     keys: ["根本規範","存在と当為"],
     question: "ケルゼンの根本規範として最も適切なものは？",
     choices: [
@@ -12791,7 +12792,7 @@ const QUESTIONS = [
   },
   {
     id: "q540",
-    philosophers: ["H・L・A・ハート"], terms: ["正義","権力"], type: "single",
+    philosophers: ["H・L・A・ハート"], terms: ["正義","権力","規則"], type: "single",
     keys: ["一次ルールと二次ルール"],
     question: "ハートの一次ルールと二次ルールとして最も適切なものは？",
     choices: [
@@ -12814,7 +12815,7 @@ const QUESTIONS = [
   },
   {
     id: "q541",
-    philosophers: ["H・L・A・ハート"], terms: ["正義"], type: "single",
+    philosophers: ["H・L・A・ハート"], terms: ["正義","規則"], type: "single",
     keys: ["承認のルール","内的視点"],
     question: "ハートの承認のルールとして最も適切なものは？",
     choices: [
@@ -12860,7 +12861,7 @@ const QUESTIONS = [
   },
   {
     id: "q543",
-    philosophers: ["H・L・A・ハート","ベンサム"], terms: ["正義","自然法"], type: "compare",
+    philosophers: ["H・L・A・ハート","ベンサム"], terms: ["正義","自然法","規則"], type: "compare",
     keys: ["法と道徳の分離","功利原理"],
     question: "法実証主義の立て方について、ベンサムとハートの違いとして最も適切なものは？",
     choices: [
@@ -13393,7 +13394,7 @@ const QUESTIONS = [
   },
   {
     id: "q566",
-    philosophers: ["サール"], terms: ["言語"], type: "single",
+    philosophers: ["サール"], terms: ["言語","規則"], type: "single",
     keys: ["言語行為"],
     question: "サールの言語行為論として最も適切なものは？",
     choices: [
@@ -13439,7 +13440,7 @@ const QUESTIONS = [
   },
   {
     id: "q568",
-    philosophers: ["サール"], terms: ["構造","意味"], type: "single",
+    philosophers: ["サール"], terms: ["構造","意味","規則"], type: "single",
     keys: ["集合的志向性","制度的事実"],
     question: "サールの集合的志向性として最も適切なものは？",
     choices: [
