@@ -175,6 +175,39 @@ ok(strange.length === 0,
    `${QUESTIONS.length}問の全文字を通した`,
    strange.length ? strange.slice(0, 20).join(" / ") + (strange.length > 20 ? ` ほか${strange.length - 20}件` : "") : "");
 
+/* ---------- 6. KEY_OWNER が台帳と合っているか ----------
+   philosophers.js の末尾にある生成ブロック。紹介シートが「この人の鍵語」を
+   絞るのに使う。台帳を直したら node tools/gen_key_owner.js を走らせ直すこと。 */
+console.log("\n===== 6. KEY_OWNER が台帳と合っているか =====\n");
+
+const { KEY_OWNER } = new Function(
+  fs.readFileSync(path.join(R, "philosophers.js"), "utf8") + ";return {KEY_OWNER};")();
+const ownerLedger = {};
+Object.entries(kt).forEach(([ph, v]) => {
+  if (ph === "_meta") return;
+  (v["鍵語"] || []).forEach(t => {
+    (ownerLedger[t["語"]] = ownerLedger[t["語"]] || []).push(ph);
+  });
+});
+const oW = Object.keys(ownerLedger).sort();
+const gW = Object.keys(KEY_OWNER).sort();
+const missW  = oW.filter(w => !KEY_OWNER[w]);
+const extraW = gW.filter(w => !ownerLedger[w]);
+ok(missW.length === 0 && extraW.length === 0,
+   `台帳${oW.length}語と KEY_OWNER ${gW.length}語が一致`,
+   [missW.length  ? "台帳だけ: " + missW.join("、") : "",
+    extraW.length ? "KEY_OWNER だけ: " + extraW.join("、") : ""].filter(Boolean).join(" / "));
+const phBad = oW.filter(w => KEY_OWNER[w] &&
+  ownerLedger[w].slice().sort().join("|") !== KEY_OWNER[w].slice().sort().join("|"));
+ok(phBad.length === 0, `語ごとの登録人物が一致する`,
+   phBad.map(w => `${w}(台帳:${ownerLedger[w].join("・")}／写し:${(KEY_OWNER[w] || []).join("・")})`).join("、"));
+const pair = oW.filter(w => ownerLedger[w].length > 1);
+ok(pair.every(w => (KEY_OWNER[w] || []).length > 1),
+   `規則3の二人語${pair.length}語が写しにも二人ぶん入っている`);
+if (missW.length || extraW.length || phBad.length) {
+  console.log("  （食い違ったら node tools/gen_key_owner.js を走らせ直すこと）");
+}
+
 console.log("");
 if (bad) { console.log(`===== ${bad}件が通らなかった =====\n`); process.exit(1); }
 console.log("===== すべて通った =====\n");

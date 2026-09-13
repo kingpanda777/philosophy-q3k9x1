@@ -364,6 +364,8 @@ body{
 .ph-keys{display:flex;flex-wrap:wrap;gap:6px}
 .ph-key{font-size:11.5px;color:var(--muted);background:var(--card-2);
   border:1px solid var(--line);border-radius:99px;padding:3px 9px}
+.ph-more{appearance:none;cursor:pointer;font-family:inherit;color:var(--accent);border-color:var(--accent-dim)}
+.ph-more:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .ph-count{font-size:12px;color:var(--muted);margin:16px 0 0}
 .ph-close{
   appearance:none;width:100%;margin-top:18px;cursor:pointer;font-family:inherit;
@@ -445,10 +447,17 @@ if(typeof PHIL_INTRO !== "undefined"){
 const hasIntro = n => Object.prototype.hasOwnProperty.call(PHIL_MAP, n);
 
 /* その人の問題に付いている鍵語を集めて、鍵語タブと同じ読み順に並べる */
+/* その人の問題に付いている鍵語のうち、台帳でその人に登録されている語だけを残す。
+   集めるだけだと比較問題の相手側の語が混ざる（カントに一般意志・原初状態・
+   純粋持続・他者危害原則が出ていた）。KEY_OWNER は philosophers.js の生成ブロック。
+   規則3の二人語（贈与・真正性など）は両方の人物に登録されているので両方に出る。 */
 function philKeys(name){
   const set = new Set();
   byPhilosopher(name).forEach(q => (q.keys || []).forEach(k => set.add(k)));
-  return [...set].sort((a,b) => yomiOf(a).localeCompare(yomiOf(b), "ja"));
+  const owner = (typeof KEY_OWNER !== "undefined") ? KEY_OWNER : {};
+  return [...set]
+    .filter(k => (owner[k] || []).includes(name))
+    .sort((a,b) => yomiOf(a).localeCompare(yomiOf(b), "ja"));
 }
 
 /* 人物名を、紹介のある人だけボタンにする。無い人はただの文字のまま */
@@ -458,7 +467,9 @@ function philLink(name){
 }
 
 /* シートと結果カードで同じ中身を使う */
-function philBodyHTML(p){
+const KEY_CAP = 12;   /* 鍵語チップの既定の表示数 */
+
+function philBodyHTML(p, full){
   const n = byPhilosopher(p.name).length;
   const keys = philKeys(p.name);
   /* 生没年と学派は PHILOSOPHERS 側だけが持っている。紹介データには重ねない */
@@ -473,8 +484,14 @@ function philBodyHTML(p){
       `</ul>`;
   }
   if(keys.length){
+    /* 多い人は12個で切る。「＋N」を押すと残りが出る */
+    const cut = (!full && keys.length > KEY_CAP) ? KEY_CAP : keys.length;
     h += `<p class="ph-h">この人の鍵語</p><div class="ph-keys">` +
-      keys.map(k => `<span class="ph-key">${esc(k)}</span>`).join("") + `</div>`;
+      keys.slice(0, cut).map(k => `<span class="ph-key">${esc(k)}</span>`).join("") +
+      (cut < keys.length
+        ? `<button class="ph-key ph-more" data-phmore="${esc(p.name)}">＋${keys.length - cut}</button>`
+        : "") +
+      `</div>`;
   }
   h += `<p class="ph-count">この本に${n}問</p>`;
   return h;
@@ -483,11 +500,13 @@ function philBodyHTML(p){
 const sheetBg = document.getElementById("sheet-bg");
 const sheetEl = document.getElementById("sheet");
 
-function openSheet(name){
+function openSheet(name, full){
   const p = PHIL_MAP[name];
   if(!p) return;
-  sheetEl.innerHTML = `<div class="sheet-in"><div class="grip"></div>` + philBodyHTML(p) +
+  const keep = (!sheetEl.hidden) ? sheetEl.scrollTop : 0;
+  sheetEl.innerHTML = `<div class="sheet-in"><div class="grip"></div>` + philBodyHTML(p, full) +
     `<button class="ph-close" data-phclose="1">閉じる</button></div>`;
+  if(!sheetEl.hidden){ sheetEl.scrollTop = keep; return; }   /* ＋N の押し直しでは開き直さない */
   sheetBg.hidden = false; sheetEl.hidden = false;
   sheetEl.scrollTop = 0;
   requestAnimationFrame(() => { sheetBg.classList.add("show"); sheetEl.classList.add("show"); });
@@ -501,6 +520,8 @@ function closeSheet(){
 
 sheetBg.addEventListener("click", closeSheet);
 sheetEl.addEventListener("click", e => {
+  const more = e.target.closest("[data-phmore]");
+  if(more) return openSheet(more.dataset.phmore, true);   /* 鍵語を全部出す */
   if(e.target.closest("[data-phclose]")) closeSheet();
 });
 document.addEventListener("keydown", e => { if(e.key === "Escape") closeSheet(); });
@@ -1275,7 +1296,7 @@ function resultView(){
   /* 人物モードを解き終えたときだけ、紹介をその場に一枚置く（シートではない）。
      全問一周の完了画面は cycResultView なので、ここには来ない */
   if(quiz.phil && hasIntro(quiz.phil)){
-    h += `<div class="ph-card">` + philBodyHTML(PHIL_MAP[quiz.phil]) + `</div>`;
+    h += `<div class="ph-card">` + philBodyHTML(PHIL_MAP[quiz.phil], true) + `</div>`;
   }
   return h;
 }
