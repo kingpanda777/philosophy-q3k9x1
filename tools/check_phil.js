@@ -104,6 +104,51 @@ ok(html.includes('<script src="philosophers.js"></script>'),
    `index.html が philosophers.js を読み込んでいる`);
 ok(html.includes('const PHIL_MAP = {}'), `index.html に紹介まわりの関数がある`);
 
+console.log("\n===== 7. PHILOSOPHERS.years が引用行と一致するか =====\n");
+/* tools/years_src.json は、生没年を確認した資料の一行を人物ごとに写したもの。
+   ⑧では intro の年だけを引用行から写しており、years そのものは検証していなかった。
+   バディウの没年 2025 が資料に無いことが分かったのが発端である。
+   「頃」の付く端点は資料と5年までのずれを許す（幅のある推定だから）。 */
+const ysrc = JSON.parse(fs.readFileSync(path.join(R, "tools", "years_src.json"), "utf8"));
+const noSrc = PHILOSOPHERS.filter(p => !ysrc[p.name]).map(p => p.name);
+ok(noSrc.length === 0, `${PHILOSOPHERS.length}人すべてに引用行がある`, noSrc.join("、"));
+
+/* "1724–1804" "前427–前347" "1946–" "205頃–270" を端点に分ける */
+const ends = y => y.split("–").map(t => t.trim()).filter(t => t !== "");
+const numOf = t => {
+  const m = t.match(/([0-9]+)/);
+  if (!m) return null;
+  return { n: +m[1], bc: t.includes("前"),約: t.includes("頃") };
+};
+const known = ysrc["_既知の食い違い"] || {};
+const yBad = [];
+const yKnown = [];
+PHILOSOPHERS.forEach(p => {
+  const q = ysrc[p.name];
+  if (!q) return;
+  /* 古代は二桁の年もある（エピクテトス「around 50 C.E.」）ので2桁から拾う */
+  const inQuote = (q.match(/[0-9]{2,4}/g) || []).map(Number);
+  ends(p.years).forEach(t => {
+    const e = numOf(t);
+    if (!e) return;
+    const hit = e.約
+      ? inQuote.some(v => Math.abs(v - e.n) <= 5)
+      : inQuote.includes(e.n);
+    if (hit) return;
+    const line = `${p.name}(台帳:${p.years}／引用行の年:${inQuote.join(",") || "なし"})`;
+    /* 食い違いを見つけたうえで、理由を書いて残すことにしたものは落とさない。
+       黙って通すのではなく、毎回名前を出す */
+    if (known[p.name]) yKnown.push(line); else yBad.push(line);
+  });
+});
+ok(yBad.length === 0, `years の数字が引用行に出てくる`, yBad.join("　/　"));
+if (yKnown.length) {
+  console.log(`  △ 既知の食い違い${yKnown.length}件（tools/years_src.json の _既知の食い違い に理由がある）`);
+  yKnown.forEach(l => console.log(`      ${l}`));
+}
+const alive = PHILOSOPHERS.filter(p => /–\s*$/.test(p.years));
+console.log(`  （存命として扱っている人物：${alive.length}人）`);
+
 console.log("\n===== 6. 残り =====\n");
 const rest = PHILOSOPHERS.length - PHIL_INTRO.length;
 console.log(`  紹介あり ${PHIL_INTRO.length}人 ／ まだ ${rest}人（入口は出ない）`);
