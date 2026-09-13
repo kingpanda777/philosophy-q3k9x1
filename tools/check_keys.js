@@ -8,6 +8,7 @@
    一覧に古い名前が残る、読みが引けずに並びが崩れる、といった形で壊れる。
    改名・統合・語の追加をしたら、必ずこれを通すこと。
    項目5だけは鍵語と関係なく、本文に妙な文字が混ざっていないかを見る。
+   項目7も鍵語と関係なく、年や世紀が漢数字のまま残っていないかを見る。
 
      keyterms.json          … 台帳。語・読み・タグ付け対象
      questions.js の q.keys … 配信データ。鍵語タブの一覧と出題はここから作る
@@ -207,6 +208,65 @@ ok(pair.every(w => (KEY_OWNER[w] || []).length > 1),
 if (missW.length || extraW.length || phBad.length) {
   console.log("  （食い違ったら node tools/gen_key_owner.js を走らせ直すこと）");
 }
+
+/* ---------- 7. 年や世紀が漢数字のまま残っていないか ----------
+   年・年代・世紀・月・日・節・歳・巻・版・章・条は算用数字で書く（2026-09-13 決定）。
+   横書きのスマホ画面では数字として読めるほうが速い、という理由による。
+   もとは「年は漢数字」で書かれていた層があり、混在が長く残っていた。再発を止める。
+
+   熟語・固有名の漢数字は数ではないので触らない。ここでも落とさない。
+     一節（「この一節」＝箇所を指す言い方。第一節ではない）
+     五月革命／三十年戦争（固有名）
+     二千年・三十年あまり・十年ほど（数えた長さであって、何年かを指す年ではない）
+     一巻の書（一冊の意味）
+   見分けは、変換したときと同じ規則で付けている。
+     年     … 桁を並べた書き方（一九五八・六九・四二七）だけを年とみなす。
+              十・百・千が混じるもの（三十年・百年）と一桁のもの（三年）は長さなので見ない。
+     月     … うしろが「革命」なら固有名なので見ない。
+     節・版・章・条 … 「第」が前に付くものだけを番号とみなす。巻は「全」も認める。
+     年代・世紀・日・歳 … つねに番号なので、あれば落とす。 */
+console.log("\n===== 7. 年や世紀が漢数字のまま残っていないか =====\n");
+
+const { PHIL_INTRO } = new Function(
+  fs.readFileSync(path.join(R, "philosophers.js"), "utf8") + ";return {PHIL_INTRO};")();
+
+const KANSUJI = /([〇一二三四五六七八九十百千]+)(年代|年|世紀|月|日|節|歳|巻|版|章|条)/g;
+const isNumber = (n, unit, before, after) => {
+  const plain = !/[十百千]/.test(n);           // 桁を並べた書き方か
+  switch (unit) {
+    case "年":  return plain && n.length >= 2; // 一九五八年・六九年。三十年・三年は長さ
+    case "月":  return !/^革命/.test(after);   // 五月革命は固有名
+    case "節": case "版": case "章": case "条": return /第$/.test(before);
+    case "巻":  return /[第全]$/.test(before);
+    default:    return true;                   // 年代・世紀・日・歳
+  }
+};
+const leftover = [];
+const sweep = (who, where, text) => {
+  if (typeof text !== "string") return;
+  let m;
+  const re = new RegExp(KANSUJI.source, "g");
+  while ((m = re.exec(text))) {
+    const i = m.index;
+    if (!isNumber(m[1], m[2], text.slice(Math.max(0, i - 4), i),
+                  text.slice(i + m[0].length, i + m[0].length + 4))) continue;
+    leftover.push(`${who} ${where} 「${m[0]}」`);
+  }
+};
+QUESTIONS.forEach(q => {
+  sweep(q.id, "question", q.question);
+  sweep(q.id, "explanation", q.explanation);
+  sweep(q.id, "detail", q.detail);
+  (q.choices || []).forEach((c, i) => sweep(q.id, "choices[" + i + "]", c));
+});
+PHIL_INTRO.forEach(p => {
+  sweep(p.name, "intro", p.intro);
+  sweep(p.name, "thought", p.thought);
+});
+ok(leftover.length === 0,
+   `${QUESTIONS.length}問の本文と${PHIL_INTRO.length}人の紹介を通した`,
+   leftover.length ? leftover.slice(0, 20).join(" / ") +
+     (leftover.length > 20 ? ` ほか${leftover.length - 20}件` : "") : "");
 
 console.log("");
 if (bad) { console.log(`===== ${bad}件が通らなかった =====\n`); process.exit(1); }
