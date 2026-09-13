@@ -214,31 +214,33 @@ if (missW.length || extraW.length || phBad.length) {
    横書きのスマホ画面では数字として読めるほうが速い、という理由による。
    もとは「年は漢数字」で書かれていた層があり、混在が長く残っていた。再発を止める。
 
-   熟語・固有名の漢数字は数ではないので触らない。ここでも落とさない。
-     一節（「この一節」＝箇所を指す言い方。第一節ではない）
-     五月革命／三十年戦争（固有名）
-     二千年・三十年あまり・十年ほど（数えた長さであって、何年かを指す年ではない）
-     一巻の書（一冊の意味）
-   見分けは、変換したときと同じ規則で付けている。
-     年     … 桁を並べた書き方（一九五八・六九・四二七）だけを年とみなす。
-              十・百・千が混じるもの（三十年・百年）と一桁のもの（三年）は長さなので見ない。
-     月     … うしろが「革命」なら固有名なので見ない。
-     節・版・章・条 … 「第」が前に付くものだけを番号とみなす。巻は「全」も認める。
-     年代・世紀・日・歳 … つねに番号なので、あれば落とす。 */
+   何年かを指す年だけでなく、数えた長さも算用数字にする
+   （14年後、2000年以上にわたって、30年あまり教えた）。
+   はじめは長さを外していたが、読む速さの理由は長さにも同じく当てはまるので、
+   2026-09-13 に長さも含めることにした。
+
+   触らないものは二通りある。
+     ひとつは固有名。数ではなく名前なので、下の KEEP に並べて除く。
+     語が増えたら KEEP に足し、CLAUDE.md「年号の扱い」の除外リストにも同じ語を書くこと。
+     もうひとつは「第」が付かない節・版・章・条で、「この一節」のように箇所を指す言い方である。
+     こちらは語が多すぎて並べられないので、「第」が前にあるかどうかで見分ける。
+
+   単位が付かない漢数字（一者・二元論・第一哲学・三つの批判書）は、
+   そもそも下の正規表現に掛からない。 */
 console.log("\n===== 7. 年や世紀が漢数字のまま残っていないか =====\n");
 
 const { PHIL_INTRO } = new Function(
   fs.readFileSync(path.join(R, "philosophers.js"), "utf8") + ";return {PHIL_INTRO};")();
 
+const KEEP = ["三十年戦争", "五月革命", "一巻の書"];   // 固有名。CLAUDE.md の除外リストと揃える
 const KANSUJI = /([〇一二三四五六七八九十百千]+)(年代|年|世紀|月|日|節|歳|巻|版|章|条)/g;
-const isNumber = (n, unit, before, after) => {
-  const plain = !/[十百千]/.test(n);           // 桁を並べた書き方か
+const isNumber = (unit, before, here) => {
+  if (KEEP.some(k => here.startsWith(k))) return false;   // 固有名
   switch (unit) {
-    case "年":  return plain && n.length >= 2; // 一九五八年・六九年。三十年・三年は長さ
-    case "月":  return !/^革命/.test(after);   // 五月革命は固有名
-    case "節": case "版": case "章": case "条": return /第$/.test(before);
-    case "巻":  return /[第全]$/.test(before);
-    default:    return true;                   // 年代・世紀・日・歳
+    case "節": case "版": case "章": case "条":
+      return /第$/.test(before);                          // 「この一節」は箇所を指す言い方
+    default:
+      return true;                                        // 年・年代・世紀・月・日・歳・巻
   }
 };
 const leftover = [];
@@ -248,8 +250,7 @@ const sweep = (who, where, text) => {
   const re = new RegExp(KANSUJI.source, "g");
   while ((m = re.exec(text))) {
     const i = m.index;
-    if (!isNumber(m[1], m[2], text.slice(Math.max(0, i - 4), i),
-                  text.slice(i + m[0].length, i + m[0].length + 4))) continue;
+    if (!isNumber(m[2], text.slice(Math.max(0, i - 4), i), text.slice(i))) continue;
     leftover.push(`${who} ${where} 「${m[0]}」`);
   }
 };
