@@ -461,9 +461,11 @@ function philLink(name){
 function philBodyHTML(p){
   const n = byPhilosopher(p.name).length;
   const keys = philKeys(p.name);
+  /* 生没年と学派は PHILOSOPHERS 側だけが持っている。紹介データには重ねない */
+  const b = PHILOSOPHERS.find(x => x.name === p.name) || {};
   let h = `<p class="ph-name">${esc(p.name)}</p>
     <p class="ph-yomi">${esc(p.yomi)}</p>
-    <p class="ph-meta"><span>${esc(p.years)}</span><span>${esc(p.place)}</span><span>${esc(p.school)}</span></p>
+    <p class="ph-meta"><span>${esc(b.years || "")}</span><span>${esc(p.place)}</span><span>${esc(b.school || "")}</span></p>
     <p class="ph-intro">${esc(p.intro)}</p>`;
   if(p.works && p.works.length){
     h += `<p class="ph-h">主要著作</p><ul class="ph-works">` +

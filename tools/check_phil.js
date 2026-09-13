@@ -4,9 +4,9 @@
    使い方:  node tools/check_phil.js
             （通れば終了コード0、どれか落ちれば1）
 
-   philosophers.js の PHIL_INTRO は、questions.js の PHILOSOPHERS と
-   name・years・school が重なっている。二か所に同じものがあるので、
-   片方だけ直すと食い違う。ここで突き合わせる。
+   PHIL_INTRO が持つのは name・yomi・place・intro・works・checked だけである。
+   生没年と学派は questions.js の PHILOSOPHERS 側にしか無く、表示のときに引く。
+   二か所で持たない決まりなので、突き合わせではなく引く先があるかを見る。
    =========================================================== */
 
 "use strict";
@@ -35,13 +35,12 @@ ok(noName.length === 0, `${PHIL_INTRO.length}人すべての name が一覧側�
 const dup = PHIL_INTRO.map(p => p.name).filter((n, i, a) => a.indexOf(n) !== i);
 ok(dup.length === 0, `name の重複がない`, dup.join("、"));
 
-console.log("\n===== 2. years と school が一覧側と一致するか =====\n");
-const yBad = PHIL_INTRO.filter(p => base[p.name] && base[p.name].years !== p.years);
-ok(yBad.length === 0, `years が一致する`,
-   yBad.map(p => `${p.name}(一覧:${base[p.name].years}／紹介:${p.years})`).join("、"));
-const sBad = PHIL_INTRO.filter(p => base[p.name] && base[p.name].school !== p.school);
-ok(sBad.length === 0, `school が一致する`,
-   sBad.map(p => `${p.name}(一覧:${base[p.name].school}／紹介:${p.school})`).join("、"));
+console.log("\n===== 2. 二か所で持っていないか =====\n");
+const dupField = PHIL_INTRO.filter(p => "years" in p || "school" in p).map(p => p.name);
+ok(dupField.length === 0, `years と school を紹介側に持っていない`, dupField.join("、"));
+const noBase = PHIL_INTRO.filter(p => base[p.name] && (!base[p.name].years || !base[p.name].school))
+  .map(p => p.name);
+ok(noBase.length === 0, `引く先（PHILOSOPHERS）に years と school がある`, noBase.join("、"));
 
 console.log("\n===== 3. 型を守っているか =====\n");
 const noYomi = PHIL_INTRO.filter(p => !p.yomi || !/^[ぁ-ゖー・]+$/.test(p.yomi)).map(p => p.name);
