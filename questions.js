@@ -232,7 +232,7 @@ const QUESTIONS = [
   {
     id: "q001",
     philosophers: ["プラトン"], terms: ["イデア"], type: "single",
-    keys: ["アナムネーシス", "想起説", "唯名論"],
+    keys: ["想起説", "唯名論"],
     question: "プラトンのイデアの説明として最も適切なものは？",
     choices: [
       "感覚でとらえられる個々の事物から、人間が便宜的に作り出した名前にすぎない",
@@ -1413,7 +1413,7 @@ const QUESTIONS = [
   {
     id: "q056",
     philosophers: ["プラトン"], terms: ["イデア", "理性"], type: "single",
-    keys: ["想起説", "アナムネーシス"],
+    keys: ["想起説"],
     question: "プラトンの想起説（アナムネーシス）として最も適切なものは？",
     choices: [
       "知識は感覚経験を積み重ねることで新たに獲得される",

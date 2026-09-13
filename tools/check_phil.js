@@ -57,14 +57,36 @@ const wOrder = PHIL_INTRO.filter(p => {
   return ys.some((y, i) => i && y < ys[i - 1]);
 }).map(p => p.name);
 ok(wOrder.length === 0, `works が年代順`, wOrder.join("、"));
+const thLen = PHIL_INTRO.filter(p => !p.thought || L(p.thought) < 80 || L(p.thought) > 120)
+  .map(p => `${p.name}(${p.thought ? L(p.thought) + "字" : "なし"})`);
+ok(thLen.length === 0, `thought が80〜120字に収まっている`, thLen.join("、"));
 
-console.log("\n===== 4. intro に評価語が混ざっていないか =====\n");
+console.log("\n===== 4. intro と thought に評価語が混ざっていないか =====\n");
 /* 事実だけを書く決まり。ここに挙げた語が出たら書き直す */
 const NG = ["偉大", "重要", "影響力", "最大の", "画期的", "先駆的", "天才", "有名", "著名",
-            "傑作", "不朽", "卓越", "比類", "決定的", "革命的", "名高い"];
+            "傑作", "不朽", "卓越", "比類", "決定的", "革命的", "名高い", "切り開", "礎を築"];
 const ngHit = [];
-PHIL_INTRO.forEach(p => NG.forEach(w => { if (p.intro.includes(w)) ngHit.push(`${p.name}:${w}`); }));
+PHIL_INTRO.forEach(p => NG.forEach(w => {
+  if (p.intro.includes(w)) ngHit.push(`${p.name}:intro:${w}`);
+  if (p.thought && p.thought.includes(w)) ngHit.push(`${p.name}:thought:${w}`);
+}));
 ok(ngHit.length === 0, `評価語が入っていない`, ngHit.join("、"));
+
+/* thought は「その人の問題に書いてあることの範囲で書く」決まり。
+   根拠にした id を thought_src に残す。ここでは id が実在し、
+   かつその人物の問題であることだけを見る（中身の当否は人が読む） */
+const srcBad = [];
+PHIL_INTRO.forEach(p => {
+  if (!Array.isArray(p.thought_src) || !p.thought_src.length) {
+    srcBad.push(`${p.name}(なし)`); return;
+  }
+  p.thought_src.forEach(id => {
+    const q = QUESTIONS.find(x => x.id === id);
+    if (!q) srcBad.push(`${p.name}:${id}(そんな問題はない)`);
+    else if (!q.philosophers.includes(p.name)) srcBad.push(`${p.name}:${id}(別人の問題)`);
+  });
+});
+ok(srcBad.length === 0, `thought_src がその人の問題を指している`, srcBad.join("、"));
 
 console.log("\n===== 5. 照合済みか／入口が出るか =====\n");
 const unchecked = PHIL_INTRO.filter(p => p.checked !== true).map(p => p.name);

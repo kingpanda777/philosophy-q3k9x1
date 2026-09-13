@@ -355,6 +355,7 @@ body{
   padding:8px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .ph-meta span+span::before{content:"｜";margin:0 7px;color:var(--line)}
 .ph-intro{font-size:14px;margin:14px 0 0}
+.ph-thought{font-size:14px;margin:0;color:var(--ink)}
 .ph-h{font-size:11px;color:var(--muted);margin:18px 0 6px;letter-spacing:.06em}
 .ph-works{list-style:none;margin:0;padding:0}
 .ph-works li{font-size:13.5px;padding:5px 0;border-bottom:1px solid var(--line);
@@ -478,6 +479,9 @@ function philBodyHTML(p, full){
     <p class="ph-yomi">${esc(p.yomi)}</p>
     <p class="ph-meta"><span>${esc(b.years || "")}</span><span>${esc(p.place)}</span><span>${esc(b.school || "")}</span></p>
     <p class="ph-intro">${esc(p.intro)}</p>`;
+  if(p.thought){
+    h += `<p class="ph-h">問い</p><p class="ph-thought">${esc(p.thought)}</p>`;
+  }
   if(p.works && p.works.length){
     h += `<p class="ph-h">主要著作</p><ul class="ph-works">` +
       p.works.map(w => `<li><span>『${esc(w.title)}』</span>${w.year ? `<em>${w.year}</em>` : ""}</li>`).join("") +
@@ -570,7 +574,7 @@ const CONCEPT_ALSO_KEY = ["イデア","他者","不安","因果","差異","弁�
 const KEY_YOMI = {
   "アウシュヴィッツ":"アウシュヴィッツ", "アウラ":"アウラ", "悪の陳腐さ":"あくのちんぷさ",
   "明けの明星":"あけのみょうじょう", "欺く神":"あざむくかみ", "アタラクシア":"アタラクシア",
-  "アナムネーシス":"アナムネーシス", "アノミー":"アノミー", "アパテイア":"アパテイア",
+  "アノミー":"アノミー", "アパテイア":"アパテイア",
   "アブジェクシオン":"アブジェクシオン", "アブダクション":"アブダクション", "アプリオリ":"アプリオリ",
   "あるはある":"あるはある", "アレーテイア":"アレーテイア", "あれか、これか":"あれかこれか",
   "憐れみ":"あわれみ", "アンガジュマン":"アンガジュマン", "安価な恵み":"あんかなめぐみ",
