@@ -226,7 +226,14 @@ if (missW.length || extraW.length || phBad.length) {
      こちらは語が多すぎて並べられないので、「第」が前にあるかどうかで見分ける。
 
    単位が付かない漢数字（一者・二元論・第一哲学・三つの批判書）は、
-   そもそも下の正規表現に掛からない。 */
+   そもそも下の正規表現に掛からない。
+
+   見る範囲は「読者の画面に出る文字」である。
+   questions.js の question／choices／explanation／detail と source.unverified、
+   philosophers.js の intro／thought を通す。
+   unverified は detail の下に「確認できていない点」として表示されるので、本文と同じ扱いにする
+   （2026-09-14 に対象へ加えた。ここだけ漢数字が残り、同じ画面で混在していた）。
+   source の note と refs は記録であって画面に出ないので、見ない。 */
 console.log("\n===== 7. 年や世紀が漢数字のまま残っていないか =====\n");
 
 const { PHIL_INTRO } = new Function(
@@ -259,13 +266,14 @@ QUESTIONS.forEach(q => {
   sweep(q.id, "explanation", q.explanation);
   sweep(q.id, "detail", q.detail);
   (q.choices || []).forEach((c, i) => sweep(q.id, "choices[" + i + "]", c));
+  if (q.source) sweep(q.id, "source.unverified", q.source.unverified);
 });
 PHIL_INTRO.forEach(p => {
   sweep(p.name, "intro", p.intro);
   sweep(p.name, "thought", p.thought);
 });
 ok(leftover.length === 0,
-   `${QUESTIONS.length}問の本文と${PHIL_INTRO.length}人の紹介を通した`,
+   `${QUESTIONS.length}問の本文（unverified 含む）と${PHIL_INTRO.length}人の紹介を通した`,
    leftover.length ? leftover.slice(0, 20).join(" / ") +
      (leftover.length > 20 ? ` ほか${leftover.length - 20}件` : "") : "");
 
