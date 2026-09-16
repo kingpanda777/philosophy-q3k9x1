@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0D1117">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icons/icon-192.png">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="概念のノート">
 <title>概念のノート</title>
 <style>
 :root{
@@ -53,6 +59,9 @@ body{
   scrollbar-width:none;-ms-overflow-style:none;
 }
 .chips::-webkit-scrollbar{display:none}
+/* 折り返し版。this クラスを外せば上の横スクロールに戻る。
+   画面端まで伸ばす負のマージンは、折り返すと不要なので打ち消す */
+.chips.chips-wrap{flex-wrap:wrap;overflow-x:visible;margin:0 0 14px;padding:0}
 .chip{
   appearance:none;cursor:pointer;font-family:inherit;font-size:12.5px;white-space:nowrap;flex:0 0 auto;
   background:var(--card);color:var(--muted);border:1px solid var(--line);
@@ -1103,7 +1112,7 @@ function homeView(){
     }
 
     const cur = view.school || "";
-    h += `<div class="chips"><button class="chip" data-school="" aria-pressed="${!cur}">すべて</button>` +
+    h += `<div class="chips chips-wrap"><button class="chip" data-school="" aria-pressed="${!cur}">すべて</button>` +
       SCHOOLS.map(s => `<button class="chip" data-school="${esc(s)}" aria-pressed="${cur===s}">${esc(s)}</button>`).join("") +
       `</div>`;
     (cur ? [cur] : SCHOOLS).forEach(s => {

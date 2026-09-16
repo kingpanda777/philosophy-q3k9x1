@@ -4560,6 +4560,48 @@ apply スクリプトの照合が外れる。この設定は変えないこと�
 511問を流すテストで `await wait(0)` を使うと、511秒かかって終わらない。
 **描画は同期なので `await Promise.resolve()` で足りる。**
 
+## ホーム画面から開けるようにした（PWA）
+
+**2026年9月16日に入れた。指示を受けた実装変更である。**
+
+| ファイル | 役割 |
+|---|---|
+| `manifest.json` | アプリ名・表示のしかた・アイコンの置き場所 |
+| `icons/icon-192.png` ／ `icons/icon-512.png` | ホーム画面のアイコン。512 は maskable（丸や角丸に切り抜かれる形）も兼ねる |
+| `icons/apple-touch-icon.png` | iPhone の「ホーム画面に追加」が使う 180px のアイコン |
+| `icons/icon.svg` | PNG のもとになる図柄。差し替えるときはこれを描き直す |
+| `tools/make-icons.py` | `icon.svg` と同じ図柄を PNG に焼く。`python tools/make-icons.py` |
+
+**Service Worker は入れていない。理由。**入れると端末側にキャッシュが残り、
+**push した更新が次に開いても反映されないこと**がある。作問と書き換えが続くあいだは、
+毎回サーバから取り直すほうが確実である。**そのぶんオフラインでは開けない。**
+
+**アイコンは仮である。**`--bg` `--accent` `--brass` の3色で輪と点を描いただけで、
+意味のある図柄ではない。**後から差し替えてよい。**
+
+**`start_url` と `icons` の `src` は `./` で始めてある。**公開先が
+`https://kingpanda777.github.io/philosophy-q3k9x1/` とサブフォルダのため、
+**`/` で始めると Pages のルートを指して 404 になる。**
+
+**アイコンの生成に外部ライブラリは使っていない。**この PC の Python に Pillow が
+入っていないため、`make-icons.py` は zlib と struct だけで PNG を書き出している。
+
+### 学派チップを折り返しにした（同日）
+
+「哲学者から」の学派チップを、横一列の横スクロールから `flex-wrap` の折り返しに変えた。
+**チップの高さ・余白・タップ領域は変えていない。**
+
+**CSS はクラス切り替えにしてある。**`.chips` が従来の横スクロール、
+`.chips.chips-wrap` が折り返し。**戻すときは `homeView()` の
+`class="chips chips-wrap"` から `chips-wrap` を消せばよい。**
+鍵語の並べ替えチップは `.chips` のままで、横スクロールを続けている。
+
+**クラス名を `wrap` にしなかった理由。**`.wrap` はページ全体の器に使われており、
+付けると `padding:0 16px 64px` を巻き込む。
+
+**19個（「すべて」＋学派18）は 390px 幅で7段になる。**3〜4段の見込みより多い。
+学派名が長いためで、チップ側の寸法を変えずに減らすことはできない。
+
 ## GitHub Pages で公開している
 
 **2026年9月9日に公開した。**
@@ -4568,7 +4610,7 @@ apply スクリプトの照合が外れる。この設定は変えないこと�
 |---|---|
 | リポジトリ | https://github.com/kingpanda777/philosophy-q3k9x1 （公開・既定ブランチ main） |
 | 公開URL | https://kingpanda777.github.io/philosophy-q3k9x1/ |
-| 公開範囲 | `main` ブランチのルート。`index.html` / `questions.js` / `coverage.js` / `CLAUDE.md` / `.gitignore` / `.gitattributes` の6ファイル |
+| 公開範囲 | `main` ブランチのルート。`index.html` / `questions.js` / `philosophers.js` / `keyterms.json` / `coverage.js` / `CLAUDE.md` / `manifest.json` / `icons/` / `tools/` / `.gitignore` / `.gitattributes`。**`_old_backups/` と `*.bak-*` だけを除外している** |
 
 **リポジトリ名にランダム文字が付いているのは意図的である。**
 URL を知っている人だけが辿り着ける状態にしてある。名前を変えないこと。

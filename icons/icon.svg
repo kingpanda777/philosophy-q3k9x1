@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- 仮アイコン。描き直したら tools/make-icons.py を実行して PNG を作り直す -->
+  <rect width="512" height="512" fill="#0D1117"/>
+  <circle cx="256" cy="256" r="153.6" fill="none" stroke="#4A8FD4" stroke-width="28.16"/>
+  <circle cx="256" cy="256" r="43.52" fill="#C9A227"/>
+</svg>
