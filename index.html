@@ -59,9 +59,18 @@ body{
   scrollbar-width:none;-ms-overflow-style:none;
 }
 .chips::-webkit-scrollbar{display:none}
-/* 折り返し版。this クラスを外せば上の横スクロールに戻る。
-   画面端まで伸ばす負のマージンは、折り返すと不要なので打ち消す */
+/* 折り返し版。このクラスを外せば上の横スクロールに戻る。
+   画面端まで伸ばす負のマージンは、折り返すと不要なので打ち消す。
+   学派チップでは使っていない（19個で7段になり、縦に長すぎた） */
 .chips.chips-wrap{flex-wrap:wrap;overflow-x:visible;margin:0 0 14px;padding:0}
+/* 2段の横スクロール版。列方向に流すので、1個目の「すべて」が左端の1列目に来る。
+   justify-items:start は、同じ列の短いほうのチップが長いほうの幅まで
+   引き伸ばされるのを防ぐためのもの（チップの寸法を変えない） */
+.chips.chips-2row{
+  display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,auto);
+  grid-auto-columns:max-content;justify-items:start;justify-content:start;
+  overflow-x:auto;margin:0 -16px 14px;padding:0 16px 4px;
+}
 .chip{
   appearance:none;cursor:pointer;font-family:inherit;font-size:12.5px;white-space:nowrap;flex:0 0 auto;
   background:var(--card);color:var(--muted);border:1px solid var(--line);
@@ -1112,7 +1121,7 @@ function homeView(){
     }
 
     const cur = view.school || "";
-    h += `<div class="chips chips-wrap"><button class="chip" data-school="" aria-pressed="${!cur}">すべて</button>` +
+    h += `<div class="chips chips-2row"><button class="chip" data-school="" aria-pressed="${!cur}">すべて</button>` +
       SCHOOLS.map(s => `<button class="chip" data-school="${esc(s)}" aria-pressed="${cur===s}">${esc(s)}</button>`).join("") +
       `</div>`;
     (cur ? [cur] : SCHOOLS).forEach(s => {
