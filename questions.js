@@ -380,7 +380,7 @@ const QUESTIONS = [
   {
     id: "q008",
     philosophers: ["スピノザ"], terms: ["実体", "神", "存在"], type: "single",
-    keys: ["神即自然", "様態"],
+    keys: ["神即自然", "様態", "唯一の実体"],
     question: "スピノザの実体についての考えとして最も適切なものは？",
     choices: [
       "実体は無数にあり、たがいに独立している",
@@ -443,7 +443,7 @@ const QUESTIONS = [
   {
     id: "q011",
     philosophers: ["ライプニッツ"], terms: ["実体"], type: "single",
-    keys: ["モナド", "予定調和"],
+    keys: ["モナド", "予定調和", "窓がない"],
     question: "ライプニッツのモナドの説明として最も適切なものは？",
     choices: [
       "物質を構成する最小の粒子であって、原子と同じもの",
@@ -1483,7 +1483,7 @@ const QUESTIONS = [
   {
     id: "q059",
     philosophers: ["デカルト"], terms: ["神", "存在"], type: "single",
-    keys: ["明晰判明", "コギト"],
+    keys: ["明晰判明", "コギト", "デカルトの循環"],
     question: "デカルトが神の存在証明を必要とした理由として最も適切なものは？",
     choices: [
       "信仰を理性によって裏づけ、教会の教義を擁護するため",
@@ -1555,7 +1555,7 @@ const QUESTIONS = [
   {
     id: "q062",
     philosophers: ["ライプニッツ"], terms: ["神", "理性"], type: "single",
-    keys: ["十分理由律", "不可識別者"],
+    keys: ["十分理由律", "不可識別者", "矛盾律"],
     question: "ライプニッツの十分理由律の説明として最も適切なものは？",
     choices: [
       "すべての命題は矛盾律だけで真偽を決められるとする",
@@ -1901,7 +1901,7 @@ const QUESTIONS = [
   {
     id: "q077",
     philosophers: ["デカルト"], terms: ["理性"], type: "single",
-    keys: ["明晰判明"],
+    keys: ["明晰判明", "蜜蝋"],
     question: "デカルトの言う明晰かつ判明な認識として最も適切なものは？",
     choices: [
       "多くの人が同意しており、伝統によっても長く認められてきた認識",
@@ -1924,7 +1924,7 @@ const QUESTIONS = [
   {
     id: "q078",
     philosophers: ["スピノザ"], terms: ["自由", "神"], type: "single",
-    keys: ["主権者", "寛容"],
+    keys: ["主権者", "寛容", "思想と言論の自由"],
     question: "『神学政治論』でスピノザが主張したこととして最も適切なものは？",
     choices: [
       "聖書は神の言葉として一字一句が字義通りに真であり、理性による吟味を超えている",
@@ -1971,7 +1971,7 @@ const QUESTIONS = [
   {
     id: "q080",
     philosophers: ["ライプニッツ"], terms: ["理性","知覚"], type: "single",
-    keys: ["微小表象", "モナド"],
+    keys: ["微小表象", "モナド", "連続律"],
     question: "ライプニッツの微小表象（微小知覚）の説明として最も適切なものは？",
     choices: [
       "意識されない微小な知覚が無数にあり、集まって意識される知覚になる",
@@ -2017,7 +2017,7 @@ const QUESTIONS = [
   {
     id: "q082",
     philosophers: ["ヒューム"], terms: ["理性", "正義"], type: "single",
-    keys: ["共感"],
+    keys: ["共感", "人為的な徳"],
     question: "ヒュームの道徳論として最も適切なものは？",
     choices: [
       "道徳的な性質は行為そのものに客観的に備わっており、理性によって発見される",
@@ -2421,6 +2421,7 @@ const QUESTIONS = [
   {
     id: "q100",
     philosophers: ["ライプニッツ"], terms: ["理性","記号", "言語"], type: "single",
+    keys: ["普遍記号法"],
     question: "ライプニッツが構想した普遍記号法と論理計算として最も適切なものは？",
     choices: [
       "あらゆる言語を統一し、世界共通の日常語を作ろうとする計画",
@@ -2444,7 +2445,7 @@ const QUESTIONS = [
   {
     id: "q101",
     philosophers: ["ヒューム"], terms: ["因果", "理性","懐疑"], type: "single",
-    keys: ["帰納", "反証"],
+    keys: ["帰納", "反証", "自然の斉一性"],
     question: "ヒュームが提起した帰納の問題として最も適切なものは？",
     choices: [
       "帰納は演繹より確実性が低いが、確率計算によって正当化できる",
@@ -12145,7 +12146,7 @@ const QUESTIONS = [
   {
     id: "q516",
     philosophers: ["パスカル"], terms: [], type: "single",
-    keys: ["考える葦"],
+    keys: ["考える葦", "二つの無限"],
     question: "パスカルの考える葦として最も適切なものは？",
     choices: [
       "人間は自然で最も弱いが、考えることで自分の惨めさを知っている",
