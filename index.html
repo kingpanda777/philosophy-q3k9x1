@@ -174,9 +174,11 @@ body{
 }
 .fav.on{color:var(--brass)}
 .fav:focus-visible{outline:2px solid var(--accent);outline-offset:-5px;border-radius:14px}
+/* お気に入りの並びは 2026-09-17 に .chips.chips-2row（学派チップと同じ2段の横スクロール）へ移した。
+   .favbar は現在どこからも参照していないが、折り返しに戻したくなったときのために残す */
 .favbar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 4px}
 .favchip{
-  appearance:none;cursor:pointer;font-family:inherit;font-size:13.5px;
+  appearance:none;cursor:pointer;font-family:inherit;font-size:13.5px;white-space:nowrap;
   background:var(--card);color:var(--ink);
   border:1px solid var(--line);border-left:2px solid var(--brass);
   padding:10px 13px;border-radius:10px;line-height:1.5;
@@ -1177,7 +1179,7 @@ function homeView(){
     };
     const favs = PHILOSOPHERS.filter(p => store.favs[p.name] && byPhilosopher(p.name).length);
     if(favs.length){
-      h += `<h2 class="grp">★ お気に入り<span>${favs.length}人</span></h2><div class="favbar">` +
+      h += `<h2 class="grp">★ お気に入り<span>${favs.length}人</span></h2><div class="chips chips-2row">` +
         favs.map(p => `<button class="favchip" data-philosopher="${esc(p.name)}">${esc(p.name)}<span>${byPhilosopher(p.name).length}問</span></button>`).join("") +
         `</div>`;
     }
