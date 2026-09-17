@@ -253,9 +253,18 @@ function applyAppends(tsui) {
       const end = src.indexOf("\n  },", start);
       const block = src.slice(start, end);
       const m = block.match(/    keys: \[[^\]]*\],/);
-      if (!m) throw new Error("keys 行が無い: " + it.id);
-      const line = `    keys: [${q.keys.concat(it.keys_add).map(S).join(", ")}],`;
-      src = src.slice(0, start) + block.replace(m[0], line) + src.slice(end);
+      const line = `    keys: [${(q.keys || []).concat(it.keys_add).map(S).join(", ")}],`;
+      if (m) {
+        src = src.slice(0, start) + block.replace(m[0], line) + src.slice(end);
+      } else {
+        /* keys フィールドそのものが無い問題が42問ある（q133・q142・q211 など）。
+           refs の「無い」と「空」の区別と同じ型で、`q.keys || []` で読むと空配列に見えるが
+           ソース上は行が存在しない。その場合は philosophers/terms/type の行の直後に作る。
+           2026-09-17 に「十九世紀の反逆」の台帳整備で踏んだ。 */
+        const tm = block.match(/    philosophers: \[[^\]]*\], terms: \[[^\]]*\], type: "[^"]*",/);
+        if (!tm) throw new Error("keys を作る位置が見つからない: " + it.id);
+        src = src.slice(0, start) + block.replace(tm[0], tm[0] + "\n" + line) + src.slice(end);
+      }
       fs.writeFileSync(P("questions.js"), src, "utf8");
     }
 
