@@ -15,8 +15,22 @@
      "鍵語": {
        "作問由来": { "人物": [ {語, 読み, 追加} ] },
        "追記由来": { "人物": [ {語, 読み, 追加} ] }
+     },
+     "台帳": {                          点検の結果を台帳へ書き戻す（作問・追記より先に走る）
+       "対象": ["人物", …],             扱いと数値を見直す人物
+       "刻印": "いつ何で判定したか",      扱いを設定した語の「確認」欄に入る
+       "扱い": {
+         "主題": { "人物": ["語", …] },  値は主題・説明あり・言及・未登場のどれか
+         "理由": { "語": "なぜそう判じたか" }
+       },
+       "ずれの記録": { "語": "数えすぎ／数え漏らしの型" },
+       "改名": { "人物": [ {旧, 新, 読み, 理由} ] },
+       "新規登録": { "人物": [ {語, 読み, 付ける先:["qNNN",…], 追加} ] }
      }
    }
+
+   台帳モードだけを走らせることもできる（"作問" と "追記" を空にする）。
+   hits／全問は入力に書かない。道具が本文を数えて実測を入れる。
 
    やること（この順序で、どこかで落ちたら全ファイルを差し戻して終了コード1）:
      0. 入力のスキーマ検査（書き込みの前）
@@ -102,6 +116,47 @@ function validate(input) {
     if (it.refs_add !== undefined && typeof it.refs_add !== "string") w("refs_add が文字列でない");
   });
 
+  /* 台帳モード。作問も追記も無く、台帳だけを整える入力もありうる。 */
+  const led = input["台帳"];
+  if (led !== undefined) {
+    const w = m => bad.push(`台帳: ${m}`);
+    if (typeof led !== "object" || Array.isArray(led)) w("object でない");
+    else {
+      if (!Array.isArray(led["対象"]) || !led["対象"].length) w("「対象」が人物名の配列でない");
+      if (led["刻印"] !== undefined && typeof led["刻印"] !== "string") w("「刻印」が文字列でない");
+      const 扱い = led["扱い"];
+      if (扱い !== undefined) {
+        if (typeof 扱い !== "object") w("「扱い」が object でない");
+        else for (const v of Object.keys(扱い)) {
+          if (v === "理由") { if (typeof 扱い[v] !== "object") w("扱い.理由 が object でない"); continue; }
+          for (const person of Object.keys(扱い[v]))
+            if (!Array.isArray(扱い[v][person])) w(`扱い.${v}.${person} が配列でない`);
+        }
+      }
+      for (const person of Object.keys(led["改名"] || {})) {
+        if (!Array.isArray(led["改名"][person])) { w(`改名.${person} が配列でない`); continue; }
+        led["改名"][person].forEach((r, i) => {
+          for (const k of ["旧", "新", "読み", "理由"])
+            if (typeof r[k] !== "string" || !r[k]) w(`改名.${person}[${i}]: 「${k}」が無い`);
+          /* 改名は5か所（台帳・読み・q.keys・keys_draft・KEY_YOMI）を揃えて直すので読みが要る */
+        });
+      }
+      for (const person of Object.keys(led["新規登録"] || {})) {
+        if (!Array.isArray(led["新規登録"][person])) { w(`新規登録.${person} が配列でない`); continue; }
+        led["新規登録"][person].forEach((s, i) => {
+          for (const k of ["語", "読み", "追加"])
+            if (typeof s[k] !== "string" || !s[k]) w(`新規登録.${person}[${i}]: 「${k}」が無い`);
+          if (!Array.isArray(s["付ける先"]) || !s["付ける先"].length)
+            w(`新規登録.${person}[${i}]（${s["語"] || "?"}）: 「付ける先」が問題 id の配列でない`);
+        });
+      }
+      if (led["ずれの記録"] !== undefined && typeof led["ずれの記録"] !== "object")
+        w("「ずれの記録」が object でない");
+    }
+  }
+  if (!saku.length && !tsui.length && led === undefined)
+    bad.push("作問も追記も台帳も無い（何もすることがない）");
+
   for (const 由来 of ["作問由来", "追記由来"]) {
     const g = keys[由来] || {};
     if (typeof g !== "object") { bad.push(`鍵語.${由来} が object でない`); continue; }
@@ -119,7 +174,7 @@ function validate(input) {
     console.error("入力が形式に合っていない。1件も書き込んでいない:\n  " + bad.join("\n  "));
     process.exit(1);
   }
-  return { saku, tsui, keys };
+  return { saku, tsui, keys, led };
 }
 
 /* ================= 1. 鍵語の語形の総点検（書き込みの前） ================= */
@@ -168,6 +223,156 @@ function auditKeyForms(saku, tsui, keys, existing) {
   if (ng.length) { console.error("\n書き込みを始めていない。直してからやり直す:\n  " + ng.join("\n  ")); process.exit(1); }
   console.log(`  → ${rows.length}語すべてが本文に出る\n`);
   return { afterAppend };
+}
+
+/* ================= 1.5 台帳モード =================
+   点検の結果を台帳へ書き戻す。作問・追記より先に走らせる。
+   改名で語形が変わると数え直しの対象も変わるので、改名 → 扱いと数値 → 新規登録 の順。
+
+   鍵語は keyterms.json・q.keys・tools/keys_draft.json・index.html の KEY_YOMI の4か所に散在し、
+   改名はそれに「読み」を加えた5つを揃えて直す必要がある。台帳だけ直すと check_keys が落ちる。
+   2026-09-17 の「十九世紀の反逆」の点検で、この4か所を1つずつ踏んで4回止まったので道具にした。 */
+function applyLedger(led) {
+  if (!led) return null;
+  const kt = JSON.parse(fs.readFileSync(P("keyterms.json"), "utf8"));
+  const bodyText = q => bodyOf(q);
+  const measure = (person, word) => {
+    const qs = readQ();
+    return {
+      hits: qs.filter(q => (q.philosophers || []).includes(person) && bodyText(q).includes(word)).length,
+      all: qs.filter(q => bodyText(q).includes(word)).length
+    };
+  };
+  const log = [];
+  let setc = 0, fixc = 0, renc = 0, addc = 0;
+  const STAMP = led["刻印"] || "";
+
+  /* --- 改名（5か所を揃えて直す） --- */
+  let qsrc = fs.readFileSync(P("questions.js"), "utf8");
+  let html = fs.readFileSync(P("index.html"), "utf8");
+  const kd = JSON.parse(fs.readFileSync(P("tools/keys_draft.json"), "utf8"));
+  for (const person of Object.keys(led["改名"] || {})) {
+    for (const r of led["改名"][person]) {
+      const t = (kt[person] || { "鍵語": [] })["鍵語"].find(x => x["語"] === r["旧"]);
+      if (!t) throw new Error("改名対象が台帳に無い: " + person + "／" + r["旧"]);
+      if (kt[person]["鍵語"].some(x => x["語"] === r["新"])) throw new Error("改名先が既にある: " + r["新"]);
+      const m = measure(person, r["新"]);
+      if (m.hits === 0) throw new Error("改名先の語形が本人の本文に無い: " + person + "／" + r["新"]);
+      if (readQ().some(q => bodyText(q).includes(r["旧"]))) throw new Error("本文に旧語形が残っている: " + r["旧"]);
+      t["語"] = r["新"];
+      t["読み"] = r["読み"];
+      t["hits"] = m.hits; t["全問"] = m.all; t["hits_全問"] = m.all;
+      t["改名"] = (t["改名"] ? t["改名"] + " " : "") + r["理由"];
+      /* q.keys（本文に旧語形は無いので、keys 配列の中だけが残っている） */
+      const n = qsrc.split(S(r["旧"])).length - 1;
+      qsrc = qsrc.split(S(r["旧"])).join(S(r["新"]));
+      /* keys_draft */
+      for (const id of Object.keys(kd))
+        if (kd[id].includes(r["旧"])) kd[id] = kd[id].map(k => k === r["旧"] ? r["新"] : k);
+      /* KEY_YOMI。開き引用符まで含めて拾う（外すと二重の引用符になり index.html が壊れる） */
+      const re = new RegExp('"' + r["旧"].replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + '":"[^"]*",');
+      if (!re.test(html)) throw new Error("KEY_YOMI に旧語形が無い: " + r["旧"]);
+      html = html.replace(re, `${S(r["新"])}:${S(r["読み"])},`);
+      renc++;
+      log.push(`  改名　　　${person}／${r["旧"]} → ${r["新"]}（hits ${m.hits}／全問 ${m.all}・q.keys ${n}か所・読みと KEY_YOMI も）`);
+    }
+  }
+  fs.writeFileSync(P("questions.js"), qsrc, "utf8");
+
+  /* --- 扱いの設定と、hits／全問の実測反映 --- */
+  const 扱い = led["扱い"] || {}, 理由 = (扱い["理由"] || {}), ずれ = led["ずれの記録"] || {};
+  const 値 = Object.keys(扱い).filter(k => k !== "理由");
+  for (const person of (led["対象"] || [])) {
+    if (!kt[person]) throw new Error("台帳にその人物がいない: " + person);
+    for (const t of kt[person]["鍵語"]) {
+      const w = t["語"];
+      for (const v of 値) {
+        if ((扱い[v][person] || []).includes(w)) {
+          if (t["扱い"]) throw new Error("すでに扱いがある: " + person + "／" + w + " = " + t["扱い"]);
+          t["扱い"] = v;
+          t["確認"] = STAMP + (理由[w] ? " " + 理由[w] : "");
+          setc++;
+          log.push(`  扱い設定　${person}／${w} → ${v}${理由[w] ? "（注記つき）" : ""}`);
+        }
+      }
+      const m = measure(person, w);
+      if (t["hits"] !== m.hits || t["全問"] !== m.all) {
+        const old = `${t["hits"]}/${t["全問"]}`;
+        t["hits"] = m.hits; t["全問"] = m.all; t["hits_全問"] = m.all;
+        t["備考"] = (t["備考"] ? t["備考"] + " " : "") +
+          `${STAMP ? "" : ""}hits／全問を実測に直した（旧 ${old} → ${m.hits}/${m.all}）。` + (ずれ[w] || "");
+        fixc++;
+        log.push(`  数値修正　${person}／${w}  ${old} → ${m.hits}/${m.all}${ずれ[w] ? "（型を記録）" : ""}`);
+      }
+    }
+  }
+
+  /* --- 新規登録（台帳・q.keys・keys_draft・KEY_YOMI） --- */
+  const yomiLines = [];
+  for (const person of Object.keys(led["新規登録"] || {})) {
+    for (const spec of led["新規登録"][person]) {
+      const w = spec["語"];
+      if (!kt[person]) throw new Error("台帳にその人物がいない: " + person);
+      if (kt[person]["鍵語"].some(x => x["語"] === w)) throw new Error("既に台帳にある: " + person + "／" + w);
+      const m = measure(person, w);
+      if (m.hits === 0) throw new Error("本人の本文に語が無い: " + person + "／" + w);
+      for (const id of (spec["付ける先"] || [])) {
+        let src = fs.readFileSync(P("questions.js"), "utf8");
+        const q = QUESTIONS_OF(src).find(x => x.id === id);
+        if (!q) throw new Error("問題が無い: " + id);
+        if (!bodyText(q).includes(w)) throw new Error("その問題の本文に語が無い: " + id + "／" + w);
+        if ((q.keys || []).includes(w)) throw new Error("既に keys にある: " + id + "／" + w);
+        const start = src.indexOf(`    id: ${S(id)},`);
+        if (start < 0) throw new Error("エントリが見つからない: " + id);
+        const end = src.indexOf("\n  },", start);
+        const block = src.slice(start, end);
+        const mm = block.match(/    keys: \[[^\]]*\],/);
+        const line = `    keys: [${(q.keys || []).concat([w]).map(S).join(", ")}],`;
+        if (mm) src = src.slice(0, start) + block.replace(mm[0], line) + src.slice(end);
+        else {
+          /* keys フィールドそのものが無い問題が42問ある */
+          const tm = block.match(/    philosophers: \[[^\]]*\], terms: \[[^\]]*\], type: "[^"]*",/);
+          if (!tm) throw new Error("keys を作る位置が見つからない: " + id);
+          src = src.slice(0, start) + block.replace(tm[0], tm[0] + "\n" + line) + src.slice(end);
+        }
+        fs.writeFileSync(P("questions.js"), src, "utf8");
+        kd[id] = readQ().find(x => x.id === id).keys;
+      }
+      kt[person]["鍵語"].push({
+        "語": w, "読み": spec["読み"], "出典": "手動追加", "登録済み": false,
+        "hits": m.hits, "全問": m.all, "必須": true, "扱い": "主題",
+        "hits_全問": m.all, "機械判定": "主題候補", "追加": spec["追加"]
+      });
+      if (html.includes('"' + w + '":')) throw new Error("KEY_YOMI に既にある: " + w);
+      yomiLines.push(`  ${S(w)}:${S(spec["読み"])},`);
+      addc++;
+      log.push(`  新規登録　${person}／${w}（hits ${m.hits}／全問 ${m.all}）→ ${(spec["付ける先"] || []).join("・")}`);
+    }
+  }
+  if (yomiLines.length) {
+    const anchor = "const KEY_YOMI = {\n";
+    if (!html.includes(anchor)) throw new Error("KEY_YOMI が見つからない");
+    html = html.replace(anchor, anchor + yomiLines.join("\n") + "\n");
+  }
+  fs.writeFileSync(P("index.html"), html, "utf8");
+  fs.writeFileSync(P("tools/keys_draft.json"), JSON.stringify(kd, null, 1) + "\n", "utf8");
+  fs.writeFileSync(P("keyterms.json"), JSON.stringify(kt, null, 1) + "\n", "utf8");
+
+  /* --- 未登場掃き（全人物） --- */
+  const used = new Set();
+  for (const q of readQ()) for (const k of (q.keys || [])) used.add(k);
+  const sweep = [];
+  for (const p of Object.keys(kt)) {
+    if (p === "_meta") continue;
+    for (const t of (kt[p]["鍵語"] || []))
+      if (t["扱い"] === "未登場" && used.has(t["語"])) sweep.push(`${p}／${t["語"]}`);
+  }
+
+  console.log("■ 台帳の整備");
+  console.log(log.join("\n"));
+  console.log(`  → 扱いを設定 ${setc}語／数値を修正 ${fixc}語／改名 ${renc}語／新規登録 ${addc}語`);
+  console.log(`  → keys に付いているのに扱いが未登場: ${sweep.length ? sweep.join("、") : "0件"}\n`);
+  return { setc, fixc, renc, addc, sweep };
 }
 
 /* ================= 2. 作問を questions.js へ ================= */
@@ -397,13 +602,17 @@ function restore(m, why) {
 /* ================= 本体 ================= */
 function main() {
   const input = JSON.parse(fs.readFileSync(INPUT, "utf8"));
-  const { saku, tsui, keys } = validate(input);
+  const { saku, tsui, keys, led } = validate(input);
   console.log(`■ 入力: 作問${saku.length}問／追記${tsui.length}件／鍵語 ` +
-    `作問由来${count(keys["作問由来"])}語・追記由来${count(keys["追記由来"])}語` + (DRY ? "　【dry-run】" : "") + "\n");
+    `作問由来${count(keys["作問由来"])}語・追記由来${count(keys["追記由来"])}語` +
+    (led ? `／台帳 ${led["対象"].length}人・改名${count(led["改名"] || {})}語・登録${count(led["新規登録"] || {})}語` : "") +
+    (DRY ? "　【dry-run】" : "") + "\n");
 
   const snap = snapshot();
   auditKeyForms(saku, tsui, keys, readQ());
   try {
+    /* 台帳が先。改名で語形が変わると数え直しの対象も変わるため。 */
+    applyLedger(led);
     appendQuestions(saku);
     applyAppends(tsui);
     registerKeys(keys, saku, tsui);
