@@ -31,6 +31,7 @@
 
    台帳モードだけを走らせることもできる（"作問" と "追記" を空にする）。
    hits／全問は入力に書かない。道具が本文を数えて実測を入れる。
+   問題数も同じで、走らせるたびに全員分を数え直して上書きする。
 
    やること（この順序で、どこかで落ちたら全ファイルを差し戻して終了コード1）:
      0. 入力のスキーマ検査（書き込みの前）
@@ -434,6 +435,21 @@ function applyLedger(led) {
     if (!html.includes(anchor)) throw new Error("KEY_YOMI が見つからない");
     html = html.replace(anchor, anchor + yomiLines.join("\n") + "\n");
   }
+  /* --- 問題数を全員分実測して上書き（2026-09-18 に追加） ---
+     hits と同じ扱いにする。台帳の「問題数」を書き換える道具がどこにも無く、
+     点検のたびに手で直していた。2026-09-18 に数えたら114人中35人がずれていた。
+     対象人物だけでなく全人物を回す。ずれた人物は数を報告する。 */
+  const qsForCount = readQ();
+  const countFixed = [];
+  for (const p of Object.keys(kt)) {
+    if (p === "_meta") continue;
+    const real = qsForCount.filter(q => (q.philosophers || []).includes(p)).length;
+    if (kt[p]["問題数"] !== real) {
+      countFixed.push(`${p}(${kt[p]["問題数"]}→${real})`);
+      kt[p]["問題数"] = real;
+    }
+  }
+
   fs.writeFileSync(P("index.html"), html, "utf8");
   fs.writeFileSync(P("tools/keys_draft.json"), JSON.stringify(kd, null, 1) + "\n", "utf8");
   fs.writeFileSync(P("keyterms.json"), JSON.stringify(kt, null, 1) + "\n", "utf8");
@@ -452,6 +468,7 @@ function applyLedger(led) {
   console.log(log.join("\n"));
   console.log(`  → 扱いを設定 ${setc}語／数値を修正 ${fixc}語／改名 ${renc}語／新規登録 ${addc}語`);
   console.log(`  → keys に付いているのに扱いが未登場: ${sweep.length ? sweep.join("、") : "0件"}\n`);
+  console.log("  → 問題数を実測に直した: " + (countFixed.length ? countFixed.length + "人（" + countFixed.join("・") + "）" : "0人"));
   console.log("  → 扱いを変更 " + chgc + "語／keys から外す " + delc + "語");
   return { setc, fixc, renc, addc, chgc, delc, sweep };
 }
