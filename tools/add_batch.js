@@ -150,6 +150,22 @@ function validate(input) {
             w(`新規登録.${person}[${i}]（${s["語"] || "?"}）: 「付ける先」が問題 id の配列でない`);
         });
       }
+      for (const person of Object.keys(led["扱いの変更"] || {})) {
+        if (!Array.isArray(led["扱いの変更"][person])) { w(`扱いの変更.${person} が配列でない`); continue; }
+        led["扱いの変更"][person].forEach((r, i) => {
+          for (const k of ["語", "旧", "新", "理由"])
+            if (typeof r[k] !== "string" || !r[k]) w(`扱いの変更.${person}[${i}]: 「${k}」が無い`);
+        });
+      }
+      for (const person of Object.keys(led["keysから外す"] || {})) {
+        if (!Array.isArray(led["keysから外す"][person])) { w(`keysから外す.${person} が配列でない`); continue; }
+        led["keysから外す"][person].forEach((s, i) => {
+          for (const k of ["語", "理由"])
+            if (typeof s[k] !== "string" || !s[k]) w(`keysから外す.${person}[${i}]: 「${k}」が無い`);
+          if (!Array.isArray(s["外す先"]) || !s["外す先"].length)
+            w(`keysから外す.${person}[${i}]（${s["語"] || "?"}）: 「外す先」が問題 id の配列でない`);
+        });
+      }
       if (led["ずれの記録"] !== undefined && typeof led["ずれの記録"] !== "object")
         w("「ずれの記録」が object でない");
     }
@@ -244,7 +260,7 @@ function applyLedger(led) {
     };
   };
   const log = [];
-  let setc = 0, fixc = 0, renc = 0, addc = 0;
+  let setc = 0, fixc = 0, renc = 0, addc = 0, chgc = 0, delc = 0;
   const STAMP = led["刻印"] || "";
 
   /* --- 改名（5か所を揃えて直す） --- */
@@ -258,7 +274,12 @@ function applyLedger(led) {
       if (kt[person]["鍵語"].some(x => x["語"] === r["新"])) throw new Error("改名先が既にある: " + r["新"]);
       const m = measure(person, r["新"]);
       if (m.hits === 0) throw new Error("改名先の語形が本人の本文に無い: " + person + "／" + r["新"]);
-      if (readQ().some(q => bodyText(q).includes(r["旧"]))) throw new Error("本文に旧語形が残っている: " + r["旧"]);
+      const nokori = readQ().filter(q => bodyText(q).includes(r["旧"]));
+      if (nokori.length && !r["部分文字列の残留を許す"])
+        throw new Error("本文に旧語形が残っている: " + r["旧"] + "（" + nokori.map(q => q.id).join("・") + "）");
+      if (nokori.length)
+        log.push("  ※ 旧語形が本文に残る（別の意味の部分文字列として承知のうえ）: " + r["旧"] +
+          " → " + nokori.map(q => q.id).join("・") + "／理由: " + (r["残留の理由"] || r["理由"]));
       t["語"] = r["新"];
       t["読み"] = r["読み"];
       t["hits"] = m.hits; t["全問"] = m.all; t["hits_全問"] = m.all;
@@ -278,6 +299,22 @@ function applyLedger(led) {
     }
   }
   fs.writeFileSync(P("questions.js"), qsrc, "utf8");
+  /* --- 扱いの変更（すでに扱いがある語を、旧を確かめてから書き換える） ---
+     2026-09-17 に追加。「扱いの設定」は未設定の語にしか効かないので、
+     言及→主題のような直しが道具を通らず、古代ギリシアの点検で止まった。 */
+  for (const person of Object.keys(led["扱いの変更"] || {})) {
+    for (const r of led["扱いの変更"][person]) {
+      const t = (kt[person] || { "鍵語": [] })["鍵語"].find(x => x["語"] === r["語"]);
+      if (!t) throw new Error("変更対象が台帳に無い: " + person + "／" + r["語"]);
+      if ((t["扱い"] || "未設定") !== r["旧"])
+        throw new Error("扱いが「" + r["旧"] + "」でない: " + person + "／" + r["語"] + " = " + (t["扱い"] || "未設定"));
+      t["扱い"] = r["新"];
+      t["確認"] = (t["確認"] ? t["確認"] + " " : "") + STAMP + " " + r["理由"];
+      chgc++;
+      log.push("  扱い変更　" + person + "／" + r["語"] + "　" + r["旧"] + " → " + r["新"]);
+    }
+  }
+
 
   /* --- 扱いの設定と、hits／全問の実測反映 --- */
   const 扱い = led["扱い"] || {}, 理由 = (扱い["理由"] || {}), ずれ = led["ずれの記録"] || {};
@@ -349,6 +386,49 @@ function applyLedger(led) {
       log.push(`  新規登録　${person}／${w}（hits ${m.hits}／全問 ${m.all}）→ ${(spec["付ける先"] || []).join("・")}`);
     }
   }
+  /* --- keys から外す（q.keys・keys_draft、指定があれば台帳と KEY_YOMI も） ---
+     2026-09-17 に追加。方針に合わない語を keys から抜く操作が無く、手作業になっていた。 */
+  for (const person of Object.keys(led["keysから外す"] || {})) {
+    for (const spec of led["keysから外す"][person]) {
+      const w = spec["語"];
+      const t = (kt[person] || { "鍵語": [] })["鍵語"].find(x => x["語"] === w);
+      if (!t) throw new Error("外す対象が台帳に無い: " + person + "／" + w);
+      for (const id of (spec["外す先"] || [])) {
+        let src = fs.readFileSync(P("questions.js"), "utf8");
+        const q = QUESTIONS_OF(src).find(x => x.id === id);
+        if (!q) throw new Error("問題が無い: " + id);
+        if (!(q.keys || []).includes(w)) throw new Error("その問題の keys に無い: " + id + "／" + w);
+        const start = src.indexOf("    id: " + S(id) + ",");
+        if (start < 0) throw new Error("エントリが見つからない: " + id);
+        const end = src.indexOf("\n  },", start);
+        const block = src.slice(start, end);
+        const mm = block.match(/    keys: \[[^\]]*\],/);
+        if (!mm) throw new Error("keys の行が見つからない: " + id);
+        const rest = (q.keys || []).filter(k => k !== w);
+        const line = "    keys: [" + rest.map(S).join(", ") + "],";
+        src = src.slice(0, start) + block.replace(mm[0], line) + src.slice(end);
+        fs.writeFileSync(P("questions.js"), src, "utf8");
+        kd[id] = rest;
+      }
+      if (spec["台帳からも削除"]) {
+        if (readQ().some(q => (q.keys || []).includes(w)))
+          throw new Error("まだ q.keys に残っている語は台帳から削除できない: " + w);
+        const needle = S(w) + ":" + S(t["読み"]) + ",";
+        if (!html.includes(needle)) throw new Error("KEY_YOMI にその語が無い: " + w);
+        html = html.includes("\n  " + needle)
+          ? html.split("\n  " + needle).join("")
+          : html.split(needle).join("");
+        kt[person]["鍵語"] = kt[person]["鍵語"].filter(x => x["語"] !== w);
+        kt["_meta"]["削除した語"].push({
+          "哲学者": person, "語": w, "理由": spec["理由"], "削除日": spec["削除日"] || STAMP
+        });
+      }
+      delc++;
+      log.push("  keys から外す　" + person + "／" + w + "（" + (spec["外す先"] || []).join("・") +
+        (spec["台帳からも削除"] ? "・台帳と KEY_YOMI からも削除" : "") + "）");
+    }
+  }
+
   if (yomiLines.length) {
     const anchor = "const KEY_YOMI = {\n";
     if (!html.includes(anchor)) throw new Error("KEY_YOMI が見つからない");
@@ -372,7 +452,8 @@ function applyLedger(led) {
   console.log(log.join("\n"));
   console.log(`  → 扱いを設定 ${setc}語／数値を修正 ${fixc}語／改名 ${renc}語／新規登録 ${addc}語`);
   console.log(`  → keys に付いているのに扱いが未登場: ${sweep.length ? sweep.join("、") : "0件"}\n`);
-  return { setc, fixc, renc, addc, sweep };
+  console.log("  → 扱いを変更 " + chgc + "語／keys から外す " + delc + "語");
+  return { setc, fixc, renc, addc, chgc, delc, sweep };
 }
 
 /* ================= 2. 作問を questions.js へ ================= */
