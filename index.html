@@ -1079,32 +1079,50 @@ function related(q, exclude){
   return scored.slice(0,3);
 }
 
-/* ========== 全問一周 ==========
-   全問を一度ずつ解くモード。既存の出題画面をそのまま使い、
+/* ========== 一周モード（全問／学派） ==========
+   範囲の問題を一度ずつ解くモード。範囲（scope）は "all" か学派名で、
+   周回のコードは1本のまま、範囲だけを引数で受ける。既存の出題画面をそのまま使い、
    「いま何問目か」と「間違えた id」だけを別に持つ。
 
    保存は既存の philo-quiz-v1 とは別のキーにしてある。
    記録を消しても一周の途中が消えないようにするため。形は次のとおり。
 
-     philo-cycle-v1 = {
+     philo-cycle-v1            全問の周
+     philo-cycle-v1:<学派名>   その学派の周。学派ごとに別キーなので、
+                               複数の学派の周を同時に途中で持てる
+     {
        order : ["q123", ...]   出題順。開始時にシャッフルして固定する
        pos   : 0               次に出す位置。1問答えるたびに書き戻す
        wrong : ["q..."]        この周で間違えた id
-       mode  : "all" | "wrong" 全問の周か、間違えた問題だけの周か
+       mode  : "all" | "wrong" 範囲の全問の周か、間違えた問題だけの周か
        round : 1               間違えた問題だけの周を重ねた回数
        done  : false           この周を解き終えたか
      }
 
    order を固定するのは、途中でやめても同じ続きから戻れるようにするため。
-   後から問題が増えたら、続きから再開するときに末尾へシャッフルして足す。 */
+   後から問題が増えたら、続きから再開するときに末尾へシャッフルして足す。
+
+   キーに学派名をそのまま入れているので、SCHOOLS の学派名を書き換えると
+   古いキーが読まれなくなり、その学派の進捗は別物になる。 */
 const CKEY = "philo-cycle-v1";
 const QMAP = new Map(QUESTIONS.map(q => [q.id, q]));
-let cyc = loadCycle();
+const SCHOOL_OF = new Map(PHILOSOPHERS.map(p => [p.name, p.school]));
+
+/* 範囲の違いを知っているのはこの3つだけ。以下の周回コードは範囲を引数で受ける */
+const keyFor  = scope => scope === "all" ? CKEY : CKEY + ":" + scope;
+const inScope = (q, scope) => scope === "all" || q.philosophers.some(n => SCHOOL_OF.get(n) === scope);
+const idsFor  = scope => QUESTIONS.filter(q => inScope(q, scope)).map(q => q.id);
+
+/* 開始画面のチップで19個ぶんの問題数を出すので、一度だけ数えておく。
+   2学派にまたがる問題は両方に数える（哲学者タブの学派別の問題数と同じ数え方） */
+const SCOPE_N = new Map([["all", QUESTIONS.length]].concat(SCHOOLS.map(s => [s, idsFor(s).length])));
+
+let cyc = null;               // いま開いている周。範囲を切り替えるたびに読み直す
 let cycOpen = {};             // 終了画面で解説を開いている id
 
-function loadCycle(){
+function loadCycle(scope){
   try{
-    const raw = localStorage.getItem(CKEY);
+    const raw = localStorage.getItem(keyFor(scope));
     if(!raw) return null;
     const p = JSON.parse(raw);
     if(!p || !Array.isArray(p.order)) return null;
@@ -1115,6 +1133,7 @@ function loadCycle(){
        消えた件数ぶん先へ進みすぎ、その数だけ未出題の問題が飛ばされる */
     const gone = p.order.slice(0, was).filter(id => !QMAP.has(id)).length;
     return {
+      scope,
       order,
       pos  : Math.max(0, Math.min(was - gone, order.length)),
       wrong: Array.isArray(p.wrong) ? p.wrong.filter(id => QMAP.has(id)) : [],
@@ -1125,30 +1144,40 @@ function loadCycle(){
   }catch(e){ return null; }
 }
 function saveCycle(){
-  try{
-    if(cyc) localStorage.setItem(CKEY, JSON.stringify(cyc));
-    else localStorage.removeItem(CKEY);
-  }catch(e){ /* 保存できなくても出題は続行する */ }
+  if(!cyc) return;      /* 進捗を消す経路は無い。「最初から」は同じキーへの上書きで足りる */
+  try{ localStorage.setItem(keyFor(cyc.scope), JSON.stringify(cyc)); }
+  catch(e){ /* 保存できなくても出題は続行する */ }
 }
+function scopeLabel(scope){ return scope === "all" ? "全問" : scope; }
 function cycleTitle(c){
   const x = c || cyc;
-  return x.mode === "wrong" ? "間違えた問題だけ・" + x.round + "周目" : "全問一周";
+  const head = scopeLabel(x.scope);
+  return x.mode === "wrong" ? head + "・間違えた問題だけ・" + x.round + "周目" : head + "一周";
 }
 
 /* 後から足された問題を末尾に入れる。作問が続くので必須。
-   間違えた問題だけの周には足さない。その周の対象はもう決まっているため。 */
+   間違えた問題だけの周には足さない。その周の対象はもう決まっているため。
+   解き終えた周にも足さない。まとめの分母が動くと結果の意味が変わるので、
+   増えた数は addedAfter() がまとめに出すだけにしてある。 */
 function fillNew(){
   if(!cyc || cyc.mode !== "all" || cyc.done) return 0;
   const have = new Set(cyc.order);
-  const add = shuffle(QUESTIONS.map(q => q.id).filter(id => !have.has(id)));
+  const add = shuffle(idsFor(cyc.scope).filter(id => !have.has(id)));
   if(add.length){ cyc.order = cyc.order.concat(add); saveCycle(); }
   return add.length;
 }
 
-function cycleNew(mode, ids){
+/* 解き終えた周を開いたときに、その範囲へ増えている問題の数。まとめに出す */
+function addedAfter(c){
+  if(!c || c.mode !== "all") return 0;
+  const have = new Set(c.order);
+  return idsFor(c.scope).filter(id => !have.has(id)).length;
+}
+
+function cycleNew(scope, mode, ids){
   const prev = cyc;
   cyc = {
-    order: shuffle(ids), pos:0, wrong:[], mode,
+    scope, order: shuffle(ids), pos:0, wrong:[], mode,
     round: mode === "wrong" ? ((prev && prev.round) || 1) + 1 : 1,
     done : false
   };
@@ -1186,27 +1215,63 @@ function cycleAnswered(it){
   saveCycle();
 }
 
-/* トップ画面の入口。タブは増やさず、タブの下に置く */
+/* トップ画面の入口。タブは増やさず、タブの下に置く。
+   出すのは全問の周の状態。学派の周が途中なら件数だけ添える
+   （学派名まで並べるとボタンが縦に伸びるため） */
 function cycHomeHTML(){
+  const c = loadCycle("all");
   let sub;
-  if(!cyc) sub = QUESTIONS.length + "問を一度ずつ。1問ごとに保存されます";
-  else if(cyc.done) sub = cycleTitle() + "を解き終えています　結果を見る";
-  else sub = cycleTitle() + "の途中　残り" + (cyc.order.length - cyc.pos) + "問";
-  return `<button class="cycbtn" data-cyc="open"><b>全問一周</b><span>${esc(sub)}</span></button>`;
+  if(!c) sub = QUESTIONS.length + "問を一度ずつ。学派だけに絞ることもできます";
+  else if(c.done) sub = cycleTitle(c) + "を解き終えています";
+  else sub = cycleTitle(c) + "の途中　残り" + (c.order.length - c.pos) + "問";
+  const n = SCHOOLS.filter(s => { const x = loadCycle(s); return x && !x.done; }).length;
+  if(n) sub += "　ほかに学派" + n + "件が途中";
+  return `<button class="cycbtn" data-cyc="open"><b>一周する</b><span>${esc(sub)}</span></button>`;
+}
+
+/* 範囲を開く。トップの入口も開始画面の範囲チップもここを通る。
+   進捗は範囲ごとに別キーなので、切り替えるたびに読み直す */
+function cycOpenScope(scope){
+  cyc = loadCycle(scope);
+  fillNew();                                  // 増えた問題を末尾に足す
+  cycOpen = {};
+  view = { name:"cycstart", scope };
+  render();
 }
 
 function cycStartView(){
+  const scope = view.scope || "all";
+  const c = (cyc && cyc.scope === scope) ? cyc : loadCycle(scope);
+
   let h = `<button class="back" data-home="1">一覧にもどる</button>
-    <h2 class="term-title">全問一周</h2>`;
-  if(!cyc){
-    h += `<p class="term-note">${QUESTIONS.length}問を一度ずつ解きます。順番は始めるときに決まり、
+    <h2 class="term-title">一周する</h2>
+    <h2 class="grp">範囲<span>押すと切り替わります</span></h2>`;
+
+  /* 哲学者タブと同じ .chips-2row。● は途中、✓ は解き終えた印。
+     .chip に span を足さないのは、同じ列の短いチップが引き伸ばされるのを防いでいる
+     justify-items:start の前提に触らないため（チップの寸法を変えない） */
+  h += `<div class="chips chips-2row">` +
+    [["all", "すべて"]].concat(SCHOOLS.map(s => [s, s])).map(([k, l]) => {
+      const x = loadCycle(k);
+      const mark = x ? (x.done ? "　✓" : "　●") : "";
+      return `<button class="chip" data-cycscope="${esc(k)}" aria-pressed="${scope === k}">${esc(l)} ${SCOPE_N.get(k)}${mark}</button>`;
+    }).join("") + `</div>`;
+
+  if(!c){
+    h += `<p class="term-note">${esc(scopeLabel(scope))}の${SCOPE_N.get(scope)}問を一度ずつ解きます。順番は始めるときに決まり、
       途中でやめても、次は同じ順序の続きから始まります。1回の出題数の設定はこのモードでは使いません。</p>
       <button class="btn" data-cyc="new">始める</button>`;
     return h;
   }
-  const rest = cyc.order.length - cyc.pos;
-  h += `<p class="term-note">${esc(cycleTitle())}　${cyc.order.length}問のうち ${cyc.pos}問まで解いています。
-    この周で間違えたのは ${cyc.wrong.length}問です。</p>
+  if(c.done){
+    h += `<p class="term-note">${esc(cycleTitle(c))}を解き終えています。</p>
+      <button class="btn" data-cyc="result">結果を見る</button>
+      <button class="btn ghost" data-cyc="new">最初から</button>`;
+    return h;
+  }
+  const rest = c.order.length - c.pos;
+  h += `<p class="term-note">${esc(cycleTitle(c))}　${c.order.length}問のうち ${c.pos}問まで解いています。
+    この周で間違えたのは ${c.wrong.length}問です。</p>
     <button class="btn" data-cyc="resume">続きから（残り${rest}問）</button>
     <button class="btn ghost" data-cyc="new">最初から</button>`;
   return h;
@@ -1223,6 +1288,10 @@ function cycResultView(){
 
   let h = `<div class="score">${rate}<small>%</small></div>
     <p class="score-note">${esc(cycleTitle())}　${n}問中 ${ok}問 正解</p>`;
+
+  /* 解き終えた周には問題を足さないので（fillNew）、増えた数はここで知らせる */
+  const more = addedAfter(cyc);
+  if(more) h += `<p class="score-note">この周を始めたあとに ${more}問 増えています。「最初から」で入ります。</p>`;
 
   if(ng.length){
     h += `<h2 class="sec-title">間違えた問題　${ng.length}問</h2>`;
@@ -1242,10 +1311,10 @@ function cycResultView(){
       return s;
     }).join("");
     h += `<div class="foot"><button class="btn" data-cyc="wrong">間違えた${ng.length}問だけでもう一周</button>
-      <button class="btn ghost" data-cyc="new">全問で最初から</button></div>`;
+      <button class="btn ghost" data-cyc="new">${esc(scopeLabel(cyc.scope))}で最初から</button></div>`;
   }else{
     h += `<p class="empty">間違いはありません。</p>
-      <div class="foot"><button class="btn" data-cyc="new">全問で最初から</button>
+      <div class="foot"><button class="btn" data-cyc="new">${esc(scopeLabel(cyc.scope))}で最初から</button>
       <button class="btn ghost" data-home="1">一覧にもどる</button></div>`;
   }
   return h;
@@ -1615,19 +1684,19 @@ app.addEventListener("click", e => {
     return startQuiz(byKey(d.key), d.key, true);
   }
   if(d.cyc){
-    if(d.cyc === "open"){
-      fillNew();                                  // 増えた問題を末尾に足す
-      view = { name: (cyc && cyc.done) ? "cycresult" : "cycstart" };
-      return render();
-    }
-    if(d.cyc === "new")    return cycleNew("all", QUESTIONS.map(q => q.id));
+    /* 範囲は、開始画面では view が、出題中と終了画面では cyc が持っている */
+    const scope = (view.name === "cycstart") ? (view.scope || "all") : ((cyc && cyc.scope) || "all");
+    if(d.cyc === "open")   return cycOpenScope("all");
+    if(d.cyc === "new")    return cycleNew(scope, "all", idsFor(scope));
     if(d.cyc === "resume"){ fillNew(); return cycleRun(); }
+    if(d.cyc === "result"){ view = { name:"cycresult" }; return render(); }
     if(d.cyc === "wrong"){
       const ids = cyc ? cyc.wrong.slice() : [];
-      if(ids.length) return cycleNew("wrong", ids);
+      if(ids.length) return cycleNew(scope, "wrong", ids);
       return;
     }
   }
+  if(d.cycscope) return cycOpenScope(d.cycscope);   // 開始画面の範囲チップ
   if(d.cycq){                                     // 終了画面で解説を開く／閉じる
     cycOpen[d.cycq] = !cycOpen[d.cycq];
     const y = window.scrollY;
