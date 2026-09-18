@@ -11,7 +11,11 @@
    {
      "作問": [ { id, philosophers[], terms[], keys[], question, choices[4],
                  answer(0始まりの番号), explanation, detail, note, refs[] } ],
-     "追記": [ { id, find, replace, note_add, keys_add[], refs_add?, 許可? } ],
+     "追記": [ { id, 対象?, find, replace, note_add, keys_add[], refs_add?, 許可? } ],
+                 対象 は "detail"（既定）か "explanation"。2026-09-18 に足した。
+                 explanation にも位置で選択肢を指す句が残っていたため。
+                 字数と段落の検査は detail のときだけ働く（explanation に字数の型は無い）。
+                 find の一意性の検査と note への自動記録は、どちらの対象でも働く。
                  許可 は、上限370字を超える追記や、3段落にならない追記を通すときだけ書く理由。
                  書かなければ、その逸脱は「要判断」として報告し、1件も書かずに差し戻す。
                  書けば通し、理由を note に自動で残す（2026-09-18 に throw から変えた）。
@@ -122,6 +126,8 @@ function validate(input) {
     if (it.refs_add !== undefined && typeof it.refs_add !== "string") w("refs_add が文字列でない");
     if (it["許可"] !== undefined && (typeof it["許可"] !== "string" || !it["許可"]))
       w("「許可」は理由を書いた文字列にする（上限を超える追記・3段落にならない追記を通すときだけ書く）");
+    if (it["対象"] !== undefined && it["対象"] !== "detail" && it["対象"] !== "explanation")
+      w("「対象」は detail か explanation にする（省略すると detail）");
   });
 
   /* 台帳モード。作問も追記も無く、台帳だけを整える入力もありうる。 */
@@ -214,10 +220,15 @@ function auditKeyForms(saku, tsui, keys, existing) {
   for (const it of tsui) {
     const q = existing.find(x => x.id === it.id);
     if (!q) { ng.push(`追記先が無い: ${it.id}`); continue; }
-    if (q.detail.indexOf(it.find) < 0) { ng.push(`追記先の detail に find が無い: ${it.id}`); continue; }
-    if (q.detail.indexOf(it.find) !== q.detail.lastIndexOf(it.find)) { ng.push(`find が一意でない: ${it.id}`); continue; }
-    const nd = q.detail.replace(it.find, it.replace);
-    afterAppend[it.id] = { ph: q.philosophers || [], t: bodyOf(Object.assign({}, q, { detail: nd })), detail: nd };
+    /* 2026-09-18 に対象フィールド（detail／explanation）へ対応させた。
+       applyAppends だけを直してこの事前検査を直し忘れ、explanation への追記9件が
+       すべて「detail に find が無い」で止まった。対象を見る箇所は2つある。 */
+    const fld = it["対象"] || "detail";
+    if (typeof q[fld] !== "string" || !q[fld]) { ng.push(`追記先の ${fld} が無い: ${it.id}`); continue; }
+    if (q[fld].indexOf(it.find) < 0) { ng.push(`追記先の ${fld} に find が無い: ${it.id}`); continue; }
+    if (q[fld].indexOf(it.find) !== q[fld].lastIndexOf(it.find)) { ng.push(`find が一意でない: ${it.id}`); continue; }
+    const nd = q[fld].replace(it.find, it.replace);
+    afterAppend[it.id] = { ph: q.philosophers || [], t: bodyOf(Object.assign({}, q, { [fld]: nd })), detail: fld === "detail" ? nd : q.detail };
   }
 
   const rows = [];
@@ -543,7 +554,7 @@ function appendQuestions(saku) {
 const LIMIT = 370;
 function applyAppends(tsui) {
   if (!tsui.length) return;
-  console.log("■ detail の追記");
+  console.log("■ 本文の追記");
   const 要判断 = [];
   for (const it of tsui) {
     /* 置換のたびにファイルを読み直す。src を使い回すと、2件目以降が古い文字列で
@@ -551,31 +562,39 @@ function applyAppends(tsui) {
     let src = fs.readFileSync(P("questions.js"), "utf8");
     let q = QUESTIONS_OF(src).find(x => x.id === it.id);
     if (!q) throw new Error("問題が無い: " + it.id);
-    const before = L(q.detail.replace(/\n/g, ""));
+    /* 2026-09-18 に対象を選べるようにした。explanation にも位置で選択肢を指す句が残っていたため。 */
+    const FLD = it["対象"] || "detail";
+    if (typeof q[FLD] !== "string" || !q[FLD]) throw new Error(FLD + " が無い: " + it.id);
+    const before = L(q[FLD].replace(/\n/g, ""));
 
-    /* --- detail --- */
-    if (q.detail.indexOf(it.find) < 0) throw new Error("detail に find が無い: " + it.id);
-    if (q.detail.indexOf(it.find) !== q.detail.lastIndexOf(it.find)) throw new Error("find が一意でない: " + it.id);
-    const newDetail = q.detail.replace(it.find, it.replace);
-    if (src.indexOf(S(q.detail)) !== src.lastIndexOf(S(q.detail))) throw new Error("detail リテラルが一意でない: " + it.id);
-    src = src.replace(S(q.detail), S(newDetail));
+    /* --- 本文（detail か explanation） --- */
+    if (q[FLD].indexOf(it.find) < 0) throw new Error(FLD + " に find が無い: " + it.id);
+    if (q[FLD].indexOf(it.find) !== q[FLD].lastIndexOf(it.find)) throw new Error("find が一意でない: " + it.id);
+    const newBody = q[FLD].replace(it.find, it.replace);
+    if (src.indexOf(S(q[FLD])) !== src.lastIndexOf(S(q[FLD]))) throw new Error(FLD + " リテラルが一意でない: " + it.id);
+    src = src.replace(S(q[FLD]), S(newBody));
     fs.writeFileSync(P("questions.js"), src, "utf8");
 
     /* --- 字数はここで実測する。予定値は使わない --- */
     src = fs.readFileSync(P("questions.js"), "utf8");
     q = QUESTIONS_OF(src).find(x => x.id === it.id);
-    const after = L(q.detail.replace(/\n/g, ""));
-    const par = q.detail.split(/\n\n+/).length;
+    const after = L(q[FLD].replace(/\n/g, ""));
+    const par = FLD === "detail" ? q.detail.split(/\n\n+/).length : 0;
     /* 2026-09-18 に throw をやめた。CLAUDE.md の「字数は目安であって、内容より優先されない」と
        食い違っており、内容が要求する追記を道具の側が一律に拒んでいたため。
        逸脱は要判断として集め、入力に「許可」欄があるときだけ通す。 */
     const 逸脱 = [];
-    if (par !== 3) 逸脱.push(`段落が${par}になる`);
-    if (after > LIMIT) 逸脱.push(`${after}字で上限${LIMIT}字を超える`);
+    if (FLD === "detail") {
+      /* 字数と段落の型は detail のものなので、explanation では見ない。 */
+      if (par !== 3) 逸脱.push(`段落が${par}になる`);
+      if (after > LIMIT) 逸脱.push(`${after}字で上限${LIMIT}字を超える`);
+    }
     if (逸脱.length && !it["許可"]) 要判断.push(`${it.id}: ${逸脱.join("・")}`);
 
     /* --- note（実測した字数と余地を道具が足す） --- */
-    const measured = `（${before}→${after}字。上限${LIMIT}字に対して余地${LIMIT - after}字）` +
+    const measured = (FLD === "detail"
+      ? `（${before}→${after}字。上限${LIMIT}字に対して余地${LIMIT - after}字）`
+      : `（explanation を${before}→${after}字に書き換えた）`) +
       (逸脱.length && it["許可"] ? ` 型の例外として通した（${逸脱.join("・")}）。理由: ${it["許可"]}` : "");
     const oldNote = q.source.note;
     const newNote = oldNote + it.note_add + measured;
@@ -631,7 +650,8 @@ function applyAppends(tsui) {
     }
 
     const fin = readQ().find(x => x.id === it.id);
-    console.log(`  ${it.id}: detail ${before}→${after}字（余地${LIMIT - after}字）／段落${fin.detail.split(/\n\n+/).length}` +
+    console.log(`  ${it.id}: ${FLD} ${before}→${after}字` +
+      (FLD === "detail" ? `（余地${LIMIT - after}字）／段落${fin.detail.split(/\n\n+/).length}` : "") +
       (it.keys_add ? `／keys +${it.keys_add.join("・")}` : "") +
       (it.refs_add ? `／refs ${fin.source.refs.length}件` : "") +
       (逸脱.length && it["許可"] ? `／許可つきで通した（${逸脱.join("・")}）` : ""));
