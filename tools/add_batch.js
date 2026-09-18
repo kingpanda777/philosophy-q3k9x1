@@ -33,6 +33,7 @@
    hits／全問は入力に書かない。道具が本文を数えて実測を入れる。
    問題数も同じで、走らせるたびに全員分を数え直して上書きする。
    hits／全問も同じで、対象に載せた人物だけでなく台帳の全語を数え直す。
+   この実測は台帳モードだけでなく、作問・追記どのモードでも末尾で必ず走る。
 
    やること（この順序で、どこかで落ちたら全ファイルを差し戻して終了コード1）:
      0. 入力のスキーマ検査（書き込みの前）
@@ -436,41 +437,6 @@ function applyLedger(led) {
     if (!html.includes(anchor)) throw new Error("KEY_YOMI が見つからない");
     html = html.replace(anchor, anchor + yomiLines.join("\n") + "\n");
   }
-  /* --- hits を全語実測して上書き（2026-09-18 に追加） ---
-     問題数と同じ扱いにする。入力の「対象」に載った人物の語しか実測しないので、
-     対象外の語のずれが蓄積していた。中世の点検では、対象に載せた5人のうちでも
-     11語がずれていた。ここでは台帳の全語を数え直す。
-     hits は本人の問題での出現、全問は全問での出現。どちらも本文4フィールドを見る。 */
-  const qsForHits = readQ();
-  const hitsFixed = [];
-  for (const p of Object.keys(kt)) {
-    if (p === "_meta") continue;
-    for (const t of (kt[p]["鍵語"] || [])) {
-      const w = t["語"];
-      const mine = qsForHits.filter(q => (q.philosophers || []).includes(p) && bodyOf(q).includes(w)).length;
-      const whole = qsForHits.filter(q => bodyOf(q).includes(w)).length;
-      if (t["hits"] !== mine || t["全問"] !== whole) {
-        hitsFixed.push(`${p}／${w}(${t["hits"]}/${t["全問"]}→${mine}/${whole})`);
-        t["hits"] = mine; t["全問"] = whole; t["hits_全問"] = whole;
-      }
-    }
-  }
-
-  /* --- 問題数を全員分実測して上書き（2026-09-18 に追加） ---
-     hits と同じ扱いにする。台帳の「問題数」を書き換える道具がどこにも無く、
-     点検のたびに手で直していた。2026-09-18 に数えたら114人中35人がずれていた。
-     対象人物だけでなく全人物を回す。ずれた人物は数を報告する。 */
-  const qsForCount = readQ();
-  const countFixed = [];
-  for (const p of Object.keys(kt)) {
-    if (p === "_meta") continue;
-    const real = qsForCount.filter(q => (q.philosophers || []).includes(p)).length;
-    if (kt[p]["問題数"] !== real) {
-      countFixed.push(`${p}(${kt[p]["問題数"]}→${real})`);
-      kt[p]["問題数"] = real;
-    }
-  }
-
   fs.writeFileSync(P("index.html"), html, "utf8");
   fs.writeFileSync(P("tools/keys_draft.json"), JSON.stringify(kd, null, 1) + "\n", "utf8");
   fs.writeFileSync(P("keyterms.json"), JSON.stringify(kt, null, 1) + "\n", "utf8");
@@ -489,10 +455,46 @@ function applyLedger(led) {
   console.log(log.join("\n"));
   console.log(`  → 扱いを設定 ${setc}語／数値を修正 ${fixc}語／改名 ${renc}語／新規登録 ${addc}語`);
   console.log(`  → keys に付いているのに扱いが未登場: ${sweep.length ? sweep.join("、") : "0件"}\n`);
-  console.log("  → hits を実測に直した: " + (hitsFixed.length ? hitsFixed.length + "語（" + hitsFixed.join("・") + "）" : "0語"));
-  console.log("  → 問題数を実測に直した: " + (countFixed.length ? countFixed.length + "人（" + countFixed.join("・") + "）" : "0人"));
   console.log("  → 扱いを変更 " + chgc + "語／keys から外す " + delc + "語");
   return { setc, fixc, renc, addc, chgc, delc, sweep };
+}
+
+/* ================= 1.6 hits と問題数の実測（どのモードでも走る） =================
+   2026-09-18 に applyLedger の外へ出した。
+   もとは台帳モードの中にあったので、作問だけ・追記だけの実行では走らなかった。
+   実際、位置指しの書き換えで q590 から一文が落ち、ロールズ「格差原理」の
+   全問が 6 から 5 へずれたのに気づかないまま push した（6038b7e で直した）。
+   「本文を書き換えたら台帳モードも通す」という運用は人が忘れる。道具の側で必ず走らせる。
+
+   呼ぶ位置は registerKeys の直後・checks の直前。
+   作問・追記・鍵語登録がすべて終わったあとの本文を数える必要があり、
+   registerKeys も keyterms.json を書くので、そのあとで読み直して上書きする。 */
+function refreshCounts() {
+  const kt = JSON.parse(fs.readFileSync(P("keyterms.json"), "utf8"));
+  const qs = readQ();
+  const hitsFixed = [], countFixed = [];
+  for (const p of Object.keys(kt)) {
+    if (p === "_meta") continue;
+    for (const t of (kt[p]["鍵語"] || [])) {
+      const w = t["語"];
+      const mine = qs.filter(q => (q.philosophers || []).includes(p) && bodyOf(q).includes(w)).length;
+      const whole = qs.filter(q => bodyOf(q).includes(w)).length;
+      if (t["hits"] !== mine || t["全問"] !== whole) {
+        hitsFixed.push(`${p}／${w}(${t["hits"]}/${t["全問"]}→${mine}/${whole})`);
+        t["hits"] = mine; t["全問"] = whole; t["hits_全問"] = whole;
+      }
+    }
+    const real = qs.filter(q => (q.philosophers || []).includes(p)).length;
+    if (kt[p]["問題数"] !== real) {
+      countFixed.push(`${p}(${kt[p]["問題数"]}→${real})`);
+      kt[p]["問題数"] = real;
+    }
+  }
+  fs.writeFileSync(P("keyterms.json"), JSON.stringify(kt, null, 1) + "\n", "utf8");
+  console.log("■ 実測の反映");
+  console.log("  → hits を実測に直した: " + (hitsFixed.length ? hitsFixed.length + "語（" + hitsFixed.join("・") + "）" : "0語"));
+  console.log("  → 問題数を実測に直した: " + (countFixed.length ? countFixed.length + "人（" + countFixed.join("・") + "）" : "0人") + "\n");
+  return { hitsFixed, countFixed };
 }
 
 /* ================= 2. 作問を questions.js へ ================= */
@@ -736,6 +738,7 @@ function main() {
     appendQuestions(saku);
     applyAppends(tsui);
     registerKeys(keys, saku, tsui);
+    refreshCounts();
     checks();
   } catch (e) {
     restore(snap, "途中で落ちた");
