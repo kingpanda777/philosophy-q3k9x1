@@ -10,7 +10,10 @@
    入力の形（スキーマは validate() で実行前に検査し、違えば1問も書かずに止まる）:
    {
      "作問": [ { id, philosophers[], terms[], keys[], question, choices[4],
-                 answer(0始まりの番号), explanation, detail, note, refs[] } ],
+                 answer(0始まりの番号), explanation, detail, note, refs[], 許可? } ],
+                 許可 は、選択肢の長さが「作問の指針」の4つの数字から外れる作問を通すときだけ書く理由。
+                 書かなければ、その逸脱は「要判断」として報告し、1問も書かずに止める。
+                 書けば通し、理由を note に自動で残す（2026-09-19 に足した）。
      "追記": [ { id, 対象?, find, replace, note_add, keys_add[], refs_add?, 許可? } ],
                  対象 は "detail"（既定）か "explanation"。2026-09-18 に足した。
                  explanation にも位置で選択肢を指す句が残っていたため。
@@ -46,6 +49,7 @@
      0. 入力のスキーマ検査（書き込みの前）
      1. 鍵語の語形が本文に出るかの総点検（書き込みの前。作問由来は草稿の本文、
         追記由来は replace 後の本文で見る）
+     1.5 選択肢の長さの検査（書き込みの前。作問の指針の4つの数字を見る）
      2. questions.js へ作問を追記
      3. detail 追記（本文・note・keys・refs）。字数は書き込んだあとに実測して note に足す
      4. keyterms.json / tools/keys_draft.json / index.html の KEY_YOMI へ鍵語を登録
@@ -107,6 +111,8 @@ function validate(input) {
     else if (d.detail.split(/\n\n+/).length !== 3) w("detail が3段落でない");
     if (typeof d.note !== "string" || !d.note) w("note が無い");
     if (!Array.isArray(d.refs)) w("refs が配列でない（空でよいが省略はしない）");
+    if (d["許可"] !== undefined && (typeof d["許可"] !== "string" || !d["許可"]))
+      w("「許可」は理由を書いた文字列にする（選択肢の長さが指針から外れる作問を通すときだけ書く）");
   });
 
   const seenT = new Set();
@@ -258,6 +264,62 @@ function auditKeyForms(saku, tsui, keys, existing) {
   if (ng.length) { console.error("\n書き込みを始めていない。直してからやり直す:\n  " + ng.join("\n  ")); process.exit(1); }
   console.log(`  → ${rows.length}語すべてが本文に出る\n`);
   return { afterAppend };
+}
+
+/* ================= 1.2 選択肢の長さの検査（書き込みの前） =================
+   CLAUDE.md の「作問の指針（選択肢の長さ）」の4つの数字を、道具の側で見る。
+   2026-09-19 に足した。それまで道具が見ていたのは detail の字数と段落だけで、
+   選択肢の均衡は4つとも書き手の手計算に頼っていた。q727 が「2位との差5字」のまま
+   dry-run を通り、書き手が別に数えていたから拾えた、という一件が直接のきっかけである。
+
+   4つを同時に足した理由。一つだけ足すと「道具が見てくれている」という誤解が残り、
+   残り3つの取りこぼしは、その誤解のぶんだけ見つかりにくくなる。
+
+   逸脱は throw ではなく「要判断」として一覧で報告し、1問も書かずに止める。
+   入力にその作問の「許可」欄（理由）があるときだけ通し、理由を note へ自動で書き込む。
+   追記の上限370字とまったく同じ扱いである。
+
+   「32字前後」と「0.8倍」には幅が要る。指針は幅を書いていないので、ここで決めた。
+   下の2つは指針がそのまま上限を書いているので、幅を足さずにその数字で見る。 */
+const ANS_MIN = 28, ANS_MAX = 36, AVG_LO = 0.7, AVG_HI = 0.9, GAP_MAX = 4, RATIO_MAX = 1.3;
+function auditChoiceBalance(saku) {
+  if (!saku.length) return;
+  const 要判断 = [];
+  let 例外 = 0;
+  console.log("■ 選択肢の長さの検査（書き込みの前）");
+  for (const d of saku) {
+    const ans = L(d.choices[d.answer]);
+    const wrong = d.choices.filter((_, i) => i !== d.answer).map(L);
+    const avg = wrong.reduce((a, b) => a + b, 0) / wrong.length;
+    const second = Math.max(...wrong);
+    const gap = ans - second, ratio = ans / avg;
+    const 逸脱 = [];
+    if (ans < ANS_MIN || ans > ANS_MAX)
+      逸脱.push(`正解が${ans}字（目安32字前後・${ANS_MIN}〜${ANS_MAX}字）`);
+    if (avg < ans * AVG_LO || avg > ans * AVG_HI)
+      逸脱.push(`誤答平均が正解の${(avg / ans).toFixed(2)}倍（目安0.8倍・${AVG_LO}〜${AVG_HI}倍）`);
+    if (gap > GAP_MAX) 逸脱.push(`2位との差が${gap}字（上限${GAP_MAX}字）`);
+    if (ratio > RATIO_MAX) 逸脱.push(`比率が${ratio.toFixed(2)}倍（上限${RATIO_MAX}倍）`);
+    const mark = 逸脱.length ? (d["許可"] ? "△" : "★") : "○";
+    console.log(`  ${mark} ${d.id}　正解${ans}字／誤答平均${avg.toFixed(1)}字（${(avg / ans).toFixed(2)}倍）` +
+      `／2位との差${gap}字／比率${ratio.toFixed(2)}倍` +
+      (逸脱.length && d["許可"] ? "　許可つきで通す" : ""));
+    if (逸脱.length) {
+      if (!d["許可"]) 要判断.push(`${d.id}: ${逸脱.join("・")}`);
+      else { 例外++; d.note = d.note + ` 型の例外として通した（${逸脱.join("・")}）。理由: ${d["許可"]}`; }
+    }
+  }
+  if (要判断.length) {
+    console.error("\n要判断（1問も書いていない）:\n  " + 要判断.join("\n  ") +
+      "\n  どちらかを選ぶ: 選択肢を書き直して型に収めるか、その作問に「許可」欄（理由）を足して通す。" +
+      "\n  型は結果として揃ったものであって、内容より優先される規則ではない。");
+    process.exit(1);
+  }
+  console.log(例外
+    ? `  → ${saku.length}問を検査し、${例外}問は許可つきで通した（指針の外側のまま通っている）
+`
+    : `  → ${saku.length}問すべてが指針の内側
+`);
 }
 
 /* ================= 1.5 台帳モード =================
@@ -770,6 +832,7 @@ function main() {
 
   const snap = snapshot();
   auditKeyForms(saku, tsui, keys, readQ());
+  auditChoiceBalance(saku);
   try {
     /* 台帳が先。改名で語形が変わると数え直しの対象も変わるため。 */
     applyLedger(led);
