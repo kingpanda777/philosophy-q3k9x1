@@ -112,7 +112,7 @@ function validate(input) {
     if (typeof d.note !== "string" || !d.note) w("note が無い");
     if (!Array.isArray(d.refs)) w("refs が配列でない（空でよいが省略はしない）");
     if (d["許可"] !== undefined && (typeof d["許可"] !== "string" || !d["許可"]))
-      w("「許可」は理由を書いた文字列にする（選択肢の長さが指針から外れる作問を通すときだけ書く）");
+      w("「許可」は理由を書いた文字列にする（選択肢の長さ、または位置指しが指針から外れる作問を通すときだけ書く）");
   });
 
   const seenT = new Set();
@@ -320,6 +320,56 @@ function auditChoiceBalance(saku) {
 `
     : `  → ${saku.length}問すべてが指針の内側
 `);
+}
+
+/* ================= 1.3 位置指しの検出（書き込みの前） =================
+   detail と explanation が、選択肢を位置で指していないかを見る。
+   2026-09-19 に足した。プラグマティズムの点検で作った12問が12問とも
+   「一番目は…」「三番目と四番目は…」の形で書かれていて、人の目では止まらなかった。
+
+   なぜ止めるか。出題側は選択肢をシャッフルするので、位置で指すと指す先が変わる。
+   本文が別の選択肢を説明することになり、解説そのものが誤りになる。
+   中身を主語にして書けば、並びが変わっても壊れない。
+
+   引っかからない場合（数える前に書き出す）。
+     ・番号を使わない位置指し（「はじめの選択肢」「残りの二つ」）。前者だけ拾う
+     ・「前者」「後者」。比較問題で人物を指すぶんには正しい用法なので、あえて外した
+
+   引っかかりすぎる場合。
+     ・内容としての序数。q071 の「イデアから数えて三番目」、魂の三分説の順序など。
+       この型のために許可欄を置く。逸脱は throw ではなく「要判断」で報告し、
+       1問も書かずに差し戻す。選択肢の長さの検査とまったく同じ扱いである。 */
+const POS_RE = /[一二三四１２３４1234]番目|はじめの選択肢|最初の選択肢/g;
+function auditPositional(saku) {
+  if (!saku.length) return;
+  const 要判断 = [];
+  let 例外 = 0;
+  console.log("■ 位置指しの検査（書き込みの前）");
+  for (const d of saku) {
+    const hits = [];
+    for (const fld of ["detail", "explanation"]) {
+      const m = String(d[fld] || "").match(POS_RE);
+      if (m) hits.push(`${fld}: ${[...new Set(m)].join("・")}`);
+    }
+    const mark = hits.length ? (d["許可"] ? "△" : "★") : "○";
+    console.log(`  ${mark} ${d.id}　${hits.length ? hits.join("／") : "位置指しなし"}`);
+    if (hits.length) {
+      if (!d["許可"]) 要判断.push(`${d.id}: ${hits.join("／")}`);
+      else {
+        例外++;
+        d.note = d.note + ` 型の例外として通した（位置指し: ${hits.join("／")}）。理由: ${d["許可"]}`;
+      }
+    }
+  }
+  if (要判断.length) {
+    console.error("\n要判断（1問も書いていない）:\n  " + 要判断.join("\n  ") +
+      "\n  出題側は選択肢をシャッフルするので、位置で指すと指す先が変わる。" +
+      "\n  どちらかを選ぶ: 選択肢の中身を主語にして書き直すか、内容としての序数なら「許可」欄（理由）を足して通す。");
+    process.exit(1);
+  }
+  console.log(例外
+    ? `  → ${saku.length}問を検査し、${例外}問は許可つきで通した（位置指しが残っている）\n`
+    : `  → ${saku.length}問とも位置指しなし\n`);
 }
 
 /* ================= 1.5 台帳モード =================
@@ -840,6 +890,7 @@ function main() {
   const snap = snapshot();
   auditKeyForms(saku, tsui, keys, readQ());
   auditChoiceBalance(saku);
+  auditPositional(saku);
   try {
     /* 台帳が先。改名で語形が変わると数え直しの対象も変わるため。 */
     applyLedger(led);
