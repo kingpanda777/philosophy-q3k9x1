@@ -11,7 +11,10 @@
    {
      "作問": [ { id, philosophers[], terms[], keys[], question, choices[4],
                  answer(0始まりの番号), explanation, detail, note, refs[] } ],
-     "追記": [ { id, find, replace, note_add, keys_add[], refs_add? } ],
+     "追記": [ { id, find, replace, note_add, keys_add[], refs_add?, 許可? } ],
+                 許可 は、上限370字を超える追記や、3段落にならない追記を通すときだけ書く理由。
+                 書かなければ、その逸脱は「要判断」として報告し、1件も書かずに差し戻す。
+                 書けば通し、理由を note に自動で残す（2026-09-18 に throw から変えた）。
      "鍵語": {
        "作問由来": { "人物": [ {語, 読み, 追加} ] },
        "追記由来": { "人物": [ {語, 読み, 追加} ] }
@@ -117,6 +120,8 @@ function validate(input) {
       w("note_add に字数が書かれている（字数は道具が実測して足すので書かない）");
     if (it.keys_add !== undefined && !Array.isArray(it.keys_add)) w("keys_add が配列でない");
     if (it.refs_add !== undefined && typeof it.refs_add !== "string") w("refs_add が文字列でない");
+    if (it["許可"] !== undefined && (typeof it["許可"] !== "string" || !it["許可"]))
+      w("「許可」は理由を書いた文字列にする（上限を超える追記・3段落にならない追記を通すときだけ書く）");
   });
 
   /* 台帳モード。作問も追記も無く、台帳だけを整える入力もありうる。 */
@@ -539,6 +544,7 @@ const LIMIT = 370;
 function applyAppends(tsui) {
   if (!tsui.length) return;
   console.log("■ detail の追記");
+  const 要判断 = [];
   for (const it of tsui) {
     /* 置換のたびにファイルを読み直す。src を使い回すと、2件目以降が古い文字列で
        置換され、表示だけ成功して実ファイルが変わらない。2026-09-17 にこれで二度失敗した。 */
@@ -560,11 +566,17 @@ function applyAppends(tsui) {
     q = QUESTIONS_OF(src).find(x => x.id === it.id);
     const after = L(q.detail.replace(/\n/g, ""));
     const par = q.detail.split(/\n\n+/).length;
-    if (par !== 3) throw new Error(`追記で段落が ${par} になった: ${it.id}`);
-    if (after > LIMIT) throw new Error(`追記で上限${LIMIT}字を超えた: ${it.id}（${after}字）。replace を短くする`);
+    /* 2026-09-18 に throw をやめた。CLAUDE.md の「字数は目安であって、内容より優先されない」と
+       食い違っており、内容が要求する追記を道具の側が一律に拒んでいたため。
+       逸脱は要判断として集め、入力に「許可」欄があるときだけ通す。 */
+    const 逸脱 = [];
+    if (par !== 3) 逸脱.push(`段落が${par}になる`);
+    if (after > LIMIT) 逸脱.push(`${after}字で上限${LIMIT}字を超える`);
+    if (逸脱.length && !it["許可"]) 要判断.push(`${it.id}: ${逸脱.join("・")}`);
 
     /* --- note（実測した字数と余地を道具が足す） --- */
-    const measured = `（${before}→${after}字。上限${LIMIT}字に対して余地${LIMIT - after}字）`;
+    const measured = `（${before}→${after}字。上限${LIMIT}字に対して余地${LIMIT - after}字）` +
+      (逸脱.length && it["許可"] ? ` 型の例外として通した（${逸脱.join("・")}）。理由: ${it["許可"]}` : "");
     const oldNote = q.source.note;
     const newNote = oldNote + it.note_add + measured;
     if (src.indexOf(S(oldNote)) !== src.lastIndexOf(S(oldNote))) throw new Error("note リテラルが一意でない: " + it.id);
@@ -621,7 +633,13 @@ function applyAppends(tsui) {
     const fin = readQ().find(x => x.id === it.id);
     console.log(`  ${it.id}: detail ${before}→${after}字（余地${LIMIT - after}字）／段落${fin.detail.split(/\n\n+/).length}` +
       (it.keys_add ? `／keys +${it.keys_add.join("・")}` : "") +
-      (it.refs_add ? `／refs ${fin.source.refs.length}件` : ""));
+      (it.refs_add ? `／refs ${fin.source.refs.length}件` : "") +
+      (逸脱.length && it["許可"] ? `／許可つきで通した（${逸脱.join("・")}）` : ""));
+  }
+  if (要判断.length) {
+    throw new Error("要判断（1件も書かずに差し戻した）:\n  " + 要判断.join("\n  ") +
+      "\n  どちらかを選ぶ: replace を詰めて型に収めるか、その追記に「許可」欄（理由）を足して通す。" +
+      "\n  型は結果として揃ったものであって、内容より優先される規則ではない。");
   }
   console.log("");
 }
