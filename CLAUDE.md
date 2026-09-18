@@ -5834,6 +5834,14 @@ curl -s https://kingpanda777.github.io/philosophy-q3k9x1/questions.js | grep -c 
 - 引用符は `String.fromCharCode(34)` を使う
 - 書き換え後は必ず `node --check questions.js` を通す
 
+**Node に渡すパスは Windows 形式にする（2026年9月18日）。**
+`/tmp/x.js` や `/c/Users/merle/...` のような MSYS 形式のパスを Node へ渡すと、
+`C:\tmp\x.js`、`C:\c\Users\merle\...` と解釈されて ENOENT で止まる。
+**シェル（Git Bash）は MSYS 形式を解決するが、Node は解決しない。**
+だから `curl` の出力先に `/tmp` を使い、その同じ文字列を `node -e` の中で渡すと落ちる。
+`C:/Users/...` の形で書くこと。スラッシュ区切りのままでよい。
+このセッションで2回踏んだ（測定スクリプトと、公開ファイルの確認）。
+
 **ファイルの書き換えは Node で行う。Python は使わない（2026年9月15日）。**
 Windows の Python は `io.open(path, "w")` の既定でテキストモードになり、
 **`\n` を書き出すときに `\r\n` へ変換する。**行の中身を一つも変えていなくても、
