@@ -355,11 +355,18 @@ function applyLedger(led) {
       if (kt[person]["鍵語"].some(x => x["語"] === r["新"])) throw new Error("改名先が既にある: " + r["新"]);
       const m = measure(person, r["新"]);
       if (m.hits === 0) throw new Error("改名先の語形が本人の本文に無い: " + person + "／" + r["新"]);
-      const nokori = readQ().filter(q => bodyText(q).includes(r["旧"]));
+      /* 旧語形が新語形の一部であるとき（先頭や末尾が重なる改名）、本文にある新語形が
+         そのまま旧語形の出現として数えられ、残留チェックが原理的に通らない。
+         新語形を取り除いてから探すと、裸の旧語形だけが残る。重なっているだけなら残留ではない。
+         2026-09-19 に「通約不可能 → 通約不可能性」で踏んだ。本文4か所すべてが新語形で、
+         性を伴わない旧語形は0件だったのに、改名が通らなかった。
+         「部分文字列の残留を許す」は本来の型（別の語にたまたま含まれる場合）のために残す。 */
+      const bareText = q => bodyText(q).split(r["新"]).join("");
+      const nokori = readQ().filter(q => bareText(q).includes(r["旧"]));
       if (nokori.length && !r["部分文字列の残留を許す"])
         throw new Error("本文に旧語形が残っている: " + r["旧"] + "（" + nokori.map(q => q.id).join("・") + "）");
       if (nokori.length)
-        log.push("  ※ 旧語形が本文に残る（別の意味の部分文字列として承知のうえ）: " + r["旧"] +
+        log.push("  ※ 新語形の一部ではない旧語形が本文に残る（別の語として承知のうえ）: " + r["旧"] +
           " → " + nokori.map(q => q.id).join("・") + "／理由: " + (r["残留の理由"] || r["理由"]));
       t["語"] = r["新"];
       t["読み"] = r["読み"];
