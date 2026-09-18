@@ -1311,7 +1311,8 @@ function cycResultView(){
       return s;
     }).join("");
     h += `<div class="foot"><button class="btn" data-cyc="wrong">間違えた${ng.length}問だけでもう一周</button>
-      <button class="btn ghost" data-cyc="new">${esc(scopeLabel(cyc.scope))}で最初から</button></div>`;
+      <button class="btn ghost" data-cyc="new">${esc(scopeLabel(cyc.scope))}で最初から</button>
+      <button class="btn ghost" data-home="1">一覧にもどる</button></div>`;
   }else{
     h += `<p class="empty">間違いはありません。</p>
       <div class="foot"><button class="btn" data-cyc="new">${esc(scopeLabel(cyc.scope))}で最初から</button>
