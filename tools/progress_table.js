@@ -4,7 +4,8 @@
    行の文言が変わっている場合は、置換できなかった行を一覧で出して止める（終了コード1）。
    2026-09-17 に tools/ へ据え付けた。それまで点検のたびに scratchpad へ書き直していて、
    比較問題の数え方を取り違えて表へ214と書いた失敗がある（下の注記）。
-   add_batch.js から呼ばれる。 */
+   2026-09-18 に「収録の現状」の表も実測で上書きするようにした。社会学が31問のまま
+   古くなっていたため。学派ごとの数字は人が保守しない。 */
 "use strict";
 const fs = require("fs");
 const path = require("path");
@@ -59,8 +60,54 @@ const rows = [
   [/^\*\*2026年9月16日に `node coverage\.js` で実測した値である。\*\*人物.*$/m,
     `**2026年9月16日に \`node coverage.js\` で実測した値である。**人物${PHILOSOPHERS.length}人・学派${schools}・比較問題${compare}問。`]
 ];
+/* ---- 「収録の現状」の表（学派ごと）を作る ----
+   比較問題は、関わる学派それぞれで数える。表の下の注記もその定義で書く。 */
+const bySchool = {};
+for (const p of PHILOSOPHERS) {
+  (bySchool[p.school] = bySchool[p.school] || { people: 0, ids: new Set() }).people++;
+}
+for (const q of QUESTIONS) {
+  const schools = new Set((q.philosophers || []).map(nm => {
+    const p = PHILOSOPHERS.find(x => x.name === nm);
+    return p ? p.school : null;
+  }).filter(Boolean));
+  for (const sc of schools) if (bySchool[sc]) bySchool[sc].ids.add(q.id);
+}
+const rowsSchool = Object.keys(bySchool)
+  .map(sc => ({ sc, people: bySchool[sc].people, n: bySchool[sc].ids.size }))
+  .map(r => Object.assign(r, { per: r.n / r.people }))
+  .sort((a, b) => b.per - a.per || b.n - a.n);
+const sumQ = rowsSchool.reduce((a, r) => a + r.n, 0);
+const sumP = rowsSchool.reduce((a, r) => a + r.people, 0);
+const today = new Date();
+const stamp = `${today.getFullYear()}年${today.getMonth() + 1}月${today.getDate()}日`;
+const tableSchool =
+  "| 学派 | 人数 | 問数 | 1人あたり |\n|---|---:|---:|---:|\n" +
+  rowsSchool.map(r => `| ${r.sc} | ${r.people} | ${r.n} | ${r.per.toFixed(1)} |`).join("\n") + "\n";
+
 let s = fs.readFileSync(P("CLAUDE.md"), "utf8");
 const missed = [];
+
+/* 見出し・表・注記を置き換える。対象は「最後に現れる収録の現状」だけにする。
+     最初の見出しは478問時点の表で、CLAUDE.md に「そのまま残してある」と明記されている。
+     2026-09-18 に、最初の見出しを書き換えて旧表を壊す不具合を直した。 */
+const headAll = [...s.matchAll(/^### 収録の現状（\d+年\d+月\d+日時点・\d+問）$/gm)];
+if (!headAll.length) missed.push("収録の現状の見出し");
+else {
+  const at = headAll[headAll.length - 1].index;
+  let tail = s.slice(at).replace(/^### 収録の現状（\d+年\d+月\d+日時点・\d+問）$/m,
+    `### 収録の現状（${stamp}時点・${n}問）`);
+  const tableRe = /\| 学派 \| 人数 \| 問数 \| 1人あたり \|\n\|---\|---:\|---:\|---:\|\n(?:\|[^\n]*\|\n)+/;
+  if (!tableRe.test(tail)) missed.push("収録の現状の表");
+  else tail = tail.replace(tableRe, tableSchool);
+  const noteRe = /\*\*問数の合計は\d+で、\d+問より\d+多い。\*\*/;
+  if (!noteRe.test(tail)) missed.push("収録の現状の注記（問数の合計）");
+  else tail = tail.replace(noteRe, `**問数の合計は${sumQ}で、${n}問より${sumQ - n}多い。**`);
+  const pplRe = /人数の合計\d+人は/;
+  if (!pplRe.test(tail)) missed.push("収録の現状の注記（人数の合計）");
+  else tail = tail.replace(pplRe, `人数の合計${sumP}人は`);
+  s = s.slice(0, at) + tail;
+}
 for (const [re, line] of rows) {
   if (!re.test(s)) { missed.push(line.slice(0, 40)); continue; }
   s = s.replace(re, line);
@@ -75,3 +122,5 @@ console.log(`  鍵語 ${terms}語 / ${people}人　扱い: 主題 ${T("主題")}
 console.log(`  detail: 3段落 ${par[3] || 0} ／ 4段落 ${par[4] || 0} ／ 5段落 ${par[5] || 0}　unverified ${uv}`);
 console.log(`  q.keys: 異なり ${allKeys.size} ／ 延べ ${total} ／ 付与 ${withKeys}問`);
 console.log(`  人物 ${PHILOSOPHERS.length} ／ 学派 ${schools} ／ 比較問題 ${compare} ／ TERMS ${TERMS.length}`);
+console.log("収録の現状の表も実測値で更新した");
+rowsSchool.forEach(r => console.log(`  ${r.sc} ${r.people}人 ${r.n}問 ${r.per.toFixed(1)}`));
