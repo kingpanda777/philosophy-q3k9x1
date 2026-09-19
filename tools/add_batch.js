@@ -496,7 +496,10 @@ function applyLedger(led) {
         const q = QUESTIONS_OF(src).find(x => x.id === id);
         if (!q) throw new Error("問題が無い: " + id);
         if (!bodyText(q).includes(w)) throw new Error("その問題の本文に語が無い: " + id + "／" + w);
-        if ((q.keys || []).includes(w)) throw new Error("既に keys にある: " + id + "／" + w);
+        /* 規則3の二人語で、二人目をあとから足すとき。その問題には既に語が付いているので、
+           付け足しを飛ばすだけでよい（台帳と KEY_YOMI の側は下で続けて処理する）。
+           2026-09-19 まで throw していたため、一人目が登録済みの語は二人目を足せなかった。 */
+        if ((q.keys || []).includes(w)) { log.push(`  ※ keys に既にある（付け足しを飛ばす）: ${id}／${w}`); continue; }
         const start = src.indexOf(`    id: ${S(id)},`);
         if (start < 0) throw new Error("エントリが見つからない: " + id);
         const end = src.indexOf("\n  },", start);
@@ -518,7 +521,13 @@ function applyLedger(led) {
         "hits": m.hits, "全問": m.all, "必須": true, "扱い": "主題",
         "hits_全問": m.all, "機械判定": "主題候補", "追加": spec["追加"]
       });
-      if (html.includes('"' + w + '":')) throw new Error("KEY_YOMI に既にある: " + w);
+      /* 規則3の二人語で、一人目が先に KEY_YOMI へ入っているとき。読みが一致するなら通し、
+         行は足さない（1行のままにする）。違うときは従来どおり止める（2026-09-19）。 */
+      const 既存の読み = (html.match(
+        new RegExp('"' + w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + '":"([^"]*)",')) || [])[1];
+      if (既存の読み !== undefined && 既存の読み !== spec["読み"])
+        throw new Error("KEY_YOMI に違う読みで既にある: " + w +
+          "（" + 既存の読み + " と " + spec["読み"] + "）");
       /* 規則3の二人語は同じ語を2人に登録するが、読みの行は1行でよい（既存15語はすべて1行）。
          見張りが html（ループ前の状態）しか見ていなかったので、同じ実行の中で2人ぶん積むと
          2行になっていた。2026-09-19 に、積んだぶんも見るようにした。
@@ -528,7 +537,7 @@ function applyLedger(led) {
       if (既出 && 既出 !== yomiLine)
         throw new Error("同じ語に違う読みを登録しようとしている: " + w +
           "（" + 既出.trim() + " と " + yomiLine.trim() + "）");
-      if (!既出) yomiLines.push(yomiLine);
+      if (!既出 && 既存の読み === undefined) yomiLines.push(yomiLine);
       addc++;
       log.push(`  新規登録　${person}／${w}（hits ${m.hits}／全問 ${m.all}）→ ${(spec["付ける先"] || []).join("・")}`);
     }
@@ -838,7 +847,13 @@ function registerKeys(keys, saku, tsui) {
   for (const 由来 of ["作問由来", "追記由来"]) {
     const g = keys[由来] || {};
     for (const person of Object.keys(g)) for (const spec of g[person]) {
-      if (html.includes('"' + spec["語"] + '":')) throw new Error("KEY_YOMI に既にある: " + spec["語"]);
+      /* 新規登録と同じ扱いにする。先に登録済みの二人語は、読みが一致するなら通して行は足さず、
+         違うときだけ止める（2026-09-19）。新規登録だけ直すと、ここに同じ穴が残る。 */
+      const 既存の読み = (html.match(
+        new RegExp('"' + spec["語"].replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + '":"([^"]*)",')) || [])[1];
+      if (既存の読み !== undefined && 既存の読み !== spec["読み"])
+        throw new Error("KEY_YOMI に違う読みで既にある: " + spec["語"] +
+          "（" + 既存の読み + " と " + spec["読み"] + "）");
       /* 新規登録と同じ理由で、同じ実行の中で積んだぶんも見る（2026-09-19）。
          作問由来・追記由来でも、規則3の二人語を2人ぶん書けば同じことが起きる。
          新規登録だけ直すと、こちらに同じ穴が残る。 */
@@ -846,7 +861,7 @@ function registerKeys(keys, saku, tsui) {
       const 既出 = lines.find(l => l.startsWith("  " + S(spec["語"]) + ":"));
       if (既出 && 既出 !== yomiLine)
         throw new Error("同じ語に違う読みを登録しようとしている: " + spec["語"]);
-      if (!既出) lines.push(yomiLine);
+      if (!既出 && 既存の読み === undefined) lines.push(yomiLine);
     }
   }
   if (lines.length) {
