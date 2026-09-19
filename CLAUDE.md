@@ -785,7 +785,7 @@ intro の字数と評価語、著作の冊数と年代順を機械で見る。
 
 1. `name` は `PHILOSOPHERS` から正確に写す（`years`・`school` は書かない）
 2. 著作名・年・intro の事実をウェブ照合する。**取れなかった著作は載せない**
-3. `node tools/check_phil.js` → `node tools/check_keys.js` → push → Pages確認
+3. `node tools/check_phil.js` → `node tools/check_keys.js` → push → Pages確認（カテゴリ点検の手順の Pages 確認と同じ。ビルド完了と HEAD の一致を先に見る）
 4. 報告にはデータ本文をそのまま載せる（事実の確認は利用者がする）
 
 ### 作問が要るものとして残っているもの（2026年9月12日時点）
