@@ -266,6 +266,60 @@ function auditKeyForms(saku, tsui, keys, existing) {
   return { afterAppend };
 }
 
+/* ================= 1.1 keys 全部の語形の検査（書き込みの前） =================
+   上の総点検は「その実行で新しく登録する語」しか見ない。だから既存の語を keys に足すと
+   検査の対象外になり、CLAUDE.md③（語が本文に無いまま keys に付けない）に触れていても通る。
+
+   2026-09-19 の二十世紀の政治哲学の点検・第2回で、草案の q765 に「感性的なものの分割」、
+   q766 に「出来事への忠実」を付けていた。どちらも既存の語で、その問題の本文には無い。
+   道具は素通りし、書き手が手で数えて拾った。実測すると、既存761問でも
+   keys 延べ1457件のうち50件（45問・49語）が同じ状態にある。
+
+   だから対象を「その実行で書き込む問題の keys 全部」に広げる。
+   作問は d.keys の全件、追記は keys_add の全件を、その問題の本文と突き合わせる。
+   逸脱は throw ではなく「要判断」で一覧報告し、1件も書かずに止める。
+   入力に「許可」欄があるときだけ通し、理由を note へ自動で書き込む。
+   選択肢の長さ・位置指しとまったく同じ扱いである。
+
+   既存の50件はこの検査では止まらない。書き込む問題だけを見るためで、
+   全問を対象にする項目は check_keys の側に置く（50件を片づけてから有効にする）。 */
+function auditKeysInBody(saku, tsui, afterAppend) {
+  if (!saku.length && !tsui.length) return;
+  const 要判断 = [];
+  let 例外 = 0, 件数 = 0;
+  console.log("■ keys の語が本文に出るかの検査（書き込みの前）");
+  const 見る = (obj, id, keys, text, 種別) => {
+    const 欠け = (keys || []).filter(k => !text.includes(k));
+    件数 += (keys || []).length;
+    const mark = 欠け.length ? (obj["許可"] ? "△" : "★") : "○";
+    console.log(`  ${mark} ${id}　${種別}　${(keys || []).length}語` +
+      (欠け.length ? `／本文に無い: ${欠け.join("・")}` : "") +
+      (欠け.length && obj["許可"] ? "　許可つきで通す" : ""));
+    if (!欠け.length) return;
+    if (!obj["許可"]) { 要判断.push(`${id}: ${欠け.join("・")} が本文に無い`); return; }
+    例外++;
+    const 文 = ` 型の例外として通した（keys に本文へ出ない語: ${欠け.join("・")}）。理由: ${obj["許可"]}`;
+    if (種別 === "作問") obj.note = obj.note + 文; else obj.note_add = obj.note_add + 文;
+  };
+  for (const d of saku) 見る(d, d.id, d.keys, bodyOf(d), "作問");
+  for (const it of tsui) {
+    if (!it.keys_add || !it.keys_add.length) continue;
+    const a = afterAppend && afterAppend[it.id];
+    if (!a) continue;   /* 追記先が無い等は上の総点検が既に止めている */
+    見る(it, it.id, it.keys_add, a.t, "追記");
+  }
+  if (要判断.length) {
+    console.error("\n要判断（1件も書いていない）:\n  " + 要判断.join("\n  ") +
+      "\n  語が本文に無いまま keys に付けない（CLAUDE.md③）。" +
+      "\n  どちらかを選ぶ: その語を keys から外すか、初出併記などで本文に出すか、" +
+      "\n  内容の側に理由があるなら「許可」欄（理由）を足して通す。");
+    process.exit(1);
+  }
+  console.log(例外
+    ? `  → ${件数}語を検査し、${例外}件は許可つきで通した（本文に出ない語が残っている）\n`
+    : `  → ${件数}語すべてが、その問題の本文に出る\n`);
+}
+
 /* ================= 1.2 選択肢の長さの検査（書き込みの前） =================
    CLAUDE.md の「作問の指針（選択肢の長さ）」の4つの数字を、道具の側で見る。
    2026-09-19 に足した。それまで道具が見ていたのは detail の字数と段落だけで、
@@ -919,7 +973,10 @@ function main() {
     (DRY ? "　【dry-run】" : "") + "\n");
 
   const snap = snapshot();
-  auditKeyForms(saku, tsui, keys, readQ());
+  const { afterAppend } = auditKeyForms(saku, tsui, keys, readQ());
+  /* keys 全部の語形は、総点検のあとで見る。総点検が追記の find の一意性まで確かめており、
+     その結果（追記後の本文）をそのまま使えるため。2026-09-19 に足した。 */
+  auditKeysInBody(saku, tsui, afterAppend);
   auditChoiceBalance(saku);
   auditPositional(saku);
   try {
