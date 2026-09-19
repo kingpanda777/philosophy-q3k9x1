@@ -90,6 +90,15 @@ ok(noYomi.length === 0, `鍵語タブに出る${shown.length}語すべてに読�
 ok(wrong.length === 0, `KEY_YOMI の読みが台帳と一致する`,
    wrong.length ? "食い違い: " + wrong.map(w => `${w}(台帳:${ledger[w]}／写し:${KEY_YOMI[w]})`).join("、") : "");
 ok(extra.length === 0, `KEY_YOMI に余分な語がない`, extra.length ? "余分: " + extra.join("、") : "");
+/* 同じ語の行が2つないか。KEY_YOMI をオブジェクトとして評価すると、重複した行は
+   後勝ちで黙って吸われるので、ここだけは原文の行を数える。2026-09-19 に足した。
+   規則3の二人語（イコン）を1回で登録したとき、道具が2行書いたのに全項目が通った。
+   道具は直したが、手編集でも再発しうるので検査の側にも置く。 */
+const yomiSrc = html.match(/const KEY_YOMI = \{[\s\S]*?\n\};/)[0];
+const yomiWords = (yomiSrc.match(/"[^"]+":/g) || []).map(t => t.slice(1, -2));
+const dupYomi = uniq(yomiWords.filter((w, i) => yomiWords.indexOf(w) !== i));
+ok(dupYomi.length === 0, `KEY_YOMI に同じ語の行が2つない（${yomiWords.length}行）`,
+   dupYomi.length ? "重複: " + dupYomi.join("、") : "");
 const noLedgerYomi = Object.keys(ledger).filter(w => !ledger[w]);
 ok(noLedgerYomi.length === 0, `台帳${Object.keys(ledger).length}語すべてに読みがある`,
    noLedgerYomi.join("、"));

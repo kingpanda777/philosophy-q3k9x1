@@ -519,7 +519,16 @@ function applyLedger(led) {
         "hits_全問": m.all, "機械判定": "主題候補", "追加": spec["追加"]
       });
       if (html.includes('"' + w + '":')) throw new Error("KEY_YOMI に既にある: " + w);
-      yomiLines.push(`  ${S(w)}:${S(spec["読み"])},`);
+      /* 規則3の二人語は同じ語を2人に登録するが、読みの行は1行でよい（既存15語はすべて1行）。
+         見張りが html（ループ前の状態）しか見ていなかったので、同じ実行の中で2人ぶん積むと
+         2行になっていた。2026-09-19 に、積んだぶんも見るようにした。
+         「イコン」（パース・マリオン）で踏み、index.html を手で1行に直している。 */
+      const yomiLine = `  ${S(w)}:${S(spec["読み"])},`;
+      const 既出 = yomiLines.find(l => l.startsWith("  " + S(w) + ":"));
+      if (既出 && 既出 !== yomiLine)
+        throw new Error("同じ語に違う読みを登録しようとしている: " + w +
+          "（" + 既出.trim() + " と " + yomiLine.trim() + "）");
+      if (!既出) yomiLines.push(yomiLine);
       addc++;
       log.push(`  新規登録　${person}／${w}（hits ${m.hits}／全問 ${m.all}）→ ${(spec["付ける先"] || []).join("・")}`);
     }
@@ -830,7 +839,14 @@ function registerKeys(keys, saku, tsui) {
     const g = keys[由来] || {};
     for (const person of Object.keys(g)) for (const spec of g[person]) {
       if (html.includes('"' + spec["語"] + '":')) throw new Error("KEY_YOMI に既にある: " + spec["語"]);
-      lines.push(`  ${S(spec["語"])}:${S(spec["読み"])},`);
+      /* 新規登録と同じ理由で、同じ実行の中で積んだぶんも見る（2026-09-19）。
+         作問由来・追記由来でも、規則3の二人語を2人ぶん書けば同じことが起きる。
+         新規登録だけ直すと、こちらに同じ穴が残る。 */
+      const yomiLine = `  ${S(spec["語"])}:${S(spec["読み"])},`;
+      const 既出 = lines.find(l => l.startsWith("  " + S(spec["語"]) + ":"));
+      if (既出 && 既出 !== yomiLine)
+        throw new Error("同じ語に違う読みを登録しようとしている: " + spec["語"]);
+      if (!既出) lines.push(yomiLine);
     }
   }
   if (lines.length) {
