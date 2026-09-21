@@ -11,7 +11,12 @@
    入力の形（スキーマは validate() で実行前に検査し、違えば1問も書かずに止まる）:
    {
      "作問": [ { id, philosophers[], terms[], keys[], type?, question, choices[4],
-                 answer(0始まりの番号), explanation, detail, note, refs[], 許可? } ],
+                 answer(0始まりの番号), explanation, detail, note, refs[], 許可?,
+                 kind?, label?, choicesOk?, unverified? } ],
+                 kind・label・choicesOk・unverified は 2026-09-21 に足した。書かなければ従来どおり
+                 kind "ai_web"／label "ウェブ照合済み"／choicesOk "ok"／unverified なし。
+                 kind は ai_web・book・ai のどれか（ai_flagged は新規に付けない）。ai_web 以外は label を書く。
+                 note に「確認できていない点:」があれば unverified（画面に出す文）を書かないと止まる。
                  type は "single"（既定）か "compare"。philosophers が2人以上のときは
                  書かないと「要判断」で止まる（2026-09-21 に足した。許可欄では通せない）。
                  許可 は、選択肢の長さが「作問の指針」の4つの数字から外れる作問、位置指しが残る作問、
@@ -104,6 +109,9 @@ if (!INPUT) { console.error("使い方: node tools/add_batch.js <入力.json> [-
 const TOUCHED = ["questions.js", "keyterms.json", "index.html", "philosophers.js",
   "CLAUDE.md", path.join("tools", "keys_draft.json")];
 
+/* 作問の kind と choicesOk に書ける値（2026-09-21 に足した）。CLAUDE.md「kind は「どう裏を取ったか」だけを表す」
+   「choicesOk は「現在の状態」を表す」の節の表と同じ。 */
+const KINDS = ["ai_web", "book", "ai"], CHOICES_OK = ["ok", "fragile", "broken"];
 const QUESTIONS_OF = src => new Function(src + "\n;return {QUESTIONS};")().QUESTIONS;
 /* 作問の philosophers と terms を突き合わせる先。validate() が読む。2026-09-21 に足した。 */
 const REGISTRY_OF = src => new Function(src + "\n;return {PHILOSOPHERS, TERMS};")();
@@ -153,6 +161,18 @@ function validate(input) {
     else if (d.detail.split(/\n\n+/).length !== 3) w("detail が3段落でない");
     if (typeof d.note !== "string" || !d.note) w("note が無い");
     if (!Array.isArray(d.refs)) w("refs が配列でない（空でよいが省略はしない）");
+    /* kind・label・choicesOk・unverified（2026-09-21 に足した）。書かなければ従来の値が入る。 */
+    if (d.kind !== undefined && !KINDS.includes(d.kind))
+      w(`kind は ${KINDS.join("・")} のどれかにする（ai_flagged は既存値の読み替え専用で、新規に付けない）`);
+    if (d.kind !== undefined && d.kind !== "ai_web" && (typeof d.label !== "string" || !d.label))
+      w("kind が ai_web でないときは label（画面に出る文言）を書く");
+    if (d.label !== undefined && (typeof d.label !== "string" || !d.label)) w("label は空でない文字列にする");
+    if (d.choicesOk !== undefined && !CHOICES_OK.includes(d.choicesOk))
+      w(`choicesOk は ${CHOICES_OK.join("・")} のどれかにする`);
+    if (d.unverified !== undefined && (typeof d.unverified !== "string" || !d.unverified))
+      w("unverified は空でない文字列にする（未確認事項が無いなら欄ごと書かない）");
+    if (typeof d.note === "string" && d.note.includes("確認できていない点:") && d.unverified === undefined)
+      w("note に「確認できていない点:」があるのに unverified が無い（画面に出す文を書く）");
     if (d["許可"] !== undefined && (typeof d["許可"] !== "string" || !d["許可"]))
       w("「許可」は理由を書いた文字列にする（選択肢の長さ、または位置指しが指針から外れる作問を通すときだけ書く）");
   });
@@ -1228,9 +1248,10 @@ function appendQuestions(saku) {
     `    explanation: ${S(d.explanation)},`,
     `    detail: ${S(d.detail)},`,
     "    source: {",
-    '      kind: "ai_web", label: "ウェブ照合済み",',
-    '      choicesOk: "ok",',
+    `      kind: ${S(d.kind || "ai_web")}, label: ${S(d.label || "ウェブ照合済み")},`,
+    `      choicesOk: ${S(d.choicesOk || "ok")},`,
     `      note: ${S(d.note)},`,
+    ...(d.unverified !== undefined ? [`      unverified: ${S(d.unverified)},`] : []),
     "      refs: [",
     d.refs.map(r => `        ${S(r)}`).join(",\n"),
     "      ]",
