@@ -10,8 +10,10 @@
 
    入力の形（スキーマは validate() で実行前に検査し、違えば1問も書かずに止まる）:
    {
-     "作問": [ { id, philosophers[], terms[], keys[], question, choices[4],
+     "作問": [ { id, philosophers[], terms[], keys[], type?, question, choices[4],
                  answer(0始まりの番号), explanation, detail, note, refs[], 許可? } ],
+                 type は "single"（既定）か "compare"。philosophers が2人以上のときは
+                 書かないと「要判断」で止まる（2026-09-21 に足した。許可欄では通せない）。
                  許可 は、選択肢の長さが「作問の指針」の4つの数字から外れる作問、位置指しが残る作問、
                  detail が上限370字を超える作問を通すときだけ書く理由。
                  書かなければ、その逸脱は「要判断」として報告し、1問も書かずに止める。
@@ -478,6 +480,65 @@ function auditDetailLength(saku) {
   console.log(例外
     ? `  → ${saku.length}問を検査し、${例外}問は許可つきで通した（上限を超えたまま通っている）\n`
     : `  → ${saku.length}問とも上限${LIMIT}字の内側\n`);
+}
+
+/* ================= 1.4 作問の type の指定（書き込みの前） =================
+   philosophers が2人以上なのに、入力に type を書いていない作問を「要判断」で止める。
+   2026-09-21 に足した。
+
+   なぜ足したか。type を書かなければ appendQuestions が single を書き込む。
+   「功利主義と自由主義」の点検・第2回で、q790（スミスとミルの停止状態）は比較問題なのに
+   入力に type が無く、single のまま通った。書き手が別に気づいて "type": "compare" を足した。
+   選択肢の均衡・作問の detail の字数と同じ、既定値が黙って入る型である。
+
+   見るのは「書いたかどうか」であって「single かどうか」ではない。
+   実測すると、既存792問のうち philosophers が2人以上で type が single のものは104問ある。
+   ドゥルーズとガタリの共著（q204・q206・q243 ほか）、「XがYを評価した理由」型（q245）など、
+   正しく single のものが大半で、single そのものを逸脱にすると正しい作問のほうが毎回止まる。
+   止めたいのは「決めていない」であって「single と決めた」ではない。
+   だから明示の "type": "single" は通し、書いていないときだけ止める。
+
+   許可欄は置かない。他の4つの検査と違い、逸脱の中身が「判断していない」ことなので、
+   理由を書いて通す先が無い。許可欄は1つの作問で共有されているため、置くと
+   別の検査のために書いた許可で、この検査まで素通りする穴になる。
+   直し方は type を1行書くことだけで、本文を詰めたり書き直したりは要らない。
+
+   引っかからない場合（数える前に書き出す）。
+     ・philosophers が1人の作問。type を書かなくても single でよい
+     ・既存の問題。他の検査と同じく遡らない。見るのは入力の作問だけである
+
+   逆向き（type が compare なのに philosophers が1人以下）は △ で表示するだけで止めない。
+   q303（ウィトゲンシュタインの前期と後期）は同一人物の中の比較で、これは正しい用法である。
+
+   失効条件：type の既定値を廃止し、どの作問でも type を必須にしたとき。
+   そのときは validate() が全件で止めるので、この検査は要らなくなる。 */
+function auditType(saku) {
+  if (!saku.length) return;
+  const 要判断 = [];
+  console.log("■ type の指定の検査（書き込みの前）");
+  for (const d of saku) {
+    const 人数 = d.philosophers.length;
+    const 書いた = Object.prototype.hasOwnProperty.call(d, "type");
+    const 顔ぶれ = `${人数}人: ${d.philosophers.join("・")}`;
+    if (書いた && d.type !== "single" && d.type !== "compare") {
+      console.log(`  ★ ${d.id}　type が ${S(d.type)}（${顔ぶれ}）`);
+      要判断.push(`${d.id}: type が ${S(d.type)}（single か compare のどちらかにする）`);
+    } else if (!書いた && 人数 >= 2) {
+      console.log(`  ★ ${d.id}　type 未指定（${顔ぶれ}）`);
+      要判断.push(`${d.id}: philosophers が${人数}人なのに type を書いていない`);
+    } else if (d.type === "compare" && 人数 < 2) {
+      console.log(`  △ ${d.id}　compare だが ${顔ぶれ}　同一人物の中の比較なら正しい`);
+    } else {
+      console.log(`  ○ ${d.id}　${書いた ? d.type + " と明示" : "type 未指定（1人なので single）"}（${顔ぶれ}）`);
+    }
+  }
+  if (要判断.length) {
+    console.error("\n要判断（1問も書いていない）:\n  " + 要判断.join("\n  ") +
+      "\n  type を書かなければ single が入る。compare か、明示の single かを決めて書く。" +
+      "\n  この検査に「許可」欄は無い。逸脱の中身が「決めていない」ことなので、理由を書いて通す先が無い。");
+    process.exit(1);
+  }
+  console.log(`  → ${saku.length}問とも type の指定は済んでいる\n`);
 }
 
 /* ================= 1.7 台帳モード =================
@@ -1033,6 +1094,8 @@ function main() {
   auditChoiceBalance(saku);
   auditPositional(saku);
   auditDetailLength(saku);
+  /* type は既定値が黙って入るので、本文の検査のあと、書き込みの直前に見る。2026-09-21 に足した。 */
+  auditType(saku);
   try {
     /* 台帳が先。改名で語形が変わると数え直しの対象も変わるため。 */
     applyLedger(led);
