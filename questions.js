@@ -15714,7 +15714,7 @@ const QUESTIONS = [
   },
   {
     id: "q668",
-    philosophers: ["ニーチェ"], terms: ["道徳", "神"], type: "single",
+    philosophers: ["ニーチェ"], terms: ["神"], type: "single",
     keys: ["禁欲主義的理想"],
     question: "『道徳の系譜』第三論文の禁欲主義的理想として最も適切なものは？",
     choices: [
@@ -15737,7 +15737,7 @@ const QUESTIONS = [
   },
   {
     id: "q669",
-    philosophers: ["マルクス"], terms: ["正義", "労働"], type: "single",
+    philosophers: ["マルクス"], terms: ["正義"], type: "single",
     keys: ["ゴータ綱領批判", "能力に応じて働き必要に応じて受け取る"],
     question: "マルクスが『ゴータ綱領批判』で示した共産主義社会の二段階として最も適切なものは？",
     choices: [
