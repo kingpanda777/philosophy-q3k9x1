@@ -128,7 +128,9 @@ function validate(input) {
     else d.philosophers.forEach(p => { if (typeof p !== "string") w("philosophers に文字列でないものがある"); });
     /* 空の terms は許す（CLAUDE.md、2026-09-16）。型だけを見て、空の一覧は auditEmptyTerms が出す。2026-09-21 に直した。 */
     if (!Array.isArray(d.terms)) w("terms が配列でない");
-    if (!Array.isArray(d.keys) || !d.keys.length) w("keys が配列でない");
+    /* 空の keys は許す（CLAUDE.md「keys なしが正常な問題」）。型だけを見て、空の一覧は auditEmptyKeys が出す。
+       2026-09-21 に terms と同じ形に直した。ハリエット・テイラーの作問（q807）で踏んだ。 */
+    if (!Array.isArray(d.keys)) w("keys が配列でない");
     if (typeof d.question !== "string" || !d.question) w("question が無い");
     if (!Array.isArray(d.choices) || d.choices.length !== 4) w("choices が4つでない");
     else if (new Set(d.choices).size !== 4) w("choices に同じ文が混ざっている");
@@ -587,6 +589,22 @@ function auditEmptyTerms(saku) {
   const 空 = saku.filter(d => !d.terms.length).map(d => d.id);
   if (!空.length) return;
   console.log("■ terms が空の作問（止めない。CLAUDE.md の規則で許されている）");
+  console.log("  " + 空.join("・"));
+  console.log("  → " + 空.length + "問。空にした理由は note の「設計の記録」に書くこと");
+  console.log("");
+}
+
+/* ============ 1.7b keys が空の作問の一覧（書き込みの前。止めない） ============
+   CLAUDE.md は「keys なしが正常な問題」の型を定めているが、validate() は空の keys を
+   「配列でない」として止めていた。2026-09-21 に terms と同じ形に直した。
+   型が配列であることは validate() が引き続き見る。空のときは止めずに問題番号を一覧で出す。
+   空の keys は keys_draft.json に書かない（既存の keys なしの問題と同じ扱い。check_keys の項目2は
+   「無い」を空として比べるので、どちらでも通る）。 */
+function auditEmptyKeys(saku) {
+  if (!saku.length) return;
+  const 空 = saku.filter(d => !d.keys.length).map(d => d.id);
+  if (!空.length) return;
+  console.log("■ keys が空の作問（止めない。CLAUDE.md の「keys なしが正常な問題」の型）");
   console.log("  " + 空.join("・"));
   console.log("  → " + 空.length + "問。空にした理由は note の「設計の記録」に書くこと");
   console.log("");
@@ -1361,7 +1379,7 @@ function registerKeys(keys, saku, tsui) {
   const kd = readJson(P("tools/keys_draft.json"));
   for (const d of saku) {
     if (kd[d.id]) throw new Error("keys_draft に既にある: " + d.id);
-    kd[d.id] = d.keys;
+    if (d.keys.length) kd[d.id] = d.keys;
   }
   for (const it of tsui) {
     if (!it.keys_add || !it.keys_add.length) continue;
@@ -1398,7 +1416,7 @@ function registerKeys(keys, saku, tsui) {
     html = html.replace(anchor, anchor + lines.join("\n") + "\n");
     fs.writeFileSync(P("index.html"), html, "utf8");
   }
-  console.log(`  → 台帳 ${added}語／keys_draft ${saku.length + tsui.filter(t => t.keys_add && t.keys_add.length).length}件／KEY_YOMI ${lines.length}語\n`);
+  console.log(`  → 台帳 ${added}語／keys_draft ${saku.filter(d => d.keys.length).length + tsui.filter(t => t.keys_add && t.keys_add.length).length}件／KEY_YOMI ${lines.length}語\n`);
 }
 
 /* ================= 5〜6. 再生成と検査 ================= */
@@ -1461,6 +1479,7 @@ function main() {
   /* type は既定値が黙って入るので、本文の検査のあと、書き込みの直前に見る。2026-09-21 に足した。 */
   auditType(saku);
   auditEmptyTerms(saku);
+  auditEmptyKeys(saku);
   /* keys の除去も書き込みの前に見る。歯止めは2つとも、1件も書かずに止める。2026-09-21 に足した。 */
   auditKeyRemoval(rem, tsui, readQ());
   /* refs の操作も書き込みの前に見る。2026-09-21 に足した。 */
