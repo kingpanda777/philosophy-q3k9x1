@@ -37,6 +37,9 @@
      "refs置換": [ { id, 含む, 新, 理由 } ],
                  refs の1本を別の1本へ差し替える。本数は変わらない。
                  除去・置換とも、記録は note へ道具が書く（2026-09-21 に足した）。
+     "refs追加": [ { id, 新[], 理由 } ],
+                 既存問題の refs へ典拠を足す。本文は触らない。
+                 同じ URL がすでにあるときは「要判断」で止める（2026-09-21 に足した）。
      "鍵語": {
        "作問由来": { "人物": [ {語, 読み, 追加} ] },
        "追記由来": { "人物": [ {語, 読み, 追加} ] }
@@ -169,6 +172,19 @@ function validate(input) {
     else r["含む"].forEach(x => { if (typeof x !== "string" || !x) w("「含む」に文字列でないものがある"); });
     if (typeof r["理由"] !== "string" || !r["理由"]) w("「理由」が無い（note へ残すので必須）");
   });
+  const refsAdd = input["refs追加"] || [];
+  if (!Array.isArray(refsAdd)) bad.push("「refs追加」が配列でない");
+  else refsAdd.forEach((r, i) => {
+    const w = m => bad.push(`refs追加[${i}]${r && r.id ? "（" + r.id + "）" : ""}: ${m}`);
+    if (!r || typeof r !== "object") return w("object でない");
+    if (typeof r.id !== "string" || !/^q\d+$/.test(r.id)) w("id が q+数字でない");
+    if (!Array.isArray(r["新"]) || !r["新"].length) w("「新」が配列でない（1本でも配列にする）");
+    else r["新"].forEach(x => {
+      if (typeof x !== "string" || !x) w("「新」に文字列でないものがある");
+      else if (!x.includes("—")) w("「新」が『URL — 何を確認したか』の形になっていない");
+    });
+    if (typeof r["理由"] !== "string" || !r["理由"]) w("「理由」が無い（note へ残すので必須）");
+  });
   if (!Array.isArray(refsRep)) bad.push("「refs置換」が配列でない");
   else refsRep.forEach((r, i) => {
     const w = m => bad.push(`refs置換[${i}]${r && r.id ? "（" + r.id + "）" : ""}: ${m}`);
@@ -246,7 +262,7 @@ function validate(input) {
         w("「ずれの記録」が object でない");
     }
   }
-  if (!saku.length && !tsui.length && led === undefined && !rem.length && !refsDel.length && !refsRep.length)
+  if (!saku.length && !tsui.length && led === undefined && !rem.length && !refsDel.length && !refsRep.length && !refsAdd.length)
     bad.push("作問も追記も台帳も keys除去 も refs の操作も無い（何もすることがない）");
 
   for (const 由来 of ["作問由来", "追記由来"]) {
@@ -266,7 +282,7 @@ function validate(input) {
     console.error("入力が形式に合っていない。1件も書き込んでいない:\n  " + bad.join("\n  "));
     process.exit(1);
   }
-  return { saku, tsui, keys, led, rem, refsDel, refsRep };
+  return { saku, tsui, keys, led, rem, refsDel, refsRep, refsAdd };
 }
 
 /* ================= 1. 鍵語の語形の総点検（書き込みの前） ================= */
@@ -800,6 +816,65 @@ function applyRefsOps(refsDel, refsRep) {
     writeRefs(r.id, now.map(x => x === 旧 ? r["新"] : x));
     addNote(r.id, ` refs を1本差し替えた（${r["含む"]} → ${r["新"].split("—")[0].trim()}）。理由: ${r["理由"]}`);
     console.log(`  ${r.id}: refs ${now.length}本のうち1本を差し替え　${r["含む"]}`);
+  }
+  console.log("");
+}
+
+/* ================= 1.10 refs の追加（書き込みの前） =================
+   既存問題の refs へ1本ずつ足す。2026-09-21 に足した。
+
+   なぜ足したか。refs_add は追記（本文の書き換え）に付随する形でしか使えず、
+   本文を触らずに典拠だけを足す経路が無かった。Wikipedia の載せ替えの1回目で、
+   q200 のパルマコンの両義性は IEP のデリダ項が支えられるのに入れられず、
+   q243・q246 は差し替えによって前の ref が支えていた別の主張が落ちた。
+   足す・外す・差し替えが揃っていないと、「1問1本に丸める」ことになる。
+
+   歯止めは1つ。同じ URL がすでにあるときは止める。
+   説明欄が違っても URL が同じなら、鍵語タブの「読み」が二重に並ぶのと同じ型の重複になる。
+   空になる歯止めは要らない（足す操作なので減らない）。
+
+   許可欄は置かない。refs除去・keys除去 と同じ扱いである。
+
+   失効条件なし。 */
+function auditRefsAdd(refsAdd, existing) {
+  if (!refsAdd.length) return;
+  const 要判断 = [];
+  console.log("■ refs に足す典拠の検査（書き込みの前）");
+  const urlOf = r => String(r).split(/\s/)[0];
+  for (const r of refsAdd) {
+    const q = existing.find(x => x.id === r.id);
+    if (!q) { 要判断.push(`${r.id}: 問題が無い`); console.log(`  ★ ${r.id}　問題が無い`); continue; }
+    const now = (q.source && q.source.refs) || [];
+    const 既存 = now.map(urlOf);
+    const 行 = [];
+    let ng = false;
+    const 内 = new Set();
+    for (const n of r["新"]) {
+      const u = urlOf(n);
+      if (既存.includes(u)) { 要判断.push(`${r.id}: 同じ URL がすでにある（${u}）`); 行.push(`重複: ${u}`); ng = true; continue; }
+      if (内.has(u)) { 要判断.push(`${r.id}: 同じ URL を2本足そうとしている（${u}）`); 行.push(`入力内で重複: ${u}`); ng = true; continue; }
+      内.add(u); 行.push(`足す: ${u}`);
+    }
+    console.log(`  ${ng ? "★" : "○"} ${r.id}　refs ${now.length}→${now.length + 内.size}　${行.join("／")}`);
+  }
+  if (要判断.length) {
+    console.error("\n要判断（1件も書いていない）:\n  " + 要判断.join("\n  ") +
+      "\n  同じ URL を二重に登録しない。説明欄を足したいだけなら refs置換 を使う。" +
+      "\n  この検査に「許可」欄は無い。");
+    process.exit(1);
+  }
+  console.log(`  → ${refsAdd.length}問に計${refsAdd.reduce((a, r) => a + r["新"].length, 0)}本を足す\n`);
+}
+
+function applyRefsAdd(refsAdd) {
+  if (!refsAdd.length) return;
+  console.log("■ refs に典拠を足す");
+  for (const r of refsAdd) {
+    const q = readQ().find(x => x.id === r.id);
+    const now = (q.source && q.source.refs) || [];
+    writeRefs(r.id, now.concat(r["新"]));
+    addNote(r.id, ` refs に${r["新"].length}本を足した（${r["新"].map(x => x.split(/\s/)[0]).join("・")}）。理由: ${r["理由"]}`);
+    console.log(`  ${r.id}: refs ${now.length}→${now.length + r["新"].length}本`);
   }
   console.log("");
 }
@@ -1348,12 +1423,12 @@ function restore(m, why) {
 /* ================= 本体 ================= */
 function main() {
   const input = JSON.parse(fs.readFileSync(INPUT, "utf8"));
-  const { saku, tsui, keys, led, rem, refsDel, refsRep } = validate(input);
+  const { saku, tsui, keys, led, rem, refsDel, refsRep, refsAdd } = validate(input);
   console.log(`■ 入力: 作問${saku.length}問／追記${tsui.length}件／鍵語 ` +
     `作問由来${count(keys["作問由来"])}語・追記由来${count(keys["追記由来"])}語` +
     (led ? `／台帳 ${led["対象"].length}人・改名${count(led["改名"] || {})}語・登録${count(led["新規登録"] || {})}語` : "") +
     (rem.length ? `／keys除去 ${rem.length}問・${rem.reduce((a, r) => a + r["語"].length, 0)}語` : "") +
-    (refsDel.length || refsRep.length ? `／refs 除去${refsDel.length}問・置換${refsRep.length}問` : "") +
+    (refsDel.length || refsRep.length || refsAdd.length ? `／refs 除去${refsDel.length}問・置換${refsRep.length}問・追加${refsAdd.length}問` : "") +
     (DRY ? "　【dry-run】" : "") + "\n");
 
   const snap = snapshot();
@@ -1370,6 +1445,7 @@ function main() {
   auditKeyRemoval(rem, tsui, readQ());
   /* refs の操作も書き込みの前に見る。2026-09-21 に足した。 */
   auditRefs(refsDel, refsRep, readQ());
+  auditRefsAdd(refsAdd, readQ());
   try {
     /* 台帳が先。改名で語形が変わると数え直しの対象も変わるため。 */
     applyLedger(led);
@@ -1378,6 +1454,7 @@ function main() {
     /* 除去は追記のあと。同じ問題に追記と除去が両方あるとき、note が「追記 → 除去」の順に並ぶ。 */
     removeKeys(rem);
     applyRefsOps(refsDel, refsRep);
+    applyRefsAdd(refsAdd);
     registerKeys(keys, saku, tsui);
     refreshCounts();
     checks();
