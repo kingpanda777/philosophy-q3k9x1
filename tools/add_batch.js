@@ -69,6 +69,7 @@
         追記由来は replace 後の本文で見る）
      1.5 選択肢の長さと位置指しの検査（書き込みの前。作問の指針の4つの数字を見る）
      1.6 作問の detail の字数の検査（書き込みの前。上限370字。追記と同じ数え方で測る）
+     1.7 terms が空の作問の一覧（書き込みの前。止めずに問題番号を出すだけ）
      2. questions.js へ作問を追記
      3. detail 追記（本文・note・keys・refs）。字数は書き込んだあとに実測して note に足す
      4. keyterms.json / tools/keys_draft.json / index.html の KEY_YOMI へ鍵語を登録
@@ -125,7 +126,8 @@ function validate(input) {
     if (seen.has(d.id)) w("id が重複している"); else seen.add(d.id);
     if (!Array.isArray(d.philosophers) || !d.philosophers.length) w("philosophers が配列でない（1人でも配列にする）");
     else d.philosophers.forEach(p => { if (typeof p !== "string") w("philosophers に文字列でないものがある"); });
-    if (!Array.isArray(d.terms) || !d.terms.length) w("terms が配列でない");
+    /* 空の terms は許す（CLAUDE.md、2026-09-16）。型だけを見て、空の一覧は auditEmptyTerms が出す。2026-09-21 に直した。 */
+    if (!Array.isArray(d.terms)) w("terms が配列でない");
     if (!Array.isArray(d.keys) || !d.keys.length) w("keys が配列でない");
     if (typeof d.question !== "string" || !d.question) w("question が無い");
     if (!Array.isArray(d.choices) || d.choices.length !== 4) w("choices が4つでない");
@@ -575,6 +577,21 @@ function auditDetailLength(saku) {
 
    失効条件：type の既定値を廃止し、どの作問でも type を必須にしたとき。
    そのときは validate() が全件で止めるので、この検査は要らなくなる。 */
+/* ============ 1.7 terms が空の作問の一覧（書き込みの前。止めない） ============
+   CLAUDE.md は「terms が空の問題は許す」（2026-09-16）と定めているが、validate() は
+   空の terms を「配列でない」として止めていた。パトナムの作問（q796・q798）で踏み、
+   2026-09-21 に規則へ合わせた。型が配列であることは validate() が引き続き見る。
+   空のときは止めずに問題番号を一覧で出すだけで、note の文面（設計の記録）は検査しない。 */
+function auditEmptyTerms(saku) {
+  if (!saku.length) return;
+  const 空 = saku.filter(d => !d.terms.length).map(d => d.id);
+  if (!空.length) return;
+  console.log("■ terms が空の作問（止めない。CLAUDE.md の規則で許されている）");
+  console.log("  " + 空.join("・"));
+  console.log("  → " + 空.length + "問。空にした理由は note の「設計の記録」に書くこと");
+  console.log("");
+}
+
 function auditType(saku) {
   if (!saku.length) return;
   const 要判断 = [];
@@ -1443,6 +1460,7 @@ function main() {
   auditDetailLength(saku);
   /* type は既定値が黙って入るので、本文の検査のあと、書き込みの直前に見る。2026-09-21 に足した。 */
   auditType(saku);
+  auditEmptyTerms(saku);
   /* keys の除去も書き込みの前に見る。歯止めは2つとも、1件も書かずに止める。2026-09-21 に足した。 */
   auditKeyRemoval(rem, tsui, readQ());
   /* refs の操作も書き込みの前に見る。2026-09-21 に足した。 */
