@@ -19,8 +19,11 @@
                  note に「確認できていない点:」があれば unverified（画面に出す文）を書かないと止まる。
                  type は "single"（既定）か "compare"。philosophers が2人以上のときは
                  書かないと「要判断」で止まる（2026-09-21 に足した。許可欄では通せない）。
-                 許可 は、選択肢の長さが「作問の指針」の4つの数字から外れる作問、位置指しが残る作問、
-                 detail が上限370字を超える作問を通すときだけ書く理由。
+                 許可 は、選択肢の長さが「作問の指針」の4つの数字から外れる作問（「両者とも」型が
+                 正解の0.7倍未満のものを含む）、位置指しや問題番号が detail に残る作問、
+                 detail が上限370字を超える・3段落でない作問を通すときだけ書く理由（2026-09-21 に範囲を広げた）。
+                 note に「設問へ:」が無い、refs が「URL — 何を確認したか」の形でない、philosophers が
+                 PHILOSOPHERS に・terms が TERMS に無いときは、許可欄なしに止まる（2026-09-21 に足した）。
                  書かなければ、その逸脱は「要判断」として報告し、1問も書かずに止める。
                  書けば通し、理由を note に自動で残す（2026-09-19 に足した）。
      "追記": [ { id, 対象?, find, replace, note_add, keys_add[], refs_add?, 許可? } ],
@@ -161,7 +164,14 @@ function validate(input) {
     /* 段落数は auditDetailLength（1.6）が見る。2026-09-21 に validate() から移した。
        追記は許可欄で3段落以外を通せるのに、作問だけ許可欄なしに止まっていたため。 */
     if (typeof d.note !== "string" || !d.note) w("note が無い");
+    /* note には必ず「設問へ:」を含める（CLAUDE.md「note の書き方」）。2026-09-21 に足した。 */
+    else if (!d.note.includes("設問へ:")) w("note に「設問へ:」が無い（四択が成立するか、しないならどこが、を書く）");
     if (!Array.isArray(d.refs)) w("refs が配列でない（空でよいが省略はしない）");
+    /* refs の形は refs追加 と同じ検査にかける（2026-09-21 に足した）。 */
+    else d.refs.forEach(x => {
+      if (typeof x !== "string" || !x) w("refs に文字列でないものがある");
+      else if (!x.includes("—")) w(`refs が『URL — 何を確認したか』の形になっていない: ${x.slice(0, 50)}`);
+    });
     /* kind・label・choicesOk・unverified（2026-09-21 に足した）。書かなければ従来の値が入る。 */
     if (d.kind !== undefined && !KINDS.includes(d.kind))
       w(`kind は ${KINDS.join("・")} のどれかにする（ai_flagged は既存値の読み替え専用で、新規に付けない）`);
@@ -445,7 +455,7 @@ function auditKeysInBody(saku, tsui, afterAppend) {
 
    「32字前後」と「0.8倍」には幅が要る。指針は幅を書いていないので、ここで決めた。
    下の2つは指針がそのまま上限を書いているので、幅を足さずにその数字で見る。 */
-const ANS_MIN = 28, ANS_MAX = 36, AVG_LO = 0.7, AVG_HI = 0.9, GAP_MAX = 4, RATIO_MAX = 1.3;
+const ANS_MIN = 28, ANS_MAX = 36, AVG_LO = 0.7, AVG_HI = 0.9, GAP_MAX = 4, RATIO_MAX = 1.3, BOTH_MIN = 0.7;
 function auditChoiceBalance(saku) {
   if (!saku.length) return;
   const 要判断 = [];
@@ -464,6 +474,12 @@ function auditChoiceBalance(saku) {
       逸脱.push(`誤答平均が正解の${(avg / ans).toFixed(2)}倍（目安0.8倍・${AVG_LO}〜${AVG_HI}倍）`);
     if (gap > GAP_MAX) 逸脱.push(`2位との差が${gap}字（上限${GAP_MAX}字）`);
     if (ratio > RATIO_MAX) 逸脱.push(`比率が${ratio.toFixed(2)}倍（上限${RATIO_MAX}倍）`);
+    /* 「両者とも」型は1つずつ正解の0.7倍以上か（CLAUDE.md「作問の指針」）。2026-09-21 に足した。
+       平均だけ見ていると、1つだけ短い「両者とも」型が通り、一目で切り捨てられて実質二択になる。 */
+    d.choices.forEach((c, i) => {
+      if (i !== d.answer && c.startsWith("両者とも") && L(c) < ans * BOTH_MIN)
+        逸脱.push(`「両者とも」型が${L(c)}字で正解の${(L(c) / ans).toFixed(2)}倍（下限${BOTH_MIN}倍）`);
+    });
     const mark = 逸脱.length ? (d["許可"] ? "△" : "★") : "○";
     console.log(`  ${mark} ${d.id}　正解${ans}字／誤答平均${avg.toFixed(1)}字（${(avg / ans).toFixed(2)}倍）` +
       `／2位との差${gap}字／比率${ratio.toFixed(2)}倍` +
@@ -534,6 +550,47 @@ function auditPositional(saku) {
   console.log(例外
     ? `  → ${saku.length}問を検査し、${例外}問は許可つきで通した（位置指しが残っている）\n`
     : `  → ${saku.length}問とも位置指しなし\n`);
+}
+
+/* ================= 1.3b detail の問題番号（書き込みの前） =================
+   detail は画面に出る本文なので、q135 のような問題番号を書かない（CLAUDE.md「detail に問題番号を書かない」）。
+   2026-09-21 に足した。位置指しと同じ扱いで、要判断にして許可欄で通す。
+   見るのは作問の detail と、追記（対象が detail のもの）を当てたあとの detail。
+   引っかからない場合: 全角の「ｑ」、番号を言葉で書いたもの（「前の問題」など）。
+   引っかかりすぎる場合: 英字の語の中の q（「Iqbal」など）は前後を英字・数字で切って外した。 */
+const QNUM_RE = /(?<![A-Za-z0-9])q[0-9]{2,3}(?![0-9])/g;
+function auditQuestionNumbers(saku, tsui, qs) {
+  const 対象 = saku.map(d => ({ id: d.id, obj: d, text: d.detail, kind: "作問" }));
+  for (const it of tsui) {
+    if ((it["対象"] || "detail") !== "detail") continue;
+    const q = qs.find(x => x.id === it.id);
+    if (!q || typeof q.detail !== "string") continue;   /* 無いときは追記の段で止まる */
+    対象.push({ id: it.id, obj: it, text: q.detail.replace(it.find, it.replace), kind: "追記" });
+  }
+  if (!対象.length) return;
+  const 要判断 = [];
+  let 例外 = 0;
+  console.log("■ detail の問題番号の検査（書き込みの前）");
+  for (const t of 対象) {
+    const hits = [...new Set(String(t.text).match(QNUM_RE) || [])];
+    const mark = hits.length ? (t.obj["許可"] ? "△" : "★") : "○";
+    console.log(`  ${mark} ${t.id}　${t.kind}　${hits.length ? hits.join("・") : "問題番号なし"}` +
+      (hits.length && t.obj["許可"] ? "　許可つきで通す" : ""));
+    if (!hits.length) continue;
+    if (!t.obj["許可"]) { 要判断.push(`${t.id}（${t.kind}）: ${hits.join("・")}`); continue; }
+    例外++;
+    const 文 = ` 型の例外として通した（detail の問題番号: ${hits.join("・")}）。理由: ${t.obj["許可"]}`;
+    if (t.kind === "作問") t.obj.note = t.obj.note + 文; else t.obj.note_add = t.obj.note_add + 文;
+  }
+  if (要判断.length) {
+    console.error("\n要判断（1件も書いていない）:\n  " + 要判断.join("\n  ") +
+      "\n  detail は画面に出る本文で、番号は読者に何も指さない。" +
+      "\n  どちらかを選ぶ: 概念の名前で書き直すか、「許可」欄（理由）を足して通す。");
+    process.exit(1);
+  }
+  console.log(例外
+    ? `  → ${対象.length}件を検査し、${例外}件は許可つきで通した（問題番号が残っている）\n`
+    : `  → ${対象.length}件とも問題番号なし\n`);
 }
 
 /* ================= 1.6 作問の detail の字数（書き込みの前） =================
@@ -1511,6 +1568,7 @@ function main() {
   auditKeysInBody(saku, tsui, afterAppend);
   auditChoiceBalance(saku);
   auditPositional(saku);
+  auditQuestionNumbers(saku, tsui, readQ());
   auditDetailLength(saku);
   /* type は既定値が黙って入るので、本文の検査のあと、書き込みの直前に見る。2026-09-21 に足した。 */
   auditType(saku);
