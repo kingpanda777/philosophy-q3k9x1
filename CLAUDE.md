@@ -822,7 +822,7 @@ Wikipedia の204問を洗い出す途中で、**grokipedia・goodreads・個人�
 
 ### 次の作業（2026年9月21日に挙げた）
 
-1. **道具の共通化の残り。**`tools/_lib.js` へ出したのは3つ（字数の数え方・JSON の読み書き・紹介文の基準値）だけで、**入力の検査の枠（`validate`）・配列の末尾へ足す処理・差し戻し（`snapshot`／`restore`）は `add_batch.js` に残っている**（生没年と引用行の突き合わせも `check_phil.js` と `add_person.js` に同じ判定が2つある）。**出すなら `add_batch.js` の構造に手を入れることになるので、別に判断する**
+1. **道具の共通化の残り。**`tools/_lib.js` へ出したのは4つ（字数の数え方・JSON の読み書き・紹介文の基準値・生没年と引用行の突き合わせ）で、**入力の検査の枠（`validate`）・配列の末尾へ足す処理・差し戻し（`snapshot`／`restore`）は `add_batch.js` に残っている**。**出すなら `add_batch.js` の構造に手を入れることになるので、別に判断する**
 
 ### 人物の登録候補（2026年9月21日に1つの表へまとめた）
 
@@ -5303,17 +5303,20 @@ node tools/add_person.js tools/_people/<名前>.json <ディレクトリ>   サ�
 
 ## 道具が共通で持つもの（`tools/_lib.js`）
 
-**同じ定義を複数の道具に写さない。**入っているのは3つだけである。
+**同じ定義を複数の道具に写さない。**入っているのは4つだけである。
 
 | | 何 | 読んでいる道具 |
 |---|---|---|
 | 1 | 字数の数え方 `L` | `add_batch.js`・`check_phil.js` |
 | 2 | JSON の読み書き（字下げ空白1つ・末尾に改行） | `add_batch.js`・`check_keys.js`・`check_phil.js`・`add_person.js` |
 | 3 | 紹介文の基準値（`intro`・`thought` の字数、評価語、読みの正規表現） | `check_phil.js`・`add_person.js` |
+| 4 | 生没年と引用行の突き合わせ `matchYears`（「頃」は±5年、年は2桁から拾う） | `check_phil.js`・`add_person.js` |
 
 **なぜ出したか。**1は `add_batch.js` と `check_phil.js` に同じ一行が写してあった。
 3は `check_phil.js` にしか無く、`add_person.js` が**同じ基準で登録前に見る**ために要る。
 **片方だけ緩めると、登録は通るのに点検で落ちる。**
+**4は汎用化で `add_person.js` にも同じ判定ができたので、その場で1つに寄せた**
+（2026年9月21日。「頃」の許容幅や年の拾い方が2か所に写ると、片方だけ直して食い違う）。
 「幅を変えるだけなら失効ではない。片方だけ直すと、指針と道具が食い違ったまま気づかれない」と同じ型である。
 
 **置き換えたとき、`check_keys`・`check_phil`・`node --check questions.js`・`add_batch.js` の台帳モード（`--dry-run`）が、

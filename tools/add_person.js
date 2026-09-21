@@ -57,7 +57,7 @@
 "use strict";
 const fs = require("fs");
 const path = require("path");
-const { L, readJson, writeJson, PHIL } = require("./_lib.js");
+const { L, readJson, writeJson, PHIL, matchYears } = require("./_lib.js");
 
 const [, , INPUT, DIR] = process.argv;
 if (!INPUT) {
@@ -123,19 +123,10 @@ if (okYears && !YEARS_RE.test(p.years)) {
     + (紛れ.length ? `\n       区切りに ${紛れ.map(c => `「${c}」`).join("")} が混ざっている。正しいのは全角ダッシュ「–」` : ""));
 }
 
-/* --- 生没年と引用行の突き合わせ。check_phil の項目7と同じ判定を前倒しで行う --- */
+/* --- 生没年と引用行の突き合わせ。check_phil の項目7と同じ判定を前倒しで行う。
+       判定そのものは _lib.js の matchYears にあり、check_phil.js と同じものを読む --- */
 if (okYears && okYsrc && YEARS_RE.test(p.years)) {
-  /* 古代は二桁の年もある（エピクテトス「around 50 C.E.」）ので2桁から拾う */
-  const inQuote = (p.years_src.match(/[0-9]{2,4}/g) || []).map(Number);
-  const 合わない = [];
-  p.years.split("–").map(t => t.trim()).filter(t => t !== "").forEach(t => {
-    const m = t.match(/([0-9]+)/);
-    if (!m) return;
-    const n = +m[1], 約 = t.includes("頃");
-    /* 「頃」の付く端点は資料と5年までのずれを許す（幅のある推定だから） */
-    const hit = 約 ? inQuote.some(v => Math.abs(v - n) <= 5) : inQuote.includes(n);
-    if (!hit) 合わない.push(t);
-  });
+  const { inQuote, 合わない } = matchYears(p.years, p.years_src);
   if (合わない.length)
     w(`生没年の ${合わない.join("・")} が引用行に出てこない`
       + `（引用行の年: ${inQuote.join(",") || "なし"}）。check_phil の項目7が同じ判定で落とす`);

@@ -14,7 +14,7 @@ const fs = require("fs");
 const path = require("path");
 /* 字数の数え方・JSON の読み書き・紹介文の基準値は tools/_lib.js から読む。
    add_person.js（登録の前の検査）が同じ基準値を読む。2026-09-21 に切り出した。 */
-const { L, readJson, PHIL } = require("./_lib.js");
+const { L, readJson, PHIL, matchYears } = require("./_lib.js");
 const R = path.join(__dirname, "..");
 const src = f => fs.readFileSync(path.join(R, f), "utf8");
 
@@ -114,28 +114,16 @@ const ysrc = readJson(path.join(R, "tools", "years_src.json"));
 const noSrc = PHILOSOPHERS.filter(p => !ysrc[p.name]).map(p => p.name);
 ok(noSrc.length === 0, `${PHILOSOPHERS.length}人すべてに引用行がある`, noSrc.join("、"));
 
-/* "1724–1804" "前427–前347" "1946–" "205頃–270" を端点に分ける */
-const ends = y => y.split("–").map(t => t.trim()).filter(t => t !== "");
-const numOf = t => {
-  const m = t.match(/([0-9]+)/);
-  if (!m) return null;
-  return { n: +m[1], bc: t.includes("前"),約: t.includes("頃") };
-};
+/* 端点の分け方と「頃」の許容幅は _lib.js の matchYears にある。
+   add_person.js（登録の前の検査）が同じ判定を読む。2026-09-21 に寄せた。 */
 const known = ysrc["_既知の食い違い"] || {};
 const yBad = [];
 const yKnown = [];
 PHILOSOPHERS.forEach(p => {
   const q = ysrc[p.name];
   if (!q) return;
-  /* 古代は二桁の年もある（エピクテトス「around 50 C.E.」）ので2桁から拾う */
-  const inQuote = (q.match(/[0-9]{2,4}/g) || []).map(Number);
-  ends(p.years).forEach(t => {
-    const e = numOf(t);
-    if (!e) return;
-    const hit = e.約
-      ? inQuote.some(v => Math.abs(v - e.n) <= 5)
-      : inQuote.includes(e.n);
-    if (hit) return;
+  const { inQuote, 合わない } = matchYears(p.years, q);
+  合わない.forEach(() => {
     const line = `${p.name}(台帳:${p.years}／引用行の年:${inQuote.join(",") || "なし"})`;
     /* 食い違いを見つけたうえで、理由を書いて残すことにしたものは落とさない。
        黙って通すのではなく、毎回名前を出す */
