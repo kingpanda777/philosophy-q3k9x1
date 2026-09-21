@@ -190,7 +190,8 @@ const PHILOSOPHERS = [
   { name: "シジウィック", years: "1838–1900", note: "自分の幸福を求める理性と全体の幸福を求める理性が、和解しない", school: "功利主義と自由主義" },
   { name: "パトナム", years: "1926–2016", note: "意味は頭の中にはない。自分の説も、自分で改めつづけた", school: "分析哲学" },
   { name: "シュトラウス", years: "1899–1973", note: "何が正しいかを理性で問うことを、近代はやめてしまったのではないか", school: "二十世紀の政治哲学" },
-  { name: "ハリエット・テイラー", years: "1807–1858", note: "誰の領分も他人は決められない。女性に完全な平等を求めた", school: "功利主義と自由主義" }
+  { name: "ハリエット・テイラー", years: "1807–1858", note: "誰の領分も他人は決められない。女性に完全な平等を求めた", school: "功利主義と自由主義" },
+  { name: "ルカーチ", years: "1885–1971", note: "商品の形式が社会のすみずみを覆う。部分は全体のなかでしか分からない", school: "フランクフルト学派" }
 ];
 
 const TERMS = [
@@ -19106,6 +19107,132 @@ const QUESTIONS = [
         "https://plato.stanford.edu/entries/harriet-mill/ — §3。『女性の参政権』の結婚した女性の就労の議論と、『女性の隷従』が妻は家と子に専念するのが最善と示唆することの対比、この違いが帰属の証拠とされること",
         "https://www.gutenberg.org/cache/epub/73404/pg73404-images.html — Enfranchisement of Women 本文。妻の稼ぎ、競争者の半分を締め出す専制、召使いから共同の担い手へ、の各一節",
         "https://www.marxists.org/reference/archive/mill-john-stuart/1869/subjection-women/ch02.htm — 『女性の隷従』第2章。妻が労働で家計に寄与するのは望ましい慣習ではないという一節、稼ぐ力と女性の尊厳、家の切り盛りを第一の務めとして選ぶという一節"
+      ]
+    }
+  },
+  {
+    id: "q810",
+    philosophers: ["ルカーチ"], terms: ["疎外"], type: "single",
+    keys: ["物象化"],
+    question: "ルカーチの物象化論が、マルクスの商品の物神性の分析から踏み出した点として最も適切なものは？",
+    choices: [
+      "物神性を、人々が商品を崇める心構えの問題として捉え直した",
+      "商品の形式が、法や行政や人の能力まで計算できる物に変えるとした",
+      "物神性の分析を、市場で価格が決まる仕組みに絞って精密にした",
+      "商品の形式を、どの時代の社会にもある自然な形だとした"
+    ],
+    answer: 1,
+    explanation: "ルカーチは、商品の形式が「社会全体の普遍的な範疇」になったと論じます。マルクスが主に経済の場面で分析した物神性に、ヴェーバーの合理化論を重ね、法や官僚制の国家、さらに人が自分の資質や能力に向ける態度まで、計算できる物として扱われるようになると見ました。",
+    detail: "出どころは1923年の『歴史と階級意識』に収めた論文「物象化とプロレタリアートの意識」です。商品の形式は人の意識の全体に刻印を押し、人は自分の資質や能力を、外の物のように所有し処分できるものとして扱うようになる、と書きます。人は法則のように動く「第二の自然」に受け身で順応する観照の態度をとる、とされます。\n\nマルクスの価値論に、ヴェーバーの合理化論やジンメルの近代文化論を組み合わせた議論で、初期のフランクフルト学派に大きな影響を与えました。\n\n物象化は個人の心構えではなく、商品の形式が物の見え方そのものを決める社会の問題とされます。その形式は社会で共有され、歴史とともに変わるもので、どの時代にもある自然な形ではありません。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は SEP §3.1 の「商品の形式が社会全体の普遍的な範疇になる」「政治と法を合理的な計算可能性の様式に変える（ヴェーバーに由来する筋）」「人の資質と能力が所有・処分できる物になる」をまとめたもの。誤答は、物神性を消費者の心構えとする誤読（q213 の誤答と同じ型）、分析を市場の価格に狭める方向（踏み出した向きと逆）、商品の形式を歴史を超えた自然な形とする見方（形式は社会的に共有され歴史的に変わるとする SEP §3.1 と逆）。四択は成立している。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。type は single。マルクスとヴェーバーは組み合わされた先行理論であって、正解が対比している当事者ではないので philosophers に入れない（「誤答に他人の立場を使っても philosophers には入れない」の節と同じ扱い）。 対照の記録: q771 の誤答「商品の形式が、人の意識のすみずみまで刻印するという診断」はルカーチの立場で、本問はその中身のうち、経済の外（法・行政・人の能力）へ広がった点を正解に据えた。q213 の detail 第3段落の「ルカーチの物象化論」への言及の中身を本問が受ける。 事実の確認: SEP §3.1 の「The commodity form, he argues, has gradually become the “universal category of society as a whole” (1923a: 86)」「transforms these spheres into a mode of rational calculability (a line of thought that clearly stems from Weber)」「his qualities and abilities are no longer an organic part of his personality, they are things which he can “own” or “dispose of”」「an attitude of “contemplation” in which one passively adapts to a law-like system of social “second nature”」「combines Weber’s theory of rationalization, Simmel’s theory of modern culture ... with Marx’s theory of value」「had considerable influence on the Frankfurt School」「Lukács understands these forms as both socially shared and historically variable」を確認した。水上 2008 の第1章で、ハーバーマスによればホルクハイマーとアドルノは同書の「マルクスとヴェーバーを結び付けた資本主義論」を受容したとされることを確認した。澤井 2012 の書評で、物象化論がヴェーバーの合理化論とマルクスの労働力の商品化論との関係の下に位置づけられる（西角 2011 の整理）ことを確認した。",
+      refs: [
+        "https://plato.stanford.edu/entries/lukacs/ — §3.1 Reification Theory。商品の形式が社会全体の普遍的な範疇になること、法と政治の計算可能性（ヴェーバー由来）、資質と能力の所有・処分、観照と第二の自然、マルクス・ヴェーバー・ジンメルの組み合わせ、フランクフルト学派への影響、形式が社会的で歴史的に変わること",
+        "https://www.jstage.jst.go.jp/article/sstj/2/0/2_74/_article/-char/ja — 水上英徳「アクセル・ホネットによる物象化論の再構成」『現代社会学理論研究』2号 74–86頁（2008）。第1章。ホルクハイマーとアドルノが同書のマルクスとヴェーバーを結び付けた資本主義論を受容したこと（ハーバーマスの整理）",
+        "https://www.jstage.jst.go.jp/article/sstj/7/0/7_135/_article/-char/ja — 澤井敦「ルカーチの思想はいかなる意味で「現代的」なのか」（西角純志『移動する理論』の書評）『現代社会学理論研究』7号 135–139頁。物象化論がヴェーバーの合理化論とマルクスの労働力の商品化論との関係の下に位置づけられること"
+      ]
+    }
+  },
+  {
+    id: "q811",
+    philosophers: ["ルカーチ"], terms: ["弁証法"], type: "single",
+    keys: ["全体性の視点"],
+    question: "ルカーチが、マルクス主義とブルジョワ思想を分ける決定的な違いとしたものとして最も適切なものは？",
+    choices: [
+      "歴史を説明するとき、経済的な動機を何より優先させること",
+      "マルクスの経済学の命題を、一つ残らず正しいものとして信じること",
+      "個々の現象を、社会の全体との連関のなかで捉える全体性の視点に立つこと",
+      "社会を個々の事実に分けて観察し、法則を積み上げること"
+    ],
+    answer: 2,
+    explanation: "1921年の論文「マルクス主義者としてのローザ・ルクセンブルク」で、ルカーチは、両者を分ける決定的な違いは歴史の説明で経済的な動機を優先することではなく、全体性の視点だと書きます。部分的な現象は、それだけ切り離しても何であるかが分からず、社会の全体のなかでの位置と関係から捉えて初めて理解できる、というのです。",
+    detail: "1919年の論文「正統的マルクス主義とは何か」で、ルカーチは、正統とはマルクスの経済学の命題を信じることではなく、マルクスの弁証法という方法に従うことだと述べました。この二つの論文は、ともに1923年の『歴史と階級意識』に収められています。\n\n切り離された事実から出発する見方は、目の前の現れを正しく記述できても、それが何であるかを取り逃がす、とルカーチは見ます。この視点は、経済決定論に立つ社会民主主義の理論家と対立し、意図したかどうかはともかく、結果としてソ連の党の正統派とも対立しました。\n\n一方で、全体を捉えることに重きを置くこの考えは、完全に見通せる社会を約束してしまうのではないか、とアドルノらに批判されています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は SEP §3.3 が引く「ローザ・ルクセンブルク論」（1921）の定式「歴史の説明における経済的動機の優位ではなく、全体性の視点」そのもの。誤答は、ルカーチが決定的な違いではないとした経済的動機の優位、正統を命題への信奉と取り違える見方（「正統的マルクス主義とは何か」が退けた読み）、事実を切り離して積み上げる方法（ルカーチが部分的・孤立的と見た見方）。四択は成立している。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。type は single。 事実の確認: SEP §3.3 の「He describes Marxism as a purely methodological commitment to Marx’s dialectics rather than as depending on any belief regarding the truth of Marx’s economic theory」「“it is not the primacy of economic motives in historical explanation that constitutes the decisive difference between Marxism and bourgeois thought, but the point of view of totality” (1921: 27)」「put him into stark opposition not only to social democrats like Eduard Bernstein but also, perhaps unintentionally, to the orthodoxy of the Soviet party」、§3.2 の「“empiricist” beliefs ... are not strictly speaking false, they are incomplete」「the nature of all the individual elements of social reality is ultimately to be explained in terms of their role and relationships within the totality of society」、アドルノらの批判（「As many critics of Lukács have remarked (Adorno 1973: 190f. ...) ... a totally transparent society」）を確認した。detail 第2段落の「意図したかどうかはともかく、結果として」は、SEP の「perhaps unintentionally」に合わせた留保である。徳永 1962 の第3節で、正統性はマルクスの個々のテーゼを墨守する点ではなく方法の把握にあり、ブルジョワ科学から区別する決定的な点は経済的要因の優先でも革命の教義でもなく「全体性の視点」（Gesichtspunkt der Totalität）だとされていること、それが「孤立化的方法」に対置されていることを確認した（古い巻の走査なので、引用はせず内容だけを使った）。 設計の記録: アドルノの批判は SEP §3.2 が挙げる批判者の一人として書いた。SEP はその直後に、物象化への抵抗は終わりのない闘いだと強調する読み（Feenberg、López）がこの解釈を退けるとしており、批判が決着しているとは書いていない。",
+      refs: [
+        "https://plato.stanford.edu/entries/lukacs/ — §3.3。「正統的マルクス主義とは何か」（1919）が正統を方法への関与としたこと、ルクセンブルク論（1921）の全体性の視点の定式、社会民主主義とソ連の正統派との対立。§3.2。直接の現れにとどまる信念は偽ではないが不完全であること、完全に見通せる社会を約束するという批判（Adorno ほか）",
+        "https://www.jstage.jst.go.jp/article/kisoron1954/6/1/6_1_19/_article/-char/ja — 徳永恂「全体性への要求と哲学への要求――ルカーチをめぐる小史」『科学基礎論研究』6巻1号 19–24頁（1962）。第3節。正統性は方法にあること、決定的な点は経済的要因の優先ではなく全体性の視点であること、孤立化的方法との対置",
+        "https://www.senshu-u.ac.jp/~off1009/PDF/nenpo_47_nisikado.pdf — 西角純志「ジェルジ・ルカーチ『歴史と階級意識』「ローザ・ルクセンブルク三部作」評註」『専修大学社会科学年報』47号。『歴史と階級意識』が8本の論文からなり、第二論文が「マルクス主義者としてのローザ・ルクセンブルク」（1921年1月）であること",
+        "https://koara.lib.keio.ac.jp/xoonips/modules/xoonips/download.php/AN00234610-20141001-0157.pdf?file_id=102398 — 安岡直「ルカーチにおける内的危機と過渡期の思想：『歴史と階級意識』の成立過程」『三田学会雑誌』107巻3号 157–185頁（2014）。「正統的マルクス主義とは何か」が1919年3月に書かれ、『歴史と階級意識』の第1章として収められていること"
+      ]
+    }
+  },
+  {
+    id: "q812",
+    philosophers: ["ルカーチ"], terms: [], type: "single",
+    keys: ["先験的な故郷喪失"],
+    question: "ルカーチが『小説の理論』で、近代の小説という形式をどう捉えたかとして最も適切なものは？",
+    choices: [
+      "ホメロスの叙事詩と同じく、意味に満ちた全体を映す形式",
+      "作者の内面だけを描き、社会の現実から離れた形式",
+      "生の全体性が失われた時代に、その不在と向き合う叙事の形式",
+      "市民階級が富を得て、世界を手にした勝利を映す形式"
+    ],
+    answer: 2,
+    explanation: "ホメロスの叙事詩の世界は、生と意味と制度が調和して一つになった閉じた全体でした。近代ではそれが失われ、意味は個人の内面にしか見出せなくなります。小説はこの時代にふさわしい叙事の形式で、全体性の不在を扱おうとする試みだとされます。邦訳の紹介は、小説を「先験的な故郷喪失の形式」と呼んでいます。",
+    detail: "1916年に発表され、1920年に単行本になりました。新カント派からヘーゲルへ移る時期の、歴史哲学的な試みです。叙事詩から悲劇、そして哲学へと、意味の源が生の外へ遠ざかっていく過程として古代を描きます。\n\n近代では制度が意味を失った慣習となり、外にある第二の自然として個人に向かい合います。世界に故郷をもてない個人は、ドン・キホーテのように主観の幻想へ向かうか、幻滅へ至るかのどちらかをたどります。\n\n小説も叙事の一種で、社会の現実を映すことをやめてはいません。この全体性という考えは、のちに『歴史と階級意識』へ、物象化や階級意識と並ぶ柱として受け継がれます。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は SEP §2.3 の「近代では叙事の書き方が、生と本質の関係を全体のうちで表す形式をもはや持たず、小説の形式はこの関係の不在を扱おうとする試みである」をまとめたもの。誤答は、ホメロスの叙事詩と同じとする見方（ルカーチが対置した側）、社会の現実から離れた内面の形式とする見方（叙事のジャンルは社会と個人の生の客観的な現実を表すとする SEP §2.3 と逆）、市民階級の勝利を映す形式とする見方（全体性の喪失という診断と逆）。四択は成立している。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。type は single。terms は空にした。TERMS の note はどれも「AかBか」の二つの読みで立っており、「疎外」（神へ投げ出す／労働の産物に支配される）を含め、全体性の喪失という本問の主題に無理なく当てはまる語がない。 訳語の確認: SEP の「transcendental homelessness」は、ちくま学芸文庫の原田義人・佐々木基一訳（筑摩書房の紹介文）で「先験的な故郷喪失」。鍵語はこの邦訳の語形で登録する。「超越論的な故郷喪失」と訳す例もある。 事実の確認: SEP §1 の「he published The Theory of the Novel (1916)」、§2.3 の「Homeric epic poetry takes as its starting point a world that constitutes a closed totality (1916: 33)」「in modern society meaning can only be found within the inner life of the individual (1916: 61)」「the movement from epic poetry to tragedy and then ultimately to philosophy ... the sources of meaning became increasingly more external to immediate life」「mere conventions and into a purely external “second nature” (1916: 62f., 112)」「“transcendental homelessness” (1916: 40, 60)」「a subjective-idealist illusion (e.g., as in Don Quixote) or of a disillusion」「works of art that belong to this genre—for example Homeric epic poetry and the modern novel—must always express the objective reality of social and individual human life as it is」を確認した。筑摩書房の紹介文で「「先験的な故郷喪失の形式」小説の歴史哲学的な考察」を確認した。池田 1967 で、『小説の理論』が長篇小説を「神に見捨てられた世界の叙事詩」と名づけたこと、新カント派からヘーゲルへの移行過程にあったこと、全体性の概念がのちに物象化・階級意識とともに『歴史と階級意識』の3本の柱の一つになったことを確認した（古い巻の走査なので、引用はせず内容だけを使った）。単行本の年は、澤井 2012 の書評が『小説の理論』（1920）と書くことで確認した。",
+      refs: [
+        "https://plato.stanford.edu/entries/lukacs/ — §2.3 Modernity and the Loss of Totality。ホメロスの閉じた全体性、叙事詩から悲劇・哲学への移行、第二の自然、transcendental homelessness、ドン・キホーテ型と幻滅型、小説は全体性の不在を扱う試みであること。§1。1916年の発表",
+        "https://www.chikumashobo.co.jp/product/9784480081667/ — 筑摩書房『小説の理論』（ちくま学芸文庫、原田義人・佐々木基一訳）の紹介文。「先験的な故郷喪失の形式」という邦訳の語形",
+        "https://www.jstage.jst.go.jp/article/dokubun1947/39/0/39_0_20/_article/-char/ja — 池田浩士「ルカーチの文学理論における長篇小説の問題」『ドイツ文学』39号 20–29頁（1967）。「神に見捨てられた世界の叙事詩」、新カント派からヘーゲルへの移行、全体性が『歴史と階級意識』の柱の一つとなったこと",
+        "https://www.jstage.jst.go.jp/article/sstj/7/0/7_135/_article/-char/ja — 澤井敦「ルカーチの思想はいかなる意味で「現代的」なのか」『現代社会学理論研究』7号 135–139頁。『小説の理論』の単行本が1920年であること"
+      ]
+    }
+  },
+  {
+    id: "q813",
+    philosophers: ["ルカーチ"], terms: ["疎外"], type: "single",
+    keys: ["対象化と疎外"],
+    question: "ルカーチが1967年の新版の序文で、『歴史と階級意識』の根本の誤りとしたこととして最も適切なものは？",
+    choices: [
+      "物象化を、どの社会にも避けられない人間の条件としたこと",
+      "物象化を個人の心の問題とし、経済から切り離したこと",
+      "対象化と疎外を混同し、対象化そのものを克服すべきものとしたこと",
+      "ヘーゲルに頼らず、マルクスの経済学だけで論じたこと"
+    ],
+    answer: 2,
+    explanation: "人が作った物や社会の制度が意識から独立して向かい合う対象化は、それ自体は欠陥ではない、とルカーチは認め直します。批判すべきは、対象化された形が人の本質とその存在を衝突させる働きを帯びたときの疎外であり、旧著はこの二重性を認めていなかった、と序文は書きます。",
+    detail: "1930年からモスクワのマルクス＝エンゲルス研究所に勤め、それまで刊行されていなかったマルクスの初期の著作に触れたことが、見直しのきっかけになりました。序文は、ヘーゲルが対象化を欠陥ではなく、自己意識の発展に必要な段階と見た点で正しかったとします。\n\nホネットも、物象化を客観化と同じものとするルカーチの戦略を問題にし、ルカーチ自身がのちにそれを退けたと注記しています。\n\nこの自己批判がどこまで正当かは割れています。序文には外から強いられたと見える自己批判も並び、対象化と疎外の区別はすでに旧著に含まれていたとする読みもあります。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は SEP §4.1 の「対象化（Vergegenständlichung）、外化（Entäußerung）、疎外（Entfremdung）の混同」と「社会関係の客観性そのものを退けるべきものとした問題含みの主張」をまとめたもの。誤答は、物象化を歴史を超えた人間の条件とする見方（対象化についての晩年の立場と、旧著の物象化論を取り違えたもの）、物象化を個人の心理とする見方（旧著も序文も社会の形式として論じる）、ヘーゲルに頼らなかったとする見方（旧著はヘーゲルに大きく依拠しており、SEP §3.3 もそう書く）。四択は成立している。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。type は single。序文には多くの自己批判が並ぶので、誤答には序文が自己批判として挙げた項目を置かないようにした（経済への還元、党の軽視などは置いていない）。 設計の記録: 評価の割れは detail 第3段落に両側を並べたが、勢力差は書いていない（SEP §4.1 から多数説を読み取れなかった）。1930年代の公の撤回（SEP §1）は政治的な経歴に関わるので、本問では扱わない。 対照の記録: q606（ヘーゲルの疎外）の detail 第2段落が、外化を疎遠さを含む語と区別しており、本問の対象化・外化・疎外の区別と揃っている。q393 の detail 第2段落の「物象化や物神性の分析のうちに疎外論の主題が形を変えて残っている」という連続説の記述とも食い違わない。q771・q814 とは、物象化を客観化と同一視した点を本問だけが正解に据える形で分けた。 事実の確認: SEP §4.1 の「in the 1967 preface to the new edition ... Lukács claims (alongside a number of exercises in self-criticism, which appear both unjustified and externally motivated) that his earlier arguments involved a confusion between objectification (Vergegenständlichung), externalization (Entäußerung), and alienation (Entfremdung)」「Hegel was essentially correct to view objectification ... not as a deficiency but as a necessary stage in the development of self-consciousness」「“Only when the objectified forms in society acquire functions that bring the essence of man into conflict with his existence […]. This duality was not acknowledged in History and Class Consciousness” (1967, xxiv)」「see López 2019 for an argument that this self-critique was unjustified」「(an insight that, according to Feenberg 2014 and López 2019, is already present in History and Class Consciousness)」、§1 の「In Moscow, Lukács held a position at the Marx-Engels Institute. During this time, he first came into contact with early works by Marx that had previously remained unpublished」「stayed from 1930 on」を確認した。ホネットのタナー講義で、物象化を客観化へ還元する見方について「so unconvincing that Lukács himself later rejected it」とし、注72で1967年の序文を挙げていることを確認した。",
+      refs: [
+        "https://plato.stanford.edu/entries/lukacs/ — §4.1 The Critique of History and Class Consciousness。1967年の序文が対象化・外化・疎外の混同を誤りとしたこと、ヘーゲルの対象化の評価、序文の引用（1967, xxiv）、外から強いられたと見える自己批判、López・Feenberg の読み。§1。1930年からモスクワのマルクス＝エンゲルス研究所で初期マルクスの未刊の著作に触れたこと",
+        "https://tannerlectures.org/wp-content/uploads/2024/06/Honneth_2006.pdf — Axel Honneth, Reification: A Recognition-Theoretical View（2005年3月のタナー講義。The Tanner Lectures on Human Values 公式サイトの公開版）。物象化を客観化と同一視する戦略を「Lukács himself later rejected」とし、注72で1967年の序文を挙げること"
+      ]
+    }
+  },
+  {
+    id: "q814",
+    philosophers: ["ルカーチ", "ホネット"], terms: ["承認"], type: "compare",
+    keys: ["物象化"],
+    question: "物象化を生む社会の側の原因について、ルカーチとホネットの違いとして最も適切なものは？",
+    choices: [
+      "ルカーチは商品交換の広がりに、ホネットは偏見や制度化された慣行に求めた",
+      "ホネットは商品交換の広がりに、ルカーチは偏見や制度化された慣行に求めた",
+      "両者とも原因は問わず、物象化を道徳の原理に背く行いとした",
+      "両者とも、原因を人が生まれつきもつ利己的な性向に求めた"
+    ],
+    answer: 0,
+    explanation: "ルカーチは、商品交換が資本主義社会の支配的な関わり方になったことを、物象化が広がる唯一の原因と見ました。ホネットはここに疑問を向け、承認への注意が失われる道筋として、承認から切り離された観察を定着させる制度化された慣行と、先立つ承認を否認させる偏見や固定観念の図式の二つを挙げます。",
+    detail: "ホネットの2005年のタナー講義は、ルカーチが商品交換を唯一の原因とし、その変化が近代の社会生活のすべての領域に及ぶとした点を問題にします。高度に発達した社会では、人は効率のために自分や他人を戦略的に扱うことも学ばなければならず、距離をとって観察する態度が正当な場もある、というのです。\n\n偏見の図式による場合は、忘却より否認や防衛と呼ぶほうがよい、とホネットは言います。単行本ではレイシズムやセクシズムが例に挙がり、偏見の図式とそれに見合う社会的実践が互いを強め合うとされます。\n\n両者とも、物象化を道徳の原理への違反とは見ていません。ホネットはルカーチの物象化を構造的に誤った実践の形と読み、自身も本来の実践の歪みとして捉えます。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解はホネットのタナー講義の二箇所、ルカーチについて「commodity exchange forms the sole cause of this behavioral transformation」、ホネット自身について「either with institutionalized practices ... or with socially effective thought schemata, which compel a denial of antecedent recognition」の対比。入替誤答はその鏡像。「両者とも」型の一つは、両者がともに退けた道徳原理の違反としての読み、もう一つは、どちらにもない生まれつきの性向という原因。四択は成立している。 設計の記録: 比較問題の条件（一つの資料が両者を並べて論じている）は、ホネットの講義そのものがルカーチを読み直す形で書かれているので満たす。水上 2008 も両者を並べて論じている。q771（ホネットによる物象化の捉え直し＝承認の忘却）と主題が重ならないよう、比べる軸を「物象化を生む社会の側の原因」に置き、承認の忘却という定義そのものは問わない。q813（客観化との同一視）とも軸を分けた。入替誤答を正解と同じ長さの鏡像にした（2位との差0字）。「両者とも」型2つは根拠を一節ずつ足して正解の0.7倍以上にした。誤答を先に3つ書いてから正解を書いた。位置指しなし。 事実の確認: タナー講義の「Just as problematic is his social-theoretical assertion that commodity exchange forms the sole cause of this behavioral transformation that gradually penetrates into all spheres of modern social life」「highly developed societies require—for reasons of efficiency—that their members learn to deal strategically with themselves and others. If that is indeed true, then a critique of reification should not be as totalizing as Lukács conceives it, but would instead have to exclude spheres of social life in which this kind of observing, detached behavior has a perfectly legitimate place」「it would make much more sense to speak here not of “forgetting” but of “denial” or “defensiveness” [abwehr]」「we are dealing here either with institutionalized practices, which cause contemplation and observation to become independent of their roots in recognition, or with socially effective thought schemata, which compel a denial of antecedent recognition」「reification for Lukács can be conceived neither as a kind of moral misconduct nor as a violation of moral principles ... the only remaining possibility is that it be conceived as a form of praxis that is structurally false」を確認した。水上 2008 の第2章で、ルカーチの物象化が商品交換の拡大を背景とすること、第4章で、ホネットが（ドイツ語版 Honneth 2005: 102–3 で）レイシズムやセクシズムを挙げ、思考図式と社会的実践が互いに強化し合うとしていることを確認した。 資料の限界: レイシズム・セクシズムの例は講義の英語版には無く（講義は例を挙げるのを控えている）、ドイツ語の単行本に拠る水上 2008 の要約で確認した。",
+      refs: [
+        "https://tannerlectures.org/wp-content/uploads/2024/06/Honneth_2006.pdf — Axel Honneth, Reification: A Recognition-Theoretical View（2005年3月のタナー講義。公式サイトの公開版）。ルカーチが商品交換を唯一の原因としたことへの疑問、観察する態度が正当な領域、制度化された慣行と偏見の図式という二つの道筋、忘却ではなく否認、道徳原理の違反ではなく構造的に誤った実践という読み",
+        "https://www.jstage.jst.go.jp/article/sstj/2/0/2_74/_article/-char/ja — 水上英徳「アクセル・ホネットによる物象化論の再構成」『現代社会学理論研究』2号 74–86頁（2008）。第2章。ルカーチの物象化が商品交換の拡大を背景とすること。第4章。レイシズム・セクシズムの例と、思考図式と社会的実践の相互強化（Honneth 2005: 102–3）",
+        "https://plato.stanford.edu/entries/recognition/ — 承認が認識に先立つという主張、物象化が承認の忘却とされること"
       ]
     }
   }
