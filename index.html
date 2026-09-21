@@ -1361,16 +1361,19 @@ function loadCycle(scope){
     const p = JSON.parse(raw);
     if(!p || !Array.isArray(p.order)) return null;
     const was  = Math.max(0, Math.min(Number(p.pos) || 0, p.order.length));
-    const order = p.order.filter(id => QMAP.has(id));   // 消えた問題は落とす
+    /* 消えた問題と、範囲の外に出た問題を落とす。人物を別の学派へ移すと、
+       その人の問題は元の学派の周に残ったままになるため（2026年9月22日） */
+    const keep = id => QMAP.has(id) && inScope(QMAP.get(id), scope);
+    const order = p.order.filter(keep);
     if(!order.length) return null;
     /* order を詰めたら pos も同じだけ戻す。数を据え置くと、pos より前で
-       消えた件数ぶん先へ進みすぎ、その数だけ未出題の問題が飛ばされる */
-    const gone = p.order.slice(0, was).filter(id => !QMAP.has(id)).length;
+       落とした件数ぶん先へ進みすぎ、その数だけ未出題の問題が飛ばされる */
+    const gone = p.order.slice(0, was).filter(id => !keep(id)).length;
     return {
       scope,
       order,
       pos  : Math.max(0, Math.min(was - gone, order.length)),
-      wrong: Array.isArray(p.wrong) ? p.wrong.filter(id => QMAP.has(id)) : [],
+      wrong: Array.isArray(p.wrong) ? p.wrong.filter(keep) : [],
       mode : p.mode === "wrong" ? "wrong" : "all",
       round: Number(p.round) || 1,
       done : !!p.done
