@@ -26,6 +26,11 @@
                  許可 は、上限370字を超える追記や、3段落にならない追記を通すときだけ書く理由。
                  書かなければ、その逸脱は「要判断」として報告し、1件も書かずに差し戻す。
                  書けば通し、理由を note に自動で残す（2026-09-18 に throw から変えた）。
+     "keys除去": [ { id, 語[], 理由 } ],
+                 既存問題の keys から語を外す。2026-09-21 に足した。
+                 外すと語がどこにも残らないとき、またはその問題の keys が空になるときは
+                 「要判断」として報告し、1件も書かずに止める。許可欄では通せない。
+                 外した記録は note へ道具が書く。
      "鍵語": {
        "作問由来": { "人物": [ {語, 読み, 追加} ] },
        "追記由来": { "人物": [ {語, 読み, 追加} ] }
@@ -147,6 +152,18 @@ function validate(input) {
       w("「対象」は detail か explanation にする（省略すると detail）");
   });
 
+  /* keys 除去モード。作問も追記も無く、keys を外すだけの入力もありうる。 */
+  const rem = input["keys除去"] || [];
+  if (!Array.isArray(rem)) bad.push("「keys除去」が配列でない");
+  else rem.forEach((r, i) => {
+    const w = m => bad.push(`keys除去[${i}]${r && r.id ? "（" + r.id + "）" : ""}: ${m}`);
+    if (!r || typeof r !== "object") return w("object でない");
+    if (typeof r.id !== "string" || !/^q\d+$/.test(r.id)) w("id が q+数字でない");
+    if (!Array.isArray(r["語"]) || !r["語"].length) w("「語」が配列でない（1語でも配列にする）");
+    else r["語"].forEach(x => { if (typeof x !== "string" || !x) w("「語」に文字列でないものがある"); });
+    if (typeof r["理由"] !== "string" || !r["理由"]) w("「理由」が無い（note へ残すので必須）");
+  });
+
   /* 台帳モード。作問も追記も無く、台帳だけを整える入力もありうる。 */
   const led = input["台帳"];
   if (led !== undefined) {
@@ -201,8 +218,8 @@ function validate(input) {
         w("「ずれの記録」が object でない");
     }
   }
-  if (!saku.length && !tsui.length && led === undefined)
-    bad.push("作問も追記も台帳も無い（何もすることがない）");
+  if (!saku.length && !tsui.length && led === undefined && !rem.length)
+    bad.push("作問も追記も台帳も keys除去 も無い（何もすることがない）");
 
   for (const 由来 of ["作問由来", "追記由来"]) {
     const g = keys[由来] || {};
@@ -221,7 +238,7 @@ function validate(input) {
     console.error("入力が形式に合っていない。1件も書き込んでいない:\n  " + bad.join("\n  "));
     process.exit(1);
   }
-  return { saku, tsui, keys, led };
+  return { saku, tsui, keys, led, rem };
 }
 
 /* ================= 1. 鍵語の語形の総点検（書き込みの前） ================= */
@@ -541,6 +558,115 @@ function auditType(saku) {
   console.log(`  → ${saku.length}問とも type の指定は済んでいる\n`);
 }
 
+/* ================= 1.8 keys から語を外す（書き込みの前） =================
+   既存問題の keys から語を外す。2026-09-21 に足した。
+
+   なぜ足したか。台帳の47件の片づけ（tools/keys_plan.md）で、22件は
+   「その問題の主題でない語」なので keys から外すと決めた。
+   それまで道具には keys へ足す経路（keys_add）しかなく、外す経路が無かった。
+   手で questions.js を書き換えるしかない状態で、19問に散っているため取りこぼしが出る。
+
+   二つの歯止めを道具の側に持つ。どちらも「要判断」で報告し、1件も書かずに止める。
+     ・外すと、その語を keys に持つ問題が1問も無くなる（鍵語タブから語が消える）
+     ・外すと、その問題の keys が空になる
+   後者は keys_plan.md で足した歯止めである。keys なしが正常な問題はあるが、
+   それは「付ける語が無い」問題のことで、語があるのに落とした結果の空とは別である。
+
+   許可欄は置かない。type の検査と同じで、逸脱の中身が「その語が消える」ことなので、
+   理由を書いて通すと歯止めそのものが無くなる。外してよいかは入力を作る段で決める。
+
+   この実行で足す keys_add も、外す語も、すべて反映した後の姿で判定する。
+   同じ実行の中で足して外す場合に、片方だけ見ると判定が狂う。
+
+   失効条件なし。 */
+function auditKeyRemoval(rem, tsui, existing) {
+  if (!rem.length) return;
+  const 要判断 = [];
+  console.log("■ keys から外す語の検査（書き込みの前）");
+
+  /* この実行を反映したあとの keys を、全問ぶん先に作る。 */
+  const addOf = {}, remOf = {};
+  for (const it of tsui) if (it.keys_add && it.keys_add.length)
+    addOf[it.id] = (addOf[it.id] || []).concat(it.keys_add);
+  for (const r of rem) remOf[r.id] = (remOf[r.id] || []).concat(r["語"]);
+  const afterKeys = {};
+  for (const q of existing)
+    afterKeys[q.id] = (q.keys || []).concat(addOf[q.id] || [])
+      .filter(w => !(remOf[q.id] || []).includes(w));
+
+  for (const r of rem) {
+    const q = existing.find(x => x.id === r.id);
+    if (!q) { 要判断.push(`${r.id}: 問題が無い`); console.log(`  ★ ${r.id}　問題が無い`); continue; }
+    const now = (q.keys || []).concat(addOf[r.id] || []);
+    const 行 = [];
+    let ng = false;
+    for (const w of r["語"]) {
+      if (!now.includes(w)) { 要判断.push(`${r.id}: 「${w}」は keys に無い`); 行.push(`${w}→keys に無い`); ng = true; continue; }
+      const 残り = existing.filter(x => afterKeys[x.id].includes(w)).map(x => x.id);
+      行.push(`${w}→${残り.length ? "残る: " + 残り.slice(0, 3).join("・") + (残り.length > 3 ? ` ほか${残り.length - 3}問` : "") : "どこにも残らない"}`);
+      if (!残り.length) { 要判断.push(`${r.id}: 「${w}」を外すと、この語を keys に持つ問題が無くなる`); ng = true; }
+    }
+    if (!afterKeys[r.id].length) {
+      要判断.push(`${r.id}: 外すと keys が空になる（いまの keys: ${now.join("・")}）`);
+      ng = true;
+    }
+    console.log(`  ${ng ? "★" : "○"} ${r.id}　keys ${now.length}→${afterKeys[r.id].length}　${行.join("／")}`);
+  }
+  if (要判断.length) {
+    console.error("\n要判断（1件も書いていない）:\n  " + 要判断.join("\n  ") +
+      "\n  外すと語そのものが消える場合は、外さずに本文の側へ語を織り込む（初出併記）。" +
+      "\n  keys が空になる場合は、残す語を1つ決めて本文に語を足す。" +
+      "\n  この検査に「許可」欄は無い。理由を書いて通すと、歯止めそのものが無くなる。");
+    process.exit(1);
+  }
+  console.log(`  → ${rem.length}問から計${rem.reduce((a, r) => a + r["語"].length, 0)}語を外す。語が消える問題・keys が空になる問題は無い\n`);
+}
+
+/* ================= 3.5 keys から語を外す（書き込み） =================
+   検査は auditKeyRemoval が済ませている。ここは書き込むだけ。
+   外した記録は note へ残す。あとから「なぜ外したか」を追えるようにするためで、
+   追記の字数を note へ実測で残すのと同じ型である。 */
+function removeKeys(rem) {
+  if (!rem.length) return;
+  console.log("■ keys から語を外す");
+  for (const r of rem) {
+    /* 置換のたびにファイルを読み直す。src を使い回すと2件目以降が古い文字列で置換される。 */
+    let src = fs.readFileSync(P("questions.js"), "utf8");
+    let q = QUESTIONS_OF(src).find(x => x.id === r.id);
+    if (!q) throw new Error("問題が無い: " + r.id);
+    const before = (q.keys || []).slice();
+    const after = before.filter(w => !r["語"].includes(w));
+    if (after.length === before.length) throw new Error("外す語が keys に無い: " + r.id);
+    if (!after.length) throw new Error("keys が空になる: " + r.id);
+
+    const start = src.indexOf(`    id: ${S(r.id)},`);
+    if (start < 0) throw new Error("エントリが見つからない: " + r.id);
+    const end = src.indexOf("\n  },", start);
+    const block = src.slice(start, end);
+    const m = block.match(/    keys: \[[^\]]*\],/);
+    if (!m) throw new Error("keys の行が無い: " + r.id);
+    src = src.slice(0, start) + block.replace(m[0], `    keys: [${after.map(S).join(", ")}],`) + src.slice(end);
+    fs.writeFileSync(P("questions.js"), src, "utf8");
+
+    /* keys_draft.json は q.keys と同じ中身でなければならない（check_keys の項目2）。
+       片方だけ直すと、書き込みは通って検査で落ちる。2026-09-21 に据え付けたとき実際に落ちた。 */
+    const kd = JSON.parse(fs.readFileSync(P("tools/keys_draft.json"), "utf8"));
+    if (kd[r.id]) { kd[r.id] = after; fs.writeFileSync(P("tools/keys_draft.json"), JSON.stringify(kd, null, 1) + "\n", "utf8"); }
+
+    /* --- note へ記録 --- */
+    src = fs.readFileSync(P("questions.js"), "utf8");
+    q = QUESTIONS_OF(src).find(x => x.id === r.id);
+    const oldNote = q.source.note;
+    const newNote = oldNote + ` keys から「${r["語"].join("」「")}」を外した。理由: ${r["理由"]}`;
+    if (src.indexOf(S(oldNote)) !== src.lastIndexOf(S(oldNote))) throw new Error("note リテラルが一意でない: " + r.id);
+    src = src.replace(S(oldNote), S(newNote));
+    fs.writeFileSync(P("questions.js"), src, "utf8");
+
+    console.log(`  ${r.id}: keys ${before.length}→${after.length}　外した: ${r["語"].join("・")}　残り: ${after.join("・")}`);
+  }
+  console.log("");
+}
+
 /* ================= 1.7 台帳モード =================
    点検の結果を台帳へ書き戻す。作問・追記より先に走らせる。
    改名で語形が変わると数え直しの対象も変わるので、改名 → 扱いと数値 → 新規登録 の順。
@@ -730,6 +856,11 @@ function applyLedger(led) {
         const mm = block.match(/    keys: \[[^\]]*\],/);
         if (!mm) throw new Error("keys の行が見つからない: " + id);
         const rest = (q.keys || []).filter(k => k !== w);
+        /* keys が空になる外し方はしない。2026-09-21 に足した（keys除去 と同じ歯止め）。
+           keys なしが正常な問題はあるが、それは「付ける語が無い」問題のことで、
+           語があるのに落とした結果の空とは別である。 */
+        if (!rest.length) throw new Error("keys が空になるので外せない: " + id + "／" + w +
+          "（残す語を決めて本文に語を足すか、keys除去 の側で組み直す）");
         const line = "    keys: [" + rest.map(S).join(", ") + "],";
         src = src.slice(0, start) + block.replace(mm[0], line) + src.slice(end);
         fs.writeFileSync(P("questions.js"), src, "utf8");
@@ -1080,10 +1211,11 @@ function restore(m, why) {
 /* ================= 本体 ================= */
 function main() {
   const input = JSON.parse(fs.readFileSync(INPUT, "utf8"));
-  const { saku, tsui, keys, led } = validate(input);
+  const { saku, tsui, keys, led, rem } = validate(input);
   console.log(`■ 入力: 作問${saku.length}問／追記${tsui.length}件／鍵語 ` +
     `作問由来${count(keys["作問由来"])}語・追記由来${count(keys["追記由来"])}語` +
     (led ? `／台帳 ${led["対象"].length}人・改名${count(led["改名"] || {})}語・登録${count(led["新規登録"] || {})}語` : "") +
+    (rem.length ? `／keys除去 ${rem.length}問・${rem.reduce((a, r) => a + r["語"].length, 0)}語` : "") +
     (DRY ? "　【dry-run】" : "") + "\n");
 
   const snap = snapshot();
@@ -1096,11 +1228,15 @@ function main() {
   auditDetailLength(saku);
   /* type は既定値が黙って入るので、本文の検査のあと、書き込みの直前に見る。2026-09-21 に足した。 */
   auditType(saku);
+  /* keys の除去も書き込みの前に見る。歯止めは2つとも、1件も書かずに止める。2026-09-21 に足した。 */
+  auditKeyRemoval(rem, tsui, readQ());
   try {
     /* 台帳が先。改名で語形が変わると数え直しの対象も変わるため。 */
     applyLedger(led);
     appendQuestions(saku);
     applyAppends(tsui);
+    /* 除去は追記のあと。同じ問題に追記と除去が両方あるとき、note が「追記 → 除去」の順に並ぶ。 */
+    removeKeys(rem);
     registerKeys(keys, saku, tsui);
     refreshCounts();
     checks();
