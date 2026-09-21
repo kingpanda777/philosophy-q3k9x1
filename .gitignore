@@ -4,6 +4,9 @@ _old_backups/
 # 作業中の .bak も GitHub には上げない（_old_backups へ移す前の状態）
 *.bak-*
 
+# 典拠として取得した PDF などの置き場。Pages で配信されるので上げない
+tools/_sources/
+
 # 点検用の一時ファイル
 detailonly.json
 
