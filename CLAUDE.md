@@ -3942,6 +3942,34 @@ detail とだけ照合すると不一致に見えるが、これは正しい引�
 
 **失効条件なし。**
 
+#### 大きな本は、章ごとの URL をもつ公開元を先に探す（2026年9月21日に足した）
+
+**原典で裏を取るとき、1冊まるごとが1ファイルの公開元を開くと本文が途中で切れる。**
+**先に「章ごと・篇ごとの URL をもつ公開元」を探し、該当箇所だけを開くこと。**
+
+| 著作 | 公開元 | URL の形 |
+|---|---|---|
+| **アダム・スミス『国富論』** | econlib（Liberty Fund） | `https://www.econlib.org/library/Smith/smWN13.html` 篇・章ごと |
+| **パスカル『パンセ』**（Trotter 訳） | CCEL（Christian Classics Ethereal Library） | `https://www.ccel.org/ccel/pascal/pensees.iv.html` 篇ごと。`ii`〜`xv` が第1〜14篇。目次は `pensees.toc.html` |
+| **モンテーニュ『エセー』** | HyperEssays | `https://hyperessays.net/gournay/book/I/chapter/27/` フランス語原文、`/florio/book/I/chapter/27/` 英訳。巻と章で組み立てられる |
+| **教父文献**（テルトゥリアヌスなど） | New Advent の Church Fathers | `https://www.newadvent.org/fathers/0315.htm` 著作ごと1ファイル。章見出しが入っていて短い |
+| **ヘーゲル『法の哲学』** | marxists.org | `https://www.marxists.org/reference/archive/hegel/works/pr/prstate.htm` 部ごと。**目次 `prconten.htm` から辿ること** |
+| **ショーペンハウアー『道徳の基礎について』** | Project Gutenberg | 1ファイル。**短い単著なら1ファイルでも取れる** |
+
+**注意。**
+
+| 公開元 | 起きたこと |
+|---|---|
+| **Project Gutenberg** | **1ファイルが1冊まるごとのものは、長いと本文が途中で切れる**（『国富論』『パンセ』で実際に切れた） |
+| **marxists.org** | **節番号から URL を組み立てると404になる**（`prstate3.htm` は存在しない）。目次ページから辿る |
+| **zeno.org** | 接続が拒否される |
+| **projekt-gutenberg.org** | 403 が返る |
+| **Deutsches Textarchiv** | 学術的だが収録が限られる（シラーの詩は無い） |
+| **Bibliotheca Augustana** | ドイツ語の古典を章ごとに置くが収録は一部。旧 `hs-augsburg.de` の URL は `tha.de` へ転送される |
+| **CiNii Research** | 頁が空で返る。書誌は J-STAGE 側から引く |
+
+**失効条件：公開元が移転・閉鎖したとき。**
+
 
 
 **URLだけでは数年で死ぬ。URLと「何を確認したか」を必ずセットにする。**
