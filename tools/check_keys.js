@@ -22,10 +22,12 @@
 "use strict";
 const fs = require("fs");
 const path = require("path");
+/* JSON の読み書きは tools/_lib.js から読む。2026-09-21 に切り出した。 */
+const { readJson } = require("./_lib.js");
 const R = path.join(__dirname, "..");
 
-const kt = JSON.parse(fs.readFileSync(path.join(R, "keyterms.json"), "utf8"));
-const draft = JSON.parse(fs.readFileSync(path.join(R, "tools", "keys_draft.json"), "utf8"));
+const kt = readJson(path.join(R, "keyterms.json"));
+const draft = readJson(path.join(R, "tools", "keys_draft.json"));
 const html = fs.readFileSync(path.join(R, "index.html"), "utf8");
 const { QUESTIONS } = new Function(
   fs.readFileSync(path.join(R, "questions.js"), "utf8") + ";return {QUESTIONS};")();

@@ -81,11 +81,13 @@
 const fs = require("fs");
 const path = require("path");
 const { execFileSync } = require("child_process");
+/* 字数の数え方と JSON の読み書きは tools/_lib.js から読む。
+   同じ定義が check_phil.js にも写してあり、片方だけ直すと食い違う。2026-09-21 に切り出した。 */
+const { L, readJson, writeJson } = require("./_lib.js");
 
 const R = path.join(__dirname, "..");
 const P = f => path.join(R, f);
 const S = s => JSON.stringify(s);
-const L = s => [...s].length;
 
 /* detail の字数は改行を除いて数える。作問の検査（1.6）と追記の検査（3）が同じ関数を使う。
    数え方を2つ持つと、同じ本文が道具のどこで測られたかで違う字数になる。
@@ -694,8 +696,8 @@ function removeKeys(rem) {
 
     /* keys_draft.json は q.keys と同じ中身でなければならない（check_keys の項目2）。
        片方だけ直すと、書き込みは通って検査で落ちる。2026-09-21 に据え付けたとき実際に落ちた。 */
-    const kd = JSON.parse(fs.readFileSync(P("tools/keys_draft.json"), "utf8"));
-    if (kd[r.id]) { kd[r.id] = after; fs.writeFileSync(P("tools/keys_draft.json"), JSON.stringify(kd, null, 1) + "\n", "utf8"); }
+    const kd = readJson(P("tools/keys_draft.json"));
+    if (kd[r.id]) { kd[r.id] = after; writeJson(P("tools/keys_draft.json"), kd); }
 
     /* --- note へ記録 --- */
     src = fs.readFileSync(P("questions.js"), "utf8");
@@ -888,7 +890,7 @@ function applyRefsAdd(refsAdd) {
    2026-09-17 の「十九世紀の反逆」の点検で、この4か所を1つずつ踏んで4回止まったので道具にした。 */
 function applyLedger(led) {
   if (!led) return null;
-  const kt = JSON.parse(fs.readFileSync(P("keyterms.json"), "utf8"));
+  const kt = readJson(P("keyterms.json"));
   const bodyText = q => bodyOf(q);
   const measure = (person, word) => {
     const qs = readQ();
@@ -904,7 +906,7 @@ function applyLedger(led) {
   /* --- 改名（5か所を揃えて直す） --- */
   let qsrc = fs.readFileSync(P("questions.js"), "utf8");
   let html = fs.readFileSync(P("index.html"), "utf8");
-  const kd = JSON.parse(fs.readFileSync(P("tools/keys_draft.json"), "utf8"));
+  const kd = readJson(P("tools/keys_draft.json"));
   for (const person of Object.keys(led["改名"] || {})) {
     for (const r of led["改名"][person]) {
       const t = (kt[person] || { "鍵語": [] })["鍵語"].find(x => x["語"] === r["旧"]);
@@ -1103,8 +1105,8 @@ function applyLedger(led) {
     html = html.replace(anchor, anchor + yomiLines.join("\n") + "\n");
   }
   fs.writeFileSync(P("index.html"), html, "utf8");
-  fs.writeFileSync(P("tools/keys_draft.json"), JSON.stringify(kd, null, 1) + "\n", "utf8");
-  fs.writeFileSync(P("keyterms.json"), JSON.stringify(kt, null, 1) + "\n", "utf8");
+  writeJson(P("tools/keys_draft.json"), kd);
+  writeJson(P("keyterms.json"), kt);
 
   /* --- 未登場掃き（全人物） --- */
   const used = new Set();
@@ -1135,7 +1137,7 @@ function applyLedger(led) {
    作問・追記・鍵語登録がすべて終わったあとの本文を数える必要があり、
    registerKeys も keyterms.json を書くので、そのあとで読み直して上書きする。 */
 function refreshCounts() {
-  const kt = JSON.parse(fs.readFileSync(P("keyterms.json"), "utf8"));
+  const kt = readJson(P("keyterms.json"));
   const qs = readQ();
   const hitsFixed = [], countFixed = [];
   for (const p of Object.keys(kt)) {
@@ -1155,7 +1157,7 @@ function refreshCounts() {
       kt[p]["問題数"] = real;
     }
   }
-  fs.writeFileSync(P("keyterms.json"), JSON.stringify(kt, null, 1) + "\n", "utf8");
+  writeJson(P("keyterms.json"), kt);
   console.log("■ 実測の反映");
   console.log("  → hits を実測に直した: " + (hitsFixed.length ? hitsFixed.length + "語（" + hitsFixed.join("・") + "）" : "0語"));
   console.log("  → 問題数を実測に直した: " + (countFixed.length ? countFixed.length + "人（" + countFixed.join("・") + "）" : "0人") + "\n");
@@ -1314,7 +1316,7 @@ function applyAppends(tsui) {
 
 /* ================= 4. 鍵語の登録 ================= */
 function registerKeys(keys, saku, tsui) {
-  const kt = JSON.parse(fs.readFileSync(P("keyterms.json"), "utf8"));
+  const kt = readJson(P("keyterms.json"));
   const qs = readQ();
   let added = 0;
   console.log("■ 鍵語の登録");
@@ -1336,10 +1338,10 @@ function registerKeys(keys, saku, tsui) {
       console.log(`  ${person}／${w}（hits ${mine}／全問 ${all}・${由来}）`);
     }
   }
-  fs.writeFileSync(P("keyterms.json"), JSON.stringify(kt, null, 1) + "\n", "utf8");
+  writeJson(P("keyterms.json"), kt);
 
   /* keys_draft.json は q.keys と同じ中身でなければならない（check_keys の項目2） */
-  const kd = JSON.parse(fs.readFileSync(P("tools/keys_draft.json"), "utf8"));
+  const kd = readJson(P("tools/keys_draft.json"));
   for (const d of saku) {
     if (kd[d.id]) throw new Error("keys_draft に既にある: " + d.id);
     kd[d.id] = d.keys;
@@ -1348,7 +1350,7 @@ function registerKeys(keys, saku, tsui) {
     if (!it.keys_add || !it.keys_add.length) continue;
     kd[it.id] = readQ().find(x => x.id === it.id).keys;
   }
-  fs.writeFileSync(P("tools/keys_draft.json"), JSON.stringify(kd, null, 1) + "\n", "utf8");
+  writeJson(P("tools/keys_draft.json"), kd);
 
   /* index.html の KEY_YOMI */
   let html = fs.readFileSync(P("index.html"), "utf8");
@@ -1422,7 +1424,7 @@ function restore(m, why) {
 
 /* ================= 本体 ================= */
 function main() {
-  const input = JSON.parse(fs.readFileSync(INPUT, "utf8"));
+  const input = readJson(INPUT);
   const { saku, tsui, keys, led, rem, refsDel, refsRep, refsAdd } = validate(input);
   console.log(`■ 入力: 作問${saku.length}問／追記${tsui.length}件／鍵語 ` +
     `作問由来${count(keys["作問由来"])}語・追記由来${count(keys["追記由来"])}語` +
@@ -1465,7 +1467,7 @@ function main() {
   }
 
   const q = readQ();
-  const kt = JSON.parse(fs.readFileSync(P("keyterms.json"), "utf8"));
+  const kt = readJson(P("keyterms.json"));
   let terms = 0;
   for (const p of Object.keys(kt)) if (p !== "_meta") terms += (kt[p]["鍵語"] || []).length;
   console.log(`■ 結果: 問題 ${q.length}問／台帳 ${terms}語`);

@@ -12,6 +12,9 @@
 "use strict";
 const fs = require("fs");
 const path = require("path");
+/* 字数の数え方・JSON の読み書き・紹介文の基準値は tools/_lib.js から読む。
+   add_person.js（登録の前の検査）が同じ基準値を読む。2026-09-21 に切り出した。 */
+const { L, readJson, PHIL } = require("./_lib.js");
 const R = path.join(__dirname, "..");
 const src = f => fs.readFileSync(path.join(R, f), "utf8");
 
@@ -25,7 +28,6 @@ const ok = (cond, label, detail) => {
   console.log((cond ? "  ○ " : "  ✗ ") + label + (detail ? "  " + detail : ""));
   if (!cond) bad++;
 };
-const L = s => [...s].length;
 const base = {};
 PHILOSOPHERS.forEach(p => { base[p.name] = p; });
 
@@ -43,13 +45,13 @@ const noBase = PHIL_INTRO.filter(p => base[p.name] && (!base[p.name].years || !b
 ok(noBase.length === 0, `引く先（PHILOSOPHERS）に years と school がある`, noBase.join("、"));
 
 console.log("\n===== 3. 型を守っているか =====\n");
-const noYomi = PHIL_INTRO.filter(p => !p.yomi || !/^[ぁ-ゖー・]+$/.test(p.yomi)).map(p => p.name);
+const noYomi = PHIL_INTRO.filter(p => !p.yomi || !PHIL.YOMI_RE.test(p.yomi)).map(p => p.name);
 ok(noYomi.length === 0, `yomi がひらがなで入っている`, noYomi.join("、"));
 const noPlace = PHIL_INTRO.filter(p => !p.place || /\s/.test(p.place)).map(p => p.name);
 ok(noPlace.length === 0, `place が1語で入っている`, noPlace.join("、"));
-const lenBad = PHIL_INTRO.filter(p => L(p.intro) < 60 || L(p.intro) > 100)
+const lenBad = PHIL_INTRO.filter(p => L(p.intro) < PHIL.INTRO_MIN || L(p.intro) > PHIL.INTRO_MAX)
   .map(p => `${p.name}(${L(p.intro)}字)`);
-ok(lenBad.length === 0, `intro が60〜100字に収まっている`, lenBad.join("、"));
+ok(lenBad.length === 0, `intro が${PHIL.INTRO_MIN}〜${PHIL.INTRO_MAX}字に収まっている`, lenBad.join("、"));
 const wBad = PHIL_INTRO.filter(p => !Array.isArray(p.works) || p.works.length > 3).map(p => p.name);
 ok(wBad.length === 0, `works が3冊以内`, wBad.join("、"));
 const wOrder = PHIL_INTRO.filter(p => {
@@ -57,19 +59,18 @@ const wOrder = PHIL_INTRO.filter(p => {
   return ys.some((y, i) => i && y < ys[i - 1]);
 }).map(p => p.name);
 ok(wOrder.length === 0, `works が年代順`, wOrder.join("、"));
-/* 根拠になる問題が1問しかない人は、書ける中身がそもそも少ない。下限を緩める */
-const thMin = p => (Array.isArray(p.thought_src) && p.thought_src.length === 1) ? 50 : 80;
-const thLen = PHIL_INTRO.filter(p => !p.thought || L(p.thought) < thMin(p) || L(p.thought) > 120)
+/* 根拠になる問題が1問しかない人は、書ける中身がそもそも少ない。下限を緩める（_lib.js） */
+const thMin = p => PHIL.thoughtMin(p.thought_src);
+const thLen = PHIL_INTRO.filter(p => !p.thought || L(p.thought) < thMin(p) || L(p.thought) > PHIL.THOUGHT_MAX)
   .map(p => `${p.name}(${p.thought ? L(p.thought) + "字／下限" + thMin(p) : "なし"})`);
-ok(thLen.length === 0, `thought が字数の範囲に収まっている（上限120、下限80。根拠が1問なら50）`,
+ok(thLen.length === 0, `thought が字数の範囲に収まっている（上限${PHIL.THOUGHT_MAX}、下限${PHIL.THOUGHT_MIN}。根拠が1問なら${PHIL.THOUGHT_MIN_1SRC}）`,
    thLen.join("、"));
 
 console.log("\n===== 4. intro と thought に評価語が混ざっていないか =====\n");
-/* 事実だけを書く決まり。ここに挙げた語が出たら書き直す */
-const NG = ["偉大", "重要", "影響力", "最大の", "画期的", "先駆的", "天才", "有名", "著名",
-            "傑作", "不朽", "比類", "決定的", "革命的", "名高い", "切り開", "礎を築"];
-/* 「卓越」は外した。マッキンタイアの徳倫理では術語であり（q470 の正解が
-   「固有の卓越性の基準をもつ活動」）、評価語として弾くと本文が書けない */
+/* 事実だけを書く決まり。ここに挙げた語が出たら書き直す。
+   一覧は _lib.js にある（add_person.js が登録の前に同じ一覧で見る）。
+   「卓越」を外した理由も、そちらに書いてある */
+const NG = PHIL.NG;
 const ngHit = [];
 PHIL_INTRO.forEach(p => NG.forEach(w => {
   if (p.intro.includes(w)) ngHit.push(`${p.name}:intro:${w}`);
@@ -109,7 +110,7 @@ console.log("\n===== 7. PHILOSOPHERS.years が引用行と一致するか =====\
    ⑧では intro の年だけを引用行から写しており、years そのものは検証していなかった。
    バディウの没年 2025 が資料に無いことが分かったのが発端である。
    「頃」の付く端点は資料と5年までのずれを許す（幅のある推定だから）。 */
-const ysrc = JSON.parse(fs.readFileSync(path.join(R, "tools", "years_src.json"), "utf8"));
+const ysrc = readJson(path.join(R, "tools", "years_src.json"));
 const noSrc = PHILOSOPHERS.filter(p => !ysrc[p.name]).map(p => p.name);
 ok(noSrc.length === 0, `${PHILOSOPHERS.length}人すべてに引用行がある`, noSrc.join("、"));
 
