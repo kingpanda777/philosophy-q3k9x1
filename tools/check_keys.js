@@ -214,6 +214,10 @@ ok(phBad.length === 0, `語ごとの登録人物が一致する`,
 const pair = oW.filter(w => ownerLedger[w].length > 1);
 ok(pair.every(w => (KEY_OWNER[w] || []).length > 1),
    `規則3の二人語${pair.length}語が写しにも二人ぶん入っている`);
+/* 規則3の二人語は、語数も一覧も台帳の実測から出す。
+   CLAUDE.md に手で書いた一覧が12語のまま古くなっていた（実測20語）ので、
+   2026-09-21 に「この出力を正とする」形に改めた。数を地の文で持つと、そこがまた古くなる。 */
+console.log("     実測の一覧: " + pair.map(w => w + "（" + ownerLedger[w].join("・") + "）").join("／"));
 if (missW.length || extraW.length || phBad.length) {
   console.log("  （食い違ったら node tools/gen_key_owner.js を走らせ直すこと）");
 }
@@ -285,6 +289,46 @@ ok(leftover.length === 0,
    `${QUESTIONS.length}問の本文（unverified 含む）と${PHIL_INTRO.length}人の紹介を通した`,
    leftover.length ? leftover.slice(0, 20).join(" / ") +
      (leftover.length > 20 ? ` ほか${leftover.length - 20}件` : "") : "");
+
+/* ---------- 8. q.keys の語がその問題の本文に出るか ---------- */
+/* CLAUDE.md③（語が本文に無いまま keys に付けない）を全問で見る。
+   「道具が keys 全部の語形も検査する」の(b)にあたり、2026-09-21 に有効にした。
+
+   (a)は add_batch.js が持っており、その実行で書き込む問題しか見ない。
+   だから既存の問題に同じ状態が埋まっていても検出できなかった。
+   実測で47件あり、tools/keys_plan.md の計画で片づけてからここを有効にした。
+   先に有効にすると即座に落ち、通らない検査が常態になる。
+
+   許容と決めた語は下の例外表に載せる。語・問題・理由の3列で持つ。
+   例外表を作らずに有効にすると、決着済みの語が毎回落ち続ける。 */
+console.log("\n===== 8. q.keys の語がその問題の本文に出るか =====\n");
+const KEYS_IN_BODY_OK = [
+  { "語": "生活形式", "問題": "q300",
+    "理由": "正解肢が「生活の形式に埋め込まれた」で、「の」が入るだけの差。分析哲学の点検で許容と決めた（2026-09-19）" }
+];
+const bodyOf = q => [q.question || "", (q.choices || []).join(" / "),
+  q.explanation || "", q.detail || ""].join(" ");
+const allowed = new Set(KEYS_IN_BODY_OK.map(e => e["問題"] + "／" + e["語"]));
+const missing = [];
+QUESTIONS.forEach(q => {
+  const t = bodyOf(q);
+  (q.keys || []).forEach(w => {
+    if (t.includes(w)) return;
+    if (allowed.has(q.id + "／" + w)) return;
+    missing.push(`${q.id}／${w}`);
+  });
+});
+const staleAllow = KEYS_IN_BODY_OK.filter(e => {
+  const q = QUESTIONS.find(x => x.id === e["問題"]);
+  return !q || !(q.keys || []).includes(e["語"]) || bodyOf(q).includes(e["語"]);
+});
+ok(missing.length === 0,
+   `${QUESTIONS.length}問の keys ${nKeys}件すべてが、その問題の本文に出る（例外表 ${KEYS_IN_BODY_OK.length}件）`,
+   missing.length ? missing.slice(0, 20).join(" / ") +
+     (missing.length > 20 ? ` ほか${missing.length - 20}件` : "") : "");
+/* 例外表が古くなっていないかも見る。片づいた語が表に残ると、次に同じ状態が起きても黙って通る。 */
+ok(staleAllow.length === 0, `例外表に古くなった行がない`,
+   staleAllow.map(e => e["問題"] + "／" + e["語"]).join("、"));
 
 console.log("");
 if (bad) { console.log(`===== ${bad}件が通らなかった =====\n`); process.exit(1); }
