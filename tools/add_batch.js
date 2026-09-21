@@ -4,8 +4,9 @@
      node tools/add_batch.js <入力.json> --dry-run  適用・検査したあと必ず差し戻す
 
    これまで点検のたびに apply2.js / apply2b.js / apply3.js / measure.js / progress.js を
-   書き直していたが、同じ失敗を繰り返したので固定の道具にまとめた。理由は CLAUDE.md の
-   「作問と追記の道具を毎回書き直さない」の節に書いてある。
+   書き直していたが、同じ失敗を繰り返したので固定の道具にまとめた。理由と詳しい説明は
+   tools/add_batch.md にある（2026-09-21 に CLAUDE.md から切り出した）。CLAUDE.md 側には
+   「作問と追記の道具（tools/add_batch.js）」の節に呼び出し方だけが残っている。
 
    入力の形（スキーマは validate() で実行前に検査し、違えば1問も書かずに止まる）:
    {
