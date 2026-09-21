@@ -31,6 +31,12 @@
                  外すと語がどこにも残らないとき、またはその問題の keys が空になるときは
                  「要判断」として報告し、1件も書かずに止める。許可欄では通せない。
                  外した記録は note へ道具が書く。
+     "refs除去": [ { id, 含む[], 理由 } ],
+                 refs から1本ずつ外す。「含む」はその問題の refs の中で1本だけに当たる文字列。
+                 外して refs が空になるときは「要判断」で止める。許可欄では通せない。
+     "refs置換": [ { id, 含む, 新, 理由 } ],
+                 refs の1本を別の1本へ差し替える。本数は変わらない。
+                 除去・置換とも、記録は note へ道具が書く（2026-09-21 に足した）。
      "鍵語": {
        "作問由来": { "人物": [ {語, 読み, 追加} ] },
        "追記由来": { "人物": [ {語, 読み, 追加} ] }
@@ -152,6 +158,28 @@ function validate(input) {
       w("「対象」は detail か explanation にする（省略すると detail）");
   });
 
+  /* refs の除去と置換。2026-09-21 に足した。 */
+  const refsDel = input["refs除去"] || [], refsRep = input["refs置換"] || [];
+  if (!Array.isArray(refsDel)) bad.push("「refs除去」が配列でない");
+  else refsDel.forEach((r, i) => {
+    const w = m => bad.push(`refs除去[${i}]${r && r.id ? "（" + r.id + "）" : ""}: ${m}`);
+    if (!r || typeof r !== "object") return w("object でない");
+    if (typeof r.id !== "string" || !/^q\d+$/.test(r.id)) w("id が q+数字でない");
+    if (!Array.isArray(r["含む"]) || !r["含む"].length) w("「含む」が配列でない（1本でも配列にする）");
+    else r["含む"].forEach(x => { if (typeof x !== "string" || !x) w("「含む」に文字列でないものがある"); });
+    if (typeof r["理由"] !== "string" || !r["理由"]) w("「理由」が無い（note へ残すので必須）");
+  });
+  if (!Array.isArray(refsRep)) bad.push("「refs置換」が配列でない");
+  else refsRep.forEach((r, i) => {
+    const w = m => bad.push(`refs置換[${i}]${r && r.id ? "（" + r.id + "）" : ""}: ${m}`);
+    if (!r || typeof r !== "object") return w("object でない");
+    if (typeof r.id !== "string" || !/^q\d+$/.test(r.id)) w("id が q+数字でない");
+    if (typeof r["含む"] !== "string" || !r["含む"]) w("「含む」が無い");
+    if (typeof r["新"] !== "string" || !r["新"]) w("「新」が無い");
+    else if (!r["新"].includes("—")) w("「新」が『URL — 何を確認したか』の形になっていない");
+    if (typeof r["理由"] !== "string" || !r["理由"]) w("「理由」が無い（note へ残すので必須）");
+  });
+
   /* keys 除去モード。作問も追記も無く、keys を外すだけの入力もありうる。 */
   const rem = input["keys除去"] || [];
   if (!Array.isArray(rem)) bad.push("「keys除去」が配列でない");
@@ -218,8 +246,8 @@ function validate(input) {
         w("「ずれの記録」が object でない");
     }
   }
-  if (!saku.length && !tsui.length && led === undefined && !rem.length)
-    bad.push("作問も追記も台帳も keys除去 も無い（何もすることがない）");
+  if (!saku.length && !tsui.length && led === undefined && !rem.length && !refsDel.length && !refsRep.length)
+    bad.push("作問も追記も台帳も keys除去 も refs の操作も無い（何もすることがない）");
 
   for (const 由来 of ["作問由来", "追記由来"]) {
     const g = keys[由来] || {};
@@ -238,7 +266,7 @@ function validate(input) {
     console.error("入力が形式に合っていない。1件も書き込んでいない:\n  " + bad.join("\n  "));
     process.exit(1);
   }
-  return { saku, tsui, keys, led, rem };
+  return { saku, tsui, keys, led, rem, refsDel, refsRep };
 }
 
 /* ================= 1. 鍵語の語形の総点検（書き込みの前） ================= */
@@ -663,6 +691,115 @@ function removeKeys(rem) {
     fs.writeFileSync(P("questions.js"), src, "utf8");
 
     console.log(`  ${r.id}: keys ${before.length}→${after.length}　外した: ${r["語"].join("・")}　残り: ${after.join("・")}`);
+  }
+  console.log("");
+}
+
+/* ================= 1.9 refs の除去と置換（書き込みの前） =================
+   既存問題の refs から1本を外す、または別の1本へ差し替える。2026-09-21 に足した。
+
+   なぜ足したか。Wikipedia を refs にしている204問の洗い出し（tools/refs_plan.md）で、
+   (a) の50問は Wikipedia を外すかどうかを決め、(c) の取り違え3件は差し替えると決めた。
+   それまで道具には refs へ足す経路（refs_add）しかなく、外す経路も差し替える経路も無かった。
+
+   どの1本かは「含む」で指す。refs の文字列は URL と説明で長く、入力に全文を書くと
+   写し間違いが起きる。URL の一部など、その問題の中で一意に決まる短い文字列を書く。
+   2本以上に当たる、または1本も当たらないときは「要判断」で止める。
+
+   歯止めは1つ。外すと refs が空になるなら止める。
+   refs が無い問題・空の問題はある（q395 で踏んだ「無い」と「空」の区別）。
+   だがそれは「付ける典拠が無い」問題のことで、典拠があるのに落とした結果の空とは別である。
+   keys除去 と同じ型の歯止めで、理由は同じである。置換は本数が変わらないので歯止めは要らない。
+
+   許可欄は置かない。keys除去 と同じで、逸脱の中身が「典拠が無くなる」ことなので、
+   理由を書いて通すと歯止めそのものが無くなる。
+
+   失効条件なし。 */
+function auditRefs(refsDel, refsRep, existing) {
+  if (!refsDel.length && !refsRep.length) return;
+  const 要判断 = [];
+  console.log("■ refs の除去と置換の検査（書き込みの前）");
+  const hit = (q, needle) => (q.source && q.source.refs || []).filter(r => r.includes(needle));
+  for (const r of refsDel) {
+    const q = existing.find(x => x.id === r.id);
+    if (!q) { 要判断.push(`${r.id}: 問題が無い`); console.log(`  ★ ${r.id}　問題が無い`); continue; }
+    const now = (q.source && q.source.refs) || [];
+    let ng = false, 行 = [];
+    const 外す = [];
+    for (const n of r["含む"]) {
+      const h = hit(q, n);
+      if (h.length !== 1) {
+        要判断.push(`${r.id}: 「${n}」が refs の${h.length}本に当たる（1本に絞ること）`);
+        行.push(`${n}→${h.length}本`); ng = true; continue;
+      }
+      外す.push(h[0]); 行.push(`${n}→1本`);
+    }
+    const after = now.filter(x => !外す.includes(x));
+    if (!ng && !after.length) {
+      要判断.push(`${r.id}: 外すと refs が空になる（いまの refs ${now.length}本を全部外している）`);
+      ng = true;
+    }
+    console.log(`  ${ng ? "★" : "○"} ${r.id}　refs ${now.length}→${after.length}　${行.join("／")}`);
+  }
+  for (const r of refsRep) {
+    const q = existing.find(x => x.id === r.id);
+    if (!q) { 要判断.push(`${r.id}: 問題が無い`); console.log(`  ★ ${r.id}　問題が無い`); continue; }
+    const h = hit(q, r["含む"]);
+    const ng = h.length !== 1;
+    if (ng) 要判断.push(`${r.id}: 「${r["含む"]}」が refs の${h.length}本に当たる（1本に絞ること）`);
+    console.log(`  ${ng ? "★" : "○"} ${r.id}　置換　${r["含む"]}→${h.length}本`);
+  }
+  if (要判断.length) {
+    console.error("\n要判断（1件も書いていない）:\n  " + 要判断.join("\n  ") +
+      "\n  「含む」は、その問題の refs の中で1本だけに当たる文字列にする（URL の一部が確実）。" +
+      "\n  refs が空になる場合は、先に基準を満たす典拠を refs_add で足してから外す。" +
+      "\n  この検査に「許可」欄は無い。理由を書いて通すと、歯止めそのものが無くなる。");
+    process.exit(1);
+  }
+  console.log(`  → 除去${refsDel.length}問・置換${refsRep.length}問。refs が空になる問題は無い\n`);
+}
+
+/* ================= 3.6 refs の除去と置換（書き込み） =================
+   検査は auditRefs が済ませている。ここは書き込むだけ。
+   外した記録・差し替えた記録は note へ残す（keys除去 と同じ扱い）。 */
+function writeRefs(id, list) {
+  let src = fs.readFileSync(P("questions.js"), "utf8");
+  const start = src.indexOf(`    id: ${S(id)},`);
+  if (start < 0) throw new Error("エントリが見つからない: " + id);
+  const end = src.indexOf("\n  },", start);
+  const block = src.slice(start, end);
+  const m = block.match(/refs: \[[\s\S]*?\n      \]|refs: \[\]/);
+  if (!m) throw new Error("refs の行が見つからない: " + id);
+  const line = "refs: [\n        " + list.map(S).join(",\n        ") + "\n      ]";
+  src = src.slice(0, start) + block.replace(m[0], line) + src.slice(end);
+  fs.writeFileSync(P("questions.js"), src, "utf8");
+}
+function addNote(id, 文) {
+  const src = fs.readFileSync(P("questions.js"), "utf8");
+  const q = QUESTIONS_OF(src).find(x => x.id === id);
+  const oldNote = q.source.note;
+  if (src.indexOf(S(oldNote)) !== src.lastIndexOf(S(oldNote))) throw new Error("note リテラルが一意でない: " + id);
+  fs.writeFileSync(P("questions.js"), src.replace(S(oldNote), S(oldNote + 文)), "utf8");
+}
+function applyRefsOps(refsDel, refsRep) {
+  if (!refsDel.length && !refsRep.length) return;
+  console.log("■ refs の除去と置換");
+  for (const r of refsDel) {
+    const q = readQ().find(x => x.id === r.id);
+    const now = q.source.refs;
+    const 外す = r["含む"].map(n => now.filter(x => x.includes(n))[0]);
+    const after = now.filter(x => !外す.includes(x));
+    writeRefs(r.id, after);
+    addNote(r.id, ` refs から${外す.length}本を外した（${r["含む"].join("・")}）。理由: ${r["理由"]}`);
+    console.log(`  ${r.id}: refs ${now.length}→${after.length}　外した: ${r["含む"].join("・")}`);
+  }
+  for (const r of refsRep) {
+    const q = readQ().find(x => x.id === r.id);
+    const now = q.source.refs;
+    const 旧 = now.filter(x => x.includes(r["含む"]))[0];
+    writeRefs(r.id, now.map(x => x === 旧 ? r["新"] : x));
+    addNote(r.id, ` refs を1本差し替えた（${r["含む"]} → ${r["新"].split("—")[0].trim()}）。理由: ${r["理由"]}`);
+    console.log(`  ${r.id}: refs ${now.length}本のうち1本を差し替え　${r["含む"]}`);
   }
   console.log("");
 }
@@ -1211,11 +1348,12 @@ function restore(m, why) {
 /* ================= 本体 ================= */
 function main() {
   const input = JSON.parse(fs.readFileSync(INPUT, "utf8"));
-  const { saku, tsui, keys, led, rem } = validate(input);
+  const { saku, tsui, keys, led, rem, refsDel, refsRep } = validate(input);
   console.log(`■ 入力: 作問${saku.length}問／追記${tsui.length}件／鍵語 ` +
     `作問由来${count(keys["作問由来"])}語・追記由来${count(keys["追記由来"])}語` +
     (led ? `／台帳 ${led["対象"].length}人・改名${count(led["改名"] || {})}語・登録${count(led["新規登録"] || {})}語` : "") +
     (rem.length ? `／keys除去 ${rem.length}問・${rem.reduce((a, r) => a + r["語"].length, 0)}語` : "") +
+    (refsDel.length || refsRep.length ? `／refs 除去${refsDel.length}問・置換${refsRep.length}問` : "") +
     (DRY ? "　【dry-run】" : "") + "\n");
 
   const snap = snapshot();
@@ -1230,6 +1368,8 @@ function main() {
   auditType(saku);
   /* keys の除去も書き込みの前に見る。歯止めは2つとも、1件も書かずに止める。2026-09-21 に足した。 */
   auditKeyRemoval(rem, tsui, readQ());
+  /* refs の操作も書き込みの前に見る。2026-09-21 に足した。 */
+  auditRefs(refsDel, refsRep, readQ());
   try {
     /* 台帳が先。改名で語形が変わると数え直しの対象も変わるため。 */
     applyLedger(led);
@@ -1237,6 +1377,7 @@ function main() {
     applyAppends(tsui);
     /* 除去は追記のあと。同じ問題に追記と除去が両方あるとき、note が「追記 → 除去」の順に並ぶ。 */
     removeKeys(rem);
+    applyRefsOps(refsDel, refsRep);
     registerKeys(keys, saku, tsui);
     refreshCounts();
     checks();
