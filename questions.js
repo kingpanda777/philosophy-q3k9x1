@@ -189,7 +189,8 @@ const PHILOSOPHERS = [
   { name: "モンテスキュー", years: "1689–1755", note: "権力は権力によって抑えよ", school: "社会契約と政治" },
   { name: "シジウィック", years: "1838–1900", note: "自分の幸福を求める理性と全体の幸福を求める理性が、和解しない", school: "功利主義と自由主義" },
   { name: "パトナム", years: "1926–2016", note: "意味は頭の中にはない。自分の説も、自分で改めつづけた", school: "分析哲学" },
-  { name: "シュトラウス", years: "1899–1973", note: "何が正しいかを理性で問うことを、近代はやめてしまったのではないか", school: "二十世紀の政治哲学" }
+  { name: "シュトラウス", years: "1899–1973", note: "何が正しいかを理性で問うことを、近代はやめてしまったのではないか", school: "二十世紀の政治哲学" },
+  { name: "ハリエット・テイラー", years: "1807–1858", note: "誰の領分も他人は決められない。女性に完全な平等を求めた", school: "功利主義と自由主義" }
 ];
 
 const TERMS = [
@@ -19005,6 +19006,106 @@ const QUESTIONS = [
         "https://www.laits.utexas.edu/poltheory/sidgwick/me/me.b03.c13.s03.html — 第3篇第13章第3節。3原理、数学の公理との比較、正義の原理だけでは足りないこと",
         "https://plato.stanford.edu/entries/sidgwick/ — 3原理と point of view of the Universe（1907: 382）",
         "https://www.gutenberg.org/cache/epub/5684/pg5684.txt — カント『徳論』序論IV。OUR OWN PERFECTION, HAPPINESS OF OTHERS"
+      ]
+    }
+  },
+  {
+    id: "q806",
+    philosophers: ["ハリエット・テイラー"], terms: ["自由", "平等"], type: "single",
+    keys: ["ふさわしい領分"],
+    question: "『女性の参政権』（1851年）が、女性の「ふさわしい領分」について論じたこととして最も適切なものは？",
+    choices: [
+      "家庭こそ女性の領分で、外の権利は家庭を守るためにある",
+      "領分は男女の本性の違いで決まり、法はそれを写すべきだ",
+      "誰の領分も他人は決められず、職業を開いた自由の下で初めて分かる",
+      "領分は女性の多数の意向で決め、法をそれに合わせるべきだ"
+    ],
+    answer: 2,
+    explanation: "前年にマサチューセッツ州ウスターで開かれた女性の権利大会から書き起こし、政治・市民・社会のあらゆる権利での男性との平等を求めた論考です。人類のある部分が別の部分の、ある個人が別の個人の「ふさわしい領分」を決める権利を否定し、人のふさわしい領分とは到達しうる最も広く高いものだと述べます。何に向いているかは、あらゆる職業を開いた完全な自由のもとでしか答えられない、とされます。",
+    detail: "家庭を女性の領分とする見方も、本性の違いに法を合わせる見方も、この論考が正面から退けた側です。女性の多数の意向に決めさせる案も通りません。否定されているのは、一部が他の一部の領分を決めること、一人が別の一人の領分を決めることそのものだからです。\n\n同じ構えは、ミルの『女性の隷従』にも現れます。従属状態の女性しか観察していない以上、何が自然かは自由な条件で試すまで分からない、という論法です。\n\n著者は長く論じられてきました。ミル自身は後年、この論考を彼女のものとし、自分は編集者と筆記者にすぎなかったと書いていますが、食い違う証言も残っています。今日では、主な書き手は彼女だとする見方が大勢です。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、ある部分が別の部分の、ある個人が別の個人のふさわしい領分を決める権利の否定と、完全な自由のもとでしか答えられないという二点を押さえている。誤答は、家庭を女性の領分とする見方、本性の違いに法を合わせる見方、女性の多数に決めさせる案。多数に決めさせる誤答は一見この論考に近いが、一部が他の一部を決める形なので、本文の否定の射程に入る。四択は成立している。 設計の記録: 設問文は「ハリエット・テイラーが」ではなく論考名を主語にした。著者の帰属に食い違う証言があるため（SEP §3）、設問の側で帰属を断定しない。philosophers はハリエット・テイラーのみとした。ミルも入れると帰属の争いを片方へ寄せることになるため（2026年9月21日に判断）。誤答を先に3つ書いてから正解を書いた。位置指しなし。 事実の確認: 冒頭が「前年10月23・24日」のウスターの女性の権利大会の報告から書き起こされること、「We deny the right of any portion of the species to decide for another portion, or any individual for another individual, what is and what is not their 'proper sphere.'」「The proper sphere for all human beings is the largest and highest which they are able to attain to.」「These questions can only be satisfactorily answered by perfect freedom. Let every occupation be open to all」を原文で確認した。 訳語の確認: 題名の定訳は見つからなかった。J-STAGE で当たると、石原正博（イギリス哲学研究22号、1999年）は「女性参政権論」、安川悦子の書評（経済学史学会年報34号、1996年。縦書き二段組の走査で段が入れ替わっている）は「女性の参政権」と呼んでおり、一つに定まっていない。邦訳書も見つからなかった。仮の訳の『女性の参政権』のまま置く。proper sphere は「ふさわしい領分」とした（「本来の領域」「固有の領分」の変種がありうる）。 対照の記録: q116（『女性の隷従』）の detail 第2段落が同じ論法をミルの側で書いている。本問の detail 第2段落でつないだ。 解釈の対立: 著者の帰属。SEP は今日では彼女が主な著者だという合意があるとしつつ、ミルが編集者に原稿がほぼ仕上がっていると書いた手紙や、ルクレシア・モットの「彼女は彼が書いたと言い、彼は彼女が書いたと言う」という証言を挙げている。",
+      refs: [
+        "https://plato.stanford.edu/entries/harriet-mill/ — §3 Taylor Mill as Author。『女性の参政権』（1851年、Westminster Review）の論点、今日では彼女が主な著者だという合意、ミルが『論説と論考』の序で「hers in a particular sense, my share in it being little more than that of an editor and amanuensis」と書いたこと、食い違う証言（編集者宛の手紙、ルクレシア・モット）",
+        "https://www.gutenberg.org/cache/epub/73404/pg73404-images.html — Enfranchisement of Women 本文（Westminster Review 1851年7月号からの再刊、著者表記 Mrs. John Stuart Mill）。ウスター大会の書き出し、proper sphere の否定、perfect freedom の一節",
+        "https://www.jstage.jst.go.jp/article/sbp/22/0/22_1999_069/_article/-char/ja — 【書誌】石原正博「ハリエット・テイラーとJ.S.ミルの知的協働」『イギリス哲学研究』22号（1999年）。この論考を「女性参政権論（“The Enfranchisement of Women”, 1851)」と呼んでいる。題名の訳が定まっていないことの根拠"
+      ]
+    }
+  },
+  {
+    id: "q807",
+    philosophers: ["ハリエット・テイラー"], terms: ["平等"], type: "single",
+    keys: [],
+    question: "妻を家の中に閉じ込めることの害として、『女性の参政権』（1851年）が指摘したこととして最も適切なものは？",
+    choices: [
+      "妻が政治に口を出し、家庭の平和が乱されてしまう",
+      "妻の労働が家に眠り、国の生産が目減りしてしまう",
+      "妻の関心が家の損得に閉ざされ、夫の公共心をくじく側に働く",
+      "妻が信仰から離れ、子への道徳の教えが行き届かない"
+    ],
+    answer: 2,
+    explanation: "女性の従属は女性だけでなく男性も損なう、という論点です。妻の関心が家族の私的な利益や世間体に閉ざされていると、その影響が公共の徳の側に立つことはまれで、夫が信念から行おうとする努力をかえってくじいてしまう。教育に差があれば、妻は夫の道徳的な成長を励ますこともできない、と論じられます。",
+    detail: "政治に口を出して家庭を乱すという心配は、当時の反対論の側のものです。この論考が言うのは逆で、狭い世界に閉じ込めることのほうが害をなします。生産の損失や信仰の衰えも、ここでの筋ではありません。\n\nただし、夫の役に立つから平等にせよという議論ではありません。論考はまず、あらゆる権利における男性との平等を要求として掲げており、夫への害はそれを支える論拠の一つとして出てきます。結婚した女性が自ら稼ぐことを望ましいとする議論も、同じ論考のなかにあります。\n\nこの論点は、ミルの『女性の隷従』第4章に引き継がれます。知性で劣る妻は、世論が求める以上に善くあろうとする夫の志にとって重荷になり、引き止めるものになる、と書かれています。二つの文章は、従属が従属させる側をも損なうという点で重なります。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、妻の関心が家の私的な利益に閉ざされ、その影響が夫の公共心をくじく側に働くという論点。誤答は、女性の政治参加が家庭を乱すという反対論の側の議論、国民経済の生産損失、信仰と子の教育で、いずれも本論考の筋ではない。四択は成立している。 設計の記録: 設問文は論考名を主語にした（q806 と同じ理由）。keys は付けない。主題は論考の中の一つの論拠で、台帳に立てるべき概念名がない（「keys なしが正常な問題」の中心概念の応用・各論の型）。誤答を先に3つ書いてから正解を書いた。位置指しなし。 事実の確認: 原文「How rarely is the wife's influence on the side of public virtue! how rarely does it do otherwise than discourage any effort of principle by which the private interests or worldly vanities of the family」を確認した。SEP §3 がこの論考の論点として、妻の限られた関心が夫の公共心を損なうこと、教育の不平等が妻に夫の道徳的成長を励ますことを妨げることを挙げていることを確認した。『女性の隷従』第4章の「A man who is married to a woman his inferior in intelligence, finds her a perpetual dead weight, or, worse than a dead weight, a drag, upon every aspiration of his to be better than public opinion requires him to be.」を確認した。 対照の記録: q809（比較）と同じ論考を扱うが、あちらは結婚した女性の就労、本問は夫への害で、論点が分かれている。",
+      refs: [
+        "https://plato.stanford.edu/entries/harriet-mill/ — §3。『女性の参政権』の論点の列挙（妻の限られた関心が夫の公共心を損なう、教育の不平等が夫の道徳的成長を励ますことを妨げる、職の競争の議論、結婚した女性の就労）",
+        "https://www.gutenberg.org/cache/epub/73404/pg73404-images.html — Enfranchisement of Women 本文。「How rarely is the wife's influence on the side of public virtue!」の一節",
+        "https://www.marxists.org/reference/archive/mill-john-stuart/1869/subjection-women/ch04.htm — 『女性の隷従』第4章。知性で劣る妻が夫の志にとって「a perpetual dead weight, or ... a drag」になるという一節"
+      ]
+    }
+  },
+  {
+    id: "q808",
+    philosophers: ["ミル", "ハリエット・テイラー"], terms: ["自由"], type: "single",
+    keys: ["共同の産物"],
+    question: "ミルが『自伝』で、『自由論』とハリエット・テイラーの関わりについて書いたこととして最も適切なものは？",
+    choices: [
+      "彼女の死後に書き始め、追悼として彼女に捧げた本だった",
+      "彼女は草稿を清書し、出版の手配を担っただけだった",
+      "どの一文も二人で幾度も吟味しており、二人の共同の産物だった",
+      "ミル一人の著作で、彼女とは主題を語り合っただけだった"
+    ],
+    answer: 2,
+    explanation: "『自伝』第7章の記述です。『自由論』は、自分の名を冠したもののなかで最も直接に、文字どおり二人の共同の産物であり、二人で幾度も読み返し、考えや表現の誤りを取り除かなかった一文は一つもない、とミルは書きます。一般に、自分の著作は彼女のものでもあるとまで述べています。",
+    detail: "『自由論』は1854年に短い論考として書かれ、翌年に一冊の本にする構想が立ちました。最後の推敲を残したところで彼女が1858年に亡くなり、ミルは手を加えずに刊行して彼女の記憶に捧げます。死後に書き始めたのではありません。『経済学原理』の労働者階級の将来を論じた章も、その必要を指摘したのは彼女だった、とミルは書いています。\n\nこの証言をどこまで受け取るかは割れています。彼女がいなくてもミルはミルだったと見る論者がいる一方、ミルの言葉を額面どおりに取る論者もいます。その間には、彼女の示唆や経験がミルの考えを変えたと見る論者がいます。\n\nハケット社は2026年3月に刊行した『自由論』の新版で、彼女をミルと並ぶ共著者として表記しました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 設問は「ミルが『自伝』で書いたこと」を問い、二人の実際の分担は問わない。正解は『自伝』第7章の記述そのもので、誤答は死後の執筆（事実に反する）、清書役（ミルが『女性の参政権』について自分の役割として書いた「筆記者」を彼女の側へ移したもの）、主題を語り合っただけ（『自伝』の記述と逆）。四択は成立している。 設計の記録: 研究上の評価が割れている論点なので、設問・正解はミルの証言の内容に限り、どちらの見方にも寄せない。評価の割れは detail 第2段落に両側を並べ、勢力差は書いていない（SEP §4 から多数説を読み取れなかった）。philosophers にミルを入れた。本問の主題は二人の関係そのもので、両者が当事者だから。type は single（正解が二人の立場を対比していない）。誤答を先に3つ書いてから正解を書いた。位置指しなし。 事実の確認: 『自伝』第7章の原文「The Liberty was more directly and literally our joint production than anything else which bears my name, for there was not a sentence of it that was not several times gone through by us together, turned over in many ways, and carefully weeded of any faults, either in thought or expression, that we detected in it.」「I had first planned and written it as a short essay in 1854. It was in mounting the steps of the Capitol, in January, 1855, that the thought first arose of converting it into a volume.」「Its final revision was to have been a work of the winter of 1858-9」「After my irreparable loss, one of my earliest cares was to print and publish the treatise ... and consecrate it to her memory. I have made no alteration or addition to it」、および『経済学原理』の労働者階級の将来の章について「She pointed out the need of such a chapter」「is entirely due to her」を確認した。SEP §4 で、最小限派（Pappe「Mill without Harriet would still have been Mill」、Mineka、Reeves、Kinzer）、最大限派（Jacobs）、中間（Bain、Robson、McCabe、Philips）を確認した。Hackett 社の版元説明で、2026年3月刊、John Stuart Mill & Harriet Taylor Mill の表記と「authoritatively establishes Harriet Taylor Mill as a co-author」を確認した。 対照の記録: q116 の detail 第1段落が「どこまでが彼女の寄与かは研究上の論点」と名前だけ出しており、本問がその中身を埋める。 設計の記録: detail 第2段落は SEP §4 の論者を三つの見方として並べたが、網羅とは書いていない。Himmelfarb は影響を大きく見つつ否定的に評価する立場で、どの見方にもきれいに入らないので名を出していない。",
+      refs: [
+        "https://www.gutenberg.org/cache/epub/10378/pg10378.txt — ミル『自伝』第7章。『自由論』を「our joint production」とする一節、1854年の短い論考と1855年1月の構想、1858-9年冬に予定した最後の推敲、刊行と献呈、『経済学原理』の章が「entirely due to her」であること",
+        "https://plato.stanford.edu/entries/harriet-mill/ — §4 Taylor Mill's Influence on Mill。影響の評価をめぐる論者の立場（Pappe、Mineka、Reeves、Kinzer／Jacobs／Bain、Robson、McCabe、Philips、Himmelfarb）",
+        "https://hackettpublishing.com/on-liberty-with-related-writings — Hackett 社『On Liberty: with Related Writings』（2026年3月）。著者表記と編者、版元の説明文"
+      ]
+    }
+  },
+  {
+    id: "q809",
+    philosophers: ["ハリエット・テイラー", "ミル"], terms: ["平等"], type: "compare",
+    keys: ["女性の隷従"],
+    question: "結婚した女性が外で働いて稼ぐことについて、『女性の参政権』と『女性の隷従』の違いとして最も適切なものは？",
+    choices: [
+      "『参政権』は妻も稼ぐのが望ましいとし、『隷従』は家事を第一とした",
+      "『隷従』は妻も稼ぐのが望ましいとし、『参政権』は家事を第一とした",
+      "両者とも妻は家事に専念し、外で稼ぐべきでないとした",
+      "両者とも賃金が下がるので、妻は外で稼ぐべきでないとした"
+    ],
+    answer: 0,
+    explanation: "『女性の参政権』（1851年）は、収入の一部が妻の稼ぎであるほうが、たとえ総額がほとんど増えなくても比べものにならないほど望ましいと述べます。『女性の隷従』（1869年）は、ほかの点で正しい状態のもとでは、妻が労働で家計に寄与するのは望ましい慣習ではないとし、結婚する女性は家の切り盛りと子育てを第一の務めとして選んだと見てよい、とします。",
+    detail: "『女性の参政権』は、賃金が下がるという反対論にも答えています。女性を締め出すのは競争者の半分を締め出す専制であり、夫婦の収入の合計が変わらなくても、妻は召使いから共同の担い手へ引き上げられる、というのです。両者が同じ結論だったとする見方は、この違いを見落としています。\n\nミルも稼ぐ力を軽んじてはいません。稼ぐ力は、自分の財産をもたない女性の尊厳にとって欠かせないと書きます。ただ、実際に稼ぐかどうかは別で、結婚した女性の多くには家庭が第一になるだろう、と見ていました。この点は、今日しばしば批判されます。\n\nこの違いは、『女性の参政権』の主な書き手を彼女とする見方の重要な根拠の一つとされています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は二つの文章の対比で、入替誤答はその鏡像。「両者とも」型の一つは『女性の隷従』の立場を両方に広げたもの、もう一つは『女性の参政権』が退けた賃金の議論を両方に帰したもの。四択は成立している。 設計の記録: 設問は人物名ではなく著作名で対比した。『女性の参政権』の著者の帰属に食い違う証言があり（SEP §3）、人物名で問うと帰属を断定することになるため。SEP がこの二つの文章を並べて論じているので、比較問題の条件（一つの資料が両者を並べて論じている）を満たす。選択肢では著作名を『参政権』『隷従』と縮めた（正解の字数を28〜36字に収めるため。2026年9月21日に判断）。誤答を先に3つ書いてから正解を書いた。位置指しなし。 事実の確認: 『女性の参政権』原文「How infinitely preferable is it that part of the income should be of the woman's earning, even if the aggregate sum were but little increased by it」「So long as competition is the general law of human life, it is tyranny to shut out one half of the competitors.」「the joint income of the two would be the same as before, while the woman would be raised from the position of a servant to that of a partner」を確認した。『女性の隷従』第2章の「it is not, therefore, I think, a desirable custom, that the wife should contribute by her labour to the income of the family」「The power of earning is essential to the dignity of a woman, if she has not independent property」、結婚する女性は「the management of a household, and the bringing up of a family」を第一の務めとして選んだと理解してよいという一節を確認した。SEP §3 が、『女性の隷従』は「rather notoriously」大半の夫婦では妻が家と子に専念するのが最善だと示唆するとし、この違いを『女性の参政権』を彼女に帰する重要な証拠としていることを確認した。 対照の記録: q116（『女性の隷従』の法的従属）と主題が重ならない。q807 とは同じ論考の別の論点。",
+      refs: [
+        "https://plato.stanford.edu/entries/harriet-mill/ — §3。『女性の参政権』の結婚した女性の就労の議論と、『女性の隷従』が妻は家と子に専念するのが最善と示唆することの対比、この違いが帰属の証拠とされること",
+        "https://www.gutenberg.org/cache/epub/73404/pg73404-images.html — Enfranchisement of Women 本文。妻の稼ぎ、競争者の半分を締め出す専制、召使いから共同の担い手へ、の各一節",
+        "https://www.marxists.org/reference/archive/mill-john-stuart/1869/subjection-women/ch02.htm — 『女性の隷従』第2章。妻が労働で家計に寄与するのは望ましい慣習ではないという一節、稼ぐ力と女性の尊厳、家の切り盛りを第一の務めとして選ぶという一節"
       ]
     }
   }
