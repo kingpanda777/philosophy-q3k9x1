@@ -105,6 +105,8 @@ const TOUCHED = ["questions.js", "keyterms.json", "index.html", "philosophers.js
   "CLAUDE.md", path.join("tools", "keys_draft.json")];
 
 const QUESTIONS_OF = src => new Function(src + "\n;return {QUESTIONS};")().QUESTIONS;
+/* 作問の philosophers と terms を突き合わせる先。validate() が読む。2026-09-21 に足した。 */
+const REGISTRY_OF = src => new Function(src + "\n;return {PHILOSOPHERS, TERMS};")();
 const readQ = () => QUESTIONS_OF(fs.readFileSync(P("questions.js"), "utf8"));
 const bodyOf = q => [q.question || "", (q.choices || []).join(" / "), q.explanation || "", q.detail || ""].join(" ");
 
@@ -118,6 +120,11 @@ function validate(input) {
   if (!Array.isArray(tsui)) bad.push("「追記」が配列でない");
   if (typeof keys !== "object") bad.push("「鍵語」が object でない");
 
+  /* 作問の philosophers が PHILOSOPHERS に、terms が TERMS に無ければ止める（2026-09-21 に足した）。
+     綴りを1字違えると、どの人物からも・どの概念からも辿れない問題やタグが黙って通るため。
+     人物は add_person.js で先に登録してから作問を流す（登録の順序）ので、ここで無ければ手順の抜けでもある。 */
+  const reg = REGISTRY_OF(fs.readFileSync(P("questions.js"), "utf8"));
+  const 人物名 = new Set(reg.PHILOSOPHERS.map(p => p.name)), 概念名 = new Set(reg.TERMS.map(t => t.name));
   const seen = new Set();
   saku.forEach((d, i) => {
     const w = m => bad.push(`作問[${i}]${d && d.id ? "（" + d.id + "）" : ""}: ${m}`);
@@ -125,9 +132,13 @@ function validate(input) {
     if (typeof d.id !== "string" || !/^q\d+$/.test(d.id)) w("id が q+数字でない");
     if (seen.has(d.id)) w("id が重複している"); else seen.add(d.id);
     if (!Array.isArray(d.philosophers) || !d.philosophers.length) w("philosophers が配列でない（1人でも配列にする）");
-    else d.philosophers.forEach(p => { if (typeof p !== "string") w("philosophers に文字列でないものがある"); });
+    else d.philosophers.forEach(p => {
+      if (typeof p !== "string") w("philosophers に文字列でないものがある");
+      else if (!人物名.has(p)) w(`philosophers の「${p}」が PHILOSOPHERS に無い（綴り違いか、add_person.js の登録がまだ）`);
+    });
     /* 空の terms は許す（CLAUDE.md、2026-09-16）。型だけを見て、空の一覧は auditEmptyTerms が出す。2026-09-21 に直した。 */
     if (!Array.isArray(d.terms)) w("terms が配列でない");
+    else d.terms.forEach(t => { if (!概念名.has(t)) w(`terms の「${t}」が TERMS に無い（綴り違いか、TERMS への登録がまだ）`); });
     /* 空の keys は許す（CLAUDE.md「keys なしが正常な問題」）。型だけを見て、空の一覧は auditEmptyKeys が出す。
        2026-09-21 に terms と同じ形に直した。ハリエット・テイラーの作問（q807）で踏んだ。 */
     if (!Array.isArray(d.keys)) w("keys が配列でない");
