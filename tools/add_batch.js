@@ -158,7 +158,8 @@ function validate(input) {
       w("answer が0〜3の整数でない（選択肢の本文を書いていないか）");
     if (typeof d.explanation !== "string" || !d.explanation) w("explanation が無い");
     if (typeof d.detail !== "string" || !d.detail) w("detail が無い");
-    else if (d.detail.split(/\n\n+/).length !== 3) w("detail が3段落でない");
+    /* 段落数は auditDetailLength（1.6）が見る。2026-09-21 に validate() から移した。
+       追記は許可欄で3段落以外を通せるのに、作問だけ許可欄なしに止まっていたため。 */
     if (typeof d.note !== "string" || !d.note) w("note が無い");
     if (!Array.isArray(d.refs)) w("refs が配列でない（空でよいが省略はしない）");
     /* kind・label・choicesOk・unverified（2026-09-21 に足した）。書かなければ従来の値が入る。 */
@@ -547,7 +548,8 @@ function auditPositional(saku) {
    数え方は追記の検査と同じ detailLen を使う（改行を除いた文字数）。
    数え方を2つ持つと、同じ本文が道具のどこで測られたかで違う字数になる。
 
-   段落数は validate() が既に3段落で止めているので、ここでは見ない。
+   段落数もここで見る（2026-09-21 に validate() から移した）。追記と同じく、3段落でなければ
+   要判断にして許可欄で通す。CLAUDE.md「4段落にするかどうかは、そのつど判断する」に合わせた。
    既存の問題には遡らない。見るのは入力にある作問の detail だけである。
 
    逸脱は throw ではなく「要判断」として一覧で報告し、1問も書かずに止める。
@@ -560,9 +562,11 @@ function auditDetailLength(saku) {
   console.log("■ 作問の detail の字数の検査（書き込みの前）");
   for (const d of saku) {
     const n = detailLen(d.detail);
+    const par = d.detail.split(/\n\n+/).length;
     const 逸脱 = n > LIMIT ? [`${n}字で上限${LIMIT}字を超える`] : [];
+    if (par !== 3) 逸脱.push(`段落が${par}`);
     const mark = 逸脱.length ? (d["許可"] ? "△" : "★") : "○";
-    console.log(`  ${mark} ${d.id}　${n}字（上限${LIMIT}字に対して余地${LIMIT - n}字）` +
+    console.log(`  ${mark} ${d.id}　${n}字（上限${LIMIT}字に対して余地${LIMIT - n}字）` + (par !== 3 ? `／${par}段落` : "") +
       (逸脱.length && d["許可"] ? "　許可つきで通す" : ""));
     if (逸脱.length) {
       if (!d["許可"]) 要判断.push(`${d.id}: ${逸脱.join("・")}`);
@@ -571,13 +575,13 @@ function auditDetailLength(saku) {
   }
   if (要判断.length) {
     console.error("\n要判断（1問も書いていない）:\n  " + 要判断.join("\n  ") +
-      "\n  どちらかを選ぶ: detail を詰めて型に収めるか、その作問に「許可」欄（理由）を足して通す。" +
+      "\n  どちらかを選ぶ: detail を詰めて型（3段落・上限370字）に収めるか、その作問に「許可」欄（理由）を足して通す。" +
       "\n  型は結果として揃ったものであって、内容より優先される規則ではない。");
     process.exit(1);
   }
   console.log(例外
-    ? `  → ${saku.length}問を検査し、${例外}問は許可つきで通した（上限を超えたまま通っている）\n`
-    : `  → ${saku.length}問とも上限${LIMIT}字の内側\n`);
+    ? `  → ${saku.length}問を検査し、${例外}問は許可つきで通した（3段落・上限の型の外側のまま通っている）\n`
+    : `  → ${saku.length}問とも3段落・上限${LIMIT}字の内側\n`);
 }
 
 /* ================= 1.4 作問の type の指定（書き込みの前） =================

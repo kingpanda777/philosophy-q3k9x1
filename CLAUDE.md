@@ -5266,6 +5266,7 @@ node tools/add_batch.js <入力.json> --dry-run  適用・検査したあと必�
 | **⑧⑨** | 作問の `philosophers` が `PHILOSOPHERS` に、`terms` が `TERMS` に無い | **止める**（許可欄なし） | 綴りを1字違えると、どの人物・概念からも辿れない問題やタグが黙って通る。人物は `add_person.js` で先に登録する |
 | **②** | 作問の `kind` が `ai_web`・`book`・`ai` 以外（`ai_flagged` は新規に付けない）／`kind` が `ai_web` 以外なのに `label` が無い／`choicesOk` が `ok`・`fragile`・`broken` 以外 | **止める**（許可欄なし） | 書かなければ従来どおり `ai_web`／「ウェブ照合済み」／`ok`。`label` は画面に出るので、`ai_web` 以外は書き手が決める（既定の文言を道具に持たせない） |
 | **③** | 作問の note に「確認できていない点:」があるのに `unverified` が無い（空文字も） | **止める**（許可欄なし） | `unverified` は detail の下に出る表示用の文。書き込む経路が無かったので、欄を足した |
+| **①** | 作問の detail が3段落でない | **要判断**（許可欄で通る） | 追記と同じ扱いにした。それまでは validate() で許可欄なしに止まり、作問だけ型を破る経路が無かった |
 <!-- 突き合わせの表ここまで -->
 
 ## 人物を登録する道具（`tools/add_person.js`）
