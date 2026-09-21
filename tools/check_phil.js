@@ -138,6 +138,20 @@ if (yKnown.length) {
 const alive = PHILOSOPHERS.filter(p => /–\s*$/.test(p.years));
 console.log(`  （存命として扱っている人物：${alive.length}人）`);
 
+console.log("\n===== 8. 台帳（keyterms.json）の学派が PHILOSOPHERS の school と一致するか =====\n");
+/* 学派は PHILOSOPHERS と台帳の2か所にあり、ほかのどの道具も突き合わせていなかった。
+   人物を別の学派へ移すとき、台帳の側を直し忘れても何も止まらない（2026年9月22日に足した）。
+   台帳にだけいる人物（問題ができる前に鍵語だけ先に入れた人）は、決まりどおりなので落とさない。 */
+const kt = readJson(path.join(R, "keyterms.json"));
+const ktPeople = Object.keys(kt).filter(k => !k.startsWith("_"));
+const schBad = PHILOSOPHERS.filter(p => kt[p.name] && kt[p.name]["学派"] !== p.school)
+  .map(p => `${p.name}（PHILOSOPHERS「${p.school}」／台帳「${kt[p.name]["学派"]}」）`);
+ok(schBad.length === 0, `台帳の学派が PHILOSOPHERS の school と一致する`, schBad.join("、"));
+const noKt = PHILOSOPHERS.filter(p => !kt[p.name]).map(p => p.name);
+ok(noKt.length === 0, `PHILOSOPHERS の全員が台帳にいる`, noKt.join("、"));
+const ktOnly = ktPeople.filter(n => !base[n]);
+if (ktOnly.length) console.log(`  △ 台帳にだけいる人物${ktOnly.length}人（作問待ち）：${ktOnly.join("、")}`);
+
 console.log("\n===== 6. 残り =====\n");
 const rest = PHILOSOPHERS.length - PHIL_INTRO.length;
 console.log(`  紹介あり ${PHIL_INTRO.length}人 ／ まだ ${rest}人（入口は出ない）`);
