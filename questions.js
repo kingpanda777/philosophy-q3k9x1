@@ -188,7 +188,8 @@ const PHILOSOPHERS = [
   { name: "バディウ", years: "1937–", note: "出来事が真理を開く。忠実であり続ける者が主体になる", school: "二十世紀の政治哲学" },
   { name: "モンテスキュー", years: "1689–1755", note: "権力は権力によって抑えよ", school: "社会契約と政治" },
   { name: "シジウィック", years: "1838–1900", note: "自分の幸福を求める理性と全体の幸福を求める理性が、和解しない", school: "功利主義と自由主義" },
-  { name: "パトナム", years: "1926–2016", note: "意味は頭の中にはない。自分の説も、自分で改めつづけた", school: "分析哲学" }
+  { name: "パトナム", years: "1926–2016", note: "意味は頭の中にはない。自分の説も、自分で改めつづけた", school: "分析哲学" },
+  { name: "シュトラウス", years: "1899–1973", note: "何が正しいかを理性で問うことを、近代はやめてしまったのではないか", school: "二十世紀の政治哲学" }
 ];
 
 const TERMS = [
@@ -18820,6 +18821,190 @@ const QUESTIONS = [
       refs: [
         "https://plato.stanford.edu/entries/thick-ethical-concepts/ — §1。cruel・courageous などの厚い概念が、good・wrong のような薄い概念より多くの記述的な内容をもつこと。§2.1。厚い概念が事実と価値の二分法を揺るがすとされること（Putnam 2002: 34–45）。§2.2。評価の経験から独立に、概念とちょうど重なる記述を取り出せるかを問うマクダウェルの論法。§3.2。分けられないとする立場に Putnam 2002 第2章が数えられること",
         "https://reasonpapers.com/pdf/28/rp_28_9.pdf — Roderick T. Long による書評、Reason Papers 28（2006）125–131頁。価値判断を主観的で確かめようがないとする二分法、それを支える柱としての分析と総合の二分法、認識の価値が規範的であること、「cruel」「courageous」を典型とする厚い概念、倫理の語りは実在のうちに倫理的な性質を立てなくても客観的でありうること"
+      ]
+    }
+  },
+  {
+    id: "q799",
+    philosophers: ["シュトラウス"], terms: [], type: "single",
+    keys: ["歴史主義"],
+    question: "『自然権と歴史』でシュトラウスが歴史主義を退けた論点として最も適切なものは？",
+    choices: [
+      "歴史の法則を知れば未来を予言できるとして、社会の全面設計へ進むこと",
+      "すべての思想は時代の産物だという主張だけを、時代を越えた真理として扱う",
+      "基礎づけを捨て、語彙の交替として思想の歴史を語り直すこと",
+      "理性は価値を決められず、選択は各人に委ねるほかないこと"
+    ],
+    answer: 1,
+    explanation: "歴史主義は、人間の思想はすべて歴史的で、いずれ別の思想に取って代わられると言います。ところがこの主張そのものは、いつの時代にも当てはまる真理として語られる。自分の下した判決から自分だけを外している、という指摘です。",
+    detail: "1949年秋にシカゴ大学で行った6回の講義をもとに、1953年に刊行された本です。第1章が歴史主義を、第2章が事実と価値の区別を扱い、後者の相手はウェーバーです。価値の問題を理性が決められないなら、どんな好みも同じだけ正当になり、虚無主義に行き着く、と論じました。\n\n同じ歴史主義の語でも、歴史の法則から未来を予言する立場を指すのはポパーの用法で、中身が違います。基礎づけを退けて語彙の交替として哲学を語り直すローティの立場は、歴史主義を退けるのではなく引き受ける側にあります。\n\n指摘を受けた歴史主義は、永遠の問いを立てること自体が根拠のない前提だと応じます。シュトラウスはソクラテスの無知の知を持ち出し、答えは出せなくとも問いは理解できるという哲学の形を対置しました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 歴史主義は自らの判決から自分だけを外すという自己矛盾の指摘はウォルグリーン講義第1講の通りで、誤答はポパーの意味の歴史主義、歴史主義を引き受けるローティの立場、第2講で批判されるウェーバーの事実と価値の区別から取った。四択は成立している。 事実の確認: 講義の書き起こしに Historicism asserts that all human thought is historical and hence destined to be replaced by other human thought、it inconsistently exempts itself from its own verdict、The rejection of natural right seems to lead to nihilism、ソクラテスの I know that I know nothing を引く箇所があることを確認した。邦訳の章題はちくま学芸文庫版の目次で確認した。 対照の記録: q309 はポパーの意味の歴史主義で、語は同じでも中身が違う。q485 はローティが歴史主義を引き取ったと書いており、誤答の出どころと一致する。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。terms は空にした。TERMS「理性」の二読み（認識の道具か、歴史を動かす当のものか）のどちらにも主題が乗らないため。 資料の限界: IEP に専用項目が無く、原典は著作権内。シカゴ大学出版局が公開している講義の書き起こしで本文を確かめた。",
+      refs: [
+        "https://press.uchicago.edu/sites/strauss/natural_right/transcript_Strauss_six_lectures_1949.pdf — 1949年秋のウォルグリーン講義6回の書き起こし。第1講の歴史主義の自己矛盾、ニヒリズム、ソクラテスの無知の知。第2講のウェーバー批判",
+        "https://press.uchicago.edu/sites/strauss/natural_right/index.html — 講義が1953年の本になったこと（1952年10月脱稿）と章の構成",
+        "https://plato.stanford.edu/entries/strauss-leo/ — 歴史主義の定義（all human thoughts or beliefs are historical）と、ウェーバーの実証主義から歴史主義への線",
+        "https://www.chikumashobo.co.jp/product/9784480095848/ — 邦訳『自然権と歴史』の目次。第1章「自然権と歴史的アプローチ」、第2章「事実と価値の区別と自然権」"
+      ]
+    }
+  },
+  {
+    id: "q800",
+    philosophers: ["シュトラウス"], terms: [], type: "single",
+    keys: ["行間を読む"],
+    question: "シュトラウスが『迫害と著述の技法』で唱えた読み方として最も適切なものは？",
+    choices: [
+      "作者の意図は意味を決めず、意味は読者の側で生まれる",
+      "作品は作者の時代の社会を映すので、背景から読み解く",
+      "テクストが自らの前提を裏切る箇所を探し、そこから意味を崩す",
+      "迫害を恐れた過去の哲学者は真意を隠して書いたので、その行間を読む"
+    ],
+    answer: 3,
+    explanation: "迫害の危険がある社会では、哲学者は多数の読者には一つの教えを、少数の注意深い読者には別の教えを受け取らせる書き方をした。だから表に書かれた教えだけでなく、行間に置かれた教えまで読まなければならない、という主張です。",
+    detail: "論文は1941年に雑誌に発表され、1952年に同名の論集にまとめられました。念頭にあるのは近代以前の哲学者で、とくにファーラービーやマイモニデスらイスラーム世界とユダヤの思想家です。表向きの教えを公教的、内に隠された教えを秘教的と呼び分けます。\n\n作者の意図を読みから外すバルトとも、テクストの前提の綻びを突くデリダとも、作品を時代の社会の反映として読む方法とも向きが違います。作者が何をどこまで意図して書いたかに注意を向けるからで、最後のものは彼が退けた歴史主義の読み方です。\n\nこの読み方は論争を呼びました。哲学者が信念を隠したと結論するのが早すぎ、書かれた文脈への目配りが足りなくなる、という批判があります。一方で、シュトラウスの学派はこの読解の方法によって形づくられた、とも評されます。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 迫害の可能性が、多数と少数に別の教えを届ける書き方を生み、行間を読む必要がある、という規定は SEP の通りで、誤答はバルトの作者の死、歴史主義的な背景読解、デリダの脱構築から取った。四択は成立している。 事実の確認: 論文の初出は Social Research 8(4), 1941, 488–504、論集は1952年。公教的・秘教的の呼び分けと、ファーラービー・アヴェロエス・マイモニデスの秘教主義の伝統は石崎論文で、学派がこの方法によって形成されたという評も同論文（ハインリッヒ・マイアーの指摘として）で確認した。批判は Bevir の要旨の too ready to conclude that philosophers intended to hide their beliefs と insufficiently attuned to the varied contexts による。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。新保守主義との関係は評価の割れる話題なので本文に入れていない。terms は空にした。当てはまる TERMS の軸が無いため。 資料の限界: 原典は著作権内で、本文は SEP と二次資料による。",
+      refs: [
+        "https://plato.stanford.edu/entries/strauss-leo/ — 1952年刊。read between the lines。多数と哲学的少数に別の教えを届ける書き方。esoteric と exoteric の用語",
+        "https://epay.newschool.edu/C21120_ustores/web/product_detail.jsp?PRODUCTID=2235 — 初出 Social Research 8(4):488–504（1941年）の書誌",
+        "https://www.jstage.jst.go.jp/article/jpp/19/0/19_2/_pdf/-char/ja — 石崎嘉彦「現代アメリカ政治とレオ・シュトラウス政治哲学」『政治哲学』19号（2015年）40–65頁。公教的と秘教的、秘教主義の伝統、学派の形成",
+        "https://escholarship.org/content/qt5nj1k4db/qt5nj1k4db_noSplash_e5af8158692bd062a5e65a9f7b071629.pdf — Mark Bevir「Esotericism and Modernity: An Encounter with Leo Strauss」。秘教的な歴史観がもたらす偏りの批判"
+      ]
+    }
+  },
+  {
+    id: "q801",
+    philosophers: ["シュトラウス"], terms: [], type: "single",
+    keys: ["エルサレムとアテネ", "神学‐政治問題"],
+    question: "シュトラウスが「エルサレムとアテネ」の名で論じた関係として最も適切なものは？",
+    choices: [
+      "信仰は理性を破壊せず完成させ、神学が哲学を仕上げる",
+      "アテネとエルサレムに何の関係があるかと、哲学を締め出す",
+      "啓示は服従を、知は真理を目指すので、互いに別の領分を持つ",
+      "啓示と哲学は互いを論駁できず、どちらの生き方を取るかを迫られる"
+    ],
+    answer: 3,
+    explanation: "聖書によれば知恵の始まりは主を畏れることであり、ギリシアの哲学者によれば驚きである。啓示は自明な知を名のらないので、哲学はそれを論駁も確証もできない。二つの都市の緊張を、解かずに保とうとする構えです。",
+    detail: "1967年に雑誌『コメンタリー』に載った論考です。西洋の人間は聖書の信仰とギリシアの思想が出会って今の姿になった、という見立てから始まり、預言者とソクラテスを並べて比べます。\n\n近代の宗教批判は、啓示を哲学と同じ学問の基準で裁こうとしました。シュトラウスはこれを退けます。しかも哲学は明証な知を求める生き方なので、その生き方を選ぶこと自体が明証でないなら、揺らぐのはむしろ哲学の側だ、とまで論じました。\n\n信仰が理性を完成させるというアクィナスの総合とも、アテネを締め出すテルトゥリアヌスの拒絶とも、啓示と知に別々の領分を割り振るスピノザとも違います。シュトラウスはこの緊張を神学‐政治問題と呼び、自分の研究の主題だと述べました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 啓示と哲学は互いを論駁できないという規定は SEP の通りで、誤答はアクィナスの恩寵は自然を完成する、テルトゥリアヌス『異端者への抗弁』第7章の真正の句、スピノザ『神学政治論』序文の領分分けから取った。四択は成立している。 事実の確認: 『コメンタリー』1967年6月号の本文で、冒頭の見立て（Western man became what he is … through the coming together of biblical faith and Greek thought）、fear of the Lord と wonder の対比、Socrates and the prophets の比較を確認した。SEP で、近代の宗教批判への批判、The mere fact that philosophy and revelation cannot refute each other would constitute the refutation of philosophy by revelation、theologico-political problem を the theme of my studies とする本人の言葉を確認した。 対照の記録: q281 がテルトゥリアヌスに帰す「不合理なるがゆえに我信ず」は非真正で、本問が使う句とは別の文である。 確認できていない点: 1967年のシティ・カレッジでの講演が雑誌版の元になったこと。定評ある資料で取れなかったので、本文では雑誌の論考としてだけ書いた。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。terms は空にした。TERMS「宗教」の二読み（人の本質の投影か、社会の自己崇拝か）に当たらないため。",
+      refs: [
+        "https://www.commentary.org/articles/leo-strauss/jerusalem-and-athens-some-introductory-reflections/ — 『コメンタリー』1967年6月号の本文。冒頭の見立て、畏れと驚き、預言者とソクラテス",
+        "https://plato.stanford.edu/entries/strauss-leo/ — 啓示と哲学の不可和解性、論駁できないことが哲学の論駁になるという論、神学‐政治問題",
+        "https://www.newadvent.org/fathers/0311.htm — テルトゥリアヌス『異端者への抗弁』第7章。What indeed has Athens to do with Jerusalem?",
+        "https://www.gutenberg.org/cache/epub/989/pg989.txt — スピノザ『神学政治論』序文（45）。Revelation has obedience for its sole object … each has its separate province"
+      ]
+    }
+  },
+  {
+    id: "q802",
+    philosophers: ["シュトラウス", "マキャヴェリ"], terms: ["自然法"], type: "single",
+    keys: ["古代人と近代人", "近代性の三つの波"],
+    question: "シュトラウスが近代の始まりをマキャヴェリに見た理由として最も適切なものは？",
+    choices: [
+      "教会の権威から学問を解き放ち、自然を数学の言葉で読む道を開いた",
+      "自己保存の権利を出発点に、自然法を人間の完成から切り離した",
+      "人は自然のままでは善良だが、社会が堕落させたと文明を告発した",
+      "最善の体制を求める古典の目標を捨て、実現できる秩序へ目標を引き下げた"
+    ],
+    answer: 3,
+    explanation: "古典の政治哲学は、実現がほとんど偶然に任される最善の体制を探しました。マキャヴェリは、人がどう生きるべきかではなく実際にどう生きているかから出発し、実現の見込みが高い秩序を求めた。シュトラウスはここに近代の転回を見ます。",
+    detail: "1949年のシカゴ大学の講義でシュトラウスは、ホッブズの仕事を準備した二つの変化としてマキャヴェリとガリレオを挙げました。自己保存の権利を手がかりに、自然法を人間の完成から切り離したのが、それを受けたホッブズです。いずれも同じ流れの別の段階にあたります。\n\n後の論文「近代性の三つの波」は、この流れを三段に分けます。マキャヴェリに始まる第一の波、自然状態からの堕落を難じたルソーの第二の波、ニーチェの第三の波です。1958年の『哲学者マキァヴェッリについて』では、近代の源をマキャヴェリの反神学的な憤りに求めました。\n\n古代人と近代人の争いと呼ばれるこの対比は、近代が理性の力を大きく見積もりすぎたのに対し、古代の哲学者は節度を保った、という評価を含みます。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 古典の最善体制の探究は偶然に依存するので、実現の見込みが高い秩序へ置き換えた、という規定はウォルグリーン講義第5講の通りで、誤答はすべてシュトラウス自身の近代の見取り図（ガリレオ、ホッブズ、第二の波のルソー）から取った。四択は成立している。 事実の確認: 講義の書き起こしで The work of Hobbes was decisively prepared by two earlier changes … Machiavelli … Galileo、takes its bearings by how men actually live、discover a sound order of society whose actualization is probable、ホッブズが自然法を divorce it from the idea of man's perfection したことを確認した。「近代性の三つの波」の名とルソー・ニーチェの位置は石崎論文で、三つの波の見取り図は Bevir の要旨でも確認した。1958年の書と anti-theological ire、古代と近代の争いの規定は SEP による。邦題は勁草書房の刊行ページ（2011年）。 解釈の対立: 正解の「引き下げた」は講義の「実現の見込みが高い秩序」を言い換えた語で、原文の語ではない。 対照の記録: q358 はマキャヴェリ自身の方法を問い、本問はシュトラウスの診断を問う。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。「XがYを評価した理由」型（q245 の前例）に合わせてマキャヴェリを philosophers に入れ、type は single と明示した。",
+      refs: [
+        "https://press.uchicago.edu/sites/strauss/natural_right/transcript_Strauss_six_lectures_1949.pdf — 第5講。マキャヴェリとガリレオ、最善体制から実現可能な秩序へ、ホッブズの自然法",
+        "https://plato.stanford.edu/entries/strauss-leo/ — 古代人と近代人の争いの規定。1958年『哲学者マキァヴェッリについて』（原題 Thoughts on Machiavelli）と anti-theological ire",
+        "https://www.jstage.jst.go.jp/article/jpp/19/0/19_2/_pdf/-char/ja — 石崎論文。「近代性の三つの波」、ルソーとニーチェの位置",
+        "https://escholarship.org/content/qt5nj1k4db/qt5nj1k4db_noSplash_e5af8158692bd062a5e65a9f7b071629.pdf — Bevir。waves of modernity をシュトラウスが単一の企てとして描くこと",
+        "https://www.keisoshobo.co.jp/book/b94480.html — 邦題『哲学者マキァヴェッリについて』（勁草書房、2011年）"
+      ]
+    }
+  },
+  {
+    id: "q803",
+    philosophers: ["シジウィック"], terms: ["功利主義"], type: "single",
+    keys: ["常識道徳"],
+    question: "『倫理学の方法』でシジウィックが常識道徳を吟味した結論として最も適切なものは？",
+    choices: [
+      "常識の規則はそれ自体で自明で、哲学が根拠を問う必要はない",
+      "常識の規則は神の命令なので、帰結を問わず従うべきである",
+      "常識の規則は弱者の恨みから生まれ、価値の転倒が要る",
+      "常識の規則は自明性の条件を満たさず、衝突の裁定は功利の原理に仰ぐ"
+    ],
+    answer: 3,
+    explanation: "嘘をつかない、約束を守る、といった規則を一つずつ取り上げ、自明な命題の条件にかけると、どれも例外と衝突を抱えて通らない。その調停役として呼ばれるのが功利の原理だ、という筋です。",
+    detail: "第3篇第11章「常識道徳の再検討」で、それまで常識から引き出してきた原理を、自明な命題が満たすべき四つの条件にかけ直します。語が明晰で精確であること、熟慮によって確かめられること、互いに整合すること、他の人々の同意があることです。\n\n第4篇第3章は、常識道徳は少なくとも無自覚に功利主義的だと書きます。規則が衝突したときの裁定役として功利の原理が呼ばれる、という位置づけです。常識の規則を捨てるのではなく、その根拠と限界を功利の原理が与えます。\n\n規則をそのまま自明とみなす直観主義とも、規則を神の命令として帰結から切り離す立場とも、道徳の由来を暴いて価値を転倒するニーチェの系譜学とも、向きが違います。吟味のあとに自明な原理として残るのは、ごく少数の形式的な公理だけでした。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 常識の規則が自明性の4条件を満たさず、衝突の裁定を功利の原理に仰ぐという規定は第3篇第11章と第4篇第3章の通りで、誤答は規則をそのまま自明とする直観主義、神命説、ニーチェの系譜学から取った。四択は成立している。 事実の確認: 第3篇第11章第2節の4条件（The terms of the proposition must be clear and precise／ascertained by careful reflection／mutually consistent／the denial by another … impair my confidence）と、第4篇第3章の the Morality of Common Sense may be truly represented as at least unconsciously Utilitarian、naturally called in as arbiter を原典で確認した。約束（第3篇第6章）と真実（同第7章）を扱う章があることは目次で確認した。 対照の記録: q792 の detail は直観主義と功利主義が結びつけられるとだけ書いている。本問はその中身を扱い、二元性には踏み込まない。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。",
+      refs: [
+        "https://www.laits.utexas.edu/poltheory/sidgwick/me/me.b03.c11.s02.html — 第3篇第11章第2節。自明な命題の4条件",
+        "https://www.laits.utexas.edu/poltheory/sidgwick/me/me.b04.c03.s01.html — 第4篇第3章。unconsciously Utilitarian、衝突の裁定者としての功利の原理",
+        "https://www.laits.utexas.edu/poltheory/sidgwick/me/index.html — 目次。第3篇の約束・真実の章、第11章と第13章の章題",
+        "https://plato.stanford.edu/entries/sidgwick/ — 4条件と、常識の原理が従属的な妥当性しか持たないこと（1907: 338–341, 421）"
+      ]
+    }
+  },
+  {
+    id: "q804",
+    philosophers: ["シジウィック"], terms: ["功利主義"], type: "single",
+    keys: ["秘教的道徳"],
+    question: "シジウィックの秘教的道徳として最も適切なものは？",
+    choices: [
+      "他人の権利にかかわる行為は、公表と両立しない格率なら不正である",
+      "為政者の行いは公開され、世論に絶えず裁かれねばならない",
+      "君主は徳を装いつつ、必要なら密かに信義を破るべきである",
+      "公に説けない行いでも、功利の上から密かに行うのが正しい場合がある"
+    ],
+    answer: 3,
+    explanation: "功利主義者は、自分の言動が他人に与える影響まで計算に入れます。すると、広まれば害になる行いは、公に説かず密かに行うのが最善になりうる。しかもそう考えること自体を、比較的秘密にしておくべきだとまで書きました。",
+    detail: "第4篇第5章第3節の議論です。公に唱えるべきでないことを私的に行い勧めるのが正しい場合がある、一部の人に教え他の人には教えないのが正しい場合がある、と段階を追って並べます。常識はこれを受け入れないと認めたうえで、秘教的道徳が得策だという説も秘教にしておくのが得策だ、と結びます。\n\n為政者を公開の下で世論に裁かせるベンサムの構想とも、公表できない格率を不正とするカントの公開性の定式とも、正反対を向いています。徳を装うマキャヴェリの君主とも違い、目的は全体の幸福の計算にあります。\n\n後にウィリアムズは1985年の本で、理論を知る少数が多数を導くこの構図を、植民地の総督府になぞらえて批判しました。一方でデ・ラザリ＝ラデクとシンガーは、2010年の論文で秘教的道徳を擁護しています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 公に勧めるべきでないことを密かに行い勧めるのが功利の上で正しい場合がある、という規定は第4篇第5章第3節の通りで、誤答はカント『永遠平和のために』付録IIの公法の超越論的定式、ベンサムの世論法廷（q784）、『君主論』第18章から取った。四択は成立している。 事実の確認: 原典で it may be right to do and privately recommend … what it would not be right to advocate openly とそれに続く3段、the opinion that secrecy may render an action right … should itself be kept comparatively secret、the doctrine that esoteric morality is expedient should itself be kept esoteric、常識が esoteric morality を拒むという認め方を確認した。ウィリアムズの Government House utilitarianism という批判と de Lazari-Radek と Singer の擁護は SEP の2項目で確認した。 訳語の確認: Government House utilitarianism の邦訳（『生き方について哲学は何が言えるか』）での訳語は確かめていない。本文では「植民地の総督府になぞらえて」と言い換え、訳語としては書いていない。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。シュトラウスの秘教的著述とは語が似るが、両者を並べて論じる資料が無いので本文では触れていない。",
+      refs: [
+        "https://www.laits.utexas.edu/poltheory/sidgwick/me/me.b04.c05.s03.html — 第4篇第5章第3節。秘教的道徳の一節すべて",
+        "https://plato.stanford.edu/entries/sidgwick/ — 秘教的道徳の引用（1907: 489–90）。ウィリアムズの Government House の批判と、de Lazari-Radek と Singer の擁護",
+        "https://plato.stanford.edu/entries/utilitarianism-history/ — 第3節。ウィリアムズの批判とそれへの応答（Driver 2011）",
+        "https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-9329.2009.00449.x — de Lazari-Radek と Singer「Secrecy in Consequentialism: A Defence of Esoteric Morality」Ratio（2010年）",
+        "https://www.gutenberg.org/cache/epub/50922/pg50922.txt — カント『永遠平和のために』付録II。All actions relating to the rights of other men are wrong, if the maxims … are inconsistent with publicity",
+        "https://www.gutenberg.org/cache/epub/1232/pg1232.txt — 『君主論』第18章。it is very necessary to appear to have them"
+      ]
+    }
+  },
+  {
+    id: "q805",
+    philosophers: ["シジウィック"], terms: ["幸福"], type: "single",
+    keys: ["哲学的直観主義", "宇宙の観点"],
+    question: "シジウィックが哲学的直観主義の結論として自明と認めた原理として最も適切なものは？",
+    choices: [
+      "理性は情念の奴隷で、善悪は理性でなく感情によって区別される",
+      "人の善は徳に基づく魂の活動で、その基準は中庸にある",
+      "自分の完成と他人の幸福という、同時に義務でもある二つの目的",
+      "似た状況の者を同じに扱い、後の善を軽んじず、誰の善も等しく数える"
+    ],
+    answer: 3,
+    explanation: "正義は、別人だというだけの理由で自分と他人を違えて扱わないこと。思慮は、後であることそれ自体を理由に先の善を軽んじないこと。仁愛は、宇宙の観点から見て誰の善も他人の善より重くないこと。三つとも自明だとされます。",
+    detail: "第3篇第13章「哲学的直観主義」第3節の議論です。常識の規則を吟味して残ったのは、少数の抽象的な原理でした。シジウィックはこれらが、等しいものに等しいものを加えれば全体も等しいという数学の公理と同じく、自明なものとして現れると書きます。\n\nただし公理は形式にとどまり、どんな規則を公平に適用すべきかまでは決めません。善悪を感情で区別するヒューム、徳と中庸を基準とするアリストテレスとは出発点が違います。自分の完成と他人の幸福を義務とするのは、カントの徳論です。\n\n思慮と仁愛はともに自明でありながら、自分の幸福と全体の幸福が食い違う場面では衝突します。これが実践理性の二元性という行き詰まりです。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正義・思慮・仁愛の3原理を自明とする規定は第3篇第13章第3節の通りで、誤答はヒューム（q049）、アリストテレスの中庸（q238）、カント『徳論』序論IVの同時に義務である目的から取った。カントのものは自分と他人の二本立てで形が似ており、詳しい読者向けの罠になっている。四択は成立している。 事実の確認: 原典で、正義（it cannot be right for A to treat B in a manner in which it would be wrong for B to treat A, merely on the ground that they are two different individuals）、思慮（Hereafter as such is to be regarded neither less nor more than Now）、仁愛（the good of any one individual is of no more importance, from the point of view … of the Universe, than the good of any other）、数学の公理との比較、正義の原理が insufficient for the complete determination of just conduct であることを確認した。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。初案では誤答にムーア（善は定義できない）とベンサム（快苦が基準）を置いたが外した。シジウィック自身が ought を定義できないとし、快楽主義にも立つので、誤答として紛れるため。terms は幸福だけにした（「正義」の二読みには乗らないため）。 対照の記録: q466 の detail にシンガーの『宇宙の観点から』（2014年）があり、鍵語「宇宙の観点」はそこにも当たる（書名としての一致）。",
+      refs: [
+        "https://www.laits.utexas.edu/poltheory/sidgwick/me/me.b03.c13.s03.html — 第3篇第13章第3節。3原理、数学の公理との比較、正義の原理だけでは足りないこと",
+        "https://plato.stanford.edu/entries/sidgwick/ — 3原理と point of view of the Universe（1907: 382）",
+        "https://www.gutenberg.org/cache/epub/5684/pg5684.txt — カント『徳論』序論IV。OUR OWN PERFECTION, HAPPINESS OF OTHERS"
       ]
     }
   }
