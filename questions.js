@@ -195,7 +195,8 @@ const PHILOSOPHERS = [
   { name: "アマルティア・セン", years: "1933–", note: "何の平等か。財でも満足でもなく、人が実際になしうることを見よ", school: "現代の正義論" },
   { name: "ヌスバウム", years: "1947–", note: "尊厳に値する生のために、十のケイパビリティを閾値まで保障せよ", school: "現代の正義論" },
   { name: "ナンシー", years: "1940–2021", note: "存在することは共に在ること。完成した共同体という夢を疑え", school: "構造主義以降" },
-  { name: "ブランショ", years: "1907–2003", note: "死は私のものにならない。何も共有しない者たちの共同体へ", school: "構造主義以降" }
+  { name: "ブランショ", years: "1907–2003", note: "死は私のものにならない。何も共有しない者たちの共同体へ", school: "構造主義以降" },
+  { name: "ベッカリーア", years: "1738–1794", note: "刑罰は必要を超えれば不正である。死刑と拷問を問い直す", school: "社会契約と政治" }
 ];
 
 const TERMS = [
@@ -19625,6 +19626,157 @@ const QUESTIONS = [
         "https://getsuyosha.jp/product/978-4-86503-170-6/ — 月曜社『否認された共同体』（ジャン＝リュック・ナンシー著、市川崇訳）の紹介文。ナンシーの『無為の共同体』にブランショが『明かしえぬ共同体』で応答し、30年後にナンシーが亡きブランショへ問いかけたこと",
         "https://www.jstage.jst.go.jp/article/bellf/23/0/23_171/_article/-char/ja — 伊藤亮太「モーリス・ブランショ『文学空間』におけるコミュニカシオンについて」『日本フランス語フランス文学会関東支部論集』23号 171頁〜（2014）。序。ナンシーを介してバタイユの共同体論を再検討した『明かしえぬ共同体』",
         "https://www.jstage.jst.go.jp/article/sfjp/24/0/24_14/_article/-char/ja — 澤田直「集団、主体性、共同体をめぐって」『フランス哲学・思想研究』24号 14頁〜（2019）。ナンシーの共同体論への応答として1983年に出版された『明かしえぬ共同体』"
+      ]
+    }
+  },
+  {
+    id: "q831",
+    philosophers: ["ベッカリーア"], terms: ["社会契約"], type: "single",
+    keys: ["刑罰権"],
+    question: "ベッカリーアが『犯罪と刑罰』で、国家の刑罰権の根拠と限度をどう考えたかとして最も適切なものは？",
+    choices: [
+      "神が君主に授けた権威に基づき、刑の重さは君主が決めてよい",
+      "各人が差し出した最小限の自由の総和に基づき、それを超える刑罰は不正だ",
+      "犯罪への社会の怒りに基づき、怒りに見合う苦痛を与えてよい",
+      "罪人の魂を救う務めに基づき、改心するまで罰を続けなければならない"
+    ],
+    answer: 1,
+    explanation: "人々は絶えない戦争状態に疲れて社会をつくり、自由の一部を差し出して残りを安心して享受しようとした。差し出された自由の総和が主権をなし、主権者はその受託者になる。各人は必要な最小限しか差し出さないので、その総和が刑罰権であり、それを超えるものは権利ではなく濫用だ、とベッカリーアは論じます。",
+    detail: "刑罰は、個人が法を侵して社会をもとの混沌へ戻そうとするのを押しとどめる、感覚に訴える動因だとされます。雄弁や崇高な真理では人の情念を長く抑えられず、感覚に直接はたらきかけるものが要る、というのです。\n\nこの理論では、犯罪者も罰を受ける場面でなお社会契約の当事者であり続けます。法を犯したからといって、ただちに契約の外へ出されるわけではない、という点が要だと指摘されます。\n\n序論でベッカリーアは、モンテスキューがこの主題をざっと扱ったと書き、その足跡に従うと述べています。刑法と自由を結びつけたモンテスキューの議論が、ベッカリーアを触発しました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は原典第2章（原典の第1章・第2章）の「各人が差し出す最小限の部分の総和が刑罰権をなし、それを超えるものは濫用であって正義ではない」と、西 2011 の「主権者に供託された各人の自由を保護するのに必要なかぎりにおいて国家は刑罰権を有し、その限度を超えれば直ちにその刑罰は不正なものとなる」をまとめたもの。誤答は、王権神授の考え、社会の怒りに見合う報復、魂の救済としての刑罰。いずれもベッカリーアの社会契約による基礎づけと異なる。四択は成立している。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。type は single。terms は「社会契約」。TERMS の note の読みB「取り戻せる信託」に近い（主権者は差し出された自由の受託者とされる）。モンテスキューは序論で名前が出るが、正解が対比している当事者ではないので philosophers に入れない。 事実の確認: 原典（Farrer 訳、Project Gutenberg #58700）第2章（原典の第1章・第2章）の「Laws are the conditions under which men, leading independent and isolated lives, joined together in society, when tired of living in a perpetual state of war ... Of this liberty they voluntarily sacrificed a part, in order to enjoy the remainder in security and quiet. The sum-total of all these portions of liberty ... constitutes the sovereignty of a nation, and the sovereign is the lawful trustee and administrator of these portions」「‘Sensible motives,’ were therefore wanted to divert the despotic will of the individual from re-plunging into their primitive chaos the laws of society. Such motives were found in punishments」「The aggregate of these least possible portions constitutes the right of punishment; all that is beyond this is an abuse and not justice」、第1章（原典の序論）の「The immortal President, Montesquieu, has treated cursorily of this matter; and truth ... has forced me to follow the luminous footsteps of this great man」を確認した。西 2011 のはじめにで、ベッカリーアが社会契約思想を根拠として国家の刑罰権を限界づけたこと、上記の一節、「ベッカリーアの理論において、「犯罪者」は、刑罰が科される場面においても社会契約の当事者であり続ける」を確認した。SEP「Montesquieu」§4.2 の「Montesquieu's emphasis on the connection between liberty and the details of the criminal law were unusual among his contemporaries, and inspired such later legal reformers as Cesare Beccaria」を確認した。 設計の記録: 章番号は Farrer 訳の章番号で示し、括弧内に原典（イタリア語版 Wikisource、序論と全47章）の章番号を併記した。Farrer 訳は原典と章の立て方が違う（全42章）。",
+      refs: [
+        "https://www.gutenberg.org/ebooks/58700 — Beccaria, Crimes and Punishments（James Anson Farrer 訳、1880。Project Gutenberg）。章番号は Farrer 訳のもの。第1章（原典の序論）。モンテスキューの足跡に従うこと。第2章（原典の第1章・第2章）。社会契約による主権と刑罰権の成り立ち、感覚に訴える動因、最小限の部分の総和を超えるものは濫用であること",
+        "https://www.jstage.jst.go.jp/article/psaj/36/0/36_36003/_article/-char/ja — 西平等「「敵」と「犯罪者」――近代法的人道性の基礎についての考察」『平和研究』36号 21頁〜（2011）。はじめに。社会契約による刑罰権の限界づけ、犯罪者が契約の当事者であり続けること",
+        "https://plato.stanford.edu/entries/montesquieu/ — §4.2。刑法と自由を結びつけたモンテスキューの議論がベッカリーアを触発したこと",
+        "https://it.wikisource.org/wiki/Dei_delitti_e_delle_pene — Beccaria, Dei delitti e delle pene（1764。イタリア語版 Wikisource）。序論、第1章 Origine delle pene、第2章 Diritto di punire。Farrer 訳の章番号との対応を確かめた"
+      ]
+    }
+  },
+  {
+    id: "q832",
+    philosophers: ["ベッカリーア"], terms: ["社会契約"], type: "single",
+    keys: ["死刑反対論"],
+    question: "ベッカリーアの死刑反対論で、死刑は権利ではないとした根拠として最も適切なものは？",
+    choices: [
+      "死刑は神の定めた罰で、人間の法が科すのは越権にあたるから",
+      "犯罪者はもはや社会の一員ではなく、法の保護の外にいるから",
+      "他人に自分を殺す権限を委ねたいと望む者は、契約に一人もいないから",
+      "死刑は見せしめとして強すぎ、人々を必要以上に怖がらせるから"
+    ],
+    answer: 2,
+    explanation: "主権と法は、各人が差し出した最小限の自由の総和にすぎません。その最小限の犠牲のなかに、あらゆる善のうち最大のもの、つまり生命の犠牲が含まれるはずはない、とベッカリーアは論じます。社会契約は、国家に死刑を執行する権利を与えないというのです。",
+    detail: "死刑は権利ではなく、ある成員の抹殺を必要で有益とみなす国家の、その成員に対する戦争だとされます。ただし、自由を奪われてもなお国の安全を脅かす力をもつ場合や、法に代わって混乱が支配するときには必要になりうる、と例外を残しています。\n\n抑止の点でも、死刑より終身の隷従労働のほうが強い歯止めになると言います。刑罰の効果を決めるのは強さより持続で、一時の処刑の光景より、自由を奪われ労役で償い続ける人の長い実例が犯罪を思いとどまらせる、というのです。\n\nこの論拠には、のちにカントが反論しました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は原典第16章（原典の第28章）の「who ever wished to leave to other men the option of killing him?」と、西 2011 の「諸個人は自己の生命を奪う権利を他者に与えたいなどと望むはずがないのであるから、社会契約は国家に死刑を執行する権利を与えない」をまとめたもの。誤答は、神の法による越権という見方、犯罪者は社会の外にいるという見方（ベッカリーアの理論では犯罪者は契約の当事者であり続ける。西 2011）、死刑は強すぎるという見方（ベッカリーアは逆に、死刑の印象は一時的で持続しないとする）。四択は成立している。 設計の記録: 正解は社会契約の論拠に絞り、終身の隷従労働のほうが抑止になるという論拠は detail 第2段落へ回した。ベッカリーアは死刑が必要になりうる場合を二つ残しているので、誤答にも正解にも「どんな場合も」という言い方は使わない。誤答を先に3つ書いてから正解を書いた。位置指しなし。type は single。 事実の確認: 原典（Farrer 訳）第16章（原典の第28章）の「What kind of right can that be which men claim for the slaughter of their fellow-beings? Certainly not that right which is the source of sovereignty and of laws. For these are nothing but the sum-total of the smallest portions of individual liberty ... But who ever wished to leave to other men the option of killing him? How in the least possible sacrifice of each man’s liberty can there be a sacrifice of the greatest of all goods, namely, of life?」「The death penalty therefore is not a right ... but it is a war of a nation against one of its members」「The death of a citizen can only be deemed necessary for two reasons」「The greatest effect that any punishment has upon the human mind is not to be measured by its intensity but by its duration」「It is not the terrible yet brief sight of a criminal’s death, but the long and painful example of a man deprived of his liberty, who ... repays with his toil the society he has offended, which is the strongest restraint from crimes」を確認した。西 2011 のはじめにで上記の一節を確認した。芹生 2020 で、ベッカリーアの「犯罪に対する最も強力な歯止めとなるのは、恐ろしいが一時的な見せ物にすぎない悪党の死〔＝死刑執行〕ではない。そうではなく、自由を奪われた人が長期にわたって苦しみ続けるという実例こそが、犯罪に対する最も強力な歯止めとなるのだ」（小谷眞男訳『犯罪と刑罰』東京大学出版会、2011、92頁からの引用）を確認した。SEP「Kant’s Social and Political Philosophy」§7 で、カントがこの論拠に反論したことを確認した。 設計の記録: 章番号は Farrer 訳の章番号で示し、括弧内に原典（イタリア語版 Wikisource、序論と全47章）の章番号を併記した。Farrer 訳は原典と章の立て方が違う（全42章）。",
+      refs: [
+        "https://www.gutenberg.org/ebooks/58700 — Beccaria, Crimes and Punishments（Farrer 訳、1880）。章番号は Farrer 訳のもの。第16章（原典の第28章）。死刑は主権の源である権利に含まれないこと、国家の成員に対する戦争であること、必要になりうる二つの場合、刑罰の効果は強さより持続であること、終身の隷従労働の抑止力",
+        "https://www.jstage.jst.go.jp/article/psaj/36/0/36_36003/_article/-char/ja — 西平等「「敵」と「犯罪者」」『平和研究』36号 21頁〜（2011）。はじめに。社会契約は国家に死刑を執行する権利を与えないというベッカリーアの死刑反対論",
+        "https://www.jstage.jst.go.jp/article/ems/5/1/5_ES508/_article/-char/ja — 芹生尚子「18世紀後半フランスにおける脱走兵の処罰をめぐる論争と改革――感情と法，そして統治技法との絡み合い」『エモーション・スタディーズ』5巻1号 64–73頁（2020）。終身の隷従労働のほうが強い歯止めになるというベッカリーアの主張（小谷訳92頁の引用）",
+        "https://it.wikisource.org/wiki/Dei_delitti_e_delle_pene — Beccaria, Dei delitti e delle pene（1764。イタリア語版 Wikisource）。第28章 Della pena di morte。Farrer 訳の章番号との対応を確かめた"
+      ]
+    }
+  },
+  {
+    id: "q833",
+    philosophers: ["ベッカリーア"], terms: [], type: "single",
+    keys: ["拷問"],
+    question: "ベッカリーアが、裁判中の被告への拷問を退けた理由として最も適切なものは？",
+    choices: [
+      "拷問は手間と時間がかかり、裁判を速やかに進める妨げになるから",
+      "拷問で得た自白は、神の前での誓いを欠いているので無効だから",
+      "自白は痛みへの強さで決まり、頑健な罪人を放ち弱い無実の者を罰するから",
+      "拷問は貴族には許されるが、平民にだけ科すのは不公平だから"
+    ],
+    answer: 2,
+    explanation: "拷問のもとでの答えは、苦痛の印象の強さと各人の感じやすさで決まってしまいます。そのため拷問は、痛みに耐える頑健な罪人を放免し、弱い無実の者を罪に落とす確かな方法になる、とベッカリーアは論じます。拷問は真実を明らかにしないというのです。",
+    detail: "出発点は、判決の前に人を有罪と呼ぶことはできないという点です。罪が確かなら、法の定める刑罰のほかに科すべきものはなく、拷問は無用です。罪が不確かなら、法の上では無実の者を苦しめることになる、という二者択一で退けます。\n\n苦痛を真理のるつぼにするのは、人に告発者と被告を同時に兼ねさせ、真理の証しを筋肉や腱に求めるに等しい、とも批判します。火や熱湯による神判と、見かけほど違わないというのです。\n\n拷問の合法化に対する古典的な批判とされ、今日の議論でも参照されています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は原典第12章（原典の第16章）の「Torture is a certain method for the acquittal of robust villains and for the condemnation of innocent but feeble men」と、SEP「Torture」の、拷問は効果がないという批判と「The classic denunciation of the legalisation of torture is that of Cesare Beccaria 1764」をまとめたもの。誤答は、手間や迅速さの問題、宗教上の誓いの欠如、身分による不公平。いずれも第12章（原典の第16章）の論拠ではない。四択は成立している。 設計の記録: 正解は、SEP と原典の両方で支えられる「拷問は真実を明らかにしない」の論拠に置いた。罪が確かか不確かかの二者択一は原典だけに拠るので、detail 第1段落の付随部分にとどめた。誤答を先に3つ書いてから正解を書いた。位置指しなし。type は single。terms は空にした。当てはまる TERMS の語がない。 事実の確認: 原典（Farrer 訳）第12章（原典の第16章）の「A man cannot be called guilty before sentence has been passed on him by a judge」「either the crime is certain or uncertain; if certain, no other punishment is suitable for it than that affixed to it by law; and torture is useless ... If it is uncertain, it is wrong to torture an innocent person, such as the law adjudges him to be」「to require a man to be at the same time accuser and accused, to make pain the crucible of truth, as if the test of it lay in the muscles and sinews of an unfortunate wretch」「The only difference between torture and the trial by fire and water is ... apparent, not real」「Torture is a certain method for the acquittal of robust villains and for the condemnation of innocent but feeble men」「the robust and courageous will be acquitted, the weak and the timid will be condemned」を確認した。SEP「Torture」の「they typically claim that torture does not work, since those who are tortured tell their torturers whatever they want to hear. The classic denunciation of the legalisation of torture is that of Cesare Beccaria 1764」を確認した。 設計の記録: 章番号は Farrer 訳の章番号で示し、括弧内に原典（イタリア語版 Wikisource、序論と全47章）の章番号を併記した。Farrer 訳は原典と章の立て方が違う（全42章）。",
+      refs: [
+        "https://www.gutenberg.org/ebooks/58700 — Beccaria, Crimes and Punishments（Farrer 訳、1880）。章番号は Farrer 訳のもの。第12章（原典の第16章） Torture。判決前の有罪の否定、確か・不確かの二者択一、苦痛を真理のるつぼにすることへの批判、神判との比較、頑健な罪人の放免と弱い無実の者の断罪",
+        "https://plato.stanford.edu/entries/torture/ — 拷問は効果がないという批判と、拷問の合法化に対する古典的な批判がベッカリーア（1764）のものであること",
+        "https://it.wikisource.org/wiki/Dei_delitti_e_delle_pene — Beccaria, Dei delitti e delle pene（1764。イタリア語版 Wikisource）。第16章 Della tortura。Farrer 訳の章番号との対応を確かめた"
+      ]
+    }
+  },
+  {
+    id: "q834",
+    philosophers: ["ベッカリーア", "カント"], terms: ["社会契約"], type: "compare",
+    keys: ["死刑反対論", "応報刑"],
+    question: "死刑と社会契約をめぐる、ベッカリーアとカントの違いとして最も適切なものは？",
+    choices: [
+      "ベッカリーアは契約から死刑を否定し、カントは理性の立法から死刑を認めた",
+      "カントは契約から死刑を否定し、ベッカリーアは理性の立法から死刑を認めた",
+      "両者とも、死刑の是非を犯罪の抑止効果だけで判断した",
+      "両者とも、社会契約という考えを退け、神の法から論じた"
+    ],
+    answer: 0,
+    explanation: "ベッカリーアは死刑反対論で、自分の生命を守ることこそ契約に入る根本の理由なので、生命を奪う権限を国家に委ねる者はいないと論じました。カントはこれに反論し、社会契約の源である私のうちの純粋な理性と、犯罪をなしうる私とを区別します。罪を犯す私は刑罰を望まないが、理性としての私は、死罪を犯した者は誰であれ死刑に処されることを望む、というのです。",
+    detail: "カントの死刑論は応報刑の考えから来ます。死は生のどんなあり方とも質が違うので、死に等しい代わりの刑は見つからない、とされます。\n\nベッカリーアの理論では、犯罪者は刑罰の場面でもなお社会契約の当事者であり続けます。カントのほうは、裁かれる犯罪者がなお保つ地位を人格と呼び、予防の効果を主眼として刑罰を科すことを退けました。\n\nベッカリーアは抑止の点でも死刑を退けましたが、カントは抑止の効果で刑の重さを測ることを退けています。両者とも、抑止だけで判断したのではありません。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は SEP「Kant’s Social and Political Philosophy」§7 の「Kant rejects the argument against capital punishment offered earlier in his century by ... Cesare Beccaria, who argued that in a social contract no one would willingly give to the state power over one’s own life ... Kant objects ... by distinguishing between the source of a social contract in “pure reason in me” as opposed to the source of the crime」をまとめたもの。入替誤答はその鏡像。「両者とも」型の一つは、抑止だけで判断したとする見方（カントは抑止を刑罰の正当化にしない。ベッカリーアの第一の論拠は社会契約）、もう一つは、社会契約を退けて神の法から論じたとする見方（両者とも社会契約の枠組みで論じた）。四択は成立している。 設計の記録: 比較問題の条件（一つの資料が両者を並べて論じている）は、SEP §7 と西 2011 がいずれも両者を並べているので満たす。入替誤答を正解と同じ長さの鏡像にした（2位との差0字）。「両者とも」型2つは根拠を一節ずつ足した。誤答を先に3つ書いてから正解を書いた。位置指しなし。 事実の確認: SEP §7 の上記の一節、「The latter person wills the crime but not the punishments, but the former person wills in the abstract that anyone who is convicted of a capital crime will be punished by death」「The retributivist theory of punishment leads to Kant’s insistence on capital punishment. He argues that the only punishment possibly equivalent to death ... is death. Death is qualitatively different from any kind of life, so no substitute could be found that would equal death」「Kant supports this measurement for punishment because all other measurements bring into consideration elements besides strict justice (6:332), such as the psychological states of others that would measure the effectiveness of various possible punishments on deterrence」、ベッカリーアの論拠についての「for the preservation of that life is the fundamental reason one enters a social contract at all」を確認した（explanation の「自分の生命を守ることこそ契約に入る根本の理由」はこれに拠る）。西 2011 で、ベッカリーアの理論では犯罪者は刑罰の場面でも社会契約の当事者であり続けること、カントが犯罪者の保持する法的地位を「人格（Persönlichkeit）」概念で表現し、犯罪予防効果を主眼として刑罰を科すことを否定したことを確認した。",
+      refs: [
+        "https://plato.stanford.edu/entries/kant-social-political/ — §7 Punishment。カントがベッカリーアの死刑反対論に反論したこと、私のうちの純粋な理性と犯罪をなしうる私との区別、応報刑からの死刑論、死に等しい刑は死のみであること、抑止の効果で刑を測ることを退けたこと",
+        "https://www.jstage.jst.go.jp/article/psaj/36/0/36_36003/_article/-char/ja — 西平等「「敵」と「犯罪者」」『平和研究』36号 21頁〜（2011）。ベッカリーアでは犯罪者が契約の当事者であり続けること、カントの人格の概念と予防刑の否定"
+      ]
+    }
+  },
+  {
+    id: "q835",
+    philosophers: ["カント"], terms: ["正義"], type: "single",
+    keys: ["応報刑"],
+    question: "カントが『人倫の形而上学』で、刑罰を正当化できるものとしたのは何かとして最も適切なものは？",
+    choices: [
+      "社会の安全が高まるなら、無実の者を罰してもよい",
+      "犯した罪だけで、更生や抑止のために人を手段としてはならない",
+      "犯罪者を立ち直らせ、社会へ戻すことが刑罰の目的だ",
+      "刑の重さは、人々が抱く怒りの強さに応じて決めればよい"
+    ],
+    answer: 1,
+    explanation: "刑罰を正当化できるのは、その人が罪を犯したという罪責だけだ、とカントは考えます。更生のため、あるいは社会への抑止のためといった用い方は、犯罪者を単なる手段として扱うことになるからです。刑の種類と量も犯罪そのものが決めるとする、応報刑の考え方です。",
+    detail: "刑の量は、目には目をという古い原則で測られます。同じものに同じものをという原則は、文字どおりにはいかない場合があっても、個々の判決を導く原理として用いられるべきだとされます。\n\nただし罪責が確定したあとなら、刑罰から安全などの利益が得られることをカントは否定していません。長く応報刑論の典型とされてきたカントですが、1989年のバードの研究以後、抑止の役割にも目が向けられています。\n\n抑止のために罰する考え方は、罰せられる人を社会的な目的のための単なる手段として扱う、という批判は、このカントの考えにさかのぼります。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は SEP「Kant’s Social and Political Philosophy」§7 の「Punishment can have as its justification only the guilt of the criminal. All other uses of punishment, such as rehabilitation ... or deterrence ... uses the criminal merely as a means (6:331)」と、SEP「Legal Punishment」§3 の「In Kantian terms, such punishment treats those punished as mere means to achieving some social good, rather than respecting them as ends in themselves (Kant 1797: 473)」をまとめたもの。誤答は、罪のない者の処罰を安全のために許す見方（帰結主義への古典的な批判の的）、更生を目的とする見方（カントが手段化として退けた）、怒りの強さで刑を量る見方（カントは犯罪そのものが刑を決めるとした）。四択は成立している。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。type は single。カントを応報刑論者とだけ描かないよう、detail 第2段落で抑止の役割を認める読み（Byrd 1989）に触れた。 事実の確認: SEP「Kant’s Social and Political Philosophy」§7 の「Kant was long considered to be an exemplar of the retributivist theory of punishment until Byrd (1989) showed the role of deterrence in his theory」、上記の一節、「Once this guilt is determined, however, Kant does not deny that something useful can be drawn from the punishment」「Retributivist theory holds not only that criminal guilt is required for punishment, but that the appropriate type and amount of punishment is also determined by the crime itself. Traditionally this is the heart of the ancient injunction “an eye for an eye”」「Kant recognizes that “like for like” is not always possible to the letter, but believes that justice requires that it be used as the principle for specific judgments of punishment」を確認した。SEP「Legal Punishment」§3 の上記の一節と「Indeed, Kant himself suggested that as long as we reserve punishment only for those found guilty of crimes, then it is permissible to punish with an eye toward potential benefits (Kant 1797: 473)」を確認した。西 2011 で、カントの「裁判による刑罰は、……別の善を促進する手段にすぎないということはけっしてありえず、つねにもっぱらその人が犯罪を犯したがゆえにその人に科されるのでなければならない」（西による引用）を確認した。",
+      refs: [
+        "https://plato.stanford.edu/entries/kant-social-political/ — §7 Punishment。刑罰の正当化は罪責のみであること（6:331）、更生や抑止は犯罪者を手段として扱うこと、刑の種類と量も犯罪が決めること（6:332）、罪責確定後の利益、Byrd 1989 以後の読み",
+        "https://plato.stanford.edu/entries/legal-punishment/ — §3 Consequentialist Accounts。帰結主義の刑罰は罰せられる人を単なる手段として扱うというカント的な批判、罪ある者だけを罰するなら利益を見込んでよいとするカントの示唆（Kant 1797: 473）",
+        "https://www.jstage.jst.go.jp/article/psaj/36/0/36_36003/_article/-char/ja — 西平等「「敵」と「犯罪者」」『平和研究』36号 21頁〜（2011）。刑罰は別の善を促進する手段であってはならないというカントの一節"
+      ]
+    }
+  },
+  {
+    id: "q836",
+    philosophers: ["ベッカリーア", "ベンサム"], terms: ["功利主義"], type: "single",
+    keys: ["最大多数"],
+    question: "ベンサムがベッカリーアの『犯罪と刑罰』に見出したと述べたものとして最も適切なものは？",
+    choices: [
+      "刑罰の根拠を神の意志に求める、自然法の考え方",
+      "権利を自然から授かったものとみなす、自然権の思想",
+      "法を評価する基準としての、最大多数に分かたれる最大の幸福",
+      "罪人を監視で矯正する、一望監視の施設の構想"
+    ],
+    answer: 2,
+    explanation: "ベッカリーアは序論で、法が本来とるべき視点を「最大多数に分かたれる最大の幸福」と書きました。ベンサムは、最大多数の最大幸福の定式をこの本に見出したと述べており、その主張はもっともらしいとされます。",
+    detail: "ベンサムは1769年に、ヒュームやエルヴェシウス、ベッカリーアの著作のなかに功利の原理とそれに関わる考えを見出し、弁護士ではなく法の改革に生涯をかける道を選びました。ハチスンがすでにこの定式を用いていたことは知らず、記憶違いからプリーストリーに見出したと思い込むこともあったとされます。\n\nベッカリーアの本自体は、死刑や拷問、苛酷な刑罰を功利と正義の両面から問い直すものでした。\n\n一望監視の施設はベンサム自身の構想で、自然権の思想はベンサムがむしろ退けたものです。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は SEP「Jeremy Bentham」§1 Life and Writings の「More plausible, however, are his claims to have found it in Beccaria’s Dei Delitti e delle Pene (1764), where the Italian law reformer announced that the only valid criterion for evaluating the merits of a law is “la messima felicità divisa nel maggior numero”」と、原典序論の「the greatest happiness divided among the greatest number」をまとめたもの。誤答は、自然法の考え方、自然権の思想（ベンサムが無意味な言葉として退けた側。q036）、一望監視の施設（ベンサム自身の構想。q197）。四択は成立している。 設計の記録: type は single（正解は二人の立場の対比ではなく、ベンサムがベッカリーアから受け取ったもの）。philosophers にベンサムを入れた（正解が扱う当事者のため）。鍵語「最大多数」はベンサムの台帳の語で、ベッカリーアには登録しない（中身が同じ定式なので規則3の二人語に当たらない）。 対照の記録: q034（ベンサムの功利原理）の detail が「最大多数の最大幸福という表現自体はベンサムの発明ではなく、ハチスンやベッカリーアに先行例があります」と書いており、本問と揃っている。 事実の確認: SEP「Jeremy Bentham」§1 Life and Writings の「In that year he discovered the utility principle and related ideas in the writings of Hume, Helvétius and Beccaria and chose instead a career dedicated to analytic jurisprudence, law reform, and social and political improvement」「Unaware of Hutcheson’s version of the utilitarian formula ... Bentham was occasionally deceived by faulty memory into thinking he had discovered it in Priestley’s Essay on the First Principles of Government (1768)」と上記の一節を確認した。原典（Farrer 訳）第1章（原典の序論）の「They have never been dictated by an unimpassioned student of human nature, able to concentrate the actions of a multitude of men to a single point of view, and to consider them from that point alone—the greatest happiness divided among the greatest number」、序論に掲げられた問い「Is death a penalty really useful and necessary ... ? Are torture and torments just, and do they attain the end which the law aims at?」を確認した。 設計の記録: 章番号は Farrer 訳の章番号で示し、括弧内に原典（イタリア語版 Wikisource、序論と全47章）の章番号を併記した。Farrer 訳は原典と章の立て方が違う（全42章）。",
+      refs: [
+        "https://plato.stanford.edu/entries/bentham/ — §1 Life and Writings。1769年にヒューム・エルヴェシウス・ベッカリーアの著作に功利の原理を見出したこと、ハチスンの定式を知らなかったこと、最大多数の最大幸福の定式をベッカリーアに見出したという主張がもっともらしいこと",
+        "https://www.gutenberg.org/ebooks/58700 — Beccaria, Crimes and Punishments（Farrer 訳、1880）。章番号は Farrer 訳のもの。第1章（原典の序論） Introduction。「the greatest happiness divided among the greatest number」、死刑は有益で必要か・拷問は正しいかという問い",
+        "https://it.wikisource.org/wiki/Dei_delitti_e_delle_pene — Beccaria, Dei delitti e delle pene（1764。イタリア語版 Wikisource）。序論（Introduzione）。Farrer 訳の章番号との対応を確かめた"
       ]
     }
   }

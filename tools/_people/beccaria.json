@@ -1,0 +1,23 @@
+{
+  "name": "ベッカリーア",
+  "yomi": "べっかりーあ",
+  "years": "1738–1794",
+  "school": "社会契約と政治",
+  "note": "刑罰は必要を超えれば不正である。死刑と拷問を問い直す",
+  "years_src": "西平等（2011）「チェザレ・ベッカリーア（Cesare Bonesana Beccaria，1738-94）」、Farrer（Project Gutenberg #58700）「the thirty years that he lived after its publication; that is, from the year 1764 to 1794」",
+  "place": "ミラノ",
+  "intro": "ミラノに生まれ、パルマのイエズス会の学院で学んだ。ピエトロ・ヴェッリらの集まりに加わり、1764年に『犯罪と刑罰』を匿名で出した。68年からミラノで経済学を講じた。",
+  "thought": "国家はどこまで人を罰してよいのかを問い、刑罰権は各人が差し出した最小限の自由の総和にすぎず、それを超える刑罰は不正だと答えた。そこから、生命を委ねる契約はありえないとして死刑に反対し、真実を明らかにしない拷問も退けた。",
+  "thought_src": [
+    "q831",
+    "q832",
+    "q833"
+  ],
+  "works": [
+    {
+      "title": "犯罪と刑罰",
+      "year": 1764
+    }
+  ],
+  "checked": true
+}
