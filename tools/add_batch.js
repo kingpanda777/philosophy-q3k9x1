@@ -732,9 +732,12 @@ function auditType(saku) {
 }
 
 /* ================= 1.7b 作問の note の問題番号（書き込みの前） =================
-   作問の note に出てくる問題番号が、(a) 存在する問題か同じ回の作問で、かつ
-   (b) philosophers が1人以上重なるか同じ回の作問であるかを見る。どちらかを満たさなければ止める。
-   2026-09-22 に足した。
+   作問の note に出てくる問題番号を見る。2026-09-22 に足し、同じ日に (b) を止めない形へ改めた。
+     (a) 存在する問題か同じ回の作問でなければ止める。
+     (b) philosophers が1人も重ならない既存の問題を指していたら △ を付けて一覧に出すだけで、止めない。
+   (b) を止めない理由。今日の4回の入力で dry-run したところ、ルカーチの回（q810 → q213 マルクス・q771 ホネット）と
+   セン・ヌスバウムの回（q823 → q426 ブルデュー）で止まった。どれも別の人物の関連問題を「対照の記録」として
+   正しく参照したもので、人物が重ならないことは誤りの印にならなかった。
 
    なぜ足したか。ナンシー・ブランショの作問で、分有の問題を外したあと id を詰め直した。
    このとき note の中の番号（「q831 とは問いの向きで分けた」など）を手で書き換えており、
@@ -751,21 +754,23 @@ function auditNoteRefs(saku, qs) {
   console.log("■ 作問の note の問題番号の検査（書き込みの前）");
   for (const d of saku) {
     const hits = [...new Set(String(d.note || "").match(QNUM_RE) || [])].filter(id => id !== d.id);
-    const 悪い = [];
+    const 悪い = [], 注意 = [];
     for (const id of hits) {
       if (同じ回.has(id)) continue;
       const q = qs.find(x => x.id === id);
       if (!q) { 悪い.push(`${id}（存在しない）`); continue; }
       const 重なり = (q.philosophers || []).some(p => d.philosophers.includes(p));
-      if (!重なり) 悪い.push(`${id}（人物が重ならない: ${(q.philosophers || []).join("・")}）`);
+      if (!重なり) 注意.push(`${id}（人物が重ならない: ${(q.philosophers || []).join("・")}）`);
     }
-    console.log(`  ${悪い.length ? "★" : "○"} ${d.id}　${hits.length ? hits.join("・") : "問題番号なし"}` +
-      (悪い.length ? "　→ " + 悪い.join("、") : ""));
+    const mark = 悪い.length ? "★" : 注意.length ? "△" : "○";
+    console.log(`  ${mark} ${d.id}　${hits.length ? hits.join("・") : "問題番号なし"}` +
+      (悪い.length ? "　→ " + 悪い.join("、") : "") +
+      (注意.length ? "　（止めない。指す先を目で確かめる: " + 注意.join("、") + "）" : ""));
     if (悪い.length) 要判断.push(`${d.id}: ${悪い.join("、")}`);
   }
   if (要判断.length) {
     console.error("\n要判断（1問も書いていない）:\n  " + 要判断.join("\n  ") +
-      "\n  note の番号が、存在しない問題か、人物の重ならない問題を指している。id を詰め直したときの書き換え漏れを疑う。" +
+      "\n  note の番号が、存在しない問題を指している。id を詰め直したときの書き換え漏れを疑う。" +
       "\n  この検査に「許可」欄は無い。");
     process.exit(1);
   }
