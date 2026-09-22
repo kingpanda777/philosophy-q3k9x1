@@ -5070,9 +5070,10 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 人と人との社会的関係が物と物との関係として現れることという規定は商品の物神性の通りで、誤答一番目は消費社会批判、三番目は未開社会の習俗、四番目は広告論への取り違え。四択は成立している。 設計の記録: detail が「一番目のような消費批判として読まれがちですが、マルクスの論点は人々の心構えではありません。誰も崇拝していなくても、商品として生産される限りこの転倒は生じる。個人の意識ではなく社会的形態の問題だという点が要点です」と、最も広まった誤読を正面から塞いでいる。explanation の「錯覚ではなく、商品交換という形態そのものが必然的に生み出す現れ方」も同じ趣旨で、二重に手当てされている。 対照の記録: 疎外論との関係についての detail の整理（初期の疎外論が人間本性からの隔たりとして語られたのに対し、ここでは形態の分析として展開される。連続性を見るか断絶を見るかでマルクス解釈が分かれる）は、q133 の note に書いたアルチュセールの認識論的切断の論点と対応している。資料も、物神性は疎外そのものと同一視されるべきではなく、疎外がとりうる一つの形態だとしている。二問の記述は揃っている。 確認できていない点: ルカーチの物象化論、フランクフルト学派の文化産業論、ドゥボールのスペクタクル論という受容の系譜は、いずれも広く知られた事実だが、今回の資料では直接の裏づけを取れていない。 選択肢の均等化: 正解末尾の「労働の社会的性格が商品に備わった自然な属性のように見えてくる」を削除（explanation に既述）。四択の成立を確認済み。2.72倍→1.26倍。",
+      note: "設問へ: 人と人との社会的関係が物と物との関係として現れることという規定は商品の物神性の通りで、誤答一番目は消費社会批判、三番目は未開社会の習俗、四番目は広告論への取り違え。四択は成立している。 設計の記録: detail が「一番目のような消費批判として読まれがちですが、マルクスの論点は人々の心構えではありません。誰も崇拝していなくても、商品として生産される限りこの転倒は生じる。個人の意識ではなく社会的形態の問題だという点が要点です」と、最も広まった誤読を正面から塞いでいる。explanation の「錯覚ではなく、商品交換という形態そのものが必然的に生み出す現れ方」も同じ趣旨で、二重に手当てされている。 対照の記録: 疎外論との関係についての detail の整理（初期の疎外論が人間本性からの隔たりとして語られたのに対し、ここでは形態の分析として展開される。連続性を見るか断絶を見るかでマルクス解釈が分かれる）は、q133 の note に書いたアルチュセールの認識論的切断の論点と対応している。資料も、物神性は疎外そのものと同一視されるべきではなく、疎外がとりうる一つの形態だとしている。二問の記述は揃っている。 確認できていない点: フランクフルト学派の文化産業論、ドゥボールのスペクタクル論という受容の系譜は、いずれも広く知られた事実だが、今回の資料では直接の裏づけを取れていない（当初はルカーチの物象化論も含めて三つを未確認としていた）。 解消済み: ルカーチの物象化論の部分は、2026年9月23日に SEP ルカーチ項 §3.1 で裏づけが取れた。ルカーチは物象化論を『資本論』第1巻の商品の物神性の分析の拡張として立てている。§1 は『歴史と階級意識』が初期フランクフルト学派に決定的な影響を与えたとするが、文化産業論が物神性論から出たことまでは書いていないので、フランクフルト学派の部分は未確認のまま残した。 選択肢の均等化: 正解末尾の「労働の社会的性格が商品に備わった自然な属性のように見えてくる」を削除（explanation に既述）。四択の成立を確認済み。2.72倍→1.26倍。 refs に1本を足した（https://plato.stanford.edu/entries/lukacs/）。理由: detail 第3段落の受容の系譜のうち、ルカーチの物象化論の部分の典拠（保留項目の q213）。",
       refs: [
-        "https://plato.stanford.edu/entries/marx/ — 物神性が疎外と同一視されるべきではなく、疎外がとりうる一つの形態だとされること"
+        "https://plato.stanford.edu/entries/marx/ — 物神性が疎外と同一視されるべきではなく、疎外がとりうる一つの形態だとされること",
+        "https://plato.stanford.edu/entries/lukacs/ — §3.1。ルカーチが物象化論を『資本論』第1巻の商品の物神性（fetishism of the commodity form）の分析の拡張として立てていること。§1。『歴史と階級意識』が初期フランクフルト学派に決定的な影響を与えたとされること（the book had a decisive influence on the early Frankfurt School）"
       ]
     }
   },
@@ -17731,10 +17732,10 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 事実の真理が証言に支えられ、政治のなかで消されうるという規定が正解で、誤答は事実を理性の真理と同じ強さで立てる読み、政治の外へ隔離する読み、合意によって作られるとする読みにあたる。四択は成立している。 事実の確認: 「真理と政治」は1967年2月に The New Yorker に発表され、翌1968年の『過去と未来の間』増補版に収められた。detail では刊行年を書かず、論争との前後関係だけを述べている。",
+      note: "設問へ: 事実の真理が証言に支えられ、政治のなかで消されうるという規定が正解で、誤答は事実を理性の真理と同じ強さで立てる読み、政治の外へ隔離する読み、合意によって作られるとする読みにあたる。四択は成立している。 事実の確認: 「真理と政治」は1967年2月に The New Yorker に発表され、翌1968年の『過去と未来の間』増補版に収められた。detail では刊行年を書かず、論争との前後関係だけを述べている。 refs を1本差し替えた（Truth and Politics → Hannah Arendt, 'Truth and Politics', The New Yorker, 1967年2月25日号）。理由: refs の書き方の型（書誌 — 何を確認したか）にそろえた。中身は変えていない。",
       refs: [
         "https://plato.stanford.edu/entries/arendt/ — §6.5。事実の真理は証人と証言に依存し、理性の真理は議論を排除する性格をもつこと",
-        "Hannah Arendt, 'Truth and Politics', The New Yorker, 1967年2月25日号。1968年の Between Past and Future 増補版に収録"
+        "Hannah Arendt, 'Truth and Politics', The New Yorker, 1967年2月25日号 — 初出の誌名と号。1968年の Between Past and Future 増補版に収録されたこと"
       ]
     }
   },
@@ -17755,10 +17756,10 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 守るか作るかという向きの違いが正解で、誤答は期限、担い手の数、戦時か平時かという別の軸にあたる。いずれも独裁の分類として立ちうる軸なので、四択は成立している。 設計の記録: ヴァイマル憲法第四十八条は条番号を出さず「大統領に非常措置を認めた憲法の条項」と書いた。detail に数字を並べると読む負荷が上がるため。",
+      note: "設問へ: 守るか作るかという向きの違いが正解で、誤答は期限、担い手の数、戦時か平時かという別の軸にあたる。いずれも独裁の分類として立ちうる軸なので、四択は成立している。 設計の記録: ヴァイマル憲法第四十八条は条番号を出さず「大統領に非常措置を認めた憲法の条項」と書いた。detail に数字を並べると読む負荷が上がるため。 refs を1本差し替えた（Die Diktatur → Carl Schmitt, Die Diktatur (1921)）。理由: refs の書き方の型（書誌 — 何を確認したか）にそろえた。中身は変えていない。",
       refs: [
         "https://plato.stanford.edu/entries/schmitt/ — §2。commissarial dictatorship は既存の憲法を守るための時限的権力、sovereign dictatorship は新しい憲法を作り出す権力であること",
-        "Carl Schmitt, Die Diktatur (1921)"
+        "Carl Schmitt, Die Diktatur (1921) — 本文が挙げる著作の原題と刊行年。委任独裁と主権独裁の区別の中身は SEP §2 で確認"
       ]
     }
   },
@@ -17779,10 +17780,10 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 討論が決定を生むという前提の空洞化を突く規定が正解で、誤答は少数者の保護、専門知、任期という別の議会批判にあたる。いずれも実在の批判なので、四択は成立している。 設計の記録: 誤答三つを「議会は〜ので、〜という批判」の同じ型に揃えた。",
+      note: "設問へ: 討論が決定を生むという前提の空洞化を突く規定が正解で、誤答は少数者の保護、専門知、任期という別の議会批判にあたる。いずれも実在の批判なので、四択は成立している。 設計の記録: 誤答三つを「議会は〜ので、〜という批判」の同じ型に揃えた。 refs を1本差し替えた（geistesgeschichtliche Lage → Carl Schmitt, Die geistesgeschichtliche Lage des heutigen Parlamentarismus (1923)）。理由: refs の書き方の型（書誌 — 何を確認したか）にそろえた。中身は変えていない。",
       refs: [
         "https://plato.stanford.edu/entries/schmitt/ — §4。議会主義批判、identity と representation、homogeneity が多数決の正統性の前提とされること",
-        "Carl Schmitt, Die geistesgeschichtliche Lage des heutigen Parlamentarismus (1923)"
+        "Carl Schmitt, Die geistesgeschichtliche Lage des heutigen Parlamentarismus (1923) — 本文が挙げる著作の原題と刊行年。議会主義批判の中身は SEP §4 で確認"
       ]
     }
   },
@@ -17803,10 +17804,10 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 正しさを問わずに交戦国を対等に扱う枠という規定が正解で、誤答は集団安全保障、宗教戦争、通商による平和にあたる。いずれも別の国際秩序の構想で、四択は成立している。 対照の記録: 正義を持ち込むと戦争が無制限化するという論点は、友と敵の区別を政治に固有の基準とする議論と地続きである。",
+      note: "設問へ: 正しさを問わずに交戦国を対等に扱う枠という規定が正解で、誤答は集団安全保障、宗教戦争、通商による平和にあたる。いずれも別の国際秩序の構想で、四択は成立している。 対照の記録: 正義を持ち込むと戦争が無制限化するという論点は、友と敵の区別を政治に固有の基準とする議論と地続きである。 refs を1本差し替えた（Der Nomos der Erde → Carl Schmitt, Der Nomos der Erde im Völkerrecht des Jus Publicum Europaeum (1950)）。理由: refs の書き方の型（書誌 — 何を確認したか）にそろえた。中身は変えていない。",
       refs: [
         "https://plato.stanford.edu/entries/schmitt/ — §5。ius publicum Europaeum が戦争を領土化し、交戦者を相互に正統とみなしたこと。普遍的理念の流入がその枠を壊したとされること",
-        "Carl Schmitt, Der Nomos der Erde im Völkerrecht des Jus Publicum Europaeum (1950)"
+        "Carl Schmitt, Der Nomos der Erde im Völkerrecht des Jus Publicum Europaeum (1950) — 本文が挙げる著作の原題と刊行年。ヨーロッパ公法の秩序の中身は SEP §5 で確認"
       ]
     }
   },
@@ -17827,10 +17828,10 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 帰属を入れ替えた鏡像の誤答を並べ、残る二つは「両者とも」型にした。四択は成立している。 設計の記録: 入替誤答を正解と同じ長さの鏡像にしたので、2位との差は0字になる（作問の指針の比較問題の扱い）。「両者とも」型の二つは正解の0.7倍を下回らない長さに保った。 対照の記録: 同じ概念に二つの訳語があるため、シュミット側は憲法制定権力、ネグリ側は構成的権力の語形で登録し、規則3の二人語にはしない。ケルゼンの「存在と当為」をヒュームの「是と当為」と二人語にしなかったのと同じ判断。",
+      note: "設問へ: 帰属を入れ替えた鏡像の誤答を並べ、残る二つは「両者とも」型にした。四択は成立している。 設計の記録: 入替誤答を正解と同じ長さの鏡像にしたので、2位との差は0字になる（作問の指針の比較問題の扱い）。「両者とも」型の二つは正解の0.7倍を下回らない長さに保った。 対照の記録: 同じ概念に二つの訳語があるため、シュミット側は憲法制定権力、ネグリ側は構成的権力の語形で登録し、規則3の二人語にはしない。ケルゼンの「存在と当為」をヒュームの「是と当為」と二人語にしなかったのと同じ判断。 refs を1本差し替えた（Il potere costituente → Antonio Negri, Il potere costituente (1992)。英訳 Insurgencies: Constituent Power and the Modern State (University of Minnesota Press, 1999)）。理由: refs の書き方の型（書誌 — 何を確認したか）にそろえた。中身は変えていない。",
       refs: [
         "https://plato.stanford.edu/entries/schmitt/ — §4。憲法制定権力は政治的に統一された人民に属し、譲り渡せないものとされること",
-        "Antonio Negri, Il potere costituente (1992)。英訳 Insurgencies: Constituent Power and the Modern State (University of Minnesota Press, 1999)"
+        "Antonio Negri, Il potere costituente (1992)。英訳 Insurgencies: Constituent Power and the Modern State (University of Minnesota Press, 1999) — ネグリ側の構成的権力を論じた著作の原題と英訳の書誌"
       ]
     }
   },
@@ -17851,10 +17852,10 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 枠と意志の行為という規定が正解で、誤答は唯一の正解説、立法者意思説、道徳に照らす解釈論にあたる。いずれも実在の解釈理論で、四択は成立している。 資料の限界: SEP の The Pure Theory of Law は解釈の枠を扱っていない（確認済み）。二次資料と原典で補った。",
+      note: "設問へ: 枠と意志の行為という規定が正解で、誤答は唯一の正解説、立法者意思説、道徳に照らす解釈論にあたる。いずれも実在の解釈理論で、四択は成立している。 資料の限界: SEP の The Pure Theory of Law は解釈の枠を扱っていない（確認済み）。二次資料と原典で補った。 refs を1本差し替えた（Reine Rechtslehre → Hans Kelsen, Reine Rechtslehre 第2版（1960））。理由: refs の書き方の型（書誌 — 何を確認したか）にそろえた。中身は変えていない。",
       refs: [
         "https://www.modernlawreview.co.uk/bernstorff-paulson/ — Jochen von Bernstorff による論評（Stanley L Paulson, 'Metamorphosis in Hans Kelsen's Legal Philosophy', The Modern Law Review 80(5), 2017, 860-894 へのコメント）。上位規範は枠のみを形成し、複数の解のうち一つを正とする方法はなく、選択は意志の行為であること。法の適用が同時に立法であること",
-        "Hans Kelsen, Reine Rechtslehre 第2版（1960）の解釈論"
+        "Hans Kelsen, Reine Rechtslehre 第2版（1960） — 解釈論の所在。上位規範が枠だけを作り、その中での選択が意志の行為とされること（note の「原典で補った」の原典）"
       ]
     }
   },
@@ -17899,10 +17900,10 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 相対主義から寛容と少数者の保護を導く規定が正解で、誤答は多数の無謬説、成果による正当化、自然権論にあたる。いずれも民主主義擁護の別の論法で、四択は成立している。 対照の記録: 正義について学問は答えられないという立場は、純粋法学が正義論を外したことと同じ根から出ている。",
+      note: "設問へ: 相対主義から寛容と少数者の保護を導く規定が正解で、誤答は多数の無謬説、成果による正当化、自然権論にあたる。いずれも民主主義擁護の別の論法で、四択は成立している。 対照の記録: 正義について学問は答えられないという立場は、純粋法学が正義論を外したことと同じ根から出ている。 refs を1本差し替えた（Invernizzi → Carlo Invernizzi Accetti and Nicole Peisajovich, 'Relativism and Leadership in Hans Kelsen's Theory of Democracy', in Sandrine Baume and David Ragazzoni (eds.), Hans Kelsen on Constitutional Democracy: Genesis, Theory, Legacies (Cambridge University Press, 2026) 第11章）。理由: refs の書き方の型（書誌 — 何を確認したか）にそろえた。中身は変えていない。 refs を1本差し替えた（Vom Wesen und Wert → Hans Kelsen, Vom Wesen und Wert der Demokratie (1920、1929年に改訂拡大版)）。理由: refs の書き方の型（書誌 — 何を確認したか）にそろえた。中身は変えていない。",
       refs: [
-        "Carlo Invernizzi Accetti and Nicole Peisajovich, 'Relativism and Leadership in Hans Kelsen's Theory of Democracy', in Sandrine Baume and David Ragazzoni (eds.), Hans Kelsen on Constitutional Democracy: Genesis, Theory, Legacies (Cambridge University Press, 2026) 第11章。絶対的価値を確信する者が専制に傾くとされること、多数は少数を消してはならないとされること",
-        "Hans Kelsen, Vom Wesen und Wert der Demokratie (1920、1929年に改訂拡大版)"
+        "Carlo Invernizzi Accetti and Nicole Peisajovich, 'Relativism and Leadership in Hans Kelsen's Theory of Democracy', in Sandrine Baume and David Ragazzoni (eds.), Hans Kelsen on Constitutional Democracy: Genesis, Theory, Legacies (Cambridge University Press, 2026) 第11章 — 絶対的価値を確信する者が専制に傾くとされること、多数は少数を消してはならないとされること",
+        "Hans Kelsen, Vom Wesen und Wert der Demokratie (1920、1929年に改訂拡大版) — 本文が挙げる著作の原題と、初版・改訂拡大版の刊行年"
       ]
     }
   },
@@ -17923,10 +17924,10 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 帰属の条件をもたない共同体という規定が正解で、誤答は同一性に基づく共同体、社会契約による共同体、目的に向けて組織される共同体にあたる。四択は成立している。 訳語の確認: qualunque は「何であれ」「任意の」と訳が揺れる。鍵語は本文の語形に合わせて「何であれという特異性」を採り、書名は鍵語にしない方針に従って『到来する共同体』は登録しない。",
+      note: "設問へ: 帰属の条件をもたない共同体という規定が正解で、誤答は同一性に基づく共同体、社会契約による共同体、目的に向けて組織される共同体にあたる。四択は成立している。 訳語の確認: qualunque は「何であれ」「任意の」と訳が揺れる。鍵語は本文の語形に合わせて「何であれという特異性」を採り、書名は鍵語にしない方針に従って『到来する共同体』は登録しない。 refs を1本差し替えた（La comunità che viene → Giorgio Agamben, La comunità che viene (Einaudi, 1990)）。理由: refs の書き方の型（書誌 — 何を確認したか）にそろえた。中身は変えていない。",
       refs: [
         "https://iep.utm.edu/agamben/ — Messianism 節。共同体が共通性や同一性を帰属の条件として前提しないものとして構想されること、whatever singularity が belonging itself を取り戻すとされること",
-        "Giorgio Agamben, La comunità che viene (Einaudi, 1990)。末尾の章が「天安門」であり、来るべき政治を国家と人類の闘争として描くこと"
+        "Giorgio Agamben, La comunità che viene (Einaudi, 1990) — 末尾の章が「天安門」であり、来るべき政治を国家と人類の闘争として描くこと"
       ]
     }
   },
@@ -17947,10 +17948,10 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 生と生き方が分割できない生という規定が正解で、誤答は剥き出しの生そのもの、共同体の規範に従う生、生の美学化にあたる。剥き出しの生は対になる概念なので、区別が本文で付くようにしてある。 設計の記録: 剥き出しの生との対比を explanation に置き、detail では分割という操作の側から書いた。",
+      note: "設問へ: 生と生き方が分割できない生という規定が正解で、誤答は剥き出しの生そのもの、共同体の規範に従う生、生の美学化にあたる。剥き出しの生は対になる概念なので、区別が本文で付くようにしてある。 設計の記録: 剥き出しの生との対比を explanation に置き、detail では分割という操作の側から書いた。 refs を1本差し替えた（Mezzi senza fine → Giorgio Agamben, Mezzi senza fine (1996)）。理由: refs の書き方の型（書誌 — 何を確認したか）にそろえた。中身は変えていない。",
       refs: [
         "https://iep.utm.edu/agamben/ — Ethics／Politics 節。happy life が剥き出しの生を生政治的主体として分離できないものにする生とされること、主権と権利が及ばない領域として構想されること",
-        "Giorgio Agamben, Mezzi senza fine (1996)。form-of-life を剥き出しの生の対概念として立てる論集"
+        "Giorgio Agamben, Mezzi senza fine (1996) — form-of-life を剥き出しの生の対概念として立てる論集であること"
       ]
     }
   },
@@ -17971,9 +17972,9 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 資本の指揮への拒否と、要求の提示そのものの拒否という規定が正解で、誤答は時短要求、労働への嫌悪、組合の交渉戦術にあたる。いずれも「労働の拒否」と取り違えられやすい立場で、四択は成立している。 帰属の確認: 「労働の拒否（拒否の戦略）」を定式化したのはマリオ・トロンティで、『労働者と資本』（Einaudi, 1966）所収の一九六五年の論考にあたる。ネグリ本人の定式ではないので、detail の冒頭で帰属を明示し、ネグリの寄与は実質的包摂と社会的労働者の側に置いた。トロンティは未登録なので規則3の二人語にはしない。 資料の限界: ネグリは SEP・IEP のどちらにも専用項目が無い。原典と Wright の研究書で補った。",
+      note: "設問へ: 資本の指揮への拒否と、要求の提示そのものの拒否という規定が正解で、誤答は時短要求、労働への嫌悪、組合の交渉戦術にあたる。いずれも「労働の拒否」と取り違えられやすい立場で、四択は成立している。 帰属の確認: 「労働の拒否（拒否の戦略）」を定式化したのはマリオ・トロンティで、『労働者と資本』（Einaudi, 1966）所収の一九六五年の論考にあたる。ネグリ本人の定式ではないので、detail の冒頭で帰属を明示し、ネグリの寄与は実質的包摂と社会的労働者の側に置いた。トロンティは未登録なので規則3の二人語にはしない。 資料の限界: ネグリは SEP・IEP のどちらにも専用項目が無い。原典と Wright の研究書で補った。 refs を1本差し替えた（The Strategy of the Refusal → Mario Tronti, 'The Strategy of the Refusal'（1965年執筆）。Operai e capitale, Einaudi, Torino, 1966, pp.234-252 所収）。理由: refs の書き方の型（書誌 — 何を確認したか）にそろえた。中身は変えていない。",
       refs: [
-        "Mario Tronti, 'The Strategy of the Refusal'（1965年執筆）。Operai e capitale, Einaudi, Torino, 1966, pp.234-252 所収の初期テーゼの一部。資本の指揮への拒否、発展への協力の拒否、要求の提示そのものの拒否という層",
+        "Mario Tronti, 'The Strategy of the Refusal'（1965年執筆）。Operai e capitale, Einaudi, Torino, 1966, pp.234-252 所収 — 初期テーゼの一部。資本の指揮への拒否、発展への協力の拒否、要求の提示そのものの拒否という層",
         "Steve Wright, Storming Heaven: Class Composition and Struggle in Italian Autonomist Marxism (Pluto Press, 2002) — ネグリが1970年代半ばに大衆労働者から社会的労働者へ階級像を転換し、労働の拒否を中心主題として引き受けたこと",
         "Antonio Negri, Crisi dello Stato-piano (1971)／Proletari e Stato (1976) — 資本による労働の実質的包摂と、生産的労働の範囲が工場の外へ広がる過程"
       ]
