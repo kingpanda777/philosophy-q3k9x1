@@ -23,6 +23,8 @@
 "use strict";
 const fs = require("fs");
 const path = require("path");
+/* 一時ファイル経由・やり直しつきの書き込み。add_batch.js から呼ばれるので同じ書き方にそろえる（2026-09-23） */
+const { writeFileSafe } = require("./_lib.js");
 const ROOT = process.argv[2];
 const P = f => path.join(ROOT, f);
 
@@ -136,7 +138,7 @@ setBlock("schools-head", `### 収録の現状（${stamp}時点・${n}問）`);
 setBlock("schools", tableSchool + "\n\n" + noteSchool);
 
 if (missed.length) { console.error("書き換えられなかった場所:\n  " + missed.join("\n  ")); process.exit(1); }
-fs.writeFileSync(P("CLAUDE.md"), s, "utf8");
+writeFileSafe(P("CLAUDE.md"), s, "utf8");
 
 console.log("進捗表を実測値で更新した");
 console.log(`  問題 ${n}（ai_web ${kind.ai_web || 0} ／ ai_flagged ${kind.ai_flagged || 0} ／ ai ${kind.ai || 0}）`);

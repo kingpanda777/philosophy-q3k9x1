@@ -1,11 +1,13 @@
 /* ===========================================================
    道具が共通で持つもの（2026-09-21 に切り出した）
 
-   入っているのは4つだけである。
+   入っているのは5つである。
      1. 字数の数え方  L
      2. JSON の読み書き  readJson / writeJson
      3. 哲学者紹介（PHIL_INTRO）の基準値  PHIL
      4. 生没年と引用行の突き合わせ  matchYears
+     5. ファイルの読み書き（やり直しつき・一時ファイル経由）  readFileSafe / writeFileSafe / diagnose
+        （2026-09-23 に足した。下の「5.」の節）
 
    なぜ切り出したか。**同じ定義が複数の道具に写してあると、片方だけ直したときに
    食い違ったまま気づかれない。** CLAUDE.md の「幅を変えるだけなら失効ではない。
@@ -21,11 +23,75 @@
      （snapshot/restore）。共通にできるが、add_batch.js の構造に手を入れることになる。
      やるかどうかは別に判断する。CLAUDE.md の「次の作業」に残してある。
 
-   使い方:  const { L, readJson, writeJson, PHIL, matchYears } = require("./_lib.js");
+   使い方:  const { L, readJson, writeJson, PHIL, matchYears,
+                    readFileSafe, writeFileSafe, diagnose } = require("./_lib.js");
    =========================================================== */
 
 "use strict";
 const fs = require("fs");
+const path = require("path");
+
+/* ---- 5. ファイルの読み書き（2026-09-23 に足した） ----
+   なぜ足したか。2026-09-23 の add_batch.js 本番で、書き込みの途中で questions.js を
+   開けずに落ち、差し戻しも同じファイルを開けずに落ちた（code UNKNOWN、errno -4094、syscall open）。
+   questions.js は途中まで書き換わったまま残り、手でバックアップから戻した。
+   書き込みが fs.writeFileSync の直書きで、開いた瞬間に中身を空にするため、
+   途中で止まると壊れた中身が残る作りだった。
+
+   直し方は2つ。
+     ・書き込みは同じフォルダの一時ファイル（<名前>.tmp-<pid>）に書いてから置き換える。
+       置き換えに失敗しても元のファイルは1バイトも変わらない
+     ・開けない／置き換えられないときは、間を空けて最大6回試す（待ちは計3.1秒）
+
+   やり直すのは、他のプロセスがファイルを握っているときに出るコードだけ。
+   ENOENT（ファイルが無い）や EISDIR のような、待っても直らないものはすぐ投げる。
+   原因の見立ては diagnose() が書く。 */
+const RETRY_CODES = new Set(["EBUSY", "EPERM", "EACCES", "UNKNOWN", "EAGAIN", "EMFILE", "ENFILE"]);
+const WAITS = [100, 200, 400, 800, 1600];
+const sleep = ms => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+function retry(what, f, fn) {
+  const codes = [];
+  for (let i = 0; ; i++) {
+    try {
+      const r = fn();
+      if (codes.length)
+        console.error(`  （${path.basename(f)} の${what}を${codes.length}回やり直して通った: ${codes.join("・")}）`);
+      return r;
+    } catch (e) {
+      if (!RETRY_CODES.has(e.code) || i >= WAITS.length) {
+        e.tries = codes.concat(e.code || "?");
+        throw e;
+      }
+      codes.push(e.code);
+      sleep(WAITS[i]);
+    }
+  }
+}
+const readFileSafe = (f, enc) => retry("読み込み", f, () => fs.readFileSync(f, enc));
+function writeFileSafe(f, data, enc) {
+  const tmp = `${f}.tmp-${process.pid}`;
+  try {
+    retry("一時ファイルへの書き込み", f, () => fs.writeFileSync(tmp, data, enc));
+    retry("置き換え", f, () => fs.renameSync(tmp, f));
+  } catch (e) {
+    try { fs.unlinkSync(tmp); } catch (_) { /* 一時ファイルが無ければそれでよい */ }
+    e.message = `${f} を書き換えられなかった（${(e.tries || [e.code]).join("→")}。` +
+      `元のファイルは置き換えていない）: ${e.message}`;
+    throw e;
+  }
+}
+/* エラーコードから原因の見立てを返す。Windows の libuv の対応表による。 */
+function diagnose(code) {
+  switch (code) {
+    case "EBUSY": return "EBUSY: 別のプロセス（エディタ・ウイルス対策の検査・検索インデクサ・同期ソフトなど）がファイルを開いたまま、共有を許していない。";
+    case "EPERM": case "EACCES": return `${code}: 読み取り専用の属性か権限の問題、または置き換え先を別のプロセスが「削除を許さない」形で開いている。`;
+    case "UNKNOWN": return "UNKNOWN（errno -4094）: libuv が名前を付けていない Windows のエラー。書き込みで開くときに出るのは、" +
+      "多くが ERROR_USER_MAPPED_FILE（1224。別のプロセスがファイルをメモリに割り当てて開いている）で、" +
+      "エディタや、ウイルス対策・検索インデクサが書き込み直後のファイルを読みに来たときに起きる。";
+    case "EMFILE": case "ENFILE": return `${code}: 開いているファイルが多すぎる。`;
+    default: return `${code || "?"}: 見立てのない種類。`;
+  }
+}
 
 /* ---- 1. 字数の数え方 ----
    サロゲートペア（絵文字や一部の漢字）を1字として数える。
@@ -37,8 +103,8 @@ const L = s => [...s].length;
    字下げは空白1つ、末尾に改行を1つ。keyterms.json・keys_draft.json・
    years_src.json はすべてこの形で保存されている。
    字下げを変えると、1語直しただけでファイル全体が差分に出る。 */
-const readJson = f => JSON.parse(fs.readFileSync(f, "utf8"));
-const writeJson = (f, o) => fs.writeFileSync(f, JSON.stringify(o, null, 1) + "\n", "utf8");
+const readJson = f => JSON.parse(readFileSafe(f, "utf8"));
+const writeJson = (f, o) => writeFileSafe(f, JSON.stringify(o, null, 1) + "\n", "utf8");
 
 /* ---- 3. 哲学者紹介の基準値 ----
    philosophers.js の冒頭コメントが書いている型を、数字にしたもの。
@@ -86,4 +152,4 @@ const matchYears = (years, quote) => {
   return { inQuote, 合わない };
 };
 
-module.exports = { L, readJson, writeJson, PHIL, matchYears };
+module.exports = { L, readJson, writeJson, PHIL, matchYears, readFileSafe, writeFileSafe, diagnose };

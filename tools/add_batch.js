@@ -92,7 +92,7 @@ const path = require("path");
 const { execFileSync } = require("child_process");
 /* 字数の数え方と JSON の読み書きは tools/_lib.js から読む。
    同じ定義が check_phil.js にも写してあり、片方だけ直すと食い違う。2026-09-21 に切り出した。 */
-const { L, readJson, writeJson } = require("./_lib.js");
+const { L, readJson, writeJson, readFileSafe, writeFileSafe, diagnose } = require("./_lib.js");
 
 const R = path.join(__dirname, "..");
 const P = f => path.join(R, f);
@@ -118,7 +118,7 @@ const KINDS = ["ai_web", "book", "ai"], CHOICES_OK = ["ok", "fragile", "broken"]
 const QUESTIONS_OF = src => new Function(src + "\n;return {QUESTIONS};")().QUESTIONS;
 /* 作問の philosophers と terms を突き合わせる先。validate() が読む。2026-09-21 に足した。 */
 const REGISTRY_OF = src => new Function(src + "\n;return {PHILOSOPHERS, TERMS};")();
-const readQ = () => QUESTIONS_OF(fs.readFileSync(P("questions.js"), "utf8"));
+const readQ = () => QUESTIONS_OF(readFileSafe(P("questions.js"), "utf8"));
 const bodyOf = q => [q.question || "", (q.choices || []).join(" / "), q.explanation || "", q.detail || ""].join(" ");
 
 /* ================= 0. 入力のスキーマ ================= */
@@ -134,7 +134,7 @@ function validate(input) {
   /* 作問の philosophers が PHILOSOPHERS に、terms が TERMS に無ければ止める（2026-09-21 に足した）。
      綴りを1字違えると、どの人物からも・どの概念からも辿れない問題やタグが黙って通るため。
      人物は add_person.js で先に登録してから作問を流す（登録の順序）ので、ここで無ければ手順の抜けでもある。 */
-  const reg = REGISTRY_OF(fs.readFileSync(P("questions.js"), "utf8"));
+  const reg = REGISTRY_OF(readFileSafe(P("questions.js"), "utf8"));
   const 人物名 = new Set(reg.PHILOSOPHERS.map(p => p.name)), 概念名 = new Set(reg.TERMS.map(t => t.name));
   const seen = new Set();
   saku.forEach((d, i) => {
@@ -850,7 +850,7 @@ function removeKeys(rem) {
   console.log("■ keys から語を外す");
   for (const r of rem) {
     /* 置換のたびにファイルを読み直す。src を使い回すと2件目以降が古い文字列で置換される。 */
-    let src = fs.readFileSync(P("questions.js"), "utf8");
+    let src = readFileSafe(P("questions.js"), "utf8");
     let q = QUESTIONS_OF(src).find(x => x.id === r.id);
     if (!q) throw new Error("問題が無い: " + r.id);
     const before = (q.keys || []).slice();
@@ -865,7 +865,7 @@ function removeKeys(rem) {
     const m = block.match(/    keys: \[[^\]]*\],/);
     if (!m) throw new Error("keys の行が無い: " + r.id);
     src = src.slice(0, start) + block.replace(m[0], `    keys: [${after.map(S).join(", ")}],`) + src.slice(end);
-    fs.writeFileSync(P("questions.js"), src, "utf8");
+    writeFileSafe(P("questions.js"), src, "utf8");
 
     /* keys_draft.json は q.keys と同じ中身でなければならない（check_keys の項目2）。
        片方だけ直すと、書き込みは通って検査で落ちる。2026-09-21 に据え付けたとき実際に落ちた。 */
@@ -873,13 +873,13 @@ function removeKeys(rem) {
     if (kd[r.id]) { kd[r.id] = after; writeJson(P("tools/keys_draft.json"), kd); }
 
     /* --- note へ記録 --- */
-    src = fs.readFileSync(P("questions.js"), "utf8");
+    src = readFileSafe(P("questions.js"), "utf8");
     q = QUESTIONS_OF(src).find(x => x.id === r.id);
     const oldNote = q.source.note;
     const newNote = oldNote + ` keys から「${r["語"].join("」「")}」を外した。理由: ${r["理由"]}`;
     if (src.indexOf(S(oldNote)) !== src.lastIndexOf(S(oldNote))) throw new Error("note リテラルが一意でない: " + r.id);
     src = src.replace(S(oldNote), S(newNote));
-    fs.writeFileSync(P("questions.js"), src, "utf8");
+    writeFileSafe(P("questions.js"), src, "utf8");
 
     console.log(`  ${r.id}: keys ${before.length}→${after.length}　外した: ${r["語"].join("・")}　残り: ${after.join("・")}`);
   }
@@ -954,7 +954,7 @@ function auditRefs(refsDel, refsRep, existing) {
    検査は auditRefs が済ませている。ここは書き込むだけ。
    外した記録・差し替えた記録は note へ残す（keys除去 と同じ扱い）。 */
 function writeRefs(id, list) {
-  let src = fs.readFileSync(P("questions.js"), "utf8");
+  let src = readFileSafe(P("questions.js"), "utf8");
   const start = src.indexOf(`    id: ${S(id)},`);
   if (start < 0) throw new Error("エントリが見つからない: " + id);
   const end = src.indexOf("\n  },", start);
@@ -963,14 +963,14 @@ function writeRefs(id, list) {
   if (!m) throw new Error("refs の行が見つからない: " + id);
   const line = "refs: [\n        " + list.map(S).join(",\n        ") + "\n      ]";
   src = src.slice(0, start) + block.replace(m[0], line) + src.slice(end);
-  fs.writeFileSync(P("questions.js"), src, "utf8");
+  writeFileSafe(P("questions.js"), src, "utf8");
 }
 function addNote(id, 文) {
-  const src = fs.readFileSync(P("questions.js"), "utf8");
+  const src = readFileSafe(P("questions.js"), "utf8");
   const q = QUESTIONS_OF(src).find(x => x.id === id);
   const oldNote = q.source.note;
   if (src.indexOf(S(oldNote)) !== src.lastIndexOf(S(oldNote))) throw new Error("note リテラルが一意でない: " + id);
-  fs.writeFileSync(P("questions.js"), src.replace(S(oldNote), S(oldNote + 文)), "utf8");
+  writeFileSafe(P("questions.js"), src.replace(S(oldNote), S(oldNote + 文)), "utf8");
 }
 function applyRefsOps(refsDel, refsRep) {
   if (!refsDel.length && !refsRep.length) return;
@@ -1077,8 +1077,8 @@ function applyLedger(led) {
   const STAMP = led["刻印"] || "";
 
   /* --- 改名（5か所を揃えて直す） --- */
-  let qsrc = fs.readFileSync(P("questions.js"), "utf8");
-  let html = fs.readFileSync(P("index.html"), "utf8");
+  let qsrc = readFileSafe(P("questions.js"), "utf8");
+  let html = readFileSafe(P("index.html"), "utf8");
   const kd = readJson(P("tools/keys_draft.json"));
   for (const person of Object.keys(led["改名"] || {})) {
     for (const r of led["改名"][person]) {
@@ -1118,7 +1118,7 @@ function applyLedger(led) {
       log.push(`  改名　　　${person}／${r["旧"]} → ${r["新"]}（hits ${m.hits}／全問 ${m.all}・q.keys ${n}か所・読みと KEY_YOMI も）`);
     }
   }
-  fs.writeFileSync(P("questions.js"), qsrc, "utf8");
+  writeFileSafe(P("questions.js"), qsrc, "utf8");
   /* --- 扱いの変更（すでに扱いがある語を、旧を確かめてから書き換える） ---
      2026-09-17 に追加。「扱いの設定」は未設定の語にしか効かないので、
      言及→主題のような直しが道具を通らず、古代ギリシアの点検で止まった。 */
@@ -1174,7 +1174,7 @@ function applyLedger(led) {
       const m = measure(person, w);
       if (m.hits === 0) throw new Error("本人の本文に語が無い: " + person + "／" + w);
       for (const id of (spec["付ける先"] || [])) {
-        let src = fs.readFileSync(P("questions.js"), "utf8");
+        let src = readFileSafe(P("questions.js"), "utf8");
         const q = QUESTIONS_OF(src).find(x => x.id === id);
         if (!q) throw new Error("問題が無い: " + id);
         if (!bodyText(q).includes(w)) throw new Error("その問題の本文に語が無い: " + id + "／" + w);
@@ -1195,7 +1195,7 @@ function applyLedger(led) {
           if (!tm) throw new Error("keys を作る位置が見つからない: " + id);
           src = src.slice(0, start) + block.replace(tm[0], tm[0] + "\n" + line) + src.slice(end);
         }
-        fs.writeFileSync(P("questions.js"), src, "utf8");
+        writeFileSafe(P("questions.js"), src, "utf8");
         kd[id] = readQ().find(x => x.id === id).keys;
       }
       kt[person]["鍵語"].push({
@@ -1232,7 +1232,7 @@ function applyLedger(led) {
       const t = (kt[person] || { "鍵語": [] })["鍵語"].find(x => x["語"] === w);
       if (!t) throw new Error("外す対象が台帳に無い: " + person + "／" + w);
       for (const id of (spec["外す先"] || [])) {
-        let src = fs.readFileSync(P("questions.js"), "utf8");
+        let src = readFileSafe(P("questions.js"), "utf8");
         const q = QUESTIONS_OF(src).find(x => x.id === id);
         if (!q) throw new Error("問題が無い: " + id);
         if (!(q.keys || []).includes(w)) throw new Error("その問題の keys に無い: " + id + "／" + w);
@@ -1250,7 +1250,7 @@ function applyLedger(led) {
           "（残す語を決めて本文に語を足すか、keys除去 の側で組み直す）");
         const line = "    keys: [" + rest.map(S).join(", ") + "],";
         src = src.slice(0, start) + block.replace(mm[0], line) + src.slice(end);
-        fs.writeFileSync(P("questions.js"), src, "utf8");
+        writeFileSafe(P("questions.js"), src, "utf8");
         kd[id] = rest;
       }
       if (spec["台帳からも削除"]) {
@@ -1277,7 +1277,7 @@ function applyLedger(led) {
     if (!html.includes(anchor)) throw new Error("KEY_YOMI が見つからない");
     html = html.replace(anchor, anchor + yomiLines.join("\n") + "\n");
   }
-  fs.writeFileSync(P("index.html"), html, "utf8");
+  writeFileSafe(P("index.html"), html, "utf8");
   writeJson(P("tools/keys_draft.json"), kd);
   writeJson(P("keyterms.json"), kt);
 
@@ -1340,7 +1340,7 @@ function refreshCounts() {
 /* ================= 2. 作問を questions.js へ ================= */
 function appendQuestions(saku) {
   if (!saku.length) return;
-  let qjs = fs.readFileSync(P("questions.js"), "utf8");
+  let qjs = readFileSafe(P("questions.js"), "utf8");
   for (const d of saku) if (qjs.includes(`id: ${S(d.id)}`)) throw new Error("すでにある: " + d.id);
   const blocks = saku.map(d => [
     "  {",
@@ -1369,7 +1369,7 @@ function appendQuestions(saku) {
   const hadNL = qjs.endsWith(tail + "\n");
   if (!qjs.endsWith(tail) && !hadNL) throw new Error("questions.js の末尾が想定と違う");
   qjs = qjs.slice(0, qjs.lastIndexOf(tail)) + ",\n" + blocks.join(",\n") + tail + (hadNL ? "\n" : "");
-  fs.writeFileSync(P("questions.js"), qjs, "utf8");
+  writeFileSafe(P("questions.js"), qjs, "utf8");
   console.log(`■ questions.js に ${saku.length}問を追記した`);
   for (const d of saku) console.log(`  ${d.id}（${d.philosophers.join("・")}）keys: ${d.keys.join("・")}`);
   console.log("");
@@ -1383,7 +1383,7 @@ function applyAppends(tsui) {
   for (const it of tsui) {
     /* 置換のたびにファイルを読み直す。src を使い回すと、2件目以降が古い文字列で
        置換され、表示だけ成功して実ファイルが変わらない。2026-09-17 にこれで二度失敗した。 */
-    let src = fs.readFileSync(P("questions.js"), "utf8");
+    let src = readFileSafe(P("questions.js"), "utf8");
     let q = QUESTIONS_OF(src).find(x => x.id === it.id);
     if (!q) throw new Error("問題が無い: " + it.id);
     /* 2026-09-18 に対象を選べるようにした。explanation にも位置で選択肢を指す句が残っていたため。 */
@@ -1397,10 +1397,10 @@ function applyAppends(tsui) {
     const newBody = q[FLD].replace(it.find, it.replace);
     if (src.indexOf(S(q[FLD])) !== src.lastIndexOf(S(q[FLD]))) throw new Error(FLD + " リテラルが一意でない: " + it.id);
     src = src.replace(S(q[FLD]), S(newBody));
-    fs.writeFileSync(P("questions.js"), src, "utf8");
+    writeFileSafe(P("questions.js"), src, "utf8");
 
     /* --- 字数はここで実測する。予定値は使わない --- */
-    src = fs.readFileSync(P("questions.js"), "utf8");
+    src = readFileSafe(P("questions.js"), "utf8");
     q = QUESTIONS_OF(src).find(x => x.id === it.id);
     const after = detailLen(q[FLD]);
     const par = FLD === "detail" ? q.detail.split(/\n\n+/).length : 0;
@@ -1424,11 +1424,11 @@ function applyAppends(tsui) {
     const newNote = oldNote + it.note_add + measured;
     if (src.indexOf(S(oldNote)) !== src.lastIndexOf(S(oldNote))) throw new Error("note リテラルが一意でない: " + it.id);
     src = src.replace(S(oldNote), S(newNote));
-    fs.writeFileSync(P("questions.js"), src, "utf8");
+    writeFileSafe(P("questions.js"), src, "utf8");
 
     /* --- keys --- */
     if (it.keys_add && it.keys_add.length) {
-      src = fs.readFileSync(P("questions.js"), "utf8");
+      src = readFileSafe(P("questions.js"), "utf8");
       q = QUESTIONS_OF(src).find(x => x.id === it.id);
       const start = src.indexOf(`    id: ${S(it.id)},`);
       if (start < 0) throw new Error("エントリが見つからない: " + it.id);
@@ -1447,12 +1447,12 @@ function applyAppends(tsui) {
         if (!tm) throw new Error("keys を作る位置が見つからない: " + it.id);
         src = src.slice(0, start) + block.replace(tm[0], tm[0] + "\n" + line) + src.slice(end);
       }
-      fs.writeFileSync(P("questions.js"), src, "utf8");
+      writeFileSafe(P("questions.js"), src, "utf8");
     }
 
     /* --- refs（「refs が無い」と「refs が空」は別。q395 で踏んだ） --- */
     if (it.refs_add) {
-      src = fs.readFileSync(P("questions.js"), "utf8");
+      src = readFileSafe(P("questions.js"), "utf8");
       const start = src.indexOf(`    id: ${S(it.id)},`);
       const end = src.indexOf("\n  },", start);
       const block = src.slice(start, end);
@@ -1470,7 +1470,7 @@ function applyAppends(tsui) {
         nb = block.slice(0, i) + `,\n      refs: [\n        ${S(it.refs_add)}\n      ]` + block.slice(i);
       }
       src = src.slice(0, start) + nb + src.slice(end);
-      fs.writeFileSync(P("questions.js"), src, "utf8");
+      writeFileSafe(P("questions.js"), src, "utf8");
     }
 
     const fin = readQ().find(x => x.id === it.id);
@@ -1527,7 +1527,7 @@ function registerKeys(keys, saku, tsui) {
   writeJson(P("tools/keys_draft.json"), kd);
 
   /* index.html の KEY_YOMI */
-  let html = fs.readFileSync(P("index.html"), "utf8");
+  let html = readFileSafe(P("index.html"), "utf8");
   const anchor = "const KEY_YOMI = {\n";
   if (!html.includes(anchor)) throw new Error("KEY_YOMI が見つからない");
   const lines = [];
@@ -1553,7 +1553,7 @@ function registerKeys(keys, saku, tsui) {
   }
   if (lines.length) {
     html = html.replace(anchor, anchor + lines.join("\n") + "\n");
-    fs.writeFileSync(P("index.html"), html, "utf8");
+    writeFileSafe(P("index.html"), html, "utf8");
   }
   console.log(`  → 台帳 ${added}語／keys_draft ${saku.filter(d => d.keys.length).length + tsui.filter(t => t.keys_add && t.keys_add.length).length}件／KEY_YOMI ${lines.length}語\n`);
 }
@@ -1587,13 +1587,49 @@ function checks() {
 /* ================= 差し戻し ================= */
 function snapshot() {
   const m = {};
-  for (const f of TOUCHED) m[f] = fs.readFileSync(P(f));
+  for (const f of TOUCHED) m[f] = readFileSafe(P(f));
   return m;
 }
+/* 2026-09-23 に直した。それまでは fs.writeFileSync で6ファイルを順に書き戻すだけで、
+   1つでも開けないと例外がそのまま上がり、残りのファイルも戻らず、どれがどの状態かも出なかった
+   （本番で questions.js が途中まで書き換わったまま残った）。
+   いまは6ファイルとも戻しを試み（1つ目で止めない）、戻せなかったものがあれば
+   ファイルごとの状態を表示し、元の中身を <名前>.bak-<日時> に保存してから終了コード1で止まる。 */
 function restore(m, why) {
-  for (const f of TOUCHED) fs.writeFileSync(P(f), m[f]);
-  console.log(`\n■ ${why}ので、${TOUCHED.length}ファイルを元に戻した`);
-  for (const f of TOUCHED) console.log(`  ${f}`);
+  const failed = {};
+  for (const f of TOUCHED) {
+    try { writeFileSafe(P(f), m[f]); } catch (e) { failed[f] = e; }
+  }
+  if (!Object.keys(failed).length) {
+    console.log(`\n■ ${why}ので、${TOUCHED.length}ファイルを元に戻した`);
+    for (const f of TOUCHED) console.log(`  ${f}`);
+    return;
+  }
+  const d = new Date(), z = n => String(n).padStart(2, "0");
+  const ts = `${d.getFullYear()}${z(d.getMonth() + 1)}${z(d.getDate())}-${z(d.getHours())}${z(d.getMinutes())}${z(d.getSeconds())}`;
+  console.error(`\n■ ${why}ので元に戻そうとしたが、${Object.keys(failed).length}ファイルを戻せなかった。いまの状態:`);
+  for (const f of TOUCHED) {
+    const e = failed[f];
+    let cur = null;
+    try { cur = readFileSafe(P(f)); } catch (_) { /* 読めないことも状態として出す */ }
+    const st = !e ? "元に戻した"
+      : cur === null ? `読めない（${e.code}）`
+      : cur.equals(m[f]) ? `元のまま（書き戻しは失敗したが中身は実行前と同じ。${e.code}）`
+      : `書き換わったまま（実行前と違う。${e.code}）`;
+    console.error(`  ${f}: ${st}`);
+  }
+  const codes = new Set();
+  for (const [f, e] of Object.entries(failed)) {
+    codes.add(e.code);
+    const b = `${P(f)}.bak-${ts}`;
+    try { fs.writeFileSync(b, m[f]); console.error(`  → ${f} の実行前の中身を ${path.relative(R, b)} に保存した`); }
+    catch (e2) { console.error(`  → ${f} の実行前の中身の保存にも失敗した（${e2.code}）。git の直前のコミットから戻すこと`); }
+  }
+  console.error("\n原因の見立て:");
+  for (const c of codes) console.error("  " + diagnose(c));
+  console.error("\n直し方: ファイルを開いているプログラム（エディタなど）を閉じ、保存した .bak- から戻すか、" +
+    "git checkout -- <ファイル> で直前のコミットに戻してから、もう一度実行する。");
+  process.exit(1);
 }
 
 /* ================= 本体 ================= */
@@ -1640,8 +1676,11 @@ function main() {
     refreshCounts();
     checks();
   } catch (e) {
-    restore(snap, "途中で落ちた");
+    /* 落ちた理由を先に出す。差し戻しが失敗すると restore() がその場で止まるため。
+       ファイルの読み書きで落ちたときは、エラーコードと原因の見立ても出す（2026-09-23）。 */
     console.error("\n" + e.message);
+    if (e.code) console.error("原因の見立て: " + diagnose(e.code));
+    restore(snap, "途中で落ちた");
     process.exit(1);
   }
 

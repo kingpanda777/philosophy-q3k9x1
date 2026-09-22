@@ -10,6 +10,9 @@ tools/_sources/
 # 点検用の一時ファイル
 detailonly.json
 
+# 道具が書き込みに使う一時ファイル（<名前>.tmp-<pid>）。途中で強制終了したときだけ残る
+*.tmp-*
+
 # Windows / エディタが勝手に作るファイル
 Thumbs.db
 desktop.ini

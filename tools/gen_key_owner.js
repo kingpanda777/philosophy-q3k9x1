@@ -20,6 +20,8 @@
 "use strict";
 const fs = require("fs");
 const path = require("path");
+/* 一時ファイル経由・やり直しつきの書き込み。add_batch.js から呼ばれるので同じ書き方にそろえる（2026-09-23） */
+const { writeFileSafe } = require("./_lib.js");
 const R = path.join(__dirname, "..");
 const P = path.join(R, "philosophers.js");
 
@@ -61,6 +63,6 @@ if (i >= 0) {
 } else {
   s = s.replace(/\s*$/, "") + "\n\n" + block + "\n";
 }
-fs.writeFileSync(P, s, "utf8");
+writeFileSafe(P, s, "utf8");
 console.log("KEY_OWNER を書き出した：" + words.length + "語 / 二人語 " +
   words.filter(w => owner[w].length > 1).length + "語");
