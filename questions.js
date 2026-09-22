@@ -193,7 +193,9 @@ const PHILOSOPHERS = [
   { name: "ハリエット・テイラー", years: "1807–1858", note: "誰の領分も他人は決められない。女性に完全な平等を求めた", school: "功利主義と自由主義" },
   { name: "ルカーチ", years: "1885–1971", note: "商品の形式が社会のすみずみを覆う。部分は全体のなかでしか分からない", school: "フランクフルト学派" },
   { name: "アマルティア・セン", years: "1933–", note: "何の平等か。財でも満足でもなく、人が実際になしうることを見よ", school: "現代の正義論" },
-  { name: "ヌスバウム", years: "1947–", note: "尊厳に値する生のために、十のケイパビリティを閾値まで保障せよ", school: "現代の正義論" }
+  { name: "ヌスバウム", years: "1947–", note: "尊厳に値する生のために、十のケイパビリティを閾値まで保障せよ", school: "現代の正義論" },
+  { name: "ナンシー", years: "1940–2021", note: "存在することは共に在ること。完成した共同体という夢を疑え", school: "構造主義以降" },
+  { name: "ブランショ", years: "1907–2003", note: "死は私のものにならない。何も共有しない者たちの共同体へ", school: "構造主義以降" }
 ];
 
 const TERMS = [
@@ -19451,6 +19453,178 @@ const QUESTIONS = [
       refs: [
         "https://plato.stanford.edu/entries/feminism-objectification/ — 導入部。ヌスバウムの七つの特徴（Nussbaum 1995, 257）。§5 The possibility of positive objectification。一つ以上で起きること、グリーンの見方の否定、道具扱いの位置、肯定的なモノ化（ローレンス）。§2。ポルノグラフィーではなく社会の不平等が原因とする見方",
         "https://www.jstage.jst.go.jp/article/wsj/30/0/30_39/_article/-char/ja — 田中東子「メディアとジェンダー表象――新しいメディアという視点から」『女性学』30巻 39–50頁（2023）。注1。ヌスバウムの七つの分類と、ラングトンが加えた三つ"
+      ]
+    }
+  },
+  {
+    id: "q824",
+    philosophers: ["ナンシー"], terms: [], type: "single",
+    keys: ["無為の共同体"],
+    question: "ナンシーが『無為の共同体』で疑いの目を向けたものとして最も適切なものは？",
+    choices: [
+      "共同体を契約で基礎づけ、権利を譲り渡していくという構想",
+      "共同体を市場での交換に置き換えてしまう経済の論理",
+      "共同体が自らの一体性を、一つの作品のように完成しうるという考え",
+      "共同体を神の前での信仰だけに限ってしまう宗教の考え方"
+    ],
+    answer: 2,
+    explanation: "ナンシーはこれを内在主義と呼びます。自分自身に閉じ、分けられない同一性のうちに全面的に現前しようとする共同体への望みです。民族が他の影響から自らの同一性を守ろうとすることや、共産主義を人類の最終目的地とみなした東欧の体制が例に挙げられます。無為の共同体は、こうした完成を拒む共同体の考え方です。",
+    detail: "背景には、西洋の政治思想の核にある「失われた本来の共同体」への郷愁があります。家族、アテネの都市、ローマの共和政、初期キリスト教の共同体と、かつての親密な共同体はさまざまに描かれてきた。この意識は西洋の始まりからついてまわっており、だからこそ疑うべきだ、とナンシーは言います。\n\n自分自身や神や自然、自分の作品に等しくなった人間の共同体は死の共同体だ、とナンシーは書きます。個人主義でも共産主義でも、完成された人間とは死んだ人間だというのです。この本はバタイユの注釈と絡み合って書かれ、ブランショの応答を呼びました。\n\nナンシー自身は共同体の理論を体系にはしていません。いくつかのテーゼを投げかけ、のちの著作で展開していく書き方をとりました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は IEP「Nancy, Jean-Luc」§4a の内在主義（自分自身に閉じ、分けられない社会的同一性を求める共同体への望み）と、横田 2020 が引く『無為の共同体』の一節（自分自身や神や自然、自分固有の作品に等しくなった人間の共同体は死の共同体である）をまとめたもの。誤答は、契約による基礎づけ（社会契約の構想。ナンシーの批判の的ではない）、市場の交換の論理、信仰の共同体への限定。いずれも本書の主題から外れる。四択は成立している。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。type は single。terms は空にした。TERMS の「連帯」「他者」などの二つの読みに、内在主義への批判という本問の主題が無理なく当てはまらない。『無為の共同体』の刊行年は資料で割れている（IEP §1 は1982、小田 2023 は論文を1983、横田 2020 と伊藤 2020 は本を1986とする）ので、本文には書かない。 事実の確認: IEP §4 の「Nancy’s thesis is that at the core of western political thinking, there is a longing for an ‘original community’」、引用「the natural family, the Athenian city, the Roman Republic, the first Christian community ...」「at every moment in history, the Occident has rendered itself to the nostalgia for a more archaic community ... We should be suspicious of this consciousness first of all because it seems to have accompanied the Western world from its very beginnings」、§4a の「Nancy summarises the communal desire for a closed and undivided social identity with his concept of immanentism」「communities, nations or ethnics try to protect their identity from the influences of others」「the former socialist regimes in Eastern Europe understood the communist form of constitution as the final destination of humanity」「intertwined with a commentary on Bataille」「he never elaborated a theory of community ... he launches a few theses ... which he then develops further in later texts」、§1 の「This text led Maurice Blanchot to discuss the question of community」を確認した。横田 2020 の第1節で、『無為の共同体』の「人間的内在の共同体、すなわち自分自身や神に、自然に、そして自分固有の作品に等しくなった人間の共同体とは、このような死の―あるいは死者たちの―共同体なのだ。個人主義的であれ共産主義的であれ、人間主義において完成された人間とは死んだ人間にほかならない」（横田による訳）を確認した。",
+      refs: [
+        "https://iep.utm.edu/nancy/ — IEP「Nancy, Jean-Luc」§4 Community。失われた共同体への郷愁と、それを疑うべき理由。§4a Immanentism。内在主義の定義と二つの例、バタイユの注釈との絡み合い、共同体の理論を体系化しなかったこと。§1。ブランショの応答を呼んだこと",
+        "https://www.jstage.jst.go.jp/article/bellf/29/0/29_127/_article/-char/ja — 横田祐美子「終わりなき有限性――ジャン＝リュック・ナンシーにおける「外記」としてのエクリチュール」『日本フランス語フランス文学会関東支部論集』29号 127頁〜（2020）。第1節。『無為の共同体』の「人間的内在の共同体」は死の共同体だとする一節"
+      ]
+    }
+  },
+  {
+    id: "q825",
+    philosophers: ["ナンシー"], terms: ["存在"], type: "single",
+    keys: ["共同存在"],
+    question: "ナンシーが『複数にして単数の存在』などで、存在をどう捉え直したかとして最も適切なものは？",
+    choices: [
+      "存在はそれぞれ閉じた個体で、他との関係はあとから加わるものだ",
+      "存在は一つの全体に融け合い、個の違いは見かけにすぎない",
+      "存在することはつねに他と共に在ることで、実存することは共存である",
+      "存在は意識が対象を構成したときに、はじめて成り立つ"
+    ],
+    answer: 2,
+    explanation: "世界のうちに在ることは他者と共に在ることで、この共同存在は存在の本質的な特徴だ、とナンシーは考えます。そこにいることは共にいることであり、実存することは共に実存することだ、とされます。ただしこの共に在ることは、民族のような共通の性質を分け持つことにもとづくものではありません。",
+    detail: "ナンシーは同書で、共同存在から出発して基礎存在論を作り直さねばならないと書きます。ハイデガーの基礎存在論を受け止めつつ、それを「共に」の側から組み直す試みです。\n\n共同体を考える土台も、ここに置かれます。そこにいる者どうしの構成的な関係である「共に」を展開し、私たちが互いに、そして世界にどう向き合っているかを分析する、共に実存することの分析です。\n\n一つの全体に融け合うとする見方は、ナンシーが退けた内在の共同体に近い立場です。閉じた個体から出発する見方とも、意識による構成から出発する見方とも違います。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は IEP「Nancy, Jean-Luc」§4b の「being-there is being-with, to exist is to coexist」をまとめたもの。誤答は、閉じた個体から出発する見方（共に在ることを後から加わる関係とする）、一つの全体への融合（ナンシーが内在主義として退けた側）、意識による構成（フッサール的な出発点）。四択は成立している。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。type は single。「存在するものすべてが共に在る」という点は、IEP §4b と小田 2021 のどちらからも言えなかったので書いていない（木下 2023 は二段組みの読み取りが乱れているため引用しない方針）。 事実の確認: IEP §4b の「Especially in his book Être singulier pluriel (Being Singular Plural), written in 1996, Nancy focuses upon that」「Being in the world is being with others, and this being-with is an essential trait ... So, being-there is being-with, to exist is to coexist」「this being-with is no longer a substantial being-together out of a shared trait, identity of race」「to develop the ‘with’, the constitutive relationality of being-there, and to radicalise it in what he calls an analysis of the coexistential. This is a fundamental analysis of the way that we stand to each other and to the world and how this can be the basis for a thinking of community」を確認した。小田 2021 の序で、『複数にして単数の存在』（1996）の、共同存在から出発して基礎存在論を作り直さねばならないという一節（ESP: 45、邦訳 68頁）を確認した（二段組みの読み取りで文が乱れているので、引用はせず内容だけを使った）。",
+      refs: [
+        "https://iep.utm.edu/nancy/ — IEP「Nancy, Jean-Luc」§4b Heidegger and being-with。『複数にして単数の存在』（1996）、存在することは共に在ることで実存は共存であること、共通の性質にもとづかない共に在ること、共に実存することの分析",
+        "https://www.jstage.jst.go.jp/article/jitsuzonshisou/36/0/36_151/_article/-char/ja — 小田麟太郎「ナンシー自由論の解明――「物の力としての自由」の存在論的射程について」『実存思想論集』36号 151頁〜（2021）。序。『複数にして単数の存在』の、共同存在から出発して基礎存在論を作り直すという一節"
+      ]
+    }
+  },
+  {
+    id: "q826",
+    philosophers: ["ナンシー", "ハイデガー"], terms: [], type: "single",
+    keys: ["共同存在"],
+    question: "ナンシーがハイデガーから受け継いだものと退けたものの組み合わせとして最も適切なものは？",
+    choices: [
+      "共同存在の着想を受け継ぎ、本来の共同体という主張を退けた",
+      "本来の共同体という主張を受け継ぎ、共同存在の着想を退けた",
+      "共同存在の着想も、本来の共同体の主張も受け継いだ",
+      "共同存在の着想も本来の共同体の主張も退けた"
+    ],
+    answer: 0,
+    explanation: "ハイデガーは、人間がつねに世界へ開かれていて、世界のうちに在ることは他者と共に在ることだと示しました。ナンシーはこの共同存在の着想に触発される一方で、本来の、あるいは根源的な共同体についてハイデガーが立てる主張には、根本から問いを向けます。",
+    detail: "ハイデガーはある時点で真のドイツ的共同体を語り、学長就任演説では、本来的な実存へ導けるのはこの共同体だけだとした、とされます。ナンシーはこの両義性を否定せず、ハイデガーを読み直す出発点に据えます。\n\nナンシーから見れば、共に在ることを考える手がかりは『存在と時間』に始まっているが、それだけでは足りません。そこで「共に」を展開し、共に実存することの分析へと徹底させました。\n\nナンシーはハイデガーの思索の全体を作り直そうとし、1988年の『自由の経験』でも、ハイデガーの自由論との対照から自らの自由論を組み立てています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は IEP「Nancy, Jean-Luc」§4b の「On the one hand, he is inspired by Heidegger’s articulation of being-with. On the other hand, he wants to question fundamentally every claim that Heidegger makes regarding a proper or original community」をまとめたもの。誤答は、その鏡像と、両方を受け継いだ／両方を退けたとする組み合わせ。四択は成立している。 設計の記録: 問いの向きを「何を受け継ぎ、何を退けたか」にして、q825（存在をどう捉えたか）と分けた。type は single（正解は二人の立場の対比ではなく、ナンシーのハイデガーに対する態度）。philosophers にハイデガーを入れた（正解が扱う当事者のため）。detail 第1段落の真のドイツ的共同体と学長就任演説は IEP §4b の記述として、評価語なしで書いた（IEP の「horrible」「murderous」などの評価は写していない）。誤答を先に3つ書いてから正解を書いた。位置指しなし。terms は空にした。当てはまる TERMS の語がない。 対照の記録: q171（ハイデガーの世人と頽落）の detail 第2段落の「他者との共同存在は、現存在の基本的なあり方として最初から組み込まれています」と、本問の explanation のハイデガーの共同存在は揃っている。 事実の確認: IEP §4b の「Nancy argues that Heidegger makes it clear, in the most radical way, that every human being (Dasein as he calls it) is always being opened unto a world. Being in the world is being with others」「he realises very well that Heidegger is the author who at a certain moment speaks of a true German community ... Only this community, so Heidegger says in his famous rectoral speech, can lead to a proper existence」「Nancy does not deny this ambiguity. On the contrary, he takes it as the starting point of his reorientation of Heidegger」「the attempt to think community in a radical way as being-with, gets its start in Heidegger’s Being and Time but is, according to Nancy, largely insufficient」を確認した。小田 2021 の序で、ナンシーがハイデガーの思索をその全道程にわたって作り直そうとしていること、『自由の経験』（1988）の自由論をハイデガーの存在論との対照から論じる構成を確認した。",
+      refs: [
+        "https://iep.utm.edu/nancy/ — IEP「Nancy, Jean-Luc」§4b Heidegger and being-with。共同存在の着想に触発されつつ本来の共同体の主張を問うという二重の態度、真のドイツ的共同体と学長就任演説、『存在と時間』の試みは足りないこと",
+        "https://www.jstage.jst.go.jp/article/jitsuzonshisou/36/0/36_151/_article/-char/ja — 小田麟太郎「ナンシー自由論の解明」『実存思想論集』36号 151頁〜（2021）。序。ハイデガーの思索全体を作り直す試み、『自由の経験』（1988）の自由論とハイデガーとの対照"
+      ]
+    }
+  },
+  {
+    id: "q827",
+    philosophers: ["ブランショ"], terms: [], type: "single",
+    keys: ["明かしえぬ共同体"],
+    question: "ブランショが『明かしえぬ共同体』で考えた共同体として最も適切なものは？",
+    choices: [
+      "同じ民族や言葉を共有する者どうしで結ばれる共同体",
+      "権利を契約で譲り合い、主権のもとで作られる共同体",
+      "融合や同一性によらず、何も共有しないままに結ばれる共同体",
+      "信仰によって神の前で一つに融け合う共同体"
+    ],
+    answer: 2,
+    explanation: "ブランショは、自己同一性や現前に還元されない共同体を考え直しました。融合や一体化、民族主義にもとづく共同体の観念は退けられます。各自に共通の何かが存在しない共同性こそ目指すべきものだ、とされます。",
+    detail: "1983年の本で、第一部ではバタイユが試みたアセファルの共同体が、第二部ではデュラスの小説『死の病い』を手がかりに「恋人たちの共同体」が論じられます。伝統的な共同体と選択的な共同体を対比したうえで、極小の、極限の共同体として示されるものです。\n\nブランショはこうした考え方を、ときにコミュニズムと呼びます。あらかじめある共同体の秩序をすべて退ける、将来だけのコミュニズムです。そこでは、名もない他者に対して、計算を超えた責任を引き受けることが求められます。\n\n主権のもとの共同体や信仰の共同体は、ブランショが退けた融合の側にあたります。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は IEP「Blanchot, Maurice」§1e の「a rethinking of the notion of community as irreducible to the notions of self-identity and presence」、§3d の「reject any notion of community based on the notion of fusion, communion, or nationalism」と、伊藤 2014 の「各々に何か共通のものが存在しない共同性」をまとめたもの。誤答は、民族や言語の共有（民族主義にもとづく共同体）、契約と主権（社会契約の共同体）、信仰による融合（融合・一体化の共同体）。四択は成立している。 設計の記録: 問いの向きを「どんな共同体か」にして、q830（ナンシーとどう応答し合ったか）と分けた。誤答を先に3つ書いてから正解を書いた。位置指しなし。type は single。terms は空にした。当てはまる TERMS の語がない。 資料の限界: 恋人たちの共同体と、伝統的な共同体と選択的な共同体の対比は澤田 2019 だけに拠る（detail 第1段落の付随部分）。 事実の確認: IEP §1e の「The Unavowable Community, in late 1983. Here Blanchot lays out, with reference to Bataille and the novelist Marguerite Duras, among others, a rethinking of the notion of community as irreducible to the notions of self-identity and presence」、§3d の「Blanchot refers, at times, to such a politics as “communism.” A Blanchotian form of communism, however, would exclude all forms of preexisting community ... a communism solely of the future」「The politics evoked within these writings reject any notion of community based on the notion of fusion, communion, or nationalism」「an infinite demand for justice which exceeds all calculation ... an impossible responsibility for the nameless other」を確認した。伊藤 2014 の結びで「ブランショは各々に何か共通のものが存在しない共同性――後にナンシーの言葉を借りながら「共同性なき共同性」と語るような共同性こそ、目指されるべき共同性だと考えていた」を確認した。澤田 2019 で、『明かしえぬ共同体』第二部「恋人たちの共同体」がデュラスの『死の病い』を契機として書かれたこと、伝統的共同体と選択的共同体の対比、極小の極限の共同体としての恋人たちの共同体、第一部でバタイユのアセファル共同体が考察されたことを確認した。",
+      refs: [
+        "https://iep.utm.edu/blanchot/ — IEP「Blanchot, Maurice」§1e Writing the Disaster。『明かしえぬ共同体』（1983）が自己同一性と現前に還元されない共同体を考え直したこと。§3d Community and the Political。将来だけのコミュニズム、融合・一体化・民族主義の共同体の拒否、名もない他者への責任",
+        "https://www.jstage.jst.go.jp/article/bellf/23/0/23_171/_article/-char/ja — 伊藤亮太「モーリス・ブランショ『文学空間』におけるコミュニカシオンについて」『日本フランス語フランス文学会関東支部論集』23号 171頁〜（2014）。結び。共通のものが存在しない共同性",
+        "https://www.jstage.jst.go.jp/article/sfjp/24/0/24_14/_article/-char/ja — 澤田直「集団、主体性、共同体をめぐって――68年5月とサルトル、ドゥルーズ＝ガタリ、ブランショ」『フランス哲学・思想研究』24号 14頁〜（2019）。『明かしえぬ共同体』第一部のアセファル共同体、第二部の恋人たちの共同体、伝統的共同体と選択的共同体"
+      ]
+    }
+  },
+  {
+    id: "q828",
+    philosophers: ["ブランショ"], terms: [], type: "single",
+    keys: ["死ぬことの不可能性"],
+    question: "ブランショが、ヘーゲルやハイデガーの死の捉え方に対して示した「もう一つの死」として最も適切なものは？",
+    choices: [
+      "自分だけの最も固有な可能性として、引き受けられる死",
+      "否定の力として働き、意味を生み出していく死",
+      "誰のものにもならず、自分では引き受けられない終わりなき死",
+      "魂が肉体を離れて、真理そのものに至る死"
+    ],
+    answer: 2,
+    explanation: "ブランショは、死を可能性と結びつけるヘーゲルやハイデガーの考えに正面から反対するのではなく、それらが脇へ押しやる死のもう一つの面を示します。そこでは死の力と可能性が宙づりになり、死は自己には決して近づけないものになります。",
+    detail: "『文学空間』でブランショは、その死とは関係をもてない、そこでは私は死なず、死ぬ力から落ちてしまっている、と書きます。人は死ぬが、死に終えることがない。人称をもたない、匿名の死です。\n\n書き手の側から見れば、それは際限なく死にゆくこととしての、死ぬことの不可能性です。死がこのように二重なら、ヘーゲルの概念の働きには無為と不可能性がつねに伴い、ハイデガーの言う本来的な死もありえないことになります。\n\n固有な可能性はハイデガー、意味を生み出す否定の力はヘーゲル、真理に至る死はプラトン以来の見方で、いずれもブランショが対置した側です。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は IEP「Blanchot, Maurice」§3a の「二つの死」のうち、人称をもたず自己には近づけない匿名の死と、伊藤 2014 の「際限なき死にゆきとしての死ぬことの不可能性」をまとめたもの。誤答は、最も固有な可能性としての死（ハイデガー）、否定の力として意味を生み出す死（ヘーゲル）、真理に至る死（プラトン以来、死を真理や現前と等しくおく哲学）。いずれも IEP §3a がブランショの対置した側として挙げる。四択は成立している。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。type は single。terms は空にした。当てはまる TERMS の語がない。detail 第1段落の『文学空間』の一節は、IEP §3a が英訳から引く箇所（The Space of Literature, p. 155）を書き手が日本語にしたもので、邦訳の文言ではない。 事実の確認: IEP §3a の「For Hegel ... death is what produces all possibility of meaning」「For Heidegger ... it is construed ... as one’s own possibility, a possibility which is non-transferable and not to be outstripped」「In his writings, Blanchot does not directly oppose these accounts of death. What Blanchot suggests, however, is that there is also another side to death which these philosophies marginalize or exclude. It is a side in which the power and possibility of death are suspended」「“I have no relationship with it, it is that toward which I cannot go, for in it I do not die, I have fallen from the power to die. In it they die; they do not cease, and they do not finish dying” (The Space of Literature, p. 155)」「The so-called work of the concept in Hegel ... must now be understood as silently accompanied by worklessness and impossibility. Likewise ... no death can ever be wholly proper or authentic. In contrast to all philosophies, going back to Plato, in which death is equated with Truth, presence, or consummation」を確認した。伊藤 2014 の第1節で「書き手の側においては、彷徨、際限なき死にゆきとしての死ぬことの不可能性となる」を確認した。",
+      refs: [
+        "https://iep.utm.edu/blanchot/ — IEP「Blanchot, Maurice」§3a Two Kinds of Death。ヘーゲルとハイデガーの死、もう一つの死、『文学空間』の一節（The Space of Literature, p. 155）、無為と本来的な死への帰結、プラトン以来の死と真理",
+        "https://www.jstage.jst.go.jp/article/bellf/23/0/23_171/_article/-char/ja — 伊藤亮太「モーリス・ブランショ『文学空間』におけるコミュニカシオンについて」『日本フランス語フランス文学会関東支部論集』23号 171頁〜（2014）。第1節。際限なき死にゆきとしての死ぬことの不可能性"
+      ]
+    }
+  },
+  {
+    id: "q829",
+    philosophers: ["ブランショ"], terms: ["差異"], type: "single",
+    keys: ["中性的なもの"],
+    question: "ブランショの「中性的なもの」の説明として最も適切なものは？",
+    choices: [
+      "男性でも女性でもない、第三の性や一つの類を指すもの",
+      "すべてを一つに統べる、超越的で至高の存在を指すもの",
+      "対立する二つを総合する、より高い次元の立場を指すもの",
+      "主体にも客体にも属さず、語を一つの意味から引き離していくもの"
+    ],
+    answer: 3,
+    explanation: "中性的なものは、見えるものにも見えないものにも、主体にも客体にも与しません。語が自らを宙づりにし、意味するものを意味しなくなって、複数の意味へと漂い出す働きを指します。あらゆる自己同一性や意味の成立を条件づけると同時に、それを脅かすものとされます。",
+    detail: "第三の性のように考えることを、ブランショ自身が退けています。性でも類でもなく、存在者の一つの種類でもありません。すべての全体性や統一の外に立ちますが、超越的なものでもない、とされます。\n\nこの点で、デリダの差延とよく似ていると指摘されます。ブランショはこの思考を表すのに「XなきX」「どちらでもない」「でもない、でもない」といった否定の言い方をしばしば用い、デリダもそれに注目しています。\n\n1960年代初めにこの語を前面に出したブランショは、それまでの論文を改稿して1969年の『終わりなき対話』にまとめ、「非人称」「匿名」といった語を「中性的なもの」に置き換えました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は IEP「Blanchot, Maurice」§3c の「It is commensurable no less with a subject than with an object」「the neuter evokes a word’s ability to suspend and remark itself in such a way that it ceases to signify what it signifies, and it begins to drift into the indeterminacy of multiple meanings」をまとめたもの。誤答は、第三の性や類（IEP §3c が明示的に退ける読み）、超越的な至高の存在（IEP §3c は超越的でもないとする）、対立の総合（ヘーゲル的な弁証法の総合）。四択は成立している。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。type は single。terms は「差異」。TERMS の note の読みB「同一性に先立つ一次的なもの」に当たる（IEP §3c は中性的なものを、あらゆる自己同一性の成立を条件づけ脅かす根源的な差異とする）。 事実の確認: IEP §3c の「We might casually think of the neuter as a kind of third gender ... But this is an approach that Blanchot rejects. The neuter is not a gender or a genre of any kind ... It is not a class of beings」「The neuter stands outside of all totality, all unity, all Oneness ... And yet, it is by no means transcendent either」「a kind of principle of “original” difference and differentiation that both conditions and threatens the installation of all forms of self-identity, meaning, and truth. It thus bears striking similarities to Derrida’s “différance”」「Blanchot’s “discovery” of the neuter (in the early 1960s ...)」「in the 1969 republished versions his earlier articles ... substitutes the terms “impersonal” and “anonymous” with “neuter.”」を確認した。山岡 2011 の注13で、ブランショが「中性的なもの（le neutre）」の思考を表すのに「XなきX」「どちらでもない」「でもない、でもない」という否定表現をしばしば用い、デリダも『滞留』ほかでそれを指摘していることを確認した（読み取りに誤字が多いので、語句だけを使った）。",
+      refs: [
+        "https://iep.utm.edu/blanchot/ — IEP「Blanchot, Maurice」§3c The Neuter。主体にも客体にも属さないこと、語を複数の意味へ漂わせること、第三の性ではないこと、超越的でもないこと、デリダの差延との類似、1969年の改稿で非人称・匿名を中性的なものに置き換えたこと",
+        "https://www.jstage.jst.go.jp/article/bellf/20/0/20_57/_article/-char/ja — 山岡利矢子「「中性的なもの」と「差異／差延」――モーリス・ブランショとジャック・デリダをめぐって」『日本フランス語フランス文学会関東支部論集』20号 57頁〜（2011）。注13。中性的なものを表す否定表現と、デリダの指摘"
+      ]
+    }
+  },
+  {
+    id: "q830",
+    philosophers: ["ナンシー", "ブランショ"], terms: [], type: "compare",
+    keys: ["明かしえぬ共同体", "無為の共同体"],
+    question: "共同体をめぐる、ナンシーとブランショのやりとりとして最も適切なものは？",
+    choices: [
+      "ナンシーのバタイユ論に、ブランショが『明かしえぬ共同体』で応えた",
+      "ブランショのバタイユ論に、ナンシーが『無為の共同体』で応えた",
+      "両者とも、相手の共同体論には一度も触れずに論じた",
+      "両者とも、民族の共同体を取り戻そうと呼びかけ合った"
+    ],
+    answer: 0,
+    explanation: "ナンシーの『無為の共同体』は、バタイユの注釈と絡み合って書かれました。これを受けてブランショは共同体の問いを論じ、ナンシーのバタイユ論を検討する形で、1983年に『明かしえぬ共同体』を著します。",
+    detail: "ブランショは、ナンシーを介してバタイユの共同体論の可能性を再検討した、と読まれます。ブランショの共同体論は、ラクー＝ラバルトとナンシーの仕事に触発されたものともされます。\n\nおよそ30年後、ナンシーは再びバタイユを取り上げつつ、亡きブランショに問いかける本を著しました。邦訳の題は『否認された共同体』です。\n\n両者とも、融合や同一性にもとづく共同体を退ける点では重なります。民族の共同体の回復を呼びかけたのではありません。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は IEP「Nancy, Jean-Luc」§1 の「La communauté désoeuvrée ..., a comment on the work of Bataille. This text led Maurice Blanchot to discuss the question of community, and also to consider Nancy’s comments on Bataille, in his La communauté inavouable」と、月曜社の紹介文「1980年代、バタイユに触発されてナンシーは『無為の共同体』を刊行し、ブランショは『明かしえぬ共同体』でナンシーに応答した」をまとめたもの。入替誤答はその鏡像。「両者とも」型の一つは応答の事実に反するもの、もう一つは両者がともに退けた民族の共同体。四択は成立している。 設計の記録: 比較問題の条件（一つの資料が両者を並べて論じている）は、IEP のナンシー項 §1・ブランショ項 §3d、月曜社の紹介文、澤田 2019、伊藤 2014 がいずれも両者を並べているので満たす。問いの向きを「どう応答し合ったか」にして、q827（どんな共同体か）と分けた。入替誤答を正解と同じ長さの鏡像にした（2位との差0字）。『無為の共同体』の刊行年は資料で割れているので、本文には書かない。『否認された共同体』の原著の年も書かない（月曜社の紹介文は「30年後」とだけ書く）。誤答を先に3つ書いてから正解を書いた。位置指しなし。terms は空にした。当てはまる TERMS の語がない。 事実の確認: IEP のナンシー項 §1 の上記の一節、ブランショ項 §3d の「This is a project that Blanchot, inspired by the work of Phillipe Lacoue-Labarthe and Jean-Luc Nancy, embarked upon in his 1983 text, The Unavowable Community」「reject any notion of community based on the notion of fusion, communion, or nationalism」、ナンシー項 §4a の「intertwined with a commentary on Bataille」を確認した。月曜社『否認された共同体』（市川崇訳）の紹介文の「30年後、ナンシーはバタイユを再び取り上げつつ、亡きブランショへ本書で問いかける」を確認した。伊藤 2014 の序で「ジャン＝リュック・ナンシーを介してバタイユの共同体論の可能性を再検討することになった『明かしえぬ共同体』」、澤田 2019 で「ジャン＝リュック・ナンシーの共同体論への応答として1983年に出版された『明かしえぬ共同体』」を確認した。",
+      refs: [
+        "https://iep.utm.edu/nancy/ — IEP「Nancy, Jean-Luc」§1 Biography。『無為の共同体』がバタイユの注釈であり、ブランショが『明かしえぬ共同体』でナンシーのバタイユ論を検討したこと。§4a。バタイユの注釈との絡み合い",
+        "https://iep.utm.edu/blanchot/ — IEP「Blanchot, Maurice」§3d。『明かしえぬ共同体』（1983）がラクー＝ラバルトとナンシーの仕事に触発されたこと、融合・一体化・民族主義の共同体の拒否",
+        "https://getsuyosha.jp/product/978-4-86503-170-6/ — 月曜社『否認された共同体』（ジャン＝リュック・ナンシー著、市川崇訳）の紹介文。ナンシーの『無為の共同体』にブランショが『明かしえぬ共同体』で応答し、30年後にナンシーが亡きブランショへ問いかけたこと",
+        "https://www.jstage.jst.go.jp/article/bellf/23/0/23_171/_article/-char/ja — 伊藤亮太「モーリス・ブランショ『文学空間』におけるコミュニカシオンについて」『日本フランス語フランス文学会関東支部論集』23号 171頁〜（2014）。序。ナンシーを介してバタイユの共同体論を再検討した『明かしえぬ共同体』",
+        "https://www.jstage.jst.go.jp/article/sfjp/24/0/24_14/_article/-char/ja — 澤田直「集団、主体性、共同体をめぐって」『フランス哲学・思想研究』24号 14頁〜（2019）。ナンシーの共同体論への応答として1983年に出版された『明かしえぬ共同体』"
       ]
     }
   }
