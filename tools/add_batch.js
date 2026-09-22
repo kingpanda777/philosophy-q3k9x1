@@ -731,6 +731,47 @@ function auditType(saku) {
   console.log(`  → ${saku.length}問とも type の指定は済んでいる\n`);
 }
 
+/* ================= 1.7b 作問の note の問題番号（書き込みの前） =================
+   作問の note に出てくる問題番号が、(a) 存在する問題か同じ回の作問で、かつ
+   (b) philosophers が1人以上重なるか同じ回の作問であるかを見る。どちらかを満たさなければ止める。
+   2026-09-22 に足した。
+
+   なぜ足したか。ナンシー・ブランショの作問で、分有の問題を外したあと id を詰め直した。
+   このとき note の中の番号（「q831 とは問いの向きで分けた」など）を手で書き換えており、
+   書き換え漏れがあれば、存在しない問題や無関係な問題を指したまま書き込まれるところだった。
+
+   許可欄は置かない。逸脱の中身が「指す先が違う」ことなので、理由を書いて通す先が無い。
+
+   引っかからない場合: 同じ人物の別の問題を指すずれ（番号がひとつ隣にずれても、同じ人物なら通る）。
+   紹介文の thought_src のずれも同じ型で、ここでは見ない（check_phil が実在と人物だけを見る）。 */
+function auditNoteRefs(saku, qs) {
+  if (!saku.length) return;
+  const 同じ回 = new Map(saku.map(d => [d.id, d]));
+  const 要判断 = [];
+  console.log("■ 作問の note の問題番号の検査（書き込みの前）");
+  for (const d of saku) {
+    const hits = [...new Set(String(d.note || "").match(QNUM_RE) || [])].filter(id => id !== d.id);
+    const 悪い = [];
+    for (const id of hits) {
+      if (同じ回.has(id)) continue;
+      const q = qs.find(x => x.id === id);
+      if (!q) { 悪い.push(`${id}（存在しない）`); continue; }
+      const 重なり = (q.philosophers || []).some(p => d.philosophers.includes(p));
+      if (!重なり) 悪い.push(`${id}（人物が重ならない: ${(q.philosophers || []).join("・")}）`);
+    }
+    console.log(`  ${悪い.length ? "★" : "○"} ${d.id}　${hits.length ? hits.join("・") : "問題番号なし"}` +
+      (悪い.length ? "　→ " + 悪い.join("、") : ""));
+    if (悪い.length) 要判断.push(`${d.id}: ${悪い.join("、")}`);
+  }
+  if (要判断.length) {
+    console.error("\n要判断（1問も書いていない）:\n  " + 要判断.join("\n  ") +
+      "\n  note の番号が、存在しない問題か、人物の重ならない問題を指している。id を詰め直したときの書き換え漏れを疑う。" +
+      "\n  この検査に「許可」欄は無い。");
+    process.exit(1);
+  }
+  console.log(`  → ${saku.length}問とも note の問題番号の指す先に問題なし\n`);
+}
+
 /* ================= 1.8 keys から語を外す（書き込みの前） =================
    既存問題の keys から語を外す。2026-09-21 に足した。
 
@@ -1572,6 +1613,8 @@ function main() {
   auditDetailLength(saku);
   /* type は既定値が黙って入るので、本文の検査のあと、書き込みの直前に見る。2026-09-21 に足した。 */
   auditType(saku);
+  /* note の問題番号の指す先。id を詰め直したときの書き換え漏れを止める。2026-09-22 に足した。 */
+  auditNoteRefs(saku, readQ());
   auditEmptyTerms(saku);
   auditEmptyKeys(saku);
   /* keys の除去も書き込みの前に見る。歯止めは2つとも、1件も書かずに止める。2026-09-21 に足した。 */
