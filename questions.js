@@ -192,7 +192,7 @@ const PHILOSOPHERS = [
   { name: "シュトラウス", years: "1899–1973", note: "何が正しいかを理性で問うことを、近代はやめてしまったのではないか", school: "二十世紀の政治哲学" },
   { name: "ハリエット・テイラー", years: "1807–1858", note: "誰の領分も他人は決められない。女性に完全な平等を求めた", school: "功利主義と自由主義" },
   { name: "ルカーチ", years: "1885–1971", note: "商品の形式が社会のすみずみを覆う。部分は全体のなかでしか分からない", school: "フランクフルト学派" },
-  { name: "セン", years: "1933–", note: "何の平等か。財でも満足でもなく、人が実際になしうることを見よ", school: "現代の正義論" },
+  { name: "アマルティア・セン", years: "1933–", note: "何の平等か。財でも満足でもなく、人が実際になしうることを見よ", school: "現代の正義論" },
   { name: "ヌスバウム", years: "1947–", note: "尊厳に値する生のために、十のケイパビリティを閾値まで保障せよ", school: "現代の正義論" }
 ];
 
@@ -19240,7 +19240,7 @@ const QUESTIONS = [
   },
   {
     id: "q815",
-    philosophers: ["セン"], terms: ["平等"], type: "single",
+    philosophers: ["アマルティア・セン"], terms: ["平等"], type: "single",
     keys: ["ケイパビリティ"],
     question: "センが講義「何の平等か」で、障害のある人の例を使って示したこととして最も適切なものは？",
     choices: [
@@ -19264,7 +19264,7 @@ const QUESTIONS = [
   },
   {
     id: "q816",
-    philosophers: ["セン"], terms: [], type: "single",
+    philosophers: ["アマルティア・セン"], terms: [], type: "single",
     keys: ["機能とケイパビリティ"],
     question: "センの言う機能とケイパビリティの区別として最も適切なものは？",
     choices: [
@@ -19288,7 +19288,7 @@ const QUESTIONS = [
   },
   {
     id: "q817",
-    philosophers: ["セン"], terms: [], type: "single",
+    philosophers: ["アマルティア・セン"], terms: [], type: "single",
     keys: ["公共の推論"],
     question: "センが、重んじるべきケイパビリティの一覧を定めなかった理由として最も適切なものは？",
     choices: [
@@ -19312,7 +19312,7 @@ const QUESTIONS = [
   },
   {
     id: "q818",
-    philosophers: ["セン", "ロールズ"], terms: ["正義"], type: "compare",
+    philosophers: ["アマルティア・セン", "ロールズ"], terms: ["正義"], type: "compare",
     keys: ["ケイパビリティ", "基本財"],
     question: "正義の尺度をめぐって、センとロールズの違いとして最も適切なものは？",
     choices: [
@@ -19408,7 +19408,7 @@ const QUESTIONS = [
   },
   {
     id: "q822",
-    philosophers: ["ヌスバウム", "セン"], terms: ["正義"], type: "compare",
+    philosophers: ["ヌスバウム", "アマルティア・セン"], terms: ["正義"], type: "compare",
     keys: ["ケイパビリティ"],
     question: "ケイパビリティの一覧をめぐる、ヌスバウムとセンの違いとして最も適切なものは？",
     choices: [
