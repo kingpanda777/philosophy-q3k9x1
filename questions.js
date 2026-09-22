@@ -191,7 +191,9 @@ const PHILOSOPHERS = [
   { name: "パトナム", years: "1926–2016", note: "意味は頭の中にはない。自分の説も、自分で改めつづけた", school: "分析哲学" },
   { name: "シュトラウス", years: "1899–1973", note: "何が正しいかを理性で問うことを、近代はやめてしまったのではないか", school: "二十世紀の政治哲学" },
   { name: "ハリエット・テイラー", years: "1807–1858", note: "誰の領分も他人は決められない。女性に完全な平等を求めた", school: "功利主義と自由主義" },
-  { name: "ルカーチ", years: "1885–1971", note: "商品の形式が社会のすみずみを覆う。部分は全体のなかでしか分からない", school: "フランクフルト学派" }
+  { name: "ルカーチ", years: "1885–1971", note: "商品の形式が社会のすみずみを覆う。部分は全体のなかでしか分からない", school: "フランクフルト学派" },
+  { name: "セン", years: "1933–", note: "何の平等か。財でも満足でもなく、人が実際になしうることを見よ", school: "現代の正義論" },
+  { name: "ヌスバウム", years: "1947–", note: "尊厳に値する生のために、十のケイパビリティを閾値まで保障せよ", school: "現代の正義論" }
 ];
 
 const TERMS = [
@@ -1204,7 +1206,7 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: エウダイモニアの定義（『ニコマコス倫理学』1097b22–1098a20、徳に即した魂の活動）とベンサムの快楽の量という対比は資料間で対立がなく、四択は成立している。誤答一番目は正解を入れ替えたもの。 訳語の確認: explanation の「本人がそう感じているかどうかとは独立に成り立ちます」は、エウダイモニアが評価的な概念であって心の状態の記述ではない、という意味では正しい。ただしアリストテレスは有徳な活動には快が伴うとも述べており（第十巻）、快苦を締め出しているわけではない。ベンサムとの対比を立てるための言い方として読む必要がある。 対照の記録: q045 が同じエウダイモニアを単独で扱い、状態ではなく生涯を通じた活動だと書いていて、本問の記述と揃っている。センのケイパビリティ論をアリストテレス的とする位置づけは資料で確認できるが、明示的にアリストテレス主義を掲げているのはヌスバウムのほうで、セン自身は概念的な結びつきを認めるという書き方をしている。 選択肢の均等化（鏡像化）: 正解と入替誤答はすでに同じ34字の鏡像になっていたため触れず、「両者とも」型の誤答2つに根拠を足すのみとした。四択の成立を確認済み。1.57倍→1.20倍。",
+      note: "設問へ: エウダイモニアの定義（『ニコマコス倫理学』1097b22–1098a20、徳に即した魂の活動）とベンサムの快楽の量という対比は資料間で対立がなく、四択は成立している。誤答一番目は正解を入れ替えたもの。 訳語の確認: explanation の「本人がそう感じているかどうかとは独立に成り立ちます」は、エウダイモニアが評価的な概念であって心の状態の記述ではない、という意味では正しい。ただしアリストテレスは有徳な活動には快が伴うとも述べており（第十巻）、快苦を締め出しているわけではない。ベンサムとの対比を立てるための言い方として読む必要がある。 対照の記録: q045 が同じエウダイモニアを単独で扱い、状態ではなく生涯を通じた活動だと書いていて、本問の記述と揃っている。センのケイパビリティ論をアリストテレス的とする位置づけは資料で確認できるが、明示的にアリストテレス主義を掲げているのはヌスバウムのほうで、セン自身は概念的な結びつきを認めるという書き方をしている。 選択肢の均等化（鏡像化）: 正解と入替誤答はすでに同じ34字の鏡像になっていたため触れず、「両者とも」型の誤答2つに根拠を足すのみとした。四択の成立を確認済み。1.57倍→1.20倍。 対照の記録: アリストテレスとのつながりは、IEP「Sen’s Capability Approach」§1a によればヌスバウムのケイパビリティ理論の最初の土台でもあった。",
       refs: [
         "https://plato.stanford.edu/entries/aristotle-ethics/ — 1097b22–1098a20 の定義。エウダイモニアが評価的な語であって心の状態の記述ではないこと、および有徳な活動に快が伴うこと",
         "https://iep.utm.edu/sen-cap/ — センのケイパビリティ論とアリストテレスの機能概念との結びつき、およびヌスバウムとの立場の違い"
@@ -19233,6 +19235,222 @@ const QUESTIONS = [
         "https://tannerlectures.org/wp-content/uploads/2024/06/Honneth_2006.pdf — Axel Honneth, Reification: A Recognition-Theoretical View（2005年3月のタナー講義。公式サイトの公開版）。ルカーチが商品交換を唯一の原因としたことへの疑問、観察する態度が正当な領域、制度化された慣行と偏見の図式という二つの道筋、忘却ではなく否認、道徳原理の違反ではなく構造的に誤った実践という読み",
         "https://www.jstage.jst.go.jp/article/sstj/2/0/2_74/_article/-char/ja — 水上英徳「アクセル・ホネットによる物象化論の再構成」『現代社会学理論研究』2号 74–86頁（2008）。第2章。ルカーチの物象化が商品交換の拡大を背景とすること。第4章。レイシズム・セクシズムの例と、思考図式と社会的実践の相互強化（Honneth 2005: 102–3）",
         "https://plato.stanford.edu/entries/recognition/ — 承認が認識に先立つという主張、物象化が承認の忘却とされること"
+      ]
+    }
+  },
+  {
+    id: "q815",
+    philosophers: ["セン"], terms: ["平等"], type: "single",
+    keys: ["ケイパビリティ"],
+    question: "センが講義「何の平等か」で、障害のある人の例を使って示したこととして最も適切なものは？",
+    choices: [
+      "障害のある人には、効用が等しくなるまで資源を足せば足りる",
+      "同じ資源をもっていても、それで実際に何ができるかは人によって違う",
+      "同じ資源を配れば、誰にとっても同じ暮らしが開けてくる",
+      "障害の有無は、正義ではなく慈善の側で扱うべき問題である"
+    ],
+    answer: 1,
+    explanation: "同じ資源をもつ二人のうち一人に障害があると、その人は資源で何ができるかの点で劣り、そのうえ車椅子などに資源を割くぶん、ほかの目的に使える資源も少なくなります。資源の量だけを見ても、この二重の不利は捉えられない、とセンは論じました。",
+    detail: "1979年のタナー講義で、センはケイパビリティという概念を初めて持ち込みました。何をもっているかではなく、何をなしえ、どういう者でありうるかへ、評価の焦点を移すための概念です。\n\n効用で測る見方も退けます。わずかな資源で大きな満足を得る人がいれば、効用を揃える配分はその人への支援を減らしてしまう。困窮した人は期待を下げて境遇に順応することがあり、満足が大きいからといって状況が正当化されるわけではありません。\n\nセンは、ロールズが障害のような難しい場合を後回しにして原理を組んだ点も問題にしました。最初に外すと、外したままの構造ができてしまうからです。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は SEP capability-approach §1.1 の障害の例（同じ資源をもつ二人のうち一人に障害があり、資源で何ができるかの点で劣り、さらに資源を車椅子に割くぶん二重に不利になる）をまとめたもの。誤答は、効用が等しくなるまで資源を足すという功利主義の修正（センが退けた応答）、同じ資源で足りるとする資源主義、障害を正義の外へ出す見方（センはロールズが障害を後回しにした点を批判した）。四択は成立している。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。type は single。ロールズは detail で批判の相手として名前が出るが、正解が対比している当事者ではないので philosophers に入れない。 事実の確認: SEP §1.1 の「One of the most prominent illustrations ... is found in Sen’s (1979a) “Equality of What?” Tanner lecture. Here, Sen asks us to consider two persons with the same set of resources. Yet, one person suffers from a disability」「the disabled person may even be doubly worse off」「The disabled person may be a pleasure wizard who gains a lot of utility from very little input ... the amended utilitarian position would actually direct more resources and freedoms to the able-bodied person」「people living in deprivation may actually tend to lower their expectations as a coping mechanism (e.g., Kynch and Sen 1983)」を確認した。IEP「Sen’s Capability Approach」§1a の「Sen first introduced the concept of capability in his Tanner Lectures on Equality of What? (Sen 1979)」、§2b の「Sen disputes Rawls’ argument that the principles of justice should be worked out first for the ‘normal’ case ... and only later extended to ‘hard’ cases, such as of disability ... excluding them at the beginning risks building a structure that excludes them permanently」を確認した。",
+      refs: [
+        "https://plato.stanford.edu/entries/capability-approach/ — §1.1 Background: Critique of other accounts。「何の平等か」の障害の例、二重の不利、効用で測る見方への批判、困窮した人の期待の引き下げ",
+        "https://iep.utm.edu/sen/ — IEP「Sen’s Capability Approach」§1a。ケイパビリティの概念を1979年のタナー講義「何の平等か」で初めて導入したこと。§2b。ロールズが障害のような難しい場合を後回しにした点への批判"
+      ]
+    }
+  },
+  {
+    id: "q816",
+    philosophers: ["セン"], terms: [], type: "single",
+    keys: ["機能とケイパビリティ"],
+    question: "センの言う機能とケイパビリティの区別として最も適切なものは？",
+    choices: [
+      "機能は手元の財で、ケイパビリティはそこから得る満足のこと",
+      "機能は生まれつきの素質で、ケイパビリティは身につく技能のこと",
+      "機能は実際の行いや状態で、ケイパビリティはそれを選べる実質的な自由",
+      "機能は法が認める権利で、ケイパビリティは使う意欲のこと"
+    ],
+    answer: 2,
+    explanation: "十分に栄養をとっている、教育を受けている、移動する、といった「あること」と「すること」が機能です。ケイパビリティは、そうした機能の組み合わせのうち、その人が実際に手にできるものの集まりで、価値があると考える生き方を選び取る実質的な自由を表します。",
+    detail: "センは自転車を例に挙げます。自転車は移動の手段になるが、脚のない人には移動をもたらさない。その人が自転車を喜んだとしても、移動を欠いていることは評価に残るべきだ、というのです。財を機能へ変える力は、体の状態、社会の規範、道路のような環境によって違います。\n\n達成された機能だけでなくケイパビリティを見るのは、選択の違いを捉えるためです。断食は、ほかの選択肢があるのに飢えを選ぶことで、ただ飢えているのとは違う、とセンは書きます。\n\n財そのものは機能と区別され、自転車を持つことと自転車に乗ることは別のことです。満足も、機能の一つとして扱われます。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は IEP §3a の「機能は栄養状態や住まいのような『あること』と『すること』の状態」「ケイパビリティは、その人が実際に手にできる価値ある機能の集まりで、価値があると考える生き方を選ぶ実効的な自由」と、SEP §2.1 の「実質的な機会」をまとめたもの。誤答は、財と効用に取り違える見方（センが評価の焦点から外した二つ）、素質と技能に取り違える見方、権利と意欲に取り違える見方（形式的な権利ではなく実質的な機会だとする SEP §1.1 と逆）。四択は成立している。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。type は single。terms は空にした。TERMS の「自由」（邪魔がないことか、自ら法を課すことか）は、実質的な機会としての自由という本問の主題に無理なく当てはまらない。 事実の確認: IEP §3a の「Sen illustrates his point with the example of a standard bicycle ... it obviously will not do that for a person without legs. Even if that person, by some quirk, finds the bicycle delightful, we should nevertheless be able to note within our evaluative system that she still lacks transportation」「Functionings are states of ‘being and doing’ such as being well-nourished, having shelter. They should be distinguished from the commodities employed to achieve them (as ‘bicycling’ is distinguishable from ‘possessing a bike’)」「Capability refers to the set of valuable functionings that a person has effective access to ... the effective freedom of an individual to choose between different functioning combinations」「the Capability Approach also considers subjective well-being – feeling happy – as a valuable functioning in its own right」を確認した。SEP §2.1 の「capabilities are the real, or substantive, opportunity that they have to achieve these doings and beings」、§2.3 の個人・社会・環境の変換要因、§3.2 の「Sen (1992: 52) notes: “‘fasting’ as a functioning is not just starving; it is choosing to starve when one does have other options.”」、§1.1 の「it is not merely the formal right or freedom to do or be something, but the substantial opportunity to achieve it」を確認した。",
+      refs: [
+        "https://iep.utm.edu/sen/ — IEP「Sen’s Capability Approach」§3a Functionings and Capability。自転車の例、機能とケイパビリティの定義、財との区別、満足も機能の一つとされること",
+        "https://plato.stanford.edu/entries/capability-approach/ — §2.1 機能とケイパビリティの定義。§2.3 変換要因（個人・社会・環境）。§3.2 断食と飢餓（Sen 1992: 52）。§1.1 形式的な権利ではなく実質的な機会であること"
+      ]
+    }
+  },
+  {
+    id: "q817",
+    philosophers: ["セン"], terms: [], type: "single",
+    keys: ["公共の推論"],
+    question: "センが、重んじるべきケイパビリティの一覧を定めなかった理由として最も適切なものは？",
+    choices: [
+      "ケイパビリティは測れないので、一覧にしても役に立たないから",
+      "どのケイパビリティも等しく重要で、順位はつかないから",
+      "何を重んじるかは、公共の推論を通じて当の人々が決めるべきだから",
+      "何が大事かは、市場の価格が決めれば足りると考えたから"
+    ],
+    answer: 2,
+    explanation: "理論家が社会での議論や公共の推論なしに選んだ、あらかじめ決まった一覧を擁護することを、センは一貫して拒みます。一覧を決めてしまうと、人々がもつようになる価値と民主政の役割を否定することになる、というのが理由で、父権主義を避ける狙いもあります。",
+    detail: "代わりにセンは、公共の推論と民主的な決定の手続きを組み合わせる社会的選択を提案します。すべての機能に完全な順位をつける合意は得られなくても、違う見方が同じ判断で交わったり、重みに幅をもたせたりすれば、行動を導くだけの合意は得られる、というのです。\n\n一覧そのものを禁じたわけではありません。実証研究では目的に応じて特定のケイパビリティを選んで使っており、教育や健康や栄養のような基本的なケイパビリティは合意しやすいともしています。\n\nどのケイパビリティも等しく重要で取り引きできないとしたのは、一覧を掲げたヌスバウムの側です。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は SEP capability-approach §3.3 の「理論家が一般的な社会の議論や公共の推論なしに選んだ、あらかじめ決まった正典的な一覧」を擁護することの拒否（Sen 2005a: 158）と、IEP §3b の「一覧を定めることは人々が持つようになる価値と民主政の役割を否定する」をまとめたもの。誤答は、測れないから役に立たないとする見方（センは実証研究で選んだケイパビリティを使っており、SEP §3.3 と逆）、等しく重要で順位がつかないとする見方（ヌスバウムの立場）、市場の価格に委ねる見方（資源主義の側）。四択は成立している。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。type は single。terms は空にした。当てはまる TERMS の語がない。 対照の記録: ヌスバウムとの違いを問う比較問題と主題が近いので、本問は「なぜ定めないか」を問い、比較問題は「どちらが一覧を掲げたか」を問う形で分けた。 事実の確認: SEP §3.3 の「Sen consistently and explicitly refuses to defend “one pre-determined canonical list of capabilities, chosen by theorists without any general social discussion or public reasoning” (Sen 2005a: 158)」「Sen (2005a) has been reluctant to specify a substantive list of capabilities and functionings in order to avoid paternalism – holding that communities should decide for themselves」「Sen’s refusal to endorse Nussbaum’s list has not prevented him from using – for various purposes – particular selections of capabilities in his empirical as well as his normative work」を確認した。IEP §3b の「Sen rejects this approach because he argues that it denies the relevance of the values people may come to have and the role of democracy (Sen 2004b)」「Sen therefore proposes a social choice exercise requiring both public reasoning and democratic procedures of decision-making」「different valuational perspectives may ‘intersect’ ... introducing ‘ranges’ of weights」「a sub-set of crucially important capabilities associated with basic needs may be relatively easily identified ... education, health, nutrition, and shelter」を確認した。",
+      refs: [
+        "https://plato.stanford.edu/entries/capability-approach/ — §3.3 Selecting and aggregating of capabilities?。センが正典的な一覧を拒むこと（Sen 2005a: 158）、父権主義を避ける狙い、実証研究では選んだケイパビリティを使うこと",
+        "https://iep.utm.edu/sen/ — IEP「Sen’s Capability Approach」§3b Valuation。一覧が人々の価値と民主政の役割を否定するという理由、公共の推論と民主的手続きによる社会的選択、見方の交差と重みの幅、基本的ケイパビリティ"
+      ]
+    }
+  },
+  {
+    id: "q818",
+    philosophers: ["セン", "ロールズ"], terms: ["正義"], type: "compare",
+    keys: ["ケイパビリティ", "基本財"],
+    question: "正義の尺度をめぐって、センとロールズの違いとして最も適切なものは？",
+    choices: [
+      "ロールズは汎用の財の量を見て、センは財を自由に変える力の差を見た",
+      "センは汎用の財の量を見て、ロールズは財を自由に変える力の差を見た",
+      "両者とも、人々が感じる満足の大きさを尺度に置いた",
+      "両者とも、障害のある人の扱いを原理づくりの出発点に据えた"
+    ],
+    answer: 0,
+    explanation: "ロールズの基本財は、所得や富、機会や自由、自尊の社会的基盤のような、どんな善い生にも役立つ汎用の財です。センは、人によって財を実際にできることへ変える力が違うので、基本財だけを見る尺度は人の多様性をほとんど考慮しない硬いものになると批判しました。",
+    detail: "センが見るのは、人が実際になしうることを表すケイパビリティです。障害のある人は、基本財の分配の枠組みでは追加の資源を求める根拠をもてない、とセンは論じます。資源を利点そのものとして扱う見方は、資源と人との関係を見落としている、とセンは言います。\n\nそれでもセンは、資源の分配が手続きの公正さに深く関わることは認めています。退けたのは、資源だけを正義の関心の的にすることです。\n\n両者とも、満足の大きさで測る功利主義は退けました。ロールズは障害のような難しい場合を後回しにして原理を組み、センはそこを問題にしました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は SEP capability-approach §4 の「基本財に焦点を当てると、人間の多様性をほとんど考慮しない硬い尺度になる」（Sen 1979a: 215–216）と、IEP §2b の「財を価値ある結果へ変える個人の実際の能力の違い」の対比。入替誤答はその鏡像。「両者とも」型の一つは、両者がともに退けた満足（効用）の尺度、もう一つは、ロールズが後回しにし、センが問題にした障害の扱い。四択は成立している。 設計の記録: 比較問題の条件（一つの資料が両者を並べて論じている）は、SEP §4 と IEP §2b がいずれもセンのロールズ批判として両者を並べているので満たす。入替誤答を正解と同じ長さの鏡像にした（2位との差0字）。「両者とも」型2つは根拠を一節ずつ足した。誤答を先に3つ書いてから正解を書いた。位置指しなし。 対照の記録: q388（ロールズとホネット）の detail 第3段落が、センのケイパビリティ論を「財の量でも承認でもなく、その人が実際に何をなしうるかで測る」と書いており、本問の正解と揃っている。ロールズが功利主義を退けた点は q149 と揃う。 事実の確認: SEP §4 の「the Rawlsian social primary goods metric, which focuses on general purpose goods, such as income and wealth, opportunities and liberties, and the social basis of self-respect (Rawls 1971). Sen (1979a: 215–216) argues that a focus on primary goods is inherently inflexible as a metric of justice because it “seems to take little note of the diversity of human beings”」「the disabled person who, Sen argues, would not have a claim to additional resources」、§2.4 の「alternative approaches value particular means to well-being rather than the ends ... people differ in their ability to convert means into valuable opportunities」を確認した。IEP §2b の「Sen’s criticism of John Rawls’ influential account of the fair distribution of primary goods」「this focus excludes consideration of the variability in individuals’ actual abilities to convert resources into valuable outcomes」「such accounts ‘fetishize’ resources as the embodiment of advantage, rather than focusing on the relationship between resources and people」「Sen acknowledges that ... it is very relevant to considerations of procedural fairness」「only later extended to ‘hard’ cases, such as of disability」を確認した。",
+      refs: [
+        "https://plato.stanford.edu/entries/capability-approach/ — §4 The possibility of a capability theory of justice。ロールズの基本財の中身、基本財の尺度が人の多様性をほとんど考慮しないというセンの批判（Sen 1979a: 215–216）、障害のある人の追加の資源。§2.4 手段と目的の区別、変換する力の違い",
+        "https://iep.utm.edu/sen/ — IEP「Sen’s Capability Approach」§2b Resourcism。ロールズの基本財への批判、財を結果へ変える能力の違い、資源の物神化、手続きの公正さへの関わり、障害を後回しにした点"
+      ]
+    }
+  },
+  {
+    id: "q819",
+    philosophers: ["ヌスバウム"], terms: ["正義"], type: "single",
+    keys: ["中心的ケイパビリティ"],
+    question: "ヌスバウムの「中心的ケイパビリティ」の一覧について最も適切なものは？",
+    choices: [
+      "所得と富の二つに絞り、それ以外は各人の好みに任せた",
+      "理論家が決めた確定版で、見直しの余地はないとした",
+      "生命や感情や連帯など十の項目を挙げ、憲法での保障を求めた",
+      "人間どうしの事柄に限り、動物や自然との関わりは外した"
+    ],
+    answer: 2,
+    explanation: "十の項目は、生命、身体の健康、身体の不可侵性、感覚・想像・思考、感情、実践理性、連帯、ほかの種、遊び、自分の環境の管理です。ヌスバウムは、この一覧を各国の憲法に書き込むべきだと論じました。",
+    detail: "初期のヌスバウムは、真に人間的な生の要件というアリストテレス的な論証で一覧を正当化していました。1990年代半ばからはロールズ流の政治的リベラリズムの形に組み替え、立場の違う人々が重なり合う合意で受け入れうる提案として示します。一覧は開かれていて、見直しの余地があるとされます。\n\n各項目は、どんな人の生にも中心的だと主張できる一方で、国ごとの歴史や事情に合わせて具体化できるほどには漠然と書かれています。\n\n長い対話を経ても一覧がほとんど変わらず、アリストテレス的なままだという批判もあります。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は SEP capability-approach §3.3 の「十の中心的な人間のケイパビリティ」の一覧と「各国の憲法に書き込むべきだ」、IEP §7a の同じ一覧をまとめたもの。誤答は、所得と富に絞る見方（センもヌスバウムも退けた資源の尺度）、見直しの余地のない確定版とする見方（一覧は開かれていて見直しうるとする SEP §3.3 と逆）、ほかの種を外したとする見方（一覧の第8項目がほかの種）。四択は成立している。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。type は single。 事実の確認: SEP §3.3 の「Nussbaum endorses a well-defined list of capabilities, which, she argues, should be enshrined in every country’s constitution (Nussbaum 2000, 2003, 2006)」「ten “central human capabilities”: life; bodily health; bodily integrity; senses, imagination and thought; emotions; practical reason; affiliation; other species; play; and control over one’s environment (Nussbaum 2006: 76–78)」「Nussbaum argues that this list can be derived from a Rawlsian overlapping consensus and stresses that her list remains open-ended and always open for revision (Nussbaum 2000: 77)」を確認した。IEP §7a の一覧（Creating Capabilities 2011, 33–4 からの転載）、「In her early contributions ... Nussbaum justified the composition of her list by explicitly Aristotelian argument ... In the mid-1990s however she converted the structure of her account to a Rawlsian style ‘politically liberal’ account」「the components of Nussbaum’s list have a ‘thick-vague’ character」、§7b の「her list remains basically the same rather ‘intellectualized’ Aristotelian one she had suggested in the first place (Okin 2003)」を確認した。",
+      refs: [
+        "https://plato.stanford.edu/entries/capability-approach/ — §3.3 Selecting and aggregating of capabilities?。十の中心的な人間のケイパビリティ、各国の憲法に書き込むべきだという主張、重なり合う合意と見直しの余地",
+        "https://iep.utm.edu/sen/ — IEP「Sen’s Capability Approach」§7a。一覧の全文（Creating Capabilities 2011, 33–4）、初期のアリストテレス的正当化から政治的リベラリズムへの組み替え、厚くて漠然とした性格。§7b。一覧がほとんど変わらないという批判（Okin 2003）"
+      ]
+    }
+  },
+  {
+    id: "q820",
+    philosophers: ["ヌスバウム"], terms: ["正義"], type: "single",
+    keys: ["閾値"],
+    question: "ヌスバウムが、ケイパビリティの保障を何に基づけ、どこまで求めたかとして最も適切なものは？",
+    choices: [
+      "社会全体の幸福の総量に基づけ、その総量の最大化を求めた",
+      "各人の自由な選択に基づけ、結果の完全な平等を求めた",
+      "人間の尊厳に基づけ、各項目で最低限の閾値までの保障を求めた",
+      "市場での貢献に基づけ、働きに応じた分け前を求めた"
+    ],
+    answer: 2,
+    explanation: "ヌスバウムは、それぞれのケイパビリティが、人間の尊厳に値しないほど貧しくはない生のために必要だと論じます。すべての人が、政府や国際機関によって、どの項目についても少なくとも閾値までは保障されなければならない、というのが正義の最低限の要求です。",
+    detail: "ヌスバウム自身、これは社会正義のすべてではなく、部分的で最小限の説明だとしています。閾値を超えたところの分配については、この理論は答えを出しません。\n\n保障されるのはケイパビリティで、それを使うかどうかは本人に委ねられます。栄養を得られないのは社会が尊厳を尊重しそこねたことだが、宗教上の理由で断食を選ぶのは本人の選択で、それを尊重することも尊厳の尊重だ、とされます。\n\nこの閾値は厳しく、満たしている国はまだ無いとする評価もあります。保障の負担を誰がどう担うかを語っていない、という批判もあります。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は SEP capability-approach §3.3 の「人間の尊厳に値しないほど貧しくはない生」（Nussbaum 2000: 72）と、IEP §7a の「閾値は正義の最低限を定める十分主義の原理で、誰もがどの項目も少なくともこの程度まで政府と国際機関から保障されねばならない」をまとめたもの。誤答は、幸福の総量の最大化（功利主義）、結果の完全な平等（閾値を超えた分配には答えないとする部分的理論と逆）、市場での貢献に応じた分配。四択は成立している。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。type は single。 事実の確認: SEP §3.3 の「Nussbaum (2000: 70–77; 2006: 78–81) justifies this list by arguing that each of these capabilities is needed in order for a human life to be “not so impoverished that it is not worthy of the dignity of a human being” (2000: 72)」、§4 の「her theory does not amount to a full theory of social justice but only “a partial and minimal account of social justice” (Nussbaum 2006: 71)」「Nussbaum passionately advocates that all people all over the world should be entitled, as a matter of justice, to threshold levels of all the capabilities on her list, but apart from mentioning that it is the governments’ duties to guarantee these entitlements (2006: 70), she remains silent on the question of who precisely should bear the burdens」を確認した。IEP §7a の「a partial theory of justice ... based on dignity, a list of fundamental capabilities, and a threshold」「The threshold is a ‘sufficientarian’ principle that specifies the minimum requirements of justice: everyone must be entitled to each capability at least to this degree by their governments and relevant international institutions」「If someone chooses not to take up her opportunities ... to adopt an ascetic life-style and fast for religious reasons ... respecting that choice is also an aspect of respecting her dignity」、§7c の「this is specified so demandingly that no country yet meets it」を確認した。detail 第1段落の「閾値を超えたところの分配については、この理論は答えを出しません」は、SEP §4 の「her theory leaves unaddressed the question of what social justice requires once those thresholds are met」に拠る。",
+      refs: [
+        "https://plato.stanford.edu/entries/capability-approach/ — §3.3。尊厳に値しないほど貧しくはない生（Nussbaum 2000: 72）。§4。部分的で最小限の社会正義の説明（Nussbaum 2006: 71）、閾値を満たしたあとに正義が何を求めるかは扱わないこと、負担を誰が担うかについての沈黙",
+        "https://iep.utm.edu/sen/ — IEP「Sen’s Capability Approach」§7a。尊厳・一覧・閾値からなる部分的な正義論、十分主義の原理としての閾値、剥奪と選択の区別（断食の例）。§7c。満たしている国がまだ無いこと"
+      ]
+    }
+  },
+  {
+    id: "q821",
+    philosophers: ["ヌスバウム"], terms: [], type: "single",
+    keys: ["中心的ケイパビリティ"],
+    question: "ヌスバウムが、十の中心的ケイパビリティどうしの関係について述べたこととして最も適切なものは？",
+    choices: [
+      "重要度に順位があり、上位を満たせば下位は後回しでよい",
+      "互いに通約できず、一つの不足を別の充実で埋め合わせられない",
+      "金額に換算し、費用と便益の比較で配分を決めればよい",
+      "どれか一つを満たせば、残りはおのずと満たされていく"
+    ],
+    answer: 1,
+    explanation: "十の項目は互いに通約できないので、取り引きできず、相対的な重みももたない、とヌスバウムは論じます。どれも等しく中心的で、どこかが閾値に届かないことはそれだけで重大な欠損になります。国家は、どの市民にもすべての項目で最低限を保障しなければなりません。",
+    detail: "たとえば、教育を十分に保障したから政治参加の欠如は目をつぶる、といった埋め合わせは認められません。そのため、数量的な費用便益分析に基づいて政府が項目のあいだで取り引きする余地は限られます。\n\nここにセンとの違いがあります。センは、ケイパビリティのあいだの道具的な関係や実現の可能性についての経験的な情報を政策に取り込みますが、ヌスバウムはこうした道具的な分析を、功利主義との結びつきを警戒して大きく退けます。\n\n一方で、項目をどう具体化するかは、国ごとの歴史や事情に合わせてよいとされます。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は SEP capability-approach §3.3 の「一覧の十のケイパビリティは通約できないので、互いに取り引きできず（したがって相対的な重みをもたず）」と、IEP §7a の「どの項目も等しく中心的で、どの領域の不足もそれ自体で重大なので、数量的な費用便益分析に基づいて取り引きする余地は限られる」をまとめたもの。誤答は、順位をつけて後回しにする見方、金額に換算する費用便益の見方（IEP §7a と逆）、一つを満たせば残りも満たされるとする見方。四択は成立している。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。type は single。terms は空にした。当てはまる TERMS の語がない。鍵語は「通約不可能」を立てない。「通約不可能性」はクーンとバーリンに登録済みで、部分一致するうえ中身も違う。 事実の確認: SEP §3.3 の「Nussbaum argues that the ten capabilities on her list, being incommensurable, cannot be traded off against one another (and, hence, have no relative weights), and also that the state should provide each citizen with a minimum level of each capability」を確認した。IEP §7a の「because each capability is equally centrally important and a shortfall in any area is significant in itself, the scope for governments to make trade-offs between them, for example, on the basis of quantitative cost-benefit analysis, is limited」「their definition is vague enough to allow their specification in multiple ways that reflect the values, histories, and special circumstances of particular political societies」、§7c の「Sen’s comprehensive consequentialism makes room for incorporating empirical information about feasibility and instrumental relationships between capabilities when considering policies; Nussbaum largely rejects such instrumental analysis because she is wary of its ‘Utilitarian associations’」を確認した。 設計の記録: detail 第1段落の教育と政治参加の例は、取り引きを認めないことの説明のために書き手が補ったもので、資料の例ではない。",
+      refs: [
+        "https://plato.stanford.edu/entries/capability-approach/ — §3.3。十のケイパビリティが通約できず取り引きできないこと、相対的な重みをもたないこと、国家がすべての項目で最低限を保障すべきこと",
+        "https://iep.utm.edu/sen/ — IEP「Sen’s Capability Approach」§7a。費用便益分析による取り引きの余地が限られること、国ごとの具体化。§7c。センの帰結主義と、道具的な分析を退けるヌスバウムの違い"
+      ]
+    }
+  },
+  {
+    id: "q822",
+    philosophers: ["ヌスバウム", "セン"], terms: ["正義"], type: "compare",
+    keys: ["ケイパビリティ"],
+    question: "ケイパビリティの一覧をめぐる、ヌスバウムとセンの違いとして最も適切なものは？",
+    choices: [
+      "ヌスバウムは十の項目の一覧を掲げ、センは一覧を公共の議論に委ねた",
+      "センは十の項目の一覧を掲げ、ヌスバウムは一覧を公共の議論に委ねた",
+      "両者とも、所得を見るべきだとして一覧をすべて退けた",
+      "両者とも、同じ十の項目を掲げ、各国の憲法に書き込ませた"
+    ],
+    answer: 0,
+    explanation: "ヌスバウムは、十の中心的ケイパビリティを具体的に並べ、各国の憲法で保障すべきだとしました。センは、理論家が社会での議論なしに選んだ一覧を擁護することを拒み、何を重んじるかを公共の推論と民主的な手続きに委ねました。",
+    detail: "二人は1980年代後半から90年代前半に協働し、よく一括りにされますが、違いは大きい。ヌスバウムは部分的な正義論をつくろうとし、センは人々の生の質を評価する一般的な枠組みを求めました。センの出発点は個人の自由で、ヌスバウムの出発点は人間の尊厳です。\n\n一覧の選び方の違いは、哲学的に選ぶか、手続きを通じて選ぶかの違いとして整理されます。\n\nヌスバウムも、一覧の正当化と、その実施を当事者の民主的な討議に委ねることとを区別しています。センも、目的に応じて特定のケイパビリティを選んで使っています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は SEP capability-approach §3.3 の「ヌスバウムは明確に定めた一覧を支持し、各国の憲法に書き込むべきだとする」と「センは、理論家が社会の議論や公共の推論なしに選んだ正典的な一覧を擁護することを一貫して拒む」の対比。入替誤答はその鏡像。「両者とも」型の一つは、両者がともに退けた所得の尺度、もう一つは、センが擁護を拒んだ一覧を両者に帰したもの。四択は成立している。 設計の記録: 比較問題の条件（一つの資料が両者を並べて論じている）は、SEP §3.3 と IEP §7c がいずれも両者を並べているので満たす。q817（センが一覧を定めなかった理由）とは、本問が「どちらが一覧を掲げたか」、q817 が「なぜ定めないか」を問う形で分けた。入替誤答を正解と同じ長さの鏡像にした（2位との差0字）。誤答を先に3つ書いてから正解を書いた。位置指しなし。 事実の確認: SEP §3.3 の「Nussbaum endorses a well-defined list of capabilities, which, she argues, should be enshrined in every country’s constitution」「Sen consistently and explicitly refuses to defend “one pre-determined canonical list of capabilities, chosen by theorists without any general social discussion or public reasoning” (Sen 2005a: 158)」「The disagreement between Nussbaum and Sen on how to select relevant capabilities」「the philosophical approach favored by Nussbaum or the procedural approach」、「Sen’s refusal to endorse Nussbaum’s list has not prevented him from using ... particular selections of capabilities」を確認した。IEP §7c の「Nussbaum and Sen collaborated in the late 1980s and early 1990s ... their accounts are often elided, despite significant differences」「Nussbaum is concerned to produce a philosophically coherent normative (partial) theory of justice; Sen is concerned with producing a general framework for evaluating the quality of lives」「While Sen’s approach is founded on enhancing individual freedom, Nussbaum’s theory is founded on respecting human dignity」、§7b の「She makes a clear and explicit distinction between the dimensions of justification ... and implementation (its more humble meta-status as an object for democratic deliberation and decision by those concerned) (Nussbaum 2004)」を確認した。",
+      refs: [
+        "https://plato.stanford.edu/entries/capability-approach/ — §3.3 Selecting and aggregating of capabilities?。ヌスバウムの一覧と憲法、センの一覧の拒否（Sen 2005a: 158）、哲学的な選び方と手続き的な選び方の対立、センも選んだケイパビリティを使うこと",
+        "https://iep.utm.edu/sen/ — IEP「Sen’s Capability Approach」§7c Sen and Nussbaum。協働と違い、部分的正義論と一般的な評価の枠組み、自由と尊厳。§7b。正当化と実施の区別（Nussbaum 2004）"
+      ]
+    }
+  },
+  {
+    id: "q823",
+    philosophers: ["ヌスバウム"], terms: [], type: "single",
+    keys: ["モノ化"],
+    question: "ヌスバウムが「モノ化」を分析した仕方として最も適切なものは？",
+    choices: [
+      "モノ化は常に人間性を損なう、ただ一つの不正な行為だとした",
+      "ポルノグラフィーこそが、女性のモノ化の主な原因だとした",
+      "人を物として扱う仕方を、道具扱いや自律の否定など七つに分けた",
+      "人は部分的に物でもあり、モノ化は正確な見方だとした"
+    ],
+    answer: 2,
+    explanation: "七つとは、道具として扱うこと、自律の否定、受け身の存在とみなすこと、交換可能とみなすこと、侵してよいとみなすこと、所有物とみなすこと、主観の否定です。このどれか一つ以上で人が見られ扱われるとき、モノ化が起きている、とヌスバウムは考えました。",
+    detail: "カントやマッキノンが中心に置いた道具扱いは、七つのうちの一つにすぎないとヌスバウムは言います。ただし道具扱いはとりわけ問題が大きく、ほかの形と結びつきやすいとも述べます。\n\nモノ化はつねに悪いものではない、というのもヌスバウムの主張です。平等と尊重と同意のある関係の中では、良性の、さらには肯定的な形をとりうるとして、ローレンスの小説の恋人たちを例に挙げます。女性のモノ化の原因はポルノグラフィーより社会の不平等にある、とも見ました。\n\nこの七つに、ラングトンは身体の一部への切り詰め、外見だけでの評価、沈黙させることの三つを加えています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は SEP feminism-objectification の導入部の「ヌスバウム（1995, 257）は、人を物として扱うという考えに含まれる七つの特徴を挙げた」と、田中 2023 の注1の七つの分類をまとめたもの。誤答は、つねに人間性を損なう不正な行為とする見方（モノ化が必ずしも否定的でないとする SEP §5 と逆）、ポルノグラフィーを主な原因とする見方（社会の不平等が原因でポルノグラフィーが中核とは言えないとする SEP §2 と逆）、人は部分的に物だとする見方（ヌスバウムが退けたグリーンの見方、SEP §5）。四択は成立している。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。type は single。terms は空にした。当てはまる TERMS の語がない。鍵語は「客体化」ではなく「モノ化」にした。「客体化」は q426（ブルデューの客体化された形態）に出て、中身が違う。 訳語の確認: objectification は「モノ化」「客体化」「物象化」などと訳される。本問は田中 2023 の「モノ化」に揃えた。ルカーチとホネットの「物象化」（Verdinglichung）とは別の語として扱う。 事実の確認: SEP feminism-objectification の導入部の「Martha Nussbaum (1995, 257) has identified seven features that are involved in the idea of treating a person as an object: instrumentality ... denial of autonomy ... inertness ... fungibility ... violability ... ownership ... denial of subjectivity」、§5 の「According to Nussbaum, a person is objectified when they are seen and/or treated in one or more of these ways」「Nussbaum, then, disagrees with Green’s view that people are partly objects」「Instrumentality, then, Nussbaum points out, the core notion of Kant’s, MacKinnon’s, Dworkin’s, as well as Green’s conceptions of objectification, is only one of the ways a person can be treated as an object. (Nussbaum does believe, however, that, among these seven notions, instrumentality is especially problematic, and is often linked to other forms of objectification (Nussbaum 1995, 265))」「objectification can in some contexts take benign or even positive forms」「‘Lawrentian objectification’ ... is a clear example of positive objectification」、§2 の「Sexual objectification is, according to Nussbaum, often caused by social inequality, but there is no reason to believe that pornography is the core of such inequality (Nussbaum 1995, 286, 290)」を確認した。田中 2023 の注1で、ヌスバウムの七つの分類（道具のように扱う、自己決定権の否定、受け身の存在とみなす、交換可能だとみなす、壊せる・侵入できるものとみなす、所有物であるとみなす、主観性の否定）と、ラングトンが加えた三つ（身体の一部として切り取ること、容姿のみで評価すること、言葉を奪い沈黙させること）を確認した。 資料の限界: 2つ目の資料（田中 2023）は注1での言及で、ヌスバウムを主題にした論文ではない。",
+      refs: [
+        "https://plato.stanford.edu/entries/feminism-objectification/ — 導入部。ヌスバウムの七つの特徴（Nussbaum 1995, 257）。§5 The possibility of positive objectification。一つ以上で起きること、グリーンの見方の否定、道具扱いの位置、肯定的なモノ化（ローレンス）。§2。ポルノグラフィーではなく社会の不平等が原因とする見方",
+        "https://www.jstage.jst.go.jp/article/wsj/30/0/30_39/_article/-char/ja — 田中東子「メディアとジェンダー表象――新しいメディアという視点から」『女性学』30巻 39–50頁（2023）。注1。ヌスバウムの七つの分類と、ラングトンが加えた三つ"
       ]
     }
   }
