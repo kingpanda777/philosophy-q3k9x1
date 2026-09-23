@@ -61,6 +61,9 @@
                  実行し終えた時点で、次のどちらかがあれば止める（許可欄は無い）。
                    ・unverified があるのに note に「確認できていない点:」が無い問題（全問を見る）
                    ・unverified を外したのに note に「確認できていない点:」が残っている問題
+     "選択肢置換": [ { id, 旧, 新, 理由, 許可? } ],
+                 既存問題の選択肢を1つずつ書き換える（2026-09-23 に足した）。「旧」は選択肢の全文。
+                 歯止めと記録は「選択肢の書き換え」の節の冒頭にある。正解の番号は変えない。
      "鍵語": {
        "作問由来": { "人物": [ {語, 読み, 追加} ] },
        "追記由来": { "人物": [ {語, 読み, 追加} ] }
@@ -345,9 +348,28 @@ function validate(input) {
   if (Array.isArray(unvDel) && new Set(unvDel.map(r => r && r.id)).size !== unvDel.length)
     bad.push("unverified除去 に同じ問題が2回ある");
 
+  /* 既存問題の選択肢の書き換え。2026-09-23 に足した。それまでは作業用のスクリプトで直していた。 */
+  const chRep = input["選択肢置換"] || [];
+  if (!Array.isArray(chRep)) bad.push("「選択肢置換」が配列でない");
+  else chRep.forEach((r, i) => {
+    const w = m => bad.push(`選択肢置換[${i}]${r && r.id ? "（" + r.id + "）" : ""}: ${m}`);
+    if (!r || typeof r !== "object") return w("object でない");
+    if (typeof r.id !== "string" || !/^q\d+$/.test(r.id)) w("id が q+数字でない");
+    if (typeof r["旧"] !== "string" || !r["旧"]) w("「旧」（書き換える選択肢の全文）が無い");
+    if (typeof r["新"] !== "string" || !r["新"]) w("「新」が無い");
+    if (r["旧"] === r["新"]) w("「旧」と「新」が同じ");
+    if (typeof r["理由"] !== "string" || !r["理由"]) w("「理由」が無い（note へ残すので必須）");
+    if (r["許可"] !== undefined && (typeof r["許可"] !== "string" || !r["許可"]))
+      w("「許可」は理由を書いた文字列にする（長さが決まりの範囲を外れる、または言い切りを強める語が増える書き換えを通すときだけ書く）");
+  });
+  if (Array.isArray(chRep)) {
+    const k = chRep.map(r => r && r.id + "\u0000" + r["旧"]);
+    if (new Set(k).size !== k.length) bad.push("選択肢置換 に同じ問題の同じ選択肢が2回ある");
+  }
+
   if (!saku.length && !tsui.length && led === undefined && !rem.length && !refsDel.length && !refsRep.length && !refsAdd.length &&
-      !noteRep.length && !unvDel.length)
-    bad.push("作問も追記も台帳も keys除去 も refs・note の操作も無い（何もすることがない）");
+      !noteRep.length && !unvDel.length && !chRep.length)
+    bad.push("作問も追記も台帳も keys除去 も refs・note・選択肢の操作も無い（何もすることがない）");
 
   for (const 由来 of ["作問由来", "追記由来"]) {
     const g = keys[由来] || {};
@@ -366,7 +388,7 @@ function validate(input) {
     console.error("入力が形式に合っていない。1件も書き込んでいない:\n  " + bad.join("\n  "));
     process.exit(1);
   }
-  return { saku, tsui, keys, led, rem, refsDel, refsRep, refsAdd, noteRep, unvDel };
+  return { saku, tsui, keys, led, rem, refsDel, refsRep, refsAdd, noteRep, unvDel, chRep };
 }
 
 /* ================= 1. 鍵語の語形の総点検（書き込みの前） ================= */
@@ -492,33 +514,39 @@ function auditKeysInBody(saku, tsui, afterAppend) {
    「32字前後」と「0.8倍」には幅が要る。指針は幅を書いていないので、ここで決めた。
    下の2つは指針がそのまま上限を書いているので、幅を足さずにその数字で見る。 */
 const ANS_MIN = 28, ANS_MAX = 36, AVG_LO = 0.7, AVG_HI = 0.9, GAP_MAX = 4, RATIO_MAX = 1.3, BOTH_MIN = 0.7;
+/* 長さの数字の計算と逸脱の判定。作問（auditChoiceBalance）と選択肢置換（auditChoiceEdits）が同じ関数を使う。
+   2026-09-23 に切り出した。計算を2か所に持つと、片方だけ直して食い違うため。 */
+function balanceOf(choices, answer) {
+  const ans = L(choices[answer]);
+  const wrong = choices.filter((_, i) => i !== answer).map(L);
+  const avg = wrong.reduce((a, b) => a + b, 0) / wrong.length;
+  const second = Math.max(...wrong);
+  const gap = ans - second, ratio = ans / avg;
+  const 逸脱 = [];
+  if (ans < ANS_MIN || ans > ANS_MAX)
+    逸脱.push(`正解が${ans}字（目安32字前後・${ANS_MIN}〜${ANS_MAX}字）`);
+  if (avg < ans * AVG_LO || avg > ans * AVG_HI)
+    逸脱.push(`誤答平均が正解の${(avg / ans).toFixed(2)}倍（目安0.8倍・${AVG_LO}〜${AVG_HI}倍）`);
+  if (gap > GAP_MAX) 逸脱.push(`2位との差が${gap}字（上限${GAP_MAX}字）`);
+  if (ratio > RATIO_MAX) 逸脱.push(`比率が${ratio.toFixed(2)}倍（上限${RATIO_MAX}倍）`);
+  /* 「両者とも」型は1つずつ正解の0.7倍以上か（CLAUDE.md「作問の指針」）。2026-09-21 に足した。
+     平均だけ見ていると、1つだけ短い「両者とも」型が通り、一目で切り捨てられて実質二択になる。
+     2026-09-23 に「三者とも」で始まる誤答にも広げた。q001〜q050 の再検証で、三者比較の
+     「三者とも」型（q010 は正解の0.52倍、q043 は0.68倍と0.63倍）が同じ性質なのに検査に掛からなかったため。 */
+  choices.forEach((c, i) => {
+    const 型 = (c.match(/^(両者とも|三者とも)/) || [])[1];
+    if (i !== answer && 型 && L(c) < ans * BOTH_MIN)
+      逸脱.push(`「${型}」型が${L(c)}字で正解の${(L(c) / ans).toFixed(2)}倍（下限${BOTH_MIN}倍）`);
+  });
+  return { ans, avg, gap, ratio, 逸脱 };
+}
 function auditChoiceBalance(saku) {
   if (!saku.length) return;
   const 要判断 = [];
   let 例外 = 0;
   console.log("■ 選択肢の長さの検査（書き込みの前）");
   for (const d of saku) {
-    const ans = L(d.choices[d.answer]);
-    const wrong = d.choices.filter((_, i) => i !== d.answer).map(L);
-    const avg = wrong.reduce((a, b) => a + b, 0) / wrong.length;
-    const second = Math.max(...wrong);
-    const gap = ans - second, ratio = ans / avg;
-    const 逸脱 = [];
-    if (ans < ANS_MIN || ans > ANS_MAX)
-      逸脱.push(`正解が${ans}字（目安32字前後・${ANS_MIN}〜${ANS_MAX}字）`);
-    if (avg < ans * AVG_LO || avg > ans * AVG_HI)
-      逸脱.push(`誤答平均が正解の${(avg / ans).toFixed(2)}倍（目安0.8倍・${AVG_LO}〜${AVG_HI}倍）`);
-    if (gap > GAP_MAX) 逸脱.push(`2位との差が${gap}字（上限${GAP_MAX}字）`);
-    if (ratio > RATIO_MAX) 逸脱.push(`比率が${ratio.toFixed(2)}倍（上限${RATIO_MAX}倍）`);
-    /* 「両者とも」型は1つずつ正解の0.7倍以上か（CLAUDE.md「作問の指針」）。2026-09-21 に足した。
-       平均だけ見ていると、1つだけ短い「両者とも」型が通り、一目で切り捨てられて実質二択になる。
-       2026-09-23 に「三者とも」で始まる誤答にも広げた。q001〜q050 の再検証で、三者比較の
-       「三者とも」型（q010 は正解の0.52倍、q043 は0.68倍と0.63倍）が同じ性質なのに検査に掛からなかったため。 */
-    d.choices.forEach((c, i) => {
-      const 型 = (c.match(/^(両者とも|三者とも)/) || [])[1];
-      if (i !== d.answer && 型 && L(c) < ans * BOTH_MIN)
-        逸脱.push(`「${型}」型が${L(c)}字で正解の${(L(c) / ans).toFixed(2)}倍（下限${BOTH_MIN}倍）`);
-    });
+    const { ans, avg, gap, ratio, 逸脱 } = balanceOf(d.choices, d.answer);
     const mark = 逸脱.length ? (d["許可"] ? "△" : "★") : "○";
     console.log(`  ${mark} ${d.id}　正解${ans}字／誤答平均${avg.toFixed(1)}字（${(avg / ans).toFixed(2)}倍）` +
       `／2位との差${gap}字／比率${ratio.toFixed(2)}倍` +
@@ -1012,6 +1040,129 @@ function writeRefs(id, list) {
   }
   src = src.slice(0, start) + nb + src.slice(end);
   writeFileSafe(P("questions.js"), src, "utf8");
+}
+
+/* ================= 選択肢の書き換え（2026-09-23 に足した） =================
+   既存問題の選択肢を1つずつ書き換える。それまでは作業用のスクリプトで直していた（古代ギリシアの回の q679・q677）。
+   入力: "選択肢置換": [ { id, 旧（書き換える選択肢の全文）, 新, 理由, 許可? } ]
+   歯止め（★は許可欄なしに止める。☆は要判断で、その書き換えに「許可」があれば通して理由を note に書く）:
+     ★ 「旧」が、その問題の4つの選択肢のうちちょうど1つと全文一致し、questions.js のその問題の範囲でも
+        その文字列がちょうど1回だけ当たること
+     ★ fragile の問題では、note の「凍結:」の行（「凍結:」から最初の句点まで。かぎかっこの内側の句点は数えない）の
+        かぎかっこの引用を「旧」が含めば止める。凍結の向きは文章で書かれていて機械では決められないので、
+        方向を問わず止める。例外は先に note置換 で「凍結:」の行を直してから書き換える
+     ★ fragile なのに「凍結:」の行が無い、または行にかぎかっこの引用が1つも無い問題は、どの選択肢でも止める
+        （引用を手がかりにする検査をすり抜けないため）
+     ★ 書き換えたあとも選択肢が4つで、同じ文が混ざらず、正解の番号（answer）が変わらないこと
+     ☆ 書き換えたあとの長さの数字（balanceOf。作問と同じ決まり）が範囲を外れる
+     ☆ 言い切りを強める語（CLAUDE.md「両者とも」型の節の規則）が「旧」より「新」で増える
+   記録: note の末尾へ道具が書く（「旧」→「新」、理由、長さの数字）。理由は実行の最後にコミットメッセージ用にも出す。 */
+const STRONG_WORDS = ["まったく", "いっさい", "どのようにしても", "そのもの", "だけ", "のみ", "全面的に"];
+const countIn = (s, w) => s.split(w).length - 1;
+/* 「凍結:」の行を切り出し、かぎかっこの引用（入れ子は外側だけ）を返す。行が無ければ null。 */
+function frozenQuotes(note) {
+  const i = String(note || "").indexOf("凍結:");
+  if (i < 0) return null;
+  const s = note.slice(i);
+  const out = [];
+  let depth = 0, start = -1, end = s.length;
+  for (let k = 0; k < s.length; k++) {
+    const c = s[k];
+    if (c === "「") { if (depth === 0) start = k + 1; depth++; }
+    else if (c === "」" && depth > 0) { depth--; if (depth === 0) out.push(s.slice(start, k)); }
+    else if (c === "。" && depth === 0) { end = k; break; }
+  }
+  return { line: s.slice(0, end + 1), quotes: out };
+}
+/* questions.js の中の、その問題のかたまり（id の行から次の問題の id の行の手前まで）。 */
+function blockOf(src, id) {
+  const start = src.indexOf(`    id: ${S(id)},`);
+  if (start < 0) return null;
+  let end = src.indexOf("\n    id: ", start + 1);
+  if (end < 0) end = src.length;
+  return { start, end, text: src.slice(start, end) };
+}
+function auditChoiceEdits(chRep, existing) {
+  if (!chRep.length) return;
+  const 要判断 = [], 止める = [];
+  const src = readFileSafe(P("questions.js"), "utf8");
+  console.log("■ 選択肢の書き換えの検査（書き込みの前）");
+  const byId = {};
+  for (const r of chRep) (byId[r.id] = byId[r.id] || []).push(r);
+  for (const id of Object.keys(byId)) {
+    const q = existing.find(x => x.id === id);
+    if (!q) { 止める.push(`${id}: 問題が無い（選択肢置換は既存の問題だけに使う）`); continue; }
+    const blk = blockOf(src, id);
+    const choices = q.choices.slice();
+    const fragile = q.source && q.source.choicesOk === "fragile";
+    const fz = fragile ? frozenQuotes(q.source.note) : null;
+    if (fragile && !fz) 止める.push(`${id}: fragile なのに note に「凍結:」の行が無い（どの選択肢も書き換えられない）`);
+    else if (fragile && !fz.quotes.length) 止める.push(`${id}: fragile の「凍結:」の行にかぎかっこの引用が無い（どの選択肢も書き換えられない。先に note置換 で凍結の範囲を引用で書く）`);
+    let ng = false;
+    const 許可 = byId[id].map(r => r["許可"]).filter(Boolean);
+    const 強調 = [];
+    for (const r of byId[id]) {
+      const hit = choices.filter(c => c === r["旧"]).length;
+      if (hit !== 1) { 止める.push(`${id}: 「旧」が選択肢の${hit}つと一致する（ちょうど1つでなければならない）: ${r["旧"].slice(0, 30)}`); ng = true; continue; }
+      const lit = blk ? countIn(blk.text, S(r["旧"])) : 0;
+      if (lit !== 1) { 止める.push(`${id}: 「旧」の文字列が questions.js のこの問題の範囲で${lit}回当たる（ちょうど1回でなければならない）`); ng = true; continue; }
+      if (fz && fz.quotes.length) {
+        const hitQ = fz.quotes.filter(x => r["旧"].includes(x));
+        if (hitQ.length) { 止める.push(`${id}: 凍結された選択肢を書き換えようとしている（凍結の引用「${hitQ[0].slice(0, 30)}」を含む）。方向を問わず止める。先に note置換 で「凍結:」の行を直すこと`); ng = true; continue; }
+      }
+      for (const w of STRONG_WORDS) if (countIn(r["新"], w) > countIn(r["旧"], w)) 強調.push(`「${w}」`);
+      choices[choices.indexOf(r["旧"])] = r["新"];
+    }
+    if (ng) { console.log(`  ★ ${id}　選択肢置換`); continue; }
+    if (choices.length !== 4 || new Set(choices).size !== 4) { 止める.push(`${id}: 書き換えたあと選択肢に同じ文が混ざる`); console.log(`  ★ ${id}　選択肢置換`); continue; }
+    const b = balanceOf(choices, q.answer);
+    const 逸脱 = b.逸脱.slice();
+    if (強調.length) 逸脱.push(`言い切りを強める語が増える（${強調.join("・")}）`);
+    const mark = 逸脱.length ? (許可.length ? "△" : "★") : "○";
+    console.log(`  ${mark} ${id}　書き換え後: 正解${b.ans}字／誤答平均${b.avg.toFixed(1)}字（${(b.avg / b.ans).toFixed(2)}倍）` +
+      `／2位との差${b.gap}字／比率${b.ratio.toFixed(2)}倍` + (逸脱.length && 許可.length ? "　許可つきで通す" : ""));
+    if (逸脱.length && !許可.length) 要判断.push(`${id}: ${逸脱.join("・")}`);
+    for (const r of byId[id]) r._記録 = { 逸脱, b };
+  }
+  if (止める.length || 要判断.length) {
+    if (止める.length) console.error("\n止める（許可欄では通せない。1件も書いていない）:\n  " + 止める.join("\n  "));
+    if (要判断.length) console.error("\n要判断（1件も書いていない）:\n  " + 要判断.join("\n  ") +
+      "\n  どちらかを選ぶ: 書き換えの文を直して範囲に収めるか、その書き換えに「許可」欄（理由）を足して通す。");
+    process.exit(1);
+  }
+  console.log(`  → ${chRep.length}件（${Object.keys(byId).length}問）\n`);
+}
+function applyChoiceEdits(chRep) {
+  if (!chRep.length) return;
+  console.log("■ 選択肢の書き換え");
+  const before = {};
+  for (const q of readQ()) before[q.id] = { answer: q.answer, choices: q.choices.slice() };
+  for (const r of chRep) {
+    let src = readFileSafe(P("questions.js"), "utf8");
+    const blk = blockOf(src, r.id);
+    if (!blk) throw new Error("エントリが見つからない: " + r.id);
+    if (countIn(blk.text, S(r["旧"])) !== 1) throw new Error("選択肢の文字列がちょうど1回当たらない: " + r.id);
+    src = src.slice(0, blk.start) + blk.text.replace(S(r["旧"]), S(r["新"])) + src.slice(blk.end);
+    writeFileSafe(P("questions.js"), src, "utf8");
+    const { 逸脱, b } = r._記録;
+    addNote(r.id, ` 選択肢の書き換え: 「${r["旧"]}」を「${r["新"]}」に替えた。理由: ${r["理由"]}${/。$/.test(r["理由"]) ? "" : "。"}` +
+      ` 書き換え後の長さ: 正解${b.ans}字・誤答平均${b.avg.toFixed(1)}字（${(b.avg / b.ans).toFixed(2)}倍）・比率${b.ratio.toFixed(2)}倍・2位との差${b.gap}字。` +
+      (逸脱.length ? ` 型の例外として通した（${逸脱.join("・")}）。理由: ${r["許可"] || chRep.filter(x => x.id === r.id).map(x => x["許可"]).find(Boolean)}` : ""));
+    console.log(`  ${r.id}: 選択肢を書き換えた`);
+  }
+  /* 書き終えたあとに、正解の番号・選択肢の数・重複を見る。落ちたら全ファイルを差し戻す（main の try の中）。 */
+  const bad = [];
+  for (const q of readQ()) {
+    const b0 = before[q.id];
+    if (!b0 || !chRep.some(r => r.id === q.id)) continue;
+    if (q.answer !== b0.answer) bad.push(`${q.id}: 正解の番号が変わった（${b0.answer}→${q.answer}）`);
+    if (q.choices.length !== 4 || new Set(q.choices).size !== 4) bad.push(`${q.id}: 選択肢が4つでないか、同じ文が混ざった`);
+    const 旧正解 = b0.choices[b0.answer];
+    const 期待 = (chRep.find(r => r.id === q.id && r["旧"] === 旧正解) || {})["新"] || 旧正解;
+    if (q.choices[q.answer] !== 期待) bad.push(`${q.id}: 正解の位置にある文が期待と違う`);
+  }
+  if (bad.length) throw new Error("選択肢の書き換えの結果が崩れた（許可欄は無い）:\n  " + bad.join("\n  "));
+  console.log("");
 }
 
 /* ================= note の置換と unverified の除去（2026-09-23 に足した） =================
@@ -1767,13 +1918,14 @@ function restore(m, why) {
 /* ================= 本体 ================= */
 function main() {
   const input = readJson(INPUT);
-  const { saku, tsui, keys, led, rem, refsDel, refsRep, refsAdd, noteRep, unvDel } = validate(input);
+  const { saku, tsui, keys, led, rem, refsDel, refsRep, refsAdd, noteRep, unvDel, chRep } = validate(input);
   console.log(`■ 入力: 作問${saku.length}問／追記${tsui.length}件／鍵語 ` +
     `作問由来${count(keys["作問由来"])}語・追記由来${count(keys["追記由来"])}語` +
     (led ? `／台帳 ${led["対象"].length}人・改名${count(led["改名"] || {})}語・登録${count(led["新規登録"] || {})}語` : "") +
     (rem.length ? `／keys除去 ${rem.length}問・${rem.reduce((a, r) => a + r["語"].length, 0)}語` : "") +
     (refsDel.length || refsRep.length || refsAdd.length ? `／refs 除去${refsDel.length}問・置換${refsRep.length}問・追加${refsAdd.length}問` : "") +
     (noteRep.length || unvDel.length ? `／note置換${noteRep.length}件・unverified除去${unvDel.length}件` : "") +
+    (chRep.length ? `／選択肢置換${chRep.length}件` : "") +
     (DRY ? "　【dry-run】" : "") + "\n");
 
   const snap = snapshot();
@@ -1798,11 +1950,16 @@ function main() {
   auditRefsAdd(refsAdd, readQ());
   /* note の置換と unverified の除去も書き込みの前に見る。2026-09-23 に足した。 */
   auditNoteOps(noteRep, unvDel, readQ());
+  /* 選択肢の書き換えも書き込みの前に見る。2026-09-23 に足した。 */
+  auditChoiceEdits(chRep, readQ());
   try {
     /* 台帳が先。改名で語形が変わると数え直しの対象も変わるため。 */
     applyLedger(led);
     appendQuestions(saku);
     applyAppends(tsui);
+    /* 選択肢の書き換えは追記のあと・keys の除去の前。note の記録が「追記 → 選択肢 → 除去 → refs → note置換 → unverified除去」の順に並ぶ。
+       note置換 と unverified除去 の順（applyNoteOps の中）は変えていない。 */
+    applyChoiceEdits(chRep);
     /* 除去は追記のあと。同じ問題に追記と除去が両方あるとき、note が「追記 → 除去」の順に並ぶ。 */
     removeKeys(rem);
     applyRefsOps(refsDel, refsRep);
@@ -1834,6 +1991,15 @@ function main() {
     for (const r of noteRep) (by[r.id] = by[r.id] || []).push(r["理由"]);
     console.log("");
     console.log("■ コミットメッセージ用（note置換の理由。1問1行）");
+    for (const id of Object.keys(by)) console.log(`${id}: ${by[id].join("／")}`);
+  }
+
+  /* 選択肢置換の理由も、コミットメッセージに1問1行で載せる（2026-09-23）。 */
+  if (chRep.length) {
+    const by = {};
+    for (const r of chRep) (by[r.id] = by[r.id] || []).push(r["理由"]);
+    console.log("");
+    console.log("■ コミットメッセージ用（選択肢置換の理由。1問1行）");
     for (const id of Object.keys(by)) console.log(`${id}: ${by[id].join("／")}`);
   }
 
