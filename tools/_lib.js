@@ -18,10 +18,11 @@
    4 は汎用化で add_person.js にも同じ判定ができたので、その場で1つに寄せた
    （2026-09-21。「頃」の許容幅や年の拾い方といった細かい決めごとが2か所に写る）。
 
-   **ここに入れていないもの**（2026-09-21 の判断）:
-     入力の検査の枠（add_batch.js の validate）・配列の末尾へ足す処理・差し戻し
-     （snapshot/restore）。共通にできるが、add_batch.js の構造に手を入れることになる。
-     やるかどうかは別に判断する。CLAUDE.md の「次の作業」に残してある。
+   **ここに入れていないもの**（2026-09-21 の判断。2026-09-23 に改めた）:
+     入力の検査の枠（add_batch.js の validate）・配列の末尾へ足す処理の2つ。
+     書き込みと差し戻しの読み書きは 2026-09-23 に 5 の部品へ移った
+     （snapshot/restore の関数は add_batch.js にあり、中で 5 を使う）。
+     残る2つは使う道具が add_batch.js だけなので見送った。CLAUDE.md の「次の作業」に残してある。
 
    使い方:  const { L, readJson, writeJson, PHIL, matchYears,
                     readFileSafe, writeFileSafe, diagnose } = require("./_lib.js");

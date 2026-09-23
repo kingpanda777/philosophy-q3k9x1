@@ -57,7 +57,8 @@
 "use strict";
 const fs = require("fs");
 const path = require("path");
-const { L, readJson, writeJson, PHIL, matchYears } = require("./_lib.js");
+/* 読み書きは _lib.js の部品を使う（一時ファイル経由・やり直しつき。2026-09-23 に替えた） */
+const { L, readJson, writeJson, PHIL, matchYears, readFileSafe, writeFileSafe } = require("./_lib.js");
 
 const [, , INPUT, DIR] = process.argv;
 if (!INPUT) {
@@ -71,8 +72,8 @@ const S = s => JSON.stringify(s);
 const p = readJson(INPUT);
 
 /* ================= 読み込み ================= */
-const qsrc = fs.readFileSync(P("questions.js"), "utf8");
-const psrc = fs.readFileSync(P("philosophers.js"), "utf8");
+const qsrc = readFileSafe(P("questions.js"), "utf8");
+const psrc = readFileSafe(P("philosophers.js"), "utf8");
 const { SCHOOLS, PHILOSOPHERS, QUESTIONS } =
   new Function(qsrc + ";return {SCHOOLS,PHILOSOPHERS,QUESTIONS};")();
 const { PHIL_INTRO } = new Function(psrc + ";return {PHIL_INTRO};")();
@@ -223,9 +224,9 @@ ysrc[p.name] = p.years_src;
 kt[p.name] = { "学派": p.school, "問題数": 0, "鍵語": [] };
 
 /* ================= 書き込み ================= */
-fs.writeFileSync(P("questions.js"), qOut, "utf8");
+writeFileSafe(P("questions.js"), qOut, "utf8");
 console.log(`○ questions.js の PHILOSOPHERS に追加（${p.name}／${p.school}）`);
-fs.writeFileSync(P("philosophers.js"), pOut, "utf8");
+writeFileSafe(P("philosophers.js"), pOut, "utf8");
 console.log(`○ philosophers.js の PHIL_INTRO に追加（紹介の欄。intro ${L(p.intro)}字／thought ${L(p.thought)}字）`);
 writeJson(P("tools/years_src.json"), ysrc);
 console.log("○ tools/years_src.json に引用行を追加");

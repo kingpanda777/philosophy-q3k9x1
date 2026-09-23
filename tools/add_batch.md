@@ -254,5 +254,7 @@ add_batch.js と、add_batch から呼ばれる `gen_key_owner.js`・`progress_t
   差し戻しは5ファイルを戻し、questions.js を「書き換わったまま（EPERM）」と表示、実行前の中身を `.bak-` に保存した。
   **残った questions.js は途中で切れておらず、構文も通った。**保存した `.bak-` は実行前と一致した。一時ファイルは残らなかった
 
-**残っていること。**`add_person.js` の questions.js・philosophers.js の書き込みは直書きのままである（JSON の2つは `writeJson` 経由で新しい形になった）。
+**`add_person.js` も同じ日に替えた。**questions.js・philosophers.js の読み書きを `readFileSafe`・`writeFileSafe` にした（JSON の2つは `writeJson` 経由で先に替わっていた）。
+3人の登録の直前のコミット（`cc27a76`）を2つ取り出し、旧版と新版でメイヤスー・ハーマン・ガブリエルの3人を続けて登録した。
+**標準出力も4ファイル（questions.js・philosophers.js・years_src.json・keyterms.json）もバイト単位で一致し、一時ファイルは残らなかった。**
 **失効条件なし。**
