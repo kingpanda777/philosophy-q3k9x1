@@ -266,9 +266,12 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
+      note: "設問へ: 正解はイデアを感覚的事物の原型とし、不変で、感覚ではなく知性によって捉えられるとする規定で、SEP の Plato's Middle Period Metaphysics の §2・§7・§13 のとおり。誤答「便宜的に作り出した名前にすぎない」は explanation が書くとおり唯名論に近い立場、「人間の心のなかにだけ存在し」は近代的な主観的観念、「神が世界を創造するときに用いた設計図」はイデアを神の知性の中の範型とする後代の読みに旧約の由来を足したもので、どれもプラトンのイデアに当たらない。四択は成立している。 detail 第1段落の語源は LSJ で確かめた（ἰδέα は ἰδεῖν「見る」から来て、まず姿・形を意味する）。第3段落の『パルメニデス』の批判は SEP の Plato's Parmenides §4 で確かめた（全体と部分のジレンマ、第三人間論など六つの難点）。同項は、パルメニデスがイデアを捨てず訓練を勧める（135b–c）ことを挙げ、この対話篇をイデア論の放棄ではなく、問題のある前提を見直す吟味として読む向きを示しており、「生涯にわたって手直しされ続けた問い」という detail の書き方と合う。 q001〜q050 の再検証（2026年9月23日）で、note を新設し refs に2本を足した。",
       refs: [
         "https://iep.utm.edu/meno-2/ — 『メノン』82b–85b。幾何学を習っていないメノンの召使いの少年が、問答だけで正方形を二倍にする作図に至る場面",
-        "https://plato.stanford.edu/entries/plato-metaphysics/ — §7「The Deficiency of Particulars」の「Forms are immaterial, non-spatial and atemporal. Particulars are material and extended in space and in time.」と、§2「The Metaphysics of the Phaedo」でイデアが知性によって捉えられる対象として立てられること、§11「Recollection in the Phaedo」で想起説がイデア論と結びつくことを確認した。"
+        "https://plato.stanford.edu/entries/plato-metaphysics/ — §7「The Deficiency of Particulars」の「Forms are immaterial, non-spatial and atemporal. Particulars are material and extended in space and in time.」と、§2「The Metaphysics of the Phaedo」でイデアが知性によって捉えられる対象として立てられること、§11「Recollection in the Phaedo」で想起説がイデア論と結びつくことを確認した。",
+        "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.04.0057:entry=i)de/a — Liddell–Scott–Jones『ギリシア語辞典』の ἰδέα の項。ἰδεῖν（見る）に由来し、第一義が姿・形（form, semblance）であること",
+        "https://plato.stanford.edu/entries/plato-parmenides/ — §4「Problems for the Theory of Forms 130a–134e」。イデアの範囲、全体と部分のジレンマ、第三人間論（132a–b）、思考としてのイデア、類似の後退、最大の難点の六つを、対話篇の中でパルメニデスがソクラテスに突きつけること。135b–c で、イデアを捨てれば問答の力そのものが失われるとして、捨てずに訓練を勧めること"
       ]
     }
   },
@@ -289,7 +292,12 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "選択肢の均等化: 正解の説明句を削り（解説側に既述）、誤答を型に揃えて肉付けした。四択の成立を確認済み。 3.72倍→1.25倍。"
+      note: "選択肢の均等化: 正解の説明句を削り（解説側に既述）、誤答を型に揃えて肉付けした。四択の成立を確認済み。 3.72倍→1.25倍。 設問へ: 正解は『国家』第7巻 515c の「彼らにとって真実とは影にほかならない」と、517b で洞窟の住まいが視覚に現れる世界にあたるとされることのとおり。誤答「洞窟の外にあるイデアそのものの姿」は外の実物のほうで影ではない、「哲学者だけが到達できる真理」は上昇の到達点、「神々の意志のあらわれ」は比喩に出てこない読みで、どれも影に当たらない。四択は成立している。 detail は Jowett 訳の本文で確かめた。第2段落の、囚人を解いて上へ連れ出そうとする者は捕まえれば殺されるだろうという箇所は 517a、第3段落の、教育は見えない目に視力を入れることではなく魂全体を向け変えることだという箇所は 518b–d にある。第1段落の太陽・線分・洞窟の順は IEP の Republic 項で確かめた。第2段落の「ソクラテスの死を踏まえた記述として読まれてきた」は、1000-Word Philosophy の洞窟の比喩の項が、囚人が解放者を殺したがるという箇所でプラトンはソクラテス自身を念頭に置いていたと書くことで確かめた（入門の編集つきアンソロジーで、研究史の広がりまでは示していない）。 q001〜q050 の再検証（2026年9月23日）で refs を新設した。",
+      refs: [
+        "http://classics.mit.edu/Plato/republic.8.vii.html — 『国家』第7巻（Jowett 訳）。「To them, I said, the truth would be literally nothing but the shadows of the images」（515c）、「if any one tried to loose another and lead him up to the light, let them only catch the offender, and they would put him to death」（517a）、「the prison-house is the world of sight ... the journey upwards to be the ascent of the soul into the intellectual world」（517b）、知の器官は魂全体とともに生成の世界から存在の世界へ向け変えられるほかないこと（518c–d）",
+        "https://iep.utm.edu/republic/ — 線分の比喩（509d–511d）のあとに洞窟の比喩（514a–517c）が哲学者の教育を無知からイデアの知へ向かう道として描くこと、真の教育は影と見えるものからイデアの理解へ魂を向け変えることだとされること（518c–d）",
+        "https://1000wordphilosophy.com/2023/05/26/allegory-of-the-cave/ — 1000-Word Philosophy「Plato's Allegory of the Cave」。囚人たちが解放しに来た仲間を殺そうとさえするとソクラテスに語らせたとき、プラトンはソクラテス自身を念頭に置いていた、という読み"
+      ]
     }
   },
   {
@@ -308,7 +316,12 @@ const QUESTIONS = [
     detail: "やっかいなのは、アリストテレスの実体論が著作によって食い違って見えることです。\n\n『カテゴリー論』では、個々のものが第一実体で、種や類が第二実体だとされます。ところが『形而上学』では、個物のうちで実体と呼ぶにふさわしいのは形相のほうだ、という議論が展開されます。同じ人が正反対のことを言っているように読めるため、これは古代から現代まで続く解釈上の大問題になっています。\n\n執筆時期の違いとみる読み方、問いの立て方が違うだけで矛盾しないとみる読み方など、いくつもの立場があります。入門書では『カテゴリー論』の説明だけが紹介されることが多いので、「アリストテレスにとって実体は個物である」と単純に覚えると、後で『形而上学』に入ったときに混乱します。",
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
-      choicesOk: "ok"
+      choicesOk: "ok",
+      note: "設問へ: 正解は『カテゴリー論』2a11 のとおりで、第一実体は主語について言われもせず主語のうちにもないもの、例は個々の人間と個々の馬。誤答「普遍的な種や類」は同書の第二実体で、取り違えやすいが別物として区別されている。「ただひとつの神的な原理」は不動の動者を思わせるが第一実体の規定ではなく、「分割不可能な最小単位」は原子論の側。四択は成立している。 detail の、『形而上学』Ζ巻が形相を第一の実体とする点（1032b1）と、『カテゴリー論』との食い違いに解釈の立場が割れている点は、SEP の Aristotle's Categories §2.1 と Aristotle's Metaphysics で確かめた。 q001〜q050 の再検証（2026年9月23日）で、note と refs を新設した。",
+      refs: [
+        "https://plato.stanford.edu/entries/aristotle-categories/ — §1.1。第一実体は「neither said-of nor present-in anything」（2a11）で、例は個々の人間と個々の馬。§1.3。種や類は普遍である第二実体。§2.1。『カテゴリー論』を書いた時点で『形而上学』の存在論をどこまで受け入れていたかについて、研究者のあいだに本当の意見の違いがあること",
+        "https://plato.stanford.edu/entries/aristotle-metaphysics/ — Ζ巻で実体が形相（本質）とされる「by form I mean the essence of each thing and the primary substance」（1032b1）と、形相が普遍か個別かをめぐって解釈が二つに割れていること"
+      ]
     }
   },
   {
@@ -328,7 +341,12 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "選択肢の均等化: 正解の説明句を削り（解説側に既述）、誤答を型に揃えて肉付けした。四択の成立を確認済み。 2.06倍→1.18倍。"
+      note: "選択肢の均等化: 正解の説明句を削り（解説側に既述）、誤答を型に揃えて肉付けした。四択の成立を確認済み。 2.06倍→1.18倍。 設問へ: 正解は、質料を可能態、形相を現実態とし、両者が個物のうちで合わさるという質料形相論のとおり（SEP Aristotle's Metaphysics の Θ巻の節）。誤答「天上界にあり…決して交わらない」は形相の置き場所も天地の区分も取り違えたもの、「頭のなかで作る概念にすぎず」は唯名論と唯物論を合わせた立場、「質料が原因…形相はその結果」は四原因説の関係を逆にしたもので、どれも当たらない。四択は成立している。 detail 第1段落の四原因と explanation の青銅像の例は SEP の Aristotle on Causality §2 で確かめた。第2段落のどんぐりと樫の木は「よく用いられる」説明として書かれており、アリストテレス自身の例ではない（同項の例は人間を生む人間など）。第3段落の目的因の追放は、デカルト『哲学原理』第1部第28節の、自然物を神や自然の目的から説明せず目的因の探究を自然学から追放するという宣言で確かめた。「近代の自然科学は…成立しました」という一般化そのものは、デカルトの一例を超える科学史の整理で、その範囲の典拠は当てていない。 q001〜q050 の再検証（2026年9月23日）で refs を新設した。",
+      refs: [
+        "https://plato.stanford.edu/entries/aristotle-causality/ — §2。質料因・形相因・作用因・目的因の四つを「何からできているか」「それは何か」「変化はどこから来るか」「その善は何か」への答えとして立て、青銅を像の質料因、像の形を形相因とする例",
+        "https://plato.stanford.edu/entries/aristotle-metaphysics/ — Θ巻。質料は可能態、形相は現実態で、個々の実体は両者の合成体であること",
+        "https://www.earlymoderntexts.com/assets/pdfs/descartes1644part1.pdf — デカルト『哲学原理』第1部第28節（Bennett 版）。自然物を神や自然が創造のさいにもった目的から説明することはせず、フランス語版の追加で目的の探究を自然学から完全に追放するとし、神は作用因としてだけ持ち込むこと"
+      ]
     }
   },
   {
@@ -348,7 +366,11 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "選択肢の均等化: 正解の説明句を削り（解説側に既述）、誤答を型に揃えて肉付けした。四択の成立を確認済み。 1.62倍→1.27倍。"
+      note: "選択肢の均等化: 正解の説明句を削り（解説側に既述）、誤答を型に揃えて肉付けした。四択の成立を確認済み。 1.62倍→1.27倍。 設問へ: 正解は、プラトンがイデアを個物から離れたものとし、アリストテレスが形相を個物に内在させた対比のとおり。誤答「プラトンは経験を重んじ、アリストテレスは理性」は通俗的な図式を逆にしたもの、「実体という語を…アリストテレスは使わなかった」は事実に反し（ウーシアはアリストテレスの中心語）、「イデア論を全面的に受け入れ」は『形而上学』Α巻9章の批判と両立しない。四択は成立している。 detail の二つの批判は『形而上学』Α巻9章の本文で確かめた。範型と分有を言うのは「空虚な言葉と詩的な比喩」だという批判（991a20–22）と、「第三の人間」を持ち込む議論（990b17）である。第三人間論の議論の形そのものは、プラトン自身が『パルメニデス』132a–b で示している（q001 の SEP Plato's Parmenides の ref）。 q001〜q050 の再検証（2026年9月23日）で refs を新設した。",
+      refs: [
+        "http://classics.mit.edu/Aristotle/metaphysics.1.i.html — 『形而上学』Α巻9章（Ross 訳）。「to say that they are patterns and the other things share in them is to use empty words and poetical metaphors」（991a20–22）、「others introduce the 'third man'」（990b17）、「how, therefore, could the Ideas, being the substances of things, exist apart?」（991b1–3）",
+        "https://plato.stanford.edu/entries/aristotle-metaphysics/ — 『カテゴリー論』で個物を第一実体としつつ、Ζ巻で個物が何であるかを形相（本質）に求めること（1032b1）"
+      ]
     }
   },
   {
@@ -368,10 +390,11 @@ const QUESTIONS = [
     source: {
       kind: "ai_flagged", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "『哲学原理』（1644年）でのコギトの扱いについて資料が対立している。Wikipedia は直観説を維持したとし、Britannica は三段論法の結論として示唆したとする。1641年の「第二答弁」が直観説である点では一致。 選択肢の均等化: 正解の説明句を削り（解説側に既述）、誤答を型に揃えて肉付けした。四択の成立を確認済み。 1.61倍→1.20倍。 refs から1本を外した（Cogito,_ergo_sum）。理由: 説明欄（各著作でのコギトの扱いと、リヒテンベルクによる批判の位置づけ）のうち、本文が実際に使っているのは第二答弁の直観とリヒテンベルクの批判で、どちらも SEP の Descartes: Epistemology 項の §2.2 と §4.1 が支える。リヒテンベルクの原文は zeno.org の ref が支えている。 refs を1本差し替えた（descartes-epistemology → https://plato.stanford.edu/entries/descartes-epistemology/）。理由: 方法的懐疑の手順とリヒテンベルク批判の位置づけを、同じ SEP の項の別の節が支えていた。説明欄に書き足す。",
+      note: "『哲学原理』（1644年）でのコギトの扱いについて資料が対立している。Wikipedia は直観説を維持したとし、Britannica は三段論法の結論として示唆したとする。1641年の「第二答弁」が直観説である点では一致。 選択肢の均等化: 正解の説明句を削り（解説側に既述）、誤答を型に揃えて肉付けした。四択の成立を確認済み。 1.61倍→1.20倍。 refs から1本を外した（Cogito,_ergo_sum）。理由: 説明欄（各著作でのコギトの扱いと、リヒテンベルクによる批判の位置づけ）のうち、本文が実際に使っているのは第二答弁の直観とリヒテンベルクの批判で、どちらも SEP の Descartes: Epistemology 項の §2.2 と §4.1 が支える。リヒテンベルクの原文は zeno.org の ref が支えている。 refs を1本差し替えた（descartes-epistemology → https://plato.stanford.edu/entries/descartes-epistemology/）。理由: 方法的懐疑の手順とリヒテンベルク批判の位置づけを、同じ SEP の項の別の節が支えていた。説明欄に書き足す。 設問へ: 正解は、確実でないものへの同意を差し控えて疑いえない出発点を探すという方法的懐疑の目的のとおり（SEP Descartes' Epistemology §2.2）。誤答「判断を保留すること」は懐疑そのものを目的とする古代懐疑主義の側で、explanation がこれと対比している。「無神論の立場を確立」はデカルトが『省察』で神の存在証明に進むことと両立せず、「感覚による経験だけが確実」は懐疑の第一段で真っ先に疑われるもの。四択は成立している。 detail 第3段落の「ここをヒュームが正面から突き」は、『人間本性論』第1巻第4部第6節で、自我を常に直接意識していると考える哲学者たちに対し、自分の内に入っても個々の知覚に行き当たるだけで、心は知覚の束にすぎないと述べる箇所で確かめた。ヒューム自身はそこでデカルトの名を挙げていない（対照の記録）。 q001〜q050 の再検証（2026年9月23日）で refs に1本を足した。",
       refs: [
         "https://plato.stanford.edu/entries/descartes-epistemology/ — §2.2「Method of Doubt」の「Reason now leads me to think that I should hold back my assent from opinions which are not completely certain and indubitable just as carefully as I do from those which are patently false.」（AT 7:18, CSM 2:12）で、疑いうるものを退けて疑いえない出発点を探す手順が示される。§4.1「Cogito Ergo Sum」で、『省察』への「第二答弁」を引き、コギトが三段論法による演繹ではなく精神の単純な直観とされること、および18世紀のリヒテンベルクを承けてラッセルが「there are thoughts」と述べるべきだったとし「the word 'I' is grammatically convenient, but does not describe a datum」と書いたことが扱われる。",
-        "http://www.zeno.org/Literatur/M/Lichtenberg,+Georg+Christoph/Aufzeichnungen+und+Aphorismen — リヒテンベルク『控え帳』K76 の原文 Es denkt, sollte man sagen, so wie man sagt: es blitzt.（非人称構文であって受動ではない）"
+        "http://www.zeno.org/Literatur/M/Lichtenberg,+Georg+Christoph/Aufzeichnungen+und+Aphorismen — リヒテンベルク『控え帳』K76 の原文 Es denkt, sollte man sagen, so wie man sagt: es blitzt.（非人称構文であって受動ではない）",
+        "https://davidhume.org/texts/t/1/4/6 — ヒューム『人間本性論』1.4.6。「There are some philosophers, who imagine we are every moment intimately conscious of what we call our Self」（第1段落）、「when I enter most intimately into what I call myself, I always stumble on some particular perception」（第3段落）、心は「a bundle or collection of different perceptions」にすぎないこと（第4段落）"
       ]
     }
   },
@@ -392,7 +415,14 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "fragile",
-      note: "設問へ: 誤答一番目「実体はただひとつであり、それが神である」は、デカルト自身の言明としては真である（『哲学原理』I-51で、厳密に他に依存せず存在するのは神だけだと認めている）。それでも正解三番目が答えなのは、設問が「デカルトの実体観」の特徴を問うており、彼の立場を特徴づけるのは被造的実体の水準での二元論だから。四択は成立しているが条件付き。崩れる条件: 誤答一番目を「厳密には神のみが実体で、精神と物体は神に依存する被造的実体である」と精密化すると、それはデカルト自身の立場そのものになり正解と競合する。 fragile 型B（正解が短縮形。正解をいじると壊れる）: 正解は被造的実体の水準での二元論という通用の短縮形で、厳密な意味で実体と呼べるのは神だけだというデカルト自身の規定と併存している。正解を厳密化しても、誤答一番目を精密化しても四択は崩れる。fragile は要修正の印ではなく編集禁止の指定なので、設問文と選択肢の表現には触れず、但し書きは detail と note の側で扱うこと。"
+      note: "設問へ: 誤答一番目「実体はただひとつであり、それが神である」は、デカルト自身の言明としては真である（『哲学原理』I-51で、厳密に他に依存せず存在するのは神だけだと認めている）。それでも正解三番目が答えなのは、設問が「デカルトの実体観」の特徴を問うており、彼の立場を特徴づけるのは被造的実体の水準での二元論だから。四択は成立しているが条件付き。崩れる条件: 誤答一番目を「厳密には神のみが実体で、精神と物体は神に依存する被造的実体である」と精密化すると、それはデカルト自身の立場そのものになり正解と競合する。 fragile 型B（正解が短縮形。正解をいじると壊れる）: 正解は被造的実体の水準での二元論という通用の短縮形で、厳密な意味で実体と呼べるのは神だけだというデカルト自身の規定と併存している。正解を厳密化しても、誤答一番目を精密化しても四択は崩れる。fragile は要修正の印ではなく編集禁止の指定なので、設問文と選択肢の表現には触れず、但し書きは detail と note の側で扱うこと。 q001〜q050 の再検証（2026年9月23日）: 正解と explanation の但し書きは『哲学原理』第1部第51節（実体とは他の何ものにも依存せずに存在するもので、厳密にそう解しうるのは神だけ）と第53節（精神の主要属性は思惟、物体は延長）で確かめた。detail 第1段落の松果腺は、SEP の Descartes and the Pineal Gland（2026年夏版で退役し、アーカイブ版に残る）で『情念論』（1649年）の「魂の主座」として確かめた。「当時から批判されました」は、同項が挙げるウィリス（1664年）とステノ（1669年）の批判で確かめた（どちらもデカルトの没後だが同じ世紀のうち）。エリザベト王女の問い（延長をもたない精神がどう身体を動かすか）は IEP の項で確かめた。第2段落のスピノザは『エチカ』第2部定理7備考の、思惟する実体と延長する実体は同一の実体で、延長の様態とその観念も同一のものが二通りに表されたものだという箇所に当たる（SEP Spinoza §2.2）。ライプニッツの予定調和とマルブランシュの機会原因論は SEP Dualism で確かめた。 refs を新設した。",
+      refs: [
+        "https://www.earlymoderntexts.com/assets/pdfs/descartes1644part1.pdf — デカルト『哲学原理』第1部（Bennett 版）第51節「there's only one substance that can be understood to depend on nothing else, namely God」、第53節「for mind it is the attribute of thought, for body it is extension」",
+        "https://plato.stanford.edu/archives/sum2026/entries/pineal-gland/ — SEP「Descartes and the Pineal Gland」（2026年夏版アーカイブ）。『情念論』（1649年）で松果腺が魂の主座とされ、心身の相互作用の場所とされること。ウィリス（1664年）とステノ（1669年）の批判",
+        "https://iep.utm.edu/descartes-mind-body-distinction-dualism/ — 精神は思惟する延長をもたないもの、物体は延長をもつ思惟しないもの。エリザベト王女が、動かすには接触が要るのに延長をもたない精神がどう身体を動かすのかと問うたこと",
+        "https://plato.stanford.edu/entries/dualism/ — ライプニッツは、神があらかじめ相互作用しているかのように振る舞うよう整えたと考えたこと。マルブランシュは自然な相互作用を不可能とし、その都度神の介入を要したこと",
+        "https://plato.stanford.edu/entries/spinoza/ — §2.2。『エチカ』第2部定理7とその備考。観念の秩序と連結は事物の秩序と連結と同一で、延長の様態とその観念は同一のものが二通りに表されたものであること"
+      ]
     }
   },
   {
@@ -411,7 +441,13 @@ const QUESTIONS = [
     detail: "『エチカ』が幾何学の体裁で書かれていることには理由があります。定義と公理から定理を証明していく形をとることで、権威や啓示ではなく理性だけで神について語れることを示そうとしたわけです。\n\n「神即自然」という主張は、当時としては極めて危険なものでした。スピノザはすでに20代でユダヤ人共同体から破門されており、『エチカ』は生前には刊行されていません。死後も長く無神論者として扱われ、名前を出すこと自体が憚られる時期が続きました。18世紀末のドイツで再評価され、ゲーテやヘーゲル、後にはドゥルーズにも大きな影響を与えます。\n\nなお、汎神論といっても自然を漠然と神と呼んでいるわけではありません。産出する自然と産出された自然という区別が置かれ、前者が神にあたります。「万物が神である」ではなく「神という唯一の実体が様々な様態として現れている」という構造です。",
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
-      choicesOk: "ok"
+      choicesOk: "ok",
+      note: "設問へ: 正解は『エチカ』第1部定義3（それ自身のうちにあり、それ自身によって考えられるもの）と、神すなわち自然が唯一の実体だという主張のとおり（SEP Spinoza）。誤答「実体は無数にあり」はライプニッツの側、「精神と物体という二つの実体」はデカルトの側で、q010 の三者比較と対応している。「想像力が作り出した虚構」は実体概念を退ける立場。四択は成立している。 detail 第2段落は照合した。破門は1656年7月27日で、1632年生まれのスピノザは23歳（SEP・IEP。detail の「20代で」と合う）。『エチカ』は1675年ごろ完成したが刊行を控え、1677年の没後に出た（IEP・SEP）。死後に無神論と同一視されていたことと、18世紀末のドイツでの再評価は、SEP の Friedrich Heinrich Jacobi 項で確かめた（1785年にヤコービがレッシングのスピノザ主義を公にし、スピノザ主義者であることは無神論者であることだと受け止められたこと、その後のスピノザ・ルネサンスで『エチカ』が以後の体系の試金石になったこと）。第3段落の産出する自然と産出された自然は、IEP と SEP（第1部定理29備考）で確かめた。 確認できていない点: 再評価の担い手としてゲーテ、ヘーゲル、ドゥルーズの三人を名指す部分は、個々の典拠を当てていない。 q001〜q050 の再検証（2026年9月23日）で、note と refs を新設した。",
+      refs: [
+        "https://plato.stanford.edu/entries/spinoza/ — 実体の定義「what is in itself and is conceived through itself」と、神すなわち自然（Deus, sive Natura）が唯一の実体であること。1656年7月27日のヘーレム（破門）と1632年の生年。『エチカ』の没後刊行（1677年）と幾何学的方法。第1部定理29備考の産出された自然（Natura naturata）",
+        "https://iep.utm.edu/spinoza/ — 1656年にシナゴーグの長老たちが破門の手続きに入ったこと、1675年に『エチカ』が完成しながら刊行を見送ったこと、能動的・産出的な面の自然を神と同一視して Natura naturans と呼び、産出されたものを Natura naturata と呼ぶこと",
+        "https://plato.stanford.edu/entries/friedrich-jacobi/ — 1785年、ヤコービがレッシングのスピノザ主義をメンデルスゾーンに伝え、スピノザ主義者であることは無神論者であることを意味したこと。この公開の応酬に続くスピノザ・ルネサンスが『エチカ』を以後の哲学体系の試金石にしたこと"
+      ]
     }
   },
   {
@@ -431,7 +467,10 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "選択肢の均等化: 正解の説明句を削り（解説側に既述）、誤答を型に揃えて肉付けした。四択の成立を確認済み。 2.40倍→1.26倍。"
+      note: "選択肢の均等化: 正解の説明句を削り（解説側に既述）、誤答を型に揃えて肉付けした。四択の成立を確認済み。 2.40倍→1.26倍。 設問へ: 正解は『エチカ』第2部定理7備考の、思惟する実体と延長する実体は同一の実体で、延長の様態とその観念も同一のものが二通りに表されたものだという箇所に当たる。誤答「独立した二つの実体」はデカルト、「精神は幻にすぎない」は消去的な唯物論、「精神が身体を一方的に支配」はデカルト的な相互作用を片側に寄せたもので、どれも当たらない。四択は成立している。ただし正解は通用の短縮形で、厳密には人間の精神と身体は唯一の実体そのものではなくその様態であり、同じ一つの様態を思惟と延長の二つの属性のもとで見たものである。誤答にこの区別に触れるものがないので、四択は崩れない（要判断として書き換え案を出した。対照の記録）。 detail の定理7の定式と、行為を意識しながらその原因を知らないから自由だと思い込むという箇所は SEP Spinoza で確かめた（第1部付録・第2部定理35備考）。受動と能動の区別も同項で確かめた。「心身平行論」はスピノザ自身の語ではないが、detail は「呼ばれます」と書いており誤りではない。 q001〜q050 の再検証（2026年9月23日）で refs を新設した。",
+      refs: [
+        "https://plato.stanford.edu/entries/spinoza/ — §2.2。第2部定理7「the order and connection of ideas is the same as the order and connection of things」と、延長の様態とその観念が同一のものの二通りの表現であること。人は行為を意識しながら原因を知らないから自分を自由だと思うこと。原因がまったく自分の本性のうちにあれば能動、外にあれば受動であること"
+      ]
     }
   },
   {
@@ -451,9 +490,10 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
+      note: "設問へ: 正解はデカルト＝二つ（精神と物体。『哲学原理』第1部第51節・第53節）、スピノザ＝一つ（神すなわち自然）、ライプニッツ＝無数（モナド）で、q007〜q009 と同じ整理。入れ替えた二つの誤答は帰属を入れ替えただけで、三者の数を知っていれば切れる。誤答「三者とも実体は一つだとした」は正解の半分ほどの長さ（13字、正解の0.52倍）で、読まずに切れる形になっている。「両者とも」型ではないので道具の検査には掛からないが、同じ性質の選択肢として書き換え案を出した（要判断）。四択は成立している。 detail 第1段落のウーシアの訳語が一定しなかった点は、アウグスティヌス『三位一体論』第7巻第4章第7節・第5章第10節で確かめた。ギリシア人は「一つのウーシア、三つのヒュポスタシス」と言い、ラテン人は「一つのエッセンティアまたはスブスタンティア、三つのペルソナ」と言うこと、神はスブスタンティアではなくエッセンティアと呼ぶのが本来だとすることである。 refs から1本を外した（encyclopedia.pub/entry/28629）。理由: 閲覧できず（403）、公開元の編集の形も確かめられないため、基準の典拠と見なせない。訳語の競合という本文の主張は、上のアウグスティヌスの原典に差し替えて支えた（テルトゥリアヌス・ボエティウス・アプレイウスの個別の用法は本文に書かれていないので、差し替え先では支えていない）。 q001〜q050 の再検証（2026年9月23日）で note を新設した。",
       refs: [
         "https://iep.utm.edu/substance/ — substantia は字義的に「下に立つもの」で、ギリシア語ヒュポスタシスに対応する",
-        "https://encyclopedia.pub/entry/28629 — ウーシアの訳語は一定せず、テルトゥリアヌス（200年頃）は substantia を、アウグスティヌスとボエティウスは essentia を選好したとされる。2世紀のアプレイウスは両方を用いた",
+        "https://www.newadvent.org/fathers/130107.htm — アウグスティヌス『三位一体論』第7巻（Haddan 訳）。第4章第7節「our Greek friends have spoken of one essence, three substances; but the Latins of one essence or substance, three persons」と、第5章第10節で神は substance ではなく essence と呼ぶのが本来だとすること。ウーシアに当てるラテン語が essentia と substantia で一定しなかったこと",
         "https://plato.stanford.edu/entries/descartes/ — 『哲学原理』I-51。厳密に実体と呼べるのは神のみで、精神と物体は神に依存する被造的実体"
       ]
     }
