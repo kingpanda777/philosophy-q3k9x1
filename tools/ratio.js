@@ -12,7 +12,8 @@ const fs=require('fs'),path=require('path');
 const src=fs.readFileSync(path.join(__dirname,'..','questions.js'),'utf8');
 const {QUESTIONS}=(new Function(src+'\nreturn {QUESTIONS};'))();
 const L=s=>[...s].length;
-const FRAGILE=['q007','q015','q030','q227','q234','q311','q325','q419','q456'];
+/* fragile の問題は choicesOk から読む。2026-09-23 に固定の一覧をやめた（q015 の fragile を外したとき、一覧が2か所にあると食い違うため）。 */
+const FRAGILE=QUESTIONS.filter(q=>q.source&&q.source.choicesOk==='fragile').map(q=>q.id);
 const CONN=['であり、','であって、','ものであり、','ことであり、','とされ、','とされており、',
             'ており、','ているが、','であるが、','とともに、','うえで、','ため、','ことで、','ながら、'];
 
