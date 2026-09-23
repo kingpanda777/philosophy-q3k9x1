@@ -48,6 +48,19 @@
      "refs追加": [ { id, 新[], 理由 } ],
                  既存問題の refs へ典拠を足す。本文は触らない。
                  同じ URL がすでにあるときは「要判断」で止める（2026-09-21 に足した）。
+                 refs の欄そのものが無い問題にも足せる（note の後ろに欄を作る。2026-09-23 に直した）。
+     "note置換": [ { id, 含む, 新, 理由 } ],
+                 note の中で「含む」に当たる部分を「新」に置き換える（2026-09-23 に足した）。
+                 「含む」は note の中でちょうど1回だけ当たらなければ止める。
+                 「含む」が「確認できていない点:」を含むなら、「新」は「解消済み:」で始まるか、
+                 「確認できていない点:」を残さなければ止める。許可欄は無い。
+                 道具は note に記録を書き足さない（置き換えた文そのものが記録になる）。
+                 「理由」は実行の最後に「コミットメッセージ用」として1問1行で出すので、コミットに載せる。
+     "unverified除去": [ { id, 理由 } ],
+                 画面に出る unverified を外す（2026-09-23 に足した）。記録は note へ道具が書く。
+                 実行し終えた時点で、次のどちらかがあれば止める（許可欄は無い）。
+                   ・unverified があるのに note に「確認できていない点:」が無い問題（全問を見る）
+                   ・unverified を外したのに note に「確認できていない点:」が残っている問題
      "鍵語": {
        "作問由来": { "人物": [ {語, 読み, 追加} ] },
        "追記由来": { "人物": [ {語, 読み, 追加} ] }
@@ -310,8 +323,31 @@ function validate(input) {
         w("「ずれの記録」が object でない");
     }
   }
-  if (!saku.length && !tsui.length && led === undefined && !rem.length && !refsDel.length && !refsRep.length && !refsAdd.length)
-    bad.push("作問も追記も台帳も keys除去 も refs の操作も無い（何もすることがない）");
+  /* note の置換と unverified の除去。2026-09-23 に足した。
+     それまで学派ごとの典拠の回では、作業用の tools/_work/note_edit.js でこの2つを行っていた。 */
+  const noteRep = input["note置換"] || [], unvDel = input["unverified除去"] || [];
+  if (!Array.isArray(noteRep)) bad.push("「note置換」が配列でない");
+  else noteRep.forEach((r, i) => {
+    const w = m => bad.push(`note置換[${i}]${r && r.id ? "（" + r.id + "）" : ""}: ${m}`);
+    if (!r || typeof r !== "object") return w("object でない");
+    if (typeof r.id !== "string" || !/^q\d+$/.test(r.id)) w("id が q+数字でない");
+    if (typeof r["含む"] !== "string" || !r["含む"]) w("「含む」が無い");
+    if (typeof r["新"] !== "string" || !r["新"]) w("「新」が無い");
+    if (typeof r["理由"] !== "string" || !r["理由"]) w("「理由」が無い（コミットメッセージに載せるので必須）");
+  });
+  if (!Array.isArray(unvDel)) bad.push("「unverified除去」が配列でない");
+  else unvDel.forEach((r, i) => {
+    const w = m => bad.push(`unverified除去[${i}]${r && r.id ? "（" + r.id + "）" : ""}: ${m}`);
+    if (!r || typeof r !== "object") return w("object でない");
+    if (typeof r.id !== "string" || !/^q\d+$/.test(r.id)) w("id が q+数字でない");
+    if (typeof r["理由"] !== "string" || !r["理由"]) w("「理由」が無い（note へ残すので必須）");
+  });
+  if (Array.isArray(unvDel) && new Set(unvDel.map(r => r && r.id)).size !== unvDel.length)
+    bad.push("unverified除去 に同じ問題が2回ある");
+
+  if (!saku.length && !tsui.length && led === undefined && !rem.length && !refsDel.length && !refsRep.length && !refsAdd.length &&
+      !noteRep.length && !unvDel.length)
+    bad.push("作問も追記も台帳も keys除去 も refs・note の操作も無い（何もすることがない）");
 
   for (const 由来 of ["作問由来", "追記由来"]) {
     const g = keys[由来] || {};
@@ -330,7 +366,7 @@ function validate(input) {
     console.error("入力が形式に合っていない。1件も書き込んでいない:\n  " + bad.join("\n  "));
     process.exit(1);
   }
-  return { saku, tsui, keys, led, rem, refsDel, refsRep, refsAdd };
+  return { saku, tsui, keys, led, rem, refsDel, refsRep, refsAdd, noteRep, unvDel };
 }
 
 /* ================= 1. 鍵語の語形の総点検（書き込みの前） ================= */
@@ -963,10 +999,103 @@ function writeRefs(id, list) {
   const end = src.indexOf("\n  },", start);
   const block = src.slice(start, end);
   const m = block.match(/refs: \[[\s\S]*?\n      \]|refs: \[\]/);
-  if (!m) throw new Error("refs の行が見つからない: " + id);
   const line = "refs: [\n        " + list.map(S).join(",\n        ") + "\n      ]";
-  src = src.slice(0, start) + block.replace(m[0], line) + src.slice(end);
+  let nb;
+  if (m) nb = block.replace(m[0], line);
+  else {
+    /* refs の欄そのものが無い問題（2026-09-23 に直した）。refs追加 はここで止まっていた。
+       追記の refs_add と同じ位置（note の後ろ、source の閉じの手前）に欄を作る。 */
+    if (!list.length) throw new Error("refs の行が見つからない: " + id);
+    const i = block.lastIndexOf("\n    }");
+    if (i < 0) throw new Error("source の閉じが見つからない: " + id);
+    nb = block.slice(0, i) + ",\n      " + line + block.slice(i);
+  }
+  src = src.slice(0, start) + nb + src.slice(end);
   writeFileSafe(P("questions.js"), src, "utf8");
+}
+
+/* ================= note の置換と unverified の除去（2026-09-23 に足した） =================
+   学派ごとの典拠の回で、note の「確認できていない点:」を「解消済み:」に書き換え、
+   画面に出す unverified を外す作業が毎回あった。道具に経路が無く、作業用の note_edit.js で行っていた。
+   歯止めはどれも許可欄なしに止める。 */
+const MARK_UNV = "確認できていない点:";
+function auditNoteOps(noteRep, unvDel, existing) {
+  if (!noteRep.length && !unvDel.length) return;
+  const 要判断 = [];
+  console.log("■ note の置換と unverified の除去の検査（書き込みの前）");
+  /* 同じ問題に置換が2件以上あるときは、前の置換を反映した note で次を数える。 */
+  const notes = {};
+  for (const r of noteRep) {
+    const q = existing.find(x => x.id === r.id);
+    if (!q) { 要判断.push(`${r.id}: 問題が無い`); continue; }
+    const now = notes[r.id] !== undefined ? notes[r.id] : String((q.source && q.source.note) || "");
+    const c = now.split(r["含む"]).length - 1;
+    let ng = false;
+    if (c !== 1) { 要判断.push(`${r.id}: 「含む」が note の中で${c}回当たる（ちょうど1回でなければならない）`); ng = true; }
+    if (r["含む"].includes(MARK_UNV) && !r["新"].startsWith("解消済み") && !r["新"].includes(MARK_UNV)) {
+      要判断.push(`${r.id}: 「確認できていない点:」を置き換えるのに、「新」が「解消済み:」で始まらず、「確認できていない点:」も残していない`);
+      ng = true;
+    }
+    if (!ng) notes[r.id] = now.replace(r["含む"], r["新"]);
+    console.log(`  ${ng ? "★" : "○"} ${r.id}　note置換`);
+  }
+  for (const r of unvDel) {
+    const q = existing.find(x => x.id === r.id);
+    if (!q) { 要判断.push(`${r.id}: 問題が無い`); continue; }
+    const ok = q.source && q.source.unverified !== undefined;
+    if (!ok) 要判断.push(`${r.id}: unverified が無い（外すものが無い）`);
+    console.log(`  ${ok ? "○" : "★"} ${r.id}　unverified除去`);
+  }
+  if (要判断.length) {
+    console.error("\n要判断（1件も書いていない）:\n  " + 要判断.join("\n  ") + "\n  この検査に「許可」欄は無い。");
+    process.exit(1);
+  }
+  console.log(`  → note置換 ${noteRep.length}件・unverified除去 ${unvDel.length}件\n`);
+}
+function applyNoteOps(noteRep, unvDel) {
+  if (!noteRep.length && !unvDel.length) return;
+  console.log("■ note の置換と unverified の除去");
+  for (const r of noteRep) {
+    const src = readFileSafe(P("questions.js"), "utf8");
+    const q = QUESTIONS_OF(src).find(x => x.id === r.id);
+    const oldNote = q.source.note;
+    if (oldNote.split(r["含む"]).length - 1 !== 1) throw new Error("note置換の「含む」がちょうど1回当たらない: " + r.id);
+    if (src.indexOf(S(oldNote)) !== src.lastIndexOf(S(oldNote))) throw new Error("note リテラルが一意でない: " + r.id);
+    writeFileSafe(P("questions.js"), src.replace(S(oldNote), S(oldNote.replace(r["含む"], r["新"]))), "utf8");
+    console.log(`  ${r.id}: note を置き換えた`);
+  }
+  for (const r of unvDel) {
+    let src = readFileSafe(P("questions.js"), "utf8");
+    const start = src.indexOf(`    id: ${S(r.id)},`);
+    if (start < 0) throw new Error("エントリが見つからない: " + r.id);
+    const end = src.indexOf("\n  },", start);
+    const block = src.slice(start, end);
+    const m = block.match(/\n      unverified: "(?:[^"\\]|\\.)*",?/);
+    if (!m) throw new Error("unverified の行が見つからない: " + r.id);
+    src = src.slice(0, start) + block.replace(m[0], "") + src.slice(end);
+    writeFileSafe(P("questions.js"), src, "utf8");
+    addNote(r.id, ` 画面の unverified を外した。理由: ${r["理由"]}`);
+    console.log(`  ${r.id}: unverified を外した`);
+  }
+  console.log("");
+}
+/* 書き終えたあとに両向きを見る。落ちたら全ファイルを差し戻す（main の try の中で呼ぶ）。
+   前向き：unverified があるのに note に「確認できていない点:」が無い（全問）。
+   逆向き：unverified を外したのに note に「確認できていない点:」が残っている（この実行で外した問題）。 */
+function checkUnverifiedPairs(unvDel) {
+  const qs = readQ();
+  const bad = [];
+  for (const q of qs) {
+    const n = String((q.source && q.source.note) || "");
+    if (q.source && q.source.unverified !== undefined && !n.includes(MARK_UNV))
+      bad.push(`${q.id}: unverified があるのに note に「確認できていない点:」が無い`);
+  }
+  for (const r of unvDel) {
+    const q = qs.find(x => x.id === r.id);
+    if (String(q.source.note || "").includes(MARK_UNV))
+      bad.push(`${r.id}: unverified を外したのに note に「確認できていない点:」が残っている（「解消済み:」に書き換えていない）`);
+  }
+  if (bad.length) throw new Error("unverified と note の対応が崩れた（許可欄は無い）:\n  " + bad.join("\n  "));
 }
 function addNote(id, 文) {
   const src = readFileSafe(P("questions.js"), "utf8");
@@ -1638,12 +1767,13 @@ function restore(m, why) {
 /* ================= 本体 ================= */
 function main() {
   const input = readJson(INPUT);
-  const { saku, tsui, keys, led, rem, refsDel, refsRep, refsAdd } = validate(input);
+  const { saku, tsui, keys, led, rem, refsDel, refsRep, refsAdd, noteRep, unvDel } = validate(input);
   console.log(`■ 入力: 作問${saku.length}問／追記${tsui.length}件／鍵語 ` +
     `作問由来${count(keys["作問由来"])}語・追記由来${count(keys["追記由来"])}語` +
     (led ? `／台帳 ${led["対象"].length}人・改名${count(led["改名"] || {})}語・登録${count(led["新規登録"] || {})}語` : "") +
     (rem.length ? `／keys除去 ${rem.length}問・${rem.reduce((a, r) => a + r["語"].length, 0)}語` : "") +
     (refsDel.length || refsRep.length || refsAdd.length ? `／refs 除去${refsDel.length}問・置換${refsRep.length}問・追加${refsAdd.length}問` : "") +
+    (noteRep.length || unvDel.length ? `／note置換${noteRep.length}件・unverified除去${unvDel.length}件` : "") +
     (DRY ? "　【dry-run】" : "") + "\n");
 
   const snap = snapshot();
@@ -1666,6 +1796,8 @@ function main() {
   /* refs の操作も書き込みの前に見る。2026-09-21 に足した。 */
   auditRefs(refsDel, refsRep, readQ());
   auditRefsAdd(refsAdd, readQ());
+  /* note の置換と unverified の除去も書き込みの前に見る。2026-09-23 に足した。 */
+  auditNoteOps(noteRep, unvDel, readQ());
   try {
     /* 台帳が先。改名で語形が変わると数え直しの対象も変わるため。 */
     applyLedger(led);
@@ -1675,6 +1807,9 @@ function main() {
     removeKeys(rem);
     applyRefsOps(refsDel, refsRep);
     applyRefsAdd(refsAdd);
+    /* note の置換は refs の操作のあと。refs の操作が note の末尾に書き足す記録と、置き換える文がぶつからないようにするため。 */
+    applyNoteOps(noteRep, unvDel);
+    if (noteRep.length || unvDel.length) checkUnverifiedPairs(unvDel);
     registerKeys(keys, saku, tsui);
     refreshCounts();
     checks();
@@ -1692,6 +1827,15 @@ function main() {
   let terms = 0;
   for (const p of Object.keys(kt)) if (p !== "_meta") terms += (kt[p]["鍵語"] || []).length;
   console.log(`■ 結果: 問題 ${q.length}問／台帳 ${terms}語`);
+
+  /* note置換の理由は note に書き足さない代わりに、コミットメッセージに1問1行で載せる（2026-09-23）。 */
+  if (noteRep.length) {
+    const by = {};
+    for (const r of noteRep) (by[r.id] = by[r.id] || []).push(r["理由"]);
+    console.log("");
+    console.log("■ コミットメッセージ用（note置換の理由。1問1行）");
+    for (const id of Object.keys(by)) console.log(`${id}: ${by[id].join("／")}`);
+  }
 
   if (DRY) restore(snap, "dry-run な");
   else console.log("\n  （コミットはしていない。git status で確かめてから commit すること）");
