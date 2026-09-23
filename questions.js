@@ -1248,11 +1248,12 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 誤答二番目「行動を妨げる外的な障害がないこと」はホッブズの定義（q039 の正解）そのもので、カントの自律と正面から対立する。バーリンの二分法でいえば消極的自由と積極的自由を並べた形になっており、四択は成立している。 設計の記録: 叡智界と現象界による解決の評価は現在も分かれている（二つの世界と読むか、同じ人間についての二つの見方と読むかという two-world / two-aspect の論争）。detail は「評価は分かれ続けています」と両論を併記して処理しており、争点として自覚されている。 対照の記録: 「自ら課した法に従うことが自由」の出所は『社会契約論』第一編第八章だが、原典ではこれは政治的自由ではなく道徳的自由（liberté morale）として挙げられている。detail の「政治の場面で」は市民状態を論じる文脈という意味では外れていないが、原典が付けている名は道徳的自由のほう。 選択肢の均等化: 正解の説明句を削り（解説側に既述）、誤答を型に揃えて肉付けした。四択の成立を確認済み。 1.63倍→1.25倍。",
+      note: "設問へ: 誤答二番目「行動を妨げる外的な障害がないこと」はホッブズの定義（q039 の正解）そのもので、カントの自律と正面から対立する。バーリンの二分法でいえば消極的自由と積極的自由を並べた形になっており、四択は成立している。 設計の記録: 叡智界と現象界による解決の評価は現在も分かれている（二つの世界と読むか、同じ人間についての二つの見方と読むかという two-world / two-aspect の論争）。detail は「評価は分かれ続けています」と両論を併記して処理しており、争点として自覚されている。 対照の記録: 「自ら課した法に従うことが自由」の出所は『社会契約論』第一編第八章だが、原典ではこれは政治的自由ではなく道徳的自由（liberté morale）として挙げられている。detail の「政治の場面で」は市民状態を論じる文脈という意味では外れていないが、原典が付けている名は道徳的自由のほう。 選択肢の均等化: 正解の説明句を削り（解説側に既述）、誤答を型に揃えて肉付けした。四択の成立を確認済み。 1.63倍→1.25倍。 q001〜q050 の再検証（2026年9月23日）: detail 第3段落の「自ら課した法に従う自由はルソー由来で、カントがそれを個人の道徳へ移した」は、SEP Rousseau の、ルソーの最も重要な哲学的影響はカントに対するもので、定言命法の目的の王国の定式が一般意志の議論を思わせるという記述で確かめた。 確認できていない点: 第2段落の、二つの世界を持ち出すのは問題の言い換えにすぎないという批判が「当時からあった」という部分の出所は、特定の論者に当たっていない。refs に1本を足した。",
       refs: [
         "https://history.hanover.edu/courses/excerpts/165rous-sc.html — 『社会契約論』第一編第八章。moral liberty の段落に、欲望の衝動は隷属であり自ら課した法への服従は自由である、とある",
         "https://www.earlymoderntexts.com/assets/pdfs/kant1785chapter3.pdf — 『人倫の形而上学の基礎づけ』第三章。感性界と叡智界という二つの立場からの考察",
-        "https://www.cambridge.org/core/journals/kantian-review/article/abs/autonomy-and-the-idea-of-freedom-some-reflections-on-groundwork-iii/1F9EB3FFEFA9422850998C2CC6B613B5 — 第三章の自由の演繹をめぐる論争が決着していないこと"
+        "https://www.cambridge.org/core/journals/kantian-review/article/abs/autonomy-and-the-idea-of-freedom-some-reflections-on-groundwork-iii/1F9EB3FFEFA9422850998C2CC6B613B5 — 第三章の自由の演繹をめぐる論争が決着していないこと",
+        "https://plato.stanford.edu/entries/rousseau/ — ルソーの最も重要な哲学的影響はカントに対するもので、定言命法の目的の王国の定式が『社会契約論』の一般意志の議論を思わせること"
       ]
     }
   },
@@ -1273,12 +1274,13 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 「自由の意識の進展」は『歴史哲学講義』序論の定式そのままで、東洋は一人が自由、ギリシア・ローマは一部が自由、ゲルマン世界はすべてが自由という段階づけも原典で確認できる。誤答二番目がマルクスの唯物史観、三番目が摂理史観、一番目がその否定にあたり、四択は成立している。 引用の訂正: 「世界史は世界法廷である」はヘーゲルの造語ではなく、シラーの詩「諦め」（1784年ないし86年）の一行 Die Weltgeschichte ist das Weltgericht である。ヘーゲルは『法の哲学』第340節でこれを引き、『エンチクロペディー』第548節でも繰り返している。q379 のヘラクレイトスと同じ、他人の言い回しが本人の言葉として流通した型。 事実の訂正: 『歴史哲学講義』の成立を「学生の筆記をもとに」とだけ書いていたが、ガンスの初版（1837年）はヘーゲル自身の講義草稿と学生の筆記の両方を用いている。次いで息子カール・ヘーゲルの版（1840年）が長く標準とされた。 位置指しの解消: 「三番目の選択肢」を、指していた内容（生産力と生産関係の矛盾）に置き換えた。（explanation を127→142字に書き換えた） refs を1本差し替えた（Lectures_on_the_Philosophy → https://iep.utm.edu/hegelsoc/）。理由: 設問の正解（世界史は自由の意識が進展していく過程）が IEP で確認できた。もとの ref が支えていた講義録の版の来歴は、刊行年と同じ慣行の内側にあたる。 refs を1本差し替えた（Die_Weltgeschichte → https://de.wikipedia.org/wiki/Die_Weltgeschichte_ist_das_Weltgericht）。理由: シラーの詩の本文を公開元四つで探したが取れなかった（Projekt Gutenberg-DE は403、zeno.org は接続拒否、Deutsches Textarchiv と Bibliotheca Augustana は未収録）。句の出所という付随部分だけなので、説明欄を絞って【付随】として残す。 refs に1本を足した（https://www.marxists.org/reference/archive/hegel/works/pr/prstate.htm）。理由: detail が『法の哲学』第340節を名指しで引いているのに、その節の本文を支える典拠が Wikipedia しかなかった。",
+      note: "設問へ: 「自由の意識の進展」は『歴史哲学講義』序論の定式そのままで、東洋は一人が自由、ギリシア・ローマは一部が自由、ゲルマン世界はすべてが自由という段階づけも原典で確認できる。誤答二番目がマルクスの唯物史観、三番目が摂理史観、一番目がその否定にあたり、四択は成立している。 引用の訂正: 「世界史は世界法廷である」はヘーゲルの造語ではなく、シラーの詩「諦め」（1784年ないし86年）の一行 Die Weltgeschichte ist das Weltgericht である。ヘーゲルは『法の哲学』第340節でこれを引き、『エンチクロペディー』第548節でも繰り返している。q379 のヘラクレイトスと同じ、他人の言い回しが本人の言葉として流通した型。 事実の訂正: 『歴史哲学講義』の成立を「学生の筆記をもとに」とだけ書いていたが、ガンスの初版（1837年）はヘーゲル自身の講義草稿と学生の筆記の両方を用いている。次いで息子カール・ヘーゲルの版（1840年）が長く標準とされた。 位置指しの解消: 「三番目の選択肢」を、指していた内容（生産力と生産関係の矛盾）に置き換えた。（explanation を127→142字に書き換えた） refs を1本差し替えた（Lectures_on_the_Philosophy → https://iep.utm.edu/hegelsoc/）。理由: 設問の正解（世界史は自由の意識が進展していく過程）が IEP で確認できた。もとの ref が支えていた講義録の版の来歴は、刊行年と同じ慣行の内側にあたる。 refs を1本差し替えた（Die_Weltgeschichte → https://de.wikipedia.org/wiki/Die_Weltgeschichte_ist_das_Weltgericht）。理由: シラーの詩の本文を公開元四つで探したが取れなかった（Projekt Gutenberg-DE は403、zeno.org は接続拒否、Deutsches Textarchiv と Bibliotheca Augustana は未収録）。句の出所という付随部分だけなので、説明欄を絞って【付随】として残す。 refs に1本を足した（https://www.marxists.org/reference/archive/hegel/works/pr/prstate.htm）。理由: detail が『法の哲学』第340節を名指しで引いているのに、その節の本文を支える典拠が Wikipedia しかなかった。 q001〜q050 の再検証（2026年9月23日）: detail 第3段落の成立事情は、NDPR の書評（Nicholas Walker、2011年）で確かめた（ガンス版1837年とカール・ヘーゲル版1840年が、別々の時期の自筆草稿と別々の年の筆記録を合成した本文で、批判版は1822〜23年の講義を独立に示すこと）。 確認できていない点: 第1・2段落の二つの批判（結果を追認する勝者の歴史観、アジアやアフリカを歴史の初期段階あるいは外部とする記述へのヨーロッパ中心主義という批判）の出所は、特定の論者に当たっていない（q031 と同じ）。refs に1本を足した。",
       refs: [
         "https://public.archive.wsu.edu/brians/public_html/world_civ/worldcivreader/world_civ_reader_2/hegel.html — 『歴史哲学講義』序論。東洋は一人、ギリシア・ローマは一部、ゲルマン世界はすべてが自由であるという段階づけ",
         "https://de.wikipedia.org/wiki/Die_Weltgeschichte_ist_das_Weltgericht — 【付随】detail 第1段落の括弧内、句の出所だけを支える。「世界史は世界法廷である」がもとはシラーの詩「諦め」（1786年）の一行であること。ヘーゲルが『法の哲学』第340節でこれを引いていることは、同じ問題にある原典が支えている。",
         "https://iep.utm.edu/hegelsoc/ — §3「World History」の「world history is the necessary development, out of the concepts of mind's freedom alone, of the moments of reason」を確認した。世界史が自由の概念の展開として捉えられている。",
-        "https://www.marxists.org/reference/archive/hegel/works/pr/prstate.htm — ヘーゲル『法の哲学』第三部第三章「国家」（Dyde 訳。公有テキスト。同じ頁に第257節から第349節までが収められている）の第340節。「out of it arises the universal mind, the mind of the world, free from all restriction, producing itself as that which exercises its right — and its right is the highest right of all — over these finite minds in the 'history of the world which is the world's court of judgment'」を確認した。detail 第1段落の引用と、それが第340節にあることを支える。"
+        "https://www.marxists.org/reference/archive/hegel/works/pr/prstate.htm — ヘーゲル『法の哲学』第三部第三章「国家」（Dyde 訳。公有テキスト。同じ頁に第257節から第349節までが収められている）の第340節。「out of it arises the universal mind, the mind of the world, free from all restriction, producing itself as that which exercises its right — and its right is the highest right of all — over these finite minds in the 'history of the world which is the world's court of judgment'」を確認した。detail 第1段落の引用と、それが第340節にあることを支える。",
+        "https://ndpr.nd.edu/reviews/lectures-on-the-philosophy-of-world-history-vol-i-manuscripts-of-the-introduction-and-the-lectures-of-1822-3/ — Nicholas Walker による書評（Notre Dame Philosophical Reviews、2011年12月14日）。ガンス版（1837年）とカール・ヘーゲル版（1840年）が、異なる時期の自筆草稿と異なる年の講義の筆記録を合成して「一体の」本文を作ったこと、批判版が1822〜23年の講義を独立に示すこと"
       ]
     }
   },
@@ -1299,7 +1301,13 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "選択肢の均等化（鏡像化）: 正解を対比の核だけに絞り（削った根拠は解説側に既述）、入替誤答を正解と同じ長さの鏡像に書き直し、「両者とも」型の誤答に根拠を足した。帰属が逆であることで誤りは保たれており、正解と紛れないことを確認済み。 1.56倍→1.29倍。"
+      note: "選択肢の均等化（鏡像化）: 正解を対比の核だけに絞り（削った根拠は解説側に既述）、入替誤答を正解と同じ長さの鏡像に書き直し、「両者とも」型の誤答に根拠を足した。帰属が逆であることで誤りは保たれており、正解と紛れないことを確認済み。 1.56倍→1.29倍。 設問へ: 正解のホッブズ＝外的障害の不在は『リヴァイアサン』第21章（q039）、ルソー＝一般意志への参加は『社会契約論』第1篇第6〜8章、カント＝自ら立てた法則への服従は自律（q041）のとおり。入替誤答は帰属を入れ替えただけ。「三者とも、外的な障害がないこと」はホッブズだけの立場、「三者とも、自ら法を課すこと」はルソーとカントだけの立場で、どちらも三者一括の点で誤り。四択は成立している。ただし「三者とも」型の二つは正解の0.68倍と0.63倍で、「両者とも」型の下限0.7倍にあたる水準を割っている（道具は「両者とも」で始まるものだけを検査するので掛からない）。書き換え案を出した（要判断）。 q001〜q050 の再検証（2026年9月23日）: detail 第1段落のバーリンの1958年の論文と、「本当の」自己の名において人を抑圧しうるという積極的自由の危険、第3段落の二分法への批判（マッカラムの三項関係としての自由）と、共和主義の非支配としての自由が不干渉とは別だという点は SEP Positive and Negative Liberty で確かめた。explanation の、カントがルソーから強い影響を受けたことは SEP Rousseau で確かめた（ルソーの最も重要な哲学的影響はカントに対するもので、定言命法の目的の王国の定式は一般意志の議論を思わせること）。 確認できていない点: 第2段落の、「自由であるよう強制される」をルソーへの公正な読みとみるかの論争は、個別の論者の典拠に当たっていない。refs を新設した。",
+      refs: [
+        "https://plato.stanford.edu/entries/liberty-positive-negative/ — 1958年に初出のバーリンの論文が二つの自由概念を消極的・積極的と呼んだこと、「本当の」自己の名において人を抑圧しうるというバーリンの警告、マッカラムの三項関係としての自由、非支配は消極的自由と別で不干渉を享受しながら非支配を享受しないことがありうること",
+        "https://en.wikisource.org/wiki/Leviathan_(1651)/Chapter_21 — 『リヴァイアサン』第21章。自由とは運動の外的な妨げがないことだという定義",
+        "https://history.hanover.edu/courses/excerpts/165rous-sc.html — 『社会契約論』第1篇第6章の全面譲渡と、第8章の、欲望の衝動は隷属であり自ら課した法への服従が自由であること",
+        "https://plato.stanford.edu/entries/rousseau/ — ルソーの最も重要な哲学的影響がカントに対するもので、定言命法の目的の王国の定式が『社会契約論』の一般意志の議論を思わせること"
+      ]
     }
   },
   {
@@ -1319,8 +1327,9 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 三分説（理性 λογιστικόν、気概 θυμοειδές、欲望 ἐπιθυμητικόν）と三階層の対応は『国家』第四巻435e以下の通りで、誤答はいずれも実在しない組み合わせ。四択は成立している。 訳語の確認: 「防衛者」に当たるのは補助者（ἐπίκουροι）で、統治者を含む広義の守護者（φύλακες）とは範囲が違う。日本語では守護者・防衛者・補助者の当て方が訳書によって揺れるため、統治者とは別の階層を指していることが文脈から分かる形で使う必要がある。本問は統治者と並置しているのでこの条件を満たしている。 設計の記録: ポパーの全体主義批判とそれへの反論を detail が両論併記しており、争点として処理されている。大きな文字の比喩は第二巻368d。 refs から1本を外した（en.wikipedia.org/wiki/Plato%27s_theory_of_soul）。理由: (a) の一括処理（2026年9月21日）。この説明欄が支えている主張は、同じ問題にある基準の典拠が支えていることを本文と突き合わせて確かめた。二重になるので外す。",
+      note: "設問へ: 三分説（理性 λογιστικόν、気概 θυμοειδές、欲望 ἐπιθυμητικόν）と三階層の対応は『国家』第四巻435e以下の通りで、誤答はいずれも実在しない組み合わせ。四択は成立している。 訳語の確認: 「防衛者」に当たるのは補助者（ἐπίκουροι）で、統治者を含む広義の守護者（φύλακες）とは範囲が違う。日本語では守護者・防衛者・補助者の当て方が訳書によって揺れるため、統治者とは別の階層を指していることが文脈から分かる形で使う必要がある。本問は統治者と並置しているのでこの条件を満たしている。 設計の記録: ポパーの全体主義批判とそれへの反論を detail が両論併記しており、争点として処理されている。大きな文字の比喩は第二巻368d。 refs から1本を外した（en.wikipedia.org/wiki/Plato%27s_theory_of_soul）。理由: (a) の一括処理（2026年9月21日）。この説明欄が支えている主張は、同じ問題にある基準の典拠が支えていることを本文と突き合わせて確かめた。二重になるので外す。 q001〜q050 の再検証（2026年9月23日）: detail 第2段落のポパー『開かれた社会とその敵』（1945年）が全体主義の哲学的前提への批判であることは SEP Popper で確かめた。同項は、ポパーのプラトン読解をめぐる論争を集めた論集（Bambrough 編『Plato, Popper, and Politics』1967年）を挙げており、「この読みには反論も多く」と合う。refs に1本を足した。",
       refs: [
+        "https://plato.stanford.edu/entries/popper/ — 『開かれた社会とその敵』（1945年）が、あらゆる形の全体主義を支える哲学的前提への批判として民主的自由主義を擁護したこと。ポパーのプラトン読解をめぐる論集 Bambrough 編『Plato, Popper, and Politics: Some Contributions to a Modern Controversy』（1967年）が文献に挙がること",
         "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0168:book%3D4:page%3D435 — 『国家』第四巻435以下。魂の三部分と国家の三階層の対応",
         "https://books.openbookpublishers.com/10.11647/obp.0229/ch3.xhtml — 第二巻368d の大きな文字の比喩と、その解釈をめぐる議論"
       ]
@@ -1343,10 +1352,13 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "「一羽のツバメが春をつくるわけではない」の原語（『ニコマコス倫理学』1098a18）は μία χελιδὼν ἔαρ οὐ ποιεῖ で、ἔαρ（エアル）は「春」。英語では慣例的に one swallow does not make a summer と「夏」に訳されており、この誤訳はドイツ語やオランダ語にも波及している。英語資料と突き合わせると日本語側が誤りに見えるが、原語に忠実なのは「春」のほう。英語資料を基準に訂正すると、かえって原典から離れる例。 選択肢の均等化: 正解末尾の説明句「生涯を通じた活動として捉えられる」を削除（explanation に既述）。あわせて誤答2つを肉付け。四択の成立を確認済み。2.37倍→1.21倍。",
+      note: "「一羽のツバメが春をつくるわけではない」の原語（『ニコマコス倫理学』1098a18）は μία χελιδὼν ἔαρ οὐ ποιεῖ で、ἔαρ（エアル）は「春」。英語では慣例的に one swallow does not make a summer と「夏」に訳されており、この誤訳はドイツ語やオランダ語にも波及している。英語資料と突き合わせると日本語側が誤りに見えるが、原語に忠実なのは「春」のほう。英語資料を基準に訂正すると、かえって原典から離れる例。 選択肢の均等化: 正解末尾の説明句「生涯を通じた活動として捉えられる」を削除（explanation に既述）。あわせて誤答2つを肉付け。四択の成立を確認済み。2.37倍→1.21倍。 設問へ: 正解は「人間の善とは徳に即した魂の活動」（1098a16–17）と、それが完全な生涯にわたるという条件のとおり（SEP Aristotle's Ethics、Ross 訳）。誤答「快楽が苦痛を上回っている心の状態」は快楽主義で、活動ではなく状態として捉える点でも外れる。「欲望から完全に解放された無の境地」は仏教的な解脱の読み、「神から与えられる恩寵」はキリスト教的な読みで、どちらもアリストテレスに当たらない。四択は成立している。 q001〜q050 の再検証（2026年9月23日）: 原語 ἔαρ は Perseus Digital Library のギリシア語本文（1098a18）で確かめ、英訳の慣例 summer は Ross 訳で確かめた。detail 第1段落の中庸（勇気は臆病と無謀のあいだ）と習慣づけ、第2段落の観想的生活とその整合をめぐる論点は SEP Aristotle's Ethics で確かめた。第3段落の徳倫理学の復興（アンスコム1958年）と三つの立場の一つという位置づけは SEP Virtue Ethics で確かめた。 確認できていない点: 第1段落の気前のよさ（浪費と吝嗇のあいだ）の例と、第3段落のマッキンタイアの役割、note の「誤訳がドイツ語やオランダ語にも波及」は、それぞれ基準の典拠に当たっていない（最後の点は Wiktionary だけが支える）。 refs の差し替え: wist.info（引用句を集めたサイトで基準外）を外し、Perseus Digital Library のギリシア語本文と Ross 訳に置き換えた。Wiktionary は note の付随部分だけを支える【付随】として残した。SEP の2項を足した。",
       refs: [
-        "https://en.wiktionary.org/wiki/one_swallow_does_not_a_summer_make — 原語 ἔαρ は spring であり、英語の summer は誤訳だと明記されている",
-        "https://wist.info/aristotle/40482/ — 『ニコマコス倫理学』第一巻第七章 1098a18 の該当箇所"
+        "https://en.wiktionary.org/wiki/one_swallow_does_not_a_summer_make — 【付随】note の、英語の summer が誤訳でドイツ語やオランダ語にも波及しているという点だけを支える。原語 ἔαρ は spring であり、英語の summer は誤訳だと明記されている",
+        "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0086/tlg010/tlg0086.tlg010.perseus-grc2.xml — Perseus Digital Library の『ニコマコス倫理学』ギリシア語本文（Bywater 校訂）第1巻第7章。「μία γὰρ χελιδὼν ἔαρ οὐ ποιεῖ, οὐδὲ μία ἡμέρα」（1098a18）",
+        "http://classics.mit.edu/Aristotle/nicomachaen.1.i.html — 『ニコマコス倫理学』第1巻（Ross 訳）。「human good turns out to be activity of soul in accordance with virtue」と、英訳の慣例「For one swallow does not make a summer, nor does one day」",
+        "https://plato.stanford.edu/entries/aristotle-ethics/ — エウダイモニアが徳に即した理性的な魂の活動であること（1097b22–1098a20）、勇気が臆病と無謀のあいだにあること（1106a26–b28）、徳が習慣づけによって身につくこと、第10巻第7・8章で哲学者の生が最も幸福とされ、それが倫理学の残りの部分と整合するかに議論があること",
+        "https://plato.stanford.edu/entries/ethics-virtue/ — 1958年のアンスコム「Modern Moral Philosophy」を機に徳倫理学が再興し、義務論・帰結主義と並ぶ三つの主要な立場の一つとして性格を中心に置くこと"
       ]
     }
   },
@@ -1391,7 +1403,11 @@ const QUESTIONS = [
     source: {
       kind: "ai_flagged", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "ロックが『人間知性論』第一巻で誰を標的にしていたかについて資料が対立している。デカルトを含む一群を批判したとする記述がある一方、ロックの論法はデカルトの生得観念論には届いていないとする研究もある。 選択肢の均等化（鏡像化）: 正解を対比の核だけに絞り（削った根拠は explanation に既述）、入替誤答を正解と同じ長さの鏡像に書き直し、「両者とも」型の誤答に根拠を足した。帰属が逆であることで誤りは保たれており、正解と紛れないことを確認済み。 2.88倍→1.23倍。"
+      note: "ロックが『人間知性論』第一巻で誰を標的にしていたかについて資料が対立している。デカルトを含む一群を批判したとする記述がある一方、ロックの論法はデカルトの生得観念論には届いていないとする研究もある。 選択肢の均等化（鏡像化）: 正解を対比の核だけに絞り（削った根拠は explanation に既述）、入替誤答を正解と同じ長さの鏡像に書き直し、「両者とも」型の誤答に根拠を足した。帰属が逆であることで誤りは保たれており、正解と紛れないことを確認済み。 2.88倍→1.23倍。 設問へ: 正解は、デカルトが生得観念を認め、ロックが心を白紙とみてすべての観念を感覚と反省という経験から導いた対比のとおり（SEP The Historical Controversies Surrounding Innateness）。入替誤答は帰属を入れ替えただけ。「両者とも…認めた」はロックに、「両者とも…否定した」はデカルトに反する。上の資料の対立はロックの標的が誰かをめぐるもので、両者の立場そのものには及ばないので、四択は成立している。「両者とも」型の二つは正解の0.70倍と0.73倍で、下限0.7倍を満たす。 q001〜q050 の再検証（2026年9月23日）: detail 第1段落の、デカルトの生得観念は生まれたときから意識にあるのではないという点は、同項が引くデカルト『ある掲貼文への覚え書き』の、痛風が家系に伝わるような仕方で観念が生得的だという比喩で確かめた。第2段落のライプニッツの応答は『人間知性新論』第2巻第1章の本文で確かめた（「Nihil est in intellectu quod non fuerit in sensu, excipe: nisi ipse intellectus」。魂には存在・実体・一・同・原因・知覚・推論など感覚が与えられない概念が含まれること）。第3段落のチョムスキーが言語学の知見で生得説を擁護したことは同じ SEP の項で確かめた。refs を新設した。",
+      refs: [
+        "https://plato.stanford.edu/entries/innateness-history/ — 近代の生得性の論争はロック『人間知性論』冒頭の生得原理・生得観念への論難に始まること、ロックが知覚と反省をすべての観念の源とすること、デカルト『ある掲貼文への覚え書き』の、痛風が家系に伝わるような仕方で観念が生得的だという比喩、チョムスキーが言語学の知見で生得説を経験論に対して擁護したこと",
+        "https://www.earlymoderntexts.com/assets/pdfs/leibniz1705book2.pdf — ライプニッツ『人間知性新論』第2巻（Bennett 版）第1章。「Nihil est in intellectu quod non fuerit in sensu, excipe: nisi ipse intellectus」と、魂には存在・実体・一・同・原因・知覚・推論など感覚が与えられない概念が含まれること"
+      ]
     }
   },
   {
