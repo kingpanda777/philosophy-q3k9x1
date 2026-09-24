@@ -1842,6 +1842,23 @@ function registerKeys(keys, saku, tsui) {
 }
 
 /* ================= 5〜6. 再生成と検査 ================= */
+/* 検査の道具が落ちたとき、落ちた項目の名前と理由を拾って見せる（2026年9月24日に足した）。
+   それまでは出力の末尾25行だけを見せていたので、check_keys の項目1〜4で落ちても、末尾の項目5〜8の「○」しか見えず、
+   どの項目がなぜ落ちたかが分からなかった（フランクフルト学派の回で、鍵語の登録が入力から消えていたときに起きた）。
+   検査の道具は落ちた行を「✗」で始め、項目の見出しを「===== N. 名前 =====」で出すので、✗ の行を直前の見出しと組にして並べる。
+   ✗ が1つも無いとき（道具そのものが例外で止まったときなど）は、従来どおり末尾25行を見せる。 */
+function failedItems(stdout) {
+  const lines = stdout.split("\n");
+  let head = "（見出しの前）";
+  const hit = [];
+  for (const l of lines) {
+    const m = l.match(/^=====\s*(.+?)\s*=====\s*$/);
+    if (m) { head = m[1]; continue; }
+    if (/^\s*[✗×✕]/.test(l)) hit.push("  【" + head + "】" + l.trim());
+  }
+  if (hit.length) return "落ちた項目（" + hit.length + "件）:\n" + hit.join("\n");
+  return lines.slice(-25).join("\n");
+}
 function run(label, file, args, opts) {
   process.stdout.write(`  ${label} … `);
   try {
@@ -1851,8 +1868,7 @@ function run(label, file, args, opts) {
   } catch (e) {
     console.log("落ちた");
     if (opts && opts.soft) { console.log("    （合否は見ない道具なので続ける）"); return ""; }
-    const tail = String(e.stdout || "").split("\n").slice(-25).join("\n");
-    throw new Error(`${label} が落ちた\n${tail}\n${String(e.stderr || "").slice(0, 800)}`);
+    throw new Error(`${label} が落ちた\n${failedItems(String(e.stdout || ""))}\n${String(e.stderr || "").slice(0, 800)}`);
   }
 }
 function checks() {
