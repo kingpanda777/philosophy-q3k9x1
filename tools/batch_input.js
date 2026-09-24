@@ -24,14 +24,14 @@ module.exports = function (MARK) {
   const app = (id, field, find, replace, note) => {
     once(G(id)[field], find, id + ' ' + field);
     const x = { id, find, replace, note_add: ' ' + note, keys_add: [] };
-    if (field === 'explanation') x['対象'] = 'explanation';
+    if (field !== 'detail') x['対象'] = field;  // explanation か question（2026-09-25 に question を足した）
     out['追記'].push(x);
   };
   const edit = (id, field, pairs, note, 許可) => {
     const whole = G(id)[field]; let nw = whole;
     for (const [a, b] of pairs) { once(nw, a, id + ' ' + field); nw = nw.replace(a, () => b); }
     const x = { id, find: whole, replace: nw, note_add: ' ' + note, keys_add: [] };
-    if (field === 'explanation') x['対象'] = 'explanation';
+    if (field !== 'detail') x['対象'] = field;  // explanation か question（2026-09-25 に question を足した）
     if (許可) x['許可'] = 許可;
     out['追記'].push(x);
   };

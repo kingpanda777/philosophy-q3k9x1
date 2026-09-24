@@ -28,6 +28,7 @@
                  書けば通し、理由を note に自動で残す（2026-09-19 に足した）。
      "追記": [ { id, 対象?, find, replace, note_add, keys_add[], refs_add?, 許可? } ],
                  対象 は "detail"（既定）か "explanation"。2026-09-18 に足した。
+                 "question"（設問文）は 2026-09-25 に足した（指示を受けた設問文の書き換えを道具で行うため）。
                  explanation にも位置で選択肢を指す句が残っていたため。
                  字数と段落の検査は detail のときだけ働く（explanation に字数の型は無い）。
                  find の一意性の検査と note への自動記録は、どちらの対象でも働く。
@@ -221,8 +222,8 @@ function validate(input) {
     if (it.refs_add !== undefined && typeof it.refs_add !== "string") w("refs_add が文字列でない");
     if (it["許可"] !== undefined && (typeof it["許可"] !== "string" || !it["許可"]))
       w("「許可」は理由を書いた文字列にする（上限を超える追記・3段落にならない追記を通すときだけ書く）");
-    if (it["対象"] !== undefined && it["対象"] !== "detail" && it["対象"] !== "explanation")
-      w("「対象」は detail か explanation にする（省略すると detail）");
+    if (it["対象"] !== undefined && it["対象"] !== "detail" && it["対象"] !== "explanation" && it["対象"] !== "question")
+      w("「対象」は detail か explanation か question にする（省略すると detail）");
   });
 
   /* refs の除去と置換。2026-09-21 に足した。 */
@@ -1701,7 +1702,7 @@ function applyAppends(tsui) {
     /* --- note（実測した字数と余地を道具が足す） --- */
     const measured = (FLD === "detail"
       ? `（${before}→${after}字。上限${LIMIT}字に対して余地${LIMIT - after}字）`
-      : `（explanation を${before}→${after}字に書き換えた）`) +
+      : FLD === "question" ? `（設問文を${before}→${after}字に書き換えた）` : `（explanation を${before}→${after}字に書き換えた）`) +
       (逸脱.length && it["許可"] ? ` 型の例外として通した（${逸脱.join("・")}）。理由: ${it["許可"]}` : "");
     const oldNote = q.source.note;
     const newNote = oldNote + it.note_add + measured;
