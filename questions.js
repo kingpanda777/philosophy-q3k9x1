@@ -21464,5 +21464,102 @@ const QUESTIONS = [
         "https://plato.stanford.edu/entries/feminist-social-epistemology/ — SEP「Feminist Social Epistemology」§2.1 Differentiated Knowers and Standpoint Theory。ルカーチの展開したマルクス主義的唯物論の流れでは、物質的労働に対する社会的位置と認識上の位置が反比例し、社会的に不利な労働者階級は資本家の世界の見方と搾取される者としての自らの経験の両方を知る「二重の視野」から認識上の優位の可能性をもつこと、初期のフェミニスト立場理論がこの考えに拠ったこと（\"Early feminist standpoint theory draws on these ideas\"）。detail 第3段落を支える"
       ]
     }
+  },
+  {
+    id: "q862",
+    philosophers: ["ドゥオーキン"], terms: ["平等", "正義"], type: "single",
+    keys: ["資源の平等"],
+    question: "ドゥオーキンが唱えた資源の平等の考え方として最も適切なものは？",
+    choices: [
+      "本人が選んだ結果には責任を負わせ、選べない不運だけを補う",
+      "各人の得る幸福や満足の量が等しくなるように分配する",
+      "生まれつきの差も本人の選択も区別せずに、結果を揃える",
+      "最も不利な人々の暮らしが最大になるように財を配る"
+    ],
+    answer: 0,
+    explanation: "野心による違いは認め、生まれつきの資質による違いは補う、というのが資源の平等の芯です。自分で賭けた結果である選択の運には責任を負いますが、賭けたのではない自然の運による不利は、補われるべきだとされます。",
+    detail: "幸福や満足の量を揃える見方は厚生の平等で、ドゥオーキンが退けた側です。選択と生まれを区別せずに結果を揃える見方は、野心の違いを認めない点で資源の平等と違います。最も不利な人々を最大にする配分はロールズの格差原理で、ドゥオーキン自身は、野心と資質の区別にロールズとの違いがあるとしました。\n\n思考実験があります。難破して無人島に着いた人々が同じ額の手段で資源を競り落とし、誰も他人の資源の束を自分の束より好まなくなれば、初めの分配は平等だとされます（羨望テスト）。生まれつきの障害のような不運には、平均的な人が掛けたはずの仮想の保険の分を、税で補います。\n\nこの理論は運の平等主義の早い例とされますが、ドゥオーキン自身は資源の平等と呼びました。1981年の論文で示され、2000年の Sovereign Virtue（原題）にまとめられています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、野心による違いは認め、選べない資質や自然の運による不利は補うという資源の平等の芯（SEP Distributive Justice §4、IEP Distributive Justice §3）。誤答は、幸福や満足の量を揃える厚生の平等（ドゥオーキンが退けた側）、選択と生まれを区別せずに結果を揃える見方（野心に感応しない点で違う）、最も不利な人々を最大にするロールズの格差原理。四択は成立している。 設計の記録: 「現代の正義論」の典拠の回（2026年9月24日）の量の見直しで「欠かせない」と判定し、承認を受けて作った概念。誤答を先に3つ書いてから正解を書いた。位置指しなし。本文ではドゥオーキンの平等論が法哲学の側（q545 の切り札、q546 の統合性）にしか無く、分配の正義の主著の中身が欠けていた。 資料の限界: SEP・IEP にドゥオーキンの専用項目は無く、SEP Distributive Justice・SEP Equality・IEP Distributive Justice の3項目で組んだ。Sovereign Virtue（2000年）の邦題は国立国会図書館サーチで確かめられなかったので、原題で書いた。 選択肢の長さ: 正解28字、誤答平均25.0字（0.89倍）、比率1.12倍、2位差2字。 字数調整：上限に収めるため、草稿の第2段落の言い回しを詰めた。落としたものは無い。",
+      refs: [
+        "https://plato.stanford.edu/entries/justice-distributive/ — SEP「Distributive Justice」§4。ドゥオーキンの理論がしばしば運の平等主義の最も早いものの一つとされるが、本人は資源の平等主義と呼んだこと（\"Dworkin himself called his theory Resource Egalitarianism\"）、ロールズとの違いの要点を「野心」と「資質」の区別に置いたこと（\"a distinction between ‘ambitions’ and ‘endowments’\"、Dworkin 1981a, 1981b, 2000）。正解と explanation・detail 第1・第3段落を支える",
+        "https://iep.utm.edu/dist-jus/ — IEP「Distributive Justice」§3 Equality of Resources。資源の平等は能力と外的資源を恣意的なものとし、好みには調整をしないこと（\"Equality of resources, as developed by Dworkin, treats individuals’ abilities and external resources as arbitrary, but makes no adjustments for their preferences\"）、野心に感応し資質に感応しないこと（\"ambition-sensitivity\"）、難破して無人島に流れ着いた人々の例と羨望テスト（1981, 285）、競り、「選択の運」と「自然の運」（\"option luck\"、\"brute luck\"、1981, 293）、平均的な人が掛けたはずの仮想の保険と税による補償（\"hypothetical insurance\"、1981, 298）。正解の2本目と explanation・detail 第2段落を支える",
+        "https://plato.stanford.edu/entries/equality/ — SEP「Equality」§3.5。平等な支払い手段で資源の束を集め、最後に誰も他人の束を羨まない仮想の競り（\"Dworkin proposes a hypothetical auction\"、\"(the envy test)\"）。detail 第2段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q863",
+    philosophers: ["マッキンタイア"], terms: ["理性"], type: "single",
+    keys: ["伝統の合理性", "認識論的危機"],
+    question: "マッキンタイアが『誰の正義か、どの合理性か』で示した伝統と合理性の関係として最も適切なものは？",
+    choices: [
+      "探究は伝統の内で進み、行き詰まりを越える力で優劣が試される",
+      "どの伝統も等しく正しく、優劣を問うことに意味はない",
+      "伝統から離れた中立の理性だけが、正しさを判定できる",
+      "伝統は変わらないもので、教えを守ることが合理性だ"
+    ],
+    answer: 0,
+    explanation: "合理性はいつもある伝統のうちで働く、とマッキンタイアは考え、この立場を伝統の合理性と呼びます。伝統が自分の基準で見て行き詰まる認識論的危機に陥ったとき、それを抜け出す新しい説明が、前の考えがなぜ誤ったのかまで説明できれば、探究は進んだとされます。",
+    detail: "どの伝統も等しく正しいとする見方を、マッキンタイアは相対主義からの挑戦として退けます。経験が理論を反証しうるので、合理性を伝統に完全に依存させる立場とは違う、とされます。中立の理性で判定する見方は啓蒙の企てで、どの伝統からも離れた探究の場は無い、と本人は書きます。伝統を変わらないものとみる見方も、伝統を続いていく論争とみる立場と合いません。\n\n認識論的危機とは、信頼していた説が経験を説明できなくなり、知っていると思っていたことを知らないと気づく状態です。抜け出すには新しい物語を作り、なぜ前の信念をもてたのか、なぜそれに欺かれたのかを理解する必要があります。\n\n1988年の『誰の正義か、どの合理性か』と1990年の『道徳的探求の三つの対抗的伝統』で展開されました。『美徳なき時代』の伝統の考えを、合理性の側から支える仕事です。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、探究はいつもある伝統の内で進み、伝統が自分の基準で行き詰まる認識論的危機を越えられるかで優劣が試されるという伝統の合理性（IEP MacIntyre 総説 §4b、Flett 1999）。誤答は、どの伝統も等しく正しいとする見方（本人が「相対主義からの挑戦」と呼んで退ける側）、伝統から離れた中立の理性による判定（啓蒙の企て。本人はどの伝統からも離れた探究の場は無いとする）、伝統を不変の教えとする見方（伝統を続いていく論争とみる立場と合わない）。四択は成立している。 設計の記録: 「現代の正義論」の典拠の回（2026年9月24日）の量の見直しで「欠かせない」と判定し、承認を受けて作った概念。誤答を先に3つ書いてから正解を書いた。位置指しなし。『美徳なき時代』以後の中心の仕事が本文に無く、q402 の誤答「どれも等しく正しい」がなぜ誤りかを本文のどこも支えていなかった。 「相対主義」の語: 本人が「相対主義からの挑戦」（relativist challenge）と呼んだ語として書いた（CLAUDE.md「「相対主義」の書き方」）。 対照の記録: q402（断片化の診断）、q470（実践と伝統）の続き。 資料の限界: SEP にマッキンタイアの専用項目は無い。書名の邦題は、国立国会図書館サーチに邦訳が無く、論文の題が『誰の正義？どの合理性？』と書くので、それに近い形で書いた。 選択肢の長さ: 正解29字、誤答平均24.7字（0.85倍）、比率1.18倍、2位差4字。",
+      refs: [
+        "https://iep.utm.edu/mac-over/ — IEP「Alasdair MacIntyre」（総説）§4b「Two Books on Rationality: WJWR and 3RV」。『誰の正義か、どの合理性か』（1988年）と『道徳的探求の三つの対抗的伝統』（1990年）、人の合理性が「伝統に構成される」こと（\"that person’s rationality is “tradition-constituted.”\"）、本人が自分の立場を「伝統の合理性」と呼ぶこと（\"MacIntyre calls his position “the rationality of traditions.”\"）、どの伝統からも離れた探究の場は無いこと（p. 350）、「相対主義からの挑戦」と「遠近法主義からの挑戦」、認識論的危機の規定と、その解決には前の信念をどうもてたか、どう欺かれたかを理解させる新しい物語が要ること（\"epistemological crisis\"、EC, p. 5）、経験が理論を反証しうることが合理性を伝統に完全に依存させる相対主義との違いだとすること（\"The possibility that experience may falsify theory distinguishes MacIntyre\"）。正解と explanation・detail の3段落を支える",
+        "John Flett, \"Alasdair MacIntyre’s Tradition-Constituted Enquiry in Polanyian Perspective\", Tradition and Discovery 26(2), 1999, 6–20（学会誌を出すポラニー協会が公開する PDF https://www.polanyisociety.org/TAD%20WEB%20ARCHIVE/TAD26-2/TAD26-2-fnl-pg6-20-pdf.pdf ） — どの伝統も自分の合理的な正当化の基準によって、進歩が止まったと気づく段階に来ること（\"Every tradition will at some stage realize, by its own standards of rational justification, that it has ceased to make progress\"）と、それが認識論的危機と呼ばれること（\"epistemological crisis\"）。正解の2本目"
+      ]
+    }
+  },
+  {
+    id: "q864",
+    philosophers: ["H・L・A・ハート"], terms: ["自由"], type: "single",
+    keys: ["法的モラリズム"],
+    question: "ハートがデヴリンとの論争で示した、法による道徳の強制についての立場として最も適切なものは？",
+    choices: [
+      "行為が不道徳だというだけでは、それを処罰する理由として足りない",
+      "社会の多数が不道徳とみる行為は、それだけで処罰してよい",
+      "法と道徳は切り離せないので、法はみな道徳を強制する",
+      "道徳を守らせるのは国家の役目で、法はその道具にすぎない"
+    ],
+    answer: 0,
+    explanation: "デヴリンは、共有された道徳は社会を結びつける見えない絆で、それを守るために法を使ってよいと論じました。ハートは、ある行為が不道徳だということが、それを法で罰する十分な理由になるのかと問い、共有された道徳を守ることが社会の存続にどこまで要るかをデヴリンは誇張していると批判しました。",
+    detail: "多数が不道徳とみる行為をそれだけで罰してよいとするのはデヴリンの側で、ハートはこの立場を法的モラリズムと名づけ、その呼び名が定着しました。法と道徳は切り離せないとする見方は、法と道徳の分離を説くハートの法実証主義と逆です。国家を道徳の執行者とみる見方も、処罰の理由を問いません。\n\n問いの向きが違います。分離論が問うのは法とは何かで、この論争が問うのは法はどこまで道徳を強制してよいかです。ハートは、成人が私的に性の道徳から外れることが、反逆のように社会の存続を脅かすとは考えにくいと論じました。\n\nハートの Law, Liberty, and Morality（1963年）とデヴリンの The Enforcement of Morals（1965年）が中心の文献です。応答は多く出ましたが、自ら法的モラリストを名乗る論者も今もいます。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、行為が不道徳だという事実はそれを法で罰するのに十分な理由かというハートの問いと、それに否と答える立場（SEP The Limits of Law §1、IEP Law, Philosophy of §2.a.i）。誤答は、多数が不道徳とみる行為をそれだけで罰してよいとするデヴリンの法的モラリズム、法と道徳は切り離せないとする見方（ハートの分離論と逆）、国家を道徳の執行者とする見方。四択は成立している。 設計の記録: 「現代の正義論」の典拠の回（2026年9月24日）の量の見直しで「欠かせない」と判定し、承認を受けて作った概念。誤答を先に3つ書いてから正解を書いた。位置指しなし。分離論（q542）が法とは何かを問うのに対し、法はどこまで道徳を強制してよいかという規範の側の主著が本文に無かった。デヴリンは人物として登録していないので philosophers に入れていない（誤答に他人の立場を使っても philosophers には入れない慣行）。 対照の記録: q542（法と道徳の分離）とは問いの向きが違う。 資料の限界: SEP・IEP にハートの専用項目は無い。Law, Liberty, and Morality の邦訳の書名は国立国会図書館サーチで確かめられなかったので、原題で書いた。 選択肢の長さ: 正解31字、誤答平均26.3字（0.85倍）、比率1.18倍、2位差4字。 字数調整：上限に収めるため、草稿の第1段落の誤答の説明と第3段落を詰めた。落としたのは、国家を執行者とみる見方がハートの問いを「飛ばしている」という言い方（「処罰の理由を問わない」にした）。",
+      refs: [
+        "https://plato.stanford.edu/entries/law-limits/ — SEP「The Limits of Law」§1 Legal Moralism。1960年代にハートが論争の相手デヴリンに「法的モラリスト」の呼び名を付け、それが定着したこと（\"applied the label “legal moralist” to his intellectual sparring partner, Lord Patrick Devlin\"、Hart 1963; Devlin 1965）、ハートの問い、すなわち行為が不道徳だという事実はそれを法で罰するのに十分か（\"sufficient to justify making that conduct punishable by law\"、Hart 1963 [1982:4]）、デヴリンへの多くの応答と、自ら法的モラリストを名乗る論者（Moore、Duff）がいること（\"self-declared legal moralists\"）、文献表の Hart 1963 Law, Liberty and Morality と Devlin 1965 The Enforcement of Morals。正解と detail の3段落を支える",
+        "https://iep.utm.edu/law-phil/ — IEP「Law, Philosophy of」§2.a.i Legal Moralism。デヴリンの、共通の道徳は社会の絆の一部だという一節（Devlin 1965, p. 10）、ハートが、共有された道徳の保持が社会の存続にどこまで要るかをデヴリンは誇張していると指摘すること（\"Devlin overstates the extent to which preservation of a shared morality is necessary to the continuing existence of a society\"）、成人の私的な性の道徳からの逸脱が反逆のように社会の存続を脅かすとは考えにくいとすること（\"like treason, threatens the existence of society\"、Hart 1963, p. 50）。正解の2本目と explanation・detail 第2段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q865",
+    philosophers: ["ヌスバウム"], terms: ["理性", "身体"], type: "single",
+    keys: ["感情の認知説"],
+    question: "ヌスバウムの感情論の要点として最も適切なものは？",
+    choices: [
+      "感情は、自分にとって大事なものについての評価の判断を含む",
+      "感情は身体の変化の知覚にすぎず、判断とは関わらない",
+      "感情は理性を乱す力にすぎず、道徳には害をもたらす",
+      "感情は文化と関わりなく、生まれつき決まった反応である"
+    ],
+    answer: 0,
+    explanation: "ヌスバウムはストア派にならい、感情を判断と結びつけます。たとえば怒りは、自分や身近な人に重大な害が、誰かによって故意に加えられ、その者は罰されるべきだ、という一連の信念として描かれます。感情の認知説と呼ばれる立場の一つです。",
+    detail: "感情を身体の変化の感じとみる見方は、泣くから悲しいと言ったジェイムズの系譜にあり、判断説と対立する側です。感情を理性を乱す力とみる見方は、感情が評価を含むという主張と逆です。感情を文化と無関係な生得の反応とみる見方も、感情を評価の判断と結びつける見方とは合いません。\n\n判断説とも呼ばれますが、この呼び名は、感情が命題への同意にすぎないと読めてしまうので誤解を招くとされ、ヌスバウム自身もこのラベルをはっきり退けています。判断と食い違う感情、たとえば飛行機は危なくないと判断していても消えない恐れを説明できない、という批判もあります。\n\n2001年の Upheavals of Thought（原題）で体系的に論じられました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、ストア派にならって感情を評価の判断と結びつけるヌスバウムの認知説（SEP Emotion §5、IEP Emotion, Theories of）。誤答は、感情を身体の変化の感じとみる見方（SEP がジェイムズを挙げる側）、感情を理性を乱すだけの力とみる見方、感情を文化と無関係な生得の反応とみる見方。四択は成立している。 設計の記録: 「現代の正義論」の典拠の回（2026年9月24日）の量の見直しで「欠かせない」と判定し、承認を受けて作った概念。誤答を先に3つ書いてから正解を書いた。位置指しなし。承認の段で、棚（現代の正義論）の外の業績だが人物像の大きな部分を占めるので作ると決まった。 次に見直す棚: 感情論は正義論の棚の外なので、ヌスバウムの感情論の厚み（この問題の位置づけと、ほかの感情論の論者との比較）は、感情や心の哲学を扱う回で見直す（records/現代の正義論.md と CLAUDE.md に書いた）。 資料の限界: SEP・IEP にヌスバウムの専用項目は無く、SEP Emotion と IEP Emotion, Theories of の2項目で組んだ。Upheavals of Thought の邦訳は国立国会図書館サーチで見つからなかったので、原題で書いた。 選択肢の長さ: 正解28字、誤答平均25.0字（0.89倍）、比率1.12倍、2位差2字。",
+      refs: [
+        "https://plato.stanford.edu/entries/emotion/ — SEP「Emotion」§5。最も簡素な認知説はストア派にならって感情を判断と同一視し、ソロモン・ノイ・ヌスバウム（2001）がこの行き方をとること（\"Martha Nussbaum (2001) take this approach\"）、よくある解釈では誰かへの怒りはその人に不当に扱われたという判断であること（\"my anger at someone is the judgment that I have been wronged by that person\"）、判断主義という呼び名は誤解を招き、ヌスバウムとノイはこのラベルをはっきり退けたこと、判断と食い違っても消えない感情（飛行機が危なくないと判断しても怖い。\"flying is not dangerous\"、d’Arms & Jacobson 2003）という批判、ジェイムズが感情と身体の変化の因果の向きを逆にとらえたこと（\"bodily changes\"）。正解と detail の3段落を支える",
+        "https://iep.utm.edu/emotion/ — IEP「Emotion, Theories of」の判断説の節。ヌスバウムが怒りを一連の信念として描くこと（\"Nussbaum has a similar, but more detailed, description of anger as the following set of beliefs\"、2004, p. 188）。正解の2本目と explanation を支える"
+      ]
+    }
   }
 ];
