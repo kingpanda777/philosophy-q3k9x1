@@ -8,7 +8,7 @@ const src = fs.readFileSync(path.join(__dirname, '..', 'questions.js'), 'utf8');
 const { QUESTIONS: Q, PHILOSOPHERS: PH } = new Function(src + ';return {QUESTIONS,PHILOSOPHERS};')();
 const DONE = ['中世', '近世の認識論', '古代ギリシア', '分析哲学', '現象学と実存', 'フランクフルト学派', '現代の正義論', '科学哲学', 'ドイツ観念論', '十九世紀の反逆', '精神分析'];
 // DONE_PEOPLE は、棚を人物で分けて回したとき、回を終えた人物（2026年9月25日に足した。構造主義以降は3回に分け、1/3 を終えた）。棚が全部済んだら DONE に棚を足し、ここから外す。
-const DONE_PEOPLE = ['ソシュール', 'クリステヴァ', 'ロラン・バルト', 'アルチュセール', 'バトラー', 'ジジェク'];
+const DONE_PEOPLE = ['ソシュール', 'クリステヴァ', 'ロラン・バルト', 'アルチュセール', 'バトラー', 'ジジェク', 'フーコー', 'デリダ', 'レヴィ＝ストロース', 'バタイユ', 'リオタール', 'ボードリヤール'];
 const SWEPT = ['q058', 'q137', 'q189', 'q339', 'q488', 'q495', 'q496', 'q580', 'q588', 'q182', 'q288', 'q328', 'q340', 'q373', 'q391', 'q402', 'q463', 'q478', 'q579', 'q625', 'q769', 'q792', 'q793', 'q804'];
 const sch = {}; PH.forEach(p => sch[p.name] = p.school);
 const items = n => [...n.matchAll(/確認できていない点: ([^。]*。?)/g)].map(m => m[1].replace(/\|/g, '／').slice(0, 110));
