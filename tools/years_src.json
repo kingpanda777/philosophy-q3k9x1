@@ -141,6 +141,7 @@
  "マルクス・ガブリエル": "版元 Suhrkamp の著者頁「Markus Gabriel, geboren 1980」／講談社『なぜ世界は存在しないのか』著者紹介「マルクス・ガブリエル 1980年生まれ。哲学者。現在、ボン大学教授。」",
  "_著作の年": {
   "_何か": "紹介文（philosophers.js）の works の年を、扉の年と刊行の年がずれるときにどう決めたかの記録。CLAUDE.md「実刊行年と扉の年がずれるときは扉の年を採る」による。check_phil は読まない",
-  "ロック": "『統治二論』『人間知性論』はどちらも扉の年1690で表示する（2026年9月26日、社会契約と政治の回の承認の段）。刊行は1689年末（IEP Locke「the Two Treatises of Government were published in 1689」、SEP Locke「An Essay Concerning Human Understanding (1689)」）。扉の年は、『統治二論』がイリノイ大学所蔵本の書誌（Internet Archive twotreatisesofgo00lock_1。publisher London, A. Churchill、publication date 1690）、『人間知性論』が Project Gutenberg #10615 の扉の翻刻（London: printed by Eliz. Holt, for Thomas Basset … MDCXC）"
+  "ロック": "『統治二論』『人間知性論』はどちらも扉の年1690で表示する（2026年9月26日、社会契約と政治の回の承認の段）。刊行は1689年末（IEP Locke「the Two Treatises of Government were published in 1689」、SEP Locke「An Essay Concerning Human Understanding (1689)」）。扉の年は、『統治二論』がイリノイ大学所蔵本の書誌（Internet Archive twotreatisesofgo00lock_1。publisher London, A. Churchill、publication date 1690）、『人間知性論』が Project Gutenberg #10615 の扉の翻刻（London: printed by Eliz. Holt, for Thomas Basset … MDCXC）",
+  "ウェーバー": "『プロテスタンティズムの倫理と資本主義の精神』は、1904〜05年の雑誌論文（Archiv für Sozialwissenschaft und Sozialpolitik 20・21）ではなく、手を入れて本に収めた『宗教社会学論集』第1巻の年1920で表示する（2026年9月26日、社会学の回の承認の段。雑誌論文の段階の年は採らないという CLAUDE.md の決まりに合わせ、利用者の指示で、単行本の形で出た最初の版である論集の第1巻の年にした）。刊行の年は、フランス国立図書館の書誌（Gesammelte Aufsätze zur Religionssoziologie. I / von Max Weber、J. C. B. Mohr (Tübingen)、1920）と、SEP Max Weber の文献表（「1920. Gesammelte Aufsätze zur Religionssoziologie, 3 volumes, Tübingen: J. C. B. Mohr/Paul Siebeck」）で確かめた"
  }
 }
