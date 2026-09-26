@@ -138,5 +138,9 @@
  "ベッカリーア": "西平等（2011）「チェザレ・ベッカリーア（Cesare Bonesana Beccaria，1738-94）」、Farrer（Project Gutenberg #58700）「the thirty years that he lived after its publication; that is, from the year 1764 to 1794」",
  "カンタン・メイヤスー": "IdRef（フランスの大学の人名典拠）「Meillassoux, Quentin (1967-....)」／米国議会図書館の人名典拠「Meillassoux, Quentin, 1967-」",
  "グレアム・ハーマン": "SCI-Arc の教員頁「He was born in 1968 in Mt. Vernon, Iowa」／米国議会図書館の人名典拠「Harman, Graham, 1968-」",
- "マルクス・ガブリエル": "版元 Suhrkamp の著者頁「Markus Gabriel, geboren 1980」／講談社『なぜ世界は存在しないのか』著者紹介「マルクス・ガブリエル 1980年生まれ。哲学者。現在、ボン大学教授。」"
+ "マルクス・ガブリエル": "版元 Suhrkamp の著者頁「Markus Gabriel, geboren 1980」／講談社『なぜ世界は存在しないのか』著者紹介「マルクス・ガブリエル 1980年生まれ。哲学者。現在、ボン大学教授。」",
+ "_著作の年": {
+  "_何か": "紹介文（philosophers.js）の works の年を、扉の年と刊行の年がずれるときにどう決めたかの記録。CLAUDE.md「実刊行年と扉の年がずれるときは扉の年を採る」による。check_phil は読まない",
+  "ロック": "『統治二論』『人間知性論』はどちらも扉の年1690で表示する（2026年9月26日、社会契約と政治の回の承認の段）。刊行は1689年末（IEP Locke「the Two Treatises of Government were published in 1689」、SEP Locke「An Essay Concerning Human Understanding (1689)」）。扉の年は、『統治二論』がイリノイ大学所蔵本の書誌（Internet Archive twotreatisesofgo00lock_1。publisher London, A. Churchill、publication date 1690）、『人間知性論』が Project Gutenberg #10615 の扉の翻刻（London: printed by Eliz. Holt, for Thomas Basset … MDCXC）"
+ }
 }
