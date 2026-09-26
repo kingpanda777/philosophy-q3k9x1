@@ -161,8 +161,8 @@ const PHIL_INTRO = [
     thought_src: ["q236", "q017", "q018"],
     works: [
       { title: "統治二論", year: 1689 },
-      { title: "人間知性論", year: 1689 },
-      { title: "寛容についての書簡", year: 1689 }
+      { title: "寛容についての書簡", year: 1689 },
+      { title: "人間知性論", year: 1690 }
     ],
     checked: true
   },
