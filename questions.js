@@ -14156,11 +14156,11 @@ const QUESTIONS = [
     ],
     answer: 0,
     explanation: "憲法が法律を作る権限を与え、法律が命令を作る権限を与え、命令が処分を作る権限を与える。法は同じ平面に並んでいるのではなく、授権の連なりとして段になっている、という見方です。",
-    detail: "純粋法学の骨組みにあたります。法体系を、根本規範を頂点とする授権の段の重なりとして捉えます。上の段が下の段を作る権限を与え、下の段は上の段が決めた枠のうちでしか作れません。\n\nこの見方だと、立法と司法の区別も相対的になります。裁判の判決は、法律という上の段から授権されて作られる、下の段の規範だということになります。法を適用することと法を作ることが、段の違いとして地続きになります。\n\nこの図式がシュミットとの論争の的にもなりました。憲法の番人は裁判所か大統領かという争いで、シュミットは、規範を別の規範に当てはめることは規範を事実に当てはめることとは質的に違うとして、この図式に立つ憲法裁判の考えを退けました。",
+    detail: "純粋法学の骨組みにあたります。法体系を、根本規範を頂点とする授権の段の重なりとして捉えます。上の段が下の段を作る権限を与え、下の段は上の段が決めた枠のうちでしか作れません。個々の規範は誰も従わなくても妥当しえますが、法秩序が全体としておおむね行われていることが、妥当の条件とされます。\n\nこの見方だと、立法と司法の区別も相対的になります。裁判の判決は、法律という上の段から授権されて作られる、下の段の規範だということになります。法を適用することと法を作ることが、段の違いとして地続きになります。\n\nこの図式がシュミットとの論争の的にもなりました。憲法の番人は裁判所か大統領かという争いで、シュミットは、規範を別の規範に当てはめることは規範を事実に当てはめることとは質的に違うとして、この図式に立つ憲法裁判の考えを退けました。",
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 正解は授権の連なりという段の重なりを押さえている。誤答二番目は法源の歴史的発展の図式、三番目は分野による分類、四番目は権力分立。どれも法の並べ方を言うが、授権による段という本問の要点とは別である。四択は成立している。 事実の確認: 法実証主義を最も厳密な形で採用した法理論において、法体系が根本規範を頂点とする授権の段階構造として捉えられること、シュミットが「憲法の番人」（1929年3月の論文。1931年に同名の単行本）でケルゼンの憲法裁判の考えを批判したことを確認した（二十世紀の政治哲学の回、2026年9月26日に、もとの「一九二九年の『憲法の番人』」を、論文と単行本を書き分ける形に直した。Duncker & Humblot の序文、SEP Carl Schmitt の文献表）。 解消済み: 判決を下位の段の規範と見る点は、原典 Allgemeine Staatslehre（1925年）234頁（裁判は伝統的な学説が立法に対立させた法の適用であるが、それ自身が法の創造である）と、MLR の von Bernstorff の論評（上位の規範の適用は同時に下位の規範の創造である）で確かめた（二十世紀の政治哲学の回、2026年9月26日）。 対照の記録: q370（シュミットの主権者の定義）、q024（ロックの権力分立）と主題が重ならないことを確認した。 選択肢の長さ: 正解34字、誤答平均29.0字、比率1.17倍、2位差3字。追記の記録: detail に問題番号を書かない規則（2026-09-18）にあわせ、q539 への参照を人物名に置き換えた。段落数と内容は変えていない。（287→290字。上限370字に対して余地80字） refs を1本差し替えた（純粋法学 → https://plato.stanford.edu/entries/lawphil-theory/）。理由: 法段階説という設問の核心が SEP で確認できた。 典拠に合わせて直した（二十世紀の政治哲学の回、2026年9月26日）: 第3段落の「シュミットはこの段の図式そのものを空想的な図式だと批判します」は、支える典拠が見つからず、refs の島根大学の論文（黒田覚の制憲権論を扱う）も中身を書いていなかったので、Silva 2025 が引くシュミットの批判（ある規範を別の規範に当てはめることは、規範を事実に当てはめることとは質的に違う。Schmitt 1931, p.42）の範囲に直した。「ケルゼンとシュミットの対立の土台がここにあります」は書き手の評価なので外した。（290→302字。上限370字に対して余地68字） refs を1本差し替えた（ir.lib.shimane-u.ac.jp → https://www.scielo.org.mx/scielo.php?script=sci_arttext&pid=S1405-91932025000100102）。理由: 島根大学の論文（岡本寛「憲法制定権力論の系譜」島大法学58巻4号）は黒田覚の制憲権論を扱っていて、説明欄の「シュミットが1929年に法段階説の図式を批判した」を書いていなかったので、中身を書く査読論文に替えるため refs に4本を足した（https://archive.org/details/allgemeinestaats00kels・https://www.modernlawreview.co.uk/bernstorff-paulson/・https://www.duncker-humblot.de/_files_media/leseproben/9783428549214.pdf・https://plato.stanford.edu/entries/schmitt/）。理由: 正解の決め手を支える典拠が SEP の1本だけで、detail 第2・3段落を支える典拠が無かったため",
+      note: "設問へ: 正解は授権の連なりという段の重なりを押さえている。誤答二番目は法源の歴史的発展の図式、三番目は分野による分類、四番目は権力分立。どれも法の並べ方を言うが、授権による段という本問の要点とは別である。四択は成立している。 事実の確認: 法実証主義を最も厳密な形で採用した法理論において、法体系が根本規範を頂点とする授権の段階構造として捉えられること、シュミットが「憲法の番人」（1929年3月の論文。1931年に同名の単行本）でケルゼンの憲法裁判の考えを批判したことを確認した（二十世紀の政治哲学の回、2026年9月26日に、もとの「一九二九年の『憲法の番人』」を、論文と単行本を書き分ける形に直した。Duncker & Humblot の序文、SEP Carl Schmitt の文献表）。 解消済み: 判決を下位の段の規範と見る点は、原典 Allgemeine Staatslehre（1925年）234頁（裁判は伝統的な学説が立法に対立させた法の適用であるが、それ自身が法の創造である）と、MLR の von Bernstorff の論評（上位の規範の適用は同時に下位の規範の創造である）で確かめた（二十世紀の政治哲学の回、2026年9月26日）。 対照の記録: q370（シュミットの主権者の定義）、q024（ロックの権力分立）と主題が重ならないことを確認した。 選択肢の長さ: 正解34字、誤答平均29.0字、比率1.17倍、2位差3字。追記の記録: detail に問題番号を書かない規則（2026-09-18）にあわせ、q539 への参照を人物名に置き換えた。段落数と内容は変えていない。（287→290字。上限370字に対して余地80字） refs を1本差し替えた（純粋法学 → https://plato.stanford.edu/entries/lawphil-theory/）。理由: 法段階説という設問の核心が SEP で確認できた。 典拠に合わせて直した（二十世紀の政治哲学の回、2026年9月26日）: 第3段落の「シュミットはこの段の図式そのものを空想的な図式だと批判します」は、支える典拠が見つからず、refs の島根大学の論文（黒田覚の制憲権論を扱う）も中身を書いていなかったので、Silva 2025 が引くシュミットの批判（ある規範を別の規範に当てはめることは、規範を事実に当てはめることとは質的に違う。Schmitt 1931, p.42）の範囲に直した。「ケルゼンとシュミットの対立の土台がここにあります」は書き手の評価なので外した。（290→302字。上限370字に対して余地68字） refs を1本差し替えた（ir.lib.shimane-u.ac.jp → https://www.scielo.org.mx/scielo.php?script=sci_arttext&pid=S1405-91932025000100102）。理由: 島根大学の論文（岡本寛「憲法制定権力論の系譜」島大法学58巻4号）は黒田覚の制憲権論を扱っていて、説明欄の「シュミットが1929年に法段階説の図式を批判した」を書いていなかったので、中身を書く査読論文に替えるため refs に4本を足した（https://archive.org/details/allgemeinestaats00kels・https://www.modernlawreview.co.uk/bernstorff-paulson/・https://www.duncker-humblot.de/_files_media/leseproben/9783428549214.pdf・https://plato.stanford.edu/entries/schmitt/）。理由: 正解の決め手を支える典拠が SEP の1本だけで、detail 第2・3段落を支える典拠が無かったため 追記（承認の段で書き込んだ）: 妥当性と実効性の区別を第1段落に足した。二十世紀の政治哲学の回（二十世紀の政治哲学の回、2026年9月26日）の量の見直しで欠かせないとされたが、2本目の典拠が弱い（SEP Legal Obligation and Authority §2 はケルゼンを参照に挙げるだけ）ので、主題にせず追記にとどめた。典拠は SEP The Pure Theory of Law §1（\"efficacy is not a condition of legal validity of individual norms\"、\"that is by and large actually practiced by a certain population\"）。（302→358字。上限370字に対して余地12字）",
       refs: [
         "https://plato.stanford.edu/entries/lawphil-theory/ — §1「The Basic Norm」の「An act can create or modify the law if it is created in accordance with another, 'higher' legal norm that authorizes its creation」を確認した。上位の規範が下位の規範の作成を授権するという段の構造が示されている。",
         "https://www.scielo.org.mx/scielo.php?script=sci_arttext&pid=S1405-91932025000100102 — Felipe Alves da Silva, \"Who watches the watchmen? Kelsen and Schmitt on the guardian of the Constitution\", Cuestiones Constitucionales no.52 (2025), DOI 10.22201/iij.24484881e.2025.52.18861（査読誌、SciELO México で公開）。シュミットが、規範を別の規範に当てはめることは規範を事実に当てはめることとは質的に違うとしたこと（\"The application of a norm to another norm is something qualitatively different from the application of a norm to a fact\"、Schmitt 1931, p.42）、ケルゼンが法を階層に並んだ規則の論理的な体系とみること（\"Kelsen sees law as a logical system of hierarchically arranged rules\"）。detail 第1・3段落を支える",
@@ -20105,11 +20105,11 @@ const QUESTIONS = [
     ],
     answer: 2,
     explanation: "強制の鎧をまとったヘゲモニー、という定式で語られます。警察や軍と並んで、学校や教会や新聞も国家の働きの一部とされる。同意を作る場まで含めてはじめて近代の国家が捉えられる、という見方です。",
-    detail: "獄中ノートの定式は、国家とは政治社会と市民社会を合わせたものだ、というものです。国家と政府を同じものとみる見方を退ける文脈で出された定式です。\n\nこの拡張は陣地戦の戦略と一体です。国家が強制の装置に尽きるなら、それを奪えば足りる。同意を作る場までが国家の一部なら、闘争もその場に及ばなければならないことになります。\n\n同意を組織する側には、革命の政党が置かれました。マキャヴェリの君主を現代の君主として読み替えた議論で、党は中央集権的で規律ある組織でありながら、集団の世界観を作り上げる場として構想されています。",
+    detail: "獄中ノートの定式は、国家とは政治社会と市民社会を合わせたものだ、というものです。国家と政府を同じものとみる見方を退ける文脈で出された定式です。\n\nこの拡張は陣地戦の戦略と一体です。国家が強制の装置に尽きるなら、それを奪えば足りる。同意を作る場までが国家の一部なら、闘争もその場に及ばなければならないことになります。\n\n同意を組織する側には、革命の政党が置かれました。マキャヴェリの君主を現代の君主として読み替えた議論で、党は中央集権的で規律ある組織でありながら、集団の世界観を作り上げる場として構想されています。その世界観の土台として、グラムシはマルクス主義を、決定論的な社会の科学ではなく、思考と行為の一致を原理とする「実践の哲学」として組み直しました。",
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 獄中ノートの国家＝政治社会＋市民社会という定式。誤答はウェーバーの国家定義、経済決定論、社会契約説から取った。四択は成立している。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。 対照の記録: 陣地戦と機動戦の問題が戦略の側を扱うので、こちらは国家の捉え方に絞った。ヘゲモニーの問題とは、同意の分析とその制度的な受け皿という関係に置いた。第3段落に現代の君主を織り込んだのは、グラムシの問題4問のうち追記できる先が3問しかなく、置き場が無いためである。 解消済み（一部）: 「統合的な」国家という捉え方がグラムシ自身の呼び方であることは SEP Antonio Gramsci §3.2 で確かめた（二十世紀の政治哲学の回、2026年9月26日）。確認できていない点: 「統合国家（Stato integrale）」が一貫した術語かどうか（主題別の版の範囲では Stato integrale の語が見つからなかった）。 典拠に合わせて直した（二十世紀の政治哲学の回、2026年9月26日）: 第1段落の「なぜ支配がこれほど長く続くのかを説明できない、という不満から出ています」は動機の書き方が典拠と合わない（原文でこの定式が出るのは、国家と政府の同一視への批判の文脈）ので、その範囲に直した。第3段落の「党は命令する組織ではなく」は、SEP Antonio Gramsci §3.6（革命の担い手はなお中央集権的で思想的に規律ある党でなければならない）と食い違うので直した。「マキァヴェッリ」は棚の人物名の表記にそろえた。（263→252字。上限370字に対して余地118字） refs を1本差し替えた（plato.stanford.edu/entries/gramsci/ → https://plato.stanford.edu/entries/gramsci/）。理由: 説明欄に、確かめた原文と箇所を書き足すため refs に2本を足した（https://www.liberliber.eu/mediateca/libri/g/gramsci/note_sul_machiavelli/pdf/gramsci_note_sul_machiavelli.pdf・https://www.jstage.jst.go.jp/article/mscom/76/0/76_197/_pdf）。理由: 正解の決め手を支える典拠が SEP の1本だけだったため",
+      note: "設問へ: 獄中ノートの国家＝政治社会＋市民社会という定式。誤答はウェーバーの国家定義、経済決定論、社会契約説から取った。四択は成立している。 設計の記録: 誤答を先に3つ書いてから正解を書いた。位置指しなし。 対照の記録: 陣地戦と機動戦の問題が戦略の側を扱うので、こちらは国家の捉え方に絞った。ヘゲモニーの問題とは、同意の分析とその制度的な受け皿という関係に置いた。第3段落に現代の君主を織り込んだのは、グラムシの問題4問のうち追記できる先が3問しかなく、置き場が無いためである。 解消済み（一部）: 「統合的な」国家という捉え方がグラムシ自身の呼び方であることは SEP Antonio Gramsci §3.2 で確かめた（二十世紀の政治哲学の回、2026年9月26日）。確認できていない点: 「統合国家（Stato integrale）」が一貫した術語かどうか（主題別の版の範囲では Stato integrale の語が見つからなかった）。 典拠に合わせて直した（二十世紀の政治哲学の回、2026年9月26日）: 第1段落の「なぜ支配がこれほど長く続くのかを説明できない、という不満から出ています」は動機の書き方が典拠と合わない（原文でこの定式が出るのは、国家と政府の同一視への批判の文脈）ので、その範囲に直した。第3段落の「党は命令する組織ではなく」は、SEP Antonio Gramsci §3.6（革命の担い手はなお中央集権的で思想的に規律ある党でなければならない）と食い違うので直した。「マキァヴェッリ」は棚の人物名の表記にそろえた。（263→252字。上限370字に対して余地118字） refs を1本差し替えた（plato.stanford.edu/entries/gramsci/ → https://plato.stanford.edu/entries/gramsci/）。理由: 説明欄に、確かめた原文と箇所を書き足すため refs に2本を足した（https://www.liberliber.eu/mediateca/libri/g/gramsci/note_sul_machiavelli/pdf/gramsci_note_sul_machiavelli.pdf・https://www.jstage.jst.go.jp/article/mscom/76/0/76_197/_pdf）。理由: 正解の決め手を支える典拠が SEP の1本だけだったため 追記（承認の段で書き込んだ）: 実践の哲学を第3段落に足した。二十世紀の政治哲学の回（二十世紀の政治哲学の回、2026年9月26日）の量の見直しで、グラムシの哲学者としての面（マルクス主義の組み直し）が1問も無く、欠かせないとされたため。典拠は SEP Antonio Gramsci §3.5（ブハーリンの決定論的な社会の科学としてのマルクス主義を退け、思考と行為の一致を指導原理とする「実践の哲学」を立てた。\"Gramsci now rejected Bukharin\"、\"because it insisted on the unity of thought and action (praxis)\"）と Routledge Encyclopedia of Philosophy の無料の要約（Bellamy 1998。主な貢献は弁証法的唯物論への批判にある。\"main contribution lies in his critique of dialectical materialism\"）、原典（主題別の巻 Il materialismo storico の filosofia della praxis）。（252→324字。上限370字に対して余地46字）",
       refs: [
         "https://plato.stanford.edu/entries/gramsci/ — SEP「Antonio Gramsci」（2023年1月初出）。§3.2、「国家＝政治社会＋市民社会（言いかえれば、強制の鎧に守られたヘゲモニー）」と定式化し、それを「統合的な」国家の捉え方とも呼んだこと（\"State = political society + civil society\"、\"what he also called an\"）、市民社会の頑丈な構造（学校・教会・私的な結社・新聞・知識人など）（\"sturdy structure of civil society\"、SPN 238）。§3.6、革命の担い手はなお中央集権的で思想的に規律ある党でなければならず、その党が世界の全体的な構想の担い手とされたこと（\"Gramsci still considered the agent of a revolution to be, by necessity, a centralized and ideologically disciplined party\"）。正解と explanation・detail を支える",
         "https://www.liberliber.eu/mediateca/libri/g/gramsci/note_sul_machiavelli/pdf/gramsci_note_sul_machiavelli.pdf — グラムシ『獄中ノート』主題別の巻 Note sul Machiavelli, sulla politica e sullo Stato moderno（Liber Liber の電子版。底本は主題別に編んだ版の系統の Editori Riuniti 1996年第3版で、ジェルラターナの1975年の校訂版ではない。グラムシは1937年没でイタリア語の原文は公有）。国家と政府の同一視を批判する文脈で、国家の一般的な概念に市民社会の要素が入ることを「国家＝政治社会＋市民社会、すなわち強制の鎧をまとったヘゲモニー」と書くこと（\"nel terreno della identificazione di Stato\"、\"Stato = società politica + società civile\"、\"egemonia corazzata di coercizione\"）、現代の君主は現実の人物ではありえず、一つの組織体すなわち政党であること（\"Il moderno principe, il mito-principe non può essere una persona reale\"）。正解の2本目と detail 第1・3段落を支える",
@@ -22736,6 +22736,56 @@ const QUESTIONS = [
         "https://it.wikisource.org/wiki/Dei_delitti_e_delle_pene/Capitolo_XXVII — ベッカリーア『犯罪と刑罰』（1764年、公有）イタリア語の原文（イタリア語版 Wikisource。底本は Fabietti 編 Mursia 1973年版）第XXVII章「Dolcezza delle pene」。犯罪の最大の歯止めの一つは刑の残酷さではなく、刑を免れないことであること（\"non è la crudeltà delle pene, ma l'infallibilità di esse\"）、刑が効果をあげるには刑の害が犯罪から生じる利益を上回れば足りること（\"basta che il male della pena ecceda il bene che nasce dal delitto\"）。正解と explanation の原典",
         "https://it.wikisource.org/wiki/Dei_delitti_e_delle_pene/Capitolo_III — ベッカリーア『犯罪と刑罰』（1764年、公有）イタリア語の原文（イタリア語版 Wikisource。底本は Fabietti 編 Mursia 1973年版）第III章「Conseguenze」。法だけが犯罪に対する刑を定めうること（\"le sole leggi possono decretar le pene su i delitti\"）。detail 第2段落の原典",
         "https://it.wikisource.org/wiki/Dei_delitti_e_delle_pene/Capitolo_IV — ベッカリーア『犯罪と刑罰』（1764年、公有）イタリア語の原文（イタリア語版 Wikisource。底本は Fabietti 編 Mursia 1973年版）第IV章「Interpretazione delle leggi」。刑法を解釈する権限は刑事裁判官にはありえないこと（\"le leggi penali può risedere presso i giudici criminali\"）。detail 第2段落の原典"
+      ]
+    }
+  },
+  {
+    id: "q879",
+    philosophers: ["アーレント"], terms: [], type: "single",
+    keys: [],
+    question: "『革命について』でアーレントが近代の革命に見たものとして最も適切なものは？",
+    choices: [
+      "貧しさをなくし、富を公平に分け直すことを目指した営み",
+      "人々が共に行為し、自由の現れる公の空間を新しく創設する試み",
+      "議会で代表を選ぶ制度が整うことで、完成する運動",
+      "暴力で政権を奪うこと自体を、政治の本来の姿とする運動"
+    ],
+    answer: 1,
+    explanation: "革命は、始まりという問題に人をじかに向き合わせる唯一の政治的な出来事だとされます。新しい政治の空間を創設し、自由が世界の現実として現れる場を作ろうとする試みだからです。",
+    detail: "近代の革命には、はかなくはあっても、人々が合意した目的のもとで共に行為し、自由の公共の空間を打ち立てようとする力が現れた、とアーレントは見ます。\n\nそれでもフランス革命もアメリカ革命も、その空間を長く保つことには失敗したとされます。フランス革命では貧困をめぐる社会問題が政治的な自由より先に置かれ、政治の制度は財の分配を管理するものになりました。アメリカ革命も、憲法で政治社会を築いたものの限られた成功にとどまりました。\n\n代わりにアーレントが示したのは、政党と国家の官僚にもとづく代表の仕組みではなく、市民が自分たちの政治の事柄を決められる評議会の連邦でした。富の分け直しを目的とみる見方や議会制度の完成とみる見方は、この創設を見落とします。暴力を政治の本来の姿とみる見方は、権力を共に行為することに置き、暴力と区別したアーレントと逆です。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、革命を、人々が共に行為して自由の現れる公共の空間を創設する試みとみる規定（SEP Hannah Arendt §4.3、IEP §5）。誤答は、アーレントがフランス革命の失敗の原因とみた社会問題（富の分配）を目的とする見方、アーレントが評議会の連邦に代えようとした代表制の完成とみる見方、アーレントが権力と区別した暴力を政治の本来の姿とする見方（SEP §4.6）。四択は成立している。 設計の記録: 二十世紀の政治哲学の回（二十世紀の政治哲学の回、2026年9月26日）の量の見直しで、アーレントの4つの主著の1つ『革命について』（1963年）が1問も無く、人物像に欠かせないとされたので作り、承認の段（2026年9月26日）で書き込んだ。社会問題の部分だけなら社会的なものの勃興の問題に一文足せるが、自由の創設と評議会制は扱えないので作問にした。誤答を先に3つ書いてから正解を書いた。位置指しなし。 設計の記録: keys と terms は空にした。台帳に革命論にあたる語が無いため。鍵語を登録するなら、承認の段で語形を決める。",
+      refs: [
+        "https://plato.stanford.edu/entries/arendt/ — SEP「Hannah Arendt」§4.3・§5.2。革命は始まりの問題に私たちをじかに、避けがたく向き合わせる唯一の政治的な出来事であること（\"are the only political events which confront us directly and inevitably with the problem of beginning\"、OR 21）、新しい政治の空間、自由が世界の現実として現れうる空間を創設する試みであること（\"a space where freedom can appear as a worldly reality\"）、政党と国家の官僚にもとづく代表の仕組みに代えて、市民が自分たちの政治の事柄を決められる評議会の連邦を提案したこと（\"Arendt proposed a federated system of councils through which citizens could effectively determine their own political affairs\"）。正解と explanation・detail 第3段落を支える。§4.6、権力は強制ではなく同意と理性的な説得にもとづく点で暴力と違うこと（\"And unlike violence, it is based not on coercion but on consent and rational persuasion\"）。detail 第3段落の誤答の説明を支える",
+        "https://iep.utm.edu/hannah-arendt/ — IEP「Hannah Arendt」§5「Revolution」。近代の革命が、はかなくはあっても、合意した目的のもとで共に行為する基本的な政治の能力を示したこと（\"exhibit (albeit fleetingly) the exercise of fundamental political capacities\"）、フランス革命もアメリカ革命も長く続く政治の空間を築けなかったこと、フランス革命では社会問題への従属が政治の制度を財と資源の分配の管理に変えたこと（\"reduces political institutions to administering the distribution of goods and resources\"）、アメリカ革命は憲法によって政治社会を築いたが限られた成功にとどまったこと（\"American Revolution\"）。正解の2本目と detail 第1・2段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q880",
+    philosophers: ["ケルゼン"], terms: [], type: "single",
+    keys: [],
+    question: "ケルゼンが法を他の社会秩序から区別したものとして最も適切なものは？",
+    choices: [
+      "人々が内心から正しいと認めて、進んで従う規範であること",
+      "国家が法より先にあり、法はその国家の意志を表すこと",
+      "違法な行為には、意に反してでも制裁を加えるべしとする強制の秩序",
+      "共同体の道徳に合っているかぎりで、妥当する規範であること"
+    ],
+    answer: 2,
+    explanation: "法の規範の形は、ある行為（違法行為）がなされたら制裁が加えられるべし、という条件つきの命令で、宛先は裁判所です。法は臣民に何をせよとじかには言わず、条件がそろったとき官吏が何をすべきかを告げる、という見方です。",
+    detail: "強制が決め手とされます。社会に有害な事実の帰結として秩序が定める行為は、個人の意に反してでも、抵抗すれば物理的な力によってでも執行されるべきものです。この点で、法は他の社会秩序から区別されます。\n\nだから「殺すなかれ」という規範は、「殺した者は罰せられるべし」という規範が妥当するなら余計なものになります。本来べきとされるのは、制裁として働く強制の行為だけだ、ということになります。\n\n内心からの承認を決め手とするのは道徳の側の見方で、共同体の道徳に合うかで妥当を測るのは自然法論の側です。どちらも純粋法学が法の記述から外したものです。国家を法に先立つ実体とみる見方は、ケルゼンが法と国家の二元論として退け、国家を法秩序そのものとしました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、法を、違法行為に制裁を科すべしとする強制の秩序とみる規定（SEP Legal Positivism §2、SEP Legal Obligation and Authority §1、SEP Coercion §1.4）。誤答は、内心の承認にもとづく道徳の見方、ケルゼンが退けた法と国家の二元論（国家を法に先立つ実体とみる）、道徳に合うかで妥当を測る自然法論。四択は成立している。 設計の記録: 二十世紀の政治哲学の回（二十世紀の政治哲学の回、2026年9月26日）の量の見直しで、ケルゼンの法の定義そのもの（強制秩序、制裁の理論）が1問も無く、人物像に欠かせないとされたので作り、承認の段（2026年9月26日）で書き込んだ。置き場の候補（純粋法学の問題）に一文足すと定義の中身まで書けないので作問にした。誤答を先に3つ書いてから正解を書いた。位置指しなし。 設計の記録: keys と terms は空にした。台帳に強制秩序にあたる語が無いため。鍵語を登録するなら、承認の段で語形を決める。 設計の記録: 誤答二番目は当初、主権者の命令の説（オースティン）にしていたが、SEP The Nature of Law §1.3 がベンサム・オースティン・ケルゼンはみな強制を法の本質的な特徴としたと書くので、正解と紛れうるとして、法と国家の二元論に替えた。",
+      refs: [
+        "https://plato.stanford.edu/entries/legal-positivism/ — SEP「Legal Positivism」§2。ケルゼンにとって、すべての法の形は、ある振る舞い（違法行為）がなされたら制裁を科せという、裁判所に宛てた条件つきの命令であること（\"The form of every law is that of a conditional order, directed at the courts, to apply sanctions\"）、法は臣民に何をせよとは言わず、一定の条件のもとで官吏が臣民に何をすべきかを告げること（\"it does not tell subjects what to do; it tells officials what to do to its subjects under certain conditions\"）。正解と explanation を支える",
+        "https://plato.stanford.edu/entries/legal-obligation/ — SEP「Legal Obligation and Authority」§1。ケルゼンの引用で、制裁として働く強制の行為だけがべきとされること（\"Only the coercive act, functioning as a sanction, ought to be\"）、「殺した者は罰せられるべし」が妥当するなら「殺すなかれ」は余計であること（\"is superfluous, if a norm is valid\"）。正解の2本目と detail 第2段落を支える",
+        "https://plato.stanford.edu/entries/coercion/ — SEP「Coercion」§1.4。強制の秩序として法は他の社会秩序から区別され（\"As a coercive order, the law is distinguished from other social orders\"）、社会に有害な事実の帰結として定められた行為は個人の意に反してでも執行されるべきこと（\"ought to be executed even against the will of the individual\"）。detail 第1段落を支える",
+        "https://archive.org/details/allgemeinestaats00kels — Hans Kelsen, Allgemeine Staatslehre（Berlin: J. Springer, 1925。Internet Archive。1929年より前の刊行で米国で公有）。§15 の74–76頁で、人格としての国家は法秩序の人格化でしかありえないこと（\"Als Person kann der Staat nur die Personifikation der Rechts\"）、国家の自己拘束の問題を見せかけの問題と認めること。detail 第3段落の誤答の説明を支える"
       ]
     }
   }
