@@ -6072,7 +6072,20 @@ node -e "const s=require('fs').readFileSync('F','utf8');
 **何を止めるか。**Claude Code の PreToolUse hook（ツールを実行する前に呼ばれる仕組み）で、Bash と PowerShell の命令を実行の前に `tools/hooks/guard_shell_write.js` にかける。止めるのは、ヒアドキュメント（`<<`。git commit のメッセージを `$(cat <<'EOF' …)` で作る形を含む）・`sed -i`・`node -e`／`python -c` のコードの中のファイルへの書き込み・リダイレクト（`>`・`>>` ほか。`/dev/null`・`NUL`・`$null` へ捨てるものと `2>&1` は通す）・`tee`、PowerShell の `Set-Content`・`Add-Content`・`Out-File`・`Tee-Object`・`[IO.File]` の書き込み・リダイレクト。`bash -c`・`sh -c`・`powershell -Command` の引数の中身も同じ検査にかける。止めたときは、理由と代わりのやり方を返す（終了コード 2）。
 **道具の出力をファイルに残すときは `--out <出力先>` を使う**（`tools/unverified_list.js`・`tools/over_limit.js`・`tools/remain_list.js`。`tools/_lib.js` の `outOption`）。リダイレクトは止まる。
 
-**設定の場所は `.claude/settings.local.json`（このプロジェクトだけ・この PC だけ）。settings.local.json は Git に入らない（`.gitignore` に入れてある）ので、作り直すときはここから戻す。**中身は次のとおり：
+**哲学アプリの作業は `C:\Users\merle\myapps\launchers\claude-philosophy.bat` で始める。myapps 側の hooks は、myapps から始めたとき（デスクトップの `claude-remote.bat`）の保険。**
+
+**設定は二か所に置く。どちらも settings.local.json で、Git に入らないので、作り直すときはここから戻す**（philosophy-quiz 側は `.gitignore` に入れてある。myapps は git のリポジトリではない）。
+
+| 置き場所 | 効くとき | 中身 |
+|---|---|---|
+| `C:\Users\merle\myapps\philosophy-quiz\.claude\settings.local.json` | philosophy-quiz で始めたとき（`claude-philosophy.bat`） | hooks だけ（下の JSON） |
+| `C:\Users\merle\myapps\.claude\settings.local.json` | myapps で始めたとき（`claude-remote.bat`） | もとからある許可の設定（`permissions.allow`）の後ろに、同じ hooks を足した形 |
+
+**起動の場所ごとにどちらが効くか。**公式の説明では、プロジェクトの設定は始めたフォルダのもの（git のリポジトリの中で始めたときはその根のもの）が読まれ、下のフォルダの設定は読まれない。だから philosophy-quiz で始めると上の行、myapps で始めると下の行だけが効く。ほかのフォルダ（myapps の外）で始めたときは、どちらも効かない。
+**スクリプトは絶対パスで書く。**`${CLAUDE_PROJECT_DIR}` は始めたフォルダを指すので、myapps から始めると存在しないパスになり、呼べなかった hook は止めずに通す（黙って効かなくなる）。
+**myapps から始めた作業には、ほかのアプリ（ニュースなど）の作業も入る。**そのため `guard_shell_write.js` は、入力の cwd（その時点の作業フォルダ）が philosophy-quiz の中にあるとき、または命令に philosophy-quiz のパスが含まれるときだけ検査する。ほかのアプリの命令（`python -c` での書き込みなど）は通す。**myapps から philosophy-quiz の名前を書かずに philosophy-quiz のファイルへ書き込む形（変数に入れたパスなど）はすり抜ける。**
+
+hooks の部分の JSON（二か所とも同じ）：
 
 ```json
 {
@@ -6084,7 +6097,7 @@ node -e "const s=require('fs').readFileSync('F','utf8');
           {
             "type": "command",
             "command": "node",
-            "args": ["${CLAUDE_PROJECT_DIR}/tools/hooks/guard_shell_write.js"],
+            "args": ["C:/Users/merle/myapps/philosophy-quiz/tools/hooks/guard_shell_write.js"],
             "timeout": 10
           }
         ]
@@ -6093,6 +6106,8 @@ node -e "const s=require('fs').readFileSync('F','utf8');
   }
 }
 ```
+
+myapps 側は、もとからある `"permissions": { "allow": [ … ] }` の後ろにカンマを置いて、この `"hooks": { … }` を並べる（許可の設定は変えない）。
 
 **`guard_shell_write.js` か、止める対象の道具を直したら、`node tools/hooks/hook_guard_test.js` を回す。**止めるべき命令と通すべき命令の一覧を hook と同じ形で渡し、すべて期待どおりなら終了コード 0 を返す。
 **限界。**見分けは文字列の手がかりによるもので、すり抜ける形がある（`awk` の `print >`、`cp`・`mv`・`curl -o`、呼び出しの名前を文字列でつないで作る書き込み、`echo … | node` のような標準入力からのスクリプト、`powershell -EncodedCommand` など）。誤って止める形もある（`node -e` で書き込みの名前を文字として出すだけのもの）。検査のスクリプトが落ちたとき・時間切れのとき・入力が読めないときは、公式の説明どおり止まらずに通る（利用者がそのままと決めた。落ちたときに止める作りにすると、スクリプトの誤り一つで全部の命令が止まるため）。

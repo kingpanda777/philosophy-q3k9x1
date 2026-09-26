@@ -1,5 +1,6 @@
 // Claude Code の PreToolUse hook（matcher "Bash|PowerShell"）で、CLAUDE.md の書き換えの決まりに反するシェルでの書き換えを止める。
-// 2026年9月26日、社会学の回で作った。設定は .claude/settings.local.json（Git に入らない。中身は CLAUDE.md「hooks で書き換えの決まりを止める」に写してある）。
+// 2026年9月26日、社会学の回で作った。設定は philosophy-quiz と myapps の二か所の .claude/settings.local.json（Git に入らない。中身は CLAUDE.md「hooks で書き換えの決まりを止める」に写してある）。
+// philosophy-quiz の作業（cwd が philosophy-quiz の中か、命令に philosophy-quiz のパスを含むもの）だけを見る。ほかのアプリの作業は通す。
 //
 // 標準入力で hook の JSON（tool_name・tool_input.command）を受け取る。
 //   通す  ：何も出さずに終了コード 0
@@ -125,7 +126,21 @@ function check(kind, raw, depth = 0) {
   return reasons;
 }
 
-module.exports = { check };
+// philosophy-quiz の作業かどうか（2026年9月26日に足した）。
+// 設定は philosophy-quiz と myapps の二か所に置く（CLAUDE.md「hooks で書き換えの決まりを止める」）。myapps から始めた作業には
+// ニュースなどほかのアプリの作業も入るので、入力の cwd（その時点の作業フォルダ）が philosophy-quiz の中にあるとき、
+// または命令に philosophy-quiz のパスが含まれるときだけ検査する。cwd の無い入力は、念のため検査する。
+// 限界：myapps から philosophy-quiz の名前を書かずに philosophy-quiz のファイルへ書き込むと（変数に入れたパスなど）すり抜ける
+const PQ = 'c:/users/merle/myapps/philosophy-quiz';
+const norm = p => String(p).replace(/\\/g, '/').replace(/^\/([a-z])\//i, '$1:/').toLowerCase();
+function inScope(cwd, cmd) {
+  if (!cwd) return true;
+  const c = norm(cwd);
+  if (c === PQ || c.startsWith(PQ + '/')) return true;
+  return /philosophy-quiz/i.test(cmd);
+}
+
+module.exports = { check, inScope };
 
 if (require.main === module) {
   let raw = '';
@@ -136,6 +151,7 @@ if (require.main === module) {
     const kind = input.tool_name;
     if (kind !== 'Bash' && kind !== 'PowerShell') process.exit(0);
     const cmd = (input.tool_input && input.tool_input.command) || '';
+    if (!inScope(input.cwd, cmd)) process.exit(0);                     // ほかのアプリの作業は見ない
     const reasons = check(kind, cmd);
     if (!reasons.length) process.exit(0);
     process.stderr.write('この命令は CLAUDE.md の書き換えの決まりに反するので hooks が止めた（tools/hooks/guard_shell_write.js）。\n理由：' + reasons.join('／') + '\n' + ALT + '\n形を変えて回り込まず、Write・Edit かファイルに書いたスクリプトに切り替えること。\n');
