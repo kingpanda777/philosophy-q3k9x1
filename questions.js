@@ -199,7 +199,9 @@ const PHILOSOPHERS = [
   { name: "ベッカリーア", years: "1738–1794", note: "刑罰は必要を超えれば不正である。死刑と拷問を問い直す", school: "社会契約と政治" },
   { name: "カンタン・メイヤスー", years: "1967–", note: "思考の外にあるものを思考できるか。相関主義を批判した", school: "構造主義以降" },
   { name: "グレアム・ハーマン", years: "1968–", note: "対象は何にも汲み尽くされない。オブジェクト指向存在論を唱えた", school: "構造主義以降" },
-  { name: "マルクス・ガブリエル", years: "1980–", note: "世界は存在しない。意味の場の存在論を唱えた", school: "構造主義以降" }
+  { name: "マルクス・ガブリエル", years: "1980–", note: "世界は存在しない。意味の場の存在論を唱えた", school: "構造主義以降" },
+  { name: "ラトゥール", years: "1947–2022", note: "科学の事実は、人間と人間でないものの結びつきのなかで作られる", school: "科学哲学" },
+  { name: "ハラウェイ", years: "1944–", note: "知はいつもどこかに位置を占める。どこからでもない視点はない", school: "科学哲学" }
 ];
 
 const TERMS = [
@@ -22878,6 +22880,264 @@ const QUESTIONS = [
         "https://plato.stanford.edu/entries/legal-obligation/ — SEP「Legal Obligation and Authority」§1。ケルゼンの引用で、制裁として働く強制の行為だけがべきとされること（\"Only the coercive act, functioning as a sanction, ought to be\"）、「殺した者は罰せられるべし」が妥当するなら「殺すなかれ」は余計であること（\"is superfluous, if a norm is valid\"）。正解の2本目と detail 第2段落を支える",
         "https://plato.stanford.edu/entries/coercion/ — SEP「Coercion」§1.4。強制の秩序として法は他の社会秩序から区別され（\"As a coercive order, the law is distinguished from other social orders\"）、社会に有害な事実の帰結として定められた行為は個人の意に反してでも執行されるべきこと（\"ought to be executed even against the will of the individual\"）。detail 第1段落を支える",
         "https://archive.org/details/allgemeinestaats00kels — Hans Kelsen, Allgemeine Staatslehre（Berlin: J. Springer, 1925。Internet Archive。1929年より前の刊行で米国で公有）。§15 の74–76頁で、人格としての国家は法秩序の人格化でしかありえないこと（\"Als Person kann der Staat nur die Personifikation der Rechts\"）、国家の自己拘束の問題を見せかけの問題と認めること。detail 第3段落の誤答の説明を支える"
+      ]
+    }
+  },
+  {
+    id: "q881",
+    philosophers: ["ラトゥール"], terms: [], type: "single",
+    keys: ["アクターネットワーク理論"],
+    question: "ラトゥールらのアクターネットワーク理論で、行為する者とされるものとして最も適切なものは？",
+    choices: [
+      "意図をもつ人間だけで、道具は使われる手段にすぎない",
+      "人間と人間でないものが結びつき合ってできた、ひとつの集まり",
+      "技術そのもので、人間はその動きに従うだけである",
+      "社会という独自の実在で、個人はそれに動かされる"
+    ],
+    answer: 1,
+    explanation: "銃規制をめぐる「銃が人を殺す」「人が人を殺す」という論争に対して、ラトゥールは、殺すのは銃でも人でもなく、人と銃が組み合わさったものだと論じました。行為する力は一人ひとりの人間の性質ではなく、人間と人間でないもの（アクタン）が結びついた集まりにあるとされます。結びついたあとは、人も銃も前と同じではありません。",
+    detail: "道具を使われるだけの手段とみるのは「人が人を殺す」の側、技術がひとりでに人を動かすとみるのは「銃が人を殺す」の側で、ラトゥールはどちらも退けました。社会という独自の実在を持ち出すのも、何かを「社会的」と名指すこと自体を誤りとした彼の立場と合いません。\n\nこの理論はカロンやローらとともに唱えられ、原子も人も機械も山も、原理の上では同じ資格に置かれます。意味を変えて伝える「媒介」と、変えずに運ぶ「仲介」を区別し、研究者にできるのは結びつきをたどる記述を書くことだとされます。\n\n何も積み上げない平らな存在論の例として、ハーマンのオブジェクト指向存在論と並べて論じられます。刑務所や病院を調べたフーコーと、実験室や交通の仕組みを調べたこの理論を、大きな制度の場で人の行為を見る点で並べる見方もあります。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、人間と人間でないもの（アクタン）が結びついた集まりが行為者として働くというアクターネットワーク理論の芯（SEP Artifact §3.3、SEP Social Ontology §3.5.2）。誤答は、道具を人間の手段とみる見方（銃規制の論争の「人が人を殺す」の側）、技術がひとりでに人を動かすとみる見方（「銃が人を殺す」の側）、社会という独自の実在が個人を動かすとみる見方（何かを「社会的」と名指すこと自体を誤りとするラトゥールの立場と合わない）。どれもラトゥールが退けた側で、四択は成立している。 設計の記録: 人物の追加（2026年9月26日）で作った。誤答を先に3つ書いてから正解を書いた。位置指しなし。一般化された対称性の原理は、カロンに帰す資料があり本人も1999年に捨てたと書くので、正解の芯に置かなかった（SEP Artifact の「関係は対称的だ」は台本〔スクリプト〕の話として explanation に入れていない）。terms は空にした。TERMS「技術」の note（すべてを資源として立てる枠組みか、複製が開く解放の可能性か）と「科学」の note（何が科学で何がそうでないのか）のどちらの軸にも当てはまらないため。 資料の限界: SEP・IEP にラトゥールの専用の項目は無い。REP に専用の項目（ハーマン著、2016年）があるが、無料で読めるのは要約だけで、書き手は登録済みのハーマンなので、芯の支えには数えていない。芯は SEP の2項目（著者が別）で支えた。 対照の記録: ハーマンの問題（q843 ほか）と、平らな存在論の例として並ぶ。",
+      refs: [
+        "https://plato.stanford.edu/entries/artifact/ — SEP「Artifact」（Beth Preston、2022年10月3日改訂）§3.3。行為する力は個々の人間の性質ではなく、人間と人間でないものが特定の仕方で結びついた「アクタン」の集まりの性質だとすること（\"agency is not a property of individual humans, but rather of collectives of “actants”—humans and nonhumans related to each other in specific, systematic ways\"）、銃規制の論争で、殺すのは銃でも人でもなく人と銃の合成体だとし、結びついたあとは人も銃も前と同じではないとすること（\"the agent who kills is neither the gun nor the person, but a composite person-gun\"、\"neither the person nor the gun remains the same in this relational context\"）、フーコーとアクターネットワーク理論をどちらも大きな制度の場で人の行為を調べるものとして並べること（\"Both Foucault and Latour tend to study the phenomena of human action in large-scale, institutional contexts\"）。正解と explanation、detail 第1段落・第3段落を支える",
+        "https://plato.stanford.edu/entries/social-ontology/ — SEP「Social Ontology」（Brian Epstein、2024年3月4日改訂）§3.5.2 Flat ontologies。アクターネットワーク理論ではすべての存在者が原理の上で同じ資格に置かれること（\"All entities, in this approach, are potentially on a par with one another\"）、何かを「社会的」と名指すこと自体が誤りだとすること（\"Even identifying an entity or a class of things as “social” is a mistake, according to Latour\"）、媒介と仲介の区別（\"they can act as “mediators”, transforming meaning, and they can act as “intermediaries”, transmitting meaning without transforming it\"）、原子・人・機械・山・銀行を同じく扱うこと（\"An atom, a person, a machine, a mountain, or a bank\"）、研究者は結びつきをたどる記述を書くこと（\"write narratives that trace associations\"）、ハーマンのオブジェクト指向存在論と並べること（\"“object-oriented ontology” (Harman 2005)\"）。文献表に Latour 2005・Callon 1999・Law 2009。正解の2本目と detail 第1〜第3段落を支える",
+        "https://www.jstage.jst.go.jp/article/sstj/15/0/15_35/_article/-char/ja — 久保明教「汎構築主義の射程：ブリュノ・ラトゥールにおける実在と社会」『現代社会学理論研究』15（2021年）35–46頁、DOI 10.34327/sstj.15.0_35。ラトゥールがミシェル・カロンらと共にアクターネットワーク論を提唱したこと。detail 第2段落のカロンらとの共同を補う"
+      ]
+    }
+  },
+  {
+    id: "q882",
+    philosophers: ["ラトゥール"], terms: [], type: "single",
+    keys: ["事実の構築"],
+    question: "ラトゥールとウールガーが『ラボラトリー・ライフ』で、実験室の調査から描いたものとして最も適切なものは？",
+    choices: [
+      "科学者が自然をありのまま写し取り、事実を見つける過程",
+      "反証の試みを一つずつ重ね、理論を鍛えていく過程",
+      "記録の装置と言明の書き換えを重ねて、事実が作り上げられる過程",
+      "研究費や出世をめぐる利害だけで、説の勝敗が決まる過程"
+    ],
+    answer: 2,
+    explanation: "二人は、ソーク研究所のギルマンの神経内分泌学の実験室を、1975年から77年にかけて調べました。測定の装置が生む記録をもとに、言明から「〜とみられる」のような限定が外れていくにつれて、ある物質が確かな事実になっていく過程を描いています。事実が「外にある」ことは、科学の仕事の原因ではなく結果だとされました。",
+    detail: "自然をありのまま写し取るという見方は、事実を発見されるのを待つものとみる側で、二人の結論とは向きが逆です。反証を重ねて理論を鍛えるのは、ポパーの方法論の描き方です。利害だけで勝敗が決まるとみるのは、記録や装置の働きを落とした説明になります。\n\n初版（1979年）の副題は「科学的事実の社会的構築」でしたが、1986年の第2版で「科学的事実の構築」に改められました。構築という語を、社会学の用法とは違う意味で使うことを示すためだったとされます。実験室を民族誌の方法で調べる研究の古典に数えられます。\n\n構築という語は、事実を否定するものと受け取られ、物理学者の反発も招きました。これに対してハッキングは、二人は事実や実在が無いと言っているのではないと読み、人がなぜあることを信じるのかを、それが真だからと説明しない点で二人は正しいとしました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、記録の装置と言明の書き換え（限定が外れていくこと）を重ねて事実が作り上げられる過程（Small 2023、SEP Experiment in Physics §2.2.5、久保2021）。誤答は、自然を写し取って事実を見つける実在論の側の描き方（二人の「事実が外にあることは科学の仕事の結果」と逆）、ポパーの反証主義の描き方、利害だけで勝敗が決まるとみる説明（二人は1986年に副題から「社会的」を外し、構築を社会学の用法から区別した）。四択は成立している。 設計の記録: 人物の追加（2026年9月26日）で作った。誤答を先に3つ書いてから正解を書いた。位置指しなし。ポパーは同じ棚の人物で、誤答の出どころとして名前を出すだけなので philosophers に入れていない。副題を改めた理由は、久保2021 は構築概念の違いの強調、Small 2023 は「possibly」ストロング・プログラムへの異論と書き、どちらも推測の形なので、本文は「とされます」で書いた。terms は空にした（TERMS「科学」の note は境界設定の問いで、この問題の軸と違う）。 資料の限界: SEP・IEP にラトゥールの専用の項目は無い。芯は査読誌の Small 2023 と SEP Experiment in Physics §2.2.5（ハッキングが引く一節）で支えた。 邦訳: 『ラボラトリー・ライフ：科学的事実の構築』立石裕二・森下翔監訳、ナカニシヤ出版、2021年（国立国会図書館サーチで確かめた）。原著は Sage、1979年（フランス国立図書館の書誌「copyright 1979」）、第2版は Princeton University Press、1986年。",
+      refs: [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10433636/ — Henry Small, \"Is scientific knowledge socially constructed? A Bayesian account of Laboratory Life\", Frontiers in Research Metrics and Analytics 8 (2023) 1214512, DOI 10.3389/frma.2023.1214512。要旨：科学的な「事実」が、個人どうしと実験室の「記録の装置」とのやりとりを通じて作られ、限定がすべて外れたところで確かな知識として現れること（\"scientific “facts” are formed through a process of microsocial interactions among individuals and “inscription devices” in the lab\"、\"until all qualifications are dropped\"）。§2：事実の形成を言明の限定の脱落に結びつけること（\"The authors link fact formation to the dropping of “modalities” (qualifiers) in statements\"）、ラトゥールの滞在が1975年から77年であること。§1：1986年の第2版で「社会的」の語が外されたこと（\"One notable change was dropping the word “social” from “social construction”\"）。正解と explanation、detail 第2段落を支える",
+        "https://plato.stanford.edu/entries/physics-experiment/ — SEP「Experiment in Physics」（Allan Franklin & Slobodan Perovic、2023年6月2日改訂）§2.2.5。二人がもとの本の副題を「科学的事実の社会的構築」としていたこと（\"constructivists Latour and Woolgar originally entitled their book Laboratory Life: The Social Construction of Scientific Facts (1979)\"）、物理学者がこうした題を自分たちの仕事を貶めると反発したこと（\"Physicists argue that this demeans their work\"）、ハッキングが、構築主義者は事実が無いと言っているのではないとし、二人の「外にあることは科学の仕事の結果であって原因ではない」を引いて、二人は正しいとしたこと（\"that ‘out-there-ness’ is a consequence of scientific work rather than its cause\"、\"Latour and Woolgar were surely right\"）。正解の2本目と explanation、detail 第3段落を支える",
+        "https://www.jstage.jst.go.jp/article/sstj/15/0/15_35/_article/-char/ja — 久保明教「汎構築主義の射程」『現代社会学理論研究』15（2021年）35–46頁、DOI 10.34327/sstj.15.0_35、36頁。副題が1979年の初版では「科学的事実の社会的構築」、1986年の第2版では「科学的事実の構築」に変わり、同書の構築の概念が社会学の用法と異なることを強調するものだったこと。detail 第2段落を支える",
+        "https://plato.stanford.edu/entries/scientific-knowledge-social/ — SEP「Scientific Knowledge, Social Dimensions of」（Helen Longino、2025年1月24日改訂）§4。ソーク研究所のギルマンの神経内分泌学の実験室の研究が、実験室研究の古典の一つであること（\"study of Roger Guillemin’s neuroendocrinology laboratory at the Salk Institute is another classic in this genre\"）。explanation と detail 第2段落を支える",
+        "https://www.jstage.jst.go.jp/article/sstj/12/0/12_30/_article/-char/ja — Hwan-Suk Kim, \"STS as a Challenge to ‘the Social’: On the Question of Nonhuman Agency\"『現代社会学理論研究』12（2018年）30–44頁、DOI 10.34327/sstj.12.0_30、41頁。実験室の科学者とその記録の装置が、複雑な世界の一面を捉えて記録に変えること（\"inscription device in a laboratory\"）。正解の「記録の装置」を補う"
+      ]
+    }
+  },
+  {
+    id: "q883",
+    philosophers: ["ラトゥール"], terms: [], type: "single",
+    keys: ["純化と翻訳"],
+    question: "ラトゥールが『虚構の「近代」』で、近代人について論じたこととして最も適切なものは？",
+    choices: [
+      "自然と社会を切り分けたことで、近代の科学と政治は確かになった",
+      "物は人に意味を与えられるだけで、社会の成り立ちに関わらない",
+      "近代はすでに終わり、人々はそのあとの時代を生きている",
+      "自然と社会を分けると唱えながら、人と物の混ざりものを増やしてきた"
+    ],
+    answer: 3,
+    explanation: "近代人は、人間からなる社会と人間でないものからなる自然を切り分ける「純化」を成し遂げたと自負してきました。しかし実際には、人間と人間でないものを組み合わせてハイブリッド（混ざりもの）を生み出す「翻訳」を同時に行ってきた、とラトゥールは論じます。純化と翻訳の二つの実践のうち、近代人は切り分けの面にだけ目を向けてきたとされます。原題は「われわれは一度も近代的であったことはない」です。",
+    detail: "切り分けによって近代の科学と政治が確かになったという見方は、近代人の自己理解そのもので、純化の側だけを見ています。物は意味を与えられるだけだとみるのは、人間でないものも行為に加わるとする彼の立場と逆です。近代が終わったのではなく、一度も近代的でなかったというのが題の主張です。\n\n混ざりものの問題は、純化とちょうど対をなして現れるとされます。オゾンホールの広がりのように、自然の側の問題とも社会の側の問題とも言い切れない事象が、その例に挙げられます。\n\n自然と社会を切り分ける取り決めを、彼は近代の「憲法」と呼びました。京都賞の贈賞理由は、彼の哲学を、自然と社会の二分法にもとづく「近代」の見直しとしています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、近代人は自然と社会を切り分ける純化を唱えながら、実際には人間と人間でないものを組み合わせるハイブリッドの生産（翻訳）を行ってきたという論（栗原2021、山崎2011）。誤答は、近代人の自己理解（純化の側だけ）、人間でないものは意味を与えられるだけだとする見方（アクターネットワーク理論と逆）、近代はすでに終わったとする見方（題の「一度も近代的であったことはない」と逆）。四択は成立している。 設計の記録: 人物の追加（2026年9月26日）で作った。誤答を先に3つ書いてから正解を書いた。位置指しなし。鍵語は「翻訳」を単独で立てず（クワインの「翻訳の不確定性」とバーバの「文化の翻訳」に部分一致するため）、「純化と翻訳」の形にした。terms は空にした（当てはまる TERMS の語が無い）。 資料の限界: 純化と翻訳の対を中身として書く英語の基準の典拠（SEP・IEP・REP の要約・英語の査読論文）は見つからなかった。芯は日本語の2本で支えた。栗原2021 は文字がきれいに取れる。山崎2011 は走査の文字化けと段の入れ替わりがあり、段を分けて読んで中身を確かめた（引用は短い句にとどめた）。京都賞の贈賞理由とホルベア賞の選考委員会の文は、近代の見直しという位置づけの補いにだけ使った。 邦訳: 『虚構の「近代」：科学人類学は警告する』川村久美子訳・解題、新評論、2008年（国立国会図書館サーチで確かめた）。CiNii Books の注記では英訳版（Harvard University Press、1993年）からの重訳で、目次の第2章が「憲法（近代の「憲法」……）」。原著は La Découverte、1991年（フランス国立図書館の書誌）。",
+      refs: [
+        "https://www.jstage.jst.go.jp/article/jpkankyo/27/0/27_193/_article/-char/ja — 栗原亘「人新世における脱・人間中心的なポリティクスに向けて：アクターネットワーク理論の環境社会学との連携の可能性に関する一考察」『環境社会学研究』27（2021年）193–208頁、DOI 10.24779/jpkankyo.27.0_193、196頁。近代人は人間からなる「社会」と非人間からなる「自然」の分離（「ラトゥールはこれを純化（purification）と呼ぶ」）を達成して繁栄してきたと自負しているが、実際は別の実践を同時に遂行してきたこと、それが「人間と非人間とを組み合わせる実践である」こと、これが「「媒介（mediation）」ないし「翻訳（translation）」によるハイブリッドの生産とも呼ばれる」こと。198–199頁：近代人が切断面だけに目を向けてきたこと。正解と explanation、detail 第1段落を支える",
+        "https://www.jstage.jst.go.jp/article/jjcanth/76/3/76_KJ00007729536/_article/-char/ja — 山崎吾郎「序：身体のハイブリッド」（特集「身体のハイブリッド」）『文化人類学』76(3)（2011年）257–266頁、DOI 10.14890/jjcanth.76.3_257、260頁。ハイブリッドの問題が「純化（purification）とちょうど対をなすもの」として現れるとラトゥールが言うこと（LATOUR 1993（2008）：11 を引く）、オゾンホールの拡大のように、自然の秩序と社会の秩序のどちらか一方に説明を還元できない事象が近代の逆説の象徴であること。正解の2本目と detail 第2段落を支える（走査の文字化けがあるので、段を分けて読んで確かめた）",
+        "https://www.kyotoprize.org/en/laureates/bruno_latour/ — 京都賞（稲盛財団）2021年 思想・芸術部門の受賞者の頁。贈賞理由：自然・人間・実験器具などを等しい行為者として扱い、技術科学をそれらのハイブリッドな網の目として描くこと（\"treating nature, humans, laboratory equipment, and other entities as equal actors\"）、その哲学が自然と社会の二分法にもとづく「近代」を見直すものであること（\"based on the dualism of nature and society\"）。【付随】detail 第3段落を支える",
+        "https://holbergprize.org/news/bruno-latour-in-memoriam/ — ホルベア賞（ベルゲン大学）の追悼の頁。選考委員会の文：ラトゥールが近代の分析と読み直しに取り組んだこと（\"Bruno Latour has undertaken an ambitious analysis and reinterpretation of modernity\"）。【付随】detail 第3段落を補う"
+      ]
+    }
+  },
+  {
+    id: "q884",
+    philosophers: ["ラトゥール"], terms: [], type: "single",
+    keys: ["関心事"],
+    question: "ラトゥールが2004年の論文「批判はなぜ力を失ったか」で、批判に求めたこととして最も適切なものは？",
+    choices: [
+      "事実の背後の社会的な条件を暴き、その確かさを崩していくこと",
+      "事実を暴いて差し引くのでなく、関心事を集めて実在を足していくこと",
+      "科学の事実だけを確かとし、ほかの語りを退けること",
+      "どの主張も語りとみて、確かさの違いを問わないこと"
+    ],
+    answer: 1,
+    explanation: "ラトゥールは、事実が作られることを論じる議論が、苦労して得た証拠を崩すのに使われていることに気づき、自らの仕事を問い直しました。批判をやり直すには、事実から遠ざかるのではなく事実に近づき、事実の問題（matters of fact）ではなく関心事（matters of concern）を扱う頑固な実在論を育てるべきだとします。批判者とは暴く者ではなく、集める者だというのです。",
+    detail: "事実の背後の条件を暴いて確かさを崩すのは、彼がこの論文で見直した、これまでの批判の型です。科学の事実だけを確かとして議論の外に置く見方も、関心事を集めるという考えと逆です。どの主張も語りとみて違いを問わないのも、事実に近づくという彼の求めと合いません。\n\n論文は Critical Inquiry 誌に載りました。自分もかつて、事実の構築に内在する科学的確実性の欠如を示すことに時間を費やしてきた、と彼は書き、事実から離れる以外に批判のやり方は無いと信じたことを誤りだったと述べています。\n\n関心事を扱う道具は、暴くためではなく守り、世話をするためのものだとし、ここでハラウェイの言い方を借りています。のちに、関心事の考えを広げて「ケアの事柄」を論じる議論も生まれました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、事実を暴いて差し引く批判から、関心事（matters of concern）を集めて実在を足す実在論へという2004年の論文の主張（本人の論文231–232頁・246頁、Lorenzini & Tazzioli 2020）。誤答は、本人が見直したそれまでの批判の型（暴いて崩す）、科学の事実だけを確かとする見方（事実を議論の外に置く）、どの主張も語りとみて確かさの違いを問わない見方（事実に近づくという求めと合わない）。四択は成立している。 設計の記録: 人物の追加（2026年9月26日）で作った。誤答を先に3つ書いてから正解を書いた。位置指しなし。本人の自省は、本人の文（227頁）の範囲で書き、いわゆるポスト・トゥルースの責任をラトゥールに帰す書き方はしていない（SEP Environmental Ethics §6 がポスト・トゥルースの責任を一部の論者がポストモダンの思想家に帰したと書くが、ラトゥールを名指ししていない）。誤答の「どの主張も語りとみて」は、CLAUDE.md の「相対主義」の書き方に従い、ラベルを使わず中身で書いた。鍵語「関心事」は、q752 の本文に一般語として出る（数えすぎの型）。terms は空にした（当てはまる TERMS の語が無い）。 資料の限界: SEP・IEP にラトゥールの専用の項目は無い。芯は本人の論文（本人のサイトが公開する刊行版の PDF）と、本人以外の Lorenzini & Tazzioli 2020（Radical Philosophy）で支えた。 対照の記録: ハラウェイの言い方を借りた箇所（232頁）は、二人の比較問題 q890 の detail でも使う。",
+      refs: [
+        "https://www.bruno-latour.fr/sites/default/files/89-CRITICAL-INQUIRY-GB.pdf — Bruno Latour, \"Why Has Critique Run out of Steam? From Matters of Fact to Matters of Concern\", Critical Inquiry 30 (Winter 2004) 225–248（本人のサイトが公開する刊行版）。227頁：危険な過激派が、苦労して得た証拠を崩すために社会的構築の同じ論法を使っていること（\"dangerous extremists are using the very same argument of social construction to destroy hard-won evidence\"）、自分もかつて事実の構築に内在する科学的確実性の欠如を示そうとしてきたこと。231頁：事実の問題ではなく関心事を扱う実在論（\"a realism dealing with what I will call matters of concern, not matters of fact\"）、事実から離れる以外に批判のやり方は無いと信じたことが誤りだったこと。232頁：暴くためではなく守り世話をするためにと、ハラウェイの言い方を借りること（\"to protect and to care, as Donna Haraway would put it\"）。246頁：批判者は暴く者ではなく集める者だということ（\"The critic is not the one who debunks, but the one who assembles\"）。正解と explanation、detail 第2段落・第3段落を支える",
+        "https://www.radicalphilosophy.com/article/critique-without-ontology — Daniele Lorenzini & Martina Tazzioli, \"Critique without ontology\", Radical Philosophy 207 (Spring 2020) 27–39。ラトゥールによれば、問題は事実から離れることではなく事実に近づくことだったこと（\"the question was never to get away from facts but closer to them\"）、いまは関心事に注意を向け、事実から実在を差し引くのでなく足す者の態度へ批判の衝動を変えるべきだとすること（\"we should now turn our attention towards ‘matters of concern’\"）。正解の2本目を支える（同誌が引く原文の末尾の \"from it\" は原文232頁には無い）",
+        "https://www.jstage.jst.go.jp/article/jjsts/29/0/29_3/_article/-char/ja — 鈴木和歌奈「実験室から「相互の係わりあい」の民族誌へ」『年報 科学・技術・社会』29（2020年）3–29頁、DOI 10.32189/jjsts.29.0_3、18–19頁。プイグ・デ・ラ・ベラカーサが、ラトゥールの「関心の問題／事柄（matters of concern）」（Latour 2005）という概念を拡張し、「ケアの問題／事柄（matters of care）」を提案したこと。detail 第3段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q885",
+    philosophers: ["ラトゥール"], terms: [], type: "single",
+    keys: ["新気候体制"],
+    question: "晩年のラトゥールが、新気候体制のもとで政治の足場として説いたものとして最も適切なものは？",
+    choices: [
+      "人と自然の系が住処を分け合う「テレストリアル」に足場を移すこと",
+      "経済の成長を続け、技術の力で地球の限界を越えていくこと",
+      "気候の変化はただの自然の周期とみて、政治の外に置くこと",
+      "地球を離れて、別の惑星に人類の新しい住処を求めること"
+    ],
+    answer: 0,
+    explanation: "新気候体制とは、科学の否認と、気候の破局から逃れられるとする地に足のつかない楽観とが重なった状況を指します。これに対して、自然の系は人間の行為に応じて動くもので、経済の資源にすぎないのではないと認め、人間とそれを支える自然の系が同じ住処を分け合うと気づくことが、新しい「テレストリアル」の政治への道になるとされます。",
+    detail: "成長と技術で限界を越えるという見方と、別の惑星へ移るという見方は、どちらも破局から逃れられるとする地に足のつかない楽観の側です。気候の変化を政治の外に置くのは、科学の否認の側にあたります。\n\n京都賞の贈賞理由は、人間だけでなく動植物や風土、気象、モノが織りなす地表数キロの薄い生命圏を「テレストリアル」と呼び、そこに足場を置いた世界と自然の見方への転換を彼が説いたとしています。\n\nこの議論は『ガイアに向き合う』と『地球に降り立つ』にまとめられ、前者は2013年のギフォード講義がもとです。こうした政治の形はまだ十分に理論化されておらず、さまざまな形をとりうる、とも評されています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、人間とそれを支える自然の系が同じ住処を分け合うと認め、「テレストリアル」に政治の足場を移すこと（SEP Environmental Ethics §6、京都賞の贈賞理由）。 訳語の確認: 邦訳『地球に降り立つ』の目次（CiNii Books BB29406981 の BOOK データベース「私たちがテレストリアルと呼ぶアトラクターを見出したことは、新たな地理政治的組織を確認することにつながった」）と内容説明（国立国会図書館サーチ R100000002-I030125603 と CiNii Books の「「テレストリアル」的政治の獲得に向けた思考実践」）で、訳語が「テレストリアル」であることを確かめ、本文の「地上」をこれにそろえた。邦訳は英語版 Down to Earth（Polity、c2018）を底本とした重訳（CiNii Books の注記）で、英語の原語は terrestrial。京都賞の日本語の贈賞理由も「テレストリアル」と書く。誤答は、成長と技術で限界を越える見方と別の惑星へ移る見方（どちらも SEP が新気候体制の一面とする地に足のつかない楽観の側）、気候の変化を政治の外に置く見方（科学の否認の側）。四択は成立している。 設計の記録: 人物の追加（2026年9月26日）で作った。誤答を先に3つ書いてから正解を書いた。位置指しなし。SEP §6 の同じ段落の、ポスト・トゥルースの責任をポストモダンの思想家に帰す論者（McIntyre 2018）の話は、ラトゥールを名指ししていないので本文に入れていない。terms は空にした（当てはまる TERMS の語が無い）。 資料の限界: 正解の芯を支えるのは SEP Environmental Ethics §6 と京都賞（稲盛財団）の贈賞理由の2本で、後者は査読の論文ではない。日本語の論文では安高2025（平和研究64。本の検討を中心とする論考で、査読の有無を確かめていない）が「大地に根差すもの」とクリティカル・ゾーンに触れる。ギフォード講義は王立人類学協会の訃報と本人の経歴書（本人のサイト）で確かめた。 邦訳: 『地球に降り立つ：新気候体制を生き抜くための政治』川村久美子訳・解題、新評論、2019年／『ガイアに向き合う：新気候体制を生きるための八つのレクチャー』川村久美子訳、新評論、2023年（国立国会図書館サーチで確かめた）。原著は Où atterrir ?（La Découverte、2017年）、Face à Gaïa（同、2015年）。",
+      refs: [
+        "https://plato.stanford.edu/entries/ethics-environmental/ — SEP「Environmental Ethics」（Andrew Brennan & Norva Y. S. Lo、2021年12月3日改訂）§6。新気候体制が、科学の否認と、気候の破局から逃れられるとする地に足のつかない楽観とを合わせたものであること（\"“new climatic regime” (Latour 2017), which combines science denialism and what has be called “out-of-this-world”\"）、自然の系は人間の行為に応じるもので経済の資源にすぎないのではないと認めること、人間とそれを支える自然の系が住処を分け合うという気づきが新しい「地上の政治」への道になりうること（\"a new kind of “terrestrial politics” (Lenton and Latour 2018, Latour 2018)\"）、その政治の形はまだ十分に理論化されておらず多くの形をとりうること（\"The shape of such a politics is still under-theorized\"）。正解と explanation、detail 第1段落・第3段落を支える",
+        "https://www.kyotoprize.org/laureates/bruno_latour/ — 京都賞（稲盛財団）2021年 思想・芸術部門の受賞者の頁（日本語）。贈賞理由：地表数キロの薄膜としての生命圏という、動植物・風土・気象・モノなどさまざまな地上的存在が織りなす世界（「テレストリアル」）に定位した「新たな世界‐自然観に転換することによって」政治システム・社会システムを組み替えることが必要だと提言していること。正解の2本目と detail 第2段落を支える（受賞の財団の頁で、査読の論文ではない）",
+        "https://therai.org.uk/archives-and-manuscripts/obituaries/bruno-latour/ — 王立人類学協会の訃報（Stephen Muecke、2024年）。ギフォード講義が『ガイアに向き合う』になったこと（\"the Gifford lectures which became Facing Gaia\"）。detail 第3段落を支える",
+        "https://www.jstage.jst.go.jp/article/psaj/64/0/64_640101/_article/-char/ja — 安高啓朗「人新世時代における世界の構成について：人間とノン・ヒューマンとの絡まり合いをめぐる存在論」『平和研究』64（2025年）113–133頁、DOI 10.50848/psaj.640101、120頁・125頁。ラトゥールの言う「クリティカル・ゾーン」（地球表層の数キロの薄い膜）と、ラトゥールの言葉を借りれば「大地に根差すもの」となること。【付随】正解を補う（本の検討を中心とする論考で、査読の有無は確かめていない）"
+      ]
+    }
+  },
+  {
+    id: "q886",
+    philosophers: ["ハラウェイ"], terms: [], type: "single",
+    keys: ["状況に置かれた知"],
+    question: "ハラウェイが1988年の論文で唱えた「状況に置かれた知」の考えとして最も適切なものは？",
+    choices: [
+      "誰の立場でもない中立の視点に立ってこそ、知は客観的になる",
+      "知は身体をもつ部分的な視点からで、そのつながりに客観性がある",
+      "知はどれも視点に縛られ、どの見方も等しく正しい",
+      "知は個人の心の中にあり、社会の位置とは関わらない"
+    ],
+    answer: 1,
+    explanation: "どんな知も局所的で限られており、偏りのない「どこからでもない視点」は成り立たない、とハラウェイは論じました。代わりに、自分の物質的な位置を認めた身体をもつ客観性を掲げ、それは異なる位置どうしの部分的なつながりから成るとします。伝統的な中立の視点を、彼女は「神の視点の芸当」と呼びました。",
+    detail: "中立の視点に客観性を求めるのは、彼女が「神の視点の芸当」と呼んだ見方です。どの見方も等しく正しいとする立場も、どこにでもいてどこにもいない視点を約束する点で同じ芸当だとして退けました。知を個人の心に置いて社会の位置を問わない見方も、知が位置をもつというこの考えと逆です。\n\n論文は、ハーディングが科学の客観性を論じた論文へのコメントとして書かれました。合意は位置を越えた政治的な連帯と対話から生まれますが、視点の違いを消しきることはないとされます。\n\nこの考えは、フェミニズムの認識論を含む学問のフェミニズムで大きな影響をもちました。立場理論の論者は、知はすべて視点をもつというこの主張を保ったうえで、ある視点は他より認識の上で価値があるという、より強い主張を加えます。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、知はつねに身体をもつ部分的な視点からのもので、客観性はその部分的なつながりにあるという「状況に置かれた知」（SEP Feminist Social Epistemology §3、SEP Feminist Philosophy of Biology §2.2.3）。誤答は、どこからでもない中立の視点に客観性を求める見方（本人が「神の視点の芸当」と呼んだもの。IEP Feminist Standpoint Theory §7c）、どの見方も等しく正しいとする見方（本人が同じく神の視点の芸当として退けた。SEP Feminist Epistemology and Philosophy of Science §3、Trächtler 2024 §4）、知を個人の心に置く見方（知が位置をもつという考えと逆）。四択は成立している。 設計の記録: 人物の追加（2026年9月26日）で作った。誤答を先に3つ書いてから正解を書いた。位置指しなし。ハラウェイ個人を相対主義と呼ぶ書き方はしていない（そう呼んだ本人以外の典拠は見つからず、SEP §3 は本人が客観主義も相対主義も退けたと書く）。誤答の「どの見方も等しく正しい」は、CLAUDE.md の「相対主義」の書き方に従い、ラベルを使わず中身で書いた。IEP は本人を立場理論家の一人に数え、SEP の Anderson と Grasswick はポストモダンの側に置くので、detail は SEP §3.1 の「立場理論の論者はこの主張を保ったうえで、より強い主張を加える」の形にとどめた。terms は空にした（TERMS「科学」の note は境界設定の問いで、この問題の軸と違う）。 資料の限界: SEP・IEP にハラウェイの専用の項目は無い。芯は SEP の2項目（著者が別）と IEP で支えた。 邦訳: 論文は『猿と女とサイボーグ』（高橋さきの訳、青土社、2000年。新装版2017年）に収められている。",
+      refs: [
+        "https://plato.stanford.edu/entries/feminist-social-epistemology/ — SEP「Feminist Social Epistemology」（Heidi Grasswick、2018年7月24日改訂）§3。1988年の論文で「状況に置かれた知」の語をフェミニズムの認識論に導入したこと（\"In a 1988 article, Donna Haraway first introduced the term situated knowledges to feminist epistemology\"）、すべての知は局所的で限られており、どこからでもない視点を否定すること（\"denying the possibility of the impartial view-from-nowhere\"）、物質的な位置を認める身体をもつ客観性が位置どうしの部分的なつながりから成ること（\"an embodied objectivity (recognizing our material locations) that consists in partial connection across perspectives or locations\"）、政治的な連帯と対話から合意が生まれても視点の違いは消えないこと。§3.1：立場理論の論者は、ハラウェイの状況に置かれた知の主張を保ったうえで、ある視点が他より認識の上で価値があるという、より強い主張を加えること（\"not only maintain Haraway’s situated knowledge thesis\"）。正解と explanation、detail 第2段落・第3段落を支える",
+        "https://plato.stanford.edu/entries/feminist-philosophy-biology/ — SEP「Feminist Philosophy of Biology」（Carla Fehr & Letitia Meynell、2024年4月6日改訂）§2.2.3 Situated knowledge。ハラウェイが「状況に置かれた知」の概念を導入し、それがフェミニズムの認識論を含む学問のフェミニズムで大きな影響をもったこと（\"an idea that has become very influential in academic feminism, including feminist epistemology (1988)\"）、知を状況に置かれたものとみると、どこからでもない視点に立てる一般的な認識の主体という考えが崩れること。正解の2本目と detail 第3段落を支える",
+        "https://iep.utm.edu/fem-stan/ — IEP「Feminist Standpoint Theory」（T. Bowell）§7c。偏りのないどこからでもない視点に立ってはじめて知が得られるとする伝統的な見方を、ハラウェイが「神の視点の芸当」と名づけたこと（\"what Donna Haraway dubbed ‘the God Trick’\"）。explanation と detail 第1段落を支える",
+        "https://plato.stanford.edu/entries/feminism-epistemology/ — SEP「Feminist Epistemology and Philosophy of Science」（Elizabeth Anderson、2024年8月1日改訂）§3。この立場が、知る者が自らの作る表象への責任を逃れさせるとして、客観主義も相対主義も退けること（\"This position rejects both objectivism and relativism for the ways they let knowers escape responsibility for the representations they construct (Haraway 1991)\"）。detail 第1段落を支える",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11449887/ — Jasmin Trächtler, \"The world as witty agent—Donna Haraway on the object of knowledge\", Frontiers in Psychology 15 (2024) 1389575, DOI 10.3389/fpsyg.2024.1389575、§4。状況に置かれた知は、絶対的・全体的な知の主張も、あらゆる立場を等しくする相対主義も避けること（\"avoiding both absolute or totalitarian knowledge claims and any relativist equalisation of all positions\"）、本人が相対主義も全体化も神の視点の芸当と呼んだこと（\"Relativism and totalization are both ‘god-tricks’\"）。detail 第1段落を支える",
+        "https://www.jstage.jst.go.jp/article/jjsts/29/0/29_3/_article/-char/ja — 鈴木和歌奈「実験室から「相互の係わりあい」の民族誌へ」『年報 科学・技術・社会』29（2020年）3–29頁、DOI 10.32189/jjsts.29.0_3、§5。「状況に置かれた知」の論文がサンドラ・ハーディングの科学の客観性の論文へのコメントとして書かれたこと。detail 第2段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q887",
+    philosophers: ["ハラウェイ"], terms: ["技術"], type: "single",
+    keys: ["サイボーグ"],
+    question: "ハラウェイが「サイボーグ宣言」でサイボーグの形象を持ち出した狙いとして最も適切なものは？",
+    choices: [
+      "機械で身体を強め、人の能力の限界を越えよと勧める",
+      "汚されていない純粋な自然に立ち返り、身体を取り戻す",
+      "女性という共通のアイデンティティで、運動をまとめる",
+      "人と動物、動物と機械の境界の崩れから、二分法の自然さを崩す"
+    ],
+    answer: 3,
+    explanation: "ハラウェイは、人間と動物、動物と機械のあいだの境界が破られていることを示し、ある種の二分法が自然なものだという思い込みを崩そうとしました。サイボーグは「動物であると同時に機械」である生き物で、「自然でもあり作られたものでもある」世界に住みます。純粋な自然に訴えることを拒み、何が自然で何が作られたものかの境目ははっきりしない、とします。",
+    detail: "機械で能力を高めることを勧める宣言ではありません。純粋な自然に立ち返るという道は、彼女がはっきり退けた側です。共通のアイデンティティで運動をまとめる政治に対しては、同盟と連携にもとづく親和の政治を求めました。\n\n宣言は1985年に雑誌 Socialist Review に発表されました。科学技術が人間の身体を変え、自然と文化の区別が崩れたことが人をサイボーグにしている、という論で、マルクス主義の知識論を組み直したフェミニズムの立場理論の流れに置かれます。\n\nラトゥールらのアクターネットワーク理論への応答として書かれたものではなく、フェミニズムの内部の男性性と女性性をめぐる議論から生まれたとされます。技術に媒介された解放の実践の可能性を開くものとしても読まれています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、人と動物、動物と機械の境界の崩れを示して、ある種の二分法が自然だという思い込みを崩すこと（SEP Feminist Perspectives on the Body §6、鈴木2020 §4）。誤答は、機械で能力を高めることを勧める見方（宣言の狙いではない）、純粋な自然に立ち返る見方（本人が純粋な自然への訴えを拒んだ。SEP §6）、共通のアイデンティティで運動をまとめる見方（本人はアイデンティティの政治ではなく親和の政治を求めた。SEP Feminist Perspectives on Class and Work §5）。四択は成立している。 設計の記録: 人物の追加（2026年9月26日）で作った。誤答を先に3つ書いてから正解を書いた。位置指しなし。サイボーグの境界は、典拠のある人と動物、動物と機械の二つだけを書き、典拠の無い「物理的／非物理的」は書いていない。「女神よりサイボーグ」の一句は基準の典拠が1本しか無いので書いていない。SEP §6 の「nature/culture」の語（自然文化）も、1資料しか無いので本文に使っていない。terms に「技術」を付けた。TERMS「技術」の note の読み（複製が開く解放の可能性か）に、SEP Philosophy of Technology §3.2.4 が本人を技術に媒介された解放の実践の論者として挙げる読みが当たるため。親和の政治は SEP Class §5 の1本だけなので、正解の芯には置かず detail で触れるにとどめた。 資料の限界: SEP・IEP にハラウェイの専用の項目は無い。芯は SEP Body §6 と鈴木2020 の2本（著者が別）で支えた。 邦訳: 宣言は『猿と女とサイボーグ』（高橋さきの訳、青土社、2000年。新装版2017年）に収められている。",
+      refs: [
+        "https://plato.stanford.edu/entries/feminist-body/ — SEP「Feminist Perspectives on the Body」（Kathleen Lennon & Clara Fischer、2024年4月11日改訂）§6。1985年に「サイボーグ宣言」を発表したこと（\"had published her “Cyborg Manifesto”\"）、ある種の二分法の自然さを崩そうとし、人間と動物、動物と機械の境界を破ることを主張したこと、サイボーグが「動物であると同時に機械」である生き物で「自然でもあり作られたものでもある」世界に住むこと（\"simultaneously animal and machine\"、\"ambiguously natural and crafted\"）、純粋な自然への訴えを拒み、自然と構築されたものの境目ははっきりしないとすること。正解と explanation、detail 第1段落を支える",
+        "https://www.jstage.jst.go.jp/article/jjsts/29/0/29_3/_article/-char/ja — 鈴木和歌奈「実験室から「相互の係わりあい」の民族誌へ」『年報 科学・技術・社会』29（2020年）3–29頁、DOI 10.32189/jjsts.29.0_3、§4（11–13頁）。1985年に「サイボーグ宣言」を Socialist Review 誌に発表したこと、それがカロンやラトゥールの初期アクターネットワーク理論への反応や批判としてではなく、フェミニズム内の男性性と女性性の議論から現れたこと、「サイボーグ宣言によりただ男性性を否定・批判するのではなく、その前提となる二元論のそのものを解体した」こと、サイボーグの概念が人間と動物などの二項対立の絡まり合いを含意すること。正解の2本目と detail 第2段落・第3段落を支える",
+        "https://plato.stanford.edu/entries/feminism-class/ — SEP「Feminist Perspectives on Class and Work」（Ann Ferguson, Rosemary Hennessy & Mechthild Nagel、2022年4月13日改訂）§5。フェミニズムの立場理論をポストモダンの形で組み直し、科学技術による自然と文化の区別の崩れと人の身体の変化が人を「サイボーグ」にするとハラウェイが論じたこと（\"Writing in a post-modernist re-articulation of this feminist standpoint theory, Donna Haraway argues that the breakdown of the nature/culture distinction\"）、フェミニズムの政治に要るのはアイデンティティの政治ではなく同盟と連携にもとづく親和の政治だとすること（\"but an affinity politics based on alliances and coalitions that combine epistemic perspectives\"）。detail 第1段落・第2段落を支える",
+        "https://plato.stanford.edu/entries/technology/ — SEP「Philosophy of Technology」（Maarten Franssen ほか、2026年7月10日改訂）§3.2.4。人間のアイデンティティが物質的・社会的に構築されていることと知の状況性に注意を向けることが、技術に媒介された新しい解放の実践を可能にしうること（\"may allow for new technologically mediated emancipatory practices (Haraway 1991)\"）。detail 第3段落と terms「技術」を支える"
+      ]
+    }
+  },
+  {
+    id: "q888",
+    philosophers: ["ハラウェイ"], terms: [], type: "single",
+    keys: [],
+    question: "ハラウェイが『Primate Visions』（1989年）で、霊長類学について明らかにしたこととして最も適切なものは？",
+    choices: [
+      "霊長類の観察は、観察者の性別と関わりなく中立だった",
+      "進化の語りに性別の前提が入り込み、女性研究者が研究を変えた",
+      "狩りをする雄こそが進化を動かしたと、観察で裏づけた",
+      "性の違いは遺伝子で決まり、文化は何の関わりももたない"
+    ],
+    answer: 1,
+    explanation: "猿から人への移り変わりを英雄の劇として語ると、狩りのような男性のものとされる営みが進化の原動力に据えられ、同じくらいデータに支えられる別の説明（子育てと採集の両立など）が見えなくなります。ハラウェイは、霊長類学が自然と性別と人種について政治的な物語を組み立ててきたことと、フェミニストの女性研究者が研究の方法を変えたことを描きました。",
+    detail: "観察が性別と関わりなく中立だったという見方は、この本が問い直した前提です。狩りをする雄を進化の原動力とするのは、この本が問題にした語りそのものです。性の違いを遺伝子だけで決まるとみる見方も、フェミニズムの生物学の哲学が批判してきた側にあたります。\n\n例えばジーン・アルトマンは1974年の論文で、特定の個体を追って記録する方法を整え、雄の支配を中心にした性差別的な記述を崩して、雌の霊長類や子育ての研究を開きました。\n\nハラウェイは、経験にもとづく評価の基準の中で仕事をするフェミニストの科学者の成果を称えた点で、ポストモダンの側のフェミニストの中でも目立つとされます。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、猿から人への進化の語りに性別の前提が入り込んでいたことと、フェミニストの女性研究者が霊長類学の研究を変えたこと（SEP Feminist Epistemology and Philosophy of Science §8、SEP Feminist Philosophy of Biology §2.1.3・§2.2.3）。誤答は、観察は性別と関わりなく中立だったという見方（この本が問い直した前提）、狩りをする雄を進化の原動力とする語り（この本が問題にした語りそのもの）、性の違いを遺伝子だけで説明する生物学的決定論（フェミニズムの生物学の哲学が批判してきた側）。四択は成立している。 設計の記録: 人物の追加（2026年9月26日）で作った。誤答を先に3つ書いてから正解を書いた。位置指しなし。書名は邦訳が見つからないので原題で書いた（国立国会図書館サーチで見つからなかった）。keys は空にした。主題が書名の本で、書名は鍵語にしない方針のため（「keys なしが正常な問題」の書名を主題にした問題の型）。terms も空にした（当てはまる TERMS の語が無い）。「狩る男」の呼び名そのものは SEP に無いので、本文は「狩りをする雄」「狩りのような男性のものとされる営み」と書いた。 資料の限界: SEP・IEP にハラウェイの専用の項目は無い。芯は SEP の2項目（著者が別）で支えた。 書誌: Routledge、1989年（国立国会図書館・フランス国立図書館の書誌）。1990年と書く資料がある（エラスムス賞財団ほか）が、目録は1989年で一致した。",
+      refs: [
+        "https://plato.stanford.edu/entries/feminism-epistemology/ — SEP「Feminist Epistemology and Philosophy of Science」（Elizabeth Anderson、2024年8月1日改訂）§8。猿から人への移り変わりを英雄の劇として語ると、狩りのような男性のものとされる営みが進化の原動力に据えられ、同じくらいデータに支えられる別の説明が見えなくなること（\"The decision to narrate the transition from ape to hominid as a heroic drama dictates a focus on presumptively male activities, such as hunting\"。Haraway 1989 を引く）。§5：ハラウェイが、経験的な評価の基準の中で仕事をするフェミニストの科学者の成果を称えた点で、フェミニストのポストモダン論者の中で目立つこと（\"stands out among feminist postmodernists for the tributes she pays to the achievements of feminist scientists\"）。正解と explanation、detail 第3段落を支える",
+        "https://plato.stanford.edu/entries/feminist-philosophy-biology/ — SEP「Feminist Philosophy of Biology」（Carla Fehr & Letitia Meynell、2024年4月6日改訂）§2.1.3。『Primate Visions』（1989年）が、フェミニストの女性が霊長類学に加わったことの霊長類の行動研究への影響を記録したこと（\"documents the influence that the incorporation of feminist women in primatology had on the study of primate behavior\"）、ジーン・アルトマンが1974年の論文で個体を追って記録する方法を整え、指導と支配の性差別的な記述を崩し、雌の霊長類や子育ての研究を開いたこと。§2.2.3：霊長類学が自然・性別・人種について政治的な物語を組み立ててきたこと。正解の2本目と explanation、detail 第2段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q889",
+    philosophers: ["ハラウェイ"], terms: [], type: "single",
+    keys: ["伴侶種"],
+    question: "ハラウェイが『伴侶種宣言』で、犬と人の関係について説いたこととして最も適切なものは？",
+    choices: [
+      "人が一方的に所有し、犬は愛玩のために飼われる関係",
+      "犬を家族とみなし、人と同じ権利を前もって与える関係",
+      "かけがえがないが他者であり続け、共に互いを形づくり合う関係",
+      "人が犬の気持ちを知り尽くし、違いが消えていく関係"
+    ],
+    answer: 2,
+    explanation: "犬と人は、かけがえのないパートナーでありながら、無視できない他者でもあります。この二重の意味を、ハラウェイは「重要な他者性」と呼びました。異なる種は、これまでの歴史と関わり合いを通じて、互いの生を成り立たせ合い、なくてはならない存在になっているとされます。",
+    detail: "犬を人が一方的に所有する愛玩の対象とみる見方は、ペットからコンパニオンへという転換で問い直されたものです。権利は前もって区分されたアイデンティティにではなく、訓練のなかの献身的な関係にあるとされます。違いが消えることを求めるのも、他者性を手放さないこの考えと逆です。\n\n宣言は、およそ20年前の「サイボーグ宣言」の形象の有効期限が切れたことを告げ、異なる種と人のあるべき関係を探るものとして読まれています。所有も、相互依存の形として読み替えられます。\n\n実験動物や犬、米、蜂、腸内細菌など、人の生を成り立たせ、人によって生を成り立たされているものが絡み合う様を描く仕事は、多くの種を扱う民族誌の潮流に直接の影響を与えました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、犬と人がかけがえのないパートナーでありながら他者であり続け、共に生きる歴史のなかで互いを形づくり合う関係（鈴木2023 が引く「重要な他者性」の訳注、鈴木2020、波戸岡2007）。誤答は、人が一方的に所有する愛玩の関係（ペットからコンパニオンへの転換で問い直されたもの）、前もって人と同じ権利を与える関係（権利は前もって区分されたアイデンティティにではなく献身的な関係にあるとする）、違いが消えていく関係（他者性を手放さない考えと逆）。四択は成立している。 設計の記録: 人物の追加（2026年9月26日）で作った。誤答を先に3つ書いてから正解を書いた。位置指しなし。波戸岡2007 が使う「自然文化」の語は、基準の典拠が1本しか無いので本文に使っていない。terms は空にした。TERMS「動物」の note（精神をもたない機械か、苦しみうるがゆえに配慮すべきものか）のどちらの読みにも当たらないため。 資料の限界: 伴侶種を中身として書く英語の基準の典拠（SEP・IEP・査読論文）は見つからなかった（SEP The Moral Status of Animals は Further Reading に挙げるだけ、SEP Feminist Perspectives on the Body §6 は後期の著作として年を挙げるだけ）。芯は日本語の査読誌の2本（鈴木2023、波戸岡2007。著者が別）で支えた。鈴木2020 は鈴木2023 と同じ著者なので、2本目に数えていない。鈴木2023 は二段組みで、段を分けて読んで引用の順を確かめた。 書誌: Prickly Paradigm Press、c2003（国立国会図書館サーチの書誌）。波戸岡2007 の本文は「2004年に発表された」と書き、注11は2003年と書く。 邦訳: 『伴侶種宣言：犬と人の「重要な他者性」』永野文香訳、以文社、2013年（国立国会図書館サーチで確かめた）。",
+      refs: [
+        "https://www.jstage.jst.go.jp/article/jjcanth/88/2/88_215/_article/-char/ja — 鈴木和歌奈「フラクタルな巻き込み：ウルシと人間の間に生じる「重要な他者性」」『文化人類学』88(2)（2023年）215–229頁、DOI 10.14890/jjcanth.88.2_215、218頁。ハラウェイが『伴侶種宣言』で「重要な他者性」という概念を提示したこと、訳者の永野文香の訳注が、この概念に「かけがえのないパートナーであること」と、それにもかかわらず無視できない他者性を有していることの二重の意味があると説明すること（［ハラウェイ2013：７］）。正解と explanation を支える（二段組みで、抜いた文字の段が混ざるので、段を分けて読んで順を確かめた）",
+        "https://www.jstage.jst.go.jp/article/americanreview1967/2007/41/2007_41_93/_article/-char/ja — 波戸岡景太「動物たちの困惑：トマス・ピンチョンのポストモダン・エコロジー」『アメリカ研究』41（2007年）93–112頁、DOI 10.11380/americanreview1967.2007.93。95–96頁：「サイボーグ宣言」からおよそ20年後に更新されたマニフェストが、サイボーグの批評的パラダイムの有効期限切れを宣言するとともに、異なる「種」と人間とのあるべき関係を模索すること。106頁：権利は献身的な関係の中にあり、あらかじめ区分されたアイデンティティにあるのではないこと（ハーンの引用）、「ペット」から「コンパニオン」になることが所有の概念を「相互依存」の形として再解釈することを意味すること。正解の2本目と detail 第1段落・第2段落を支える",
+        "https://www.jstage.jst.go.jp/article/jjsts/29/0/29_3/_article/-char/ja — 鈴木和歌奈「実験室から「相互の係わりあい」の民族誌へ」『年報 科学・技術・社会』29（2020年）3–29頁、DOI 10.32189/jjsts.29.0_3、16頁・18頁。『伴侶種宣言』で、実験動物・犬・米・蜂・チューリップ・腸内細菌など、人間の生を成り立たせ人間によってその生を成り立たされているものたちが絡み合う様を描こうとしたこと、種は歴史や関わりあいを通じて「互いになくてはならない存在になっているとハラウェイは言う」こと、多種の民族誌が伴侶種宣言から直接の影響を受けた研究潮流であること。explanation と detail 第3段落を支える（鈴木2023 と同じ著者なので、正解の2本目には数えない）"
+      ]
+    }
+  },
+  {
+    id: "q890",
+    philosophers: ["ラトゥール", "ハラウェイ"], terms: [], type: "compare",
+    keys: ["アクターネットワーク理論"],
+    question: "ラトゥールとハラウェイが、科学の営みにおける人間と人間以外のものの関係を描いた仕方の違いとして最も適切なものは？",
+    choices: [
+      "両者とも、人間以外のものを使われるだけの道具とみた",
+      "ハラウェイは力を集める翻訳を、ラトゥールは種の相互の関係を描いた",
+      "ラトゥールは力を集める翻訳を、ハラウェイは種の相互の関係を描いた",
+      "両者とも、自然と社会を分けることを科学の前提とした"
+    ],
+    answer: 2,
+    explanation: "初期のアクターネットワーク理論を説明するラトゥールの論文は、科学者が多様なアクターを翻訳によって結びつけ、力を得る過程を分析しました。パストゥールが予防接種の開発を通して微生物を自らの計画に取り込み、畜産業や公衆衛生に大きな影響力をもつに至った例です。これに対してハラウェイが問題にしたのは、人間を取り巻く多様な生物種のあいだの相互の関係でした。",
+    detail: "入れ替えた選択肢は、初期のアクターネットワーク理論のラトゥールとハラウェイの力点を逆にしています。二人とも人間以外のものを行為に加わるものとみており、使われるだけの道具とはみていません。自然と社会の切り分けも、ラトゥールは近代人の思い込みとして、ハラウェイは崩れた二分法として問い直しました。\n\nハラウェイは論文「The Promises of Monsters」で、ラトゥールが主に科学者どうしや科学者と機械のやりとりに目を向け、機械でない人間以外のものに十分な注意を払っていないと批判しました。世界を、機知に富む行為者として描いています。\n\n他方でラトゥールは、科学を共に作り出すものとみる考えを共有する研究者の一人としてハラウェイを挙げ、2004年の論文でも、守り世話をするという彼女の言い方を借りています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、ラトゥール（初期のアクターネットワーク理論）は科学者が多様なアクターを翻訳で結びつけて力を得る過程を描き、ハラウェイは多様な種のあいだの相互の関係を描いたという対比（鈴木2020 §6、Trächtler 2024 §3・注10）。入れ替えの誤答は正解の鏡像。「両者とも」型の2つは、人間以外のものを使われるだけの道具とみる見方（二人とも退けた。SEP Artifact §3.3、Trächtler §3）と、自然と社会を分けることを前提とする見方（ラトゥールは純化として、ハラウェイは崩れた二分法として問い直した）。四択は成立している。 設計の記録: 人物の追加（2026年9月26日）で作った。比較の軸は、二人を並べて論じた典拠（鈴木2020、Trächtler 2024）が置く軸（権力を得る翻訳か、種の相互の関係か。機械中心の非人間か、機械でない非人間か）に合わせ、典拠の無い対比は組み立てていない。ハラウェイが『慎み深い証人』でラトゥールの戦争の比喩を批判したとされる件は、それを書いた査読論文が見つからないので書いていない。鈴木2020 の軸は初期のアクターネットワーク理論（1983年の論文）についてのもので、正解・explanation は「初期の」と限定した。terms は空にした（TERMS「権力」の note の軸〔誰かが所有するものか、いたるところに走る関係か〕は、この対比に重ねると典拠の範囲を越えるため）。 資料の限界: SEP・IEP に二人の専用の項目は無く、二人を並べて論じた基準の典拠は、鈴木2020（日本語の査読誌）と Trächtler 2024（査読の公開誌）の2本。 対照の記録: ラトゥールの単独問題 q881・q883・q884 と、ハラウェイの単独問題 q887・q889 の中身を使った。",
+      refs: [
+        "https://www.jstage.jst.go.jp/article/jjsts/29/0/29_3/_article/-char/ja — 鈴木和歌奈「実験室から「相互の係わりあい」の民族誌へ：ポスト‐アクターネットワーク理論の展開とダナ・ハラウェイに注目して」『年報 科学・技術・社会』29（2020年）3–29頁、DOI 10.32189/jjsts.29.0_3。§6（16–17頁）：ラトゥール（1983）がアクターネットワーク理論の鍵概念を説明する論文で、科学者が多様なアクターを「翻訳」によって結びつけ権力を得るプロセスを分析し、その「ポリティクス」が「他者を自らの意思に沿うように動かす、というマキャヴェリ的な視点」から理解されていること、パスツールが予防接種の開発を通して微生物を取り込み畜産業や公衆衛生に影響力を持つに至ったこと、ハラウェイの描くポリティクスで問題になるのは「人間を取り巻く多様な生物種の間の相互的な関係性である」こと。§3（8頁）：ラトゥールがハラウェイを、科学に対する「共生産」の考えを共有する研究者として紹介していること（Latour 2005, 88, 脚注107）。正解と explanation、detail 第3段落を支える",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11449887/ — Jasmin Trächtler, \"The world as witty agent—Donna Haraway on the object of knowledge\", Frontiers in Psychology 15 (2024) 1389575, DOI 10.3389/fpsyg.2024.1389575。§3：ハラウェイが、ラトゥールらのアクターネットワーク理論とつながる広い行為者性の概念をとること（\"Haraway opts for a very broad concept of agency tying in with the ‘Actor-Network-Theory’\"）。§3.1：世界の行為者性を、知の生産への参加を越えて「機知に富む行為者」とみること（\"goes beyond a mere participation of the world in knowledge production\"）。注10：ハラウェイが、ラトゥールは主に科学者どうしと科学者と機械のやりとりに目を向け、機械でない人間以外のものに十分な注意を払っていないと批判したこと（\"Haraway criticises Latour for focusing primarily on the interactions of scientists with each other and with their machines\"、\"too little attention to the non-machine, other non-humans in the interactions\"。ハラウェイの論文 \"The Promises of Monsters: A Regenerative Politics for Inappropriate/d Others\" の注14。Trächtler は The Haraway Reader〔Routledge、2004年〕63–124頁の版で引く）。正解の2本目と detail 第1段落・第2段落を支える",
+        "https://www.bruno-latour.fr/sites/default/files/89-CRITICAL-INQUIRY-GB.pdf — Bruno Latour, \"Why Has Critique Run out of Steam?\", Critical Inquiry 30 (Winter 2004) 225–248、232頁。暴くためではなく守り世話をするためにと、ハラウェイの言い方を借りること（\"to protect and to care, as Donna Haraway would put it\"）。detail 第3段落を支える",
+        "https://plato.stanford.edu/entries/artifact/ — SEP「Artifact」（Beth Preston、2022年10月3日改訂）§3.3。ラトゥールにとって行為する力が人間と人間でないものの集まりにあること（\"humans and nonhumans related to each other in specific, systematic ways\"）。detail 第1段落を支える"
       ]
     }
   }
