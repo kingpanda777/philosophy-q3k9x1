@@ -11660,18 +11660,18 @@ const QUESTIONS = [
     keys: ["見えざる手", "分業", "局所的知識"],
     question: "『国富論』における分業と見えざる手についての説明として最も適切なものは？",
     choices: [
-      "各人が自己の利益を追求すれば、社会全体の利益が促進される",
+      "各人の自己利益の追求が、しばしば社会全体の利益を促進する",
       "国家こそが経済を計画的に統制すべきだと論じた",
       "商人による独占は社会に利益をもたらすと論じた",
       "労働者の賃金は低いほど国富が増えていくと論じた"
     ],
     answer: 0,
-    explanation: "ピン工場の例で、工程を分けることで生産量が飛躍的に増えることが示されます。また各人が自分の利益を追求する行為が、結果として社会の利益に資する場合があると述べられます。",
+    explanation: "ピン工場の例で、工程を分けることで生産量が飛躍的に増えることが示されます。また各人が自分の利益を追求する行為が、結果として、しばしば社会の利益を促進すると述べられます。",
     detail: "見えざる手という語は、全著作を通じて数回しか登場しません。市場を全面的に擁護する標語として引かれることが多いのですが、原文での用法は限定的です。\n\n独占を利する主張も、低賃金を利する主張も、スミスが批判した立場です。商人が結託して価格を吊り上げることへの警戒を繰り返し述べており、労働者の賃金が高いことを社会の繁栄の証とみています。スミスは、今日その後継者を名乗る人々ほど放任の立場ではなかったとされます。事業の判断にはその場の事情についての局所的知識が要り、役人にはそれが分からないという指摘もあって、後にハイエクの知識の分散へ受け継がれました。\n\n分業についても両義的です。生産力を上げる一方で、単純作業の反復が人を愚かにするという指摘があり、公教育の必要が説かれます。この指摘はマルクスを先取りするものとも評されます。",
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 各人が自己の利益を追求すれば意図しないまま社会全体の利益が促進される場合があると論じ、あわせて分業による生産力の向上を分析したという規定は『国富論』（一七七六年）の通りで、誤答二番目は計画経済、三番目と四番目はスミス自身が批判した立場への取り違え。四択は成立している。 事実の確認: ピン工場の分業の例、見えざる手が全著作で三度しか現れないこと（q362 の照合で確認済み）、商人の結託と独占への警戒、労働者の賃金が高いことを社会の繁栄の証とみる記述、そして分業が単純作業の反復によって人を愚かにするという指摘と公教育の必要を確認した。 対照の記録: q362（道徳感情論）の note で、アダム・スミス問題の合意の中身（二冊が別領域ではなく一つの体系で、利己心の追求が慎慮の徳に条件づけられる）を訂正・記録した。本問の detail の「市場放任の擁護者という像は、後から作られた面が強くあります」はその線に沿っており、二問は揃っている。q363（ベンサムとの比較）とも食い違いはない。 設計の記録: 誤答三番目と四番目を「スミスが明確に批判した立場」として、単なる誤りではなく通俗像の否定に使っている。 選択肢の均等化: 正解の説明句を削り（解説側に既述）、誤答を型に揃えて肉付けした。四択の成立を確認済み。 3.15倍→1.25倍。追記の記録: detail で選択肢を位置で指さない規則（2026-09-18）にあわせ、位置で指していた箇所を内容で書き換えた。同じ段落に内容つきの位置指しがある場合は、そちらも位置の句を落として内容を主語にした。段落数は変えていない。（276→285字。上限370字に対して余地85字）追記の記録: 点検で C と判定した「局所的知識」を埋めた。ハイエクの知識の分散（q561）の源流にあたるので、接続を本文に出した。（285→356字。上限370字に対して余地14字） refs を1本差し替えた（Invisible_hand → https://www.econlib.org/library/Smith/smWN13.html）。理由: SEP の Smith の道徳・政治哲学項は道徳哲学の項目で、見えざる手の語が一度も出ない。原典の該当章で確認できたので載せ替えた。 典拠に合わせて直した（功利主義と自由主義の回、2026年9月26日）: ①第2段落の「市場放任の擁護者という像は、後から作られた面が強くあります」は、SEP Adam Smith's Moral and Political Philosophy §5 の書き方（今日の自称の後継者ほど放任の立場ではなかった）に直した。②第3段落の「マルクスの疎外論とも接続して読まれてきました」は、IEP Smith §3.c が「マルクスを先取りして」分業が知性を損なうと認めたと書くだけで疎外論の語は使わないので、その範囲に直した。（356→358字。上限370字に対して余地12字） refs に8本を足した（https://en.wikisource.org/wiki/The_Wealth_of_Nations/Book_I/Chapter_1・https://en.wikisource.org/wiki/The_Wealth_of_Nations/Book_I/Chapter_10・https://www.econlib.org/library/Smith/smWN3.html・https://en.wikisource.org/wiki/The_Wealth_of_Nations/Book_V/Chapter_1・https://econjwatch.org/file_download/252/2009-05-kennedy-watchpad.pdf・https://plato.stanford.edu/entries/smith-moral-political/・https://iep.utm.edu/smith/・https://plato.stanford.edu/entries/friedrich-hayek/）。理由: detail の各段落を支える典拠が無く、Tribe 2008 は開けなかったため",
+      note: "設問へ: 各人が自己の利益を追求すれば意図しないまま社会全体の利益が促進される場合があると論じ、あわせて分業による生産力の向上を分析したという規定は『国富論』（一七七六年）の通りで、誤答二番目は計画経済、三番目と四番目はスミス自身が批判した立場への取り違え。四択は成立している。 事実の確認: ピン工場の分業の例、見えざる手が全著作で三度しか現れないこと（q362 の照合で確認済み）、商人の結託と独占への警戒、労働者の賃金が高いことを社会の繁栄の証とみる記述、そして分業が単純作業の反復によって人を愚かにするという指摘と公教育の必要を確認した。 対照の記録: q362（道徳感情論）の note で、アダム・スミス問題の合意の中身（二冊が別領域ではなく一つの体系で、利己心の追求が慎慮の徳に条件づけられる）を訂正・記録した。本問の detail の「市場放任の擁護者という像は、後から作られた面が強くあります」はその線に沿っており、二問は揃っている。q363（ベンサムとの比較）とも食い違いはない。 設計の記録: 誤答三番目と四番目を「スミスが明確に批判した立場」として、単なる誤りではなく通俗像の否定に使っている。 選択肢の均等化: 正解の説明句を削り（解説側に既述）、誤答を型に揃えて肉付けした。四択の成立を確認済み。 3.15倍→1.25倍。追記の記録: detail で選択肢を位置で指さない規則（2026-09-18）にあわせ、位置で指していた箇所を内容で書き換えた。同じ段落に内容つきの位置指しがある場合は、そちらも位置の句を落として内容を主語にした。段落数は変えていない。（276→285字。上限370字に対して余地85字）追記の記録: 点検で C と判定した「局所的知識」を埋めた。ハイエクの知識の分散（q561）の源流にあたるので、接続を本文に出した。（285→356字。上限370字に対して余地14字） refs を1本差し替えた（Invisible_hand → https://www.econlib.org/library/Smith/smWN13.html）。理由: SEP の Smith の道徳・政治哲学項は道徳哲学の項目で、見えざる手の語が一度も出ない。原典の該当章で確認できたので載せ替えた。 典拠に合わせて直した（功利主義と自由主義の回、2026年9月26日）: ①第2段落の「市場放任の擁護者という像は、後から作られた面が強くあります」は、SEP Adam Smith's Moral and Political Philosophy §5 の書き方（今日の自称の後継者ほど放任の立場ではなかった）に直した。②第3段落の「マルクスの疎外論とも接続して読まれてきました」は、IEP Smith §3.c が「マルクスを先取りして」分業が知性を損なうと認めたと書くだけで疎外論の語は使わないので、その範囲に直した。（356→358字。上限370字に対して余地12字） refs に8本を足した（https://en.wikisource.org/wiki/The_Wealth_of_Nations/Book_I/Chapter_1・https://en.wikisource.org/wiki/The_Wealth_of_Nations/Book_I/Chapter_10・https://www.econlib.org/library/Smith/smWN3.html・https://en.wikisource.org/wiki/The_Wealth_of_Nations/Book_V/Chapter_1・https://econjwatch.org/file_download/252/2009-05-kennedy-watchpad.pdf・https://plato.stanford.edu/entries/smith-moral-political/・https://iep.utm.edu/smith/・https://plato.stanford.edu/entries/friedrich-hayek/）。理由: detail の各段落を支える典拠が無く、Tribe 2008 は開けなかったため 承認を受けて直した（功利主義と自由主義の回の承認の段、2026年9月26日）: explanation の「社会の利益に資する場合がある」を、原文の \"frequently\" と正解の形に合わせて「しばしば…促進する」にそろえた。（explanation を83→84字に書き換えた） 選択肢の書き換え: 「各人が自己の利益を追求すれば、社会全体の利益が促進される」を「各人の自己利益の追求が、しばしば社会全体の利益を促進する」に替えた。理由: 『国富論』第4篇第2章の原文 \"By pursuing his own interest he frequently promotes that of the society\"（しばしば促進する）に合わせ、「追求すれば…促進される」という言い切りを弱めた（功利主義と自由主義の回の承認の段、2026年9月26日）。 書き換え後の長さ: 正解28字・誤答平均22.3字（0.80倍）・比率1.25倍・2位との差5字。 型の例外として通した（2位との差が5字（上限4字））。理由: 書き換える前から2位との差が5字で、原文の \"frequently\" に合わせても正解の字数（28字）は変わらず、比率は1.25倍で範囲に収まっている。",
       refs: [
         "https://www.econlib.org/library/Smith/smWN13.html — アダム・スミス『国富論』第4篇第2章（Liberty Fund の Library of Economics and Liberty が公開する公有テキスト）。「he is in this, as in many other cases, led by an invisible hand to promote an end which was no part of his intention.」を確認した。各人が自分の利益を追求することで、意図しなかった目的が促進されるという一節である。",
         "https://www.tandfonline.com/doi/abs/10.1016/j.histeuroideas.2008.02.001 — Tribe, Das Adam Smith Problem。市場放任の擁護者という像が後世の解釈であること",
@@ -22480,6 +22480,31 @@ const QUESTIONS = [
         "https://plato.stanford.edu/entries/deleuze/ — SEP「Gilles Deleuze」（2022年6月改訂）§3.2・冒頭。ストア派が物体の混ざり合いと非物体的な出来事を区別して意味の次元を最初に発見したこと（\"Deleuze suggests that it was the Stoics who first discovered the dimension of sense when they distinguished between corporeal mixtures and incorporeal events\"）、ワーテルローの戦いは命題の表現のほかに実在をもたない非物体的な出来事（意味）であること（\"but the battle itself is an incorporeal event (or sense) with no other reality than that of the expression of my proposition\"）、意味は命題の第四の次元で表現と呼ばれること（\"sense, then, would be a fourth dimension of propositions\"）、多様体が実体に、出来事が本質に、潜在性が可能性に取って代わる形而上学（\"a metaphysics in which the concept of multiplicity replaces that of substance\"）。正解と explanation・detail 第1・2段落を支える",
         "https://www.rep.routledge.com/articles/biographical/deleuze-gilles-1925-95/v-2 — Routledge Encyclopedia of Philosophy「Deleuze, Gilles (1925–95)」v-2（Dorothea Olkowski, 2017、無料で公開している要約）。意味が生きられた経験や科学の事実から独立に生じる出来事の哲学であること（\"It is a philosophy of the event, a state where sense arises independently of lived experience or scientific fact\"）。正解の2本目と detail 第3段落を支える",
         "https://www.jstage.jst.go.jp/article/sfjp/24/0/24_191/_article/-char/ja — 平田公威「出来事は必ずや実現される　『意味の論理学』における contre-effectuation 概念再考」『フランス哲学・思想研究』24号（2019年）191–202頁、DOI 10.51086/sfjp.24.0_191（J-STAGE）。ドゥルーズおよびドゥルーズ＝ガタリが出来事について思考し、この「非物体的なもの」やその物体への「実現」にかんする体系を構築していること（「非物体的なもの」「にかんする体系を構築している」）。detail 第3段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q875",
+    philosophers: ["ミル"], terms: [], type: "single",
+    keys: [],
+    question: "ミルが『論理学体系』で、数学や論理学の真理について述べたこととして最も適切なものは？",
+    choices: [
+      "数学や論理学の真理も、経験からの帰納によって得られる一般化である",
+      "数学の命題は、経験に先立つ直観の形式にもとづく総合判断である",
+      "数学は、語の定義から出てくるだけの言葉の上の真理である",
+      "数学は、生まれつき心にある観念から理性で引き出される"
+    ],
+    answer: 0,
+    explanation: "二たす一が三になることも、小石二つと小石一つで三つ、馬二頭と馬一頭で三頭、という個々の場合からの一般化で確かめられる、とミルは論じました。数学と論理学の命題は、言葉の上だけのものではない実質的な命題だとされます。",
+    detail: "経験に先立つ直観の形式にもとづく総合判断とみるのはカントの立場で、ミルが退けた直観主義の側にあたります。語の定義から出てくるだけの真理とみる見方は、ミル自身がはっきり否定しました。生まれつきの観念から引き出すという答えは、デカルトらの合理論のものです。\n\nSEP は、数学までが帰納に基づくというこの主張を、ミルの経験論の徹底ぶりを示すものとして挙げます。直観主義の論敵が数学や論理学の真理に認める必然性は錯覚だ、とミルは論じ、直観主義の最も堅い砦を崩そうとしました。\n\n背景には『自伝』の警戒があります。観察や経験から独立に直観で真理を知りうるという考えは、誤った教説と悪い制度の知的な支えになる、とミルは書いています。数学は、その考えが最も強く見える場所でした。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は SEP John Stuart Mill §3.4（数学も帰納に基づく、二たす一が三は小石や馬の個々の場合からの一般化）と IEP Mill §2.a.i（論理学と数学は言葉の上だけでない実質的な命題を含む）。誤答はカントのア・プリオリな総合判断、ミルが退けた言葉の上の真理とみる見方、合理論の生得観念。四択は成立している。 設計の記録: 功利主義と自由主義の回（2026年9月26日）の量の見直しで「欠かせない」と判定した概念（『論理学体系』の中心の主張なのに、全問に方法〔q780〕と物質論〔q781〕しか無かった）。誤答を先に3つ書いてから正解を書いた。位置指しなし。承認を受けて作問した（功利主義と自由主義の回の承認の段、2026年9月26日）。keys は空（台帳に語が無い。登録するなら語形を決めてから）。terms は空（TERMS に経験論と合理論を二読みで立てる語が無い）。",
+      refs: [
+        "https://plato.stanford.edu/entries/mill/ — SEP「John Stuart Mill」§3.4。数学さえ帰納的推論に基づくというミルの主張は、その経験論の徹底ぶりを示す点で最も興味深いこと（\"That Mill holds that even mathematics is founded upon inductive reasoning is perhaps most interesting because it demonstrates the radical and thoroughgoing nature of his empiricism.\"）、二たす一が三であることは、小石二つと小石一つで三つ、馬二頭と馬一頭で三頭という個々の場合の一般化によって確かめられること（\"We establish that two plus one is equal to three by generalization from specific instances\"）。正解と explanation・detail 第2段落を支える",
+        "https://iep.utm.edu/milljs/ — IEP「Mill, John Stuart」（Colin Heydt）§2.a.i。『論理学体系』でのミルの大きな主張は、論理学と数学が言葉の上だけでなく実質的な命題を含むということであること（\"Mill’s great contention in the System of Logic is that logic and mathematics contain real, rather than merely verbal, propositions.\"）、直観主義の論敵が数学と論理学の真理に認める必然性は錯覚で、直観主義の論拠をその最も強い点で崩すこと（\"thereby undermining intuitionist argumentative fortifications at their strongest point\"）。正解の2本目と detail 第1・第2段落を支える",
+        "https://www.gutenberg.org/cache/epub/10378/pg10378.txt — ミル『自伝』（1873年。Project Gutenberg #10378）第7章。観察や経験から独立に直観や意識で心の外の真理を知りうるという考えは、今の時代の誤った教説と悪い制度の最大の知的な支えだということ（\"is, I am persuaded, in these times, the great intellectual support of false doctrines and bad institutions\"）。detail 第3段落を支える"
       ]
     }
   }
