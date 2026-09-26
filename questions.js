@@ -765,11 +765,11 @@ const QUESTIONS = [
     ],
     answer: 1,
     explanation: "各人の私的利益を足し合わせたものは全体意志であり、一般意志とは区別されます。一般意志は共通利益に向かうものとされ、自分もその形成に参加しているからこそ、それに従うことが自由と両立するという議論になります。この概念は全体主義的だという批判も繰り返しなされてきました。",
-    detail: "一般意志への批判は古くからあり、代表的なものが二つあります。ひとつは、誰が一般意志を判定するのかという手続きの問題です。多数決の結果と一般意志は同じではないとルソー自身が述べているので、多数派が誤ることもありうる。各人が自分の利益から抱く特殊意志は、集まっても全体意志にしかならず、一般意志とは別のものだとされます。ではその誤りを誰が指摘するのか。バーリンがルソーの自由論を危険とみたのはこの点で、個人は自分の本当の利益を見誤っているとされるからです。ルソー自身は、人民に法を与える特別な役割として立法者を置きますが、立法者は権力も投票権ももたず説得するだけの存在とされ、難点はかえって際立ちます。\n\nもうひとつが、一般意志に従わない者は「自由であるよう強制される」という一節です。これを全体主義の萌芽と読む立場（バーリンやタルモンが代表的）と、共同体の自己立法という文脈で読めば穏当だとする立場が対立してきました。\n\nさらにルソーはフランス革命、とくにジャコバン派との関連で語られることが多いのですが、その影響の実際の大きさをめぐっても評価が割れています。",
+    detail: "一般意志への批判は古くからあり、代表的なものが二つあります。ひとつは、誰が一般意志を判定するのかという手続きの問題です。多数決の結果と一般意志は同じではないとルソー自身が述べているので、多数派が誤ることもありうる。各人が自分の利益から抱く特殊意志は、集まっても全体意志にしかならず、一般意志とは別のものだとされます。ではその誤りを誰が指摘するのか。バーリンがルソーの自由論を危険とみたのはこの点で、個人は自分の本当の利益を見誤っているとされるからです。ルソー自身は、人民に法を与える特別な役割として立法者を置きますが、立法者は権力も投票権ももたず説得するだけの存在とされ、難点はかえって際立ちます。\n\nもうひとつが、一般意志に従わない者は「自由であるよう強制される」という一節です。これを全体主義の萌芽と読む立場（バーリンやタルモンが代表的）と、共同体の自己立法という文脈で読めば穏当だとする立場が対立してきました。\n\nさらにルソーの政治的な理想は、フランス革命の指導者たちに担がれました。",
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "一般意志を全体主義の萌芽と読むか（タルモン『全体主義的民主主義の起源』1952年、バーリン）、共同体の自己立法として読むか（クランストン、マクレランドら）で対立が続いている。争点は「自由であるよう強制される」（『社会契約論』第一篇第七章）の解釈と、誰が一般意志を判定するのかという手続き。設問へ: この対立は評価をめぐるもので、設問が問う一般意志と全体意志の区別自体はどちらの陣営も争っていない。四択は成立している。 選択肢の均等化: 正解末尾の説明句「私的利益の総和である全体意志とは区別される」を削除（explanation に既述）。あわせて誤答1つを肉付け。四択の成立を確認済み。2.29倍→1.09倍。 鍵語の追補: ルソーの立法者を detail に足した。478問のどこにも出ておらず、一般意志を誰が判定するのかという論点の隣にあたるため、この問題が置き場所として適当。 2026年9月11日。 q001〜q050 の再検証（2026年9月23日）: 正解と explanation の全体意志との区別は『社会契約論』第2篇第3章（一般意志は共通の利益だけを考え、全体意志は私的利益を考える特殊意志の総和にすぎない）で確かめた。detail 第1段落の、多数派の決議が誤りうる点も同じ章（人民は欺かれることがある）、立法者が行政職でも主権でもなく、力にも理性にも訴えられないので「暴力なしに従わせ、納得させずに説得する」別の権威に頼るという点は第2篇第7章で確かめた。第2段落の「自由であるよう強制される」は第1篇第7章。IEP は、ルソーの政治思想における個人の自由と全体主義との緊張がいまも研究者の論争の的であること、フランス革命の指導者たちに担がれたことを書いている。 確認できていない点: 全体主義の萌芽と読む代表としてバーリンとタルモンを挙げる部分と、ジャコバン派への影響の大きさをめぐる評価の割れ方は、それぞれの著作や研究の該当箇所に当たっていない。refs を新設した。 典拠に合わせて直した（社会契約と政治の回、2026年9月26日）: 棚卸しで挙がった「ここに、少数の指導者が「これこそ本当の一般意志だ」と宣言する余地が生じます」は、誰の批判かが書かれておらず、支える典拠も無かった。SEP Isaiah Berlin §5.1（バーリンはルソーの自由論をとくに危険とみた。一般意志は個人の特殊意志としばしば食い違い、個人は自分の本当の利益を見誤っているとルソーは言う）の形に直した。（461→475字。上限370字に対して余地-105字） 型の例外として通した（475字で上限370字を超える）。理由: q001〜q050 の再検証（2026年9月23日）で確かめ直した本文で、3段落が、一般意志の判定の手続きと立法者、「自由であるよう強制される」をめぐる対立、フランス革命との関係という別々の論点を担い、言い切りを足さずに削れる箇所が無い refs に1本を足した（https://plato.stanford.edu/entries/berlin/）。理由: 棚卸しで挙がった文を、誰の批判かを書いた形で支えるため",
+      note: "一般意志を全体主義の萌芽と読むか（タルモン『全体主義的民主主義の起源』1952年、バーリン）、共同体の自己立法として読むか（クランストン、マクレランドら）で対立が続いている。争点は「自由であるよう強制される」（『社会契約論』第一篇第七章）の解釈と、誰が一般意志を判定するのかという手続き。設問へ: この対立は評価をめぐるもので、設問が問う一般意志と全体意志の区別自体はどちらの陣営も争っていない。四択は成立している。 選択肢の均等化: 正解末尾の説明句「私的利益の総和である全体意志とは区別される」を削除（explanation に既述）。あわせて誤答1つを肉付け。四択の成立を確認済み。2.29倍→1.09倍。 鍵語の追補: ルソーの立法者を detail に足した。478問のどこにも出ておらず、一般意志を誰が判定するのかという論点の隣にあたるため、この問題が置き場所として適当。 2026年9月11日。 q001〜q050 の再検証（2026年9月23日）: 正解と explanation の全体意志との区別は『社会契約論』第2篇第3章（一般意志は共通の利益だけを考え、全体意志は私的利益を考える特殊意志の総和にすぎない）で確かめた。detail 第1段落の、多数派の決議が誤りうる点も同じ章（人民は欺かれることがある）、立法者が行政職でも主権でもなく、力にも理性にも訴えられないので「暴力なしに従わせ、納得させずに説得する」別の権威に頼るという点は第2篇第7章で確かめた。第2段落の「自由であるよう強制される」は第1篇第7章。IEP は、ルソーの政治思想における個人の自由と全体主義との緊張がいまも研究者の論争の的であること、フランス革命の指導者たちに担がれたことを書いている。 確認できていない点: 全体主義の萌芽と読む代表としてタルモンを挙げる部分は、著作の該当箇所に当たっていない（バーリンの側は SEP Isaiah Berlin §5.1 と Brooke 2016 が支える）。 解消済み: ジャコバン派への影響の大きさをめぐる評価の割れ方は、支える典拠が無いので本文から外し、IEP の範囲（フランス革命の指導者たちに担がれた）に直して閉じた（社会契約と政治の回・承認の段、2026年9月26日）。refs を新設した。 典拠に合わせて直した（社会契約と政治の回、2026年9月26日）: 棚卸しで挙がった「ここに、少数の指導者が「これこそ本当の一般意志だ」と宣言する余地が生じます」は、誰の批判かが書かれておらず、支える典拠も無かった。SEP Isaiah Berlin §5.1（バーリンはルソーの自由論をとくに危険とみた。一般意志は個人の特殊意志としばしば食い違い、個人は自分の本当の利益を見誤っているとルソーは言う）の形に直した。（461→475字。上限370字に対して余地-105字） 型の例外として通した（475字で上限370字を超える）。理由: q001〜q050 の再検証（2026年9月23日）で確かめ直した本文で、3段落が、一般意志の判定の手続きと立法者、「自由であるよう強制される」をめぐる対立、フランス革命との関係という別々の論点を担い、言い切りを足さずに削れる箇所が無い refs に1本を足した（https://plato.stanford.edu/entries/berlin/）。理由: 棚卸しで挙がった文を、誰の批判かを書いた形で支えるため 典拠に合わせて直した（社会契約と政治の回・承認の段、2026年9月26日）: 承認を受けて、第3段落の「フランス革命、とくにジャコバン派との関連で語られることが多いのですが、その影響の実際の大きさをめぐっても評価が割れています」を直した。割れていることを本文に書く形で、ジャコバン派への影響の大きさを支える典拠も無かったので、IEP Rousseau の範囲（政治的な理想がフランス革命の指導者たちに担がれた）にした。（475→441字。上限370字に対して余地-71字） 型の例外として通した（441字で上限370字を超える）。理由: q001〜q050 の再検証（2026年9月23日）で確かめ直した本文で、3段落が、一般意志の判定の手続きと立法者、「自由であるよう強制される」をめぐる対立、フランス革命との関係という別々の論点を担い、言い切りを足さずに削れる箇所が無い",
       refs: [
         "https://www.gutenberg.org/cache/epub/46333/pg46333.txt — ルソー『社会契約論』（Cole 英訳、Project Gutenberg）。第1篇第7章「he will be forced to be free」、第2篇第3章「the latter considers only the common interest, while the former takes private interest into account, and is no more than a sum of particular wills」と人民が欺かれうること、第2篇第7章で立法者の職務は「neither magistracy, nor Sovereignty」で、力にも理性にも訴えられず「constraining without violence and persuading without convincing」権威に頼ること",
         "https://iep.utm.edu/rousseau/ — 全体意志と一般意志の区別の引用、ルソーの政治思想における個人の自由と全体主義の緊張がいまも研究者の論争の的であること、フランス革命の指導者たちに担がれたこと",
@@ -1775,7 +1775,7 @@ const QUESTIONS = [
     choices: [
       "同じ身体がずっと続いているかどうかによって決まる",
       "同じ精神的実体が続いているかどうかによって決まる",
-      "意識がどこまで遡って及ぶか、つまり記憶の連続によって決まる",
+      "意識が過去の行為や思考へどこまで及ぶかによって決まる",
       "神が同一のものと認めるかどうかによって決まる"
     ],
     answer: 2,
@@ -1784,7 +1784,7 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 『人間知性論』第二巻第27章の、人格の同一性は意識がどこまで及ぶかによって決まるという主張に対応し、誤答一番目は身体説、二番目は実体説で、ロックがどちらも退けた立場そのもの。四択は成立している。 設計の記録: リードの将校の例（少年時代に果樹園を荒らして鞭打たれた記憶をもつ将校、その将校だった頃の記憶をもつ老将軍、しかし老将軍は少年時代を覚えていない）は『人間の知的能力に関する試論』第三試論第六章のもので、detail の記述と一致する。同一性の推移性が壊れるという要点も同じ。 対照の記録: q048 のロックの実体論と本問は同じ『人間知性論』だが論点が別で、記述に食い違いはない。むしろ実体から人格を切り離すという本問の要点は、q048 の実体不可知論の帰結として読める。 選択肢の均等化: 正解の説明句を削り（解説側に既述）、誤答を型に揃えて肉付けした。四択の成立を確認済み。 1.36倍→1.24倍。 典拠に合わせて直した（社会契約と政治の回、2026年9月26日）: explanation の「王子と靴屋の意識が入れ替わったら」は、原典（第2巻第27章）では王子の魂が王子の意識を携えて、靴屋の魂が去った身体に入るという設定で、交換ではないので、原典どおりにした。（explanation を112→121字に書き換えた） refs を1本差し替えた（berkeleystudies.philosophy.fsu.edu → https://berkeleystudies.philosophy.fsu.edu/sites/g/files/upcbnu886/files/BS%2028%20Gordon-Roth%20(Revised).pdf）。理由: 説明欄の「第三試論第六章にこの反論が置かれていること」は、この論文の注14に章が書かれていないので、実際に書かれている中身に直すため refs に3本を足した（https://plato.stanford.edu/entries/locke-personal-identity/・https://iep.utm.edu/locke/・https://www.gutenberg.org/cache/epub/10615/pg10615.txt）。理由: 正解の決め手と explanation・detail 第1・3段落を支える典拠が無かったため 典拠に合わせて直した（社会契約と政治の回、2026年9月26日）: 第3段落の「現代の心の哲学でもっとも活発な領域のひとつ」は支える典拠が無く、SEP Locke on Personal Identity §4 の範囲（心理的連続説の多くが自説をロックの説の子孫とみる。パーフィットは2016年にもロック的な見方を擁護した）に直した。（311→330字。上限370字に対して余地40字）",
+      note: "設問へ: 『人間知性論』第二巻第27章の、人格の同一性は意識がどこまで及ぶかによって決まるという主張に対応し、誤答一番目は身体説、二番目は実体説で、ロックがどちらも退けた立場そのもの。四択は成立している。 設計の記録: リードの将校の例（少年時代に果樹園を荒らして鞭打たれた記憶をもつ将校、その将校だった頃の記憶をもつ老将軍、しかし老将軍は少年時代を覚えていない）は『人間の知的能力に関する試論』第三試論第六章のもので、detail の記述と一致する。同一性の推移性が壊れるという要点も同じ。 対照の記録: q048 のロックの実体論と本問は同じ『人間知性論』だが論点が別で、記述に食い違いはない。むしろ実体から人格を切り離すという本問の要点は、q048 の実体不可知論の帰結として読める。 選択肢の均等化: 正解の説明句を削り（解説側に既述）、誤答を型に揃えて肉付けした。四択の成立を確認済み。 1.36倍→1.24倍。 典拠に合わせて直した（社会契約と政治の回、2026年9月26日）: explanation の「王子と靴屋の意識が入れ替わったら」は、原典（第2巻第27章）では王子の魂が王子の意識を携えて、靴屋の魂が去った身体に入るという設定で、交換ではないので、原典どおりにした。（explanation を112→121字に書き換えた） refs を1本差し替えた（berkeleystudies.philosophy.fsu.edu → https://berkeleystudies.philosophy.fsu.edu/sites/g/files/upcbnu886/files/BS%2028%20Gordon-Roth%20(Revised).pdf）。理由: 説明欄の「第三試論第六章にこの反論が置かれていること」は、この論文の注14に章が書かれていないので、実際に書かれている中身に直すため refs に3本を足した（https://plato.stanford.edu/entries/locke-personal-identity/・https://iep.utm.edu/locke/・https://www.gutenberg.org/cache/epub/10615/pg10615.txt）。理由: 正解の決め手と explanation・detail 第1・3段落を支える典拠が無かったため 典拠に合わせて直した（社会契約と政治の回、2026年9月26日）: 第3段落の「現代の心の哲学でもっとも活発な領域のひとつ」は支える典拠が無く、SEP Locke on Personal Identity §4 の範囲（心理的連続説の多くが自説をロックの説の子孫とみる。パーフィットは2016年にもロック的な見方を擁護した）に直した。（311→330字。上限370字に対して余地40字） 選択肢の書き換え: 「意識がどこまで遡って及ぶか、つまり記憶の連続によって決まる」を「意識が過去の行為や思考へどこまで及ぶかによって決まる」に替えた。理由: 承認を受けて（2026年9月26日）、「記憶の連続」をロックの原文の形（\"as far as this consciousness can be extended backwards to any past action or thought, so far reaches the identity of that person\"）に寄せた。意識を記憶と読むかは研究上争われ、記憶説としての読みはリードにさかのぼる（SEP Locke on Personal Identity）。 書き換え後の長さ: 正解26字・誤答平均23.3字（0.90倍）・比率1.11倍・2位との差2字。 型の例外として通した（正解が26字（目安32字前後・28〜36字））。理由: 原文の形に寄せつつ2位との差を4字以内に収めると26字になり、目安の下限28字を2字下回る。誤答を伸ばすのは承認を受けた範囲の外なので、正解の側で合わせた。比率1.11倍・誤答平均0.90倍は範囲内。",
       refs: [
         "https://plato.stanford.edu/entries/reid-memory-identity/ — リードの勇敢な将校の例と、記憶説が同一性の推移性を壊すという論点",
         "https://berkeleystudies.philosophy.fsu.edu/sites/g/files/upcbnu886/files/BS%2028%20Gordon-Roth%20(Revised).pdf — Jessica Gordon-Roth, Berkeley Studies 28 (2019)。リードの勇敢な将校の反論を、Walker 編の第3版（1852年）248–49頁として引くこと（注14。章の番号は書いていない）と、バークリーが『アルシフロン』で似た反論を先に出していたこと",
@@ -2009,8 +2009,8 @@ const QUESTIONS = [
     philosophers: ["ロック", "ヒューム"], terms: ["実体"], type: "compare",
     question: "人格の同一性について、ロックとヒュームの違いとして最も適切なものは？",
     choices: [
-      "ロックは意識と記憶の連続によるとし、ヒュームは同一性は想像力が作る虚構だとした",
-      "ロックは同一性は想像力が作る虚構だとし、ヒュームは意識と記憶の連続によるとした",
+      "ロックは意識が遡って及ぶ範囲によるとし、ヒュームは同一性は想像力が作る虚構だとした",
+      "ロックは同一性は想像力が作る虚構だとし、ヒュームは意識が遡って及ぶ範囲によるとした",
       "両者とも人格の同一性は、意識ではなく身体の連続で決まるとした",
       "両者とも人格の同一性を、背後で持続する精神的実体によって説明した"
     ],
@@ -2020,7 +2020,7 @@ const QUESTIONS = [
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: ロックの意識・記憶説とヒュームの知覚の束・想像力による虚構という対比は原典の通りで、誤答一番目は両者の入れ替え、二番目は身体説、三番目は実体説。四択は成立している。 設計の記録: detail の「ヒューム自身がこの結論に満足していなかった形跡が『人間本性論』の付録に残されている」は正しい。付録でヒュームは、知覚を結びつける原理を説明しようとすると希望がすべて消え、迷宮に陥って以前の意見をどう訂正すればよいかも整合させる方法も分からない、と書いている。ただしそこで彼が何を問題としたのかについては解釈が大きく分かれており、detail が「この告白の意味は現在も研究上の論点です」と断っているのは資料の状況と一致する。 対照の記録: q048（ロックの実体）、q061（ロックの人格同一性）、本問が経験論の実体解体という一本の線でつながっている。detail 冒頭の三段階の整理（ロックが実体を切り詰め、バークリーが物質的実体を消し、ヒュームが精神的実体も消す）は q048 の detail と同じ順序で書かれており、記述が揃っている。 選択肢の均等化（鏡像化）: 正解を対比の核だけに絞り（削った根拠は explanation に既述）、入替誤答を正解と同じ長さの鏡像に書き直し、「両者とも」型の誤答に根拠を足した。帰属が逆であることで誤りは保たれており、正解と紛れないことを確認済み。 2.45倍→1.29倍。 選択肢の均等化（「両者とも」型の下限）: 「両者とも」型の誤答2件を、その問題の本文・解説にある中身で肉付けし、正解の0.7倍以上にした（0.67→0.77倍・0.67→0.82倍）。誤りの核は変えておらず、正解と紛れないことを確認済み。1.29倍→1.16倍。 refs を1本差し替えた（philarchive.org/archive/SIAHAP → Daniel R. Siakel, 'Hume's Appendix Problem and Associative Connections in the Treatise and Enquiry', Hume Studies 44(1), 2018, 23–50（https://www.pdcnet.org/hume/content/hume_2018_0044_0001_0023_0050 。著者が置いた版は https://philarchive.org/archive/SIAHAP ））。理由: 著者が置いた版（PhilArchive）だけを挙げていたので、刊行物の書誌を主にし、置き場所を補いにした refs に2本を足した（https://plato.stanford.edu/entries/identity-personal/・https://www.gutenberg.org/ebooks/10615）。理由: 正解のロック側と detail 第3段落のパーフィットを支える典拠が無かったため refs を1本差し替えた（gutenberg.org/ebooks/10615 → https://www.gutenberg.org/ebooks/10615）。理由: 説明欄の「第1巻の英訳」は誤り（英語原文の Volume 1 で、第1・2巻を収める）で、節番号のずれも書き足すため",
+      note: "設問へ: ロックの意識・記憶説とヒュームの知覚の束・想像力による虚構という対比は原典の通りで、誤答一番目は両者の入れ替え、二番目は身体説、三番目は実体説。四択は成立している。 設計の記録: detail の「ヒューム自身がこの結論に満足していなかった形跡が『人間本性論』の付録に残されている」は正しい。付録でヒュームは、知覚を結びつける原理を説明しようとすると希望がすべて消え、迷宮に陥って以前の意見をどう訂正すればよいかも整合させる方法も分からない、と書いている。ただしそこで彼が何を問題としたのかについては解釈が大きく分かれており、detail が「この告白の意味は現在も研究上の論点です」と断っているのは資料の状況と一致する。 対照の記録: q048（ロックの実体）、q061（ロックの人格同一性）、本問が経験論の実体解体という一本の線でつながっている。detail 冒頭の三段階の整理（ロックが実体を切り詰め、バークリーが物質的実体を消し、ヒュームが精神的実体も消す）は q048 の detail と同じ順序で書かれており、記述が揃っている。 選択肢の均等化（鏡像化）: 正解を対比の核だけに絞り（削った根拠は explanation に既述）、入替誤答を正解と同じ長さの鏡像に書き直し、「両者とも」型の誤答に根拠を足した。帰属が逆であることで誤りは保たれており、正解と紛れないことを確認済み。 2.45倍→1.29倍。 選択肢の均等化（「両者とも」型の下限）: 「両者とも」型の誤答2件を、その問題の本文・解説にある中身で肉付けし、正解の0.7倍以上にした（0.67→0.77倍・0.67→0.82倍）。誤りの核は変えておらず、正解と紛れないことを確認済み。1.29倍→1.16倍。 refs を1本差し替えた（philarchive.org/archive/SIAHAP → Daniel R. Siakel, 'Hume's Appendix Problem and Associative Connections in the Treatise and Enquiry', Hume Studies 44(1), 2018, 23–50（https://www.pdcnet.org/hume/content/hume_2018_0044_0001_0023_0050 。著者が置いた版は https://philarchive.org/archive/SIAHAP ））。理由: 著者が置いた版（PhilArchive）だけを挙げていたので、刊行物の書誌を主にし、置き場所を補いにした refs に2本を足した（https://plato.stanford.edu/entries/identity-personal/・https://www.gutenberg.org/ebooks/10615）。理由: 正解のロック側と detail 第3段落のパーフィットを支える典拠が無かったため refs を1本差し替えた（gutenberg.org/ebooks/10615 → https://www.gutenberg.org/ebooks/10615）。理由: 説明欄の「第1巻の英訳」は誤り（英語原文の Volume 1 で、第1・2巻を収める）で、節番号のずれも書き足すため 選択肢の書き換え: 「ロックは意識と記憶の連続によるとし、ヒュームは同一性は想像力が作る虚構だとした」を「ロックは意識が遡って及ぶ範囲によるとし、ヒュームは同一性は想像力が作る虚構だとした」に替えた。理由: 承認を受けて（2026年9月26日）、「記憶の連続」をロックの原文の形（\"as far as this consciousness can be extended backwards to any past action or thought, so far reaches the identity of that person\"）に寄せた。意識を記憶と読むかは研究上争われ、記憶説としての読みはリードにさかのぼる（SEP Locke on Personal Identity）。 書き換え後の長さ: 正解41字・誤答平均34.3字（0.84倍）・比率1.19倍・2位との差0字。 型の例外として通した（正解が41字（目安32字前後・28〜36字））。理由: 比較問題で、正解はもとから38字と目安の36字を超えていた。入れ替えの誤答を同じ長さの鏡像にしてあり、比率・誤答平均・2位との差は範囲内に収まる。 選択肢の書き換え: 「ロックは同一性は想像力が作る虚構だとし、ヒュームは意識と記憶の連続によるとした」を「ロックは同一性は想像力が作る虚構だとし、ヒュームは意識が遡って及ぶ範囲によるとした」に替えた。理由: 正解の書き換えに合わせて、入れ替えの誤答を同じ長さの鏡像にした。 書き換え後の長さ: 正解41字・誤答平均34.3字（0.84倍）・比率1.19倍・2位との差0字。 型の例外として通した（正解が41字（目安32字前後・28〜36字））。理由: 比較問題で、正解の書き換えに合わせた鏡像のため、正解の長さの検査は正解の側の許可と同じ理由で通す。",
       refs: [
         "Daniel R. Siakel, 'Hume's Appendix Problem and Associative Connections in the Treatise and Enquiry', Hume Studies 44(1), 2018, 23–50（https://www.pdcnet.org/hume/content/hume_2018_0044_0001_0023_0050 。著者が置いた版は https://philarchive.org/archive/SIAHAP ） — 『人間本性論』付録での告白（迷宮に陥り、以前の意見をどう訂正すればよいかも整合させる方法も分からない）と、その解釈が定まっていないこと",
         "https://plato.stanford.edu/entries/hume/ — 知覚の束としての自己と、同一性を想像力の働きに帰する議論",
@@ -22598,6 +22598,60 @@ const QUESTIONS = [
       refs: [
         "https://plato.stanford.edu/entries/berlin/ — SEP「Isaiah Berlin」§5.2。バーリンの説明では、多元主義と自由主義の主なつながりは両者にとって選択が中心にあること（\"In Berlin's account, the main connection between pluralism and liberalism is the centrality of choice to both.\"）、多元主義は選択の自由を侵す主な根拠の一つを崩し、自由に選べることの大事さを裏づけること（\"Pluralism, then, for Berlin, both undermines one of the main rationales for violating freedom of choice, and corroborates the importance and value of being able to make choices freely.\"）、クラウダーらは自由主義が多元主義だけから導けると論じたが、のちにクラウダーは見方を改めたこと（\"Others (such as George Crowder) have argued that Berlin's liberalism can be deduced from his pluralism alone, though more recently Crowder has modified his view\"）。正解と explanation・detail 第2・第3段落を支える",
         "https://plato.stanford.edu/entries/value-pluralism/ — SEP「Value Pluralism」冒頭・§4.4。政治的多元主義の一つの形は、還元できない複数の道徳的価値があり、それが自由主義の政治体制を正当化するという道徳的な価値多元主義に基づくこと（\"One version of political pluralism is based on moral value pluralism, claiming that there are irreducibly plural moral values and that this justifies a liberal political system.\"）、バーリンが主に関心をもったのは政治的多元主義と政治的自由主義の擁護だったこと（\"Berlin is primarily concerned with political pluralism, and with defending political liberalism\"）。正解の2本目と detail 第3段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q877",
+    philosophers: ["ロック"], terms: [], type: "single",
+    keys: [],
+    question: "ロックが『人間知性論』第4巻で知識をどう定義したかとして最も適切なものは？",
+    choices: [
+      "生まれつき心に刻まれた原理を、理性で確かめることだ",
+      "私たちのもつ観念どうしのつながりと、一致や不一致を知覚することだ",
+      "多くの人々が長く一致して同意してきたことを受け入れることだ",
+      "外界の事物について、感覚が確かに教えることを知ることだ"
+    ],
+    answer: 1,
+    explanation: "『人間知性論』第4巻第1章でロックは、知識を、私たちのもつ観念どうしのつながりと一致、あるいは不一致と背反の知覚と定義します。知識は観念と観念の関係のうちにあるものとされます。",
+    detail: "知識には程度があります。二つの観念の一致をじかに見て取る直観が最も確かで、ほかの観念を介して示す論証がそれに続きます。自分が存在することは直観で、神が存在することは論証で知られます。外界の個物の存在についての感覚的な知識は、蓋然性を超えるものの、前の二つほど確かではないとされます。\n\nこの定義からすると、知識の範囲はとても狭くなります。金や象の実在的本質は隠されており、物体についての多くのことは知識ではなく蓋然的な意見にとどまります。そのため第4巻の後半は、知識の無いところで信をどう配分するかを論じます。\n\n生まれつき刻まれた原理を確かめるという見方は、第1巻が退けた生得原理の説で、多くの人の一致した同意も、第1巻は生得性の証拠にならないとしました。感覚が教えることだけを知識とする見方は、感覚的な知識を最も弱い程度に置く順序と逆です。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は『人間知性論』第4巻第1章の知識の定義（観念どうしのつながりと一致、あるいは不一致と背反の知覚）。誤答は、第1巻が退けた生得原理の説、第1巻が生得性の証拠として退けた普遍的な同意、第4巻の三つの程度で最も弱い感覚的な知識だけを知識とする見方。四択は成立している。 設計の記録: 社会契約と政治の回（2026年9月26日）の量の見直しで、ロックの知識の説明（第4巻）が1問も無く、人物像に欠かせないとされたので作った。置き場の候補（q236・q047・q048）は主題が観念の由来か、字数が上限を超えていた。誤答を先に3つ書いてから正解を書いた。位置指しなし。 設計の記録: keys と terms は空にした。台帳に知識の定義にあたる語が無く、TERMS の「知覚」は読みA（心に与えられる観念の単位）が本問の主題（観念どうしの関係の知覚）とずれるため。鍵語を登録するなら、承認の段で語形を決める。 事実の確認: 定義は SEP John Locke §2.4 と Project Gutenberg #10616 の英語原文、三つの程度は IEP §2.e と原文（第4巻第2章。感覚的な知識は単なる蓋然性を超えるが前の二つの確かさには届かず、知識の名で通る）、知識の範囲の狭さと実在的本質が隠されていることは SEP §2.4 と IEP §2.e、第4巻の後半が信の配分を扱うことは IEP §2.e、第1巻が生得知識を否定し普遍的な同意からの論を退けることは SEP §2.1 で確かめた。",
+      refs: [
+        "https://plato.stanford.edu/entries/locke/ — SEP「John Locke」§2.4。第4巻で知識とは何か、人が何を知りうるかを述べること（\"In the fourth book of An Essay Concerning Human Understanding Locke tells us what knowledge is\"）、知識の定義（\"Locke defines knowledge as\"）、自分の存在は最高の確かさで、神の存在は論証で知られること（\"We also know that we exist with the highest degree of certainty\"、\"We can know that God exists with the second highest degree of assurance, that of demonstration\"）、物体についての知識は蓋然的で意見にとどまること（\"Our knowledge of material things is probabilistic and thus opinion rather than knowledge\"）、実在的本質が隠されていること（\"The real essence of elephants and gold is hidden from us\"）。§2.1。第1巻が生得知識を否定し、普遍的な同意からの論を退けること。正解と detail 第1〜3段落を支える",
+        "https://iep.utm.edu/locke/ — IEP「Locke, John」§2.e。知識の三つの程度と、第一の程度が直観であること（\"The first degree Locke calls intuitive knowledge\"）、注釈者のあいだで、ロックが人の知識の範囲をとても狭いと考えたという合意があること（\"there is a consensus among commentators that Locke believes the scope of human understanding is very narrow\"）、第4巻の後半が知識の無いところで信をどう配分するかを扱うこと（\"The second part focuses on how we should apportion belief in cases where we lack knowledge\"）。正解の2本目と detail 第1・2段落を支える",
+        "https://www.gutenberg.org/cache/epub/10616/pg10616.txt — ロック『人間知性論』英語原文の Volume 2（第3・4巻を収める。Project Gutenberg #10616）。第4巻第1章の定義（\"agreement or disagreement\"、\"repugnancy of any of our ideas\"）、第2章の直観の知識（\"intuitive knowledge\"）と感覚的な知識（\"sensitive knowledge\"）。正解の原典"
+      ]
+    }
+  },
+  {
+    id: "q878",
+    philosophers: ["ベッカリーア"], terms: [], type: "single",
+    keys: [],
+    question: "ベッカリーアが、刑罰で犯罪を防ぐことについて述べたこととして最も適切なものは？",
+    choices: [
+      "刑は重いほど見せしめが効くので、できるかぎり苛烈にすべきだ",
+      "罰は罪への報いなので、防ぐ効果を考えに入れてはならない",
+      "刑の重さは、裁判官が事件ごとに自由に量って決めるのがよい",
+      "刑は犯罪の利益をわずかに上回れば足り、効くのは厳しさより確実さだ"
+    ],
+    answer: 3,
+    explanation: "刑罰がその目的を果たすには、刑の害が犯罪から得られる利益を上回れば足り、それを超えるものは余計で暴政的だ、とベッカリーアは論じます。犯罪を防ぐ最大の歯止めは刑の残酷さではなく、刑を免れないという確実さだ、ともいいます。",
+    detail: "出発点は罪と罰の釣り合いです。社会の利益に反する度合いが大きい罪ほど、それを思いとどまらせる歯止めも強くなければならない。刑の効き目を決めるのは苦痛の多さではなく、罪との釣り合いと、罰が必ず来るという見込みです。\n\nこうした刑罰論は、18世紀後半に生まれた古典派犯罪学の出発点とされます。刑を定められるのは法だけで、その権限は立法者にあり、刑事裁判官は立法者ではないので刑法を解釈できない、ともいいます。法は明確で、誰にも等しくあるべきだという考えです。\n\n重いほど効くという見方は、確実さを重んじる本人の論と逆です。罰は報いであって防ぐ効果を考えないという見方は、のちにカントがとった応報の立場に近いものです。刑の重さを裁判官が事件ごとに量るという見方は、裁判官の解釈を退ける本人の論と逆です。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、刑の害が犯罪の利益を上回れば足りるという点（Farrer 訳第15章）と、最大の歯止めは刑の残酷さではなく確実さだという点（第20章）。誤答は、苛烈な刑ほど効くという見方（確実さを重んじる本人の論と逆）、抑止を考えない応報の見方（のちのカントの側。SEP Kant's Social and Political Philosophy §7）、裁判官が刑を量る見方（第3・4章が退けた）。四択は成立している。 設計の記録: 社会契約と政治の回（2026年9月26日）の量の見直しで、罪と罰の釣り合いと刑の確実さが5問のどこにも無く、人物像に欠かせないとされたので作った。q831（刑罰権の根拠と限度）への一文の追記も考えたが、釣り合い・確実さ・抑止は根拠論とは別の柱なので1問にした。q832 の「強さより持続」とは論点が違う（持続は死刑の章、確実さは第20章）。誤答を先に3つ書いてから正解を書いた。位置指しなし。 設計の記録: keys と terms は空にした。台帳にベッカリーアの刑罰の釣り合いにあたる語が無く、当てはまる TERMS の語も無いため。鍵語を登録するなら、承認の段で語形を決める。 設計の記録: 章番号は Farrer 訳のもの。原典（イタリア語版 Wikisource、序論と全47章）では、釣り合いが第6章、確実さと刑の害が犯罪の利益を上回れば足りることが第27章、法だけが刑を定めることが第3章、刑事裁判官が刑法を解釈できないことが第4章にあたる（Farrer 訳は原典と章の立て方が違う）。 事実の確認: 原典（Farrer 訳、Project Gutenberg #58700）第23章の釣り合い、第20章の確実さ、第15章の刑の害が犯罪の利益を上回れば足りること、第3・4章の法だけが刑を定め刑事裁判官は刑法を解釈できないこと、REP の要約の、刑は罪に釣り合い法は明確で誰にも等しくあるべきこと、松原2006 の、古典派犯罪学の出発点とベッカリーアの引用（処罰の確実さ）を確かめた。",
+      refs: [
+        "https://www.rep.routledge.com/articles/biographical/beccaria-cesare-bonesana-1738-94/v-1 — Richard Bellamy, \"Beccaria, Cesare Bonesana (1738–94)\", Routledge Encyclopedia of Philosophy, 2001, doi:10.4324/9780415249126-T063-1（無料で公開している要約だけを読んだ）。法は明確で誰にも等しくあるべきこと（\"should be clear and equal for all\"）、刑は罪に釣り合うべきこと（\"Punishments must be proportionate to the crime\"）。正解と detail 第1・2段落を支える",
+        "https://www.jstage.jst.go.jp/article/jsl1951/2006/65/2006_67/_article/-char/ja — 松原英世「犯罪観の変遷と刑罰の役割」『法社会学』65号 67頁〜（2006）。第II章1「古典派犯罪学」。その出発点が18世紀後半に生まれた古典派犯罪学とされること（「その出発点とされるのは」）、ベッカリーア（風早訳1959、86頁）の、刑の損失が犯罪の利得を超えれば十分で、処罰の確実さも算入されるという一節（「処罰の確実さ」）。正解の2本目と detail 第2段落を支える",
+        "https://www.gutenberg.org/cache/epub/58700/pg58700.txt — ベッカリーア『犯罪と刑罰』（James Anson Farrer 訳、1880年。Project Gutenberg #58700。章番号は Farrer 訳のもの）。第23章の釣り合い（\"This principle accordingly establishes the necessity of a certain proportion between crimes and punishments\"）、第20章の確実さ（\"One of the greatest preventives of crimes is, not the cruelty of the punishments attached to them, but their infallibility\"）、第15章（\"it is enough if the evil of the punishment exceeds the advantage of the crime\"）、第3章（\"the laws alone can decree punishments for crimes, and this authority can only rest with the legislator\"）、第4章（\"the right to interpret penal laws cannot possibly rest with the criminal judges, for the very reason that they are not legislators\"）。正解と explanation・detail の原典",
+        "https://it.wikisource.org/wiki/Dei_delitti_e_delle_pene/Capitolo_VI — ベッカリーア『犯罪と刑罰』（1764年、公有）イタリア語の原文（イタリア語版 Wikisource。底本は Fabietti 編 Mursia 1973年版）第VI章「Proporzione fra i delitti e le pene」。犯罪が起きないことだけでなく、社会に与える害に比例してまれであることが共通の利益であること（\"Non solamente è interesse comune che non si commettano delitti\"）。detail 第1段落の原典",
+        "https://it.wikisource.org/wiki/Dei_delitti_e_delle_pene/Capitolo_XXVII — ベッカリーア『犯罪と刑罰』（1764年、公有）イタリア語の原文（イタリア語版 Wikisource。底本は Fabietti 編 Mursia 1973年版）第XXVII章「Dolcezza delle pene」。犯罪の最大の歯止めの一つは刑の残酷さではなく、刑を免れないことであること（\"non è la crudeltà delle pene, ma l'infallibilità di esse\"）、刑が効果をあげるには刑の害が犯罪から生じる利益を上回れば足りること（\"basta che il male della pena ecceda il bene che nasce dal delitto\"）。正解と explanation の原典",
+        "https://it.wikisource.org/wiki/Dei_delitti_e_delle_pene/Capitolo_III — ベッカリーア『犯罪と刑罰』（1764年、公有）イタリア語の原文（イタリア語版 Wikisource。底本は Fabietti 編 Mursia 1973年版）第III章「Conseguenze」。法だけが犯罪に対する刑を定めうること（\"le sole leggi possono decretar le pene su i delitti\"）。detail 第2段落の原典",
+        "https://it.wikisource.org/wiki/Dei_delitti_e_delle_pene/Capitolo_IV — ベッカリーア『犯罪と刑罰』（1764年、公有）イタリア語の原文（イタリア語版 Wikisource。底本は Fabietti 編 Mursia 1973年版）第IV章「Interpretazione delle leggi」。刑法を解釈する権限は刑事裁判官にはありえないこと（\"le leggi penali può risedere presso i giudici criminali\"）。detail 第2段落の原典"
       ]
     }
   }
