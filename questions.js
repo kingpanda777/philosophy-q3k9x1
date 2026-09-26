@@ -22507,5 +22507,29 @@ const QUESTIONS = [
         "https://www.gutenberg.org/cache/epub/10378/pg10378.txt — ミル『自伝』（1873年。Project Gutenberg #10378）第7章。観察や経験から独立に直観や意識で心の外の真理を知りうるという考えは、今の時代の誤った教説と悪い制度の最大の知的な支えだということ（\"is, I am persuaded, in these times, the great intellectual support of false doctrines and bad institutions\"）。detail 第3段落を支える"
       ]
     }
+  },
+  {
+    id: "q876",
+    philosophers: ["バーリン"], terms: ["自由"], type: "single",
+    keys: ["価値多元主義"],
+    question: "バーリンが、価値多元主義を自由主義に結びつけた論じ方として最も適切なものは？",
+    choices: [
+      "理性が唯一の正しい生き方を示すので、国家はそれを導くべきだ",
+      "どの価値観も等しく正しいので、どれを選んでも違いはない",
+      "幸福の総量を増やすので、自由は計算の結果として守られる",
+      "価値の衝突で人は選ばざるをえず、選ぶ自由の大事さが裏づけられる"
+    ],
+    answer: 3,
+    explanation: "自由と平等、正義と慈悲のように本物の価値どうしが衝突するなら、人は選ばねばなりません。正解が一つに定まらないなら、他人の選択を正しい答えの名で奪う主な理由が崩れ、選べることの価値がかえって裏づけられる、というのがバーリンの論じ方です。",
+    detail: "理性が唯一の正しい生き方を示すという見方は、バーリンが一元論と呼んで退けた前提です。どれを選んでも違いはないとする見方は、バーリンが多元主義と区別した相対主義にあたります。自由を幸福の計算の結果として守るのは功利主義の筋道で、バーリンの論証とは別です。\n\nバーリンにとって多元主義と自由主義の主なつながりは、両者にとって選択が中心にあることです。多元主義は選ぶ自由を侵す主な根拠の一つを崩し、同時に自由に選べることの大事さを裏づける、という二つの働きです。\n\nただし、多元主義からそのまま自由主義が導けるかは論争になっています。クラウダーらは自由主義が多元主義だけから導けると論じましたが、クラウダー自身のちに見方を改めました。価値多元主義を自由主義の政治体制の正当化に結びつける立場は、政治的多元主義の一つの形として論じられています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は SEP Isaiah Berlin §5.2 の、多元主義と自由主義の主なつながりは両者にとって選択が中心にあることで、多元主義は選択の自由を侵す主な根拠の一つを崩し、自由に選べることの大事さを裏づけるという整理。誤答は一元論（バーリンが退けた前提）、相対主義（バーリンが多元主義と区別した）、功利主義の筋道。四択は成立している。 設計の記録: 功利主義と自由主義の回（2026年9月26日）の量の見直しで「欠かせない」とした概念。q051 への追記を承認されたが、q051 の detail を詰めても393字で370字に収まらなかったので、指示どおり新しい問題の草稿にした。誤答を先に3つ書いてから正解を書いた。位置指しなし。承認を受けて作問した（2026年9月26日）。設問文は「バーリンが…結びつけた論じ方」を問う形で、論証が正しいとは言い切っていない（多元主義から自由主義が導けるかには異論があり、detail 第3段落に書いた）。",
+      refs: [
+        "https://plato.stanford.edu/entries/berlin/ — SEP「Isaiah Berlin」§5.2。バーリンの説明では、多元主義と自由主義の主なつながりは両者にとって選択が中心にあること（\"In Berlin's account, the main connection between pluralism and liberalism is the centrality of choice to both.\"）、多元主義は選択の自由を侵す主な根拠の一つを崩し、自由に選べることの大事さを裏づけること（\"Pluralism, then, for Berlin, both undermines one of the main rationales for violating freedom of choice, and corroborates the importance and value of being able to make choices freely.\"）、クラウダーらは自由主義が多元主義だけから導けると論じたが、のちにクラウダーは見方を改めたこと（\"Others (such as George Crowder) have argued that Berlin's liberalism can be deduced from his pluralism alone, though more recently Crowder has modified his view\"）。正解と explanation・detail 第2・第3段落を支える",
+        "https://plato.stanford.edu/entries/value-pluralism/ — SEP「Value Pluralism」冒頭・§4.4。政治的多元主義の一つの形は、還元できない複数の道徳的価値があり、それが自由主義の政治体制を正当化するという道徳的な価値多元主義に基づくこと（\"One version of political pluralism is based on moral value pluralism, claiming that there are irreducibly plural moral values and that this justifies a liberal political system.\"）、バーリンが主に関心をもったのは政治的多元主義と政治的自由主義の擁護だったこと（\"Berlin is primarily concerned with political pluralism, and with defending political liberalism\"）。正解の2本目と detail 第3段落を支える"
+      ]
+    }
   }
 ];
