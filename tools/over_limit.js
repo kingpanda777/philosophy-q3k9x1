@@ -1,11 +1,12 @@
 // detail が型（370字以内・3段落）を外れている問題の一覧を出す（2026年9月24日）。
-// 使い方: node tools/over_limit.js
+// 使い方: node tools/over_limit.js [--out <出力先>]（--out で道具自身がファイルに書く。2026年9月26日に足した。リダイレクトは hooks で止まる）
 // 許可欄で通した問題は、note の「型の例外として通した（…）。理由: …」の最後の記録を理由として出す。
 // 記録の無い問題は、道具に許可欄ができた2026年9月18日より前から型を外れていたもの（字数の例外として残すと決めたものを含む）。
 // CLAUDE.md の「型を外れて許可した問題の一覧」はこの出力を写したもの。許可欄で通したら、この道具を流して一覧を直す。
 const fs = require('fs'), path = require('path');
+require('./_lib.js').outOption();
 const src = fs.readFileSync(path.join(__dirname, '..', 'questions.js'), 'utf8');
-const { QUESTIONS: Q } = new Function(src + ';return {QUESTIONS};')();
+const { QUESTIONS: Q } =new Function(src + ';return {QUESTIONS};')();
 const L = s => [...s.replace(/\n/g, '')].length;
 const rows = [], none = [];
 for (const q of Q) {

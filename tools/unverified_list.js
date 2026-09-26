@@ -1,9 +1,10 @@
 // note に「確認できていない点:」が残る問題の一覧を出す（2026年9月24日）。
-// 使い方: node tools/unverified_list.js
+// 使い方: node tools/unverified_list.js [--out <出力先>]（--out で道具自身がファイルに書く。2026年9月26日に足した。リダイレクトは hooks で止まる）
 // DONE は「学派ごとの典拠の回」を終えた棚。回を終えたらここに足す。
 // SWEPT は、決まった形でない未確認の書き方を「確認できていない点:」に揃えた問題（2026年9月24日）。まだの棚でも一覧に載せる。
 // CLAUDE.md の「典拠の回で残った未確認」はこの出力を写したもの。回を終えたら、この道具を流して一覧を直す（手で行を足さない）。
 const fs = require('fs'), path = require('path');
+require('./_lib.js').outOption();
 const src = fs.readFileSync(path.join(__dirname, '..', 'questions.js'), 'utf8');
 const { QUESTIONS: Q, PHILOSOPHERS: PH } = new Function(src + ';return {QUESTIONS,PHILOSOPHERS};')();
 const DONE = ['中世', '近世の認識論', '古代ギリシア', '分析哲学', '現象学と実存', 'フランクフルト学派', '現代の正義論', '科学哲学', 'ドイツ観念論', '十九世紀の反逆', '精神分析', '構造主義以降', '功利主義と自由主義', '社会契約と政治', '二十世紀の政治哲学', '社会学'];

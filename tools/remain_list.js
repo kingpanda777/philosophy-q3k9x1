@@ -2,6 +2,7 @@
 // 使い方:
 //   node tools/remain_list.js            まだの棚すべてを1行ずつ（表の形）と、棚どうしが共有する比較問題の数
 //   node tools/remain_list.js <棚の名前>  その棚の問題を1問1行で（refs の本数・未確認・型外れ・支えなし・逸話の保留・q001〜q050・済んだ棚と組むか）
+//   どちらも --out <出力先> を付けると、道具自身がファイルに書く（2026年9月26日に足した。リダイレクトは hooks で止まる）
 // 「済んだ棚」は tools/unverified_list.js の DONE をそのまま読む（棚の一覧を2か所に持たないため）。回を終えたら DONE に足すだけでよい。
 // 数え方：
 //   支えなし … detail・explanation の文のうち、年・数字・直接の引用を含む文で、その年・数字・引用を refs にも note にも書いていないもの
@@ -10,6 +11,7 @@
 //   回すもの … CLAUDE.md の「ほかの棚の回へ回すもの」の表で、その棚に割り振ってある問題
 // 検出器の限界：支えなし・逸話の保留は文字列の手がかりで拾っているので、手がかりの無い文（後の時代への影響の文など）は拾えない。手順0は人の目で探す。
 const fs = require('fs'), path = require('path');
+require('./_lib.js').outOption();
 const R = path.join(__dirname, '..');
 const src = fs.readFileSync(path.join(R, 'questions.js'), 'utf8');
 const { QUESTIONS: Q, PHILOSOPHERS: PH, SCHOOLS } = new Function(src + ';return {QUESTIONS,PHILOSOPHERS,SCHOOLS};')();

@@ -153,4 +153,26 @@ const matchYears = (years, quote) => {
   return { inQuote, 合わない };
 };
 
-module.exports = { L, readJson, writeJson, PHIL, matchYears, readFileSafe, writeFileSafe, diagnose };
+/* 6. 出力をファイルに残す（--out <パス>）（2026年9月26日、社会学の回で足した）
+   シェルのリダイレクト（> ・>>）と tee でファイルを作ることを hooks で止めるので、出力を残したい道具はこの部品で
+   道具自身が書く。呼ぶと process.argv から「--out <パス>」を取り除き、console.log の出力を貯めて、終わるときに
+   そのパスへ書く（パスは実行した場所から見た相対パスか絶対パス）。--out が無ければ何もせず、今までどおり画面に出す。
+   道具の冒頭で、process.argv を読むより前に呼ぶこと。 */
+const outOption = () => {
+  const i = process.argv.indexOf("--out");
+  if (i < 0) return null;
+  const p = process.argv[i + 1];
+  if (!p) throw new Error("--out のあとに出力先のパスが無い");
+  process.argv.splice(i, 2);
+  const target = path.resolve(process.cwd(), p);
+  const buf = [];
+  console.log = (...a) => buf.push(a.map(x => (typeof x === "string" ? x : require("util").inspect(x))).join(" "));
+  process.on("exit", code => {
+    if (code) return;                                    // 落ちたときは書かない（途中の出力で上書きしないため）
+    writeFileSafe(target, buf.join("\n") + "\n");
+    process.stderr.write("書き出した: " + target + "\n");
+  });
+  return target;
+};
+
+module.exports = { L, readJson, writeJson, PHIL, matchYears, readFileSafe, writeFileSafe, diagnose, outOption };
