@@ -205,7 +205,9 @@ const PHILOSOPHERS = [
   { name: "サイード", years: "1935–2003", note: "東洋は、西洋の学問と文学が作り上げてきた言説である", school: "構造主義以降" },
   { name: "スピヴァク", years: "1942–", note: "代わって語ることと描き出すこと。代表の二つの意味を混ぜると、声は消される", school: "構造主義以降" },
   { name: "ナンシー・フレイザー", years: "1947–", note: "再分配と承認は互いに還元できない。正義の物差しは、対等に参加できるかどうか", school: "フランクフルト学派" },
-  { name: "フロム", years: "1900–1980", note: "自由の重荷に耐えかねた近代人は、権威への服従と画一化へ逃げる", school: "フランクフルト学派" }
+  { name: "フロム", years: "1900–1980", note: "自由の重荷に耐えかねた近代人は、権威への服従と画一化へ逃げる", school: "フランクフルト学派" },
+  { name: "ブランダム", years: "1950–", note: "意味は推論のなかで果たす役割で決まる。規範は実践のうちに暗黙に含まれる", school: "プラグマティズム" },
+  { name: "トクヴィル", years: "1805–1859", note: "平等の進むデモクラシーの時代に、自由をどう守るか", school: "功利主義と自由主義" }
 ];
 
 const TERMS = [
@@ -6146,11 +6148,11 @@ const QUESTIONS = [
     ],
     answer: 1,
     explanation: "『現代の批判』では、情熱を欠いた反省の時代として同時代が診断されます。誰も責任を負わない匿名の公衆が力をもち、突出したものが引き下ろされていく。それに対して、神の前に一人で立つ単独者という在り方が置かれます。群衆は非真理である、という言い方でも知られます。",
-    detail: "政治的な平等と取り違えないことが要点です。水平化は身分の平等化そのものではなく、情熱と決断が失われて何もかもが同じ高さに均されることを指しています。\n\nこの診断は新聞というメディアへの批判と結びついていました。匿名の誰かが語り、誰も責任を負わないまま世論が形成される。キルケゴール自身、1845年から46年にかけて風刺新聞『コルサーレン』と争い、容姿まで嘲られた経験があり、この論には切実な背景があります。\n\n後の批判者がマスメディアに抱いた懸念を先取りしたものとして、しばしば読まれてきました。ハイデガーのひと、ミルの多数者の専制、アドルノの文化産業論とあわせて読むと、匿名の集合が個人に及ぼす圧力という同じ主題が、異なる語彙で扱われていることが見えてきます。",
+    detail: "政治的な平等と取り違えないことが要点です。水平化は身分の平等化そのものではなく、情熱と決断が失われて何もかもが同じ高さに均されることを指しています。\n\nこの診断は新聞というメディアへの批判と結びついていました。匿名の誰かが語り、誰も責任を負わないまま世論が形成される。キルケゴール自身、1845年から46年にかけて風刺新聞『コルサーレン』と争い、容姿まで嘲られた経験があり、この論には切実な背景があります。\n\n後の批判者がマスメディアに抱いた懸念を先取りしたものとして、しばしば読まれてきました。ハイデガーのひと、ミルが論じた多数者の専制、アドルノの文化産業論とあわせて読むと、匿名の集合が個人に及ぼす圧力という同じ主題が、異なる語彙で扱われていることが見えてきます。",
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 群衆は非真理であり、匿名の公衆のうちで情熱が失われ平板化していく事態を水平化と呼んで批判したという整理は『現代の批判』（『二つの時代』の後半、1846年）の通りで、誤答一番目は共同体主義、三番目は政治的平等、四番目は完全な独立という誤読。四択は成立している。 事実の確認: 群衆は非真理であるという命題は1846年に書かれたもので、群衆を得るのは大した芸当ではなく、いくらかの才能と一定量の非真理と人間の情念についての多少の知識があればよい、真理の証人は誰も群衆と関わろうとしない、という論の運びになっている。detail の要約と一致する。情熱と行為の欠如、反省と嫉妬、水平化の過程、政治と公衆と新聞という主題構成も資料どおりで、新聞が公衆という観念を作り出し比較の基準にすることで嫉妬が生じるという分析も同書にある。 設計の記録: detail が「政治的な平等と取り違えないことが要点です。水平化は身分の平等化そのものではなく、情熱と決断が失われて何もかもが同じ高さに均されることを指しています」と、誤答三番目を正面から塞いでいる。 対照の記録: 末尾でハイデガーのひと、ミルの多数者の専制、アドルノの文化産業論を並べているのは、q114（多数者の専制）と同じ主題を別の語彙で扱う問題群への見取り図になっている。q114 の記述と食い違いはない。 解消済み: 『コルサーレン』との論争の経緯（1845〜46年、仮名の一人がメラーを攻撃して雑誌を挑発し、容姿を嘲る一連の攻撃を受けた）は SEP §1 が書く（十九世紀の反逆の回、2026年9月24日）。解消済み: 攻撃が始まった月と、ゴルトシュミットが編集を退いた時期は、SKS 16 の注釈（コペンハーゲン大学キルケゴール研究センターの校訂本の注釈。デンマーク王立図書館の頁）で確かめた（2026年9月27日）。『コルサーレン』のキルケゴールへの攻撃は1846年1月2日（276号）に始まって同年7月17日（304号）まで続き、ゴルトシュミットは1846年10月に新聞を手放して編集を退いた。9月24日に外した書誌の ref の「1846年10月」は合っていた。本文はこの2点を書いていないので、本文は変えていない。 選択肢の均等化: 正解の「群衆は非真理であり」を explanation へ移し、「情熱が失われ」を削除（explanation に既述）。あわせて誤答1つを肉付け。四択の成立を確認済み。2.28倍→1.22倍。 refs を1本差し替えた（gregorybsadler.substack.com → https://plato.stanford.edu/entries/kierkegaard/）。理由: 2026年9月23日の refs の見直し（ブログ類・基準外の典拠を基準の典拠へ）。基準外の典拠を、直接読んだ基準の典拠に差し替えた。 位置指しの解消（2026年9月23日、機械的に）: 選択肢を位置で指していた「◯番目の」を外した。すぐあとに中身の語があり、内容は変えていない。（305→301字。上限370字に対して余地69字） 典拠に合わせて直した（十九世紀の反逆の回、2026年9月24日）: ①第2段落の「1846年から」は、SEP §1 が論争を1845〜46年とし、攻撃が容姿の嘲笑を含んだと書くので、その範囲に直した。②第3段落の「現代のメディア環境をめぐる議論で繰り返し参照される」を、SEP §2（後の批判者がマスメディアに向けた懸念の鋭い先取りとしてしばしば受け取られてきた）の言い方に寄せた。（301→327字。上限370字に対して余地43字） refs から1本を外した（『コルサーレン』（ゴルトシュミット刊、1840–46年））。理由: 攻撃の始まり（1846年初頭）とゴルトシュミットの退任（1846年10月）を基準の典拠で確かめられず、URL も無い書誌だけの ref だったので外した。論争の時期と中身は SEP §1 が支える refs を1本差し替えた（sorenkierkegaard.nl → https://tekster.kb.dk/text/sks-sfv-txt-root）。理由: sorenkierkegaard.nl の PDF は20世紀以後の英訳（Bellinger 訳）の全文を個人のサイトに置いたもので基準外だったので、原文の SKS 16 に差し替えた。あわせて、1846年に書かれたのは献辞そのものではなく献辞についての注だと書き分けた refs を1本差し替えた（plato.stanford.edu/entries/kierkegaard/ → https://plato.stanford.edu/entries/kierkegaard/）。理由: detail 第2・第3段落の直しの根拠を説明欄に足した refs に1本を足した（https://iep.utm.edu/kierkega/）。理由: 正解の決め手が SEP の1本だけで、detail 第3段落のハイデガーとの対応を支える典拠が無かったため refs に1本を足した（https://tekster.kb.dk/text/sks-sfv-kom-root）。理由: note の未確認（攻撃の始まりとゴルトシュミットの退任）を閉じるため",
+      note: "設問へ: 群衆は非真理であり、匿名の公衆のうちで情熱が失われ平板化していく事態を水平化と呼んで批判したという整理は『現代の批判』（『二つの時代』の後半、1846年）の通りで、誤答一番目は共同体主義、三番目は政治的平等、四番目は完全な独立という誤読。四択は成立している。 事実の確認: 群衆は非真理であるという命題は1846年に書かれたもので、群衆を得るのは大した芸当ではなく、いくらかの才能と一定量の非真理と人間の情念についての多少の知識があればよい、真理の証人は誰も群衆と関わろうとしない、という論の運びになっている。detail の要約と一致する。情熱と行為の欠如、反省と嫉妬、水平化の過程、政治と公衆と新聞という主題構成も資料どおりで、新聞が公衆という観念を作り出し比較の基準にすることで嫉妬が生じるという分析も同書にある。 設計の記録: detail が「政治的な平等と取り違えないことが要点です。水平化は身分の平等化そのものではなく、情熱と決断が失われて何もかもが同じ高さに均されることを指しています」と、誤答三番目を正面から塞いでいる。 対照の記録: 末尾でハイデガーのひと、ミルの多数者の専制、アドルノの文化産業論を並べているのは、q114（多数者の専制）と同じ主題を別の語彙で扱う問題群への見取り図になっている。q114 の記述と食い違いはない。 解消済み: 『コルサーレン』との論争の経緯（1845〜46年、仮名の一人がメラーを攻撃して雑誌を挑発し、容姿を嘲る一連の攻撃を受けた）は SEP §1 が書く（十九世紀の反逆の回、2026年9月24日）。解消済み: 攻撃が始まった月と、ゴルトシュミットが編集を退いた時期は、SKS 16 の注釈（コペンハーゲン大学キルケゴール研究センターの校訂本の注釈。デンマーク王立図書館の頁）で確かめた（2026年9月27日）。『コルサーレン』のキルケゴールへの攻撃は1846年1月2日（276号）に始まって同年7月17日（304号）まで続き、ゴルトシュミットは1846年10月に新聞を手放して編集を退いた。9月24日に外した書誌の ref の「1846年10月」は合っていた。本文はこの2点を書いていないので、本文は変えていない。 選択肢の均等化: 正解の「群衆は非真理であり」を explanation へ移し、「情熱が失われ」を削除（explanation に既述）。あわせて誤答1つを肉付け。四択の成立を確認済み。2.28倍→1.22倍。 refs を1本差し替えた（gregorybsadler.substack.com → https://plato.stanford.edu/entries/kierkegaard/）。理由: 2026年9月23日の refs の見直し（ブログ類・基準外の典拠を基準の典拠へ）。基準外の典拠を、直接読んだ基準の典拠に差し替えた。 位置指しの解消（2026年9月23日、機械的に）: 選択肢を位置で指していた「◯番目の」を外した。すぐあとに中身の語があり、内容は変えていない。（305→301字。上限370字に対して余地69字） 典拠に合わせて直した（十九世紀の反逆の回、2026年9月24日）: ①第2段落の「1846年から」は、SEP §1 が論争を1845〜46年とし、攻撃が容姿の嘲笑を含んだと書くので、その範囲に直した。②第3段落の「現代のメディア環境をめぐる議論で繰り返し参照される」を、SEP §2（後の批判者がマスメディアに向けた懸念の鋭い先取りとしてしばしば受け取られてきた）の言い方に寄せた。（301→327字。上限370字に対して余地43字） refs から1本を外した（『コルサーレン』（ゴルトシュミット刊、1840–46年））。理由: 攻撃の始まり（1846年初頭）とゴルトシュミットの退任（1846年10月）を基準の典拠で確かめられず、URL も無い書誌だけの ref だったので外した。論争の時期と中身は SEP §1 が支える refs を1本差し替えた（sorenkierkegaard.nl → https://tekster.kb.dk/text/sks-sfv-txt-root）。理由: sorenkierkegaard.nl の PDF は20世紀以後の英訳（Bellinger 訳）の全文を個人のサイトに置いたもので基準外だったので、原文の SKS 16 に差し替えた。あわせて、1846年に書かれたのは献辞そのものではなく献辞についての注だと書き分けた refs を1本差し替えた（plato.stanford.edu/entries/kierkegaard/ → https://plato.stanford.edu/entries/kierkegaard/）。理由: detail 第2・第3段落の直しの根拠を説明欄に足した refs に1本を足した（https://iep.utm.edu/kierkega/）。理由: 正解の決め手が SEP の1本だけで、detail 第3段落のハイデガーとの対応を支える典拠が無かったため refs に1本を足した（https://tekster.kb.dk/text/sks-sfv-kom-root）。理由: note の未確認（攻撃の始まりとゴルトシュミットの退任）を閉じるため 言い方の直し（2026年9月27日、トクヴィルの登録にあわせて）: 「ミルの多数者の専制」はミルの造語のように読めるので、「ミルが論じた多数者の専制」にした。多数者の専制は、トクヴィルが『アメリカのデモクラシー』第1巻で先に用いた語で、ミルがトクヴィルから取った言い方とされる（IEP John Stuart Mill §e）。造語はどちらとも書かない。（327→330字。上限370字に対して余地40字）",
       refs: [
         "https://tekster.kb.dk/text/sks-sfv-txt-root — キルケゴール『わが著作活動の視点』の付録「あの単独者」（SKS 16, 2012。デンマーク王立図書館の文字資料の頁で、コペンハーゲン大学キルケゴール研究センターの校訂本文。キルケゴールは1855年没で公有）。献辞「あの単独者へ」についての注で、群衆がいるところにはどこでも非真理があるという人生観を述べ、「群衆」は非真理であると書くこと（\"Mængde« er Usandheden\"）、この注がもともと1846年に書かれ、のちに書き直されて大きく増やされたこと（\"oprindelig er skrevet i 1846\"）。explanation の「群衆は非真理である」の原典",
         "https://plato.stanford.edu/entries/kierkegaard/ — §2「Kierkegaard’s Analysis of Human Existence: Despair, Social Critique, and Anxiety」。『文学評論』（A Literary Review、英語では Two Ages）で、情熱的な「革命の時代」と、怠惰で過度に反省的で無感動で嫉妬に駆られた「現代」とを対比すること（“indolent; excessively reflective; apathetic; and envy-fueled”）、現代が「水平化」の時代で、突出したものが「公衆」という「怪物じみた抽象」に押しつぶされ、その公衆は「新聞」が作り出す責任を負わない「幻影」だとされること。後のマスメディア論の先取りとして読まれてきたこと（§2）。あわせて §1 で、1845–6年にキルケゴールが風刺誌『コルサーレン』との論争に巻き込まれ、容貌を嘲る攻撃を受けたこと。「現代」の分析が、後の批判者がマスメディアに向けた懸念の鋭い先取りとしてしばしば受け取られてきたこと（\"has often been taken as an astute anticipation of concerns later critics have raised about the mass media\"）、§1 で1845〜46年に『コルサーレン』との論争に巻き込まれ（\"Kierkegaard became embroiled in a controversy with The Corsair\"）、容姿を嘲る一連の攻撃を受けたこと。detail 第2・第3段落を支える",
@@ -23705,6 +23707,242 @@ const QUESTIONS = [
         "https://iep.utm.edu/critical-theory-frankfurt-school/ — IEP「The Frankfurt School and Critical Theory」（Claudio Corradetti）§2.b。フロイトの自然と文化の緊張、フロムの本能の社会による全面的な形成に対し、マルクーゼが本能は社会関係によって部分的にだけ形づくられるとする中間の立場を取ったこと（\"total social shaping of natural instincts\"、\"Marcuse defended a third\"）。正解の2本目と detail 第2段落を支える",
         "https://www.jstage.jst.go.jp/article/jsr1950/48/2/48_2_177/_article/-char/ja — 出口剛司「自然の光・理性の社会心理学」『社会学評論』48巻2号（1997年）177–191頁、182頁。マルクーゼがパーソナリティの実体的分裂や自然的衝動の性的なものへの特殊限定を評価するのに対し、フロムは三層モデルや性的・生理的エネルギーとしての自然的衝動（リビドー）概念を放棄すること。正解を補う（走査の PDF。頁の画像で誌面と照らした）",
         "https://www.jstage.jst.go.jp/article/jjpt2000/Inaugural/0/Inaugural_161/_article/-char/ja — 岡崎晴輝「ホネットからフロムへ」『政治思想研究』創刊号（2000年）161–173頁、161頁の註2（1950年代の「フロム・マルクーゼ論争」、フロムは本能理論を放棄したためにラディカルではなくなったというマルクーゼのフロム批判と、リッカートの反論）、167頁（フロムが『自由からの逃走』でフロイトの本能理論を放棄し、世界との関係性の欲求を強調する新しい人間理論を採用していること）。detail 第2段落を補う（走査の PDF。頁の画像で誌面と照らした）"
+      ]
+    }
+  },
+  {
+    id: "q910",
+    philosophers: ["ブランダム"], terms: ["意味"], type: "single",
+    keys: ["推論主義"],
+    question: "ブランダムの推論主義で、文の意味を決めるものとされるものとして最も適切なものは？",
+    choices: [
+      "その文が世界の事実と対応しているかという真理の条件",
+      "その文を聞いたときに心に浮かぶ観念やイメージ",
+      "言説の実践のなかで、その文が正しい推論のうちで果たす役割",
+      "その文が正しいかを確かめる、感覚の経験による検証"
+    ],
+    answer: 2,
+    explanation: "ブランダムは、意味を説明する順序を逆にしました。先に真理の概念をつかみ、それを使って正しい推論とは何かを説明するのではなく、言説の実践のなかで文が推論で果たす役割から意味を説明します。この立場は推論主義と呼ばれ、先駆としてウィトゲンシュタインとセラーズが挙げられます。",
+    detail: "世界の事実との対応による真理の条件は表象主義の意味論、心に浮かぶ観念はロック以来の観念説、感覚の経験による検証は論理実証主義の検証主義で、どれも推論主義が説明の出発点にしないものです。\n\n推論主義は、言語実践を理由を与え求めるゲームとして捉え、人々がコミットメントや資格を引き受けたり相手に認めたりする過程を記述したうえで、そうした実践で形成される適切な実質的推論で果たす役割によって言葉の意味を規定する立場だと整理されます。\n\nローティが退けた表象主義に対して、ブランダムは推論主義の意味論によって、「真である」や「指示する」といった語の用法を、思考と言語は現実の写しを与えるものだという考えから切り離して説明しようとしました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、言説の実践のなかで文が推論で果たす役割（SEP Theories of Meaning §2.2.3、IEP Meaning and Communication §4.b、白川2018 185頁）。誤答は、対応による真理の条件（表象主義の意味論）、心に浮かぶ観念（観念説）、感覚の経験による検証（検証主義）で、どれも推論主義が退ける説明の出発点。四択は成立している。 設計の記録: 人物の追加（2026年9月27日、プラグマティズムの側）で作った。誤答を先に3つ書いてから正解を書いた。「理由を与え求めるゲーム」はブランダムの造語と書かない（SEP Hegel §2.3・§3.1.2 はセラーズにも帰す）。「推論主義」の語を作ったのはブランダムだとする資料（SEP Proof-Theoretic Semantics §1.2）は1本だけなので本文に書いていない。 資料の限界: SEP・IEP・REP にブランダムの専用の項目は無い。芯は SEP Theories of Meaning（Speaks）と IEP Meaning and Communication（Borg ほか）の、筆者の違う主題の項目2本と、白川2018（二段組みの PDF。185頁を頁の画像で誌面と照らした）で支えた。",
+      refs: [
+        "https://plato.stanford.edu/entries/meaning/ — SEP「Theories of Meaning」（Jeff Speaks）§2.2.3「Inferentialist semantics」。真理の概念を先につかんで正しい推論を説明する標準のやり方に対し、推論主義はこの説明の順序を逆にすること（\"one has a prior grip on the notion of truth, and use it to explain what good inference consists in\"、\"reverses this order of explanation\"。Brandom 2000: 12 を引く）、推論主義の書物としてブランダムの1994年と2000年の本を挙げ、先駆者にウィトゲンシュタインとセラーズを挙げること（\"Important precursors include Wittgenstein (1953) and Sellars (1968)\"）。正解と explanation を支える",
+        "https://iep.utm.edu/meaning-and-communication/ — IEP「Meaning and Communication」（Emma Borg・Antonio Scarafone ほか）§4.b。ブランダムは文の意味を、その文が現れる言説の実践のなかでの推論上の役割によって定義できるとすること（\"Brandom holds, then, that we can define the meaning of a sentence in terms of its inferential role within the discursive practices in which that sentence appears\"）、その説明がコミットメントと資格という規範的な概念を使うこと（\"chiefly those of commitment and entitlement\"）。正解の2本目を支える",
+        "https://plato.stanford.edu/entries/pragmatism/ — SEP「Pragmatism」（Catherine Legg ほか）§1.2。ブランダムがローティの嘆いた表象主義に対して推論主義の意味論を展開し、「真である」「指示する」の用法の説明を、思考と言語の働きは現実の写しを与えることだという考えから切り離して組み立てること（\"By contrast to the representationalism deplored by Rorty, he develops a version of inferentialist semantics\"、\"which are liberated from the idea that the function of thought and language is\"、\"to provide a transcript of reality\"）。detail 第3段落を支える",
+        "https://www.jstage.jst.go.jp/article/philosophy/2018/69/2018_185/_article/-char/ja — 白川晋太郎「ブランダムの規範的語用論について：観察報告の資格の制定過程の検討」『哲学』69号（2018年）185–199頁、DOI 10.11439/philosophy.2018.185、185頁。「ブランダムの推論主義とは、まず、われわれの言語実践を「理由を与え求めるゲーム」として捉え、主張を中心とした言語的なやりとりを通して人々がコミットメントや資格を引き受けたり相手に認めたりする過程を記述した上で（「規範的語用論」）、そうした規範的な実践の過程で形成される適切な実質的推論（material inference）で果たす役割によって言葉の意味を規定しよう（「推論的意味論」）とする立場である」。正解と detail 第2段落を支える（二段組みの PDF。頁の画像で誌面と照らした）"
+      ]
+    }
+  },
+  {
+    id: "q911",
+    philosophers: ["ブランダム"], terms: ["規則"], type: "single",
+    keys: ["規範的語用論"],
+    question: "ブランダムが、何かを主張するという行為を説明するのに用いた考え方として最も適切なものは？",
+    choices: [
+      "主張は話し手の心の状態を外に表すもので、誰に対しても責任は生まない",
+      "主張によって話し手は正当化の責任を負い、聞き手は推論を続ける資格を得る",
+      "主張の正しさは、それを言う者の社会での権威と地位によって決まる",
+      "主張は聞き手の行動を動かす力であり、真偽とは関わらない"
+    ],
+    answer: 1,
+    explanation: "ブランダムによれば、主張することは二つの社会的な結果を同時に生みます。話し手は、正当な異議に対して自分の主張を正当化する責任を引き受け、聞き手は、主張されたことから導けることを主張する資格を与えられます。こうしたコミットメントと資格のやりとりで言語実践を捉える考えは規範的語用論と呼ばれ、主張はセラーズに由来する理由を与え求めるゲームの一手とされます。",
+    detail: "心の状態を外に表す見方、言う者の権威で正しさを決める見方、聞き手を動かす力とみる見方は、どれも主張に伴う責任と資格を見ていません。\n\nブランダムにとって、意味を成り立たせる規範は社会的に制度化されたものです。規範は私たちの実践のうちに暗黙に含まれていて、客観的な義務の地位は、私たちが互いに向ける規範的な態度から説明されます。\n\n主張は、私たちが責任を負うことのできる言語の最小の単位とされ、論理の関係は、それまでの主張で引き受けたコミットメントから次の一手を打つ資格として説明されます。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、主張によって話し手が正当化の責任を負い、聞き手が主張されたことから導けることを主張する資格を得ること（SEP Assertion §6.1、白川2018 185頁）。誤答は、心の状態の表出、言う者の権威、聞き手を動かす力で、どれも主張に伴う責任と資格を見ていない。四択は成立している。 設計の記録: 人物の追加（2026年9月27日、プラグマティズムの側）で作った。誤答を先に3つ書いてから正解を書いた。「コミットメント」単独では鍵語を立てない（クワインの「存在論的コミットメント」に部分一致する）。「義務的スコアキーピング」の語は、それを主題にした本文の典拠が1本も無いので使わなかった。「理由を与え求めるゲーム」は、SEP Hegel §3.1.2 がブランダムはセラーズに従うと書くので、セラーズに由来すると書いた。 資料の限界: SEP・IEP・REP にブランダムの専用の項目は無い。芯は SEP Assertion（Pagin・Marsili）と SEP Rule-Following and Intentionality（Miller ほか）、SEP The Normativity of Meaning and Content（Glüer ほか）の、筆者の違う主題の項目と、白川2018（頁の画像で誌面と照らした）で支えた。",
+      refs: [
+        "https://plato.stanford.edu/entries/assertion/ — SEP「Assertion」（Peter Pagin・Neri Marsili）§6.1。ブランダムが、主張は二つの社会的な結果を同時に生むと論じること（\"argues that asserting achieves two different social results at the same time\"）、話し手に正当な異議に対して主張を擁護する責任を負わせること（\"it commits the speaker to defend her claim in response to legitimate challenges\"）、聞き手に主張から導けることを主張する資格を与えること（\"authorizes the hearer to claim anything that follows from what the speaker asserted\"）。正解と explanation を支える",
+        "https://plato.stanford.edu/entries/rule-following/ — SEP「Rule-Following and Intentionality」（Alexander Miller ほか）§5。ブランダムにとって意味を成り立たせる規範は社会的に制度化されたものであること（\"for Brandom the norms that are constitutive of meaning are socially instituted\"）。detail 第2段落を支える",
+        "https://plato.stanford.edu/entries/meaning-normativity/ — SEP「The Normativity of Meaning and Content」（Kathrin Glüer ほか）§3.2。ブランダムは実践によって暗黙に制度化された規範を基本とし、客観的な義務の地位を私たちの規範的な態度から説明すること（\"Brandom takes norms implicitly\"、\"deontic statuses\"、\"are to be explained in terms of our normative attitudes\"）。detail 第2段落を支える",
+        "https://plato.stanford.edu/entries/pragmatism/ — SEP「Pragmatism」（Catherine Legg ほか）§1.2。主張を理由を与え求めるゲームのなかで責任を負える言語の最小の単位とし、論理の関係を、それまでの主張で引き受けたコミットメントから生じるさらなる一手の資格として説明すること（\"is the smallest unit of language for which we can take responsibility within a\"、\"game of giving and asking for reasons\"、\"Logical relations are explicated as entitlements to make further moves in this\"）。detail 第3段落を支える",
+        "https://plato.stanford.edu/entries/hegel/ — SEP「Georg Wilhelm Friedrich Hegel」（Paul Redding）§3.1.2。主張を理由を与え求める言語ゲームの一手とみるのは、ブランダムがセラーズに従って示した考えであること（\"Brandom’s suggestion, following Sellars\"）。explanation の「セラーズに由来する」を支える",
+        "https://www.jstage.jst.go.jp/article/philosophy/2018/69/2018_185/_article/-char/ja — 白川晋太郎「ブランダムの規範的語用論について：観察報告の資格の制定過程の検討」『哲学』69号（2018年）185–199頁、185頁。言語実践を「理由を与え求めるゲーム」として捉え、主張を中心とした言語的なやりとりを通して人々がコミットメントや資格を引き受けたり相手に認めたりする過程を記述すること（「規範的語用論」）。正解の2本目と「規範的語用論」の語を支える（頁の画像で誌面と照らした）"
+      ]
+    }
+  },
+  {
+    id: "q912",
+    philosophers: ["ブランダム", "ヘーゲル"], terms: ["承認"], type: "single",
+    keys: [],
+    question: "ブランダムが、ヘーゲルの『精神現象学』を読み直して示した承認の捉え方として最も適切なものは？",
+    choices: [
+      "命を賭けた闘争で、相手をひれ伏させて勝ち取ること",
+      "愛と権利と業績の評価の三つの水準で、互いに認め合うこと",
+      "相手を、責任と資格という規範的な地位をもつ主体とみなすこと",
+      "集団に固有の文化と自己像を、そのまま認めさせること"
+    ],
+    answer: 2,
+    explanation: "ブランダムは、承認を基本的な規範的態度として捉えました。誰かを承認するとは、その人を、コミットメントと資格という規範的な地位の担い手、つまり責任を引き受け権威を行使できる者とみなすことです。『精神現象学』を読み直した大著『信頼の精神』（原題 A Spirit of Trust、2019年）では、主張や行為の主体としての地位が相互承認によって得られると論じました。",
+    detail: "命を賭けた闘争は主人と奴隷の場面を字面どおりに受け取った見方、三つの水準はホネットの承認論、集団の文化と自己像を認めさせるのはアイデンティティの承認の政治の側です。\n\nブランダムの読みでは、言説的実践は、人々が相互承認によって共同体を作る場合にのみ理解できるものとされます。承認は自己意識を社会的な達成として成り立たせるだけでなく、規範の地位を割り振る態度でもあります。\n\nカントの理性の自発性を、理由を与え求めるウィトゲンシュタイン的な言語ゲームの形で社会化したセラーズを受けて、ブランダムは、より分析哲学に寄せたヘーゲルの読みを示したとされます。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、承認を、相手をコミットメントと資格という規範的な地位の主体とみなす規範的態度とすること（SEP Recognition §2.1 が Brandom 2007 を引く、川瀬2023 65・66頁）。誤答は、主人と奴隷の闘争の字面どおりの読み、ホネットの三つの水準、アイデンティティの承認で、どれもブランダムの読みではない。四択は成立している。 設計の記録: 人物の追加（2026年9月27日、プラグマティズムの側）で作った。当初は論理語の表出主義を3問目にする予定だったが、SEP・IEP・REP で支えるのが Logical Constants の文献案内の1文だけで（Pragmatism §4.4 の「makes explicit」は哲学者が実践を明示化するという別の文脈）、2資料がそろわないので、この問題に替えた。ヘーゲル読解の本の題は邦訳が無いので、川瀬2023 の『信頼の精神』に原題を添えた。正解が扱う当事者なので philosophers にヘーゲルを入れた（type は single）。keys は空にした（主題の「承認」は TERMS の語で、keys には置けない）。 資料の限界: SEP・IEP・REP にブランダムの専用の項目は無い。芯は SEP Recognition（Iser）と川瀬2023（二段組みの PDF。65・66頁を頁の画像で誌面と照らした）で支え、SEP Hegel（Redding）で補った。",
+      refs: [
+        "https://plato.stanford.edu/entries/recognition/ — SEP「Recognition」（Mattias Iser）§2.1。ブランダムが、承認は自己意識を本質的に社会的な達成として成り立たせるだけでなく規範的な態度であり、誰かを承認するとは、その人をコミットメントと資格という規範的な地位の主体、責任を引き受け権威を行使できる者とみなすことだとすること（\"besides constituting self-consciousness as an\"、\"recognition is a normative attitude\"、\"as capable of undertaking responsibilities and exercising authority\"。Brandom 2007, 136。詳しくは Brandom 2019, part two）。正解と explanation、detail 第2段落を支える",
+        "https://www.jstage.jst.go.jp/article/philosophy/2023/74/2023_64/_article/-char/ja — 川瀬和也「言説的実践とヘーゲル的相互承認」『哲学』74号（2023年）64頁以下、DOI 10.11439/philosophy.2023.64。65頁「言説的実践は、人々が相互承認によって共同体を作る場合にのみ理解可能となる」、66頁「「自己意識」章の解釈から、主張や行為の主体としての地位が「相互承認」によって獲得されることが説明される」、65頁で A Spirit of Trust（2019）を『信頼の精神』と訳すこと。正解の2本目と explanation、detail 第2段落を支える（二段組みの PDF。頁の画像で誌面と照らした）",
+        "https://plato.stanford.edu/entries/hegel/ — SEP「Georg Wilhelm Friedrich Hegel」（Paul Redding）§2.3。カントの理性の自発性を理由を問い与えるウィトゲンシュタイン的な言語ゲームの形で社会化したセラーズを受けて、より明示的に分析哲学的なヘーゲルの読みがブランダムの仕事に現れたこと（\"Sellars who had socialized Kant’s idea of the spontaneity of reason\"、\"similar but more explicitly analytic readings of Hegel would emerge in the work of Robert Brandom\"）。detail 第3段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q913",
+    philosophers: ["ローティ", "ブランダム"], terms: [], type: "compare",
+    keys: ["推論主義"],
+    question: "表象主義への批判を共有したローティとブランダムの違いとして最も適切なものは？",
+    choices: [
+      "両者とも真理の理論を築き、表象の正しさを説明した",
+      "ローティは哲学の体系を退け、ブランダムは推論主義の意味論を築いた",
+      "ブランダムは哲学の体系を退け、ローティは推論主義の意味論を築いた",
+      "両者とも言語の分析を離れ、文化と政治の批判に向かった"
+    ],
+    answer: 1,
+    explanation: "ブランダムはローティの弟子で、表象主義への批判を師と共有しました。ただしローティが、真理について体系的で建設的なことは何も言えないとして、プラグマティズムを批判的で治療的な企てとしたのに対し、ブランダムは推論主義の意味論によって、「真である」や「指示する」といった語の用法の説明を組み立てました。",
+    detail: "真理の理論を体系として築いて表象の正しさを説明する見方は、二人がともに退けた表象主義の側です。二人とも言語の分析を離れたわけではなく、ブランダムはむしろ言語哲学の課題に取り組みました。\n\n大河内泰樹（2017）は、ブランダムがローティの弟子でありながら、ローティのプラグマティズムによる文化政治的な哲学批判の後にも、哲学に取り組むべき課題があることを示したと書いています。ローティにとってプラグマティズムは哲学批判を含む文化批判の立場で、ブランダムにとっては言語哲学の課題を解くのに適した立場だった、という対比です。\n\nブランダムはのちに、語ることとすることの関係を説明して、分析哲学とプラグマティズムを結び直そうとしました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、表象主義への批判を共有しつつ、ローティが真理について体系的なことは言えないとしてプラグマティズムを治療的な企てとし、ブランダムが推論主義の意味論を組み立てたこと（SEP Pragmatism §1.2、大河内2017 194頁）。入れ替えの誤答は帰属を入れ替えた鏡像。「両者とも」型の2つは、表象主義の側に立つ見方と、言語の分析を離れる見方で、どちらも二人の立場ではない。四択は成立している。 設計の記録: 人物の追加（2026年9月27日、プラグマティズムの側）で作った。比較問題なので、入れ替えの誤答を正解と同じ長さの鏡像にした。二人を並べて論じた独立した典拠は、SEP Pragmatism §1.2（Legg ほか）と大河内2017 の2本。師弟の関係は SEP Pragmatism（\"his teacher Rorty\"）と本人の CV（博士論文の指導者は Rorty と Lewis）で確かめた。NDPR の書評（Shieh 2009）は二人を並べるが、curl に 403 を返したので使っていない。 資料の限界: SEP・IEP・REP にブランダムの専用の項目は無い。",
+      refs: [
+        "https://plato.stanford.edu/entries/pragmatism/ — SEP「Pragmatism」（Catherine Legg ほか）§1.2。ローティがプラグマティズムを批判的で治療的な企てとし、真理について体系的で建設的なことは何も言えないとしたこと（\"treated pragmatism as a more critical or therapeutic philosophical project\"、\"there is nothing very systematic or constructive to be said about it\"）、ブランダムの師がローティであること（\"his teacher Rorty\"）、ブランダムがローティの嘆いた表象主義に対して推論主義の意味論を展開したこと（\"By contrast to the representationalism deplored by Rorty, he develops a version of inferentialist semantics\"）、語ることとすることの関係の説明によって分析哲学とプラグマティズムを結び直そうとしたこと（\"reintegrating analytic and pragmatist philosophy\"）。正解と explanation、detail 第3段落を支える",
+        "https://www.jstage.jst.go.jp/article/wakateforum/2017/44/2017_12/_article/-char/ja — 大河内泰樹「プラグマティズム・自然主義・ヘーゲル」『哲学の探求』44号（2017年）193–207頁、DOI 10.69219/wakateforum.2017.44_193、194頁。「ローティーの弟子でありながら，ローティーのプラグマティズムによる文化政治的哲学批判以降も，哲学に取り組むべき課題があることを示し」、「いわばローティーにおいてプラグマティズムは，哲学批判を含めた文化批判の立場となっていた」のに対し、「ブランダムにとってプラグマティズムは，言語哲学における課題を解決するのに適切である」とすること。正解の2本目と detail 第2段落を支える",
+        "https://sites.pitt.edu/~rbrandom/Brandom%20research%20CV%20%202025%20c.pdf — ブランダム本人の CV（ピッツバーグ大学の本人の頁、2025年）。博士号（1977年、プリンストン大学）の指導者が Richard Rorty と David K. Lewis であること（\"Directors: Richard Rorty and David K. Lewis\"）。explanation の師弟の関係を補う"
+      ]
+    }
+  },
+  {
+    id: "q914",
+    philosophers: ["トクヴィル"], terms: ["平等"], type: "single",
+    keys: ["境遇の平等"],
+    question: "トクヴィルが『アメリカのデモクラシー』で、デモクラシーの時代を貫く基本の事実とみたものとして最も適切なものは？",
+    choices: [
+      "財産の共有によって、階級の区別が消えていくこと",
+      "理性の進歩によって、人類がしだいに完成へと近づいていくこと",
+      "境遇の平等がしだいに進み、人の力では止められない流れとなること",
+      "王の権力が強まり、貴族の身分の秩序が固まっていくこと"
+    ],
+    answer: 2,
+    explanation: "トクヴィルは、境遇の平等がしだいに進むことを、神の摂理による事実とみました。それは普遍的で持続的で、日ごとに人の力の及ばないものになっていき、あらゆる出来事と人々がその発展に仕えている、とされます。ミルも、この抗えない平等への傾きを、自分の時代の大きな流れとして受け止めました。",
+    detail: "財産の共有による階級の消滅はマルクスの見方、理性の進歩による人類の完成は啓蒙の進歩の思想の見方で、王権が強まり身分の秩序が固まるという見方は、トクヴィルが描いた平等化の流れとは逆向きです。\n\nトクヴィルは、境遇の平等の全般的な進展を民主主義の進展の最も主要な要素とみて、その不可避性を受け入れたうえで政治学を構想しました。\n\nただし平等は自由を保証しません。トクヴィルの課題は、社会の平準化と国家の権力の増大から来る脅威に対して、市民的な自由と政治的な自由を守ることにありました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、境遇の平等の漸進的な進展を、止められない摂理の事実とみたこと（『アメリカのデモクラシー』序論。SEP Mill §4.4、菊谷1998 173頁、杉本2012 116頁）。誤答は、財産の共有（マルクス）、理性の進歩による完成（啓蒙の進歩思想）、王権と身分秩序の強化で、どれもトクヴィルの見た基本の事実ではない。四択は成立している。 設計の記録: 人物の追加（2026年9月27日、功利主義と自由主義の側）で作った。誤答を先に3つ書いてから正解を書いた。訳語の記録: égalité des conditions は、いちばん新しい邦訳の松本礼二訳（岩波文庫、2005–2008年）の訳語そのものは確かめていない。杉本2012（松本訳の頁を付して「境遇の平等」と書く）と『政治思想研究』9号（2009年）の論文が「境遇の平等」、菊谷1998 が「諸条件の平等」と書くので、研究論文の多い「境遇の平等」にそろえた。原典の箇所は、仏語原典（Gutenberg #30513、1848年第12版）の序論「Le développement graduel de l'égalité des conditions est donc un fait providentiel」、Reeve の英訳（Gutenberg #815）では Introductory Chapter。 資料の限界: SEP・IEP にトクヴィルの専用の項目は無く、REP には専用の項目がある（無料の要約だけを読んだ）。",
+      refs: [
+        "https://plato.stanford.edu/entries/mill/ — SEP「John Stuart Mill」（Christopher Macleod）§4.4。トクヴィルの影響を受けたミルが、自分の時代の大きな流れを貴族的な習俗の衰えと平等の拡大に見たこと（\"Influenced by Tocqueville, Mill held that the great trend of his own period was a falling away of aristocratic mores and a growth of equality\"）、近代ヨーロッパの境遇の平等への抗えない傾き（\"irresistible tendency to equality of conditions\"）。正解と explanation の最後の文を支える",
+        "https://www.jstage.jst.go.jp/article/jsr1950/49/2/49_2_172/_article/-char/ja — 菊谷和宏「トクヴィルとデュルケーム：社会学的人間観の歴史的形成過程」『社会学評論』49巻2号（1998年）172–187頁、DOI 10.4057/jsr.49.172、173頁。民主主義の進展を時代の必然的流れとして捉え、「諸条件の平等（égalité des conditions）」の全般的な進展をもって民主主義進展の最も主要な要素と考えること、諸条件の平等の漸進的な発展は神の摂理による事実（un fait providentiel）であり、普遍的で永続的で日々人間の力を超えていること（Tocqueville 1835: 4 を引く）。正解の2本目と detail 第2段落を支える（走査の PDF。頁の画像で誌面と照らした）",
+        "https://www.jstage.jst.go.jp/article/jalps/48/2/48_115/_article/-char/ja — 杉本竜也「市民的主体性と地方自治：トクヴィルの政治思想における地方自治の意義」『法政論叢』48巻2号（2012年）115頁以下、DOI 10.20816/jalps.48.2_115、116頁。「それ故、境遇の平等の漸進的な進展は神の御業なのである」と訳して引き、トクヴィルがデモクラシーの不可避性を受容し、それを前提とした政治学の構想に思い至ったこと。訳語「境遇の平等」と detail 第2段落を支える（縦書きの PDF。頁の画像で誌面と照らした）",
+        "https://www.rep.routledge.com/articles/biographical/tocqueville-alexis-de-1805-59/v-1 — REP「Tocqueville, Alexis de (1805–59)」（L. A. Siedentop、1998年）の無料で読める要約。社会の平準化と国家の権力の増大から来る脅威に対して市民的・政治的な自由を守る決意（\"a determination to defend civil and political liberty against threats resulting from social levelling and the growth of state power\"）。detail 第3段落を支える",
+        "https://www.gutenberg.org/cache/epub/30513/pg30513.txt — トクヴィル『アメリカのデモクラシー』仏語原典（第1冊、1848年第12版。トクヴィルは1859年没で公有）の序論。「Le développement graduel de l'égalité des conditions est donc un fait providentiel」。Reeve の英訳（Gutenberg #815）では Introductory Chapter にあたる。原典の箇所"
+      ]
+    }
+  },
+  {
+    id: "q915",
+    philosophers: ["トクヴィル", "ミル"], terms: ["自由"], type: "compare",
+    keys: ["多数者の専制"],
+    question: "多数者の専制をめぐるトクヴィルとミルの関係として最も適切なものは？",
+    choices: [
+      "両者とも多数者の支配を歓迎し、少数者の権利を軽んじた",
+      "ミルがトクヴィルの著作に学び、多数者の専制への警戒を引き継いだ",
+      "トクヴィルがミルの著作に学び、多数者の専制への警戒を引き継いだ",
+      "両者とも、専制の危険は王や貴族の側にあるとみた"
+    ],
+    answer: 1,
+    explanation: "トクヴィルは『アメリカのデモクラシー』第1巻（1835年）で、アメリカにおける多数者の全能とその結果を論じるなかで、多数者の専制を取り上げました。ミルはこの本の書評を1835年と1840年に書いています。のちに『自由論』（1859年）で社会的な専制として論じた多数者の専制を、ミルはトクヴィルから受け取った言い方として用いたとされます。",
+    detail: "二人とも多数者の支配をそのまま歓迎したのではなく、専制の危険を王や貴族の側に見ていたのでもありません。デモクラシーのもとで多数者そのものが専制の担い手になりうると考えた点で、二人は重なります。\n\nトクヴィルは、結社の自由が多数者の専制に対する必要な歯止めになったと書き（第1巻第2部第4章）、多数者の全能とその結果を論じた第7章では、多数者の専制を一つの項として立てています。\n\nミルは、教育の乏しい人々が政治を支配して権威と個性を損なうことを、トクヴィルと同じく恐れたとされます。社会の多数者の専制は、恣意的だが強く守られている行動の規則を強いることから生じる、とミルは論じました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、ミルがトクヴィルの著作に学んで多数者の専制への警戒を引き継いだこと（SEP Civic Education §1.4、IEP Mill §e、ミル『自伝』第6章）。入れ替えの誤答は影響の向きを逆にした鏡像で、刊行の順（『アメリカのデモクラシー』第1巻1835年、ミルの書評1835年・1840年、『自由論』1859年）と合わない。「両者とも」型の2つは、多数者の支配の歓迎と、専制の危険を王や貴族の側に見る見方で、どちらも二人の立場ではない。四択は成立している。 設計の記録: 人物の追加（2026年9月27日、功利主義と自由主義の側）で作った。比較問題なので、入れ替えの誤答を正解と同じ長さの鏡像にした。二人を並べて論じた独立した典拠は、SEP Civic Education §1.4（Crittenden・Levine）と IEP Mill §e（Heydt）の2本。語の扱い: 多数者の専制を、トクヴィルの造語ともミルの造語とも書かない。語の出どころを書く資料は、IEP Mill（ミルがトクヴィルから取った言い方）と SEP Constitutionalism の注（トクヴィルの造語とする）の1本ずつで、造語をたしかめた資料は1本しかないため。鍵語はミルの語として台帳にある「多数者の専制」をそのまま付けた（同じ中身なので二人語にしない）。章番号: 語が最初に出るのは第1巻第2部第4章「アメリカにおける政治結社について」（仏語原典 Gutenberg #30514 は1848年第12版で、部の見出しを持たず章番号だけ。Reeve の英訳 Gutenberg #815 では Chapter XII「Political Associations In The United States」）、項として立つのは第2部第7章「アメリカにおける多数者の全能とその結果について」の小見出し「多数者の専制」（Reeve の英訳では Chapter XV「Unlimited Power Of Majority, And Its Consequences」）。 資料の限界: SEP・IEP にトクヴィルの専用の項目は無い。",
+      refs: [
+        "https://plato.stanford.edu/entries/civic-education/ — SEP「Civic Education」（Jack Crittenden・Peter Levine）§1.4。ミルがトクヴィルの多数者の専制についての著作に大きく影響されたこと（\"He was much influenced by Tocqueville\"）、ミルがトクヴィルと同じく、教育の乏しい人々が政治を支配して権威と個性を損なうことを恐れたこと（\"Mill feared, as did Tocqueville, that the undereducated or uneducated would dominate and tyrannize politics\"）、トクヴィルにならって政治への参加を国民の教育の土台とみたこと（\"Following Tocqueville, Mill saw political participation as the basis for this national education\"）。正解と detail 第3段落を支える",
+        "https://iep.utm.edu/milljs/ — IEP「John Stuart Mill」（Colin Heydt）§e。社会の多数者の専制はミルがトクヴィルから取った言い方であり、恣意的だが強く守られている行動の規則を強いることから生じること（\"a phrase Mill takes from Tocqueville\"、\"arises from the enforcement of rules of conduct that are both arbitrary and strongly adhered to\"）。正解の2本目と explanation、detail 第3段落を支える",
+        "https://www.gutenberg.org/cache/epub/10378/pg10378.txt — ミル『自伝』（1873年、Project Gutenberg #10378）第6章。1835年に書いて出した『アメリカのデモクラシー』の最初の書評と1840年の書評（\"my first review of _Democracy in America_, written and published in 1835\"、\"with the one in 1840\"）、トクヴィルの研究から中央集権の問題でも大きく学んだこと。explanation の書評の年を支える",
+        "https://www.gutenberg.org/cache/epub/30514/pg30514.txt — トクヴィル『アメリカのデモクラシー』仏語原典（第2冊、1848年第12版）。第4章「DE L'ASSOCIATION POLITIQUE AUX ÉTATS-UNIS」の「la liberté d'association est devenue une garantie nécessaire contre la tyrannie de la majorité」、第7章「DE L'OMNIPOTENCE DE LA MAJORITÉ AUX ÉTATS-UNIS ET DE SES EFFETS」の小見出し「TYRANNIE DE LA MAJORITÉ」。detail 第2段落を支える",
+        "https://www.gutenberg.org/cache/epub/815/pg815.txt — 同書の Reeve の英訳（Project Gutenberg #815）。Chapter XII「Political Associations In The United States」の「the liberty of association is become a necessary guarantee against the tyranny of the majority」、Chapter XV「Unlimited Power Of Majority, And Its Consequences」の小見出し「Tyranny Of The Majority」。英訳の章番号を示す"
+      ]
+    }
+  },
+  {
+    id: "q916",
+    philosophers: ["トクヴィル"], terms: [], type: "single",
+    keys: ["個人主義"],
+    question: "トクヴィルが、デモクラシーの時代に広がるものとして論じた個人主義として最も適切なものは？",
+    choices: [
+      "自分の利益のためなら他人を顧みない、激しい自己愛",
+      "伝統に逆らい、自分の良心に従って生きる自律の理想",
+      "市民が同胞の群れから身を引き、家族と友人の小さな社会にこもる感情",
+      "各人が市場で自分の利益を追えば、全体が豊かになるという考え"
+    ],
+    answer: 2,
+    explanation: "トクヴィルは個人主義を、各市民を同胞の群れから孤立させ、家族と友人の輪のなかに引きこもらせる、思慮深く穏やかな感情と定めました。こうして自分の好みに合った小さな社会を作ると、人は大きな社会をそれ自身に任せてしまいます。",
+    detail: "激しい自己愛は、トクヴィルが個人主義から区別した利己主義です。利己主義は昔から知られていたが、個人主義は新しい考えから生まれた、と彼は書いています。自分の良心に従う自律の理想や、市場での利益の追求が全体を豊かにするという考えは、ここで論じられた孤立の感情とは別のものです。\n\n杉本竜也（2012）は、従来の社会の仕組みが崩れて伝統的な束縛から解き放たれた個人が、自由ではあるが孤独な存在になる、とトクヴィルの見方を整理しています。\n\n杉本は同じ論文で、市民としての主体性を取り戻す場として、トクヴィルの地方自治を読んでいます。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、市民を同胞の群れから孤立させ、家族と友人の小さな社会に引きこもらせる思慮深く穏やかな感情（SEP Comparative Philosophy: Chinese and Western §3 がトクヴィルの定義を引く、杉本2012 116頁）。誤答は、利己主義（トクヴィルが個人主義から区別したもの）、良心に従う自律の理想、市場の利益追求で、どれもトクヴィルの個人主義ではない。四択は成立している。 設計の記録: 人物の追加（2026年9月27日、功利主義と自由主義の側）で作った。誤答を先に3つ書いてから正解を書いた。利己主義との区別は、SEP・IEP・REP に書いた文が見つからず原典（第2巻第2部第2章、Gutenberg #30515。Reeve の英訳 Gutenberg #816 では Book Two の Chapter II「Of Individualism In Democratic Countries」）にあるだけなので、正解の芯にせず、誤答の出どころとして detail に書いた。鍵語「個人主義」は、本文の3問（q248・q824・q907）に一般語としても出るので、全問の数は数えすぎになる（hits は人物で絞るので正しい）。terms は空にした（TERMS の「自由」の note の軸とは軸が違う）。 資料の限界: SEP・IEP にトクヴィルの専用の項目は無い。芯は SEP Comparative Philosophy（Wong）と杉本2012（縦書きの PDF。116頁を頁の画像で誌面と照らした）で支えた。",
+      refs: [
+        "https://plato.stanford.edu/entries/comparphil-chiwes/ — SEP「Comparative Philosophy: Chinese and Western」（David Wong）§3。トクヴィルが個人主義を、各市民を同胞の群れから孤立させ家族と友人の輪に引きこもらせる思慮深く穏やかな感情と定め、自分の好みに合った小さな社会を作ると大きな社会をそれ自身に任せるとしたこと（\"calm and considered feeling which disposes each citizen to isolate himself from the mass of his fellows and withdraw into the circle of family and friends\"、\"with this little society formed to his taste he gladly leaves the greater society to look after itself\"。Lawrence 訳）。正解と explanation を支える",
+        "https://www.jstage.jst.go.jp/article/jalps/48/2/48_115/_article/-char/ja — 杉本竜也「市民的主体性と地方自治：トクヴィルの政治思想における地方自治の意義」『法政論叢』48巻2号（2012年）115頁以下、116頁。「個人主義は思慮深く、穏やかな感情である。しかし、市民を同胞の集団から孤立させ、家族や友人たちと共に引きこもらせてしまう」と訳して引くこと、従来の社会体系が崩壊することで人間は伝統的束縛から解放された「個人」となり、近代社会における個人は自由だが極めて孤独な存在でもあること。正解の2本目と detail 第2段落を支える（縦書きの PDF。頁の画像で誌面と照らした）。120–121頁で地方自治を市民的主体性を回復する場として読むこと。detail 第3段落を支える",
+        "https://www.gutenberg.org/cache/epub/30515/pg30515.txt — トクヴィル『アメリカのデモクラシー』仏語原典（第3冊、1848年第12版）第2部第2章。「L'individualisme est un sentiment réfléchi et paisible qui dispose chaque citoyen à s'isoler de la masse de ses semblables」、個人主義は新しい考えから生まれた新しい言い方で、私たちの父祖は利己主義しか知らなかったこと（\"Nos pères ne connaissaient que l'égoïsme\"）、利己主義は自分自身への激しい愛であること。detail 第1段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q917",
+    philosophers: ["トクヴィル"], terms: ["自由"], type: "single",
+    keys: ["地方自治"],
+    question: "トクヴィルが、アメリカのタウンの自治や結社に見た働きとして最も適切なものは？",
+    choices: [
+      "国家の命令を住民に伝え、中央の統制を広げること",
+      "身分の違いを保ち、貴族のもとに人々をまとめること",
+      "市民が自由の使い方を身につける、学校のような場となること",
+      "宗教の教えを広め、信仰の共同体を守る場となること"
+    ],
+    answer: 2,
+    explanation: "トクヴィルは、タウンの集会と自由の関係を、小学校と学問の関係になぞらえました。集会は自由を人々の手の届くところにもたらし、それを使い、味わうことを教えます。結社についても、デモクラシーの国々では結社をつくる知恵がほかのすべての進歩のもとになると述べています。",
+    detail: "中央の統制を行き渡らせる仕組みは、トクヴィルが警戒した中央集権の側です。貴族の指導によるまとまりは旧い身分社会の姿で、信仰の共同体を守る場は、ここで問われている自治と結社の働きとは別の話です。\n\nトクヴィルはニューイングランドのタウンシップを市民の学校と呼び、地方自治への信頼から、古代の市民の参加と近代の自律を合わせた独自の自由の考えを作りました。\n\n集団の存在を、権力を分散させ社会の自由を保つのに欠かせないものとみる考えは、とくにトクヴィルと結びつけて語られてきました。ミルも、トクヴィルにならって、政治への参加を国民の教育の土台とみました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、タウンの自治と結社を、市民が自由の使い方を身につける学校のような場とみたこと（SEP Civic Education の冒頭、REP の要約、杉本2012 121頁）。誤答は、中央の統制の伝達、貴族の指導による統合、信仰の共同体の保持で、どれもトクヴィルが自治と結社に見た働きではない。四択は成立している。 設計の記録: 人物の追加（2026年9月27日、功利主義と自由主義の側）で作った。誤答を先に3つ書いてから正解を書いた。「結社の技術」の訳語は研究論文で確かめられなかったので、鍵語にせず、explanation では原典の「la science de l'association est la science-mère」を言い換えて書いた。原典の箇所: タウンの集会の一節は第1巻第1部第5章（仏語原典 Gutenberg #30513「Les institutions communales sont à la liberté ce que les écoles primaires sont à la science」。Reeve の英訳 Gutenberg #815 では Chapter V「Town-meetings are to liberty what primary schools are to science」）、結社の一節は第2巻第2部第5章（Gutenberg #30515）。 資料の限界: SEP・IEP にトクヴィルの専用の項目は無く、REP の専用の項目は無料の要約だけを読んだ。",
+      refs: [
+        "https://plato.stanford.edu/entries/civic-education/ — SEP「Civic Education」（Jack Crittenden・Peter Levine）の冒頭。地方の政治への参加は市民の教育だというトクヴィルの一節（\"Town meetings are to liberty what primary schools are to science\"）、§2.2 でオストロムが引くトクヴィルの結社の技と学（\"art and science of association\"）、§1.4 でミルがトクヴィルにならって政治への参加を国民の教育の土台とみたこと（\"Following Tocqueville, Mill saw political participation as the basis for this national education\"）。正解と explanation、detail 第3段落を支える",
+        "https://www.rep.routledge.com/articles/biographical/tocqueville-alexis-de-1805-59/v-1 — REP「Tocqueville, Alexis de (1805–59)」（L. A. Siedentop、1998年）の無料で読める要約。地方の自治への信頼から、ニューイングランドのタウンシップを市民の学校（'school for citizens'）と呼び、古代の市民性と近代の自律を合わせた独自の自由の考えを作ったこと。正解の2本目と detail 第2段落を支える",
+        "https://plato.stanford.edu/entries/rights-group/ — SEP「Group Rights」（Peter Jones）§8。集団の存在を権力の分散と社会の自由の維持に欠かせないとみる考えの伝統が、とくにトクヴィルとイギリスの多元主義者に結びつくこと（\"associated particularly with Alexis de Tocqueville and the English Pluralists, which sees the existence of groups as essential to the dispersion of power and maintenance of liberty within a society\"）。detail 第3段落を支える",
+        "https://www.jstage.jst.go.jp/article/jalps/48/2/48_115/_article/-char/ja — 杉本竜也「市民的主体性と地方自治：トクヴィルの政治思想における地方自治の意義」『法政論叢』48巻2号（2012年）、121頁。「自由における地方自治の制度は、科学における小学校に該当する。それは人々の手の届くところに自由をもたらす。人々に自由を平穏に行使させ、その用い方を慣れさせる」と訳して引くこと。正解の3本目と訳語「地方自治」を支える（縦書きの PDF。頁の画像で誌面と照らした）",
+        "https://www.gutenberg.org/cache/epub/30513/pg30513.txt — トクヴィル『アメリカのデモクラシー』仏語原典（第1冊、1848年第12版）第1部第5章「Les institutions communales sont à la liberté ce que les écoles primaires sont à la science」。Reeve の英訳（Gutenberg #815）では Chapter V。原典の箇所",
+        "https://www.gutenberg.org/cache/epub/30515/pg30515.txt — 同書仏語原典（第3冊）第2部第5章「Dans les pays démocratiques, la science de l'association est la science-mère」。explanation の結社の一節の原典"
+      ]
+    }
+  },
+  {
+    id: "q918",
+    philosophers: ["トクヴィル"], terms: [], type: "single",
+    keys: ["行政の中央集権"],
+    question: "トクヴィルが『旧体制と大革命』で論じた、フランス革命と旧体制の関係として最も適切なものは？",
+    choices: [
+      "革命は旧体制の制度を壊し、新しい社会を白紙から作り上げた",
+      "行政の中央集権は革命の産物ではなく、旧体制から引き継がれたものだ",
+      "王政は改革できたのに、革命がその道を不当に断ち切った",
+      "革命の混乱は、周りの国々の干渉によって引き起こされた"
+    ],
+    answer: 1,
+    explanation: "トクヴィルは、行政の中央集権は旧体制の制度であって、革命や帝政が作ったものではないと論じました（第2篇第2章の題）。絶対王政がフランス社会を平らにならしてしまい、それが革命の新たな絶対主義の土台になった、という見方です。1789年よりずっと前から地方の自治が壊されていたことに、激しい階級の対立の源を求めました。",
+    detail: "革命が旧い制度を壊して白紙から新しい社会を作ったという見方は、トクヴィルが問い直したものです。王政は改革できたという見方はバークの側で、トクヴィルはこれを退けました。外国の干渉に原因を求める見方は、本書の論点ではありません。\n\nトクヴィルは、19世紀の大陸の保守思想のなかで最もバークに近い一人として、フランス革命を断罪したとされます。ただし、フランスの王政は改革できたというバークの見方は退け、本書は一つにはバークに反論するために書かれました。\n\n地方の自治を自由の支えとみる考えは、『アメリカのデモクラシー』にも本書にも通っています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、行政の中央集権は革命の産物ではなく旧体制の制度だったこと（『旧体制と大革命』第2篇第2章の題、SEP Conservatism §2.4、REP の要約）。誤答は、白紙からの新しい社会（トクヴィルが問い直した見方）、王政は改革できたという見方（バークの側で、トクヴィルが退けた）、外国の干渉で、どれもトクヴィルの論点ではない。四択は成立している。 設計の記録: 人物の追加（2026年9月27日、功利主義と自由主義の側）で作った。誤答を先に3つ書いてから正解を書いた。書名の訳題は、いちばん新しい邦訳の小山勉訳『旧体制と大革命』（ちくま学芸文庫、1998年）による。章の題は仏語原典（Gutenberg #54339、Michel Lévy 1856年第2版）で確かめた。鍵語は「行政の中央集権」の形にした（「中央集権」単独は q776 に一般語として出る）。terms は空にした（TERMS の「権力」の note の軸とは軸が違う）。 資料の限界: SEP・IEP にトクヴィルの専用の項目は無く、REP の専用の項目は無料の要約だけを読んだ。",
+      refs: [
+        "https://www.gutenberg.org/cache/epub/54339/pg54339.txt — トクヴィル『旧体制と大革命』仏語原典（Paris, Michel Lévy frères, 1856、第2版。Project Gutenberg #54339。トクヴィルは1859年没で公有）第2篇第2章の題「Que la centralisation administrative est une institution de l'ancien régime, et non pas l'œuvre de la Révolution ni de l'Empire, comme on le dit」。正解を支える",
+        "https://plato.stanford.edu/entries/conservatism/ — SEP「Conservatism」（Andy Hamilton）§2.4。トクヴィルがフランス革命の断罪でおそらく19世紀の大陸の保守派のなかで最もバークに近かったこと（\"was probably the most Burkean among 19\"）、フランスの王政は改革できたというバークの見方を退け、絶対王政がフランス社会の白紙をならして革命の新たな絶対主義の土台を用意したとみたこと（\"monarchical absolutism had wiped clean the slate of French society and thereby provided the basis for the new absolutism of the Revolution\"。Clark 2001 を引く）、本書が一つにはバークに反論するために書かれたこと（\"was partly written to refute Burke\"）。正解の2本目と explanation、detail 第1・第2段落を支える",
+        "https://www.rep.routledge.com/articles/biographical/tocqueville-alexis-de-1805-59/v-1 — REP「Tocqueville, Alexis de (1805–59)」（L. A. Siedentop、1998年）の無料で読める要約。『旧体制と大革命』（1856）でトクヴィルが、フランスの激しい階級の対立を1789年よりずっと前の地方の自治の破壊にさかのぼらせたこと（\"traced bitter class conflicts in France to the destruction of local autonomy long before 1789\"）、地方の自治への信頼。explanation と detail 第3段落を支える"
       ]
     }
   }
