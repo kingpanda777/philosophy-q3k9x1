@@ -1,13 +1,15 @@
 /* ===========================================================
    道具が共通で持つもの（2026-09-21 に切り出した）
 
-   入っているのは5つである。
+   入っているのは7つである。
      1. 字数の数え方  L
      2. JSON の読み書き  readJson / writeJson
      3. 哲学者紹介（PHIL_INTRO）の基準値  PHIL
      4. 生没年と引用行の突き合わせ  matchYears
      5. ファイルの読み書き（やり直しつき・一時ファイル経由）  readFileSafe / writeFileSafe / diagnose
         （2026-09-23 に足した。下の「5.」の節）
+     6. 出力をファイルに残す（--out）  outOption（2026-09-26 に足した。下の「6.」の節）
+     7. 配列の末尾へ足す  appendToArray（2026-09-27 に add_person.js から移した。下の「7.」の節）
 
    なぜ切り出したか。**同じ定義が複数の道具に写してあると、片方だけ直したときに
    食い違ったまま気づかれない。** CLAUDE.md の「幅を変えるだけなら失効ではない。
@@ -18,14 +20,17 @@
    4 は汎用化で add_person.js にも同じ判定ができたので、その場で1つに寄せた
    （2026-09-21。「頃」の許容幅や年の拾い方といった細かい決めごとが2か所に写る）。
 
-   **ここに入れていないもの**（2026-09-21 の判断。2026-09-23 に改めた）:
-     入力の検査の枠（add_batch.js の validate）・配列の末尾へ足す処理の2つ。
+   **ここに入れていないもの**（2026-09-21 の判断。2026-09-23 と 2026-09-27 に改めた）:
+     入力の検査の枠（add_batch.js の validate）。使う道具が add_batch.js だけなので見送っている。
+     CLAUDE.md の「次の作業」に残してある。
      書き込みと差し戻しの読み書きは 2026-09-23 に 5 の部品へ移った
      （snapshot/restore の関数は add_batch.js にあり、中で 5 を使う）。
-     残る2つは使う道具が add_batch.js だけなので見送った。CLAUDE.md の「次の作業」に残してある。
+     配列の末尾へ足す処理は 2026-09-23 に「add_batch.js だけ」として見送ったが、実際には
+     add_person.js が 2026-09-21 から自前の appendToArray を持っていた。2026-09-27 に 7 へ移し、
+     add_batch.js の作問の追加もこれを使う形にした。
 
    使い方:  const { L, readJson, writeJson, PHIL, matchYears,
-                    readFileSafe, writeFileSafe, diagnose } = require("./_lib.js");
+                    readFileSafe, writeFileSafe, diagnose, outOption, appendToArray } = require("./_lib.js");
    =========================================================== */
 
 "use strict";
@@ -175,4 +180,20 @@ const outOption = () => {
   return target;
 };
 
-module.exports = { L, readJson, writeJson, PHIL, matchYears, readFileSafe, writeFileSafe, diagnose, outOption };
+/* 7. 配列の末尾へ1件足す（2026-09-27 に add_person.js から移した）
+   `const 名前 = [ … \n];` の最後の要素の後ろに「,」と改行で継ぎ、追加を置いて「\n];」で閉じる。
+   差し込み位置を既存の行の文字列で探すと、その行が直されたとたんに止まるので、配列の名前で探す。
+   使うのは add_person.js（PHILOSOPHERS・PHIL_INTRO）と add_batch.js（QUESTIONS）。
+   移したとき、置き換えを src.replace(block, 文字列) から slice でつなぐ形に変えた。replace は置き換えの
+   文字列の中の「$&」「$1」などを特別な意味に読むので、追加の中に「$」があると中身が変わるため。
+   「$」を含まない入力では、移す前と同じ結果になる（2026-09-27 に前の回の入力3組で、書き込まれた
+   ファイルがバイト単位で同じになることを確かめた）。 */
+const appendToArray = (src, 名前, 追加, ラベル) => {
+  const m = src.match(new RegExp("const " + 名前 + " = \\[[\\s\\S]*?\\n\\];"));
+  if (!m) throw new Error(`${ラベル} が見つからない`);
+  const block = m[0];
+  const closed = block.slice(0, block.lastIndexOf("\n];"));
+  return src.slice(0, m.index) + closed + ",\n" + 追加 + "\n];" + src.slice(m.index + block.length);
+};
+
+module.exports = { L, readJson, writeJson, PHIL, matchYears, readFileSafe, writeFileSafe, diagnose, outOption, appendToArray };

@@ -58,7 +58,7 @@
 const fs = require("fs");
 const path = require("path");
 /* 読み書きは _lib.js の部品を使う（一時ファイル経由・やり直しつき。2026-09-23 に替えた） */
-const { L, readJson, writeJson, PHIL, matchYears, readFileSafe, writeFileSafe } = require("./_lib.js");
+const { L, readJson, writeJson, PHIL, matchYears, readFileSafe, writeFileSafe, appendToArray } = require("./_lib.js");
 
 const [, , INPUT, DIR] = process.argv;
 if (!INPUT) {
@@ -185,15 +185,7 @@ if (bad.length) {
    4か所とも先に文字列を作り、最後にまとめて書く。
    途中で位置が見つからずに止まったとき、半分だけ書かれた状態にしないため。 */
 
-/* 配列の末尾へ1件足す。`const 名前 = [ … \n];` の最後の要素の後ろに「,」と改行で継ぐ。
-   差し込み位置を既存の行の文字列で探すと、その行が直されたとたんに止まる。 */
-function appendToArray(src, 名前, 追加, ラベル) {
-  const m = src.match(new RegExp("const " + 名前 + " = \\[[\\s\\S]*?\\n\\];"));
-  if (!m) throw new Error(`${ラベル} が見つからない`);
-  const block = m[0];
-  const closed = block.slice(0, block.lastIndexOf("\n];"));
-  return src.replace(block, closed + ",\n" + 追加 + "\n];");
-}
+/* 配列の末尾へ1件足す処理（appendToArray）は、2026-09-27 に _lib.js の「7.」へ移した。 */
 
 /* ---- 1. questions.js の PHILOSOPHERS ---- */
 const 一覧行 = `  { name: ${S(p.name)}, years: ${S(p.years)}, note: ${S(p.note)}, school: ${S(p.school)} }`;

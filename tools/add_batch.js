@@ -109,7 +109,7 @@ const path = require("path");
 const { execFileSync } = require("child_process");
 /* 字数の数え方と JSON の読み書きは tools/_lib.js から読む。
    同じ定義が check_phil.js にも写してあり、片方だけ直すと食い違う。2026-09-21 に切り出した。 */
-const { L, readJson, writeJson, readFileSafe, writeFileSafe, diagnose } = require("./_lib.js");
+const { L, readJson, writeJson, readFileSafe, writeFileSafe, diagnose, appendToArray } = require("./_lib.js");
 
 const R = path.join(__dirname, "..");
 const P = f => path.join(R, f);
@@ -1649,10 +1649,11 @@ function appendQuestions(saku) {
     "    }",
     "  }"
   ].join("\n"));
+  /* 配列の末尾へ足す処理は _lib.js の appendToArray を使う（2026-09-27 に add_person.js と共通にした）。
+     QUESTIONS がファイルの最後の配列であること（末尾が「\n];」）は、ここで先に確かめる。 */
   const tail = "\n];";
-  const hadNL = qjs.endsWith(tail + "\n");
-  if (!qjs.endsWith(tail) && !hadNL) throw new Error("questions.js の末尾が想定と違う");
-  qjs = qjs.slice(0, qjs.lastIndexOf(tail)) + ",\n" + blocks.join(",\n") + tail + (hadNL ? "\n" : "");
+  if (!qjs.endsWith(tail) && !qjs.endsWith(tail + "\n")) throw new Error("questions.js の末尾が想定と違う");
+  qjs = appendToArray(qjs, "QUESTIONS", blocks.join(",\n"), "questions.js の QUESTIONS");
   writeFileSafe(P("questions.js"), qjs, "utf8");
   console.log(`■ questions.js に ${saku.length}問を追記した`);
   for (const d of saku) console.log(`  ${d.id}（${d.philosophers.join("・")}）keys: ${d.keys.join("・")}`);
