@@ -203,7 +203,9 @@ const PHILOSOPHERS = [
   { name: "ラトゥール", years: "1947–2022", note: "科学の事実は、人間と人間でないものの結びつきのなかで作られる", school: "科学哲学" },
   { name: "ハラウェイ", years: "1944–", note: "知はいつもどこかに位置を占める。どこからでもない視点はない", school: "科学哲学" },
   { name: "サイード", years: "1935–2003", note: "東洋は、西洋の学問と文学が作り上げてきた言説である", school: "構造主義以降" },
-  { name: "スピヴァク", years: "1942–", note: "代わって語ることと描き出すこと。代表の二つの意味を混ぜると、声は消される", school: "構造主義以降" }
+  { name: "スピヴァク", years: "1942–", note: "代わって語ることと描き出すこと。代表の二つの意味を混ぜると、声は消される", school: "構造主義以降" },
+  { name: "ナンシー・フレイザー", years: "1947–", note: "再分配と承認は互いに還元できない。正義の物差しは、対等に参加できるかどうか", school: "フランクフルト学派" },
+  { name: "フロム", years: "1900–1980", note: "自由の重荷に耐えかねた近代人は、権威への服従と画一化へ逃げる", school: "フランクフルト学派" }
 ];
 
 const TERMS = [
@@ -4183,11 +4185,11 @@ const QUESTIONS = [
     ],
     answer: 1,
     explanation: "私たちは家族や共同体や信仰といった、選び取ったのではない愛着によって部分的に構成されている。それを取り去った後に残る自己を出発点にするのは、人間を薄くしすぎている、という批判です。共同体主義の代表的な議論とされます。",
-    detail: "この批判は、正義の基準についての議論であると同時に人格観についての議論です。何が正しいかを、何が善い生き方かという問いから切り離せるのか。自由主義は善に対する正の優先を掲げますが、サンデルはその分離自体が成り立たないと論じます。\n\nロールズ側の応答は、原初状態は人格の形而上学的な描写ではなく、正義の原理を選ぶための装置にすぎない、というものです。『政治的リベラリズム』で政治的構想に限ったことも、この批判への応答と読まれることがあります。\n\n共同体主義にはほかにマッキンタイア、テイラー、ウォルツァーらが数えられますが、主張は一様でなく、呼び名も他人が付けたものです。サンデル自身、権利を共同体で優勢な価値に基づけるという意味なら、この呼び名を退けています。共同体への訴えは上下の秩序の正当化に使われてきたとも批判されます（フレイザー）。",
+    detail: "この批判は、正義の基準についての議論であると同時に人格観についての議論です。何が正しいかを、何が善い生き方かという問いから切り離せるのか。自由主義は善に対する正の優先を掲げますが、サンデルはその分離自体が成り立たないと論じます。\n\nロールズ側の応答は、原初状態は人格の形而上学的な描写ではなく、正義の原理を選ぶための装置にすぎない、というものです。『政治的リベラリズム』で政治的構想に限ったことも、この批判への応答と読まれることがあります。\n\n共同体主義にはほかにマッキンタイア、テイラー、ウォルツァーらが数えられますが、主張は一様でなく、呼び名も他人が付けたものです。サンデル自身、権利を共同体で優勢な価値に基づけるという意味なら、この呼び名を退けます。共同体への訴えは上下の秩序の正当化に使われてきたとも批判されます（エリザベス・フレイザー）。",
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 無知のヴェールの背後の自己が目的や愛着に先立つ負荷なき自己であり、それが現実の人間像と合わないという批判は『リベラリズムと正義の限界』（1982年）の通りで、誤答一番目は再分配の不足、三番目は功利主義への譲歩、四番目は数学的厳密性。四択は成立している。 事実の確認: サンデルが批判の的にしたのは負荷なき自己（unencumbered self）であり、私たちの最も深い関与は自己の同一性を部分的に構成しているため切り離せない、という論法。負荷ある自己にとっての第一の問いは、どんな目的を選ぶべきかではなく、私は何者かである、という対比も原典どおり。 前期と後期の書き分け: detail が「『政治的リベラリズム』における政治的構想への限定は、この種の批判への応答という側面をもちます」と、ロールズの後期への接続を明示している。q148 の転換の説明と噛み合っており、二問の記述は揃っている。 事実の確認: サンデル自身が共同体主義という呼び名を必ずしも好まないという detail の記述も正しい。第二版の序文で、本書は共同体主義的批判ではなくリベラリズムが前提する負荷なき自己への批判である、と明言している。共同体の慣習が常に正しいわけではないという留保も本人の立場と一致する。 選択肢の均等化: 正解から負荷なき自己の説明（自らの目的や愛着に先立って存在する）を削除（explanation に既述）。あわせて誤答2つを肉付け。四択の成立を確認済み。3.13倍→1.27倍。 refs を1本差し替えた（Liberalism_and_the_Limits → https://plato.stanford.edu/entries/communitarianism/）。理由: 負荷なき自己への批判と構成的な愛着という設問の核心が SEP で確認できた。この設問には基準を満たす ref が1本も無かった。 典拠に合わせて直した（正義論の回、2026年9月24日）: ①第2段落の「応答という側面をもちます」は、「応答として読まれることがある」に弱めた（SEP Communitarianism は共同体主義的な方向と読むが、中野2002 の注1はロールズ本人は明確に応答していないと書き、q148 の detail に書いたとおりロールズ自身は『正義論』内部の不整合を理由に挙げている）。②第3段落の「共同体の慣習が常に正しいわけではないと明言しています」は、そう書いた典拠が見つからず、Chang 2022 が引くサンデルの第2版の序文（権利がその共同体で優勢な価値や選好に基づくべきだという意味なら共同体主義の呼び名を退ける）の範囲に直した。「多数派の価値の押しつけになるという懸念は、この立場に向けられる主要な批判です」は、この形の典拠が見つからず、SEP Communitarianism §3 のフレイザーの批判に置き換えた。（360→366字。上限370字に対して余地4字） refs を1本差し替えた（entries/communitarianism/ — §2「The Debate Over the Self」 → https://plato.stanford.edu/entries/communitarianism/）。理由: 説明欄が SEP の執筆者の地の文をサンデルの言葉としていたので直し、detail 第3段落を支える箇所を書き足した refs に5本を足した（中野剛充「リベラル―コミュニタリアン論争の「政治的転回」――ロールズとサンデルの議論の展開を中心に」『政治思想研究』2号、2002年、113–128頁、DOI・https://plato.stanford.edu/entries/liberalism/・https://plato.stanford.edu/entries/original-position/・Ya・https://www.cambridge.org/core/books/abs/liberalism-and-the-limits-of-justice/preface-to-the-second-edition-the-limits-of-communitarianism/517F4825EA6896D4543EDC5D91A66A03）。理由: 正解の決め手が SEP の1本だけで、detail 第2・第3段落を支える典拠が無かったため",
+      note: "設問へ: 無知のヴェールの背後の自己が目的や愛着に先立つ負荷なき自己であり、それが現実の人間像と合わないという批判は『リベラリズムと正義の限界』（1982年）の通りで、誤答一番目は再分配の不足、三番目は功利主義への譲歩、四番目は数学的厳密性。四択は成立している。 事実の確認: サンデルが批判の的にしたのは負荷なき自己（unencumbered self）であり、私たちの最も深い関与は自己の同一性を部分的に構成しているため切り離せない、という論法。負荷ある自己にとっての第一の問いは、どんな目的を選ぶべきかではなく、私は何者かである、という対比も原典どおり。 前期と後期の書き分け: detail が「『政治的リベラリズム』における政治的構想への限定は、この種の批判への応答という側面をもちます」と、ロールズの後期への接続を明示している。q148 の転換の説明と噛み合っており、二問の記述は揃っている。 事実の確認: サンデル自身が共同体主義という呼び名を必ずしも好まないという detail の記述も正しい。第二版の序文で、本書は共同体主義的批判ではなくリベラリズムが前提する負荷なき自己への批判である、と明言している。共同体の慣習が常に正しいわけではないという留保も本人の立場と一致する。 選択肢の均等化: 正解から負荷なき自己の説明（自らの目的や愛着に先立って存在する）を削除（explanation に既述）。あわせて誤答2つを肉付け。四択の成立を確認済み。3.13倍→1.27倍。 refs を1本差し替えた（Liberalism_and_the_Limits → https://plato.stanford.edu/entries/communitarianism/）。理由: 負荷なき自己への批判と構成的な愛着という設問の核心が SEP で確認できた。この設問には基準を満たす ref が1本も無かった。 典拠に合わせて直した（正義論の回、2026年9月24日）: ①第2段落の「応答という側面をもちます」は、「応答として読まれることがある」に弱めた（SEP Communitarianism は共同体主義的な方向と読むが、中野2002 の注1はロールズ本人は明確に応答していないと書き、q148 の detail に書いたとおりロールズ自身は『正義論』内部の不整合を理由に挙げている）。②第3段落の「共同体の慣習が常に正しいわけではないと明言しています」は、そう書いた典拠が見つからず、Chang 2022 が引くサンデルの第2版の序文（権利がその共同体で優勢な価値や選好に基づくべきだという意味なら共同体主義の呼び名を退ける）の範囲に直した。「多数派の価値の押しつけになるという懸念は、この立場に向けられる主要な批判です」は、この形の典拠が見つからず、SEP Communitarianism §3 のフレイザーの批判に置き換えた。（360→366字。上限370字に対して余地4字） refs を1本差し替えた（entries/communitarianism/ — §2「The Debate Over the Self」 → https://plato.stanford.edu/entries/communitarianism/）。理由: 説明欄が SEP の執筆者の地の文をサンデルの言葉としていたので直し、detail 第3段落を支える箇所を書き足した refs に5本を足した（中野剛充「リベラル―コミュニタリアン論争の「政治的転回」――ロールズとサンデルの議論の展開を中心に」『政治思想研究』2号、2002年、113–128頁、DOI・https://plato.stanford.edu/entries/liberalism/・https://plato.stanford.edu/entries/original-position/・Ya・https://www.cambridge.org/core/books/abs/liberalism-and-the-limits-of-justice/preface-to-the-second-edition-the-limits-of-communitarianism/517F4825EA6896D4543EDC5D91A66A03）。理由: 正解の決め手が SEP の1本だけで、detail 第2・第3段落を支える典拠が無かったため 人名の書き分け（2026年9月27日）: ナンシー・フレイザーを人物として登録するので、この批判の主（SEP Communitarianism §3 の Elizabeth Frazer）を「エリザベス・フレイザー」と書き分けた。字数調整：上限に収めるため、第3段落の「この呼び名を退けています」を「この呼び名を退けます」に詰めた。落としたものは無い。（366→370字。上限370字に対して余地0字）",
       refs: [
         "https://plato.stanford.edu/entries/communitarianism/ — SEP「Communitarianism」（2024年6月7日改訂）冒頭、マッキンタイア・サンデル・テイラー・ウォルツァーらがロールズの前提を争ったこと、共同体主義の呼び名は本人たちではなく他人（多くは批判者）が付けたこと（\"the communitarian label was pinned on them by others\"。注1 \"Sandel (1998) uses the label republican rather than communitarian\"）、§2「The Debate Over the Self」自己が共同体へのさまざまな愛着によって定まり構成される傾きをもつこと（\"our selves tend to be defined or constituted by various communal attachments\"）と、サンデル自身の言葉（\"as members of this family or community or nation or people\"、Sandel 1981, 179。直後の \"I didn't choose to love my mother and father…\" は SEP の執筆者の地の文でサンデルの引用ではない）、§3 共同体への訴えが上下の秩序を正当化し対立を封じるのに使われてきたというフレイザーの批判（\"as Elizabeth Frazer has argued, it has often been used to justify hierarchical arrangements\"）。正解と detail 第3段落を支える",
         "中野剛充「リベラル―コミュニタリアン論争の「政治的転回」――ロールズとサンデルの議論の展開を中心に」『政治思想研究』2号、2002年、113–128頁、DOI 10.11326/jjpt2000.2.0_113（J-STAGE https://www.jstage.jst.go.jp/article/jjpt2000/2/0/2_113/_article/-char/ja/ ） — 116頁。サンデルがロールズの前提する自己概念を「負荷なき自己（unencumbered self）」として批判したこと、117頁 ロールズが原初状態を「表象の装置」とみなして自己概念の問題への関与を避けようとしたこと。正解の2本目と detail 第2段落を支える",
@@ -10514,11 +10516,11 @@ const QUESTIONS = [
     ],
     answer: 1,
     explanation: "何が善い生き方かという問いから切り離して、何が正しいかだけを決められるのか。自由主義がそれを可能だとするのに対し、共同体主義はその分離自体を疑います。人間観についての論争でもあります。",
-    detail: "共同体の慣習は常に正しく、それに従うべきだという素朴な伝統主義と混同されがちですが、サンデル自身、権利を共同体で優勢な価値に基づけるという意味なら、共同体主義という呼び名を退けています。共同体主義という呼び名も、当人たちが好んで使っているものではありません。\n\nこの立場にはマッキンタイア、テイラー、ウォルツァーらが数えられますが、主張は一様ではありません。徳の伝統を重んじる者、自己の形成を論じる者、正義の複数性を説く者と、関心が異なります。\n\n批判もあります。共同体が訴える価値が、家族のあり方などで女性の目標と合わないおそれがある（オーキンら）、上下の秩序の正当化に使われてきた（フレイザー）、といった指摘です。",
+    detail: "共同体の慣習は常に正しく、それに従うべきだという素朴な伝統主義と混同されがちですが、サンデル自身、権利を共同体で優勢な価値に基づけるという意味なら、共同体主義という呼び名を退けています。共同体主義という呼び名も、当人たちが好んで使っているものではありません。\n\nこの立場にはマッキンタイア、テイラー、ウォルツァーらが数えられますが、主張は一様ではありません。徳の伝統を重んじる者、自己の形成を論じる者、正義の複数性を説く者と、関心が異なります。\n\n批判もあります。共同体が訴える価値が、家族のあり方などで女性の目標と合わないおそれがある（オーキンら）、上下の秩序の正当化に使われてきた（エリザベス・フレイザー）、といった指摘です。",
     source: {
       kind: "ai_web", label: "ウェブ照合済み",
       choicesOk: "ok",
-      note: "設問へ: 自由主義が前提する「目的や愛着に先立って存在する自己」という人間像は現実と合わず、人は共同体の文脈のうちで部分的に構成されているという主張は共同体主義の通りで、誤答一番目は素朴な伝統主義、三番目はパターナリズムの極端な形、四番目は政治的な復古主義への取り違え。四択は成立している。 設計の記録: detail が「一番目のような素朴な伝統主義と混同されがちですが、サンデル自身が共同体の慣習は常に正しいわけではないと明言しています」「共同体主義という呼び名も、当人たちが好んで使っているものではありません」と、二重に手当てをしている。ラベルそのものが当事者に受け入れられていないことまで書く例は珍しい。 事実の確認: サンデルがロールズの原初状態に含まれる自己像を「負荷なき自己」として批判したこと、マッキンタイア・テイラー・ウォルツァーらが同じラベルで括られながら関心が異なること、多数派の価値の押しつけになりかねないという批判が主要な論点であることを確認した。 対照の記録: q153（マッキンタイア）、q470・q471（未検証）が近い主題を扱う。そのバッチで本問との整合を確認すること。 解消済み（正義論の回、2026年9月24日）: 「内部の少数者はどうなるのか」という形の批判の出所は基準の典拠に見つからなかったので、detail を典拠のある批判（IEP Autonomy のオーキンら、SEP Communitarianism §3 のフレイザー）に置き換えて閉じた。 選択肢の均等化: 正解の説明句を削り（解説側に既述）、誤答を型に揃えて肉付けした。四択の成立を確認済み。 2.68倍→1.11倍。 type の判定は「正解が二人以上の立場を対比しているか」による。 位置指しの解消（2026年9月23日）: 選択肢を位置で指していた句を、指していた選択肢の中身で書き直した（全選択肢の通し番号）。（286→303字。上限370字に対して余地67字） 典拠に合わせて直した（正義論の回、2026年9月24日）: ①第1段落の「サンデル自身が共同体の慣習は常に正しいわけではないと明言しています」は、そう書いた典拠が見つからず、Chang 2022 が引くサンデルの第2版の序文（権利がその共同体で優勢な価値に基づくべきだという意味なら共同体主義の呼び名を退ける）の範囲に直した。②第3段落の「主要な批判は、多数派の価値の押しつけ」「内部の少数者はどうなるのか」は、この形の典拠が見つからず、IEP Autonomy（共同体主義が訴える価値が家族のあり方などでフェミニズムの目標と合わないおそれ、Okin 1989・Weiss 1995）と SEP Communitarianism §3（フレイザー）の範囲に直した。（303→305字。上限370字に対して余地65字） refs を1本差し替えた（entries/communitarianism/ — SEP の共同体主義項 → https://plato.stanford.edu/entries/communitarianism/）。理由: 説明欄の「負荷なき自己への批判」「多数派の押しつけという批判」が SEP の中身と合っていなかったため refs に2本を足した（Ya・https://iep.utm.edu/autonomy/）。理由: 正解の決め手が SEP の1本だけで、detail 第1・第3段落を支える典拠が無かったため",
+      note: "設問へ: 自由主義が前提する「目的や愛着に先立って存在する自己」という人間像は現実と合わず、人は共同体の文脈のうちで部分的に構成されているという主張は共同体主義の通りで、誤答一番目は素朴な伝統主義、三番目はパターナリズムの極端な形、四番目は政治的な復古主義への取り違え。四択は成立している。 設計の記録: detail が「一番目のような素朴な伝統主義と混同されがちですが、サンデル自身が共同体の慣習は常に正しいわけではないと明言しています」「共同体主義という呼び名も、当人たちが好んで使っているものではありません」と、二重に手当てをしている。ラベルそのものが当事者に受け入れられていないことまで書く例は珍しい。 事実の確認: サンデルがロールズの原初状態に含まれる自己像を「負荷なき自己」として批判したこと、マッキンタイア・テイラー・ウォルツァーらが同じラベルで括られながら関心が異なること、多数派の価値の押しつけになりかねないという批判が主要な論点であることを確認した。 対照の記録: q153（マッキンタイア）、q470・q471（未検証）が近い主題を扱う。そのバッチで本問との整合を確認すること。 解消済み（正義論の回、2026年9月24日）: 「内部の少数者はどうなるのか」という形の批判の出所は基準の典拠に見つからなかったので、detail を典拠のある批判（IEP Autonomy のオーキンら、SEP Communitarianism §3 のフレイザー）に置き換えて閉じた。 選択肢の均等化: 正解の説明句を削り（解説側に既述）、誤答を型に揃えて肉付けした。四択の成立を確認済み。 2.68倍→1.11倍。 type の判定は「正解が二人以上の立場を対比しているか」による。 位置指しの解消（2026年9月23日）: 選択肢を位置で指していた句を、指していた選択肢の中身で書き直した（全選択肢の通し番号）。（286→303字。上限370字に対して余地67字） 典拠に合わせて直した（正義論の回、2026年9月24日）: ①第1段落の「サンデル自身が共同体の慣習は常に正しいわけではないと明言しています」は、そう書いた典拠が見つからず、Chang 2022 が引くサンデルの第2版の序文（権利がその共同体で優勢な価値に基づくべきだという意味なら共同体主義の呼び名を退ける）の範囲に直した。②第3段落の「主要な批判は、多数派の価値の押しつけ」「内部の少数者はどうなるのか」は、この形の典拠が見つからず、IEP Autonomy（共同体主義が訴える価値が家族のあり方などでフェミニズムの目標と合わないおそれ、Okin 1989・Weiss 1995）と SEP Communitarianism §3（フレイザー）の範囲に直した。（303→305字。上限370字に対して余地65字） refs を1本差し替えた（entries/communitarianism/ — SEP の共同体主義項 → https://plato.stanford.edu/entries/communitarianism/）。理由: 説明欄の「負荷なき自己への批判」「多数派の押しつけという批判」が SEP の中身と合っていなかったため refs に2本を足した（Ya・https://iep.utm.edu/autonomy/）。理由: 正解の決め手が SEP の1本だけで、detail 第1・第3段落を支える典拠が無かったため 人名の書き分け（2026年9月27日）: ナンシー・フレイザーを人物として登録するので、この批判の主（SEP Communitarianism §3 の Elizabeth Frazer）を「エリザベス・フレイザー」と書き分けた。（305→311字。上限370字に対して余地59字）",
       refs: [
         "https://plato.stanford.edu/entries/communitarianism/ — SEP「Communitarianism」（2024年6月7日改訂）冒頭、マッキンタイア・サンデル・テイラー・ウォルツァーらがロールズの前提を争ったこと、共同体主義の呼び名は本人たちではなく他人（多くは批判者）が付けたこと（\"the communitarian label was pinned on them by others\"。注1 \"Sandel (1998) uses the label republican rather than communitarian\"）、§2 自己が共同体への愛着によって構成される傾きをもつこと、§3 フレイザーの批判（\"as Elizabeth Frazer has argued, it has often been used to justify hierarchical arrangements\"）。「負荷なき自己」の語そのものはこの項目に無い。正解と detail の3段落を支える",
         "Ya Lan Chang, \"Communitarianism, Properly Understood\", Canadian Journal of Law & Jurisprudence 35(1), 2022, 117–139, DOI 10.1017/cjlj.2021.21（CC BY、https://www.cambridge.org/core/journals/canadian-journal-of-law-and-jurisprudence/article/communitarianism-properly-understood/96E1F7F2E3991080E983D10008F5AA6C ） — 要旨、私たちは共同体への愛着（構成的な共同体）によって部分的に構成されているという考え（\"we are partially constituted by our communal attachments\"）、サンデルが、権利がその共同体でそのとき優勢な価値や選好に基づくべきだという意味なら共同体主義の呼び名を退けること（\"rejects the communitarian label insofar as it implies that\"、\"in any given community at any given time\"）。正解の2本目と detail 第1段落を支える",
@@ -23502,6 +23504,207 @@ const QUESTIONS = [
         "https://theologicalstudies.net/wp-content/uploads/2022/08/65.1.5.pdf — David Coffey, \"The Whole Rahner on the Supernatural Existential\", Theological Studies 65 (2004) 95–118（査読誌。版元のサイトが公開する PDF）。95頁 人間が超自然の目的すなわちキリスト教の意味での救いへ向けられていることを指すために、ラーナーが1950年のヌーヴェル・テオロジーの論争への介入で「超自然的実存規定」の語を作ったこと（\"coined the expression\"）、109頁 神の普遍的な救いの意志が各人のうちに超自然的実存規定を生み、それが恵みにおける神の自己伝達の始まりであること（\"This produces in each person the supernatural existential, which is the beginning of God\"）、神はそのうえで人の自由な信仰の決断を待つこと（\"God then awaits our free decision of faith\"）。正解と explanation・detail 第2・第3段落を支える",
         "https://www.redalyc.org/journal/1910/191059376001/191059376001.pdf — Juliano Ribeiro Almeida「Natureza, graça e cristianismo anônimo em Rahner」Theologica Xaveriana 69(188), 2019, 1–18頁, DOI 10.11144/javeriana.tx69-188.ngcar（査読誌。redalyc が公開。誌面の頁は PDF の頁から1を引いた数で、頁を画像にして確かめた）。5頁 この恵みは普遍的に与えられ、人間の自由に先立つので超自然的実存規定と呼ばれること（\"Essa graça é concedida universalmente e é antecedente à liberdade dos seres humanos, sendo, por isso, chamada de existencial sobrenatural\"）、この規定は恵みが本質の秩序に属さず、自然と同じでもないことを保つこと、8頁 無名のキリスト者の考え（\"Rahner afirma que aqueles que não aderem a Cristo explicitamente e não pertencem institucionalmente à Igreja Católica são, na verdade\"）。正解の2本目と detail 第1・第3段落を支える",
         "https://divinity.duke.edu/sites/default/files/documents/09_Karl_Rahner-Wesleyan_Parallel.pdf — Randy L. Maddox, \"Karl Rahner's Supernatural Existential: A Wesleyan Parallel?\", Evangelical Journal 5 (1987) 3–14（刊行物を著者の在籍先 Duke Divinity School が公開する PDF。査読の有無は確かめていない）。5頁 超自然的実存規定は人に与えられる救いの恵みそのものではなく、神の恵みの申し出であること（\"The supernatural existential is not saving grace itself being given to the person but only God\"）、ハイデガーの語「実存規定」が示すとおり、人間の存在そのものの存在論的な規定であること（\"an ontological determination of the very being of the human person\"）。detail 第1・第2段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q902",
+    philosophers: ["ホネット", "ナンシー・フレイザー"], terms: ["承認", "正義"], type: "compare",
+    keys: ["再分配"],
+    question: "承認と再分配をめぐるホネットとナンシー・フレイザーの論争で、二人が取った立場として最も適切なものは？",
+    choices: [
+      "両者とも承認を経済の問題に還元し、再分配を正義の中身とした",
+      "ホネットは再分配を承認に含め、フレイザーは二つを還元できない別の軸とした",
+      "フレイザーは再分配を承認に含め、ホネットは二つを還元できない別の軸とした",
+      "両者とも再分配を退け、文化の上の承認で正義を説明した"
+    ],
+    answer: 1,
+    explanation: "承認と再分配をめぐる二人の論争（共著『再配分か承認か?』）で、ホネットは正義としての承認を広く解し、経済の正義の問題もそこで捉えられるとしました。これに対してフレイザーは、再分配と承認を、互いに還元できないがどちらも必要な、社会正義の二つの条件としました。",
+    detail: "承認を経済の問題に還元して再分配を正義の中身とする見方も、再分配を退けて承認で正義を説明する見方も、二人の立場ではありません。ホネットは分配の問題を承認の枠のなかで扱い、フレイザーは二つを別の軸として並べました。どちらも経済の不平等を正義の問いから外してはいません。\n\nフレイザーによれば、再分配は参加の対等という理想の客観的な条件を、承認はその相互主観的な条件を守ります。二つの次元をもつ理論だけが、再分配の政策と承認の政策が実際にぶつかる場面に目を配れる、というのが彼女の論点です。\n\nこれに対してホネットは、承認の概念を分配の正義の問いにも当てはめられると主張しました。フレイザーは、グローバルな不正義にまつわる問題の多くは、承認の欠如よりも資本主義の仕組みから生じると応じています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、ホネットが承認としての正義を経済の正義も捉えられるよう広く解し、フレイザーが承認と再分配を互いに還元できないがどちらも必要な社会正義の条件としたこと（SEP Justice §3.4、SEP Recognition §3、佐藤2005 276頁）。入れ替えの誤答は二人の帰属を入れ替えた鏡像。「両者とも」型の2つは、承認を経済に還元する見方と、再分配を退ける見方で、どちらも二人の立場ではない。四択は成立している。 設計の記録: 人物の追加（2026年9月27日、フランクフルト学派の側）で作った。比較問題なので、入れ替えの誤答を正解と同じ長さの鏡像にした。鍵語「再分配」は規則3の二人語（ホネット＝承認の概念の枠のなかで分配の正義も扱う〔q387〕／ナンシー・フレイザー＝承認と並ぶ、還元できない別の軸〔本問〕）。 資料の限界: SEP・IEP・REP にナンシー・フレイザーの専用の項目は無い。芯は SEP の主題の項目2本（Recognition〔Iser〕、Justice〔Miller〕。筆者が別）と、佐藤2005（走査の PDF。引いた276頁を頁の画像で誌面と照らした）で支えた。",
+      refs: [
+        "https://plato.stanford.edu/entries/recognition/ — SEP「Recognition」（Mattias Iser）§3。フレイザーがテイラーとホネットに対して、承認と再分配を合わせてはじめて正しい正義になると主張したこと（\"only recognition and redistribution taken together would allow for the right kind of justice\"）、再分配が参加の対等の客観的な条件を、承認が相互主観的な条件を守ること（\"While redistribution secures the objective condition of such an ideal, recognition safeguards its intersubjective condition\"）、二次元の理論だけが再分配と承認の政策の衝突に目を配れること（\"pay proper attention to practical conflicts between policies of redistribution and recognition\"）、ホネットが承認の概念を分配の正義の問いに当てはめられると主張したこと（\"Axel Honneth has insisted that the concept of recognition can be applied to questions of distributive justice\"）、フレイザーがグローバルな不正義の問題の多くは承認の欠如ではなく資本主義の仕組みから生じると応じたこと（\"Fraser has responded by arguing that most problems associated with global injustice are not primarily due to misrecognition but rather stem from systemic features of capitalism\"）。正解と explanation、detail 第2・第3段落を支える",
+        "https://plato.stanford.edu/entries/justice/ — SEP「Justice」（David Miller）§3.4。ホネットにとって承認としての正義は経済の正義の問題も捉えられるよう広く解されること（\"For Honneth, justice as recognition is understood expansively so that it can also capture issues of economic justice\"）、フレイザーにとって承認と再分配は互いに還元できないがどちらも必要な社会正義の条件であること（\"For Nancy Fraser, by contrast, recognition and redistribution are seen as two mutually irreducible but jointly necessary conditions for social justice\"）。正解の2本目と explanation を支える",
+        "https://www.jstage.jst.go.jp/article/kantoh1988/2005/18/2005_18_276/_article/-char/ja — 佐藤直樹「グローバル化時代における公共圏再考への視座：フレイザーとホネットの対話を通して」『年報社会学論集』18号（2005年）276–287頁、DOI 10.5690/kantoh.2005.276、276頁。フレイザーの二元論に対してホネットの一元論という比較が両者によってなされ、対話のなかで中心的な論題をなしていること、フレイザーが「再配分」と「承認」それぞれが独立するものであるとし、ホネットは再配分の構造そのものが承認構造に基づくとすること。正解の3本目（走査の PDF。頁の画像で誌面と照らした）"
+      ]
+    }
+  },
+  {
+    id: "q903",
+    philosophers: ["ナンシー・フレイザー"], terms: ["正義"], type: "single",
+    keys: ["参加の対等"],
+    question: "ナンシー・フレイザーが、再分配と承認のどちらにも通じる正義の物差しとして掲げた規範として最も適切なものは？",
+    choices: [
+      "最も恵まれない人の利益が最大になるように不平等を調整すること",
+      "愛と権利と業績の評価を通じて、自己を肯定できる条件を整えること",
+      "社会のすべての成員が、互いに対等な者として社会生活に参加できること",
+      "強制のない理想的な話し合いで、よりよい論拠が通ること"
+    ],
+    answer: 2,
+    explanation: "フレイザーは、正しい正義の理想を「参加の対等」と呼びました。社会のすべての成員が、互いに対等な者として社会生活に参加できることを求める規範です。再分配はその客観的な条件を、承認はその相互主観的な条件を整えるものとされ、のちには政治的な代表を守ることも加えられました。",
+    detail: "恵まれない人の利益を最大にするよう不平等を調整するのはロールズの格差原理、愛と権利と業績の評価による自己の肯定はホネットの承認の三つの形、強制のない理想的な話し合いはハーバーマスの討議の考えです。\n\n参加の対等は、再分配と承認という二つの軸をつなぐ物差しです。経済の仕組みが参加を妨げるなら再分配が、制度化された文化の上の価値の型が参加を妨げるなら承認が求められます。どちらの不正も、対等な参加を妨げるものとして捉えられます。\n\nフレイザーは、この語を1990年の論文「公共圏の再考」で使い始めました。参加の対等は、単一の公共圏よりも、複数の公共圏のもとでよりよく実現されると彼女は考えています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、参加の対等（participatory parity）、すなわち社会のすべての成員が対等な者として社会生活に参加できること（SEP Recognition §3、SEP Feminist Perspectives on Analytic/Continental §3.2、佐藤2005 278頁）。誤答は、ロールズの格差原理、ホネットの承認の三つの形（愛・権利・業績の評価）、ハーバーマスの理想的な討議で、どれも別の思想家の規範。四択は成立している。 設計の記録: 人物の追加（2026年9月27日、フランクフルト学派の側）で作った。誤答を先に3つ書いてから正解を書いた。訳語は資料で割れる（佐藤2005「参加の同等」、松崎2024「参加の同等性」「同格性」）ので、鍵語は「参加の対等」の形にした（台帳と当たらない）。「のちには政治的な代表を守ることも加えられました」は SEP Feminist Perspectives on Analytic/Continental §3.2（\"assure political representation (2005)\"）による。 資料の限界: SEP・IEP・REP にナンシー・フレイザーの専用の項目は無い。芯は SEP の主題の項目2本（Recognition〔Iser〕、Feminist Perspectives on Analytic/Continental〔Warnke〕。筆者が別）と佐藤2005（走査の PDF。278頁を頁の画像で誌面と照らした）、松崎2024 で支えた。",
+      refs: [
+        "https://plato.stanford.edu/entries/recognition/ — SEP「Recognition」（Mattias Iser）§3。承認と再分配を合わせた正しい正義の理想が、各人に公共の生活への対等な参加を保証する参加の対等であること（\"participatory parity\"、\"that guarantees each subject an equal participation in public life\"）、再分配がその客観的な条件を、承認が相互主観的な条件を守ること（\"While redistribution secures the objective condition of such an ideal, recognition safeguards its intersubjective condition\"）。正解と explanation を支える",
+        "https://plato.stanford.edu/entries/femapproach-analy-cont/ — SEP「Feminist Perspectives on Analytic and Continental Philosophy」（Georgia Warnke）§3.2。社会のすべての成員が対等な者として参加する参加の対等の原則を求め、社会の政策は承認の要求を認め、資源を公正に分配し、政治的な代表を保証しなければならないとすること（\"a principle of participatory parity where all members of a society participate as peers\"、\"assure political representation\"）。正解の2本目と explanation の「政治的な代表」を支える",
+        "https://www.jstage.jst.go.jp/article/kantoh1988/2005/18/2005_18_276/_article/-char/ja — 佐藤直樹「グローバル化時代における公共圏再考への視座：フレイザーとホネットの対話を通して」『年報社会学論集』18号（2005年）276–287頁、278頁。フレイザーが1990年の「公共圏の再考」という論文において「参加の同等」という言葉を使い始めていること。detail 第3段落を支える（走査の PDF。頁の画像で誌面と照らした）",
+        "https://www.jstage.jst.go.jp/article/sstj/18/0/18_82/_article/-char/ja — 松崎匠「アクセル・ホネットの承認論は公共圏からの排除をどう批判するのか」『現代社会学理論研究』18号（2024年）82–94頁、DOI 10.34327/sstj.18.0_82、86頁。「参加の同等性という理念は、単一の公共性においてよりも、諸公共圏の多元性のもとにおいてよりよく実現されるものだからである」（Fraser 1992 を引く）。detail 第3段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q904",
+    philosophers: ["ナンシー・フレイザー", "ハーバーマス"], terms: [], type: "single",
+    keys: ["対抗公共圏"],
+    question: "ナンシー・フレイザーが、ハーバーマスの市民的公共圏の理解に向けた批判として最も適切なものは？",
+    choices: [
+      "話し合いを市場に従わせ、公共圏を経済の下に置いている",
+      "排除された人々が作った、数多くの対抗的な公共圏を見落としている",
+      "近代の理性を捨て、合意の可能性を否定している",
+      "公共圏を国家の機関とみなし、市民の結びつきを見ていない"
+    ],
+    answer: 1,
+    explanation: "フレイザーは、ハーバーマスが描いた市民的公共圏が、女性をはじめとする人々を排除していたこと、そして排除された人々が数多くの対抗的な公共圏を作っていたことを指摘しました。彼女はこれをサバルタン対抗公共圏と呼び、その政治的な意味をハーバーマスが見落としていると批判しました。",
+    detail: "話し合いを市場に従わせる見方や、理性による合意の可能性を否定する見方、公共圏を国家の機関とみる見方は、どれもフレイザーの批判の中身ではありません。彼女が問うたのは、誰が公共圏から締め出されていたかです。\n\nフレイザーによれば、排除のおもな軸はジェンダーでした。自由主義的な公共性とならんで、ナショナリストや農民、エリート女性、労働者階級などの、競合する数多くの対抗的な公共性が現れていたのに、ハーバーマスはそれらを検討しないまま自由主義的な公共性を理想化した、というのが彼女の論点です。\n\nハーバーマスはこの議論を受けて、かつて庶民の公共圏を軽んじていたことを認め、互いに交わる多くの公共圏がありうると譲りました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、ハーバーマスの公共圏の理解が、排除された人々の作った数多くの対抗的な公共圏（サバルタン対抗公共圏）の政治的な意味を見落としているという批判（SEP Critical Theory §1.6、SEP Habermas §1.2、松崎2024 86頁）。誤答は、市場による話し合いの従属、合意の可能性の否定、国家の機関としての公共圏で、どれもフレイザーの批判の中身ではない。四択は成立している。 設計の記録: 人物の追加（2026年9月27日、フランクフルト学派の側）で作った。誤答を先に3つ書いてから正解を書いた。正解が扱う当事者なので philosophers にハーバーマスを入れた（type は single）。鍵語は「対抗公共圏」にした（「サバルタン」はグラムシとスピヴァクの二人語で、長い形にすると部分一致するため）。terms は空にした（TERMS の「権力」「平等」の note の軸とは軸が違う）。 資料の限界: SEP・IEP・REP にナンシー・フレイザーの専用の項目は無い。芯は SEP の主題の項目2本（Critical Theory〔Celikates・Flynn〕、Habermas〔Finlayson ほか〕。筆者が別）と松崎2024 で支えた。",
+      refs: [
+        "https://plato.stanford.edu/entries/critical-theory/ — SEP「Critical Theory」（Robin Celikates・Jeffrey Flynn）§1.6。ハーバーマスの公共圏の理解が、数多くのサバルタンの非公式な公共圏と対抗公共圏の政治的な意味を見落としているという批判（\"neglects the political significance of a multiplicity of subaltern and non-official public spheres and counter-publics\"。Fraser 1990 を挙げる）。正解を支える",
+        "https://plato.stanford.edu/entries/habermas/ — SEP「Jürgen Habermas」（James Gordon Finlayson ほか）§1.2。フレイザーのサバルタン対抗公共圏（\"subaltern counterpublics\"）の議論を受けて、ハーバーマスがかつて庶民の公共圏を軽んじていたことを認め、互いに交わる多くの公共圏がありうると譲ったこと（\"acknowledging his own earlier neglect of\"、\"Habermas now concedes that there may be a multitude of intersecting public spheres\"）。正解の2本目と detail 第3段落を支える",
+        "https://www.jstage.jst.go.jp/article/sstj/18/0/18_82/_article/-char/ja — 松崎匠「アクセル・ホネットの承認論は公共圏からの排除をどう批判するのか」『現代社会学理論研究』18号（2024年）82–94頁、DOI 10.34327/sstj.18.0_82、86頁。フレイザーが「排除のおもな軸となるのはジェンダーである」と述べたこと、「ナショナリストの公共性、庶民的な農民の公共性、エリート女性の公共性、労働者階級の公共性など数多くの競合する対抗的な公共性が出現した」こと、ハーバーマスが自由主義的な公共性を理想化するのは「彼がその他の非自由主義的な諸公共圏について検討していないことの結果である」とすること（いずれも Fraser 1992 を引く）。explanation と detail 第2段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q905",
+    philosophers: ["ナンシー・フレイザー"], terms: ["承認"], type: "single",
+    keys: ["地位モデル"],
+    question: "ナンシー・フレイザーが、承認をアイデンティティの問題としてではなく捉え直した考え方として最も適切なものは？",
+    choices: [
+      "承認を、集団に固有の文化と自己像を認めさせることとみること",
+      "承認を、愛と権利と業績の評価の三つに分けること",
+      "承認を、命を賭けた闘争の末に勝ち取るものとみること",
+      "承認を、社会的相互作用で対等な相手とされる地位の問題とみること"
+    ],
+    answer: 3,
+    explanation: "フレイザーは、承認の不正を、集団のアイデンティティがゆがめられることとしてではなく、制度化された文化的な価値の型のせいで、ある人々が社会的相互作用の十全な相手としての地位を否まれることとして捉えました。この考え方は地位モデルと呼ばれます。",
+    detail: "集団に固有の文化と自己像を認めさせるという見方は、フレイザーが退けたアイデンティティ・モデルの承認です。承認を愛と権利と業績の評価の三つの水準に分けるのはホネットの承認論で、命を賭けた闘争の末に勝ち取るものとみるのはヘーゲルの主と奴の弁証法です。\n\nフレイザーは、アイデンティティに訴える承認が、集団の集団らしさを評価することで、抑圧の産物であるアイデンティティを固定してしまうおそれを指摘していました。地位モデルは、アイデンティティ・ポリティクスに潜む権威主義を避けて、承認の対象を地位に求めます。\n\n地位モデルでは、承認されている状態とは平等な地位が保証されていること、承認されていない状態とは従属的な地位にあることです。こうすると、承認の政治を再分配の政治と結びつけて制度の上で考えられる、とフレイザーはいいます。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、承認の不正を、制度化された文化的な価値の型のせいで社会的相互作用の十全な相手の地位を否まれることとみる地位モデル（SEP Justice §3.4 がフレイザー本人の定義文を引く。堅田2005 23頁）。誤答は、アイデンティティ・モデル（フレイザーが退けた側）、ホネットの承認の三つの水準、ヘーゲルの主と奴の弁証法。四択は成立している。 設計の記録: 人物の追加（2026年9月27日、フランクフルト学派の側）で作った。誤答を先に3つ書いてから正解を書いた。「地位モデル」「アイデンティティ・モデル」の語は堅田2005 による（SEP の本文に \"status model\" の語は無く、SEP Justice §3.4 は定義文を引くだけ）。 資料の限界: SEP・IEP・REP にナンシー・フレイザーの専用の項目は無い。芯は SEP の主題の項目2本（Justice〔Miller〕、Identity Politics〔Heyes〕。筆者が別）と堅田2005（走査の PDF。23頁を頁の画像で誌面と照らした）で支えた。",
+      refs: [
+        "https://plato.stanford.edu/entries/justice/ — SEP「Justice」（David Miller）§3.4。フレイザーの定義として、ある個人や集団が、自分たちが対等に作りに加わっていない制度化された文化的な価値の型のせいで、社会的相互作用の十全な相手としての地位を否まれるのは不正義だとする文を引くこと（\"it is unjust that some individuals and groups are denied the status of full partners in social interaction simply as a consequence of institutionalized patterns of cultural value\"。Fraser and Honneth 2003, p. 29）。正解と explanation を支える",
+        "https://plato.stanford.edu/entries/identity-politics/ — SEP「Identity Politics」（Cressida Heyes）§3。フレイザーが、承認のモデルは集団の集団らしさを評価する救済を求め、抑圧の構造の産物であるアイデンティティを固定してしまうと論じたこと（\"valorize the group\"。Fraser 1997: 19）。detail 第2段落を支える",
+        "https://www.jstage.jst.go.jp/article/jssw/46/1/46_KJ00006852973/_article/-char/ja — 堅田香緒里「アンダークラス言説再考：再分配のための「承認」に向けて」『社会福祉学』46巻1号（2005年）16–28頁、DOI 10.24469/jssw.46.1_16、23頁。「フレイザーは，アイデンティティ・ポリティクスに潜在的に潜んでいる権威主義を指摘し，これを避けて「承認」の対象を地位に求めている．こうした地位モデルの場合，承認されている状態とは，平等な地位の保証を，承認されていない状態とは，従属的な地位をおのおの意味することになる」、地位モデルであれば承認の政治を再分配の政治に結びつける仕方について制度的に考えることができるとフレイザーがいうこと、「アイデンティティ・モデル」の語。正解の2本目と detail 第2・第3段落を支える（走査の PDF。頁の画像で誌面と照らした）"
+      ]
+    }
+  },
+  {
+    id: "q906",
+    philosophers: ["ナンシー・フレイザー"], terms: ["正義"], type: "single",
+    keys: ["代表の次元"],
+    question: "ナンシー・フレイザーが、再分配と承認に加えて、正義の第三の次元として立てたものとして最も適切なものは？",
+    choices: [
+      "人が実際に何をなしうるかで正義を測る、潜在能力の次元",
+      "誰が正義を求める仲間に入るかを決める、政治的な代表の次元",
+      "共同体の伝統のなかで育まれる、徳と善き生の次元",
+      "生産の手段を誰が持つかを問う、所有の次元"
+    ],
+    answer: 1,
+    explanation: "フレイザーは、再分配と承認に加えて、正義の第三の次元として政治的なもの、つまり代表の次元を立てました。誰が正義を求めることのできる仲間に入り、どのような手続きで決めるのかが一部の人を締め出すなら、それ自体が不正義になるという考えです。",
+    detail: "人が実際に何をなしうるかで測る潜在能力はセンの考え方、共同体の伝統で育まれる徳と善き生はマッキンタイアらの関心、生産の手段の所有はマルクスの問いで、どれもフレイザーが加えた第三の次元ではありません。\n\nフレイザーによれば、参加の対等を妨げる政治的な障壁とは、再分配や承認に問題が無い場合でも一部の人々を体系的に周辺化してしまう決定の手続きのことです。対応する不正義は政治的な周辺化と排除、治療は民主化とされます。\n\nグローバル化は、正義を求める闘争を国ごとに区切っていた枠を揺るがしました。そのため、誰が政治の仲間に入るのかという境界が、正義の問いになります。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、再分配と承認に加えた第三の政治的な次元、すなわち代表の次元（SEP Feminist Perspectives on Analytic/Continental §2.1・§3.2、佐藤2005 280頁）。誤答は、センの潜在能力、マッキンタイアらの徳と善き生、マルクスの生産手段の所有で、どれもフレイザーの三つの次元に入らない。四択は成立している。 設計の記録: 人物の追加（2026年9月27日、フランクフルト学派の側）で作った。誤答を先に3つ書いてから正解を書いた。「誤った枠組み（misframing）」の語は、SEP・IEP・REP の主題の項目に無く、版元の紹介文にしかないので使わなかった。第三の次元を加えた年は資料で割れる（SEP Warnke §2.1 は2009年の著作、§3.2 は2005年、佐藤2005 は2003年の『再配分か承認か?』の段階の「政治的なるもの」を引く）ので、年を書かなかった。 資料の限界: SEP・IEP・REP にナンシー・フレイザーの専用の項目は無い。芯は SEP Feminist Perspectives on Analytic/Continental（Warnke）と佐藤2005（走査の PDF。280頁を頁の画像で誌面と照らした）で支えた。",
+      refs: [
+        "https://plato.stanford.edu/entries/femapproach-analy-cont/ — SEP「Feminist Perspectives on Analytic and Continental Philosophy」（Georgia Warnke）§2.1。別の著作で、代表の問題を扱う第三の政治的な視点を加えたこと（\"In another work (2009), she adds a third political perspective to deal with issues of representation\"）、§3.2 で社会の政策は政治的な代表を保証しなければならないとすること（\"assure political representation\"）。正解と explanation を支える",
+        "https://www.jstage.jst.go.jp/article/kantoh1988/2005/18/2005_18_276/_article/-char/ja — 佐藤直樹「グローバル化時代における公共圏再考への視座：フレイザーとホネットの対話を通して」『年報社会学論集』18号（2005年）276–287頁、280頁。フレイザーの「第三の次元に対する最も説明適合的な候補は、『政治的なるもの』である」とする文、参加の同等に対する「政治的」障壁は、不十分な配分や非承認が不在な場合ですら、いく人かの人々を体系的に周辺化するような決定形成の手続きを含むこと、対応する不正義は政治的周辺化・排除、対応する治療は民主化であること（Fraser 2003a: 68）、グローバル化がナショナルなフレイムを脱中心化していること（Fraser 2003a: 91）。正解の2本目と detail 第2・第3段落を支える（走査の PDF。頁の画像で誌面と照らした）"
+      ]
+    }
+  },
+  {
+    id: "q907",
+    philosophers: ["フロム"], terms: ["自由"], type: "single",
+    keys: ["逃走のメカニズム"],
+    question: "フロムが『自由からの逃走』で、近代人が自由から逃れようとする理由として論じたものとして最も適切なものは？",
+    choices: [
+      "抑圧された性の欲動が、社会の禁止に反発して噴き出すから",
+      "支配層が、階級の利害を見抜けない意識を植えつけるから",
+      "束縛から解かれた個人が、孤立と無力感に耐えられなくなるから",
+      "人は生まれつき、指導者に従う本能をもつから"
+    ],
+    answer: 2,
+    explanation: "フロムによれば、宗教改革ののち近代の個人主義が全面に現れると、個人は孤独と孤立の感覚を抱えるようになりました。自由の重荷に耐えかねた人々は、指導者への無批判な服従や、周りへの画一的な同調といった逃走のメカニズムに救いを求め、それが全体主義の魅力につながった、と彼は論じました。",
+    detail: "抑圧された性の欲動が噴き出すという説明は、フロムが離れていったフロイトの本能理論の側の説明です。支配層が意識を植えつけるという説明は経済の利害で割り切るもので、近代人の性格の構造に目を向けたフロムの説明とは違います。生まれつきの本能に帰す見方も、フロムの説明ではありません。\n\nフロムは、サディズムとマゾヒズムを、個人の無力さと無意味さの感覚を越えようとする試みとみました。政治の上では、権威への奴隷のような服従と、他人を支配したい欲望をあわせもつ権威主義的性格が、ファシズムにもっとも誘われやすいとされます。\n\nフロムは、ドイツの下層中産階級を最も疎外された階級とみて、その埋め合わせの破壊性をナチズムの台頭と結びつけました。この仮説にはフロムに共感する論者からも批判があり、フリードマンは、ナチスがすべての階級から票を得たことを挙げています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、近代の個人主義のもとで束縛から解かれた個人が、孤独と孤立、無力感に耐えられず、服従や画一化という逃走のメカニズムに向かうこと（IEP Totalitarianism §2.d、出口1997 184頁、NDB）。誤答は、抑圧された性の欲動（フロイトの本能理論の側）、支配層の植えつける虚偽意識（経済の利害による説明）、生まれつきの本能で、どれもフロムの説明ではない。四択は成立している。 設計の記録: 人物の追加（2026年9月27日、フランクフルト学派の側）で作った。誤答を先に3つ書いてから正解を書いた。「社会的性格」と「〜からの自由／〜への自由」は、SEP・IEP・REP の主題の項目に語が無いので、正解の芯にも本文にも置かなかった。逃走のメカニズムの数は、基準の典拠で確かめられないので書かなかった（IEP は服従と画一化を主な方策とし、サディズムとマゾヒズム、破壊性を別の文で書く）。下層中産階級の仮説への批判は、IEP が引くフリードマン（2013年）の文による。 資料の限界: SEP・IEP・REP にフロムの専用の項目は無い。芯は IEP Totalitarianism §2.d（Litwack）と、出口1997（走査の PDF。184頁を頁の画像で誌面と照らした）で支えた。NDB の項目（執筆者 Rainer Funk）も『自由からの逃走』を扱うが、Funk はフロムの助手で遺稿の管理者でもあるので、独立した資料としては補いにとどめた。",
+      refs: [
+        "https://iep.utm.edu/totalita/ — IEP「Totalitarianism」（Eric B. Litwack）§2.d「Erich Fromm on Escaping from Freedom: A Psychoanalytical Approach」。全体主義が宗教改革ののち近代の個人主義が全面に現れたことに根ざすとみること（\"the full emergence of modern individualism in the aftermath of the Reformation\"）、16世紀以降の孤独と孤立の感覚（\"the sense of loneliness and isolation\"）、孤立した個人の不安（\"the anxiety in isolated individuals\"）、疎外された人々が個人の自律の重荷から逃れる逃走のメカニズム（\"mechanisms of escape\"、\"the alienated seek relief from the burden of individual autonomy\"）とその主な方策としての指導者への無批判な服従と画一化（\"unthinking submission to the leader, and mindless conformity\"）、サディズムとマゾヒズムを無力さと無意味さの感覚を越える試みとみること（\"Both sadism and masochism are seen by Fromm as attempts to overcome feelings of individual powerlessness and meaninglessness\"）、権威主義的性格がファシズムにもっとも誘われやすいこと（\"This character type, for Fromm, is the one most easily seduced by fascism\"）、下層中産階級を最も疎外された階級とみたこと（\"this class was the most alienated class in Germany, and thereby prone to a compensatory destructiveness\"）とフリードマン（2013）の批判（\"The Nazis gained votes from all classes\"）。正解と explanation、detail 第2・第3段落を支える",
+        "https://www.jstage.jst.go.jp/article/jsr1950/48/2/48_2_177/_article/-char/ja — 出口剛司「自然の光・理性の社会心理学」『社会学評論』48巻2号（1997年）177–191頁、DOI 10.4057/jsr.48.177、184頁。『自由からの逃走』が「資本主義の成立とナチズムの台頭を「近代人の性格構造」に即して連続的に理解し，批判的に解明するという課題のもとに執筆された」こと、フロムが近代人には行為の能動性の背後に独特の「無力感」（unpowerfulness）が存在していることを指摘したこと。正解の2本目と detail 第1段落を支える（走査の PDF。頁の画像で誌面と照らした）",
+        "https://www.deutsche-biographie.de/dbo049478.html — NDB-online「Fromm, Erich」（Rainer Funk、2022年）。『自由からの逃走』（\"Escape from Freedom\"、1941年）でフロムが世界に知られたこと。補いの典拠（Funk はフロムの助手で遺稿の管理者でもあるので、独立した2資料の片方には数えていない）"
+      ]
+    }
+  },
+  {
+    id: "q908",
+    philosophers: ["フロム"], terms: [], type: "single",
+    keys: ["権威主義的性格"],
+    question: "フロムが社会研究所の権威と家族をめぐる共同研究で論じた、権威主義的性格の特徴として最も適切なものは？",
+    choices: [
+      "どんな権威も疑い、自分の良心を頼りに振る舞うこと",
+      "他人の目を気にせず、自分の利益を冷静に計算すること",
+      "強い者には服従して喜び、無防備な弱い者には攻撃を向けること",
+      "愛と自発性を大切にし、自分の人格を安心して育てること"
+    ],
+    answer: 2,
+    explanation: "社会研究所が1936年に出した権威と家族をめぐる共同研究で、フロムはその理論の枠組みを示す論文を書き、権威主義的性格の根にある衝動を、服従と屈従と自分の人格を明け渡すことの喜び、そして無防備な者への攻撃と力のある者への共感としました。",
+    detail: "権威を疑って自分の良心に頼る態度や、利益を冷静に計算する態度は、権威主義的性格とは逆の向きです。愛と自発性を大切にし、人格を安心して育てることは、フロムが近代人の目ざすべき道として挙げたものです。\n\n社会研究所は1930年代のドイツ社会について、哲学と社会理論と精神分析を経験的な調査と組み合わせて権威主義を研究しました。フロムは、マルクス主義と精神分析の総合によって、イデオロギーの上部構造と社会経済の土台をつなぐことを目ざした一人です。\n\n権威主義的性格の考えは、のちにアドルノらの『権威主義的パーソナリティ』で、経験的な事例研究によって展開されました。フロムはこの性格を、ファシズムにもっとも誘われやすい型とみています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、権威主義的性格の根にある衝動が、服従と屈従の喜びと、無防備な者への攻撃と力のある者への共感であること（SEP Critical Theory §1.4 が Fromm 1936 を引く。IEP Totalitarianism §2.d は権威への奴隷のような服従と他人を支配したい欲望と書く）。誤答は、権威を疑う良心、冷静な利益の計算、愛と自発性と人格の安心な成長（IEP Totalitarianism §2.d がフロムの挙げる目ざすべき価値として書く側）で、どれもこの性格と逆の向き。四択は成立している。 設計の記録: 人物の追加（2026年9月27日、フランクフルト学派の側）で作った。誤答を先に3つ書いてから正解を書いた。当初の誤答「力のある者を妬み、その地位を奪おうとすること」は、権威主義的性格には、ある権威に反抗して別の権威に従う型があるという読みから、この性格の一面と言い張れるおそれがあったので、典拠で誤りと言える形に替えた（反抗する型を SEP・IEP の主題の項目が書くかは見つからなかった。『自由からの逃走』は公有でなく、本文を開いて確かめていない）。共同研究の題（Studien über Autorität und Familie）は邦訳の題を確かめていないので、書名の形で書かず「権威と家族をめぐる共同研究」とした。研究所の所長の交代の年は資料で割れる（SEP Critical Theory §1.4 は1930年、SEP Marcuse §4.1 は1931年）ので書かなかった。terms は空にした（TERMS の「権力」「意志」の note の軸とは軸が違う）。 資料の限界: SEP・IEP・REP にフロムの専用の項目は無い。芯は SEP Critical Theory（Celikates・Flynn）と IEP Totalitarianism（Litwack）の、筆者の違う主題の項目2本で支えた。",
+      refs: [
+        "https://plato.stanford.edu/entries/critical-theory/ — SEP「Critical Theory」（Robin Celikates・Jeffrey Flynn）§1.4。1930年代のドイツ社会の研究に始まる権威主義の研究が、哲学と社会理論と精神分析を経験的な調査と組み合わせたこと、最初の大きな成果が『権威と家族の研究』（Horkheimer 1936b）であること、その理論の枠組みを示す論文でフロムが、権威主義的性格の根にある衝動を服従と屈従と人格の明け渡しの喜び、無防備な者への攻撃と力のある者への共感としたこと（\"drives underlying the authoritarian character\"、\"the pleasure of obedience, submission, and the surrender of one\"、\"aggression against the defenseless and sympathy with the powerful\"。Fromm 1936）。正解と explanation、detail 第2段落を支える",
+        "https://iep.utm.edu/totalita/ — IEP「Totalitarianism」（Eric B. Litwack）§2.d。政治の上では権威主義的性格が権威への奴隷のような服従と他人を支配したい欲望で特徴づけられること（\"the authoritarian character is characterized by a slavish and nihilistic submission to authority, and a desire to have it over others\"）、この性格がファシズムにもっとも誘われやすいこと、フロムが近代人の目ざすべき道として愛と自発性と人格の安心な成長という価値を挙げたこと（\"the values of love, spontaneity, and secure personal development\"）、権威主義的性格の考えがのちにアドルノらの『権威主義的パーソナリティ』で経験的な事例研究によって展開されたこと（\"was subsequently developed through empirical case studies by Theodor W. Adorno and his co-authors in their work, The Authoritarian Personality\"）。正解の2本目と detail 第3段落を支える",
+        "https://iep.utm.edu/critical-theory-frankfurt-school/ — IEP「The Frankfurt School and Critical Theory」（Claudio Corradetti）§1。フロムがマルクス主義と精神分析の総合によって、イデオロギーの上部構造と社会経済の土台をつなぐことを目ざしたこと（\"through a synthesis of Marxism and psychoanalysis\"。Jay の引用）。detail 第2段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q909",
+    philosophers: ["フロム", "マルクーゼ"], terms: [], type: "compare",
+    keys: [],
+    question: "1950年代のフロムとマルクーゼの論争で、フロイトの本能理論に対して二人が取った立場として最も適切なものは？",
+    choices: [
+      "両者ともフロイトを退け、精神分析を批判理論から外そうとした",
+      "マルクーゼは本能理論を手放さず、フロムは社会による性格の形成を重んじた",
+      "フロムは本能理論を手放さず、マルクーゼは社会による性格の形成を重んじた",
+      "両者とも本能理論をそのまま受け継ぎ、社会の影響を考えなかった"
+    ],
+    answer: 1,
+    explanation: "論争は1950年代半ばに雑誌『ディセント』の上で交わされました。マルクーゼは、フロムたちがリビドーの理論や死の本能、エディプス・コンプレクスといったフロイトの要の洞察を捨てたとみました。フロムは、社会が人の性格を形づくる役割のほうに関心を向けていました。",
+    detail: "二人とも精神分析を批判理論から外そうとはしていませんし、社会の影響を考えなかったわけでもありません。争われたのは、フロイトの本能理論をどこまで保つかでした。\n\nフロイトが自然と文化の緊張を、フロムが本能の社会による全面的な形成を説いたのに対し、マルクーゼは本能が社会関係によって部分的にだけ形づくられるとする中間の立場を取った、と整理されます。フロムはフロイトの本能理論を離れて、世界との関係性を求める欲求を強調する人間の理論を採ったとされます。\n\nSEP のマルクーゼの項目を書いたアーノルド・ファーは、マルクーゼがフロムを読み違えたというフロムの主張にはおそらく理があるとし、この論争を、二人の思想家が互いにすれ違った不幸な場面と評しています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、マルクーゼがフロイトの本能理論（リビドー論・死の本能など）を手放さず、フロムが社会による性格の形成に関心を向けたこと（SEP Marcuse §4.5、IEP Frankfurt School §2.b、出口1997 182頁、岡崎2000 161頁）。入れ替えの誤答は帰属を入れ替えた鏡像。「両者とも」型の2つは、精神分析を批判理論から外す見方と、本能理論をそのまま受け継いで社会の影響を考えない見方で、どちらも二人の立場ではない。四択は成立している。 設計の記録: 人物の追加（2026年9月27日、フランクフルト学派の側）で作った。比較問題なので、入れ替えの誤答を正解と同じ長さの鏡像にした。keys は空にした（二人の関係そのものを問う比較問題の型。フロムの鍵語はほかの2問に付けた）。terms は空にした（TERMS の「無意識」「欲望」の note の軸とは軸が違う）。detail 第3段落は SEP の筆者の評価なので、筆者の評価として書いた。研究所から離れた理由は資料で割れるので書かなかった。 資料の限界: SEP・IEP・REP にフロムの専用の項目は無い。芯は SEP Marcuse（Farr）と IEP Frankfurt School（Corradetti）の、筆者の違う主題の項目2本で支え、出口1997（182頁）と岡崎2000（161頁・167頁。どちらも走査の PDF で、頁の画像で誌面と照らした）で補った。",
+      refs: [
+        "https://plato.stanford.edu/entries/marcuse/ — SEP「Herbert Marcuse」（Arnold Farr）§4.5。マルクーゼと研究所のかつての一員フロムの論争が1950年代半ばに雑誌 Dissent で交わされたこと（\"This led to an open debate between Marcuse and a former member of the Institute, Erich Fromm\"、\"The debate took place in the mid 1950s in the journal Dissent\"）、マルクーゼはフロムらがリビドーの理論や死の本能、エディプス・コンプレクスなどフロイトの要の洞察を捨てたとみたこと（\"had rejected some of Freud\"、\"the death instinct, the Oedipus complex\"）、フロムは社会が性格を形づくる役割に関心を向けたこと（\"more concerned with the role that society played in shaping one\"）、筆者の評価として、マルクーゼがフロムを読み違えたというフロムの主張にはおそらく理があり、論争は二人の思想家が互いにすれ違った場面だったこと（\"Fromm is perhaps correct in his claim that Marcuse misread him\"、\"two major thinkers spoke right past each other\"）。正解と explanation、detail 第3段落を支える",
+        "https://iep.utm.edu/critical-theory-frankfurt-school/ — IEP「The Frankfurt School and Critical Theory」（Claudio Corradetti）§2.b。フロイトの自然と文化の緊張、フロムの本能の社会による全面的な形成に対し、マルクーゼが本能は社会関係によって部分的にだけ形づくられるとする中間の立場を取ったこと（\"total social shaping of natural instincts\"、\"Marcuse defended a third\"）。正解の2本目と detail 第2段落を支える",
+        "https://www.jstage.jst.go.jp/article/jsr1950/48/2/48_2_177/_article/-char/ja — 出口剛司「自然の光・理性の社会心理学」『社会学評論』48巻2号（1997年）177–191頁、182頁。マルクーゼがパーソナリティの実体的分裂や自然的衝動の性的なものへの特殊限定を評価するのに対し、フロムは三層モデルや性的・生理的エネルギーとしての自然的衝動（リビドー）概念を放棄すること。正解を補う（走査の PDF。頁の画像で誌面と照らした）",
+        "https://www.jstage.jst.go.jp/article/jjpt2000/Inaugural/0/Inaugural_161/_article/-char/ja — 岡崎晴輝「ホネットからフロムへ」『政治思想研究』創刊号（2000年）161–173頁、161頁の註2（1950年代の「フロム・マルクーゼ論争」、フロムは本能理論を放棄したためにラディカルではなくなったというマルクーゼのフロム批判と、リッカートの反論）、167頁（フロムが『自由からの逃走』でフロイトの本能理論を放棄し、世界との関係性の欲求を強調する新しい人間理論を採用していること）。detail 第2段落を補う（走査の PDF。頁の画像で誌面と照らした）"
       ]
     }
   }

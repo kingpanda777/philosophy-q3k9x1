@@ -1,0 +1,18 @@
+{
+  "name": "ナンシー・フレイザー",
+  "yomi": "なんしー・ふれいざー",
+  "years": "1947–",
+  "school": "フランクフルト学派",
+  "note": "再分配と承認は互いに還元できない。正義の物差しは、対等に参加できるかどうか",
+  "years_src": "フランス国立図書館の典拠「Naissance : 1947-05-20」／国立国会図書館サーチの著者名「Fraser, Nancy, 1947-」／Harvard GSD の催しの頁（2026年4月15日の講演）「Speaker Nancy Fraser is the Henry and Louise A. Loeb Professor Emeritus of Philosophy and Politics at the New School for Social Research」（存命）",
+  "place": "ニューヨーク",
+  "intro": "1947年に生まれた。ニューヨークのニュースクール社会研究大学院で政治学と哲学を教えてきた。批判理論では、ホネットらと並ぶ第三世代の一人に数えられる。",
+  "thought": "正義は何を求めるのかを問い、経済の不平等を正す再分配と、文化の上の従属を正す承認は互いに還元できず、どちらも要ると答えた。その物差しを、誰もが対等な者として社会生活に参加できることに置いた。",
+  "thought_src": ["q902", "q903"],
+  "works": [
+    { "title": "中断された正義", "year": 1997 },
+    { "title": "再配分か承認か?", "year": 2003 },
+    { "title": "正義の秤", "year": 2008 }
+  ],
+  "checked": true
+}
