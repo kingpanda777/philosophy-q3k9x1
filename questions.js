@@ -201,7 +201,9 @@ const PHILOSOPHERS = [
   { name: "グレアム・ハーマン", years: "1968–", note: "対象は何にも汲み尽くされない。オブジェクト指向存在論を唱えた", school: "構造主義以降" },
   { name: "マルクス・ガブリエル", years: "1980–", note: "世界は存在しない。意味の場の存在論を唱えた", school: "構造主義以降" },
   { name: "ラトゥール", years: "1947–2022", note: "科学の事実は、人間と人間でないものの結びつきのなかで作られる", school: "科学哲学" },
-  { name: "ハラウェイ", years: "1944–", note: "知はいつもどこかに位置を占める。どこからでもない視点はない", school: "科学哲学" }
+  { name: "ハラウェイ", years: "1944–", note: "知はいつもどこかに位置を占める。どこからでもない視点はない", school: "科学哲学" },
+  { name: "サイード", years: "1935–2003", note: "東洋は、西洋の学問と文学が作り上げてきた言説である", school: "構造主義以降" },
+  { name: "スピヴァク", years: "1942–", note: "代わって語ることと描き出すこと。代表の二つの意味を混ぜると、声は消される", school: "構造主義以降" }
 ];
 
 const TERMS = [
@@ -23138,6 +23140,237 @@ const QUESTIONS = [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC11449887/ — Jasmin Trächtler, \"The world as witty agent—Donna Haraway on the object of knowledge\", Frontiers in Psychology 15 (2024) 1389575, DOI 10.3389/fpsyg.2024.1389575。§3：ハラウェイが、ラトゥールらのアクターネットワーク理論とつながる広い行為者性の概念をとること（\"Haraway opts for a very broad concept of agency tying in with the ‘Actor-Network-Theory’\"）。§3.1：世界の行為者性を、知の生産への参加を越えて「機知に富む行為者」とみること（\"goes beyond a mere participation of the world in knowledge production\"）。注10：ハラウェイが、ラトゥールは主に科学者どうしと科学者と機械のやりとりに目を向け、機械でない人間以外のものに十分な注意を払っていないと批判したこと（\"Haraway criticises Latour for focusing primarily on the interactions of scientists with each other and with their machines\"、\"too little attention to the non-machine, other non-humans in the interactions\"。ハラウェイの論文 \"The Promises of Monsters: A Regenerative Politics for Inappropriate/d Others\" の注14。Trächtler は The Haraway Reader〔Routledge、2004年〕63–124頁の版で引く）。正解の2本目と detail 第1段落・第2段落を支える",
         "https://www.bruno-latour.fr/sites/default/files/89-CRITICAL-INQUIRY-GB.pdf — Bruno Latour, \"Why Has Critique Run out of Steam?\", Critical Inquiry 30 (Winter 2004) 225–248、232頁。暴くためではなく守り世話をするためにと、ハラウェイの言い方を借りること（\"to protect and to care, as Donna Haraway would put it\"）。detail 第3段落を支える",
         "https://plato.stanford.edu/entries/artifact/ — SEP「Artifact」（Beth Preston、2022年10月3日改訂）§3.3。ラトゥールにとって行為する力が人間と人間でないものの集まりにあること（\"humans and nonhumans related to each other in specific, systematic ways\"）。detail 第1段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q891",
+    philosophers: ["サイード"], terms: ["権力"], type: "single",
+    keys: ["オリエンタリズム"],
+    question: "サイードが『オリエンタリズム』で「オリエンタリズム」と呼んだものとして最も適切なものは？",
+    choices: [
+      "東洋の文化を偏りなく記録してきた、中立な学問の積み重ね",
+      "西洋が知の形で東洋を作り上げ、支配と結びつけてきた言説の体系",
+      "経済の利害がそのまま映っただけの、上部構造の観念",
+      "東洋の人々が西洋に抗うために築いてきた、思想の伝統"
+    ],
+    answer: 1,
+    explanation: "サイードは、フーコーの言説の分析を、中東についての知の生産にあてはめました。オリエンタリズムとは、ヨーロッパ以外の人々についての知を生み出し、解釈し、評価するのに使われてきた、概念と前提と言説の実践の組み立てられた集まりです。「東洋を知ること」は、東洋を支配する企ての一部だったとされます。",
+    detail: "東洋を偏りなく記録した中立な学問とみるのは、学問は利害を離れているという見方で、サイードはこれを崩しました。経済の利害がそのまま映っただけとみる見方とも、言説はそれ自体が権力の一つの形だとする点で違います。東洋の側の抵抗の伝統を指す語でもありません。\n\nこの語には三つの使い方があります。中東やアジアについての学問の分野、合理と非合理のような二項対立で他者の像を描いてヨーロッパ自身を定める実践、東洋についての知を組織して権威をふるう様式です。\n\n1982年にはバーナード・ルイスと誌上で応酬し、ルイスはドイツの東洋学を除いたことや言語の知識の欠落を挙げて批判しました。のちにバーバは、この言説の像が植民地の権力を一方向のものとしてまとめていると問い直しました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、西洋が知の形で東洋を作り上げ、支配と結びつけてきた言説の体系（SEP Colonialism §5、Nichols 2010）。誤答は、学問を利害から離れた中立なものとみる見方（SEP §5 が「観念論の見方」としてサイードの言説の見方と区別する側）、知を経済の利害の反映とみる見方（同じく「唯物論の見方」として区別する側）、東洋の側の抵抗の伝統（語の指すものと逆）。四択は成立している。 設計の記録: 人物の追加（2026年9月27日）で作った。誤答を先に3つ書いてから正解を書いた。位置指しなし。terms に「権力」を付けた。TERMS「権力」の note（誰かが所有するものか、いたるところに走る関係か）のうち、SEP §5 の「言説は権力に仕える道具ではなくそれ自体が権力の一つの形」がフーコーの側の読みに当たるため。ルイスとの応酬は、初出の版元 NYRB の頁と Teo 2013 の2本で書いた。バーバの問い直しは Nichols 2010 と Chakrabarti 2012 の2本で書き、バーバは人物にしない（2026年9月26日の決め）。アフマドの批判は、SEP §5 ではスピヴァクが標的なので、この問題には書いていない（サイードへの批判は q895 の note に書いた）。 資料の限界: SEP・IEP・REP にサイードの専用の項目は無い。芯は SEP Colonialism §5 と査読誌の Nichols 2010 で支えた。 邦訳: 『オリエンタリズム』上下、今沢紀子訳、板垣雄三・杉田英明監修、平凡社ライブラリー、1993年（国立国会図書館サーチで確かめた、いちばん新しい邦訳）。原著は Pantheon Books、c1978（国立国会図書館の書誌）。",
+      refs: [
+        "https://plato.stanford.edu/entries/colonialism/ — SEP「Colonialism」（Margaret Kohn & Kavita Reddy、2023年1月17日改訂）§5。サイードがフーコーの言説分析の手法を中東についての知の生産にあてはめたこと（\"In Orientalism Said applied Michel Foucault’s technique of discourse analysis to the production of knowledge about the Middle East\"）、オリエンタリズムが非ヨーロッパの人々についての知を生み出し解釈し評価するのに使われた概念・前提・言説の実践の組み立てられた集まりであること（\"a structured set of concepts, assumptions, and discursive practices\"）、知と権力の関係に目を向けたこと、「東洋を知ること」が東洋を支配する企ての一部だったこと、語の三つの使い方、この言説の見方が、知を経済や政治の利害の反映とみる唯物論の見方とも、学問を利害を離れた中立なものとみる観念論の見方とも異なること（\"distinct both from the materialist view\"）、言説がそれ自体権力の一つの形であること（\"is itself a form of power\"）。正解と explanation、detail 第1段落・第2段落を支える",
+        "https://rauli.cbs.dk/index.php/foucault-studies/article/download/3062/3195 — Robert Nichols, \"Postcolonial Studies and the Discourse of Foucault: Survey of a Field of Problematization\", Foucault Studies 9 (2010) 111–144, DOI 10.22439/fs.v0i9.3062。120頁：サイードが著作の目的を、オリエンタリズムを言説として調べることとし、その言説の概念をフーコーの『知の考古学』と『監獄の誕生』から直接取ったこと。121頁：バーバが、植民地の主体の言説の中での構築には人種と性の差異の分節が要ると示そうとし、サイードの『オリエンタリズム』を束ねている植民地の権力の意図性と一方向性を問い直したこと（\"the intentionality and unidirectionality of colonial power\"）。正解の2本目と detail 第3段落を支える",
+        "https://australianhumanitiesreview.org/2013/05/01/orientalism-an-overview/ — Hsu-Ming Teo, \"Orientalism: An Overview\", Australian Humanities Review 54 (May 2013)（査読誌）。1982年半ばに New York Review of Books 誌上でルイスとサイードの論争が起きたこと（\"In mid-1982, an intellectual stoush broke out in the pages of the New York Review of Books\"）、ルイスがドイツとロシアの東洋学を無視したことや東洋の言語の無知を挙げて攻撃したこと、バーバが模倣・両義性・混淆の理論で『オリエンタリズム』の単純な二項対立を崩したこと（\"undermined the simple Western/Oriental, coloniser/colonised binaries\"）。detail 第3段落を支える",
+        "https://www.nybooks.com/articles/1982/06/24/the-question-of-orientalism/ — Bernard Lewis, \"The Question of Orientalism\", The New York Review of Books, June 24, 1982（初出の版元の頁）。ドイツの東洋学を除いたヨーロッパのアラビア研究の歴史は意味をなさないこと（\"a history of Arabic studies in Europe without the Germans makes as much sense as would a history of European music or philosophy with the same omission\"）、アラビア語とイスラームの知識に欠落があること（\"Mr. Said’s knowledge of Arabic and Islam shows surprising gaps\"）。detail 第3段落を支える",
+        "https://czasopisma.uni.lodz.pl/international/article/download/6882/6459 —Sumit Chakrabarti, \"Moving beyond Edward Said: Homi Bhabha and the Problem of Postcolonial Representation\", International Studies 14(1) (2012) 5–21, DOI 10.2478/v10223-012-0051-3、7頁。バーバが西洋の言説の体系だけでなく、サイードらによるその批判にも挑んだこと（\"have really challenged not only the Western discursive systems, but their critiques by the likes of Said as well\"）。detail 第3段落を補う"
+      ]
+    }
+  },
+  {
+    id: "q892",
+    philosophers: ["サイード"], terms: [], type: "single",
+    keys: ["心象地理"],
+    question: "サイードが『オリエンタリズム』で論じた「心象地理」の働きとして最も適切なものは？",
+    choices: [
+      "近いものと遠いものの距離と違いを劇に仕立て、自己を強める働き",
+      "土地を測量したうえで、地域の境界を正確に引いていく働き",
+      "旅をした人が、見聞きしたことをありのまま書き残す働き",
+      "気候と風土の違いから、民族の性格を説明していく働き"
+    ],
+    answer: 0,
+    explanation: "心象地理（imaginative geography）は、精神が自分の身近にあるものと遠く隔たったものとのあいだの距離や違いを劇に仕立て、自己の意識をいっそう強くする働きとされます。「東洋」という観念は、西洋の学問の心象地理によって作り出され、西洋以外の社会の植民地化と支配の道具になった、とサイードは論じました。",
+    detail: "土地を測量して境界を正確に引くことや、見聞をありのままに書き残すことは、心象地理とは逆の、事実に即した地理の描き方です。気候と風土の違いで民族の性格を説明するのは、環境から性格を導く説明で、距離と違いを劇に仕立てる心の働きとは別の話です。\n\nこの語には、はっきりした定義は与えられていないとされます。西洋と東洋という帝国主義的に分けられた心象地理は、自己と他者、男性と女性のような二項対立と結びつき、近代のアイデンティティの形成に深く関わると論じられてきました。\n\n地理学でも受け止められ、観光地のイメージの研究などにこの考えが使われています。訳語は、今沢紀子訳『オリエンタリズム』の「心象地理」によりました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、近いものと遠いものの距離と違いを劇に仕立て、自己の意識を強める心の働き（成瀬1997 注3 が今沢訳55頁から引く定式、IEP Literary Theory §7）。誤答は、測量で境界を正確に引く働き、見聞をありのまま書く働き（どちらも事実に即した地理の描き方で、心象地理とは逆）、気候と風土で民族の性格を説明する働き（環境から性格を導く説明）。四択は成立している。 設計の記録: 人物の追加（2026年9月27日）で作った。誤答を先に3つ書いてから正解を書いた。位置指しなし。鍵語と本文の訳語は、国立国会図書館サーチで確かめたいちばん新しい邦訳（今沢紀子訳、平凡社ライブラリー、1993年）の「心象地理」にそろえた（成瀬1997 が今沢訳から引く）。「想像の地理」とは書いていない。気候と風土の誤答は特定の人物に帰していない（モンテスキューの問題はあるが、名を出すと典拠の範囲を越えるため）。terms は空にした（TERMS「他者」の note の軸〔認識によって届く対象か、私を見返してくるものか〕とは軸が違う）。 資料の限界: SEP・IEP・REP にサイードの専用の項目は無い。芯は IEP Literary Theory §7 と成瀬1997（地理学評論）で支えた。定式（距離と違いを劇に仕立てる）そのものを引くのは成瀬1997 だけで、英語の本人以外の典拠で定式を引くものは正規に開ける範囲では見つからなかった。成瀬1997 と神田2001 は二段組みで、段を分けて読んで確かめた。",
+      refs: [
+        "https://iep.utm.edu/literary/ — IEP「Literary Theory」（Vince Brewton）§7 Ethnic Studies and Postcolonial Criticism。「東洋」という概念が西洋の学問の「心象地理」によって作り出され、非西洋社会の植民地化と支配の道具になってきたとサイードが論じること（\"Said argues that the concept of “the Orient” was produced by the “imaginative geography” of Western scholarship and has been instrumental in the colonization and domination of non-Western societies\"）。正解と explanation を支える",
+        "https://www.jstage.jst.go.jp/article/grj1984a/70/3/70_3_156/_article/-char/ja — 成瀬厚「地政学的意識と批評」『地理学評論』Ser. A 70(3)（1997年）156–166頁、DOI 10.4157/grj1984a.70.3_156。163頁 注3：心象地理はサイードの用語で、明白な定義は与えられていないが、「精神が自己の身近にあるものと遠く隔たっているものとのあいだの距離や差異を劇化し」、「自己意識をいっそう強固なもの」にする役割を果たすこと（サイード 1986a〔今沢紀子訳『オリエンタリズム』〕55頁を引く）。正解の2本目と explanation、detail 第2段落・第3段落を支える",
+        "https://www.jstage.jst.go.jp/article/jjhg1948/53/5/53_5_430/_article/-char/ja — 神田孝治「南紀白浜温泉の形成過程と他所イメージの関係性：近代期における観光空間の生産についての省察」『人文地理』53(5)（2001年）430–451頁、DOI 10.4200/jjhg1948.53.430、433頁。西洋と東洋という帝国主義的に分割された心象地理が、自己‐他者、男性‐女性などの二項対立的分割と結びつき、近代期のアイデンティティ形成に深く関係していること。detail 第2段落・第3段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q893",
+    philosophers: ["サイード"], terms: [], type: "single",
+    keys: ["対位法的読解"],
+    question: "サイードが『文化と帝国主義』で説いた「対位法的読解」として最も適切なものは？",
+    choices: [
+      "作品を作者の意図だけから読み、時代の背景は脇に置くこと",
+      "宗主国の歴史と、それに抗い共にあった歴史を同時に意識して読むこと",
+      "作品を植民地の側からだけ読み、宗主国の文学を退けること",
+      "作品の形式と構造だけを読み、社会との関わりは問わないこと"
+    ],
+    answer: 1,
+    explanation: "西洋の文化の蓄積を、一つの声ではなく対位法的に読む、つまり語られている宗主国の歴史と、支配の言説がそれに抗いながら、またそれと共に働いてきた他の歴史の両方を同時に意識して読む、というのがサイードの方法です。西洋の古典音楽の対位法で、いくつもの主題が互いに響き合うことになぞらえています。",
+    detail: "作者の意図だけで読むことも、形式と構造だけを読むことも、作品を帝国の歴史と結びつけて読むこの方法とは逆です。植民地の側からだけ読むのでもありません。宗主国の側の作品を退けるのではなく、二つの歴史を重ねて読みます。\n\n例に挙がるのが、オースティンの『マンスフィールド・パーク』です。屋敷の暮らしを支えるアンティグアの農園がほとんど語られないことを、人間の価値を植民地の人々には及ぼさない英国の二重の基準の現れとして読みました。\n\nこの方法はポストコロニアル研究の礎の一つとなり、文学・歴史・映画などの研究者が取り上げてきました。英国の帝国史の側から、その読みに修正を求める研究もあります。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、語られている宗主国の歴史と、支配の言説がそれに抗いながら、またそれと共に働いてきた他の歴史を同時に意識して読む対位法的読解（Nichols 2010 注109、Almeida & Worsley 2025 がどちらも『文化と帝国主義』の同じ箇所を引く）。誤答は、作者の意図だけで読む見方、植民地の側からだけ読む見方、形式と構造だけを読む見方で、どれも二つの歴史を重ねて読むこの方法と違う。四択は成立している。 設計の記録: 人物の追加（2026年9月27日）で作った。誤答を先に3つ書いてから正解を書いた。位置指しなし。detail 第3段落の「修正を求める研究」は Fowler 2017 自身の論で、その評価として書いた。terms は空にした（当てはまる TERMS の語が無い）。 資料の限界: SEP・IEP・REP にサイードの専用の項目は無い。芯は査読誌の Nichols 2010 と査読の叢書の Almeida & Worsley 2025 で支えた。引いている頁は版で違う（Almeida は Knopf 1993年版の51頁、Nichols は Vintage 版の59–60頁）。 邦訳: 『文化と帝国主義』大橋洋一訳、改訳新版、みすず書房、2025年（国立国会図書館サーチで確かめた、いちばん新しい邦訳）。原著の著作権表示は c1993（国立国会図書館サーチの CiNii 由来の書誌、Vintage 版「1994, c1993」）。",
+      refs: [
+        "https://rauli.cbs.dk/index.php/foucault-studies/article/download/3062/3195 — Robert Nichols, \"Postcolonial Studies and the Discourse of Foucault: Survey of a Field of Problematization\", Foucault Studies 9 (2010) 111–144, DOI 10.22439/fs.v0i9.3062、136頁 注109。『文化と帝国主義』で、西洋の文化の蓄積を、一つの声ではなく対位法的に、語られている宗主国の歴史と、支配の言説がそれに抗い、またそれと共に働く他の歴史の両方を同時に意識して読むと提案したこと（Vintage 版59–60頁を引く）。正解と explanation を支える",
+        "https://romantic-circles.org/praxis/antislavery/praxis.2024.antislavery.intro — Joselyn M. Almeida & Amelia Worsley, \"Introduction: Contrapuntal Reading\", in Romanticism and Antislavery Literatures: Pedagogies and Contexts, Romantic Circles Praxis（2025年3月。査読の叢書、ISSN 1528-8129）。サイードが、一つの声ではなく対位法的に、語られる宗主国の歴史と、支配の言説がそれに抗い、それと共に働く他の歴史の両方を同時に意識して読むことを理論化したこと（\"not univocally but contrapuntally\"。Knopf 版51頁を引く）、オースティンの『マンスフィールド・パーク』のような小説を読む方法を、西洋の古典音楽の対位法でいくつもの主題が互いに響き合うことになぞらえたこと。正解の2本目と explanation、detail 第2段落を支える",
+        "https://www.cambridge.org/core/journals/cambridge-journal-of-postcolonial-literary-inquiry/article/revisiting-mansfield-park-the-critical-and-literary-legacies-of-edward-w-saids-essay-jane-austen-and-empire-in-culture-and-imperialism-1993/7150923DBA78AF990C19AD62CA822487 — Corinne Fowler, \"Revisiting Mansfield Park: The Critical and Literary Legacies of Edward W. Said’s Essay ‘Jane Austen and Empire’ in Culture and Imperialism (1993)\", Cambridge Journal of Postcolonial Literary Inquiry 4(3) (2017) 362–381, DOI 10.1017/pli.2017.26。サイードが、小説がアンティグアにほとんど触れないことを、人間の価値が植民地の人々には及ぼされない英国の二重の基準の証とみたこと（\"Although Said takes the novel’s lack of detailed reference to Antigua as evidence of British double standards\"）、対位法的読解がポストコロニアル研究の礎であり、文学・文化研究・歴史・映画・社会学の研究者が取り上げてきたこと（\"His contrapuntal reading has been a cornerstone of postcolonial studies\"）。この論文は英国の帝国史の側からサイードの読みの修正を論じる。detail 第2段落・第3段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q894",
+    philosophers: ["サイード"], terms: [], type: "single",
+    keys: ["知的亡命"],
+    question: "サイードが1993年のレイス講義（のちの『知識人とは何か』）で描いた知識人の姿として最も適切なものは？",
+    choices: [
+      "政府や企業に雇われて、専門の知識で政策を支えていく者",
+      "大学の専門分野にこもって、自分の研究に打ち込んでいく者",
+      "主流の外にとどまる亡命者のように、権力に対して真実を語る者",
+      "革命の党の前衛として、大衆を導いて組織していく者"
+    ],
+    answer: 2,
+    explanation: "知識人は、公衆に向けて、また公衆のために、ある考えを表して語る者で、ばつの悪い問いを公に立て、正統や教条に立ち向かい、政府や企業にたやすく取り込まれない者だ、とサイードは論じました。そのあり方をよく示すのが、決して落ち着ききらない亡命の境遇で、「知的亡命」と題した講義で論じています。報酬ではなく広い視野への関心に動かされるアマチュアであることを求め、権力に対して真実を語ることを知識人の務めとしました。",
+    detail: "政府や企業に雇われて政策を支える者も、専門分野にこもる者も、サイードが退けた知識人の姿です。革命の前衛として大衆を導くという像も採りません。グラムシが革命の前衛に置いた知識人は、いまの資本主義の下ではむしろ体制を補う専門技術者になっている、というのがサイードの診断だとされます。\n\n亡命は実際の境遇であると同時に、比喩でもあります。サイードは、主流の外にとどまるアウトサイダーでマージナルな位置に、知識人の立つ場所を求めました。\n\n講義は1994年に本になり、邦訳は『知識人とは何か』です。権力に臆せず真実を語ることこそが知識人の使命だ、という主張として受け止められています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、主流の外にとどまる亡命者のように、権力に対して真実を語る知識人（本人の1993年のレイス講義の記録、上村2015、Jirn 2015）。誤答は、政府や企業に雇われて政策を支える者（講義が、政府や企業にたやすく取り込まれない者と対置する側）、専門分野にこもる者（アマチュアリズムと対置される専門化の側）、革命の党の前衛（上村2015 によれば、サイードはグラムシが前衛に置いた有機的知識人が今は体制を補う専門技術者になっていると診断した）。四択は成立している。 設計の記録: 人物の追加（2026年9月27日）で作った。誤答を先に3つ書いてから正解を書いた。位置指しなし。鍵語は、講義の題（\"Intellectual Exiles\"）と上村2015 が引く邦訳の章題に合わせて「知的亡命」にした。アマチュアリズムは本人の講義記録と岡崎2007（走査の読み取りが乱れ、一字一句を取り出せない）しか無いので、正解の芯に置かず explanation で本人の言葉として触れるにとどめた。terms は空にした（当てはまる TERMS の語が無い）。 資料の限界: SEP・IEP・REP にサイードの専用の項目は無い。芯は本人の講義記録（BBC が公開する記録）と、本人以外の上村2015（社会思想史研究）・Jirn 2015（EurAmerica、査読誌）で支えた。上村2015 は縦組み二段で、段を分けて読んで確かめた。 邦訳: 『知識人とは何か』大橋洋一訳、平凡社ライブラリー、1998年（国立国会図書館サーチで確かめた、いちばん新しい邦訳）。原著は Representations of the Intellectual、Pantheon Books、c1994（国立国会図書館サーチの CiNii 由来の書誌）。",
+      refs: [
+        "http://downloads.bbc.co.uk/radio4/transcripts/1993_reith1.pdf — Edward Said, Reith Lectures 1993 \"Representations of an Intellectual\" 第1講の記録（BBC が公開）。知識人は公衆に向けて、また公衆のために、考えを表し語る者で、ばつの悪い問いを公に立て、正統や教条に立ち向かい、政府や企業にたやすく取り込まれない者であること（\"to be someone who cannot easily be co-opted by governments or corporations\"）。explanation と detail 第1段落を支える（本人の文）",
+        "http://downloads.bbc.co.uk/radio4/transcripts/1993_reith3.pdf — 同 第3講の記録。今日の知識人にふさわしいアウトサイダーのあり方を、最もよく示すのが亡命の境遇であること（\"is best exemplified by the condition of exile\"）、亡命は実際の境遇であると同時に比喩でもあること（\"exile is also for my purposes a metaphorical one\"）。explanation と detail 第2段落を支える（本人の文）",
+        "http://downloads.bbc.co.uk/radio4/transcripts/1993_reith4.pdf — 同 第4講の記録。利益や報酬ではなく広い視野への愛と関心に動かされるアマチュアリズム（\"the desire to be moved not by profit or reward but by love for and unquenchable interest in the larger picture\"）、今日の知識人はアマチュアであるべきこと（\"An amateur is what today the intellectual ought to be\"）。explanation を支える（本人の文）",
+        "http://downloads.bbc.co.uk/radio4/transcripts/1993_reith5.pdf — 同 第5講の記録。権力に対して真実を語ること（\"to speak the truth to power\"）。正解と explanation を支える（本人の文）",
+        "https://www.jstage.jst.go.jp/article/shst/39/0/39_10/_article/-char/ja — 上村忠男「ヘテロトピアからのまなざし【エドワード・Ｗ・サイードと批評の可能性】」『社会思想史研究』39（2015年）10–22頁、DOI 10.69192/shst.39.0_10。16頁：サイードが、権力にたいして臆することなく真実を語ることこそが知識人たるものの使命であると言い放っていること。17頁：アウトサイダーにしてマージナルな存在、あるいは〈亡命者〉の位置する場所への超越がサイードの答えであること、グラムシが革命の前衛に位置づけた「有機的知識人」が今は体制補完的な専門技術者になっているというのがサイードの診断であること。18頁：「知的亡命」の章を引くこと。正解の2本目（本人以外）と detail 第1段落〜第3段落を支える（縦組み二段で、段を分けて読んだ）",
+        "https://www.ea.sinica.edu.tw/eu_file/143443576214.pdf — Jin Suh Jirn, \"Orientalism’s Discourse—Said, Foucault and the Anxiety of Influence\", EurAmerica 45(2) (June 2015) 279–299（中央研究院欧美研究所、査読誌）。279頁の要旨：サイードが、西洋の芸術と文化における非欧米の他者の歪んだ像について、権力に対して真実を語ることに関心を向けていたこと（\"speaking truth to power\"）。正解を補う（本人以外）"
+      ]
+    }
+  },
+  {
+    id: "q895",
+    philosophers: ["サイード", "フーコー"], terms: [], type: "compare",
+    keys: ["オリエンタリズム", "言説"],
+    question: "『オリエンタリズム』の言説の分析をめぐって、サイードとフーコーの違いとして最も適切なものは？",
+    choices: [
+      "両者とも、言説を権力の働きから切り離された中立の知とみた",
+      "フーコーは個々の書き手の刻印を重んじ、サイードは作者の役割を小さくみた",
+      "サイードは個々の書き手の刻印を重んじ、フーコーは作者の役割を小さくみた",
+      "両者とも、テクストの意味は作者の意図だけで決まるとした"
+    ],
+    answer: 2,
+    explanation: "サイードは言説の概念をフーコーの『知の考古学』と『監獄の誕生』から直接取りました。そのうえで序説で、フーコーは個々のテクストや作者がほとんど重みをもたないとみるが、オリエンタリズムの場合はそうではないと書き、言説という匿名の集まりに個々の書き手が残す刻印を重んじて、個々のテクストを細かく読みました。",
+    detail: "入れ替えた選択肢は、二人の立場を逆にしています。二人とも言説を中立の知とはみておらず、言説はそれ自体が権力の一つの形だとする点でサイードはフーコーに従いました。テクストの意味を作者の意図だけで決めるのでもありません。サイードが見ようとしたのは、個々のテクストと、それが加わる集まりとのあいだの行き来です。\n\nこの違いは、サイードが作者という考えを手放さなかった点として論じられてきました。フーコーが個人の行為の役割を割り引くのと同じ仕方で作者を退けたのに対し、サイードは人文主義の考えを保ったとされます。\n\n1980年代の半ばには、サイードはフーコーの権力論を悲観的にすぎると評するようになった、という整理もあります。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、サイードは言説の中の個々の書き手の刻印を重んじ、フーコーは作者の役割を小さくみたという対比（Jirn 2015 288頁、Nichols 2010 134頁 注100。どちらも『オリエンタリズム』序説23–24頁を引いて二人を並べる）。入れ替えの誤答は正解の鏡像。「両者とも」型の2つは、言説を中立の知とみる見方（二人とも退けた。SEP Colonialism §5「言説はそれ自体が権力の一つの形」）と、テクストの意味を作者の意図だけで決める見方（サイードが見たのは個々のテクストと集まりのあいだの弁証法で、意図だけではない）。四択は成立している。 設計の記録: 人物の追加（2026年9月27日）で作った。比較の軸は、二人を並べて論じた典拠（Jirn 2015、Nichols 2010）が置く軸に合わせ、典拠の無い対比は組み立てていない。detail 第3段落の、1980年代半ばからフーコーの権力論を悲観的と評したことは Nichols 2010（135頁。サイードの \"Foucault and the Imagination of Power\" 1986 を引く）の1本だけなので、「という整理もあります」の形で書いた。アフマドの批判（『理論の中で』1992）は、サイードとフーコーがより物質的な関心を押しのけたとするマルクス主義の側の批判として Nichols 2010（122頁・124頁）が書くが、1本だけなので本文には書いていない。terms は空にした（TERMS「権力」の note の軸は、この対比の軸〔作者の刻印〕と違う）。 資料の限界: SEP・IEP にサイードの専用の項目は無い。二人を並べた典拠は査読誌の2本（Jirn 2015、Nichols 2010）。 対照の記録: サイードの単独問題 q891 と、フーコーの言説を扱う既存の問題と並ぶ。",
+      refs: [
+        "https://www.ea.sinica.edu.tw/eu_file/143443576214.pdf — Jin Suh Jirn, \"Orientalism’s Discourse—Said, Foucault and the Anxiety of Influence\", EurAmerica 45(2) (June 2015) 279–299、288頁。フーコーと違い、サイードは作者という考えを手放さず、フーコーが個人の行為の役割を割り引くのと同じ仕方で作者を退けたのに対し、サイードは言説の形成体をなす匿名の集まりに個々の書き手が残す刻印という人文主義の考えを強めたこと（\"Unlike Foucault, Said refuses to abandon the notion of the author\"。Said 1978: 23 を引く）。正解と explanation、detail 第2段落を支える",
+        "https://rauli.cbs.dk/index.php/foucault-studies/article/download/3062/3195 — Robert Nichols, \"Postcolonial Studies and the Discourse of Foucault: Survey of a Field of Problematization\", Foucault Studies 9 (2010) 111–144, DOI 10.22439/fs.v0i9.3062。120頁：言説の概念をフーコーの『知の考古学』と『監獄の誕生』から直接取ったこと。134頁 注100：『オリエンタリズム』序説23–24頁の、フーコーは一般に個々のテクストや作者がほとんど重みをもたないとみるが、オリエンタリズムの場合はそうでないとし、個々のテクストと集まりのあいだの弁証法を示すために細かく読むという一節。135頁：1980年代半ばまでに、サイードがフーコーを問題の一部とみるようになったこと。正解の2本目と explanation、detail 第1段落・第3段落を支える",
+        "https://plato.stanford.edu/entries/colonialism/ — SEP「Colonialism」（Margaret Kohn & Kavita Reddy、2023年1月17日改訂）§5。フーコーに従い、サイードは言説を権力に仕える道具ではなくそれ自体が権力の一つの形とすること（\"Following Foucault, Said describes discourse as a form of knowledge that is not used instrumentally in service of power but rather is itself a form of power\"）。detail 第1段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q896",
+    philosophers: ["スピヴァク"], terms: [], type: "single",
+    keys: ["サバルタン"],
+    question: "スピヴァクが「サバルタンは語ることができるか」（1988年）で、サティーの廃止を例に論じたこととして最も適切なものは？",
+    choices: [
+      "植民地の支配を退ければ、女性の声はそのまま聞こえてくること",
+      "帝国の言説と家父長制の伝統に挟まれ、女性の声が聞き取られないこと",
+      "聞き取りを重ねれば、研究者は女性の本当の声を取り出せること",
+      "殉死は女性が自ら選んだもので、その意思を尊べばよいこと"
+    ],
+    answer: 1,
+    explanation: "英国が植民地インドで寡婦殉死（サティー）を禁じた例をもとに、スピヴァクは、女性のサバルタンが帝国主義の言説と家父長制の伝統に挟まれ、そのどちらも彼女が自分の経験を声にすることを許さないと論じました。「白人の男性たちが茶色い女性たちを茶色い男性から救い出し」たという言い分と、「女性たちは実際に死ぬことを望んでいた」という言い分のあいだで、女性の声そのものには出会えない、というのです。",
+    detail: "植民地の支配を退ければ声が聞こえるとみるのも、聞き取りを重ねれば本当の声を取り出せるとみるのも、声が透明に届くという想定に立っており、スピヴァクが問い直したものです。殉死を女性の自らの選択とみるのは、英国の禁止に抵抗した土着主義者の言い分の側です。\n\n経験そのものが表象によって形づくられているので、表象の問題を否定しても問題は消えず、見えにくくなるだけです。この論文の中心の主張は、表象は消えていない、というものだとされます。\n\n論文はのちに加筆され、『ポストコロニアル理性批判』（1999年）の一章になりました。この改稿で、スピヴァクは結論を変えています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、女性のサバルタンが帝国主義の言説と家父長制の伝統に挟まれ、声が聞き取られる場をもたないこと（SEP Feminist Perspectives on Power §3.6、辻上2017、喜多2009）。誤答は、植民地の支配を退ければ声が聞こえるとみる見方と、聞き取りを重ねれば本当の声を取り出せるとみる見方（どちらも SEP Colonialism §5 が書く、透明なサバルタンの語りという想定の側）、殉死を女性の自らの選択とみる見方（英国の禁止に抵抗した土着主義者の言い分。辻上2017）。四択は成立している。 設計の記録: 人物の追加（2026年9月27日）で作った。誤答を先に3つ書いてから正解を書いた。位置指しなし。利用者の指示で、結論を「サバルタンは語ることができない」と言い切る書き方をしていない（正解も「聞き取られない」とした）。1988年版の結論の一文を、本人がのちに「推奨できない評言」と述べたことは、本人以外の典拠が喜多2009（112頁・117頁）の1本だけなので、本文には書かず、論文が加筆されて『ポストコロニアル理性批判』の一章になり結論を変えたこと（喜多2009 111頁、コロンビア大学出版局の頁は改訂版があることまで）にとどめた。鍵語「サバルタン」は、グラムシとの規則3の二人語にした。グラムシの用法（まとまった世界観をもてないまま従属している諸集団。q427 の detail、SEP Antonio Gramsci §3.4）と、スピヴァクの用法（植民地の暴力と抹消を受けた人々で、声が聞き取られない位置にある。SEP Aesthetics and Race §6.3）は中身が違い、q427 の本文とも食い違わない。二つの用法を並べて比べた典拠は見つからなかったので、本文で対比は書いていない。アフマドの批判（SEP Colonialism §5。標的はスピヴァク）は、1本だけなのでこの問題には書いていない。terms は空にした（当てはまる TERMS の語が無い）。 資料の限界: SEP・IEP・REP にスピヴァクの専用の項目は無い。芯は SEP の2項目（著者が別）と辻上2017 で支えた。喜多2009 は走査の文字認識の層から取り、引いた箇所の頁を画像にして、括弧の中の文字が誌面と合うことを目で確かめた（2026年9月27日、tools/pdf_page_image.py）。 邦訳: 『サバルタンは語ることができるか』上村忠男訳、みすず書房（みすずライブラリー）、1998年（国立国会図書館サーチで確かめた）。",
+      refs: [
+        "https://plato.stanford.edu/entries/feminist-power/ — SEP「Feminist Perspectives on Power」（Amy Allen、2021年10月28日改訂）§3.6。英国が植民地インドでサティーを禁じた例をもとに、女性のサバルタンが帝国主義の言説と家父長制の伝統に挟まれ、そのどちらも経験を声にすることを許さないとスピヴァクが示唆したこと（\"Drawing on the example of the British banning the practice of sati in colonial India, Spivak suggests that the subaltern cannot speak because she is caught between imperialist discourse and patriarchal traditionalism\"）、女性のサバルタンが語り、聞かれ、読まれる場が無いこと（\"there is no space from which the subaltern as female can speak and no way she can be heard or read\"）。正解と explanation を支える",
+        "https://plato.stanford.edu/entries/colonialism/ — SEP「Colonialism」（Margaret Kohn & Kavita Reddy、2023年1月17日改訂）§5。スピヴァクが透明なサバルタンの語りという考えを問い、善意の研究者がサバルタンに自ら語らせようとするときの想定を批判したこと（\"Spivak questions the idea of transparent subaltern speech\"）、経験そのものが表象によって形づくられるので、表象の問題を否定しても見えにくくするだけであること、論文の中心の主張が「表象は消えていない」であること（\"representation has not withered away\"）。正解の2本目と detail 第1段落・第2段落を支える",
+        "https://www.jstage.jst.go.jp/article/jjcanth/82/3/82_386/_article/-char/ja — 辻上奈美江「「アフガン・ガール」をめぐる眼差しの暴力：主体・表象・交差性」『文化人類学』82(3)（2017年）386–394頁、DOI 10.14890/jjcanth.82.3_386。390頁：スピヴァクが、サティーと呼ばれる寡婦殉死の慣習をイギリスが廃止したことを事例に論じたこと、白人男性に対立したインドの土着主義者が「女性たちは死ぬことを望んでいた」と抵抗を試みたこと、だれも女性たちの声‐意識を証言したものに出会うことはないというスピヴァクの言葉。386頁の要旨：白人男性が有色人男性から有色人女性を救出しようとする企図をスピヴァクが指摘したこと。explanation と detail 第1段落を支える（二段組みで、段を分けて読んだ）",
+        "https://www.jstage.jst.go.jp/article/sstj/3/0/3_111/_article/-char/ja — 喜多加実代「語る／語ることができない当事者と言説における主体の位置：スピヴァクのフーコー批判再考」『現代社会学理論研究』3（2009年）111–123頁、DOI 10.34327/sstj.3.0_111。111頁：論考がその後結論を変えて『ポストコロニアル理性批判』の一つの章となったこと。116頁：「白人の男性たちが茶色い女性たちを茶色い男性から救い出し」たのか、「女性たちは実際に死ぬことを望んでいた」のかというスピヴァクの問い。explanation と detail 第3段落を支える（走査の文字認識の層から取った）",
+        "https://cup.columbia.edu/book/can-the-subaltern-speak/9780231143851/ — コロンビア大学出版局の頁（Rosalind C. Morris 編 Can the Subaltern Speak? Reflections on the History of an Idea）。『ポストコロニアル理性批判』の「歴史」の章からの改訂版があること（\"revised edition, from the\"）、原版と改訂版の両方を収めること。detail 第3段落を補う"
+      ]
+    }
+  },
+  {
+    id: "q897",
+    philosophers: ["スピヴァク"], terms: [], type: "single",
+    keys: ["代表と表象"],
+    question: "スピヴァクが、representation という一つの語について区別すべきだとした二つの意味として最も適切なものは？",
+    choices: [
+      "心に浮かぶ観念と、それを外に表す言葉としての記号",
+      "政治の場で代わりに語る「代表」と、描き出して示す「表象」",
+      "選挙で選ばれる議員と、世論として示される民意",
+      "対象を写し取る写像と、規則に従って行う言語ゲーム"
+    ],
+    answer: 1,
+    explanation: "英語では一つの語 representation で示される、政治的に代わって語る「代表」（ドイツ語の Vertretung）と、描き出して示す「表象」（Darstellung）、つまり代表と表象を分けることが大切だ、とスピヴァクは論じました。二つには内的なつながりがあり、互いに共謀しますが、混同すると、抑圧された主体が自分で語り知る場所を二つの外に置く、本質主義的でユートピア的な政治に滑り込むとされます。",
+    detail: "観念と記号の区別は、近世の認識論の心と言葉の話です。議員と民意の区別は代表制の制度の話で、表象の働きを含みません。写像と言語ゲームは、ウィトゲンシュタインの前期と後期の言語観の対比です。\n\n代表は、代わって語る者が代わられる者のために語ることで、表象は、その者として語り、その姿を描くことです。政治の代表は自らを正当にするために表象を使い、表象もまた政治の代表になっていく、という共謀の関係が問題にされます。\n\nこの区別はマルクスの用語から取られたものとされ、スピヴァクはマルクスが『ルイ・ボナパルトのブリュメール18日』で二つの共謀を暴き出したように読むことを求めました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、representation の二つの意味、政治的に代わって語る代表（Vertretung）と描き出して示す表象（Darstellung）の区別（竹村2004 177頁、虞2021 14頁、田中2025 注7、宮前ほか2022 2.1節）。誤答は、観念と記号（近世の認識論）、議員と民意（代表制の制度）、写像と言語ゲーム（ウィトゲンシュタインの前期と後期）で、どれも別の区別。四択は成立している。 設計の記録: 人物の追加（2026年9月27日）で作った。誤答を先に3つ書いてから正解を書いた。位置指しなし。鍵語は「代表と表象」の形にした（「表象」単独はショーペンハウアーなどの鍵語に当たるため）。訳語は、竹村2004 の〈代理〉〈表象〉、虞2021 の「政治的な代表」「美学的な表象」、田中2025 の「代表」「表象」のうち、正解の短さに合わせて「代表」「表象」にした。『ブリュメール十八日』の読みを書名まで挙げて書くのは竹村2004 の1本だけ（田中2025 はマルクスの用語とだけ書く）なので、detail 第3段落は「とされ」の形にした。terms は空にした（TERMS「言語」の note の軸〔思考を写しとる道具か、主体をあらかじめ形づくるものか〕とは軸が違う）。 資料の限界: SEP・IEP・REP にスピヴァクの専用の項目は無く、Vertretung と Darstellung の区別は SEP・IEP に見つからなかった。芯は日本語の論文（竹村2004、虞2021、田中2025。著者が別）で支えた。竹村2004 は走査の文字認識の層から取り、引いた箇所の頁を画像にして、括弧の中の文字が誌面と合うことを目で確かめた（2026年9月27日、tools/pdf_page_image.py）。虞2021・田中2025 は二段組みで、段を分けて読んだ。",
+      refs: [
+        "https://www.jstage.jst.go.jp/article/jsr1950/55/3/55_3_172/_article/-char/ja — 竹村和子「修辞的介入と暴力への対峙：〈社会的なもの〉はいかに〈政治的なもの〉になるか」『社会学評論』55(3)（2004年）172–188頁、DOI 10.4057/jsr.55.172、177頁。英語では同一の語（representation）として示される〈表象〉と〈代理〉を分離することが重要であること、「比喩としてのレトリック」（Darstellung）と「説得としてのレトリック」（Vertretung）を混同すると本質主義的でユートピア的な政治に横滑りすること、マルクスが『ブリュメール18日』でおこなったように両者の共謀関係を暴き出すこと（Spivak 1999: 259–260 を引く）。正解と explanation、detail 第3段落を支える（走査の文字認識の層から取った）",
+        "https://www.jstage.jst.go.jp/article/csssej/26/0/26_11/_article/-char/ja — 虞嘉琦「G・C・スピヴァクの「応答責任」：教育開発におけるサバルタンへの倫理を構想する試み」『教育学研究ジャーナル』26（2021年）11–20頁、14頁。代表は代表者が被代表者のために権利を行使することで、表象は被代表者として語り肖像を描くことであること、政治的な代表（Vertretung）と美学的な表象（Darstellung）が共謀関係を結んでいること（The Post-Colonial Critic, 1990 を引く）。正解の2本目と detail 第2段落を支える（二段組みで、段を分けて読んだ）",
+        "https://www.jstage.jst.go.jp/article/jjpehss/70/0/70_025-24103/_article/-char/ja — 田中愛「「健常者」の参加に見る「学び捨て」の検討：パラスポーツにおける共生の可能性」『体育学研究』70（2025年）397–416頁、415頁 注7。vertreten（代弁／代表する）と darstellen（再現／表象する）が representation の2種類の言い方で、マルクスの用語であること。detail 第3段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q898",
+    philosophers: ["スピヴァク"], terms: [], type: "single",
+    keys: ["戦略的本質主義"],
+    question: "スピヴァクの言う「戦略的本質主義」として最も適切なものは？",
+    choices: [
+      "集団には変わらない本質があると認め、それを守り続けること",
+      "本質主義の危うさを承知しつつ、政治のために意識して用いること",
+      "あらゆる本質を否定し、集団として語ることをやめること",
+      "相手の本質を見抜き、交渉を有利に進める技術とすること"
+    ],
+    answer: 1,
+    explanation: "どんな政治的な代表も本質主義なしには成り立たないので、残された道は「本質主義の還元不可能な契機を自ら意識して用いる」ことだ、とスピヴァクは論じました。集団の本質を語る言説を、それを真理として信じるのではなく、戦略として選んで使う、という立場です。",
+    detail: "集団の変わらない本質を認めて守り続けるのは、本質主義そのものです。あらゆる本質を否定して集団として語ることをやめるのは、戦略として本質を語る余地を消してしまいます。「戦略的」を、相手の本質を見抜く交渉の技術という意味に取るのも誤りです。\n\n非原理主義の哲学でさえ、自らを非原理主義の哲学として表さねばならない、という見方がこの考えの出発点です。構成主義への留保として、戦略的リアリズムなどと並べて論じられてきました。\n\n戦略的本質主義は、スピヴァクが使い出した言葉とされます。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、本質主義の危うさを承知しつつ、政治のためにそれを意識して用いること（竹村2004 176頁が引く本人の定式、小田1997 195–196頁）。誤答は、集団の本質を認めて守る本質主義そのもの、あらゆる本質を否定して集団として語ることをやめる見方（戦略として本質を語る余地を消す）、「戦略的」を交渉の技術と取る誤読。四択は成立している。 設計の記録: 人物の追加（2026年9月27日）で作った。誤答を先に3つ書いてから正解を書いた。位置指しなし。利用者の指示で定義までにし、本人がのちにこの語から距離を取ったこと（本人の文しか無い）は書いていない。本人の定式（「本質主義の還元不可能な契機を自ら意識して用いる」）まで書くのは竹村2004 だけで、小田1997 は「本質主義的言説を利用することの戦略的な選択」の水準で支える。正解はこの水準で書いた。土佐2014 は語がスピヴァクのものだという帰属だけを書く。terms は空にした（当てはまる TERMS の語が無い）。 資料の限界: SEP・IEP・REP にスピヴァクの専用の項目は無く、SEP には \"strategic essentialism\" の語が無い。芯は日本語の論文2本（竹村2004、小田1997。著者が別）で支えた。どちらも走査の文字認識の層から取り、引いた箇所の頁を画像にして、括弧の中の文字が誌面と合うことを目で確かめた（2026年9月27日、tools/pdf_page_image.py）。小田1997 は二段組みで、段を分けて読んだ。",
+      refs: [
+        "https://www.jstage.jst.go.jp/article/jsr1950/55/3/55_3_172/_article/-char/ja — 竹村和子「修辞的介入と暴力への対峙：〈社会的なもの〉はいかに〈政治的なもの〉になるか」『社会学評論』55(3)（2004年）172–188頁、DOI 10.4057/jsr.55.172、176頁。スピヴァクいわく、非原理主義的な哲学でさえ自らを非原理主義的な哲学として代表／表象しなければならず、どんな政治的代表／表象も本質主義なしには成立しないので、「本質主義の還元不可能な契機を自ら意識して用いる」という「戦略的本質主義者」になる可能性が残されていること（Spivak [1988b] 1990: 109 を引く）。正解と explanation、detail 第2段落を支える（走査の文字認識の層から取った）",
+        "https://www.jstage.jst.go.jp/article/minkennewseries/62/2/62_KJ00003557395/_article/-char/ja — 小田亮「文化相対主義を再構築する」（特集「文化相対主義の困難を超えて」）『民族學研究』62(2)（1997年）184–204頁、195–196頁。「戦略的本質主義」（スピヴァック）が「戦略的リアリズム」や反‐反本質主義と並んで構成主義的な非本質主義への留保として出され、アイデンティティの基盤となる本質主義的言説を利用することの戦略的な選択を主張していること。正解の2本目と detail 第2段落を支える（走査の二段組みで、段を分けて読んだ）",
+        "https://www.jstage.jst.go.jp/article/psaj/43/0/43_43002/_article/-char/ja — 土佐弘之「ジオボディ・ポリティクスの超克：アジアの政治的地脈におけるCSSの試掘」『平和研究』43（2014年）1–24頁、DOI 10.50848/psaj.43002、注7。戦略的本質主義はスピヴァクが使い出した用語であること。detail 第3段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q899",
+    philosophers: ["スピヴァク", "フーコー", "ドゥルーズ"], terms: [], type: "compare",
+    keys: ["サバルタン", "代表と表象"],
+    question: "対談「知識人と権力」をめぐって、フーコー・ドゥルーズとスピヴァクの立場の違いとして最も適切なものは？",
+    choices: [
+      "三者とも、知識人が被抑圧者に代わって語るべきだとした",
+      "スピヴァクは被抑圧者は自ら語れるとし、二人はその想定を問い直した",
+      "二人は被抑圧者は自ら語れるとし、スピヴァクはその想定を問い直した",
+      "三者とも、代表と表象の意味を区別しなくてよいとした"
+    ],
+    answer: 2,
+    explanation: "1972年の対談「知識人と権力」で、フーコーとドゥルーズは被抑圧者に代わって語ることを退け、被抑圧者は自ら語り、自らの状態を知ることができるとしました。スピヴァクは「サバルタンは語ることができるか」の冒頭でこれを批判し、人々の語りを主体の意識を映す透明なものとして扱っていると論じました。",
+    detail: "入れ替えた選択肢は、三者の立場を逆にしています。二人は知識人が代わって語ることを退けたので、三者とも代わって語るべきだとしたのでもありません。代表と表象を区別しなくてよいとしたのでもなく、スピヴァクはむしろ、二人がこの二つを一つの語で考えて混同していると批判しました。\n\n受刑者の運動を支えていたフーコーとドゥルーズが、受刑者は問題をよく知り、それを語っていると述べた箇所が、批判の的になりました。スピヴァクによれば、二人は帝国主義の認識上の暴力を見落としています。\n\nこの批判から、スピヴァクの有名な問い「サバルタンは語ることができるか」が立てられました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、フーコーとドゥルーズは被抑圧者は自ら語れるとし、スピヴァクはその想定を問い直したという対比（SEP Feminist Perspectives on Power §3.6、喜多2009 111頁・114–115頁）。入れ替えの誤答は正解の鏡像。「三者とも」型の2つは、知識人が代わって語るべきだとする見方（二人は退けた）と、代表と表象を区別しなくてよいとする見方（スピヴァクは二人の混同を批判した。喜多2009 注10）。四択は成立している。 設計の記録: 人物の追加（2026年9月27日）で作った。比較の軸は、三者を並べて論じた典拠（SEP §3.6、喜多2009）が置く軸に合わせた。「透明なものとして扱う」という批判を二人の名を挙げて書くのは喜多2009 だけなので、explanation はその形にとどめ、SEP Colonialism §5 の \"transparent subaltern speech\" は二人の名を挙げていないので使っていない。「認識上の暴力」は1資料（SEP §3.6）しか無いので、正解の芯に置かず detail で SEP の要約として触れた。喜多2009 は、フーコーの側がスピヴァクの提案を先取りするとも読めると論じるが、本文には書いていない。terms は空にした（当てはまる TERMS の語が無い）。 資料の限界: SEP・IEP にスピヴァクの専用の項目は無い。三者を並べた典拠は SEP §3.6 と喜多2009 の2本。喜多2009 は走査の文字認識の層から取り、引いた箇所の頁を画像にして、括弧の中の文字が誌面と合うことを目で確かめた（2026年9月27日、tools/pdf_page_image.py）。 対照の記録: スピヴァクの単独問題 q896・q897 の中身を使った。",
+      refs: [
+        "https://plato.stanford.edu/entries/feminist-power/ — SEP「Feminist Perspectives on Power」（Amy Allen、2021年10月28日改訂）§3.6。スピヴァクの論文が、被抑圧者に代わって語るという考えを退け、被抑圧者は自ら語るべきだとしたフーコーとドゥルーズのやりとりの批判から始まること（\"Spivak’s essay opens with a critical discussion of an exchange betweeen Foucault and Gilles Deleuze, in which they reject the idea of speaking for the oppressed\"。betweeen は原文の綴り）、二人が帝国主義の認識上の暴力を見落としていること、被抑圧者は「語り、自らの状態を知ることができる」という二人の主張が、スピヴァクの問いを立たせたこと（\"can speak and know their conditions\"）。正解と explanation、detail 第2段落・第3段落を支える",
+        "https://www.jstage.jst.go.jp/article/sstj/3/0/3_111/_article/-char/ja — 喜多加実代「語る／語ることができない当事者と言説における主体の位置：スピヴァクのフーコー批判再考」『現代社会学理論研究』3（2009年）111–123頁、DOI 10.34327/sstj.3.0_111。111頁：スピヴァクが議論の対象としたのがフーコーとドゥルーズの対談「知識人と権力」で、受刑者運動を支援する二人が、受刑者たちは問題を「よく知っており」「それを言っている」と述べていることに異議を唱えたこと。115頁：二人が人々の発言や行為を主体の欲望や意識を反映した透明なものとして扱っていること。121頁 注10：マルクスならば区別していたはずの Vertretung と Darstellung を二人が一つの語で考え、混同していることも批判の対象になっていること。正解の2本目と explanation、detail 第1段落・第2段落を支える（走査の文字認識の層から取った）"
       ]
     }
   }
