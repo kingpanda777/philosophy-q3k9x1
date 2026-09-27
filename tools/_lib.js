@@ -1,7 +1,7 @@
 /* ===========================================================
    道具が共通で持つもの（2026-09-21 に切り出した）
 
-   入っているのは7つである。
+   入っているのは8つである。
      1. 字数の数え方  L
      2. JSON の読み書き  readJson / writeJson
      3. 哲学者紹介（PHIL_INTRO）の基準値  PHIL
@@ -10,6 +10,7 @@
         （2026-09-23 に足した。下の「5.」の節）
      6. 出力をファイルに残す（--out）  outOption（2026-09-26 に足した。下の「6.」の節）
      7. 配列の末尾へ足す  appendToArray（2026-09-27 に add_person.js から移した。下の「7.」の節）
+     8. 最初の一致を字のまま置き換える  replaceFirst（2026-09-27 に足した。下の「8.」の節）
 
    なぜ切り出したか。**同じ定義が複数の道具に写してあると、片方だけ直したときに
    食い違ったまま気づかれない。** CLAUDE.md の「幅を変えるだけなら失効ではない。
@@ -30,7 +31,7 @@
      add_batch.js の作問の追加もこれを使う形にした。
 
    使い方:  const { L, readJson, writeJson, PHIL, matchYears,
-                    readFileSafe, writeFileSafe, diagnose, outOption, appendToArray } = require("./_lib.js");
+                    readFileSafe, writeFileSafe, diagnose, outOption, appendToArray, replaceFirst } = require("./_lib.js");
    =========================================================== */
 
 "use strict";
@@ -184,9 +185,9 @@ const outOption = () => {
    `const 名前 = [ … \n];` の最後の要素の後ろに「,」と改行で継ぎ、追加を置いて「\n];」で閉じる。
    差し込み位置を既存の行の文字列で探すと、その行が直されたとたんに止まるので、配列の名前で探す。
    使うのは add_person.js（PHILOSOPHERS・PHIL_INTRO）と add_batch.js（QUESTIONS）。
-   移したとき、置き換えを src.replace(block, 文字列) から slice でつなぐ形に変えた。replace は置き換えの
-   文字列の中の「$&」「$1」などを特別な意味に読むので、追加の中に「$」があると中身が変わるため。
-   「$」を含まない入力では、移す前と同じ結果になる（2026-09-27 に前の回の入力3組で、書き込まれた
+   移したとき、置き換えを src.replace(block, 文字列) から slice でつなぐ形に変えた（追加の中の「$$」「$&」「$`」「$'」を
+   字のまま置くため。道具全体の同じ問題は「8.」の replaceFirst で直した）。
+   この形を含まない入力では、移す前と同じ結果になる（2026-09-27 に前の回の入力4組で、書き込まれた
    ファイルがバイト単位で同じになることを確かめた）。 */
 const appendToArray = (src, 名前, 追加, ラベル) => {
   const m = src.match(new RegExp("const " + 名前 + " = \\[[\\s\\S]*?\\n\\];"));
@@ -196,4 +197,25 @@ const appendToArray = (src, 名前, 追加, ラベル) => {
   return src.slice(0, m.index) + closed + ",\n" + 追加 + "\n];" + src.slice(m.index + block.length);
 };
 
-module.exports = { L, readJson, writeJson, PHIL, matchYears, readFileSafe, writeFileSafe, diagnose, outOption, appendToArray };
+/* 8. 最初の一致を字のまま置き換える（2026-09-27 に足した）
+   String.prototype.replace に文字列を渡すと、置き換え先の文字列の中の「$$」「$&」「$`」「$'」を特別な意味に読む
+   （「$$」は「$」1つに、「$&」は見つけた文字列に、「$`」「$'」はその前後の全文に化ける）。
+   add_batch.js は入力の文（本文・note・refs・選択肢・keys・読み）をそのまま置き換え先に渡していたので、
+   入力にこの形があると書き込まれる中身が変わる作りだった。この部品は slice でつなぐので、置き換え先を字のまま置く。
+   見つける側は文字列か、g の付かない正規表現（最初の一致だけを置き換える。replace と同じ）。見つからなければそのまま返す。
+   「$」のこの形を含まない入力では replace と同じ結果になる（2026-09-27 に前の回の入力5組で、書き込まれたファイルが
+   バイト単位で同じになることを確かめた）。 */
+const replaceFirst = (src, pat, text) => {
+  let i, len;
+  if (typeof pat === "string") { i = src.indexOf(pat); len = pat.length; }
+  else {
+    if (pat.global || pat.sticky) throw new Error("replaceFirst は g・y の付いた正規表現を受けない");
+    const m = src.match(pat);
+    if (!m) return src;
+    i = m.index; len = m[0].length;
+  }
+  if (i < 0) return src;
+  return src.slice(0, i) + text + src.slice(i + len);
+};
+
+module.exports = { L, readJson, writeJson, PHIL, matchYears, readFileSafe, writeFileSafe, diagnose, outOption, appendToArray, replaceFirst };

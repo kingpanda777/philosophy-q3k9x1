@@ -109,7 +109,7 @@ const path = require("path");
 const { execFileSync } = require("child_process");
 /* 字数の数え方と JSON の読み書きは tools/_lib.js から読む。
    同じ定義が check_phil.js にも写してあり、片方だけ直すと食い違う。2026-09-21 に切り出した。 */
-const { L, readJson, writeJson, readFileSafe, writeFileSafe, diagnose, appendToArray } = require("./_lib.js");
+const { L, readJson, writeJson, readFileSafe, writeFileSafe, diagnose, appendToArray, replaceFirst } = require("./_lib.js");
 
 const R = path.join(__dirname, "..");
 const P = f => path.join(R, f);
@@ -412,7 +412,7 @@ function auditKeyForms(saku, tsui, keys, existing) {
     if (typeof q[fld] !== "string" || !q[fld]) { ng.push(`追記先の ${fld} が無い: ${it.id}`); continue; }
     if (q[fld].indexOf(it.find) < 0) { ng.push(`追記先の ${fld} に find が無い: ${it.id}`); continue; }
     if (q[fld].indexOf(it.find) !== q[fld].lastIndexOf(it.find)) { ng.push(`find が一意でない: ${it.id}`); continue; }
-    const nd = q[fld].replace(it.find, it.replace);
+    const nd = replaceFirst(q[fld], it.find, it.replace);
     afterAppend[it.id] = { ph: q.philosophers || [], t: bodyOf(Object.assign({}, q, { [fld]: nd })), detail: fld === "detail" ? nd : q.detail };
   }
 
@@ -633,7 +633,7 @@ function auditQuestionNumbers(saku, tsui, qs) {
     if ((it["対象"] || "detail") !== "detail") continue;
     const q = qs.find(x => x.id === it.id);
     if (!q || typeof q.detail !== "string") continue;   /* 無いときは追記の段で止まる */
-    対象.push({ id: it.id, obj: it, text: q.detail.replace(it.find, it.replace), kind: "追記" });
+    対象.push({ id: it.id, obj: it, text: replaceFirst(q.detail, it.find, it.replace), kind: "追記" });
   }
   if (!対象.length) return;
   const 要判断 = [];
@@ -932,7 +932,7 @@ function removeKeys(rem) {
     const block = src.slice(start, end);
     const m = block.match(/    keys: \[[^\]]*\],/);
     if (!m) throw new Error("keys の行が無い: " + r.id);
-    src = src.slice(0, start) + block.replace(m[0], `    keys: [${after.map(S).join(", ")}],`) + src.slice(end);
+    src = src.slice(0, start) + replaceFirst(block, m[0], `    keys: [${after.map(S).join(", ")}],`) + src.slice(end);
     writeFileSafe(P("questions.js"), src, "utf8");
 
     /* keys_draft.json は q.keys と同じ中身でなければならない（check_keys の項目2）。
@@ -946,7 +946,7 @@ function removeKeys(rem) {
     const oldNote = q.source.note;
     const newNote = oldNote + ` keys から「${r["語"].join("」「")}」を外した。理由: ${r["理由"]}`;
     if (src.indexOf(S(oldNote)) !== src.lastIndexOf(S(oldNote))) throw new Error("note リテラルが一意でない: " + r.id);
-    src = src.replace(S(oldNote), S(newNote));
+    src = replaceFirst(src, S(oldNote), S(newNote));
     writeFileSafe(P("questions.js"), src, "utf8");
 
     console.log(`  ${r.id}: keys ${before.length}→${after.length}　外した: ${r["語"].join("・")}　残り: ${after.join("・")}`);
@@ -1030,7 +1030,7 @@ function writeRefs(id, list) {
   const m = block.match(/refs: \[[\s\S]*?\n      \]|refs: \[\]/);
   const line = "refs: [\n        " + list.map(S).join(",\n        ") + "\n      ]";
   let nb;
-  if (m) nb = block.replace(m[0], line);
+  if (m) nb = replaceFirst(block, m[0], line);
   else {
     /* refs の欄そのものが無い問題（2026-09-23 に直した）。refs追加 はここで止まっていた。
        追記の refs_add と同じ位置（note の後ろ、source の閉じの手前）に欄を作る。 */
@@ -1143,7 +1143,7 @@ function applyChoiceEdits(chRep) {
     const blk = blockOf(src, r.id);
     if (!blk) throw new Error("エントリが見つからない: " + r.id);
     if (countIn(blk.text, S(r["旧"])) !== 1) throw new Error("選択肢の文字列がちょうど1回当たらない: " + r.id);
-    src = src.slice(0, blk.start) + blk.text.replace(S(r["旧"]), S(r["新"])) + src.slice(blk.end);
+    src = src.slice(0, blk.start) + replaceFirst(blk.text, S(r["旧"]), S(r["新"])) + src.slice(blk.end);
     writeFileSafe(P("questions.js"), src, "utf8");
     const { 逸脱, b } = r._記録;
     addNote(r.id, ` 選択肢の書き換え: 「${r["旧"]}」を「${r["新"]}」に替えた。理由: ${r["理由"]}${/。$/.test(r["理由"]) ? "" : "。"}` +
@@ -1188,7 +1188,7 @@ function auditNoteOps(noteRep, unvDel, existing) {
       要判断.push(`${r.id}: 「確認できていない点:」を置き換えるのに、「新」が「解消済み:」で始まらず、「確認できていない点:」も残していない`);
       ng = true;
     }
-    if (!ng) notes[r.id] = now.replace(r["含む"], r["新"]);
+    if (!ng) notes[r.id] = replaceFirst(now, r["含む"], r["新"]);
     console.log(`  ${ng ? "★" : "○"} ${r.id}　note置換`);
   }
   for (const r of unvDel) {
@@ -1213,7 +1213,7 @@ function applyNoteOps(noteRep, unvDel) {
     const oldNote = q.source.note;
     if (oldNote.split(r["含む"]).length - 1 !== 1) throw new Error("note置換の「含む」がちょうど1回当たらない: " + r.id);
     if (src.indexOf(S(oldNote)) !== src.lastIndexOf(S(oldNote))) throw new Error("note リテラルが一意でない: " + r.id);
-    writeFileSafe(P("questions.js"), src.replace(S(oldNote), S(oldNote.replace(r["含む"], r["新"]))), "utf8");
+    writeFileSafe(P("questions.js"), replaceFirst(src, S(oldNote), S(replaceFirst(oldNote, r["含む"], r["新"]))), "utf8");
     console.log(`  ${r.id}: note を置き換えた`);
   }
   for (const r of unvDel) {
@@ -1224,7 +1224,7 @@ function applyNoteOps(noteRep, unvDel) {
     const block = src.slice(start, end);
     const m = block.match(/\n      unverified: "(?:[^"\\]|\\.)*",?/);
     if (!m) throw new Error("unverified の行が見つからない: " + r.id);
-    src = src.slice(0, start) + block.replace(m[0], "") + src.slice(end);
+    src = src.slice(0, start) + replaceFirst(block, m[0], "") + src.slice(end);
     writeFileSafe(P("questions.js"), src, "utf8");
     addNote(r.id, ` 画面の unverified を外した。理由: ${r["理由"]}`);
     console.log(`  ${r.id}: unverified を外した`);
@@ -1254,7 +1254,7 @@ function addNote(id, 文) {
   const q = QUESTIONS_OF(src).find(x => x.id === id);
   const oldNote = q.source.note;
   if (src.indexOf(S(oldNote)) !== src.lastIndexOf(S(oldNote))) throw new Error("note リテラルが一意でない: " + id);
-  writeFileSafe(P("questions.js"), src.replace(S(oldNote), S(oldNote + 文)), "utf8");
+  writeFileSafe(P("questions.js"), replaceFirst(src, S(oldNote), S(oldNote + 文)), "utf8");
 }
 function applyRefsOps(refsDel, refsRep) {
   if (!refsDel.length && !refsRep.length) return;
@@ -1397,7 +1397,7 @@ function applyLedger(led) {
       /* KEY_YOMI。開き引用符まで含めて拾う（外すと二重の引用符になり index.html が壊れる） */
       const re = new RegExp('"' + r["旧"].replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + '":"[^"]*",');
       if (!re.test(html)) throw new Error("KEY_YOMI に旧語形が無い: " + r["旧"]);
-      html = html.replace(re, `${S(r["新"])}:${S(r["読み"])},`);
+      html = replaceFirst(html, re, `${S(r["新"])}:${S(r["読み"])},`);
       renc++;
       log.push(`  改名　　　${person}／${r["旧"]} → ${r["新"]}（hits ${m.hits}／全問 ${m.all}・q.keys ${n}か所・読みと KEY_YOMI も）`);
     }
@@ -1472,12 +1472,12 @@ function applyLedger(led) {
         const block = src.slice(start, end);
         const mm = block.match(/    keys: \[[^\]]*\],/);
         const line = `    keys: [${(q.keys || []).concat([w]).map(S).join(", ")}],`;
-        if (mm) src = src.slice(0, start) + block.replace(mm[0], line) + src.slice(end);
+        if (mm) src = src.slice(0, start) + replaceFirst(block, mm[0], line) + src.slice(end);
         else {
           /* keys フィールドそのものが無い問題が42問ある */
           const tm = block.match(/    philosophers: \[[^\]]*\], terms: \[[^\]]*\], type: "[^"]*",/);
           if (!tm) throw new Error("keys を作る位置が見つからない: " + id);
-          src = src.slice(0, start) + block.replace(tm[0], tm[0] + "\n" + line) + src.slice(end);
+          src = src.slice(0, start) + replaceFirst(block, tm[0], tm[0] + "\n" + line) + src.slice(end);
         }
         writeFileSafe(P("questions.js"), src, "utf8");
         kd[id] = readQ().find(x => x.id === id).keys;
@@ -1533,7 +1533,7 @@ function applyLedger(led) {
         if (!rest.length) throw new Error("keys が空になるので外せない: " + id + "／" + w +
           "（残す語を決めて本文に語を足すか、keys除去 の側で組み直す）");
         const line = "    keys: [" + rest.map(S).join(", ") + "],";
-        src = src.slice(0, start) + block.replace(mm[0], line) + src.slice(end);
+        src = src.slice(0, start) + replaceFirst(block, mm[0], line) + src.slice(end);
         writeFileSafe(P("questions.js"), src, "utf8");
         kd[id] = rest;
       }
@@ -1559,7 +1559,7 @@ function applyLedger(led) {
   if (yomiLines.length) {
     const anchor = "const KEY_YOMI = {\n";
     if (!html.includes(anchor)) throw new Error("KEY_YOMI が見つからない");
-    html = html.replace(anchor, anchor + yomiLines.join("\n") + "\n");
+    html = replaceFirst(html, anchor, anchor + yomiLines.join("\n") + "\n");
   }
   writeFileSafe(P("index.html"), html, "utf8");
   writeJson(P("tools/keys_draft.json"), kd);
@@ -1679,9 +1679,9 @@ function applyAppends(tsui) {
     /* --- 本文（detail か explanation） --- */
     if (q[FLD].indexOf(it.find) < 0) throw new Error(FLD + " に find が無い: " + it.id);
     if (q[FLD].indexOf(it.find) !== q[FLD].lastIndexOf(it.find)) throw new Error("find が一意でない: " + it.id);
-    const newBody = q[FLD].replace(it.find, it.replace);
+    const newBody = replaceFirst(q[FLD], it.find, it.replace);
     if (src.indexOf(S(q[FLD])) !== src.lastIndexOf(S(q[FLD]))) throw new Error(FLD + " リテラルが一意でない: " + it.id);
-    src = src.replace(S(q[FLD]), S(newBody));
+    src = replaceFirst(src, S(q[FLD]), S(newBody));
     writeFileSafe(P("questions.js"), src, "utf8");
 
     /* --- 字数はここで実測する。予定値は使わない --- */
@@ -1708,7 +1708,7 @@ function applyAppends(tsui) {
     const oldNote = q.source.note;
     const newNote = oldNote + it.note_add + measured;
     if (src.indexOf(S(oldNote)) !== src.lastIndexOf(S(oldNote))) throw new Error("note リテラルが一意でない: " + it.id);
-    src = src.replace(S(oldNote), S(newNote));
+    src = replaceFirst(src, S(oldNote), S(newNote));
     writeFileSafe(P("questions.js"), src, "utf8");
 
     /* --- keys --- */
@@ -1722,7 +1722,7 @@ function applyAppends(tsui) {
       const m = block.match(/    keys: \[[^\]]*\],/);
       const line = `    keys: [${(q.keys || []).concat(it.keys_add).map(S).join(", ")}],`;
       if (m) {
-        src = src.slice(0, start) + block.replace(m[0], line) + src.slice(end);
+        src = src.slice(0, start) + replaceFirst(block, m[0], line) + src.slice(end);
       } else {
         /* keys フィールドそのものが無い問題が42問ある（q133・q142・q211 など）。
            refs の「無い」と「空」の区別と同じ型で、`q.keys || []` で読むと空配列に見えるが
@@ -1730,7 +1730,7 @@ function applyAppends(tsui) {
            2026-09-17 に「十九世紀の反逆」の台帳整備で踏んだ。 */
         const tm = block.match(/    philosophers: \[[^\]]*\], terms: \[[^\]]*\], type: "[^"]*",/);
         if (!tm) throw new Error("keys を作る位置が見つからない: " + it.id);
-        src = src.slice(0, start) + block.replace(tm[0], tm[0] + "\n" + line) + src.slice(end);
+        src = src.slice(0, start) + replaceFirst(block, tm[0], tm[0] + "\n" + line) + src.slice(end);
       }
       writeFileSafe(P("questions.js"), src, "utf8");
     }
@@ -1743,7 +1743,7 @@ function applyAppends(tsui) {
       const block = src.slice(start, end);
       let nb;
       if (/refs: \[\]/.test(block)) {
-        nb = block.replace("refs: []", `refs: [\n        ${S(it.refs_add)}\n      ]`);
+        nb = replaceFirst(block, "refs: []", `refs: [\n        ${S(it.refs_add)}\n      ]`);
       } else if (/refs: \[/.test(block)) {
         const i = block.lastIndexOf("\n      ]");
         if (i < 0) throw new Error("refs の閉じが見つからない: " + it.id);
@@ -1837,7 +1837,7 @@ function registerKeys(keys, saku, tsui) {
     }
   }
   if (lines.length) {
-    html = html.replace(anchor, anchor + lines.join("\n") + "\n");
+    html = replaceFirst(html, anchor, anchor + lines.join("\n") + "\n");
     writeFileSafe(P("index.html"), html, "utf8");
   }
   console.log(`  → 台帳 ${added}語／keys_draft ${saku.filter(d => d.keys.length).length + tsui.filter(t => t.keys_add && t.keys_add.length).length}件／KEY_YOMI ${lines.length}語\n`);
