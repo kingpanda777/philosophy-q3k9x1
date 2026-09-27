@@ -70,7 +70,8 @@
 - SEP（plato.stanford.edu）、IEP（iep.utm.edu）、Routledge Encyclopedia of Philosophy（rep.routledge.com。**無料で公開している範囲だけ**。ログインや購読が要る部分は開かない。2026年9月25日に足した）
 - 公有の原典と正規の公開元：**著者の没年と刊行年から公有と分かるもの**だけ。この棚では、{{公有の原典}}。**{{全文サイトを使わない著者}}の原典の全文を載せたサイトは使わない**（箇所の確認は SEP・IEP・査読論文が引く頁、J-STAGE の論文の引用で行う）
 - 査読誌の論文（書誌と DOI）、大学の機関リポジトリ、大学の研究事業が公開する頁（キングストン大学の Cahiers pour l'Analyse 電子版、ケンブリッジ大学社会人類学科が編集する The Open Encyclopedia of Anthropology〔anthroencyclopedia.com。執筆者と DOI を書く〕など。2026年9月25日に足した）、J-STAGE、版元の頁（本の抜粋なら可）、著者や遺稿管理者が自ら公開しているもの
-- **使わない**：Wikipedia・Wiktionary、引用句サイト、ブログ、まとめサイト、Britannica と Routledge Encyclopedia of Philosophy と The Open Encyclopedia of Anthropology 以外の百科事典サイト、grokipedia、monoskop、library genesis の類、講義ノートや授業の頁の PDF、コトバンク、権利者の許可なく本を丸ごと載せたサイト
+- NDB（Neue Deutsche Biographie、deutsche-biographie.de。バイエルン学術アカデミー歴史委員会の人物事典）は、執筆者名のある項目に限って使ってよい（2026年9月27日に足した）
+- **使わない**：Wikipedia・Wiktionary、引用句サイト、ブログ、まとめサイト、Britannica と Routledge Encyclopedia of Philosophy と The Open Encyclopedia of Anthropology と NDB 以外の百科事典サイト、grokipedia、monoskop、library genesis の類、講義ノートや授業の頁の PDF、コトバンク、権利者の許可なく本を丸ごと載せたサイト
 - **置き場所で判断する**（本文が取れても、無断転載のサイトは使わない）
 - **引用・転載を控えるよう求める頁は、refs にも引用にも使わない**（抽出を禁じる設定が無くても同じ。2026年9月27日に足した）
 

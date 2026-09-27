@@ -1537,8 +1537,7 @@ const PHIL_INTRO = [
     thought_src: ["q695", "q696"],
     works: [
       { title: "共観福音書伝承史", year: 1921 },
-      { title: "イエス", year: 1926 },
-      { title: "新約聖書と神話論", year: 1941 }
+      { title: "イエス", year: 1926 }
     ],
     checked: true
   },
