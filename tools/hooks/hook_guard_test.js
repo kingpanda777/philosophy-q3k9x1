@@ -102,4 +102,20 @@ for (const t of [{ tool_name: 'Write', tool_input: { file_path: 'a' } }, 'これ
   console.log((r.status === 0 ? '○ 通した ' : '× 止めた ') + (typeof t === 'string' ? '読めない入力' : 'Bash・PowerShell 以外（Write）'));
 }
 console.log('止めるべき ' + (BLOCK.length + CWD_BLOCK.length) + '件・通すべき ' + (PASS.length + CWD_PASS.length + 2) + '件：' + (bad ? '食い違い ' + bad + '件' : 'すべて期待どおり'));
+
+// guard_commit.js の試し（2026年9月28日に足した）。作業ツリーの状態は偽の run で与える（本物のリポジトリは見ない）
+const { commitKind, leftovers } = require('./guard_commit.js');
+const KIND = [
+  ['git commit -F tools/_work/msg.txt', 'normal'], ['git add -A && git commit -m "x"', 'addall'], ['git add questions.js && git commit -m "x"', 'normal'], ['git commit -am "x"', 'all'],
+  ['git commit --all -m x', 'all'], ['git -C C:/x commit -m y', 'normal'], ['git status --short', null],
+  ['echo "git commit を止める"', null], ['git log --oneline -1', null], ['node tools/add_batch.js x.json', null],
+];
+for (const [c, want] of KIND) { const got = commitKind(c); const ok = got === want; if (!ok) bad++; console.log((ok ? '○ ' : '× ') + 'commitKind ' + JSON.stringify(c) + ' → ' + got); }
+const fake = (diff, others) => args => args[0] === 'diff' ? diff : others;
+const LEFT = [
+  ['normal', [], [], 0], ['normal', ['philosophers.js'], [], 1], ['normal', [], ['tools/new.js'], 1],
+  ['all', ['philosophers.js'], [], 0], ['all', ['philosophers.js'], ['tools/new.js'], 1], ['addall', ['philosophers.js'], ['tools/new.js'], 0],
+];
+for (const [k, d, o, n] of LEFT) { const got = leftovers(k, fake(d, o)).length; const ok = got === n; if (!ok) bad++; console.log((ok ? '○ ' : '× ') + 'leftovers ' + k + ' diff=' + d.length + ' others=' + o.length + ' → ' + got + '件'); }
+console.log('guard_commit の試し ' + (KIND.length + LEFT.length) + '件：' + (bad ? '食い違いあり（上の合計を含む）' : 'すべて期待どおり'));
 process.exitCode = bad ? 1 : 0;

@@ -140,7 +140,7 @@ function inScope(cwd, cmd) {
   return /philosophy-quiz/i.test(cmd);
 }
 
-module.exports = { check, inScope };
+module.exports = { check, inScope, stripQuotes };   // stripQuotes は guard_commit.js も使う（2026年9月28日）
 
 if (require.main === module) {
   let raw = '';
