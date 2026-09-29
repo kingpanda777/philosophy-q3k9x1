@@ -5795,6 +5795,7 @@ CLAUDE.md.bak-20260915-195536
 **`_old_backups/`** には Git 化する前の .bak を46個そのまま入れてある。
 Git の起点より前の履歴はここにしか残らないので、削除しない。
 以降に作る .bak はプロジェクト直下に置き、「作業の前に」の節の決まりで消す（`_old_backups/` へは移さない）。
+**2026年9月29日に移した20個（直下の CLAUDE.md 12個・philosophers.js 1個、`tools/` の下7個。`tools/` の下のものは `_old_backups/tools/` に元の場所のまま置いた）は、中身が Git の履歴に無いため残した .bak で、消さない。**理由：`git hash-object` と `git cat-file -e`、`git rev-list --all --objects` で確かめると、20個ともどのコミットからも辿れず（19個は Git の物置にも無い）、消すと中身がどこにも残らない。
 
 **改行コードは変換しない。** `.gitattributes` に `* -text` を置き、`core.autocrlf` を false にしてある。
 questions.js への編集は文字列の完全一致で行うため、チェックアウトのたびに CRLF へ書き換えられると
