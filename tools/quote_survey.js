@@ -205,20 +205,28 @@ if (OTHER) {
 const CACHE = path.join(__dirname, '_sources', 'quote_cache', 'pdf');
 const IMG = fs.existsSync(path.join(__dirname, '_sources', 'page_images')) ? fs.readdirSync(path.join(__dirname, '_sources', 'page_images')) : [];
 const pdfRefs = [];
+// URL の書き方の違い（末尾の / の有無、J-STAGE は _article／_pdf と -char/ja の有無）を並べる。先頭はもとの URL
+function urlVariants(u) {
+  const b = u.replace(/\/$/, '');
+  const v = [u, b, b + '/'];
+  if (/jstage\.jst\.go\.jp\/article\/.*\/_(article|pdf)/.test(b)) {
+    const p = b.replace('/_article', '/_pdf').replace(/\/-char\/ja$/, '');
+    for (const x of [p, p + '/-char/ja']) v.push(x, x + '/');
+  }
+  return [...new Set(v)];
+}
 for (const q of Q) for (const ref of (Array.isArray(q.source.refs) ? q.source.refs : [])) {
   const url = (ref.match(/^https?:\/\/\S+/) || [''])[0];
   if (!url) continue;
   // J-STAGE は refs に論文の頁（_article）を書き、PDF は _article を _pdf に替えて取る（CLAUDE.md の J-STAGE の節）。
-  // だから PDF の置き場とキャッシュの鍵は、_pdf の形（-char/ja の有無の両方）でも探す
-  const variants = [url];
-  if (/jstage\.jst\.go\.jp\/article\/.*\/_article/.test(url)) {
-    const p = url.replace('/_article', '/_pdf');
-    variants.push(p, p.replace(/\/-char\/ja\/?$/, ''), p.replace(/\/?$/, '').replace(/(\/_pdf)$/, '$1/-char/ja'));
-  }
-  const keys = [...new Set(variants)].map(v => crypto.createHash('md5').update(v).digest('hex'));
+  // refs が _pdf の形で書かれていることもある（q657 の岡崎2009）。だから J-STAGE の URL は、_article／_pdf のどちらで
+  // 書かれていても、_pdf の形（-char/ja の有無・末尾の / の有無）を全部試してキャッシュと頁の画像を探す（2026年9月29日に直した）
+  const variants = urlVariants(url);
+  const isJ = /jstage\.jst\.go\.jp\/article\/.*\/_(article|pdf)/.test(url);
+  const keys = variants.map(v => crypto.createHash('md5').update(v).digest('hex'));
   const key = keys.find(k => fs.existsSync(path.join(CACHE, k + '.pdf'))) || keys[0];
   const cached = fs.existsSync(path.join(CACHE, key + '.pdf'));
-  const looks = /\.pdf(\b|$|\?|#)|_pdf\b|\/pdf(\/|$)/i.test(url) || variants.length > 1;
+  const looks = /\.pdf(\b|$|\?|#)|_pdf\b|\/pdf(\/|$)/i.test(url) || isJ;
   if (!cached && !looks) continue;
   const desc = ref.slice(url.length);
   pdfRefs.push({ id: q.id, url, key, cached, desc, shelves: shelves(q), quoted: /「[^」]{4,}」|["“„][^"”“]{10,}["”“]/.test(desc),
@@ -233,7 +241,14 @@ if (paths.length) {
   kindOf = JSON.parse(s.slice(s.lastIndexOf('{"')  >= 0 ? s.indexOf('{"') : 0));   // 前に警告が混ざっても JSON から読む
 }
 for (const p of pdfRefs) p.k = p.cached ? kindOf[path.join(CACHE, p.key + '.pdf')] || {} : null;
-const risky = p => p.k && p.k.extractable !== false && (p.k.scanned || p.k.columns || p.k.vertical);
+// 同じ PDF を2通りの URL で引くことがあるので、取得済みのものは中身（ファイルのハッシュ）で1本に数える（2026年9月29日に直した）。
+// 頁の画像も、同じ中身のどれかの URL で作ってあれば、その PDF は画像で照らしたとみなす
+const hashOf = {};
+for (const f of paths) hashOf[f] = crypto.createHash('md5').update(fs.readFileSync(f)).digest('hex');
+for (const p of pdfRefs) p.doc = p.cached ? 'h:' + hashOf[path.join(CACHE, p.key + '.pdf')] : 'u:' + p.url;
+const imagedDoc = new Set(pdfRefs.filter(p => p.imaged).map(p => p.doc));
+for (const p of pdfRefs) p.imaged = imagedDoc.has(p.doc);
+const risky =p => p.k && p.k.extractable !== false && (p.k.scanned || p.k.columns || p.k.vertical);
 console.log('\n■ refs の PDF（1問1本で延べ。比較問題は関わる棚それぞれで数える）');
 console.log('（PDF の refs には、J-STAGE の論文頁〔_article〕の refs も入れる。取得済みは quote_check_pdf.py で一度取ったもの）');
 // 未取得の J-STAGE で、説明欄の刊行年が2009年以前のもの（CLAUDE.md：古い巻は走査のことが多い）を「走査の疑い」として数える
@@ -247,8 +262,10 @@ const line4 = (lab, A) => {
 };
 for (const s of SCHOOLS) line4(s, pdfRefs.filter(p => p.shelves.includes(s)));
 line4('**実数**', pdfRefs);
-const u = [...new Map(pdfRefs.map(p => [p.url, p])).values()];
-console.log('  異なる PDF: ' + u.length + ' 本（取得済み ' + cnt(u, p => p.cached) + '・走査 ' + cnt(u, p => p.cached && p.k.scanned) + '・段組み／縦書き ' + cnt(u, p => p.cached && !p.k.scanned && (p.k.columns || p.k.vertical)) + '・頁の画像あり ' + cnt(u, p => p.imaged) + '）');
+const u = [...new Map(pdfRefs.map(p => [p.doc, p])).values()];
+console.log('  異なる PDF（取得済みは中身で、未取得は URL で数える）: ' + u.length + ' 本（取得済み ' + cnt(u, p => p.cached) + '・走査 ' + cnt(u, p => p.cached && p.k.scanned) + '・段組み／縦書き ' + cnt(u, p => p.cached && !p.k.scanned && (p.k.columns || p.k.vertical)) + '・頁の画像あり ' + cnt(u, p => p.imaged) + '）');
+const restDocs = new Set(pdfRefs.filter(p => p.quoted && p.cached && risky(p) && !p.imaged).map(p => p.doc));
+console.log('  説明欄に引用があり、走査か段組みで頁の画像が無い PDF（中身で数えて）: ' + restDocs.size + ' 本');
 if (PDF) {
   console.log('\n■ PDF の refs の一覧');
   for (const p of pdfRefs) console.log([p.id, p.shelves.join('・'), p.quoted ? '引用あり' : '', p.cached ? (p.k.extractable === false ? '抽出不可' : [p.k.scanned ? '走査' : '', p.k.columns ? '段組み' : '', p.k.vertical ? '縦書き' : ''].filter(Boolean).join('・') || '電子') : '未取得', p.imaged ? '画像で照合' : '', p.url.slice(0, 100)].filter(Boolean).join(' '));
