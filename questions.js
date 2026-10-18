@@ -207,7 +207,8 @@ const PHILOSOPHERS = [
   { name: "ナンシー・フレイザー", years: "1947–", note: "再分配と承認は互いに還元できない。正義の物差しは、対等に参加できるかどうか", school: "フランクフルト学派" },
   { name: "フロム", years: "1900–1980", note: "自由の重荷に耐えかねた近代人は、権威への服従と画一化へ逃げる", school: "フランクフルト学派" },
   { name: "ブランダム", years: "1950–", note: "意味は推論のなかで果たす役割で決まる。規範は実践のうちに暗黙に含まれる", school: "プラグマティズム" },
-  { name: "トクヴィル", years: "1805–1859", note: "平等の進むデモクラシーの時代に、自由をどう守るか", school: "功利主義と自由主義" }
+  { name: "トクヴィル", years: "1805–1859", note: "平等の進むデモクラシーの時代に、自由をどう守るか", school: "功利主義と自由主義" },
+  { name: "ホワイトヘッド", years: "1861–1947", note: "世界は物ではなく、互いに関係しあって生成する出来事から成る", school: "プラグマティズム" }
 ];
 
 const TERMS = [
@@ -24012,6 +24013,141 @@ const QUESTIONS = [
         "https://www.gutenberg.org/cache/epub/54339/pg54339.txt — トクヴィル『旧体制と大革命』仏語原典（Paris, Michel Lévy frères, 1856、第2版。Project Gutenberg #54339。トクヴィルは1859年没で公有）第2篇第2章の題「Que la centralisation administrative est une institution de l'ancien régime, et non pas l'œuvre de la Révolution ni de l'Empire, comme on le dit」。正解を支える",
         "https://plato.stanford.edu/entries/conservatism/ — SEP「Conservatism」（Andy Hamilton）§2.4。トクヴィルがフランス革命の断罪でおそらく19世紀の大陸の保守派のなかで最もバークに近かったこと（\"was probably the most Burkean among 19\"）、フランスの王政は改革できたというバークの見方を退け、絶対王政がフランス社会の白紙をならして革命の新たな絶対主義の土台を用意したとみたこと（\"monarchical absolutism had wiped clean the slate of French society and thereby provided the basis for the new absolutism of the Revolution\"。Clark 2001 を引く）、本書が一つにはバークに反論するために書かれたこと（\"was partly written to refute Burke\"）。正解の2本目と explanation、detail 第1・第2段落を支える",
         "https://www.rep.routledge.com/articles/biographical/tocqueville-alexis-de-1805-59/v-1 — REP「Tocqueville, Alexis de (1805–59)」（L. A. Siedentop、1998年）の無料で読める要約。『旧体制と大革命』（1856）でトクヴィルが、フランスの激しい階級の対立を1789年よりずっと前の地方の自治の破壊にさかのぼらせたこと（\"traced bitter class conflicts in France to the destruction of local autonomy long before 1789\"）、地方の自治への信頼。explanation と detail 第3段落を支える"
+      ]
+    }
+  },
+  {
+    id: "q919",
+    philosophers: ["ホワイトヘッド"], terms: ["存在"], type: "single",
+    keys: ["現実的存在"],
+    question: "ホワイトヘッドが、世界がそこから成り立つ究極の現実的なものとしたものとして最も適切なものは？",
+    choices: [
+      "それ自体で存在し続け、ほかと関係をもたない物質の小さな粒",
+      "互いに関係しあって生成し、すぐに消える経験の雫のような出来事",
+      "時間の外にあって変化しない、純粋な可能性としての形",
+      "窓をもたず、互いにじかに影響を及ぼし合わない単純な実体"
+    ],
+    answer: 1,
+    explanation: "ホワイトヘッドは『過程と実在』で、世界がそこから成り立つ究極の実在を現実的存在と呼び、現実的存在は経験の雫だと述べました。現実的存在は、先立つものとの関係を取り込みながら生成し、生成し終えると消えていく、ごく短い出来事です。",
+    detail: "ほかと関係をもたない物質の粒は、ホワイトヘッドが近代の科学的唯物論に見て退けた自然の捉え方です。時間の外にある純粋な可能性は、彼が永遠的客体と呼んだもので、それ自体は現実的なものではありません。窓をもたない単純な実体はライプニッツのモナドで、現実的存在はこれに似ていますが、互いに内的に関係しあう点が違います。\n\n現実的存在は、生命のない自然も心も、同じ一つの種類の単位で説明するためのものです。石から人間まで、あらゆるものの構成要素が経験的なものだとするこの考えは、汎経験説と呼ばれます。\n\n出来事は、こうした現実的存在が集まった網として捉えられます。現実的存在は生成し終えると消えますが、後に続く現実的存在の活動のうちに取り込まれていきます。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、現実的存在（actual entity。現実的契機〔actual occasion〕とも呼ばれる）を、内的に関係しあう要素的な過程とし、経験の雫とする規定（SEP Whitehead §6、IEP Whitehead §2e）。誤答は、近代の科学的唯物論の、ほかと関係をもたない物質の断片（SEP Whitehead §4。ホワイトヘッドが退けた側）、永遠的客体（純粋な可能性で、現実的なものではない。SEP §6）、ライプニッツのモナド（IEP Process Philosophy §3b は、現実的契機はモナドに似るが互いに内的に関係しあう点が違うと書く）。設問文は「現実的なもの」と限っているので、永遠的客体は正解と競合しない。四択は成立している。 訳語の確認: actual entity は「現実的存在」（上田有輝、平田一郎2016・2024）にそろえた。「現実的実質」とする訳もある（中央大学の機関リポジトリの学位論文 LEDK00105 で使われている）。drop of experience の「経験の雫」は上田による。 設計の記録: 人物の追加（2026年10月19日、ホワイトヘッド）で作った。正解の芯を支える独立した2資料は、SEP Whitehead（Desmet・Irvine）と IEP Whitehead（Herstein）。detail 第3段落は REP Whitehead（Bradley）の要約でも支えた。",
+      refs: [
+        "https://plato.stanford.edu/entries/whitehead/ — SEP「Alfred North Whitehead」（Ronald Desmet・Andrew David Irvine、2022年11月10日改訂）§6 Metaphysics。究極の存在論が、内的に関係しあう有機体のような要素的過程（現実的契機・現実的存在）からなること（\"internally related organism-like elementary processes (called 'actual occasions' or 'actual entities')\"）、現実的存在は経験の雫だという結論（\"actual entities are drops of experience, complex and interdependent\"）、出来事が現実的契機の網とみられること（\"events are seen as networks (or 'societies') of elementary and atomic events\"）、石から人間まで、あらゆるものの構成要素が経験的だという汎経験説（\"the intrinsically related elementary constituents of all things in the universe, from stones to human beings, are experiential\"）、永遠的客体が純粋な可能性であること（\"Whitehead introduces pure potentials, also called 'eternal objects,' next to actual occasions\"）。§4 Philosophy of Science 近代の科学的唯物論が自然を、ほかと関係をもたない物質の断片の宇宙とみたこと（\"the conception of nature as a universe of self-sufficient isolated bits of matter\"）。正解と explanation、detail 第1・2段落を支える",
+        "https://iep.utm.edu/whitehead/ — IEP「Whitehead, Alfred North」（Gary L. Herstein）§2e The Metaphysical Works。生成の基本の単位が現実的契機で、それが経験の雫であること（\"The basic units of becoming for Whitehead are \"actual occasions.\" Actual occasions are \"drops of experience,\"\"）。正解の2本目",
+        "https://iep.utm.edu/processp/ — IEP「Process Philosophy」（J. R. Hustwit）§3b Events, not Substances。現実的契機は多くの点でライプニッツのモナドに似るが、互いに内的に関係しあう点が違うこと（\"In many ways, actual occasions are similar to Leibniz's monads\"、\"except that occasions are internally related to each other\"）。detail 第1段落の誤答の由来を支える",
+        "https://www.rep.routledge.com/articles/biographical/whitehead-alfred-north-1861-1947/v-1 — REP「Whitehead, Alfred North (1861–1947)」（James Bradley、1998年、DOI 10.4324/9780415249126-DD071-1）の Article Summary（無料で公開している範囲）。実在は契機の生成であり、先行する契機が後に続く契機の活動に取り込まれること（\"a matter of the becoming of 'occasions' which are centres of activity in a multiplicity of serial processes whereby the antecedent occasions are taken up in the activities of successor occasions\"）。detail 第3段落を支える",
+        "https://repository.dl.itc.u-tokyo.ac.jp/record/2003996/files/choiki26003.pdf — 上田有輝「胚胎的な心――ホワイトヘッドにおける「コンセプチュアルな抱握」とその翻訳について」（東京大学の機関リポジトリ）。訳語「現実的存在（actual entity）」「経験の雫（drop of experience）」（「「現実的存在（actual entity）」は、それ自体で持続する不活性の物質の断片ではなく」、「「経験の雫（drop of experience）」」）。訳語を支える"
+      ]
+    }
+  },
+  {
+    id: "q920",
+    philosophers: ["ホワイトヘッド"], terms: ["知覚"], type: "single",
+    keys: ["抱握", "合生"],
+    question: "ホワイトヘッドのいう抱握として最も適切なものは？",
+    choices: [
+      "対象を概念によって判断し、確かな知識として捉える働き",
+      "ほかのものを感じとって、自らの成り立ちのうちに取り込む働き",
+      "外界の物の像を、心のなかの観念として写しとる働き",
+      "ほかと関わらずに、自分だけで自らの性質を決める働き"
+    ],
+    answer: 1,
+    explanation: "抱握（prehension）は、ある現実的存在が、ほかのものを感じとって自らのうちに現前させる働きです。ホワイトヘッドは『科学と近代世界』で、これを、認知であるとは限らない把握として定義しました。過去の現実的存在も永遠的客体も、抱握を通じて、いまの現実的存在の成り立ちに入り込みます。",
+    detail: "概念によって判断して知識を得る働きと見るのは、抱握が認知であるとは限らないとされる点に反します。心のなかに像を写しとる働きと見るのは、抱握を表象と取り違えています。現実的存在には自らを決める面もありますが、それは受け取ったものをどう感じるかにかかわり、ほかと関わらずに決まるのではありません。\n\n現実的存在は、多くの抱握を一つにまとめあげて生成します。この過程をホワイトヘッドは合生（concrescence）と呼びました。合生は「ともに育つこと」を意味し、受け取ったものを、不確定から確定へと統合していく過程です。\n\n抱握が受け取るのは、過去の現実的存在だけではありません。過去の現実的存在を受け取る物的抱握のほかに、永遠的客体を受け取る概念的抱握（観念的抱握とも訳されます）があります。抱握の理論は、知覚に代わる説明として据えられました。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、ある現実的契機の性格が別の現実的契機のうちに現前するようになる経験の働きという規定（IEP Process Philosophy §3c）と、認知であるとは限らない把握という定義（『科学と近代世界』101頁、IEP Whitehead §2e）。正解は「ほかのもの」と書き、受け取る先を過去の現実的存在に限らない（永遠的客体も抱握で受け取られる。IEP Process Philosophy §3d）。誤答は、概念による判断と知識（認知に限る取り違え）、心のなかの像（表象としての取り違え）、ほかと関わらずに自らを決める働き（抱握が関係の働きであることに反する）。現実的存在の自己決定は、受け取ったものをどう感じるか（主体的形式）にかかわる（SEP Whitehead §6）ので、四つ目の誤答は正解と競合しない。四択は成立している。 訳語の確認: prehension は「抱握」、concrescence は「合生」にそろえた（平田一郎2024、上田有輝）。 設計の記録: 人物の追加（2026年10月19日、ホワイトヘッド）で作った。正解の芯を支える独立した2資料は、IEP Process Philosophy（Hustwit）と IEP Whitehead（Herstein）。合生は SEP Whitehead §6 と IEP Process Philosophy §4b で支えた。草稿では正解を「過去の出来事の性格を感じとり」と書いていたが、概念的抱握（永遠的客体を受け取る抱握）を落として本人の立場より狭くなるので、承認の段（2026年10月19日）に「ほかのもの」に改めた。物的抱握と概念的抱握の区別は、IEP Process Philosophy §3d（永遠的客体が抱握によって現実的契機に入ること）、平田一郎2024（物的抱握と観念的抱握）、上田有輝（コンセプチュアルな抱握）で支えた。訳語は、上田の注9によれば松籟社版（山本誠作訳）が「概念的抱握」、みすず書房版（平林康之訳）が「観念的抱握」で、全集の松籟社版にそろえ、もう一方を括弧で添えた。",
+      refs: [
+        "https://iep.utm.edu/processp/ — IEP「Process Philosophy」（J. R. Hustwit）§3c Internal and External Relations。抱握は、ある現実的契機の性格が別の現実的契機のうちに現前するようになる経験の働きであること（\"Prehension is the experiential activity of an actual occasion by which characteristics of one occasion come to be present in another.\"）。§4b Perception and Prehension 与件を不確定から確定へと統合する過程を合生と呼ぶこと（\"Whitehead calls the process of integrating this data by proceeding from indeterminacy to determinacy \"concrescence.\"\"）。§1b 知覚に代わって抱握を記述すること（\"description of \"prehension\" in place of perception\"）。§3d Rejection of Nominalism 神が永遠的客体を抱握によってほかの現実的契機へ媒介すること（\"The divine actuality mediates eternal objects—both simple and complex—to other actual occasions by means of prehension.\"）、永遠的客体は、契機がそれを過去の現実的契機や神のうちに感じとるとき、合生する契機に入ること（\"These eternal objects make their way into the concrescing (developing) actual occasions when an occasion \"feels\" them in a past actual occasion or in the divine actuality.\"）。正解と explanation、detail 第2・3段落を支える",
+        "https://iep.utm.edu/whitehead/ — IEP「Whitehead, Alfred North」（Gary L. Herstein）§2e The Metaphysical Works。ホワイトヘッドが抱握を「認知によらない把握」と定義したこと（\"the word \"prehension,\" which Whitehead defines as \"uncognitive apprehension\"\"）、その関係はつねに、またもっぱら知識にもとづくわけではないこと（\"these relations are not always or exclusively knowledge based\"）。正解の2本目",
+        "https://archive.org/download/sciencemodernwor00whit_0/sciencemodernwor00whit_0.pdf — ホワイトヘッド『科学と近代世界』（Science and the Modern World、New York: Macmillan、著作権表示1925年。1926年の重刷の走査、Internet Archive。ホワイトヘッドは1947年没で日本で公有、1925年刊で米国でも公有）第4章101頁。認知的であるとは限らない把握を抱握と呼ぶこと（\"I will use the word prehension for uncognitive apprehension: by this I mean apprehension which may or may not be cognitive.\"）。頁の画像で誌面と照らした。explanation と detail 第3段落の原典",
+        "https://plato.stanford.edu/entries/whitehead/ — SEP「Alfred North Whitehead」（Ronald Desmet・Andrew David Irvine、2022年11月10日改訂）§6 Metaphysics。合生は多くの感じが一つへとともに育つことであること（\"concrescence (growing together) of many feelings into one\"）、合生は何が感じられるかだけでなく、どう感じられるか（主体的形式）によっても決まること（\"but also by the subjective form (by how it is felt)\"）。detail 第1・2段落を支える",
+        "https://kansaigaidai.repo.nii.ac.jp/record/2000262/files/r120_04.pdf — 平田一郎「ホワイトヘッドと汎質論（Panqualityism）―非構成的（Nonconstitutive）解釈の可能性―」『関西外国語大学研究論集』第120号（2024年9月）、DOI 10.18956/0002000262。訳語「抱握」（「ここで「抱握」とは現実的存在が他の対象と結ぶ関係」）、物的抱握と観念的抱握の区別（「他方観念的抱握は、そういった物的抱握から派生する二次的な抱握である」）。訳語と detail 第3段落を支える",
+        "https://repository.dl.itc.u-tokyo.ac.jp/record/2003996/files/choiki26003.pdf — 上田有輝「胚胎的な心――ホワイトヘッドにおける「コンセプチュアルな抱握」とその翻訳について」（東京大学の機関リポジトリ）。コンセプチュアルな抱握（conceptual prehension）が「概念的抱握」と通常は訳されること（「「概念的抱握」と通常は訳されているこのコンセプチュアルなるはたらき」）、注9 『過程と実在』の松籟社版が「概念的抱握」、みすず書房版が「観念的抱握」の訳語をあてていること（「は「概念的抱握」、平林康之訳（みすず書房、1981 年）は「観念的抱握」という訳語をあてている」）。detail 第3段落と訳語を支える"
+      ]
+    }
+  },
+  {
+    id: "q921",
+    philosophers: ["ホワイトヘッド"], terms: [], type: "single",
+    keys: ["具体性を置き違える誤謬", "自然の二元分岐"],
+    question: "ホワイトヘッドのいう「具体性を置き違える誤謬」として最も適切なものは？",
+    choices: [
+      "具体的な事例を集めるだけで、一般的な法則を軽んじる誤り",
+      "抽象によって取り出したものを、具体的な現実そのものと取り違える誤り",
+      "事実を述べる文から、なすべきことを述べる文を導く誤り",
+      "部分について正しいことを、全体についても同じく正しいとする誤り"
+    ],
+    answer: 1,
+    explanation: "ホワイトヘッドは『科学と近代世界』（1925年）で、抽象的なものを具体的なものと取り違える誤りを、具体性を置き違える誤謬と呼びました。17世紀の科学の図式が、ほかと関係をもたずに空間と時間の一点に位置する物質の断片を、最も具体的な実在とみなしたことが、この誤謬の例とされます。",
+    detail: "事例を集めるだけで法則を軽んじる誤りは、抽象と具体の取り違えとは向きが逆です。事実の文から当為の文を導く誤りや、部分について正しいことを全体にも当てはめる誤りは、この誤謬とは別の種類の誤りです。\n\n同じ誤謬は、自然を、物体の一次性質がなす本質的な実在と、心が付け加えた二次性質とに分ける見方の根にもあるとされます。ホワイトヘッドは『自然という概念』（1920年）で、この見方を自然の二元分岐と呼んで批判しました。\n\nホワイトヘッドは抽象そのものを退けたのではありません。抽象に限って考えれば明確な結論が得られますが、そのぶん残りのものから目をそらしている、という注意です。この誤謬を、科学の方法への戒めにとどまらず、有機体の哲学の構図全体のもとになる洞察とみる読みもあります（村田康常）。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、抽象を具体と取り違える誤りという規定（SEP Whitehead §4、IEP Whitehead の冒頭の要約。原典は『科学と近代世界』85頁）。誤答は、向きが逆の誤り（事例ばかり集めて一般化を軽んじる）と、別の種類の誤り二つ（事実から当為を導く誤り、部分から全体への誤り）。どれもホワイトヘッドがこの名で呼んだものではない。四択は成立している。 訳語の確認: fallacy of misplaced concreteness は「具体性を置き違える誤謬」（村田康常2019・2021）にそろえた。ほかに「具体性置き違えの誤謬」（村田2019 の本文の一か所）などの言い方もある。bifurcation of nature は「自然の二元分岐」（上田有輝）。 設計の記録: 人物の追加（2026年10月19日、ホワイトヘッド）で作った。terms は空にした。この誤謬は、TERMS のどの語の二つの読みにも無理なく当てはまらない（「科学」は線引きの問いで、この誤謬の問いではない）。正解の芯を支える独立した2資料は SEP Whitehead（Desmet・Irvine）と IEP Whitehead（Herstein）。自然の二元分岐は SEP Whitehead §4 と SEP Process Philosophy §3（Seibt）で支えた（二分の中身の書き方は、前者が一次性質と二次性質、後者が物的と心的で違う。detail は前者の形で書いた）。",
+      refs: [
+        "https://plato.stanford.edu/entries/whitehead/ — SEP「Alfred North Whitehead」（Ronald Desmet・Andrew David Irvine、2022年11月10日改訂）§4 Philosophy of Science。具体性を置き違える誤謬が、抽象を具体と取り違える誤りであること（\"error of mistaking the abstract for the concrete\"）、ホワイトヘッドが『自然という概念』で自然の二元分岐と呼んだこと（\"bifurcation of nature into two systems of reality\"）、その中身が自然を一次性質の本質的な実在と、心が付け加えたもの（二次性質）の非本質的な実在とに分けることであること（\"bifurcating nature into the essential reality of primary qualities and the non-essential reality of \"psychic additions\" or secondary qualities\"）。正解と detail 第2段落を支える",
+        "https://iep.utm.edu/whitehead/ — IEP「Whitehead, Alfred North」（Gary L. Herstein）の冒頭の要約。具体性を置き違える誤謬が、抽象を具体的に実在するかのように扱う誤りであること（\"The first fallacy is the error of treating an abstraction as though it were concretely real.\"）。正解の2本目",
+        "https://archive.org/download/sciencemodernwor00whit_0/sciencemodernwor00whit_0.pdf — ホワイトヘッド『科学と近代世界』（Science and the Modern World、New York: Macmillan、著作権表示1925年。1926年の重刷の走査、Internet Archive。日本と米国で公有）第3章82頁 17世紀の科学の図式に具体性を置き違えたこと（\"the ascription of misplaced concreteness to the scientific scheme of the seventeenth century\"）、第4章85頁 真の誤りは具体性を置き違える誤謬の一例であること（\"Accordingly, the real error is an example of what I have termed: The Fallacy of Misplaced Concreteness.\"）、抽象にだけ注意を向けることの不利は、残りのものから抽象してしまっていることだということ（\"is that, by the nature of the case, you have abstracted from the remainder of things\"）。頁の画像で誌面と照らした。explanation と detail 第3段落の原典",
+        "https://plato.stanford.edu/entries/process-philosophy/ — SEP「Process Philosophy」（Johanna Seibt、2022年5月26日改訂）§3。自然の二元分岐の拒否がホワイトヘッドの手であること（\"the rejection of the traditional \"bifurcation of nature\" into a physical and a mental domain\"）。detail 第2段落の2本目",
+        "https://www.jstage.jst.go.jp/article/processthought/21/0/21_150/_pdf/-char/en — 村田康常「実在に直面させる経験論としてのホワイトヘッド哲学―価値ある事実の具体性に迫る思弁のリアリティ」『プロセス思想』第21号（2021年）150頁から（パネル・ディスカッション2020の関連論文）。訳語「具体性を置き違える誤謬」（「ホワイトヘッドの科学哲学の中心概念である「具体性を置き違える誤謬」」）、この誤謬に、科学的方法論への戒めだけでなく、有機体の哲学の構図全体のもとになる洞察という含意があるとする読み（「一般に解されているような科学的方法論に関する戒めといった意味あいだけでなく、ホワイトヘッドの有機体の哲学という構図全体が淵源するような、基本的な洞察という含意もあるように思われる」）。訳語と detail 第3段落を支える",
+        "https://repository.dl.itc.u-tokyo.ac.jp/record/2003996/files/choiki26003.pdf — 上田有輝「胚胎的な心――ホワイトヘッドにおける「コンセプチュアルな抱握」とその翻訳について」（東京大学の機関リポジトリ）。訳語「自然の二元分岐」（「近代科学における「自然の二元分岐（bifurcation of nature）」を強く批判し」）。訳語を支える"
+      ]
+    }
+  },
+  {
+    id: "q922",
+    philosophers: ["ホワイトヘッド"], terms: ["神"], type: "single",
+    keys: ["原初的本性と結果的本性", "永遠的客体"],
+    question: "ホワイトヘッドが神について立てた、原初的本性と結果的本性の区別として最も適切なものは？",
+    choices: [
+      "世界を無から創った面と、最後に世界を裁く面",
+      "永遠的客体を秩序づける面と、世界の出来事を受けとめて保つ面",
+      "世界の外にとどまる面と、人間の姿をとって世界に現れる面",
+      "人間の理性が知りうる面と、啓示によってしか知りえない面"
+    ],
+    answer: 1,
+    explanation: "『過程と実在』のホワイトヘッドは、神を両極をもつものとして描きました。原初的本性は、永遠的客体（純粋な可能性）を思い描いて一つの秩序へまとめる面です。結果的本性は、世界の出来事を一つ残らず抱握して受けとめ、過去を保つ面で、世界が変わるにつれて変わっていきます。",
+    detail: "原初的な面の神は、現実的存在の生成を決めるのではなく条件づけ、強いるのではなく説得する、とされます。無から世界を創って最後に裁く神とは描き方が違います。人の姿をとって現れる面や、啓示によってしか知りえない面は、この区別とは別の論点です。\n\n永遠的客体が神のうちに置かれるのは、世界に働きかけるものはみな現実的存在でなければならないという存在論的原理によります。普遍は、プラトンのイデアのように独り立ちしたものとはされません。\n\nホワイトヘッドの哲学を受け継いだのは、哲学者よりもむしろ神学者でした。シカゴ大学の神学部やクレアモント神学校がこれを取り上げ、プロセス神学の伝統が生まれました。その重要さを説いたハーツホーンも、永遠的客体の説には異を唱えています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、原初的本性が永遠的客体を思い描いて一つの理想へと秩序づけ、結果的本性が世界のあらゆる現実的契機を抱握して過去を保ち、世界とともに変わるという規定（IEP Process Philosophy §5a、SEP Whitehead §7）。誤答は、無からの創造と審判、超越と受肉、理性と啓示の区別で、どれもホワイトヘッドのこの区別ではない。四択は成立している。 訳語の確認: primordial nature は「原初的本性」（平田一郎2016・2024）、eternal objects は「永遠的客体」（平田）。consequent nature の「結果的本性」は、村田康常2019（『プロセス思想』第19号）の「神の結果的本性」による。 設計の記録: 人物の追加（2026年10月19日、ホワイトヘッド）で作った。正解の芯を支える独立した2資料は IEP Process Philosophy（Hustwit）と SEP Whitehead（Desmet・Irvine）。存在論的原理は IEP Process Philosophy §3d の1資料なので、主題にせず detail で触れるだけにした。後の時代への影響（神学者が受け継いだこと）は SEP Whitehead §8 と IEP Process Philosophy §5a の2資料で支えた。",
+      refs: [
+        "https://iep.utm.edu/processp/ — IEP「Process Philosophy」（J. R. Hustwit）§5a Dipolar Panentheism。原初的本性は永遠的客体を思い描いて一つの理想へと秩序づけること（\"The primordial nature envisages and orders the eternal objects into a single unimaginably complex ideal.\"）、結果的本性は世界と相互に作用し、世界のあらゆる現実的契機をその合生のときに完全に抱握して過去を保つこと（\"The consequent nature of God interacts with the world, prehending fully every single actual occasion in the world upon its concrescence and, thus, preserving the past.\"）、世界が変わるにつれて変わること（\"This consequent nature of God is the aspect of God that is continuously changing as the world changes\"）、ホワイトヘッドの哲学がプロセス神学の伝統を生んだこと（\"Whitehead's philosophy has inspired an entire tradition of process theology\"）。§3d Rejection of Nominalism 世界に因果的に働きかけるものはみな現実的存在でなければならないという存在論的原理（\"Because Whitehead argues that anything that exerts causal efficacy upon the world must be an actual entity (his \"ontological principle\")\"）、普遍を永遠的客体と呼び神のうちに置くこと（\"Whitehead calls the universals \"eternal objects\" and locates them in the mind of God, who is an actual entity.\"）、永遠的客体の説がハーツホーンとの大きな不一致の一つであること（\"Whitehead's doctrine of eternal objects is one source of significant disagreement between the two process philosophers.\"）。正解と explanation、detail 第2・3段落を支える",
+        "https://plato.stanford.edu/entries/whitehead/ — SEP「Alfred North Whitehead」（Ronald Desmet・Andrew David Irvine、2022年11月10日改訂）§7 Religion。『過程と実在』で神の本性を原初的と結果的の両極として捉えたこと（\"the bipolar—primordial and consequent—nature of God\"）、原初的な面の神は現実的契機の生成を決めるのではなく条件づけること（\"God viewed as primordial does not determine the becoming of each actual occasion, but conditions it\"）、強いるのではなく説得すること（\"He does not force, but tenderly persuades each actual occasion\"）。§8 Whitehead's Influence ホワイトヘッドのプロセス哲学を忘却から救ったのは哲学者ではなく神学者だったこと（\"not philosophers but theologians saved Whitehead's process philosophy from oblivion\"）、シカゴ大学神学部とクレアモント神学校（\"if the Chicago Divinity School and the Claremont School of Theology had not shown a major interest in it\"）、ハーツホーンがその重要さを示すのに力があったこと（\"has been instrumental in highlighting the importance of Whitehead's process philosophy\"）。正解の2本目と detail 第1・3段落を支える",
+        "https://kansaigaidai.repo.nii.ac.jp/record/6021/files/r103_01.pdf — 平田一郎「ホワイトヘッドのコスモロジーにおける「行為」の遍在性について」『関西外国語大学研究論集』第103号（2016年3月）、DOI 10.18956/00006008。訳語「神の原初的本性」「永遠的客体」（「この新しい永遠的客体を抱握する神の機能が「神の原初的本性（primordial nature of God）」なのである」）。訳語を支える"
+      ]
+    }
+  },
+  {
+    id: "q923",
+    philosophers: ["ジェイムズ", "ホワイトヘッド"], terms: ["知覚"], type: "compare",
+    keys: ["根本的経験論", "現実的存在"],
+    question: "経験についての考えをめぐる、ジェイムズとホワイトヘッドの関係として最も適切なものは？",
+    choices: [
+      "両者とも、経験を互いに切り離された感覚与件の寄せ集めとした",
+      "ジェイムズは関係も経験に含め、ホワイトヘッドはそれを体系的な宇宙論にした",
+      "ホワイトヘッドはジェイムズを退け、ラッセルの論理的原子論に立った",
+      "両者とも、関係は経験に先立つ心の形式が与えるものとした"
+    ],
+    answer: 1,
+    explanation: "ジェイムズは意識の流れの分析で、関係や移り目も感覚と同じくじかに経験されるとし、のちにこれを根本的経験論として擁護しました。ホワイトヘッドはこの根本的経験論に触発されて知覚を分析し直し、『過程と実在』（副題「コスモロジーへの試論」）で、現実的存在を経験の雫とする宇宙論を組み立てました。",
+    detail: "経験を感覚与件の寄せ集めとみる見方は、二人がともに退けた側です。ホワイトヘッドは感覚与件を抽象とみなし、関係や出来事がじかに経験されるとしました。関係を経験に先立つ心の形式が与えるとする見方も、二人の考えとは向きが違います。世界は深く依存しあう過程や出来事からなるというホワイトヘッドの考えは、ラッセルの論理的原子論とはほぼ逆です。\n\n『過程と実在』では、実在とのかかわりは知覚の芽や雫ごとに育つというジェイムズの言葉を引いて、現実的存在は経験の雫だという結論を支えています。\n\n同じ本の序文でホワイトヘッドは、ベルクソン、ジェイムズ、デューイに多くを負っていると述べ、彼らの考え方を反知性主義という非難から救うことを、自分の関心の一つに挙げています。",
+    source: {
+      kind: "ai_web", label: "ウェブ照合済み",
+      choicesOk: "ok",
+      note: "設問へ: 正解は、ジェイムズが関係もじかに経験されるとし（SEP James §3）、ホワイトヘッドがジェイムズ（とベルクソン）の根本的経験論に触発されて知覚を分析し直し（SEP Whitehead §4、IEP Whitehead §2d）、『過程と実在』の宇宙論でジェイムズの言葉を引いたこと（SEP Whitehead §6、『過程と実在』105頁）。ホワイトヘッドがジェイムズの経験論を退けて論理的原子論に立ったとする誤答は、ジェイムズの根本的経験論に触発されたこと（SEP Whitehead §4）と、主な立場がラッセルの論理的原子論のほぼ逆だったこと（SEP Whitehead §1）の両方に反する。「両者とも」型の2つは、感覚与件の寄せ集め（二人がともに退けた。IEP Whitehead §2d、SEP James §3）と、関係を経験に先立つ心の形式に帰する見方（関係を経験のうちに見いだす二人の考えと逆）。四択は成立している。 設計の記録: 人物の追加（2026年10月19日、ホワイトヘッド）で作った。比較問題だが、入れ替えの誤答（鏡像）は置いていない。承認の段（2026年10月19日）に、鏡像「ホワイトヘッドは関係も経験に含め、ジェイムズはそれを体系的な宇宙論にした」は、前半がホワイトヘッドにも当てはまり、誤りの決め手が典拠の無い後半（ジェイムズが体系的な宇宙論を築かなかったこと）だけになるので、利用者の判断で、SEP Whitehead §1 で誤りと言える誤答に替えた。二人を並べて論じた独立した典拠は SEP Whitehead §4・§6（Desmet・Irvine）と IEP Whitehead §2d（Herstein。Victor Lowe の見方として）の2本で、村田康常2021 もホワイトヘッドがジェイムズとデューイに多くを負うと明言したことを書く。最初は「ジェイムズは経験を雫ごとに捉え、ホワイトヘッドはそれを存在の単位とした」で組んだが、入れ替えの誤答（ジェイムズが経験を存在の単位とした）が、純粋経験を世界の素材とみるジェイムズの考えで弁護されうるので、軸を宇宙論への組み込みに替えた。副題「コスモロジーへの試論」はみすず書房版の訳（国立国会図書館サーチ R100000002-I033207493）。",
+      refs: [
+        "https://plato.stanford.edu/entries/whitehead/ — SEP「Alfred North Whitehead」（Ronald Desmet・Andrew David Irvine、2022年11月10日改訂）§4 Philosophy of Science。ジェイムズとベルクソンの根本的経験論に触発されて知覚を分析し直したこと（\"Inspired by the radical empiricism of William James and Henri Bergson, Whitehead gave a new analysis of perception.\"）、§1 Life and Works ホワイトヘッドの主な哲学の説（世界はほぼ独立した物ではなく、深く依存しあう過程と出来事からなる）が、ラッセルの論理的原子論のほぼ逆だったこと（\"Whitehead's main philosophical doctrine—that the world is composed of deeply interdependent processes and events, rather than mostly independent material things or objects—turned out to be largely the opposite of Russell's doctrine of logical atomism\"）。§6 Metaphysics ジェイムズの考えた経験の流れの原子性（\"The atomicity of events in quantum mechanics dovetails with the atomicity of the stream of experience as conceived by William James\"）、『過程と実在』が引くジェイムズの言葉（\"Your acquaintance with reality grows literally by buds or drops of perception.\"）。§8 ジェイムズとベルクソンとの近さがラッセル流の反知性主義という非難を招いたこと（\"made him liable to the Russellian charge of anti-intellectualism\"）。正解と explanation、detail 第1〜3段落を支える",
+        "https://iep.utm.edu/whitehead/ — IEP「Whitehead, Alfred North」（Gary L. Herstein）§2d The Philosophy of Nature。ホワイトヘッドの経験論はジェイムズ流の根本的経験論で、感覚与件は抽象であり、生の経験は関係や複雑な出来事を含むこと（\"Whitehead is arguing for a kind of Jamesian \"radical empiricism,\" in which sense-data are abstractions, and the basic deliverances of raw experience include such things as relations and complex events.\"）。正解の2本目と detail 第1段落を支える",
+        "https://plato.stanford.edu/entries/james/ — SEP「William James」§3 The Principles of Psychology。ジェイムズがヒュームら伝統的な経験論者より豊かな経験の説明を与えようとしたこと（\"James takes himself to be offering a richer account of experience than those of traditional empiricists such as Hume\"）、関係やぼんやりした縁や傾向がじかに経験されると考え、のちに根本的経験論の一部として擁護したこと（\"He believes relations, vague fringes, and tendencies are experienced directly (a view he would later defend as part of his \"radical empiricism.\")\"）。正解のジェイムズの側と explanation を支える",
+        "https://archive.org/download/processrealityes00whit_1/processrealityes00whit_1.pdf — ホワイトヘッド『過程と実在』（Process and Reality: An Essay in Cosmology、New York: Macmillan / Cambridge University Press、1929年。走査、Internet Archive。日本で公有）扉の副題（\"AN ESSAY IN COSMOLOGY\"）、序文 vii 頁 ベルクソン、ジェイムズ、デューイに多くを負っていること（\"I am also greatly indebted to Bergson, William James, and John Dewey.\"）、彼らの考え方を反知性主義という非難から救うことが関心の一つであること（\"One of my preoccupations has been to rescue their type of thought from the charge of anti-intellectualism\"）、105頁 ジェイムズの言葉の引用（\"Your acquaintance with reality grows literally by buds or drops of perception.\"）。頁の画像で誌面と照らした。頁は1929年版のもので、1978年の校訂版では序文は xii 頁、引用は68頁にあたる（SEP・村田2021 が引く頁）。explanation と detail 第2・3段落の原典",
+        "https://www.jstage.jst.go.jp/article/processthought/21/0/21_150/_pdf/-char/en — 村田康常「実在に直面させる経験論としてのホワイトヘッド哲学―価値ある事実の具体性に迫る思弁のリアリティ」『プロセス思想』第21号（2021年）150頁から。ホワイトヘッドがジェイムズやデューイに多くを負っていると明言したこと（「たとえば彼はジェイムズやデューイに多くを負っていると明言し」）。detail 第3段落を補う"
       ]
     }
   }
